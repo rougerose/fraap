@@ -1,0 +1,22 @@
+
+#entete {
+	background:none;
+}
+#navigation {
+	display:none;
+}
+#localisation, #navigation_inferieure {
+  display:none;
+}
+#colonne_principale {
+}
+#cp_interieure {
+	padding:2em 20px 0 40px;
+}
+#cp_interieure.sommaire {
+  padding-left:0;
+  padding-right:0px;
+}
+#colonne_secondaire {
+  display:none;
+}

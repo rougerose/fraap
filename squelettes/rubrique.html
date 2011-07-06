@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=#CHARSET" />
+  <title>#NOM_SITE_SPIP | [(#TITRE|supprimer_numero|textebrut)]</title>
+  [<meta name='description' content='(#DESCRIPTIF|textebrut)'>]
+  <INCLURE{fond=inc-head}>
+</head>
+
+<body <BOUCLE_idrubrique(RUBRIQUES){id_rubrique}>id="rub#ID_RUBRIQUE"</BOUCLE_idrubrique>>
+<BOUCLE_secteur0(HIERARCHIE){id_rubrique}>
+   <div id="ConteneurExterieur" class="CERubrique#ID_RUBRIQUE"><div id="CEBordure"><div id="CEtitreRubrique" class="CEtRubrique#ID_RUBRIQUE"</BOUCLE_secteur0></B_secteur0><BOUCLE_secteur00(RUBRIQUES){id_rubrique}><div id="ConteneurExterieur" class="CERubrique#ID_RUBRIQUE"><div id="CEBordure"><div id="CEtitreRubrique" class="CEtRubrique#ID_RUBRIQUE"></BOUCLE_secteur00><//B_secteur0>
+      <div id="ConteneurInterieur">
+         <div id="entete">
+            <a href="/"><img src="/IMG/a/fraap.gif" id="logo" alt="Fraap, f&eacute;d&eacute;ration des r&eacute;seaux et associations d'artistes plasticiens" name="logo" /></a>
+         </div><!-- fin entete -->
+         <!-- debut menu principal et menu sous-rubriques -->
+         <div id="navigation">
+              <INCLURE{fond=navigation}{id_rubrique}>
+           </div>
+
+           <div id="localisation">
+             <INCLURE{fond=localisation}{id_rubrique}>
+           </div>
+
+           <div id="navigation_inferieure">
+             <INCLURE{fond=navigation_inferieure}{id_rubrique}>
+           </div>
+         
+         <div id="colonne_principale"><BOUCLE_exclusion(ARTICLES){id_rubrique}{id_mot=36}{doublons}> </BOUCLE_exclusion>
+           <div id="cp_interieure" class="rubrique">
+              [<div id="description-rubrique">
+                (#TEXTE)
+              </div>]
+              <div id="contenu-rubrique-articles<BOUCLE_test_breves(BREVES){id_rubrique}{titre_mot=affichage}{par date}{inverse}{0,1}>-breves</BOUCLE_test_breves>">
+                 <B_articles>
+                 #ANCRE_PAGINATION
+                 [<p class="pagination">page (#PAGINATION{page})</p>]
+                 <BOUCLE_articles(ARTICLES){id_rubrique}{par date}{inverse}{pagination 5}{doublons}>
+                 <div class="MeaArticles">
+                   [<p class="surtitre">(#SURTITRE)</p>]
+                   <h2>[<a href=#URL_ARTICLE>(#TITRE|supprimer_numero)</a>]</h2>
+                   [<p class="soustitre">(#SOUSTITRE)</p>]
+                   [<p class="resume">(#INTRODUCTION)&nbsp;<a href="#URL_ARTICLE">&#91;lire la suite&#93;</a>]
+                   <p class="date">[(#DATE|affdate)]</p>
+                 </div>
+                 </BOUCLE_articles>
+                 [<p class="pagination">page (#PAGINATION{page})</p>]
+                 
+                 </B_articles>
+               </div>
+               
+               <B_breves>
+               <div id="contenu-rubrique-breves">
+                 <h2 id="Tbreves" class="InfosColD"><span>en bref</span></h2>
+                 <BOUCLE_breves(BREVES){id_rubrique}{titre_mot=affichage}{par date}{inverse}>
+                 <div class="MeaBreves">
+                   <h3>[<a href="#URL_BREVE">(#TITRE|supprimer_numero)</a>]</h3>
+                   [<p class="resume">(#INTRODUCTION|couper{150})&nbsp;<a href="#URL_BREVE">&#91;lire la suite&#93;</a></p>]
+                 </div>
+                 </BOUCLE_breves>
+               </div>
+               </B_breves>
+               
+            </div>
+         </div>
+         <div id="colonne_secondaire">
+            <hr class="invisible">
+            <div id="recherche">
+              #FORMULAIRE_RECHERCHE
+            </div>
+
+            <INCLURE{fond=formulaire_newsletter}>
+
+            <ul id="InfosFraap">
+               <INCLURE{fond=infosFraap}>
+            </ul>
+            <INCLURE{fond=divers}>
+          </div>
+          <div class="rien"> </div>
+         </div><!-- fin conteneur interieur -->
+       </div><!-- fin titre rubrique conteneur exterieur -->
+     </div><!-- fin marge conteneur exterieur -->
+   </div><!-- fin conteneur exterieur -->
+</body>
+</html></BOUCLE_principale>

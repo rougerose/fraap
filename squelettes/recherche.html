@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=#CHARSET" />
+  <title>#NOM_SITE_SPIP | Recherche</title>
+  <INCLURE{fond=inc-head}>
+</head>
+
+<body id="rub0" class="recherche">
+   <div id="ConteneurExterieur"><div id="CEBordure"><div id="CEtitreRubrique">
+      <div id="ConteneurInterieur">
+         <div id="entete">
+            <a href="/"><img src="/IMG/a/fraap.gif" id="logo" alt="Fraap, f&eacute;d&eacute;ration des r&eacute;seaux et associations d'artistes plasticiens" name="logo" /></a>
+         </div><!-- fin entete -->
+         <!-- debut menu principal et menu sous-rubriques -->
+         <div id="navigation">
+            <INCLURE{fond=navigation}>
+         </div>
+         
+         <div id="colonne_principale">
+            <div id="cp_interieure" class="article">
+                  <h1>Recherche : #RECHERCHE</h1>
+                <div class="texte">
+                    <B_articles>
+                    #ANCRE_PAGINATION
+                    <div class="encadrement" style="margin:2em 0; border:1px solid #715050; padding:10px">
+                        <div class="pagination">
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+                        </div>
+                        <h3 class="recherche">Dans les articles : [(#GRAND_TOTAL) [(#GRAND_TOTAL|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})]]</h3>
+                        <BOUCLE_articles(ARTICLES){recherche}{par points}{inverse}{pagination 5}>
+                        <h4>[(#COMPTEUR_BOUCLE|plus{#ENV{debut}}). ]<a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)]</a></h4>
+                        [<p class="spip">(#EXTRAIT)</p>]
+                        <p class="url"><a href="#URL_ARTICLE">[(#URL_ARTICLE|url_absolue)]</a><br>[<span class="Date">publi&eacute; le (#DATE|affdate)</span>]</p>
+                        </BOUCLE_articles>
+                        <div class="hierarchie">
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+                        </div>
+                    </div>
+                    </B_articles>
+                    
+                    <B_breves>
+                    #ANCRE_PAGINATION
+                    <div class="encadrement" style="margin:2em 0; border:1px solid #715050; padding:10px">
+                        
+                            [(#PAGINATION{page})]
+
+                        <h3 class="recherche">Dans les br&egrave;ves : [(#GRAND_TOTAL) [(#GRAND_TOTAL|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})]]</h3>
+                        <BOUCLE_breves(BREVES){recherche}{par points}{inverse}{pagination 5}>
+                        <h4>[(#COMPTEUR_BOUCLE|plus{#ENV{debut}}). ]<a href="#URL_BREVE">[(#TITRE|supprimer_numero)]</a></h4>
+                        [<p class="spip">(#EXTRAIT)</p>]
+                        <p class="url"><a href="#URL_BREVE">[(#URL_BREVE|url_absolue)]</a><br>[<span class="Date">publi&eacute; le (#DATE|affdate)</span>]</p>
+                        </BOUCLE_breves>
+                        
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                    </div>
+                    </B_breves>
+                    
+                    <B_rubriques>
+                    #ANCRE_PAGINATION
+                    <div class="encadrement" style="margin:2em 0; border:1px solid #715050; padding:10px">
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                        <h3 class="recherche">Dans les rubriques : [(#GRAND_TOTAL) [(#GRAND_TOTAL|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})]]</h3>
+                        <BOUCLE_rubriques(RUBRIQUES){recherche}{par points}{inverse}{pagination 5}>
+                        <h4>[(#COMPTEUR_BOUCLE|plus{#ENV{debut}}). ]<a href="#URL_RUBRIQUE">[(#TITRE|supprimer_numero)]</a></h4>
+                        [<p class="spip">(#EXTRAIT)</p>]
+                        <p class="url"><a href="#URL_RUBRIQUE">[(#URL_RUBRIQUE|url_absolue)]</a></p>
+                        </BOUCLE_rubriques>
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                    </div>
+                    </B_rubriques>
+                    
+                    <B_mots>
+                    #ANCRE_PAGINATION
+                    <div class="encadrement" style="margin:2em 0; border:1px solid #715050; padding:10px">
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                        <h3 class="recherche">Dans les mots-cl&eacute;s : [(#GRAND_TOTAL) [(#GRAND_TOTAL|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})]]</h3>
+                        <BOUCLE_mots(MOTS){id_groupe!=4}{recherche}{par points}{inverse}{pagination 5}>
+                        <h4>[(#COMPTEUR_BOUCLE|plus{#ENV{debut}}). ]<a href="#URL_MOT">[(#TITRE|supprimer_numero)]</a></h4>
+                        [<p class="spip">(#EXTRAIT)</p>]
+                        <p class="url"><a href="#URL_MOT">[(#URL_MOT|url_absolue)]</a></p>
+                        </BOUCLE_mots>
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                    </div>
+                    </B_mots>
+                    
+                    <B_documents>
+                    #ANCRE_PAGINATION
+                    <div class="encadrement" style="margin:2em 0; border:1px solid #715050; padding:10px">
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                        <h3 class="recherche">Dans les documents : [(#GRAND_TOTAL) [(#GRAND_TOTAL|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})]]</h3>
+                        <BOUCLE_documents(DOCUMENTS){recherche}{extension!==jpg|gif|png}{par points}{inverse}{pagination 5}{doublons documents}>
+                        <h4><B_article_relatif_document><BOUCLE_article_relatif_document(ARTICLES){id_document}><a href="#URL_ARTICLE"></BOUCLE_article_relatif_document></B_article_relatif_document><a href="#URL_DOCUMENT"><//B_article_relatif_document>[(#TITRE|supprimer_numero|sinon{document #ID_DOCUMENT})]</a></h4>
+                        [<p class="spip">(#EXTRAIT)</p>]
+                        <p class="url"><B_article_relatif_document2><BOUCLE_article_relatif_document2(ARTICLES){id_document}><a href="#URL_ARTICLE">[(#URL_ARTICLE|url_absolue)#documents]</a></BOUCLE_article_relatif_document2></B_article_relatif_document2><a href="#URL_DOCUMENT">[(#URL_DOCUMENT|url_absolue)]<//B_article_relatif_document2><br>[<span class="Date">publi&eacute; le (#DATE|affdate)</span>]</p>
+                        </BOUCLE_documents>
+
+                            [<p class="pagination">(#PAGINATION{page})</p>]
+
+                    </div>
+                    </B_documents>
+                    
+                    
+                    
+                   
+                </div>
+           </div>
+</div>
+            <div id="colonne_secondaire">
+               <hr class="invisible">
+               <div id="recherche">
+                 #FORMULAIRE_RECHERCHE
+               </div>
+
+               <INCLURE{fond=formulaire_newsletter}>
+
+               <ul id="InfosFraap">
+                  <INCLURE{fond=infosFraap}>
+               </ul>
+               <INCLURE{fond=divers}>
+             </div>
+             <div class="rien"> </div>
+          </div><!-- fin conteneur interieur -->
+        </div><!-- fin titre rubrique conteneur exterieur -->
+      </div><!-- fin marge conteneur exterieur -->
+    </div><!-- fin conteneur exterieur -->
+</body>
+</html>

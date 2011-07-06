@@ -1,0 +1,6 @@
+<ul>
+   <li id="accueil"><a href="/">accueil</a></li>
+   <BOUCLE_rubriques1(RUBRIQUES){racine}{par num titre, titre}{doublons}>
+   <li id="rub1#ID_RUBRIQUE" class="nav"><a href="#URL_RUBRIQUE" class="rubrique_[(#EXPOSE|{'on','off'})]">[(#TITRE|supprimer_numero)]</a></li>
+   </BOUCLE_rubriques1>
+</ul>

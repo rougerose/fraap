@@ -1,0 +1,9 @@
+#CEBordure {
+  background:url(../../IMG/a/BordureGauche.gif) no-repeat top left;
+}
+div#pf {
+  width:150px;
+}
+#colonne_principale a, #rub3 #colonne_principale dl.alr-asso-activites a {
+	border-bottom: 2px dotted;
+}

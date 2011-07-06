@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<BOUCLE_principale(RUBRIQUES){id_rubrique}>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=#CHARSET" />
+  <title>#NOM_SITE_SPIP | [(#TITRE|supprimer_numero|textebrut)]</title>
+  [<meta name='description' content='(#DESCRIPTIF|textebrut)'>]
+  <INCLURE{fond=inc-head}>
+</head>
+
+<body <BOUCLE_idrubrique(RUBRIQUES){id_rubrique}>id="rub#ID_RUBRIQUE"</BOUCLE_idrubrique>>
+      <BOUCLE_secteur0(HIERARCHIE){id_rubrique}>
+         <div id="ConteneurExterieur" class="CERubrique#ID_RUBRIQUE"><div id="CEBordure"><div id="CEtitreRubrique" class="CEtRubrique#ID_RUBRIQUE"></BOUCLE_secteur0></B_secteur0><BOUCLE_secteur00(RUBRIQUES){id_rubrique}><div id="ConteneurExterieur" class="CERubrique#ID_RUBRIQUE"><div id="CEBordure"><div id="CEtitreRubrique" class="CEtRubrique#ID_RUBRIQUE"></BOUCLE_secteur00><//B_secteur0>
+      <div id="ConteneurInterieur">
+         <div id="entete">
+            <a href="/"><img src="/IMG/a/fraap.gif" id="logo" alt="Fraap, f&eacute;d&eacute;ration des r&eacute;seaux et associations d'artistes plasticiens" name="logo" /></a>
+         </div><!-- fin entete -->
+         <!-- debut menu principal et menu sous-rubriques -->
+         <div id="navigation">
+            <INCLURE{fond=navigation}{id_rubrique}>
+         </div>
+         <div id="localisation">
+           <INCLURE{fond=localisation}{id_rubrique}>
+         </div>
+         
+         <div id="navigation_inferieure">
+           <INCLURE{fond=navigation_inferieure}{id_rubrique}>
+         </div>
+         
+         <div id="colonne_principale">
+           <div id="cp_interieure" class="rubrique">
+            <div id="texte-annuaire">
+              [(#TEXTE)]
+            </div>
+            
+            <div id="annuaire-recherche">
+              <B_annuaire_regions>
+              <div class="annuaire-recherche-bloc">
+                <div id="ar_geographique" class="annuaire">
+                  <h2>Recherche par r&eacute;gion</h2>
+                  <BOUCLE_annuaire_regions(GROUPES_MOTS){id_groupe=1}>
+                  <form action="spip.php" method="get">
+                      <input type="hidden" name="page" value="mot">
+                    <select id="s_ar_geographique" name="id_mot" size="1">
+                      <option value="" selected="selected">S&eacute;lectionnez un r&eacute;gion</option>
+                      <BOUCLE_mots_annuaire_regions(MOTS){id_groupe}{par titre}>
+                      <option value="#ID_MOT">[(#TITRE|entites_html|supprimer_numero|couper{35})]</option>
+                      </BOUCLE_mots_annuaire_regions>
+                    </select>
+                    <input type=submit value="ok" class="spip_bouton" />
+                  </form>
+                  </BOUCLE_annuaire_regions>
+                </div>
+              </div>
+              </B_annuaire_regions>
+              
+              <B_annuaire_activites>
+              <div class="annuaire-recherche-bloc">
+                <div id="ar_activites" class="annuaire">
+                  <h2>Recherche par activit&eacute;</h2>
+                  <BOUCLE_annuaire_activites(GROUPES_MOTS){id_groupe=2}>
+                  <form action="spip.php" method="get">
+                      <input type="hidden" name="page" value="mot">
+                    <select id="s_ar_activites" name="id_mot" size="1">
+                      <option value="" selected="selected">S&eacute;lectionnez une activit&eacute;</option>
+                      <BOUCLE_mots_annuaire_activites(MOTS){id_groupe}{par titre}>
+                      <option value="#ID_MOT">[(#TITRE|entites_html|supprimer_numero|couper{35})]</option>
+                      </BOUCLE_mots_annuaire_activites>
+                    </select>
+                    <input type=submit value="ok" class="spip_bouton" />
+                  </form>
+                  </BOUCLE_annuaire_activites>
+                </div>
+              </div>
+              </B_annuaire_activites>
+            </div>
+           </div>
+         </div>
+         <div id="colonne_secondaire">
+            <hr class="invisible">
+            <div id="recherche">
+              #FORMULAIRE_RECHERCHE
+            </div>
+
+            <INCLURE{fond=formulaire_newsletter}>
+
+            <ul id="InfosFraap">
+               <INCLURE{fond=infosFraap}>
+            </ul>
+            <INCLURE{fond=divers}>
+          </div>
+          <div class="rien">&nbsp;</div>
+         </div><!-- fin conteneur interieur -->
+       </div><!-- fin titre rubrique conteneur exterieur -->
+     </div><!-- fin marge conteneur exterieur -->
+   </div><!-- fin conteneur exterieur -->
+</body>
+</html></BOUCLE_principale>

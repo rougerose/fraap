@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<BOUCLE_principale(MOTS){id_mot}>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=#CHARSET" />
+
+  <title>#NOM_SITE_SPIP | [(#TITRE|supprimer_numero|textebrut)]</title>
+  <INCLURE{fond=inc-head}>
+</head>
+
+<B_test_annuaire><BOUCLE_test_annuaire(MOTS){id_mot}{type==annuaire}>
+<body id="rub3">
+  <div id="ConteneurExterieur" class="CERubrique3"><div id="CEBordure"><div id="CEtitreRubrique" class="CEtRubrique3">
+      <div id="ConteneurInterieur">
+         <div id="entete">
+            <a href="/"><img src="/IMG/a/fraap.gif" id="logo" alt="Fraap, f&eacute;d&eacute;ration des r&eacute;seaux et associations d'artistes plasticiens" name="logo" /></a>
+         </div><!-- fin entete -->
+         <!-- debut menu principal et menu sous-rubriques -->
+         <div id="navigation">
+             <INCLURE{fond=navigation}{id_rubrique=3}>
+
+         </div>
+         <div id="localisation">
+             <INCLURE{fond=localisation}{id_rubrique=3}>
+         </div>
+         
+         <div id="navigation_inferieure">
+           <BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique=3}><BOUCLE_test_secteur(RUBRIQUES){id_enfant}>
+           <ul><BOUCLE_rubriques_filles(RUBRIQUES){id_parent}>
+            <li id="localisationRub1#ID_RUBRIQUE">[<a href="#URL_RUBRIQUE" class="rubrique_[(#EXPOSE|{'on','off'})]">(#TITRE|supprimer_numero)</a>]</li></BOUCLE_rubriques_filles>
+           </ul>
+           </BOUCLE_test_secteur></B_test_secteur>
+           <ul><BOUCLE_rubriques_filles2(RUBRIQUES){id_parent}>
+            <li id="localisationRub1#ID_RUBRIQUE">[<a href="#URL_RUBRIQUE" class="rubrique_[(#EXPOSE|{'on','off'})]">(#TITRE|supprimer_numero)</a>]</li></BOUCLE_rubriques_filles2>
+           </ul><//B_test_secteur>
+           </BOUCLE_rubrique_courante>
+         </div>
+         
+         <div id="colonne_principale">
+           <div id="cp_interieure" class="rubrique">
+            <div id="annuaire-info-resultats">
+              <p>Votre recherche : [(#TITRE|supprimer_numero)]
+              <BOUCLE_compteur_asso_mots(ARTICLES){id_mot}> </BOUCLE_compteur_asso_mots>
+              [ <em>(#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'r&eacute;sultats','r&eacute;sultat'})</em>]</p>]
+              </B_compteur_asso_mots>
+              <p><a href="#recherche_annuaire">nouvelle recherche</a></p>
+            </div>
+            <div id="annuaire-liste-resultats">
+              <BOUCLE_asso(ARTICLES){id_mot}{par titre}>
+              <div class="alr-asso">
+                <div class="alr-asso-descriptif">
+                  <h2>[<a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a>]</h2>
+                  [<p class="spip">(#DESCRIPTIF) <a href="#URL_ARTICLE">&#91;la suite&#93;</a></p>]
+                </div>
+                <dl class="alr-asso-activites">
+                  <dt class="premier">[<strong>(#TITRE|supprimer_numero)</strong>] est localis&eacute;e en : <BOUCLE_geographie(MOTS){id_article}{id_groupe=1}>[<strong><a href="#URL_MOT">(#TITRE|supprimer_numero)</a></strong>]</BOUCLE_geographie>
+                  <dt><strong>Ses activit&eacute;s :</strong></dt>
+                  <BOUCLE_activites(MOTS){id_article}{id_groupe=2}{par titre}>
+                  [<dd><a href="#URL_MOT">(#TITRE|supprimer_numero)</a></dd>]</BOUCLE_activites>
+                </dl>
+                <div class="rien">&nbsp;</div>
+              </div>
+              </BOUCLE_asso>
+            </div>
+            
+            <div id="texte-annuaire">
+            </div>
+            
+            <div id="annuaire-recherche">
+              <a name="recherche_annuaire"></a><B_annuaire_regions>
+              <div class="annuaire-recherche-bloc">
+                <div id="ar_geographique" class="annuaire">
+                  <h2>Recherche par r&eacute;gion</h2>
+                  <BOUCLE_annuaire_regions(GROUPES_MOTS){id_groupe=1}>
+                  <form action="spip.php" method="get">
+                      <input type="hidden" name="page" value="mot">
+                    <select id="s_ar_geographique" name="id_mot" size="1">
+                      <option value="" selected="selected">S&eacute;lectionnez un r&eacute;gion</option>
+                      <BOUCLE_mots_annuaire_regions(MOTS){id_groupe}{par titre}>
+                      <option value="#ID_MOT">[(#TITRE|entites_html|supprimer_numero|couper{35})]</option>
+                      </BOUCLE_mots_annuaire_regions>
+                    </select>
+                    <input type=submit value="ok" class="spip_bouton" />
+                  </form>
+                  </BOUCLE_annuaire_regions>
+                </div>
+              </div>
+              </B_annuaire_regions>
+              
+              <B_annuaire_activites>
+              <div class="annuaire-recherche-bloc">
+                <div id="ar_activites" class="annuaire">
+                  <h2>Recherche par activit&eacute;</h2>
+                  <BOUCLE_annuaire_activites(GROUPES_MOTS){id_groupe=2}>
+                  <form action="spip.php" method="get">
+                      <input type="hidden" name="page" value="mot">
+                    <select id="s_ar_activites" name="id_mot" size="1">
+                      <option value="" selected="selected">S&eacute;lectionnez une activit&eacute;</option>
+                      <BOUCLE_mots_annuaire_activites(MOTS){id_groupe}{par titre}>
+                      <option value="#ID_MOT">[(#TITRE|entites_html|supprimer_numero|couper{35})]</option>
+                      </BOUCLE_mots_annuaire_activites>
+                    </select>
+                    <input type=submit value="ok" class="spip_bouton" />
+                  </form>
+                  </BOUCLE_annuaire_activites>
+                </div>
+              </div>
+              </B_annuaire_activites>
+            </div>
+           </div>
+         </div>
+         <div id="colonne_secondaire">
+            <hr class="invisible">
+            <div id="recherche">
+              #FORMULAIRE_RECHERCHE
+            </div>
+
+            <INCLURE{fond=formulaire_newsletter}>
+            <ul id="InfosFraap">
+               <INCLURE{fond=infosFraap}>
+            </ul>
+            <INCLURE{fond=divers}>
+          </div>
+          <div class="rien"> </div>
+         </div><!-- fin conteneur interieur -->
+       </div><!-- fin titre rubrique conteneur exterieur -->
+     </div><!-- fin marge conteneur exterieur -->
+   </div><!-- fin conteneur exterieur -->
+</body>
+
+
+
+</BOUCLE_test_annuaire></B_test_annuaire>
+<body id="rub0" class="themes">
+   <div id="ConteneurExterieur"><div id="CEBordure"><div id="CEtitreRubrique">
+      <div id="ConteneurInterieur">
+         <div id="entete">
+            <a href="/"><img src="/IMG/a/fraap.gif" id="logo" alt="Fraap, f&eacute;d&eacute;ration des r&eacute;seaux et associations d'artistes plasticiens" name="logo" /></a>
+         </div><!-- fin entete -->
+         <!-- debut menu principal et menu sous-rubriques -->
+         <div id="navigation">
+            <INCLURE{fond=navigation}>
+         </div>
+         
+         <div id="colonne_principale">
+            <div id="cp_interieure" class="article">
+                  <h1>[(#TITRE|supprimer_numero)]</h1>
+                <div class="texte">
+                  [(#TEXTE|nostyle)]
+                  
+                  <B_rubriques_liees>
+                  <BOUCLE_compteur_rub(RUBRIQUES){id_mot}> </BOUCLE_compteur_rub>
+                  [<h2 class="contenu_mot">(#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'rubriques','rubrique'})] sur ce th&egrave;me</h2>]
+                  </B_compteur_rub>
+                  <dl>
+                  <BOUCLE_rubriques_liees(RUBRIQUES){id_mot}{par date}{inverse}>
+                  <dt class="contenu_mot_titre">[<a href="#URL_RUBRIQUE">(#TITRE|supprimer_numero)</a>]</dt>
+                  [<dd class="contenu_mot_desc">(#DESCRIPTIF) <a href="#URL_RUBRIQUE">&#091;consulter la rubrique&#093; </a></dd>]
+                  <dd class="date">[(#DATE|affdate)]</dd>
+                  </BOUCLE_rubriques_liees>
+                  </dl>
+                  </B_rubriques_liees>
+                  
+                  <B_articles_lies>
+                  <BOUCLE_compteur_articles(ARTICLES){id_mot}> </BOUCLE_compteur_articles>
+                  [<h2 class="contenu_mot">(#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'articles','article'})] sur ce th&egrave;me</h2>]
+                  </B_compteur_articles>
+                  <dl>
+                    <BOUCLE_articles_lies(ARTICLES){id_mot}{par date}{inverse}>
+                    <dt class="contenu_mot_titre">[<a href="#URL_ARTICLE">(#TITRE|supprimer_numero)</a>]</dt>
+                    <dd class="contenu_mot_desc">#INTRODUCTION <a href="#URL_ARTICLE">&#091;lire la suite&#093;</a></dd>
+                    <dd class="date">[(#DATE|affdate)]  <BOUCLE_rub_courante1(RUBRIQUES){id_rubrique}> <img src="/IMG/a/puce-transparente.png" alt="-" class="puce_transparente_rub#ID_RUBRIQUE" /> <span class="rubrique_courante#ID_RUBRIQUE"><a href="#URL_RUBRIQUE" title="consulter la rubrique [(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a><span></BOUCLE_rub_courante1></dd>
+                    </BOUCLE_articles_lies>
+                  </dl>
+                  </B_articles_lies>
+                  
+                  <B_breves_liees>
+                  <BOUCLE_compteur_breves(BREVES){id_mot}> </BOUCLE_compteur_breves>
+                  [<h2 class="contenu_mot">(#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'br&egrave;ves','br&egrave;ve'})] sur ce th&egrave;me</h2>]
+                  </B_compteur_breves>
+                  <dl>
+                    <BOUCLE_breves_liees(BREVES){id_mot}{par date}{inverse}>
+                    <dt class="contenu_mot_titre">[<a href="#URL_BREVE">(#TITRE|supprimer_numero)</a>]</dt>
+                    <dd class="contenu_mot_desc">#INTRODUCTION <a href="#URL_BREVE">&#091;lire la suite&#093;</a></dd>
+                    <dd class="date">[(#DATE|affdate)]  <BOUCLE_rub_courante2(RUBRIQUES){id_rubrique}> <img src="/IMG/a/puce-transparente.png" alt="-" class="puce_transparente_rub#ID_RUBRIQUE" /> <span class="rubrique_courante#ID_RUBRIQUE"><a href="#URL_RUBRIQUE" title="consulter la rubrique [(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></span></BOUCLE_rub_courante2></dd>
+                    </BOUCLE_breves_liees>
+                  </dl>
+                  </B_breves_liees>
+                  
+                  <B_sites_lies>
+                  <BOUCLE_compteur_sites(SITES){id_mot}> </BOUCLE_compteur_sites>
+                  [<h2 class="contenu_mot">(#TOTAL_BOUCLE) [(#TOTAL_BOUCLE|>{1}|?{'sites','site'})] web sur ce th&egrave;me</h2>]
+                  </B_compteur_sites>
+                  <dl>
+                    <BOUCLE_sites_lies(SITES){id_mot}{par num nom_site, nom_site}>
+                    <dt class="contenu_mot_titre">[<a href="#URL_SYNDIC">(#NOM_SITE|supprimer_numero)</a>]</dt>
+                    <dd class="contenu_mot_desc">#DESCRIPTIF <a href="#URL_SYNDIC">[lire la suite]</a></dd>
+                    <dd class="date">[(#DATE|affdate)]  <BOUCLE_rub_courante3(RUBRIQUES){id_rubrique}> <img src="/IMG/a/puce-transparente.png" alt="-" class="puce_transparente_rub#ID_RUBRIQUE" /> <span class="rubrique_courante#ID_RUBRIQUE"><a href="#URL_RUBRIQUE" title="consulter la rubrique [(#TITRE|supprimer_numero)]">[(#TITRE|supprimer_numero)]</a></span></BOUCLE_rub_courante3></dd>
+                    </BOUCLE_sites_lies>
+                  </dl>
+                  </B_sites_lies>
+                  
+                </div>
+                  [<div class="notes">
+                    <h3>Notes</h3>
+                    (#NOTES)
+                  </div>]
+           </div>
+</div>
+            <div id="colonne_secondaire">
+               <hr class="invisible">
+               <div id="recherche">
+                 #FORMULAIRE_RECHERCHE
+               </div>
+
+               <INCLURE{fond=formulaire_newsletter}>
+
+               <ul id="InfosFraap">
+                  <INCLURE{fond=infosFraap}>
+               </ul>
+               <INCLURE{fond=divers}>
+             </div>
+             <div class="rien"> </div>
+          </div><!-- fin conteneur interieur -->
+        </div><!-- fin titre rubrique conteneur exterieur -->
+      </div><!-- fin marge conteneur exterieur -->
+    </div><!-- fin conteneur exterieur -->
+</body><//B_test_annuaire>
+</html></BOUCLE_principale>

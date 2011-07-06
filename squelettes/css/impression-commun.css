@@ -1,0 +1,552 @@
+
+body {
+  background-color:#fff;
+  color:#000;
+  font-family:"Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  font-size:12pt;
+}
+/* Liens */
+a {
+  color:#630;
+  background: transparent;
+  text-decoration:underline;
+  font-weight: bold;
+}
+a img {
+  border:none;
+}
+
+/* Entete de page */
+#entete img#logo {
+	margin:5px 10px 0 0;
+	border: 0;
+	background-color:#000;
+}
+
+/*----- Titres -----*/
+h1, h2, h3, h4, h5, h6 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: normal;
+	margin:0;
+}
+
+/*----- Elements communs -----*/
+.date {
+  font:100% Georgia, "Times New Roman", Times, serif;
+  font-weight:bold;
+}
+
+/*----- Accueil du site -----*/
+#rub0.sommaire #ConteneurExterieur {
+  background-image:none;
+}
+div.sommaire {
+}
+#colonne_principale div.sommaireRubrique {
+  margin:0 10px 0 0;
+}
+div.sommaireRubrique h2, div.sommaireRubrique p.SRDescription, div.sommaireRubrique div.MeaArticles {
+}
+#colonne_principale div.sommaireRubrique h2 {
+  font:100% "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  margin:0 0 0.5em;
+}
+div.sommaireRubrique h2 a {
+}
+div.sommaireRubrique h2 span {
+  padding:10px 3px 3px;
+}
+div.sommaireRubrique h3 {
+  font-size:120%;
+  margin:0 0 0.5em 3px;
+  line-height:120%;
+}
+div.sommaireRubrique p {
+  margin:0 0 0 3px;
+}
+div.sommaireRubrique p.date {
+  margin-top:0.5em;
+}
+
+/*----- Rubriques standards -----*/
+#contenu-rubrique-breves h2 {
+  margin-bottom:1em;
+  font-size:110%;
+}
+#contenu-rubrique-breves h3 {
+  font-weight:normal;
+  margin:0.2em 0 0;
+  font-size:130%;
+}
+#contenu-rubrique-articles h2 {
+  font-size:150%;
+}
+.MeaBreves, .MeaArticles {
+  border-bottom:1px solid;
+  margin-bottom:1.5em;
+  padding-bottom:1.5em;
+}
+.rubrique p.resume {
+  margin:1em 0 0.5em;
+  text-align:justify;
+}
+p.date {
+  margin:0;
+}
+
+/*----- Rubrique Annuaire et page Annuaire (mots et articles)-----*/
+div#texte-annuaire {
+  text-align:justify;
+}
+div#annuaire-recherche {
+  margin-top:1em;
+}
+div.annuaire-recherche-bloc {
+  background:url(../../IMG/a/annuaire-fleche.png) no-repeat bottom left;
+  padding-left:37px;
+  margin-bottom:1em;
+}
+div.annuaire form {
+  margin-left:5px;
+}
+div.annuaire select {
+  font-size:9px;
+}
+#rub3 #colonne_principale div.annuaire h2 {
+  color:#fff;
+  margin:0.5em 0 0.5em 5px;
+  font-size:120%;
+}
+div#annuaire-info-resultats {
+  font-weight:bold;
+  margin-bottom:1em;
+}
+div#annuaire-info-resultats p {
+  margin:0;
+  padding:0 5px;
+}
+div#annuaire-liste-resultats {
+  clear:right;
+}
+div.alr-asso {
+  margin:1em 0;
+}
+div.alr-asso-descriptif {
+  text-align:justify;
+  margin-top:1.5em;
+}
+#colonne_principale .rubrique div.alr-asso-descriptif h2 {
+  font-size:140%;
+}
+#rub3 #colonne_principale dl.alr-asso-activites a {
+  color:#fff;
+  border-bottom-color:#fff;
+}
+dl.alr-asso-activites {
+  font-size:90%;
+  line-height:140%;
+  color:#fff;
+  padding:0 0 5px;
+  background:url(../../IMG/a/boite-droit-bas.gif) no-repeat bottom right;
+}
+dl.alr-asso-activites dt {
+  margin:0; /* 5px 0.5em;*/
+  padding:0.8em 5px 0.5em;
+}
+dl.alr-asso-activites dt.premier {
+  background:url(../../IMG/a/boite-gauche-haut.gif) no-repeat top left;
+}
+dl.alr-asso-activites dd {
+  margin:0 5px 0.5em;
+}
+
+/*----- Rubrique Ressources -----*/
+#ConteneurToggle, #ConteneurInfos {
+  margin:0 20px 0 0;
+  padding:0 0 0 38px;
+  background:url(../../IMG/a/ressources-fleche.png) no-repeat 0 35px;
+}
+.article #ConteneurToggle {
+  margin:2em 0 0;
+  padding:0;
+}
+#ConteneurInfos {
+}
+#ConteneurToggle ul, #Infos ul, #cloneUL {
+  margin:0;
+  padding:10px 0 0;
+  list-style:none;
+}
+.article #ConteneurToggle ul {
+  padding-left:40px;
+}
+#ConteneurToggle li, #Infos li, #cloneUL li {
+  padding:2px 3px;
+  margin:0;
+}
+#ConteneurToggle li:hover, #Infos li:hover, #cloneUL li:hover {
+  background-color:#8210d2;
+}
+#rub2 #ConteneurToggle a:hover, #rub2 #Infos a:hover, #rub2 #cloneUL a:hover {
+  color:#fff;
+}
+#rub2 #TCategories, #rub2 #TInfos {
+  background-color:#8210d2;
+  color:#fff !important;
+  font-size:120%;
+}
+#TCategories span, #TInfos span {
+  padding:3px 10px;
+  display:block;
+}
+
+/*----- page mots-cles -----*/
+#colonne_principale h2.contenu_mot {
+  color:#5B7171; /*#507150;*/
+  font-size:140%;
+  font-weight:bold;
+  margin:1.5em 0 0;
+}
+#rub0.themes #cp_interieure dl {
+  margin:0 0 3em;
+  
+}
+dt.contenu_mot_titre {
+  margin:1em 0 0.5em;
+  font:150% Georgia, "Times New Roman", Times, serif;
+}
+dd.contenu_mot_desc{
+  margin:0.5em 0 0;
+}
+dd.date {
+  margin:0.3em 0 1em;
+}
+dd.date img {
+  vertical-align:bottom;
+}
+
+/*----- Articles et breves -----*/
+.DeuxCol {
+}
+.article #contenu_article, .article #chapo {
+  text-align: justify;
+}
+p.surtitre, p.soustitre {
+	margin:0;
+	font: 95% "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+	font-weight:bold;
+}
+p.surtitre {
+  text-transform: uppercase;
+  margin-bottom:0.5em;
+}
+p.soustitre {
+	font-size:100%;
+	margin-top:0.7em;
+}
+.article h3.date {
+	text-align: right;
+	border-bottom:1px dotted #ccc;
+	padding-bottom:2px;
+	margin:1.5em 0;
+}
+#chapo {
+	font-weight:bold;
+	margin-top:2em;
+	margin-bottom:1.5em
+}
+div.texte {
+  margin-top:2em;
+}
+p.spip {
+  margin:0 0 1em;
+}
+div.postscriptum {
+  margin:2em 0;
+  padding:0.5em 0;
+  border-top:1px dotted #ccc;
+  border-bottom:1px dotted #ccc; 
+}
+div.notes {
+	font-size: 90%;
+}
+.notes h3 {
+}
+h3.spip {
+	margin:1.5em 0 0.5em;
+	font-size: 140%;
+}
+
+/*----- tableaux spip -----*/
+table.spip {
+  border-collapse:collapse;
+  text-align:left;
+  border:2px solid #fff;
+}
+table.spip th {
+}
+table.spip th, table.spip td {
+  padding:0 3px;
+  border:1px solid #fff;
+}
+table.spip tr.ligne1 td {
+  background-color:#eee;
+}
+table.spip tr.ligne2 td {
+  border:1px solid #eee;
+}
+
+/*----- Articles : pétitions -----*/
+#FormulairePetitions {
+  text-align:left;
+  margin:0 0 1em;
+  padding:0;
+}
+#FormulairePetitionsSignatures {
+  margin:0 0 2em;
+}
+#FormulairePetitionsSignatures p {
+  margin:0 10px;
+}
+#FormulairePetitions div.spip_encadrer {
+  margin:0; padding:10px 0;
+}
+p.confirmation {
+  font-size:120%;
+  margin-right:10px;
+  background-color:red;
+  padding:5px;
+}
+p.confirmation span {
+	padding:0 10px 0 20px;
+	margin:5px;
+	display:block;
+	background:url(../../IMG/a/icone-alerte-16px.png) no-repeat left top;
+}
+
+/*----- Articles : Images, documents, mots-cles et portfolio -----*/
+div.spip_documents {
+	margin:5px;
+	padding:5px 0;
+	font:90% Georgia, "Times New Roman", Times, serif;
+}
+div#documents, div#motsCles, div#portfolio, div#pf  {
+  font-size: 100%;
+  margin:1em 0 2em;
+}
+#documents dl, #motsCles dl, div#portfolio dl {
+  margin:5px 0 0;
+}
+#documents dt, #motsCles dt {
+  margin:0 5px 3px; padding:0;
+}
+#documents dd {
+  margin:0 5px 0; padding:0;
+  font-family:Georgia, "Times New Roman", Times, serif;
+}
+#documents dd img {
+  margin:0 7px 5px 0;
+}
+
+/* Pour le portfolio */
+div#pf {
+  margin:2em 0 0;
+}
+#portfolio dt, #portfolio dd {
+  margin:0;
+}
+#portfolio dt {
+  margin-top:5px;
+}
+#portfolio dd {
+  font-family:Georgia, "Times New Roman", Times, serif;
+}
+#portfolio dd a {
+  font-family:"Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+}
+#portfolio dt a, #portfolio dt a:hover {
+	border:none;
+}
+#portfolio dd + dt {
+  border-top:1px dotted;
+  padding-top:10px;
+}
+#contenuPortfolio {
+  clear:right;
+  text-align:center;
+  margin:0;
+  padding:5px;
+  color:#fff;
+  background-color:#000;
+}
+#contenuPortfolio h3 {
+  text-align:center;
+  font-size:120%;
+  margin-bottom:0;
+}
+#navPortfolio {
+  list-style:none;
+  margin:0 0 0 5px; padding:0;
+  text-align:center;
+}
+#navPortfolio li {
+  margin:0 5px 0 0;
+  padding:0;
+}
+#navPortfolio li a {
+  display:block;
+  margin:5px 0;
+}
+
+/* Pour les mots-clés */
+#motsCles dd {
+  margin:0 10px; padding:0;
+}
+div.spip_documents img {
+  margin:0 5px;
+}
+div.spip_documents_left {
+  margin-right:15px;
+  margin-left:0;
+}
+div.spip_documents_right {
+	margin-left:15px;
+	margin-right:0;
+}
+div.spip_doc_titre {
+	margin:5px 5px;
+	color:#fff;
+}
+div.spip_doc_descriptif{
+	margin:0 5px 5px;
+	color:#333;
+}
+
+/*----- Recherche -----*/
+#recherche {
+  font-size:80%;
+  margin:3em 5px 0 10px;
+}
+h3.recherche {
+  margin:0;
+}
+.recherche p.spip {
+  margin:0;
+}
+.recherche p.recherche {
+  color:#507150;
+  font-weight:bold;
+  font-size:140%;
+  margin:0 0 1em;
+}
+p.url {
+  margin:0 0 2em;
+}
+.recherche p.spip strong, span.spip_surligne {
+  background-color:#c1c0c8;
+  padding:2px;
+}
+
+/*----- Formulaires -----*/
+form {
+  margin:0;
+  padding:0;
+}
+div.descriptif {
+  margin:0 10px 10px;
+  font:110% Georgia, "Times New Roman", Times, serif;
+  font-weight:bold;
+}
+div.descriptif p.spip{
+  margin:0 0 0.5em;
+}
+div.spip_bouton {
+  margin:0 10px;
+  text-align:right;
+}
+fieldset {
+  font-weight:bold; color:#000;
+  border:1px solid #ccc;
+  margin:0 3px; padding:3px;
+}
+fieldset legend {
+	color:#000;
+}
+input, textarea {
+  border:1px solid;
+  border-color:#ccc #eee #eee #ccc;
+  font-size:10px;
+}
+input.spip_bouton {
+  font-size:100%;
+  border-color:#eee #ccc #ccc #eee;
+}
+input.formrecherche {
+}
+input.formNewsletter {
+}
+div#newsletter, div#interne {
+  background-color:#9e9090;
+  margin:2em 10px;
+  padding:10px 3px;
+  font-size:95%;
+}
+div#interne {
+  background-color:#8c8c8c;
+}
+#newsletter h2, #newsletter label, #newsletter input, #interne h2 {
+  margin:0 3px;
+  font:100% "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+}
+#newsletter h2, #interne h2 {
+  margin:0.5em 3px 0.8em;
+  color:#fff;
+  font-size:100%;
+}
+#newsletter p, #interne p {
+  margin:0 5px 0.8em 3px;
+  font:105%/1.3em Georgia, "Times New Roman", Times, serif;
+}
+#newsletter label {
+  margin-bottom:0.3em;
+  font-style:italic;
+}
+#newsletter input.spip_bouton {
+  margin:0.5em 3px 1em; 
+}
+#newsletter p.confirmation span {
+  padding:0 0 0 20px;
+  color:red;
+  font-size:120%;
+}
+#rub0.fraap div.spip_encadrer {
+	margin-bottom:1.5em;
+}
+
+/*----- Divers -----*/
+#alertejs {
+  color:red !important;
+  clear:both;
+  margin:2em 0;
+}
+.invisible {
+  display: none;
+}
+.pagination {
+  background-color:transparent !important;
+  font-size:80%;
+  text-align:right;
+}
+.pagination span {
+}
+.rien {
+  height:1px;
+  clear:both;
+}
+.divers {
+  color:#9E909E;
+  font-size:70%;
+  line-height:100%;
+  margin:1em 10px;
+}
+
