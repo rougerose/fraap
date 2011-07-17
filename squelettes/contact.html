@@ -32,7 +32,7 @@
               </div>]
               <div id="contenu_article"<BOUCLE_test_petition(ARTICLES){id_article}>[(#ID_ARTICLE|test_petition) class="DeuxCol"]</BOUCLE_test_petition></B_test_petition><BOUCLE_test_doc(DOCUMENTS){id_article}{mode=document}{0,1}> class="DeuxCol"</BOUCLE_test_doc></B_test_doc><BOUCLE_test_mots(MOTS){id_article}{id_groupe!=3}{0,1}> class="DeuxCol"</BOUCLE_test_mots><//B_test_doc><//B_test_petition>>
                 <div class="texte">
-                  [(#TEXTE|nostyle)]
+                  [(#TEXTE)]
                   
                   <BOUCLE_ecrire(AUTEURS){id_auteur=1}{tout}>
                   #FORMULAIRE_ECRIRE_AUTEUR
