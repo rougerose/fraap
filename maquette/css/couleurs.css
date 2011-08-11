@@ -1,0 +1,49 @@
+/* ======================================== */
+/*	Site : 		FRAAP						*/
+/*	URL : 		fraap.org					*/
+/*	Author : 	christophe le drean			*/
+/*				rouge-rose.net				*/
+/*	Date :		2011						*/
+/*	Version :	2.0							*/
+/* ======================================== */
+
+/*
+	couleurid1	actualités	#f60
+	couleurid2	annuaire
+	couleurid3	chantiers
+	couleurid4	ressources
+*/
+
+.une .intertitre.over,
+.une .item.over,
+.une.over,
+.une.over .intertitre,
+.une .over a, .une.over a {
+	-webkit-transition: color .35s linear, border-color .5s linear;
+	   -moz-transition: color .35s linear, border-color .5s linear;
+	     -o-transition: color .35s linear, border-color .5s linear;
+	        transition: color .35s linear, border-color .5s linear; }
+
+.une .intertitre.couleurid1.over,
+.une .item.couleurid1.over,
+.une.couleurid1.over,
+.une.couleurid1.over .intertitre { border-color: #f60; }
+.couleurid1 a:hover, .une .couleurid1.over a, .une.couleurid1.over a { color: #f60; }
+
+.une .intertitre.couleurid2.over,
+.une .item.couleurid2.over,
+.une.couleurid2.over,
+.une.couleurid2.over .intertitre { border-color: #4bb900; }
+.couleurid2 a:hover, .une .couleurid2.over a, .une.couleurid2.over a { color: #4bb900; }
+
+.une .intertitre.couleurid3.over,
+.une .item.couleurid3.over,
+.une.couleurid3.over,
+.une.couleurid3.over .intertitre { border-color: #0071b8; }
+.couleurid3 a:hover, .une .couleurid3.over a, .une.couleurid3.over a { color: #0071b8; }
+
+.une .intertitre.couleurid4.over,
+.une .item.couleurid4.over,
+.une.couleurid4.over,
+.une.couleurid4.over .intertitre { border-color: #b90058; }
+.couleurid4 a:hover, .une .couleurid4.over a, .une.couleurid4.over a { color: #b90058; }
