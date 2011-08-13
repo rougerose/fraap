@@ -17,7 +17,21 @@
 
 <body class="page_sommaire">
 	<div id="page" class="container_16">
-		<div class="clearfix">
+		<div id="head" class="clearfix">
+			<div id="raccourcis" class="menu clearfix">
+				<div id="recherche" class="clearfix">
+					<form action="sommaire_submit" method="get" accept-charset="utf-8">
+						<label for="recherche">Recherche</label>
+						<input type="text" class="" name="recherche" value="">
+						<button class="submit" title="Rechercher">Rechercher</button>
+					</form>
+				</div><!-- #recherche -->
+				<ul>
+					<li class="filets"><a href="#">liste de diffusion Fraap-infos</a></li>
+					<li class="filets"><a href="#">demandes de stages</a></li>
+					<li class="filets"><a href="#">contact</a></li>
+				</ul>
+			</div><!-- #raccourcis -->
 			<div id="entete">
 				<div id="logo" class="grid_4 filets">
 					<h1><img src="images/fraap.png" width="220" height="70" alt="Fraap"></h1>
@@ -39,18 +53,7 @@
 					<li><a href="#">les amis de la FRAAP</a></li>
 				</ul>
 			</div>
-
-			<div id="raccourcis" class="menu clearfix">
-				<ul>
-					<li class="filets"><a href="#">recherche</a></li>
-					<li class="filets"><a href="#">liste de diffusion Fraap-infos</a></li>
-					<li class="filets"><a href="#">demandes de stages</a></li>
-					<li class="filets"><a href="#">contact</a></li>
-				</ul>
-			</div><!-- #raccourcis -->
-		</div><!-- .clearfix -->
-
-
+		</div><!-- #head -->
 		<div id="conteneur" class="clearfix">
 			<div id="contenu" class="prefix_4 clearfix">
 				<div class="groupe grid_12 horizontal">
@@ -142,7 +145,7 @@
 						<li class="rss">
 							<a href="#">RSS</a>
 						</li>
-						<li class="credits"><a href="#">crédits et mentions légales</a></li>
+						<li class="credits"><a href="#">Crédits et mentions légales</a></li>
 					</ul>
 				</div><!-- .groupe -->
 			</div>
