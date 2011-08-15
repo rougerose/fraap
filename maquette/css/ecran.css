@@ -130,9 +130,9 @@ a.suite:after {
 					   -moz-transition: background-color .2s linear, border-color .1s linear;
 					     -o-transition: background-color .2s linear, border-color .1s linear;
 					        transition: background-color .2s linear, border-color .1s linear;
-					background-color: #650065; color: #fff;
+					background-color: #909; color: #fff;
 					text-transform: uppercase; font-size: 11px;
-					border: 1px solid #900090; border-color: #909 #4b004b #4b004b #909;
+					border: 1px solid #909; border-color: #909 #4b004b #4b004b #909;
 }
 				#recherche .submit:hover {
 				background-color: purple;
