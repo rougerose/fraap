@@ -29,6 +29,11 @@ jQuery(document).ready(function() {
 	);
 
 	/*
+	* jquery UI Tabs
+	*/
+	$("#tabs").tabs();
+
+	/*
 	* Animation du formulaire Recherche
 	*/
 	$("#recherche").each(function(){

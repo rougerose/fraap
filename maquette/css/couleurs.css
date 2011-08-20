@@ -24,26 +24,40 @@
 	     -o-transition: color .35s linear, border-color .5s linear;
 	        transition: color .35s linear, border-color .5s linear; }
 
-.une .intertitre.couleurid1.over,
+.item.couleurid1.over, .intertitre.couleurid1.over
+/*.une .intertitre.couleurid1.over,
 .une .item.couleurid1.over,
 .une.couleurid1.over,
-.une.couleurid1.over .intertitre { border-color: #f60; }
+.une.couleurid1.over .intertitre*/ { border-color: #f60; }
+.hentry.couleurid1.over a,
 .couleurid1 a:hover, .une .couleurid1.over a, .une.couleurid1.over a { color: #f60; }
 
-.une .intertitre.couleurid2.over,
+.hentry.couleurid2.over, .intertitre.couleurid2.over
+./*une .intertitre.couleurid2.over,
 .une .item.couleurid2.over,
 .une.couleurid2.over,
-.une.couleurid2.over .intertitre { border-color: #4bb900; }
+.une.couleurid2.over .intertitre*/ { border-color: #4bb900; }
+.hentry.couleurid2.over a,
+.couleurid2 .enumeration strong,
 .couleurid2 a:hover, .une .couleurid2.over a, .une.couleurid2.over a { color: #4bb900; }
+li.has-dropdown:hover.couleurid2, .couleurid2 ul.dropdown li:hover { background-color: #4bb900; border-color: #fff #4bb900; }
 
-.une .intertitre.couleurid3.over,
+.hentry.couleurid3.over, .intertitre.couleurid3.over, .hentry.couleurid3.over
+
+/*.une .intertitre.couleurid3.over,
 .une .item.couleurid3.over,
 .une.couleurid3.over,
-.une.couleurid3.over .intertitre { border-color: #0071b8; }
+.une.couleurid3.over .intertitre*/ { border-color: #0071b8; }
+.hentry.couleurid3.over a,
+.couleurid3 .enumeration li,
 .couleurid3 a:hover, .une .couleurid3.over a, .une.couleurid3.over a { color: #0071b8; }
+li.has-dropdown:hover.couleurid3, .couleurid3 ul.dropdown li:hover { background-color: #0071b8; border-color: #fff #0071b8; }
 
-.une .intertitre.couleurid4.over,
+.item.couleurid4.over, .intertitre.couleurid4.over
+/*.une .intertitre.couleurid4.over,
 .une .item.couleurid4.over,
 .une.couleurid4.over,
-.une.couleurid4.over .intertitre { border-color: #b90058; }
+.une.couleurid4.over .intertitre*/ { border-color: #b90058; }
+.couleurid4 .enumeration li,
 .couleurid4 a:hover, .une .couleurid4.over a, .une.couleurid4.over a { color: #b90058; }
+li.has-dropdown:hover.couleurid4, .couleurid4 ul.dropdown li:hover { background-color: #0071b8; border-color: #fff #0071b8; }
