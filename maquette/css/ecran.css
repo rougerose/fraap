@@ -229,9 +229,24 @@ a.suite:after {
 			border-bottom: 1px solid #000;
 			padding-top: .5em; margin-bottom: 1em; }
 
+			.hfeed .published {
+				color: #aaa;
+				line-height: 22px; }
+			.hfeed .entry-title {
+				font-size: 18px; line-height: 22px;
+				margin-bottom: .5em; }
 
-.hfeed .published { line-height: 22px; }
-.hfeed .entry-title { font-size: 18px; line-height: 22px; margin-bottom: .5em; }
+	/* présentation en liste */
+		.liste .hentry  {
+			margin-bottom: .5em;
+			border-bottom: 1px dotted #000; }
+			.liste .hentry h3.entry-title {
+				font-size: 12px; line-height: 18px;
+				margin-bottom: .5em; }
+			.liste .hentry .published {
+				font-size: 11px;line-height: 18px;
+				margin-bottom: .5em; }
+
 
 /* filets */
 .filet, .filetH { border-top: 2px solid #000; }
@@ -255,19 +270,20 @@ div.une.over, dl.une dd.item.over {  }
 .ui-tabs .ui-tabs-nav {
 	margin : 0;
 	border-bottom : 1px solid #000; }
-.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0;  }
+.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
 .ui-tabs .ui-tabs-nav li {
 	margin : 0 0 -1px 5px;
-	background : rgb(255,255,255);
+	xbackground : rgb(255,255,255);
 	xfont-size: 13px;
-	border : 1px solid rgb(200,200,207);
-	border-color: rgba(233, 233, 241, 0.5) rgba(198, 198, 205, 0.5) rgba(200, 200, 207, 0.5) rgba(233, 233, 241, 0.5);
-	-webkit-border-top-left-radius: 3px; -webkit-border-top-right-radius: 3px;
-	-moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;
-	border-top-left-radius: 3px; border-top-right-radius: 3px;
-	background: -moz-linear-gradient(top, #ffffff 0%, #E5E6E5 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#E5E6E5)); }
+	xborder-color: rgba(233, 233, 241, 0.5) rgba(198, 198, 205, 0.5) rgba(200, 200, 207, 0.5) rgba(233, 233, 241, 0.5);
+	xborder-top-left-radius: 3px; xborder-top-right-radius: 3px;
+	xbackground: -moz-linear-gradient(top, #ffffff 0%, #E5E6E5 100%);
+	xbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#E5E6E5)); }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav xli.ui-state-hover {
+	x-webkit-border-top-left-radius: 3px; x-webkit-border-top-right-radius: 3px;
+	x-moz-border-radius-topleft: 3px; x-moz-border-radius-topright: 3px;
+	xborder-top-left-radius: 3px; xborder-top-right-radius: 3px;
+	border : 1px solid rgb(200,200,207);
 	border-color: rgb(233, 233, 241) rgb(198, 198, 205) rgb(200, 200, 207) rgb(233, 233, 241);
 	border-color: #000;
 	background: #fff; }
