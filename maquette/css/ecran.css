@@ -17,14 +17,12 @@
 	#contenu { margin-bottom: 3em; }
 
 	.page_sommaire #contenu { margin-top: 2em; }
-	.page_rubrique #contenu {
+	.page_rubrique #contenu, .page_article #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }
-	.page_rubrique #navigation {
-		float:left; display: inline;
-		margin-left: 10px;
-		width:700px; }
+	
+	
 
 
 /* titre des pages */
@@ -244,8 +242,12 @@ a.suite:after {
 				font-size: 12px; line-height: 18px;
 				margin-bottom: .5em; }
 			.liste .hentry .published {
-				font-size: 11px;line-height: 18px;
+				font-size: 11px; line-height: 18px;
 				margin-bottom: .5em; }
+
+	/* présentation en grille */
+		.grille .hentry h2.entry-title { font-size: 16px; line-height: 18px; }
+		.grille .hentry .published { line-height: 18px; }
 
 
 /* filets */
