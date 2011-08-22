@@ -20,7 +20,7 @@
          <div id="navigation">
             <INCLURE{fond=navigation}{id_rubrique}>
          </div>
-         
+
          <div id="colonne_principale">
            <div id="cp_interieure" class="article">
               [<p class="surtitre">(#SURTITRE)</p>]
@@ -30,7 +30,7 @@
               [<div id="chapo">
                (#CHAPO)
               </div>]
-              <div id="contenu_article"<BOUCLE_test_petition(ARTICLES){id_article}>[(#ID_ARTICLE|test_petition) class="DeuxCol"]</BOUCLE_test_petition></B_test_petition><BOUCLE_test_doc(DOCUMENTS){id_article}{mode=document}{0,1}> class="DeuxCol"</BOUCLE_test_doc></B_test_doc><BOUCLE_test_mots(MOTS){id_article}{id_groupe!=3}{0,1}> class="DeuxCol"</BOUCLE_test_mots><//B_test_doc><//B_test_petition>>
+              <div id="contenu_article"<BOUCLE_test_doc(DOCUMENTS){id_article}{mode=document}{0,1}> class="DeuxCol"</BOUCLE_test_doc></B_test_doc><BOUCLE_test_mots(MOTS){id_article}{id_groupe!=3}{0,1}> class="DeuxCol"</BOUCLE_test_mots><//B_test_doc>>
                   <div class="texte">
                     [(#TEXTE)]
 
@@ -86,7 +86,7 @@
                 </dl>
               </div>
               </B_portfolio>
-              
+
               <B_rubrique_ressources><BOUCLE_rubrique_ressources(RUBRIQUES){id_rubrique}{id_rubrique=2}>
               <B_categorie_article>
               <div id="ConteneurToggle">
@@ -99,7 +99,7 @@
 
               </div>
               </B_categorie_article>
-              
+
               </BOUCLE_rubrique_ressources></B_rubrique_ressources>
             </div>
          </div>
