@@ -30,7 +30,8 @@
 .une.couleurid1.over,
 .une.couleurid1.over .intertitre*/ { border-color: #f60; }
 .hentry.couleurid1.over a,
-.couleurid1 a:hover, .une .couleurid1.over a, .une.couleurid1.over a { color: #f60; }
+.couleurid1 a:hover, .une .couleurid1.over a, .une.couleurid1.over a,
+.page_article .couleurid3 h1 { color: #f60; }
 
 .hentry.couleurid2.over, .intertitre.couleurid2.over
 ./*une .intertitre.couleurid2.over,
