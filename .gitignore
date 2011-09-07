@@ -5,6 +5,7 @@
 .htaccess
 config/connect.php
 config/chmod.php
+config/.*
 /ecrire
 /extensions
 /IMG
