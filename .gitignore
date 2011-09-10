@@ -10,6 +10,7 @@ config/.*
 /extensions
 /IMG
 index.php
+/lib
 /local
 /prive
 rien.gif
