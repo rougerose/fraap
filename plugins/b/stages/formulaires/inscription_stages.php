@@ -194,7 +194,14 @@ function inscription_nouveau($desc)
 
 	if (!$n) return _T('titre_probleme_technique');
 
+	$id_auteur = $n;
 	$desc['id_auteur'] = $n;
+
+	// ajout de l'auteur à la zone 1 (stages) via plugin accès restreint
+	include_spip('action/editer_zone');
+	if (function_exists('accesrestreint_revision_zone_objets_lies')) {
+		accesrestreint_revision_zone_objets_lies('1',$id_auteur,'auteur');
+	}
 
 	return $desc;
 }
