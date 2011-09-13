@@ -30,10 +30,10 @@
 						<li class="saisie_activite_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{activite_inscription_stages}|oui)erreur]">
 							<label for="activite_inscription_stages"><:stages:label_activite:></label>
 							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{activite_inscription_stages})</span>]
-							<select name="activite_inscription_stage" id="activite_inscription_stage">
+							<select name="activite_inscription_stages" id="activite_inscription_stages">
 								<option value="0"><:stages:type_defaut:></option>
-								<option value="1"><:stages:type_1:></option>
-								<option value="2"><:stages:type_2:></option>
+								<option value="1"[ selected="(#ENV{activite_inscription_stages}|=={1}|oui)selected"]><:stages:type_1:></option>
+								<option value="2"[ selected="(#ENV{activite_inscription_stages}|=={2}|oui)selected"]><:stages:type_2:></option>
 							</select>
 						</li>
 					</ul>
@@ -63,7 +63,8 @@
 			</li>
 			<li class="saisie_conditions_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{conditions_inscription_stages}|oui)erreur]">
 				<div class="choix">
-					<input type="checkbox" name="conditions_inscription_stages" id="conditions_inscription_stages">
+					[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{conditions_inscription_stages})</span>]
+					<input type="checkbox" name="conditions_inscription_stages" id="conditions_inscription_stages" value="1"[ checked="(#ENV{conditions_inscription_stages}|=={1}|oui)checked"]>
 					<label for=""><:stages:label_conditions_inscription_stage{url_conditions=#GET{url_conditions}}:></label>
 				</div>
 			</li>
