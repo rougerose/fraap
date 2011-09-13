@@ -12,7 +12,7 @@
 	<etat>stable</etat>
 
 	<version>0.1</version>
-	<version_base>0.1</version_base>
+	<version_base>0.2</version_base>
 	<prefix>stages</prefix>
 
 	<install>base/stages_install.php</install>
