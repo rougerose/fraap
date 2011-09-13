@@ -228,9 +228,9 @@ function envoyer_inscription_dist($desc, $nom, $prenom, $pass, $mode, $id) {
 		. _T($msg, array('nom_site_spip' => $nom_site_spip,
 			'adresse_site' => $adresse_site . '/',
 			'adresse_login' => $adresse_login)) . "\n\n"
-		. _T('stages:form_vos_id') . "\n- "
-		. "\t– " . _T('form_forum_login')." " . $desc['login'] . "\n "
-		. "\t– " . _T('form_forum_pass')." " . $pass . "\n\n"
+		. _T('stages:form_vos_id') . "\n "
+		. "\t- " . _T('form_forum_login')." " . $desc['login'] . "\n "
+		. "\t- " . _T('form_forum_pass')." " . $pass . "\n\n"
 		. _T('stages:form_mail_signature') . "\n";
 
 	return array("[$nom_site_spip] "._T('form_forum_identifiants'), $msg);
