@@ -198,10 +198,6 @@ function inscription_nouveau($desc)
 	$desc['id_auteur'] = $n;
 
 	// ajout de l'auteur à la zone 1 (stages) via plugin accès restreint
-//	include_spip('action/editer_zone');
-//	if (function_exists('accesrestreint_revision_zone_objets_lies')) {
-//		accesrestreint_revision_zone_objets_lies('1',$id_auteur,'auteur','add');spip_log('acces ok '.$id_auteur);
-//	}
 	$ajout_auteur_zone = sql_insertq("spip_zones_auteurs",array('id_zone'=>'1',"id_auteur"=>$id_auteur));
 
 	return $desc;
