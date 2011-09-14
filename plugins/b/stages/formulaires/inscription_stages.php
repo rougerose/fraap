@@ -100,7 +100,7 @@ function formulaires_inscription_stages_traiter_dist($mode, $focus, $id=0) {
 	$prenom = _request('prenom_inscription_stages');
 	$mail_complet = _request('mail_inscription_stages');
 	$activite = _request('activite_inscription_stages');
-	$pass = _request('pass_inscription_stages');
+	$pass = _request('pass_inscription_stages'); spip_log('pass1 : '.$pass);
 	$mode = '6forum';
 
 	if (function_exists('test_inscription'))
@@ -178,7 +178,7 @@ function inscription_nouveau($desc)
 
 	// ajout calcul accès
 	include_spip('inc/acces');
-	$desc['pass'] = $pass;
+	$pass = $desc['pass'];
 	$htpass = generer_htpass($pass);
 	$alea_actuel = creer_uniqid();
 	$alea_futur = creer_uniqid();
@@ -198,10 +198,11 @@ function inscription_nouveau($desc)
 	$desc['id_auteur'] = $n;
 
 	// ajout de l'auteur à la zone 1 (stages) via plugin accès restreint
-	include_spip('action/editer_zone');
-	if (function_exists('accesrestreint_revision_zone_objets_lies')) {
-		accesrestreint_revision_zone_objets_lies('1',$id_auteur,'auteur');
-	}
+//	include_spip('action/editer_zone');
+//	if (function_exists('accesrestreint_revision_zone_objets_lies')) {
+//		accesrestreint_revision_zone_objets_lies('1',$id_auteur,'auteur','add');spip_log('acces ok '.$id_auteur);
+//	}
+	$ajout_auteur_zone = sql_insertq("spip_zones_auteurs",array('id_zone'=>'1',"id_auteur"=>$id_auteur));
 
 	return $desc;
 }
