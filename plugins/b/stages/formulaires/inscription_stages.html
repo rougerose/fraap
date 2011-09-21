@@ -1,0 +1,95 @@
+#SET{url_conditions,'#'}
+<div class="formulaire_spip formulaire_inscription_stages ajax" id="formulaire_inscription_stages">
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+[(#ENV{editable})
+<form method="post" action="#ENV{action}">
+	#ACTION_FORMULAIRE{#ENV{action}}
+	<fieldset>
+		[(#REM) on affiche plus ce message en cas d'erreur pour eviter d'allonger trop le formulaire]
+		[(#ENV*{message_erreur}|non)
+		[<legend><:pass_vousinscrire:></legend>
+		<p class='explication'>(#ENV*{_commentaire})</p>]
+		]<legend><:form_forum_identifiants:></legend>
+		<p class='explication'><:form_forum_indiquer_nom_email:></p>
+		<ul>
+			<li class="fieldset">
+				<fieldset>
+					<h3 class="legende"><:stages:legende_identite:></h3>
+					<ul>
+						<li class='saisie_nom_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{nom_inscription_stages}|oui)erreur]'>
+							<label for="nom_inscription"><:stages:nom:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{nom_inscription_stages})</span>]
+							<input type="text" class="text" name="nom_inscription_stages" id="nom_inscription_stages" value="#ENV{nom_inscription_stages}" size="30" />
+						</li>
+						<li class='saisie_prenom_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{prenom_inscription_stages}|oui)erreur]'>
+							<label for="prenom_inscription_stages"><:stages:prenom:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{prenom_inscription_stages})</span>]
+							<input type="text" class="text" name="prenom_inscription_stages" id="prenom_inscription_stages" value="#ENV{prenom_inscription_stages}" size="30" />
+						</li>
+						<li class="saisie_activite_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{activite_inscription_stages}|oui)erreur]">
+							<label for="activite_inscription_stages"><:stages:label_activite:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{activite_inscription_stages})</span>]
+							<select name="activite_inscription_stages" id="activite_inscription_stages">
+								<option value="0"><:stages:type_defaut:></option>
+								<option value="1"[ selected="(#ENV{activite_inscription_stages}|=={1}|oui)selected"]><:stages:type_1:></option>
+								<option value="2"[ selected="(#ENV{activite_inscription_stages}|=={2}|oui)selected"]><:stages:type_2:></option>
+							</select>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li class="fieldset">
+				<fieldset>
+					<h3 class="legend"><:stages:legende_identifiants:></h3>
+					<ul>
+						<li class='saisie_mail_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{mail_inscription_stages}|oui)erreur]'>
+							<label for="mail_inscription_stages"><:form_pet_votre_email:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{mail_inscription_stages})</span>]
+							<input type="text" class="text" name="mail_inscription_stages" id="mail_inscription_stages" value="#ENV{mail_inscription_stages}" size="30" />
+						</li>
+						<li class="saisie_pass_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{pass_inscription_stages}|oui)erreur]">
+							<label for="pass_inscription_stages"><:stages:label_pass:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{pass_inscription_stages})</span>]
+							<input type="password" name="pass_inscription_stages" value="#ENV{pass_inscription_stages}" id="pass_inscription_stages" class="password">
+						</li>
+						<li class="saisie_pass2_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{pass2_inscription_stages}|oui)erreur]">
+							<label for="pass2_inscription_stages"><:stages:label_pass2:></label>
+							[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{pass2_inscription_stages})</span>]
+							<input type="password" name="pass2_inscription_stages" value="#ENV{pass2_inscription_stages}" id="pass2_inscription_stages" class="password">
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li class="saisie_conditions_inscription_stages obligatoire[ (#ENV*{erreurs}|table_valeur{conditions_inscription_stages}|oui)erreur]">
+				<div class="choix">
+					[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{conditions_inscription_stages})</span>]
+					<input type="checkbox" name="conditions_inscription_stages" id="conditions_inscription_stages" value="1"[ checked="(#ENV{conditions_inscription_stages}|=={1}|oui)checked"]>
+					<label for=""><:stages:label_conditions_inscription_stage{url_conditions=#GET{url_conditions}}:></label>
+				</div>
+			</li>
+		</ul>
+	</fieldset>
+	[(#REM) Piege a robots spammeurs ]
+	<p style="display: none;">
+		<label for="nobot"><:antispam_champ_vide:></label>
+		<input type="text" class="text" name="nobot" id="nobot" value="#ENV{nobot}" size="10" />
+	</p>
+	<p class="boutons"><input type="submit" class="submit" value="<:bouton_valider:>" /></p>
+ </form>
+[<script type="text/javascript"><!--
+document.getElementById('(#ENV{focus})').focus();
+--></script>]
+]
+</div>
+[(#ENV{focus,''}|?{' '})
+<div style="text-align: #LANG_RIGHT;">
+<script type="text/javascript">/*<!#EVAL{chr(91)}CDATA#EVAL{chr(91)}*/
+document.write("<a style='color: #e86519' href='")
+document.write((window.opener) ? "javascript:close()" : "./")
+document.write("'><:pass_quitter_fenetre:><" + "/a>");
+/*#EVAL{chr(93)}[(#EVAL{chr(93)})]>*/</script>
+<noscript>
+	&#91;<a href='./'><:pass_retour_public:></a>&#93;
+</noscript>
+</div>]
