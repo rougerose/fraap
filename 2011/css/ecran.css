@@ -189,47 +189,6 @@ a.suite:after {
 		margin: 0 10px;
 		width: 940px; clear: both; }
 
-		/* formulaire recherche */
-		#raccourcis #recherche {
-			-webkit-border-bottom-right-radius: 3px;
-			-webkit-border-bottom-left-radius: 3px;
-			-moz-border-radius-bottomright: 3px;
-			-moz-border-radius-bottomleft: 3px;
-			border-bottom-right-radius: 3px;
-			border-bottom-left-radius: 3px;
-			text-align: right;
-			background-color: #5a005a;
-			width: 940px; }
-			#recherche form {
-				margin: 1em 0 1em 485px;
-				float:left; }
-				#recherche label { display: none; }
-				#recherche input[type=text] {
-					background: #fff url('../images/icones.png') no-repeat 1px 1px;
-					border: 1px solid #900090; border-color: #650065 #900090 #900090 #650065;
-					font-size: 12px;
-					padding-left: 20px;
-					width: 317px; }
-				#recherche input[type=text]:focus { background-position: 1px -31px; }
-				#recherche .submit {
-					-webkit-transition: background-color .2s linear, border-color .1s linear;
-					   -moz-transition: background-color .2s linear, border-color .1s linear;
-					     -o-transition: background-color .2s linear, border-color .1s linear;
-					        transition: background-color .2s linear, border-color .1s linear;
-					background-color: #909; color: #fff;
-					text-transform: uppercase; font-size: 11px;
-					border: 1px solid #909; border-color: #909 #4b004b #4b004b #909;
-}
-				#recherche .submit:hover {
-				background-color: purple;
-				border-color: #909 #4b004b #4b004b #b100b1; }
-				#recherche .submit:active {
-					border-color: #4b004b #b100b1 #b100b1 #4b004b;
-					background-color: #650065; }
-				#recherche input[type=text], #recherche .submit {
-					-webkit-border-radius: 4px;
-					   -moz-border-radius: 4px;
-					        border-radius: 4px; }
 		#raccourcis ul {
 			margin:0;
 			padding-left: 470px; }

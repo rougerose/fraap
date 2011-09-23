@@ -36,14 +36,15 @@ jQuery(document).ready(function() {
 	/*
 	* Animation du formulaire Recherche
 	*/
-	$("#recherche").each(function(){
+	$("#formulaire_recherche").each(function(){
 		var $recherche = $(this),
 			$slide = $recherche.find("form"),
-			$ul = $recherche.next("ul");
+			$ul = $recherche.next("ul").addClass("ok");
 			compteur = 0;
 		$ul.prepend('<li class="bouton recherche filets"><a href="#">recherche</a></li>');
 		var $bouton = $ul.find(".recherche");
 
+		console.log($recherche);
 		$slide.hide();
 
 		// animation du bouton
