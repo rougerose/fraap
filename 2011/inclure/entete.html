@@ -1,0 +1,10 @@
+<div id="logo" class="grid_4 filets">
+	[(#ENV{composition}|match{^(sommaire)$}|?{
+		'<h1>'
+		,<p><a href="#URL_SITE_SPIP" rel="start home" title="<:accueil_site:>">})]
+		[(#LOGO_SITE_SPIP|inserer_attribut{alt,#NOM_SITE_SPIP|textebrut})]
+	[(#ENV{composition}|match{^(sommaire)$}|?{
+		'</h1>'
+		,'</a></p>'})]
+	[<p id="baseline">(#SLOGAN_SITE_SPIP|PtoBR)</p>]
+</div><!-- #logo -->

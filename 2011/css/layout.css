@@ -1,0 +1,151 @@
+/* ======================================== */
+/*	Site : 		FRAAP						*/
+/*	URL : 		fraap.org					*/
+/*	Author : 	christophe le drean			*/
+/*				rouge-rose.net				*/
+/*	Date :		2011						*/
+/*	Version :	2.0							*/
+/* ======================================== */
+
+
+/* mise en page */
+
+#page { position: relative; }
+
+	#contenu { margin-bottom: 3em; }
+
+	.page_sommaire #contenu { margin-top: 2em; }
+	.page_rubrique #contenu, .page_article #contenu {
+		float:right; display: inline;
+		margin-right: 10px;
+		width: 700px; }
+
+
+/* entete */
+#entete { margin-top: 4em; }
+#logo { position: relative; }
+	#logo h1 { margin: 9px 0; }
+	#baseline {
+		font-size: 24px;
+		position: absolute; top: -2em;
+		width: 960px; }
+
+
+/* menus */
+
+.menu > ul {
+	display: inline; float: left;
+	margin: 0 10px; }
+.menu > ul:first-child { margin-left: 0; }
+.menu > ul:last-child { margin-right: 0; }
+	.menu li {
+		text-align: right;
+		list-style-type: none;
+		margin: 0; }
+
+/* menu principal */
+
+/* nav */
+#nav ul {
+	height: 88px;
+	width: 220px;
+	border-top: 3px solid #000;
+	border-bottom: 1px solid #000; }
+	#nav ul ul { border-bottom-width: 0; }
+	#nav li { border-width: 0 0 3px; border-style: solid; }
+		#nav li a {
+			padding: 1px 1px 2px;
+			display: block; }
+		#nav li a:hover { color:#fff; text-decoration: none; }
+
+	#nav li.on {  }
+
+	/* dropdown */
+	li.has-dropdown {
+		position: relative;
+		margin-top: 1px;
+		padding-right: 14px;
+		background: url('../images/icones.png') no-repeat 100% -96px; }
+	li.has-dropdown:hover { background-position: 100% -140px; }
+		#nav li.has-dropdown:hover ul.dropdown { visibility: visible; }
+			#nav ul.dropdown {
+				position: absolute; visibility: hidden;
+				border: 0; }
+				#nav ul.dropdown li {
+					padding: 3px 2px 4px;
+					border: 1px solid #fff; border-width: 1px 0 0; }
+				#nav ul.dropdown li:first-child { border-top-width: 2px; }
+				ul.dropdown li:last-child, ul.dropdown li:hover:last-child {
+					webkit-border-bottom-right-radius: 6px;
+					-webkit-border-bottom-left-radius: 6px;
+					-moz-border-radius-bottomright: 6px;
+					-moz-border-radius-bottomleft: 6px;
+					border-bottom-right-radius: 6px;
+					border-bottom-left-radius: 6px; }
+					ul.dropdown li > a  {  }
+					ul.dropdown li:hover > a { color: #fff; }
+
+
+	/* raccourcis */
+	#raccourcis {
+		margin: 0 10px;
+		width: 940px; clear: both; }
+
+		#raccourcis ul {
+			margin:0;
+			padding-left: 470px; }
+			#raccourcis ul li {
+				font-size: 12px;
+				float: left;
+				margin: 0 10px 0;
+				min-height: 3.25em;
+				width: 100px; }
+			#raccourcis ul li:last-child { margin-right: 0; }
+			#raccourcis ul li.on { margin-top: 0; border-color: #5a005a; border-top-width: 8px; }
+			#raccourcis ul li.marge { margin-top: 4px; }
+			#raccourcis ul li.recherche {
+				position: relative; }
+				#raccourcis ul li.on a { color: #5a005a; }
+
+
+
+
+
+/* article */
+
+.page_article #contenu .principal {  }
+.page_article #extra {
+	float: left; display: inline;
+	margin-left: 10px;
+	width: 220px; }
+
+
+/* fil d'ariane */
+
+#fil { margin-bottom: 2em; }
+	#fil .ariane {
+		border: 1px dotted #000; border-width: 1px 0 1px; }
+		#fil .ariane li {
+			float: left;
+			margin-right: 10px; }
+
+			/* pied de page */
+			#pied { margin-top: 1em; margin-bottom: 2em; }
+				#pied .groupe {  }
+				#pied .colonne {
+					float: left; display: inline;
+					margin-right: 10px; }
+					#pied h2 { font-size: 14px; margin: 1em 0; }
+				#pied .colonne:last-child {  }
+					#pied .about { width: 220px; }
+					#pied .vcard { border-left: 1px solid #ccc; padding-left: 10px; }
+
+				#pied .follow { margin-top: 1em; }
+					#pied .follow li {
+						font-size: 14px;
+						padding-left: 19px;
+						margin-bottom: .25em;
+						background: url('../images/pied-icones.png') no-repeat; }
+					#pied .follow .facebook { background-position: 0 -62px; }
+					#pied .follow .rss { background-position: 0 -94px; }
+					#pied .follow .credits { background-position: 0 -126px; }

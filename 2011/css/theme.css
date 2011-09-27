@@ -1,0 +1,26 @@
+/* ======================================== */
+/*	Site : 		FRAAP						*/
+/*	URL : 		fraap.org					*/
+/*	Author : 	christophe le drean			*/
+/*				rouge-rose.net				*/
+/*	Date :		2011						*/
+/*	Version :	2.0							*/
+/* ======================================== */
+
+
+/* filets */
+.filet, .filetH { border-top: 2px solid #000; }
+.filetH3px { border-top: 3px solid #000; }
+.filets2px { border: 2px solid #000; border-width: 2px 0 1px; }
+.filets, .filets2px { border: 2px solid #000; border-width: 2px 0 1px; }
+.filetB { border-bottom: 1px solid #000; }
+
+
+/* logo des objets */
+.logoObjet {
+	outline: 1px solid #eee;
+	border-top: 1px solid #fff;
+	margin-top: 5px;
+	padding: 10px;
+	background: #fafafa; }
+
