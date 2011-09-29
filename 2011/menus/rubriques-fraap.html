@@ -64,6 +64,7 @@
 
 		[(#REM) Doit-on descendre plus loin ? si oui, ajout de la class has-dropdown ]
 		[(#SET{cond,#GET{niveau_max}|>{#GET{niveau_actuel}}|et{#GET{sousrub_cond}|?{#ID_RUBRIQUE|menus_exposer{rubrique,#ENV*{env}},'on'}}})]
+		[(#REM) la rubrique a-t-elle une ou plusieurs sous-rubriques ? ]
 		<BOUCLE_test_niveau1(CONDITION){si #GET{cond}}>
 		#SET{hdd,''}
 			<BOUCLE_sous_rubriques1(RUBRIQUES){id_parent}{id_rubrique !IN #GET{id_rubriques_exclues}}{par num #GET{tri_num}}{inverse #GET{tri_num_inverse}}{par #GET{tri_alpha}}{inverse #GET{tri_alpha_inverse}}{0,#GET{rubriques_max_affichees}}>

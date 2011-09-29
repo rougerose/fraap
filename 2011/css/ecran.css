@@ -40,8 +40,8 @@ a.suite:after {
 
 /* contenu des objets */
 .descriptif {
-	font-size: 14px;
-	margin-bottom: 3em; }
+	xfont-size: 14px;
+	xmargin-bottom: 3em; }
 
 /* article */
 
@@ -78,49 +78,12 @@ a.suite:after {
 
 
 
-/* hfeed */
-	dl.hfeed {  }
-		.hfeed dt {
-			font-size: 23px; font-weight: bold;
-			border-bottom: 2px solid #000;
-			margin-bottom: .5em; }
-
-	div.hfeed { border-top: 2px solid #000; }
-		div.hentry {
-			border-bottom: 1px solid #000;
-			padding-top: .5em; margin-bottom: 1em; }
-
-			.hfeed .published {
-				color: #aaa;
-				line-height: 22px; }
-			.groupe .hfeed h2.entry-title {
-				font-size: 18px; line-height: 22px;
-				margin-bottom: .5em; }
-
-	/* présentation en grille */
-		.grille .hentry h2.entry-title { font-size: 16px; line-height: 18px; }
-		.grille .hentry .published { line-height: 18px; }
-
-	/* article */
-	#contenu .principal .texte p {  }
-	#extra .published {
-		text-align: right;
-		font-size: 12px;
-		border-top: 1px solid #000;
-		margin-top: 2em; padding-top: .25em; }
 
 
 
 
-/* une */
-div.une.item, dl.une dd.item {
-	margin-bottom: 2em;
-	border-bottom: 1px solid #000; }
-div.une.item { width: 218px; }
-dl.une dd.item div { width: 578px; }
-	.une h2 { border-bottom: 2px solid #000; margin-bottom: .5em; }
 
-div.une.over, dl.une dd.item.over {  }
+
 
 
 /* Jquery UI Tabs */
@@ -145,30 +108,3 @@ div.une.over, dl.une dd.item.over {  }
 .ui-tabs .related { margin-top: 1.5em; }
 
 
-/* listes */
-	/* pas de style */
-	ul.ns li { list-style-type: none; margin: 0; }
-
-	/* enumeration */
-	ul.enumeration { margin-left: 1em; }
-		ul.enumeration li { font-family: "Helvetica Neue"; list-style-type: none; margin: 0 0 0 1em; text-indent: -1.5em; padding:0; }
-			ul.enumeration li strong:before, ul.enumeration li a:before { font-size: 16px; content: "\2192\00A0"; }
-			ul.enumeration li ul { margin-left: 1.3em; }
-
-	/* contenu secondaire en liste */
-	ul.liste li, dl.liste {
-		list-style-type: none;
-		margin: 0 0 1em; padding-bottom: 1em;
-		border-bottom: 1px dotted #000; }
-		.liste p.published {
-			float: left; display: inline;
-			width: 70px; }
-		.liste div {
-			float: left; display: inline;
-			width: 150px }
-		.liste h3 {
-			font-size: 13px; line-height: 18px;
-			margin-bottom: 0; }
-		.liste p.descriptif, .liste p.published {
-			font-size: 12px; line-height: 18px;
-			margin: 0; }

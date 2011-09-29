@@ -15,7 +15,7 @@
 	#contenu { margin-bottom: 3em; }
 
 	.page_sommaire #contenu {
-		margin-top: 2em;
+		margin-top: 3em;
 		padding-left: 240px; }
 	.page_rubrique #contenu, .page_article #contenu {
 		float:right; display: inline;

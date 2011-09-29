@@ -2,8 +2,8 @@
 <div class="groupe grid_12 horizontal">
 	#ANCRE_PAGINATION
 	[<p class="pagination haut">(#PAGINATION{page})</p>]
-	<dl class="hfeed">
-		<BOUCLE_articles(ARTICLES pb_selection){spip_pb_selection.id_rubrique=0}{par ordre}{pagination 2}>
+	<dl class="hfeed une">
+		<BOUCLE_articles(ARTICLES pb_selection){spip_pb_selection.id_rubrique=0}{par ordre}{pagination}>
 		<dt class="intertitre couleurid#ID_RUBRIQUE"><a href="#URL_RUBRIQUE">#TITRE_PARENT</a></dt>
 		<dd class="hentry item couleurid#ID_RUBRIQUE clearfix">
 			<p class="info-publi updated published grid_2 alpha"><span class="value" title="[(#DATE|date_iso)]">[(#DATE|affdate{d/m/Y})]</span></p>

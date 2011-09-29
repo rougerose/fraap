@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	/*
 	* Changement de couleurs lors du hover
 	*/
-	$(".item").hover(
+/*	$(".item").hover(
 		function(){
 			$(this).addClass("over");
 			if ($(this).is("dd")) {
@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
 			}
 		}
 	);
-
+*/
 	/*
 	* jquery UI Tabs
 	*/
