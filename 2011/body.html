@@ -13,7 +13,13 @@
 
 	</div><!-- #head -->
 
-	<div id="conteneur">
+	<div id="conteneur"[ class="couleurid(#ENV{id_rubrique})"]>
+		[(#REM) le titre est affiché ici sauf pour le sommaire ]
+		[(#ENV{type}|=={page}|et{#ENV{composition}|=={sommaire}}|non)
+		<div id="titre">
+			<INCLURE{fond=titre/#ENV{type},env}>
+		</div><!-- #titre -->]
+
 		<div id="contenu" class="clearfix">
 			<INCLURE{fond=contenu/#ENV{type},env}>
 		</div><!-- #contenu -->
