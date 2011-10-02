@@ -13,7 +13,7 @@
 
 	</div><!-- #head -->
 
-	<div id="conteneur"[ class="couleurid(#ENV{id_rubrique})"]>
+	<div id="conteneur"[ class="couleurID(#ENV{id_rubrique})"]>
 		[(#REM) le titre est affiché ici sauf pour le sommaire ]
 		[(#ENV{type}|=={page}|et{#ENV{composition}|=={sommaire}}|non)
 		<div id="titre">

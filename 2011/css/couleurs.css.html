@@ -14,33 +14,62 @@
 
 [(#SET{couleur,[(#VAL{0}|couleur_rubrique)]})]
 
-<BOUCLE_principale(RUBRIQUES){racine}{par num titre, titre}>
+<BOUCLE_principale(RUBRIQUES){racine}{id_secteur !IN 10}>
+	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
+
+	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
+	[(#ID_RUBRIQUE|=={12}|oui)
+		[(#SET{couleurQuiSommesNous,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
+	]
+
+	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
+
+	.une .couleurID#ID_RUBRIQUE,
+	.couleurID#ID_RUBRIQUE h2.intertitre,
+	.grille .couleurID#ID_RUBRIQUE .update dt,
+	.couleurID#ID_RUBRIQUE h1,
+
+	.item.couleurID#ID_RUBRIQUE.over, .intertitre.couleurID#ID_RUBRIQUE.over { border-color: ##GET{couleur}; }
+
+	.une dt.intertitre.couleurID#ID_RUBRIQUE a,
+	.une .couleurID#ID_RUBRIQUE .intertitre a,
+	.une .couleurID#ID_RUBRIQUE .update dt,
+	.une.grille .couleurID#ID_RUBRIQUE a:hover,
+	.hfeed .couleurID#ID_RUBRIQUE div a:hover,
+
+
+
+	.hentry.couleurID#ID_RUBRIQUE.over a,
+	.une .couleurID#ID_RUBRIQUE.over a, .une.couleurID#ID_RUBRIQUE.over a,
+	.page_article .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
+
+	#nav li:hover.couleurID#ID_RUBRIQUE,
+	.couleurID#ID_RUBRIQUE ul.dropdown li { background-color: ##GET{couleur}; }
+
+	li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
+
+</BOUCLE_principale>
+
+<BOUCLE_rubrique_stages(RUBRIQUES){id_rubrique=10}>
 	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
 
 	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
-	.une .couleurid#ID_RUBRIQUE,
-	.couleurid#ID_RUBRIQUE h2.intertitre,
-	.grille .couleurid#ID_RUBRIQUE .update dt,
-	.couleurid#ID_RUBRIQUE h1,
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover { border-color: ##GET{couleur}; }
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover { color: ##GET{couleur}; }
+</BOUCLE_rubrique_stages>
 
-	.item.couleurid#ID_RUBRIQUE.over, .intertitre.couleurid#ID_RUBRIQUE.over { border-color: ##GET{couleur}; }
+[(#REM) couleur page liste diffusion Fraap-infos ]
 
-	.une dt.intertitre.couleurid#ID_RUBRIQUE a,
-	.une .couleurid#ID_RUBRIQUE .intertitre a,
-	.une .couleurid#ID_RUBRIQUE .update dt,
-	.une.grille .couleurid#ID_RUBRIQUE a:hover,
-	.hfeed .couleurid#ID_RUBRIQUE div a:hover,
+	/* /Liste de diffusion /#eb02b3 */
+	#raccourcis ul li.couleurListe.on, #raccourcis ul li.couleurListe:hover { border-color: #eb02b3; }
+	#raccourcis ul li.couleurListe.on a, #raccourcis ul li.couleurListe a:hover { color: #EB02B3; }
 
 
+[(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
+	/* /Page Contact /##GET{couleurQuiSommesNous} */
+	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover { border-color: ##GET{couleurQuiSommesNous}; }
+	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover { color: ##GET{couleurQuiSommesNous}; }
 
-	.hentry.couleurid#ID_RUBRIQUE.over a,
-	.une .couleurid#ID_RUBRIQUE.over a, .une.couleurid#ID_RUBRIQUE.over a,
-	.page_article .couleurid#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
 
-	#nav li:hover.couleurid#ID_RUBRIQUE,
-	.couleurid#ID_RUBRIQUE ul.dropdown li { background-color: ##GET{couleur}; }
 
-	li.couleurid#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
-
-</BOUCLE_principale>

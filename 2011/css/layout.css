@@ -110,6 +110,7 @@
 			#raccourcis ul li.recherche {
 				position: relative; }
 				#raccourcis ul li.on a { color: #5a005a; }
+				#raccourcis ul li a { display: block; }
 
 
 

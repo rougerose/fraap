@@ -7,7 +7,7 @@
 		[(#REM) ajustement des marges du premier et dernier blocs -- classe alpha et omega -- ]
 		#SET{cpte,#GET{cpte}|plus{1}}
 
-		<div class="item couleurid#ID_SECTEUR grid_4[ (#GET{cpte}|=={1}|oui)alpha][ (#GET{cpte}|=={3}|oui)omega]">
+		<div class="item couleurID#ID_SECTEUR grid_4[ (#GET{cpte}|=={1}|oui)alpha][ (#GET{cpte}|=={3}|oui)omega]">
 			<h2 class="intertitre"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
 
 			[(#REM) test Annuaire]
@@ -66,7 +66,7 @@
 			</BOUCLE_rub_ressources>
 			</BOUCLE_test_ressources>
 
-		</div><!-- item couleurid#ID_RUBRIQUE grid_4 alpha  -->
+		</div><!-- item couleurID#ID_RUBRIQUE grid_4 alpha  -->
 		</BOUCLE_rubriques_permanentes>
 
 	</div><!-- .groupe -->
