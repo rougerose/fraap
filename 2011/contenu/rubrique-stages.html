@@ -1,6 +1,36 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
-<div id="titre">
-	<h1>#TITRE</h1>
-</div><!-- #titre -->
+
+<BOUCLE_form(FORMULAIRES){identifiant=stage}>
+
+<table>
+	<thead>
+		<th>debut</th><th>fin</th><th>activite</th>
+	</thead>
+	<tbody>
+		<BOUCLE_rep(FORMULAIRES_REPONSES){id_formulaire}>
+		#SET{id,#ID_FORMULAIRES_REPONSE}
+		<tr>
+			<BOUCLE_d1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_1}>
+			<td>#VALEUR / #ID_FORMULAIRES_REPONSE / #GET{id}</td>
+			</BOUCLE_d1>
+			<BOUCLE_d2(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_2}>
+			<td>#VALEUR</td>
+			</BOUCLE_d2>
+			<BOUCLE_checkbox1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
+			#SET{checkbox1,#VALEUR|unserialize}
+			<BOUCLE_c1(POUR){tableau #GET{checkbox1}}>
+			
+			
+			
+			
+			<td>#CLE/#VALEUR</td>
+			</BOUCLE_c1>
+			</BOUCLE_checkbox1>
+		</tr>
+		</BOUCLE_rep>
+	</tbody>
+</table>
+
+</BOUCLE_form>
 
 </BOUCLE_contenu_rubrique>
