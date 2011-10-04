@@ -7,6 +7,26 @@
 		<th>debut</th><th>fin</th><th>activite</th>
 	</thead>
 	<tbody>
+		<BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
+		<BOUCLE_stages(STAGES){id_formulaires_reponse}>
+		<tr>
+			<td>#DATE_DEBUT</td>
+			<td>#DATE_FIN</td>
+			<td>#COMPETENCES</td>
+		</tr>
+		</BOUCLE_stages>
+		</BOUCLE_reponses>
+	</tbody>
+</table>
+
+
+<hr />
+
+<table>
+	<thead>
+		<th>debut</th><th>fin</th><th>activite</th>
+	</thead>
+	<tbody>
 		<BOUCLE_rep(FORMULAIRES_REPONSES){id_formulaire}>
 		#SET{id,#ID_FORMULAIRES_REPONSE}
 		<tr>
@@ -19,10 +39,10 @@
 			<BOUCLE_checkbox1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
 			#SET{checkbox1,#VALEUR|unserialize}
 			<BOUCLE_c1(POUR){tableau #GET{checkbox1}}>
-			
-			
-			
-			
+
+
+
+
 			<td>#CLE/#VALEUR</td>
 			</BOUCLE_c1>
 			</BOUCLE_checkbox1>
