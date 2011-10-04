@@ -1,6 +1,6 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 
-<BOUCLE_form(FORMULAIRES){identifiant=stage}>
+<BOUCLE_form(FORMULAIRES){identifiant=stages}>
 <table>
 	<thead>
 		<th>debut</th><th>fin</th><th>activite</th>
@@ -18,10 +18,6 @@
 			<BOUCLE_checkbox1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
 			#SET{checkbox1,#VALEUR|unserialize}
 			<BOUCLE_c1(POUR){tableau #GET{checkbox1}}>
-
-
-
-
 			<td>#CLE/#VALEUR</td>
 			</BOUCLE_c1>
 			</BOUCLE_checkbox1>
