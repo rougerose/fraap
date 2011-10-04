@@ -1,27 +1,6 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 
 <BOUCLE_form(FORMULAIRES){identifiant=stage}>
-
-<table>
-	<thead>
-		<th>debut</th><th>fin</th><th>activite</th>
-	</thead>
-	<tbody>
-		<BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
-		<BOUCLE_stages(STAGES){id_formulaires_reponse}>
-		<tr>
-			<td>#DATE_DEBUT</td>
-			<td>#DATE_FIN</td>
-			<td>#COMPETENCES</td>
-		</tr>
-		</BOUCLE_stages>
-		</BOUCLE_reponses>
-	</tbody>
-</table>
-
-
-<hr />
-
 <table>
 	<thead>
 		<th>debut</th><th>fin</th><th>activite</th>
