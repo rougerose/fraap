@@ -1,30 +1,121 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 
 <BOUCLE_form(FORMULAIRES){identifiant=stages}>
-<table>
+
+[(#REM) calculs préalables ]
+
+<BOUCLE_champs(POUR){tableau #SAISIES*|unserialize|saisies_lister_par_nom{0}}>
+[(#SET{saisies, [(#VALEUR|table_valeur{options}|table_valeur{datas})]})]
+
+[(#REM) masques de recherche ]
+#SET{regexp1,^0\|}
+#SET{regexp2,[0-9]+}
+
+[(#REM) tableau avec les valeurs du menu selection pour les régions ]
+
+[(#CLE|match{^selection}|oui)
+	[(#SET{selection,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{selection,[(#GET{selection}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{selection,[(#GET{selection}|explode{|})]})]
+]
+
+[(#REM) tableau avec les valeurs des checkbox pour les compétences et domaines du stage ]
+[(#CLE|match{checkbox_1}|oui)
+	[(#SET{checkbox,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|explode{|})]})]
+]
+</BOUCLE_champs>
+
+[(#SET{defaut_tri,#ARRAY{
+	id_formulaires_reponse,1
+	}
+})]
+
+
+[(#REM) affichage des données proprement dites ]
+<B_reponses>
+<table border="1">
 	<thead>
-		<th>debut</th><th>fin</th><th>activite</th>
+		<th>[(#TRI{date,date début,ajax})]</th>
+		<th>fin</th>
+		<th>Régions</th>
+		<th>Ville</th>
+		<th>Université/Ecole</th>
+		<th>Ville</th>
+		<th>Diplome</th>
+		<th>Niveau</th>
+		<th>Compétences</th>
+		<th>Recherches</th>
 	</thead>
 	<tbody>
-		<BOUCLE_rep(FORMULAIRES_REPONSES){id_formulaire}>
+		<BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}{tri #ENV{order,id_formulaires_reponse},#GET{defaut_tri}}>
 		#SET{id,#ID_FORMULAIRES_REPONSE}
-		<tr>
-			<BOUCLE_d1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_1}>
-			<td>#VALEUR / #ID_FORMULAIRES_REPONSE / #GET{id}</td>
-			</BOUCLE_d1>
-			<BOUCLE_d2(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_2}>
+		<tr id="id#GET{id}">
+			<BOUCLE_date_debut(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_1}>
 			<td>#VALEUR</td>
-			</BOUCLE_d2>
-			<BOUCLE_checkbox1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
-			#SET{checkbox1,#VALEUR|unserialize}
-			<BOUCLE_c1(POUR){tableau #GET{checkbox1}}>
-			<td>#CLE/#VALEUR</td>
-			</BOUCLE_c1>
-			</BOUCLE_checkbox1>
+			</BOUCLE_date_debut>
+			<BOUCLE_date_fin(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_2}>
+			<td>#VALEUR</td>
+			</BOUCLE_date_fin>
+			<BOUCLE_regions(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=selection_multiple_1}>
+			#SET{regions,#VALEUR|unserialize}
+
+			<td>
+				<BOUCLE_r(POUR){tableau #GET{regions}}>
+				<p>
+					[(#GET{selection}|table_valeur{#VALEUR})]
+				</p>
+				</BOUCLE_r>
+			</td>
+			</BOUCLE_regions>
+			<BOUCLE_ville(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=input_1}>
+			<td>#VALEUR</td>
+			</BOUCLE_ville>
+
+			<BOUCLE_ecole(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=input_2}>
+			<td>#VALEUR - </td>
+			</BOUCLE_ecole>
+
+			<BOUCLE_ecole_ville(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=input_3}>
+			<td>#VALEUR</td>
+			</BOUCLE_ecole_ville>
+
+			<BOUCLE_diplome(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=input_4}>
+			<td>#VALEUR</td>
+			</BOUCLE_diplome>
+
+			<BOUCLE_niveau(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=input_5}>
+			<td>#VALEUR</td>
+			</BOUCLE_niveau>
+
+			<BOUCLE_competences(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
+			#SET{competences,#VALEUR|unserialize}
+			<td>
+				<BOUCLE_c(POUR){tableau #GET{competences}}>
+				<p>
+					[(#GET{checkbox}|table_valeur{#VALEUR})]
+				</p>
+				</BOUCLE_c>
+			</td>
+			</BOUCLE_competences>
+
+			<BOUCLE_recherches(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_2}>
+			#SET{recherches,#VALEUR|unserialize}
+			<td>
+				<BOUCLE_rches(POUR){tableau #GET{recherches}}>
+				<p>
+					[(#GET{checkbox}|table_valeur{#VALEUR})]
+				</p>
+				</BOUCLE_rches>
+			</td>
+			</BOUCLE_recherches>
 		</tr>
-		</BOUCLE_rep>
+
+		</BOUCLE_reponses>
 	</tbody>
 </table>
+</B_reponses>
 
 </BOUCLE_form>
 
