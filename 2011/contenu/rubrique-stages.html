@@ -1,28 +1,71 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 
 <BOUCLE_form(FORMULAIRES){identifiant=stages}>
+
+<BOUCLE_champs(POUR){tableau #SAISIES*|unserialize|saisies_lister_par_nom{0}}>
+[(#SET{saisies, [(#VALEUR|table_valeur{options}|table_valeur{datas})]})]
+
+[(#REM) masques de recherche ]
+#SET{regexp1,^0\|}
+#SET{regexp2,[0-9]+}
+
+[(#REM) tableau avec les valeurs du menu selection pour les régions ]
+
+[(#CLE|match{^selection}|oui)
+	[(#SET{selection,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{selection,[(#GET{selection}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{selection,[(#GET{selection}|explode{|})]})]
+]
+
+[(#REM) tableau avec les valeurs des checkbox pour les compétences et domaines du stage ]
+[(#CLE|match{checkbox_1}|oui)
+	[(#SET{checkbox,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|explode{|})]})]
+]
+</BOUCLE_champs>
+
 <table>
 	<thead>
-		<th>debut</th><th>fin</th><th>activite</th>
+		<th>debut</th>
+		<th>fin</th>
+		<th>Régions</th>
+		<th>Ville</th>
+		<th>Université/Ecole</th>
+		<th>Ville</th>
+		<th>Diplome</th>
+		<th>Compétences</th>
+		<th>Recherches</th>
 	</thead>
 	<tbody>
-		<BOUCLE_rep(FORMULAIRES_REPONSES){id_formulaire}>
-		#SET{id,#ID_FORMULAIRES_REPONSE}
+		<BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
+		<BOUCLE_stages(STAGES){id_formulaires_reponse}>
+		#SET{regions,#REGIONS|unserialize} #SET{competences,#COMPETENCES|unserialize} #SET{recherches,#RECHERCHES|unserialize}
 		<tr>
-			<BOUCLE_d1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_1}>
-			<td>#VALEUR / #ID_FORMULAIRES_REPONSE / #GET{id}</td>
-			</BOUCLE_d1>
-			<BOUCLE_d2(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=date_2}>
-			<td>#VALEUR</td>
-			</BOUCLE_d2>
-			<BOUCLE_checkbox1(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse=#GET{id}}{nom=checkbox_1}>
-			#SET{checkbox1,#VALEUR|unserialize}
-			<BOUCLE_c1(POUR){tableau #GET{checkbox1}}>
-			<td>#CLE/#VALEUR</td>
-			</BOUCLE_c1>
-			</BOUCLE_checkbox1>
+			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
+			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
+			<td>
+				<BOUCLE_regions(POUR){tableau #GET{regions}}>
+				[<p>(#GET{selection}|table_valeur{#CLE})</p>]
+				</BOUCLE_regions>
+			</td>
+			<td>#VILLE_STAGE</td>
+			<td>#ECOLE</td>
+			<td>#VILLE_ECOLE</td>
+			<td>#DIPLOME</td>
+			<td>
+				<BOUCLE_competences(POUR){tableau #GET{competences}}>
+				[<p>(#GET{checkbox}|table_valeur{#CLE})</p>]
+				</BOUCLE_competences>
+			</td>
+			<td>
+				<BOUCLE_recherches(POUR){tableau #GET{recherches}}>
+				[<p>(#GET{checkbox}|table_valeur{#CLE})</p>]
+				</BOUCLE_recherches>
+			</td>
 		</tr>
-		</BOUCLE_rep>
+		</BOUCLE_stages>
+		</BOUCLE_reponses>
 	</tbody>
 </table>
 
