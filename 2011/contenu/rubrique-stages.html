@@ -74,6 +74,7 @@
 		<BOUCLE_condition2(CONDITION)
 			{si #ENV{regions}|is_null|et{#ENV{competences}|is_null}|et{#ENV{recherches}|is_null}|
 			et{#ENV{date_debut}|is_null}|et{#ENV{date_fin}|is_null}}>
+				[(#REM) par défaut on affiche que les offres en cours ]
 				[(#ENV{date}|affdate{Y-m-d}|<={#DATE_FIN}|oui)
 					[(#SET{reponses,#GET{reponses}|push{#ID_FORMULAIRES_REPONSE}})]
 				]
