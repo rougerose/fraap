@@ -27,7 +27,7 @@
 
 [(#REM) les réponses sont stockées dans trois tableaux ]
 
-#SET{reponses,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{responses_date_fin,#ARRAY}
+#SET{reponses,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{reponses_date_fin,#ARRAY}
 
 <BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
 	<BOUCLE_reponses_stages(STAGES){id_formulaires_reponse}>
@@ -38,7 +38,7 @@
 		[(#REM) on vérifie la présences de paramètres dans l'url de la page ]
 
 		<BOUCLE_condition(CONDITION){si #ENV{regions}|ou{#ENV{competences}}|ou{#ENV{recherches}}|ou{#ENV{date_debut}}|ou{#ENV{date_fin}}}>
-			<p>test 1</p>
+
 			[(#REM) on vérifie ensuite dans les valeurs demandées pour chaque paramètre existe ]
 
 			<BOUCLE_t_regions(POUR){tableau #GET{reg}}>
@@ -59,16 +59,19 @@
 				</BOUCLE_test_recherches>
 			</BOUCLE_t_recherches>
 
-			[(#ENV{date_debut}|<={#DATE_DEBUT}|oui)
-				[(#SET{reponses_date_debut,#GET{reponses_date_debut}|push{#ID_FORMULAIRES_REPONSE}})]
+			[(#ENV{date_debut}|oui)
+				[(#DATE_DEBUT|>={#ENV{date_debut}}|oui)
+					[(#SET{reponses_date_debut,#GET{reponses_date_debut}|push{#ID_FORMULAIRES_REPONSE}})]
+				]
 			]
 
-			[(#ENV{date_fin}|>={#DATE_FIN}|oui)
-				[(#SET{reponses_date_fin,#GET{reponses_date_fin}|push{#ID_FORMULAIRES_REPONSE}})]
+			[(#ENV{date_fin}|oui)
+				[(#DATE_FIN|<={#ENV{date_fin}}|oui)
+					[(#SET{reponses_date_fin,#GET{reponses_date_fin}|push{#ID_FORMULAIRES_REPONSE}})]
+				]
 			]
 
 		</BOUCLE_condition>
-
 
 		[(#REM) aucun paramètre dans l'url ]
 		<BOUCLE_condition2(CONDITION)
@@ -82,6 +85,11 @@
 
 	</BOUCLE_reponses_stages>
 </BOUCLE_reponses>
+<p>regions [(#GET{reponses}|print)]</p>
+<p>competences [(#GET{reponses_comp}|print)]</p>
+<p>recherches [(#GET{reponses_rech}|print)]</p>
+<p>date debut [(#GET{reponses_date_debut}|print)]</p>
+<p>date fin [(#GET{reponses_date_fin}|print)]</p>
 
 [(#REM) calcul des éléments communs dans chaque tableau ]
 [(#GET{reponses_comp}|oui)
@@ -92,6 +100,8 @@
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_debut}}})]]
 [(#GET{reponses_date_fin}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
+
+<p>reponses : [(#GET{reponses}|print)]</p>
 
 <B_stages>
 <table>
@@ -140,6 +150,7 @@
 	</tbody>
 </table>
 </B_stages>
+<p>Aucune offre de stage ne répond à vos critères</p>
 </BOUCLE_form>
 
 </BOUCLE_contenu_rubrique>
