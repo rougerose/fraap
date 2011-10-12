@@ -4,4 +4,18 @@
 	[<p>(#DESCRIPTIF)</p>]
 </div><!-- .descriptif -->
 
+#SET{id_article,#ENV{id_article,1}}
+
+<B_articles>
+
+
+<ul>
+<BOUCLE_articles(ARTICLES){id_article IN #GET{id_article}}>
+<li>#ID_ARTICLE, #TITRE, #DATE</li>
+</BOUCLE_articles>
+</ul>
+</B_articles>
+
+
+
 </BOUCLE_contenu_rubrique>

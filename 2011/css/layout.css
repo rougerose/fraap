@@ -6,7 +6,9 @@
 /*	Date :		2011						*/
 /*	Version :	2.0							*/
 /* ======================================== */
+table, table td, table td { border: 1px solid #000; }
 
+table p.on { font-weight: bold; }
 
 /* mise en page */
 
