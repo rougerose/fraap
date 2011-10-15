@@ -84,11 +84,6 @@
 
 	</BOUCLE_reponses_stages>
 </BOUCLE_reponses>
-<p>regions [(#GET{reponses}|print)]</p>
-<p>competences [(#GET{reponses_comp}|print)]</p>
-<p>recherches [(#GET{reponses_rech}|print)]</p>
-<p>date debut [(#GET{reponses_date_debut}|print)]</p>
-<p>date fin [(#GET{reponses_date_fin}|print)]</p>
 
 [(#REM) calcul des éléments communs dans chaque tableau ]
 [(#GET{reponses_comp}|oui)
@@ -100,10 +95,9 @@
 [(#GET{reponses_date_fin}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
 
-<p>reponses : [(#GET{reponses}|print)]</p>
 
 <B_stages>
-<table>
+<table id="stages-table">
 	<thead>
 		<th>Du</th>
 		<th>Au</th>
