@@ -99,23 +99,25 @@
 <B_stages>
 <table id="stages-table">
 	<thead>
-		<th>Du</th>
-		<th>Au</th>
-		<th>Régions</th>
-		<th>Ville</th>
-		<th>École</th>
-		<th>Ville</th>
-		<th>Diplôme</th>
-		<th>Niveau</th>
-		<th>Compétences</th>
-		<th>Recherches</th>
+		<tr>
+			<th colspan="2">Disponibilités</th>
+			<th colspan="2">Zone géo.</th><th colspan="4">Formation</th>
+			<th>Compétences</th><th>Recherches</th>
+		</tr>
+		<tr>
+			<th>Du</th><th>Au</th>
+			<th>Régions</th><th>Ville</th>
+			<th>École</th><th>Ville</th><th>Diplôme</th><th>Niveau</th>
+			<th>Compétences</th>
+			<th>Recherches</th>
+		</tr>
 	</thead>
 	<tbody>
 		<BOUCLE_stages(STAGES){id_formulaires_reponse IN #GET{reponses}}>
 		#SET{reg,#REGIONS|unserialize}
 		#SET{comp,#COMPETENCES|unserialize}
 		#SET{rech,#RECHERCHES|unserialize}
-		<tr id="stage#ID_FORMULAIRES_REPONSE">
+		<tr id="stage#ID_FORMULAIRES_REPONSE"[ class="(#COMPTEUR_BOUCLE|alterner{'impair','pair'})"]>
 			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 			<td>

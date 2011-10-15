@@ -132,4 +132,13 @@
 			margin: 0; }
 
 /* stages */
-
+table#stages-table {
+	width: 100%; }
+	#stages-table th {
+		color: #fff;
+		border: 1px solid #fff; }
+	#stages-table tr:first-child th {
+		font-weight: bold;
+		background-color: #fff; color: #000; }
+	#stages-table th, #stages-table td { padding: 2px 4px 1px; }
+		#stages-table p { margin: 0; }

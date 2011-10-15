@@ -41,7 +41,8 @@
 
 	.hentry.couleurID#ID_RUBRIQUE.over a,
 	.une .couleurID#ID_RUBRIQUE.over a, .une.couleurID#ID_RUBRIQUE.over a,
-	.page_article .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
+	.page_article .couleurID#ID_RUBRIQUE h1,
+	.page_rubrique .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
 
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li { background-color: ##GET{couleur}; }
@@ -56,7 +57,13 @@
 	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
 	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover { border-color: ##GET{couleur}; }
-	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover { color: ##GET{couleur}; }
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
+	.page_rubrique .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
+
+	table#stages-table { border: 1px solid ##GET{couleur}; border-width: 1px 0; }
+		#stages-table th { background-color: ##GET{couleur}; }
+			#stages-table tr.pair td { background-color: #[(#GET{couleur}|couleur_saturation{0.1})]; }
+
 </BOUCLE_rubrique_stages>
 
 [(#REM) couleur page liste diffusion Fraap-infos ]
