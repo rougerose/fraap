@@ -61,7 +61,8 @@
 	.page_rubrique .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
 
 	table#stages-table { border: 1px solid ##GET{couleur}; border-width: 1px 0; }
-		#stages-table th { background-color: ##GET{couleur}; }
+		#stages-table th { background-color: #[(#GET{couleur}|couleur_luminance{0.3})]; }
+		#stages-table tr:first-child th { background-color: #[(#GET{couleur})]; }
 			#stages-table tr.pair td { background-color: #[(#GET{couleur}|couleur_saturation{0.1})]; }
 
 </BOUCLE_rubrique_stages>
