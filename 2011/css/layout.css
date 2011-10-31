@@ -103,7 +103,7 @@
 
 		#raccourcis ul {
 			margin:0;
-			float: right; }
+			padding-left: 470px; }
 			#raccourcis ul li {
 				font-size: 12px;
 				float: left;
