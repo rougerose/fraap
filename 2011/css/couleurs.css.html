@@ -60,10 +60,16 @@
 	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
 	.page_rubrique .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
 
-	table#stages-table { border: 1px solid ##GET{couleur}; border-width: 1px 0; }
-		#stages-table th { background-color: #[(#GET{couleur}|couleur_luminance{0.3})]; }
-		#stages-table tr:first-child th { background-color: #[(#GET{couleur})]; }
-			#stages-table tr.pair td { background-color: #[(#GET{couleur}|couleur_saturation{0.1})]; }
+	[(#SET{couleur_lum03,[(#GET{couleur}|couleur_luminance{0.3})]})]
+	[(#SET{couleur_sat01,[(#GET{couleur}|couleur_saturation{0.1})]})]
+
+	#stages-table th { background-color: ##GET{couleur_lum03}; border-bottom-color: ##GET{couleur_lum03}; }
+		#stages-table th:first-child { border-left-color: ##GET{couleur_lum03}; }
+		#stages-table th:last-child { border-right-color: ##GET{couleur_lum03}; }
+	#stages-table tr:first-child th { background-color: ##GET{couleur}; }
+		#stages-table tr:first-child th:first-child { border-left-color: ##GET{couleur}; }
+		#stages-table tr:first-child th:last-child { border-right-color: ##GET{couleur}; }
+	#stages-table tr.pair td { background-color: #[(#GET{couleur}|couleur_saturation{0.1})]; }
 
 </BOUCLE_rubrique_stages>
 

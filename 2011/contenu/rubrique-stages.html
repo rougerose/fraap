@@ -27,7 +27,7 @@
 
 [(#REM) les réponses sont stockées dans trois tableaux ]
 
-#SET{reponses,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{reponses_date_fin,#ARRAY}
+#SET{reponses,#ARRAY} #SET{reponses_reg,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{reponses_date_fin,#ARRAY}
 
 <BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
 	<BOUCLE_reponses_stages(STAGES){id_formulaires_reponse}>
@@ -38,12 +38,14 @@
 		[(#REM) on vérifie la présences de paramètres dans l'url de la page ]
 
 		<BOUCLE_condition(CONDITION){si #ENV{regions}|ou{#ENV{competences}}|ou{#ENV{recherches}}|ou{#ENV{date_debut}}|ou{#ENV{date_fin}}}>
+			[(#REM) toutes les réponses]
+			[(#SET{reponses, [(#GET{reponses}|push{#ID_FORMULAIRES_REPONSE})]})]
 
 			[(#REM) on vérifie ensuite dans les valeurs demandées pour chaque paramètre existe ]
 
 			<BOUCLE_t_regions(POUR){tableau #GET{reg}}>
 				<BOUCLE_test_regions(CONDITION){si #ENV{regions}|find{#VALEUR}}>
-					[(#SET{reponses,#GET{reponses}|push{#ID_FORMULAIRES_REPONSE}})]
+					[(#SET{reponses_reg,#GET{reponses_reg}|push{#ID_FORMULAIRES_REPONSE}})]
 				</BOUCLE_test_regions>
 			</BOUCLE_t_regions>
 
@@ -84,8 +86,9 @@
 
 	</BOUCLE_reponses_stages>
 </BOUCLE_reponses>
-
 [(#REM) calcul des éléments communs dans chaque tableau ]
+[(#GET{reponses_reg}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_reg}}})]]
 [(#GET{reponses_comp}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_comp}}})]]
 [(#GET{reponses_rech}|oui)
@@ -94,7 +97,6 @@
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_debut}}})]]
 [(#GET{reponses_date_fin}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
-
 
 <B_stages>
 <table id="stages-table">
