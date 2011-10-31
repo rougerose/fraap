@@ -103,7 +103,7 @@
 
 		#raccourcis ul {
 			margin:0;
-			padding-left: 470px; }
+			float: right; }
 			#raccourcis ul li {
 				font-size: 12px;
 				float: left;
@@ -117,9 +117,6 @@
 				position: relative; }
 				#raccourcis ul li.on a { color: #5a005a; }
 				#raccourcis ul li a { display: block; }
-
-
-
 
 
 /* article */
