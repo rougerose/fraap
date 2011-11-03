@@ -1,0 +1,151 @@
+<BOUCLE_form(FORMULAIRES){identifiant=stages}>
+
+<BOUCLE_champs(POUR){tableau #SAISIES*|unserialize|saisies_lister_par_nom{0}}>
+[(#SET{saisies, [(#VALEUR|table_valeur{options}|table_valeur{datas})]})]
+
+[(#REM) masques de recherche ]
+#SET{regexp1,^0\|}
+#SET{regexp2,[0-9]+}
+
+[(#REM) tableau avec les valeurs du menu selection pour les régions ]
+
+[(#CLE|match{^selection}|oui)
+	[(#SET{selection,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{selection,[(#GET{selection}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{selection,[(#GET{selection}|explode{|})]})]
+]
+
+[(#REM) tableau avec les valeurs des checkbox pour les compétences et domaines du stage ]
+[(#CLE|match{checkbox_1}|oui)
+	[(#SET{checkbox,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|replace{[(#GET{regexp2})]})]})]
+	[(#SET{checkbox,[(#GET{checkbox}|explode{|})]})]
+]
+</BOUCLE_champs>
+
+[(#REM) les réponses sont stockées dans trois tableaux ]
+
+#SET{reponses,#ARRAY} #SET{reponses_reg,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{reponses_date_fin,#ARRAY}
+
+<BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
+	<BOUCLE_reponses_stages(STAGES){id_formulaires_reponse}>
+		#SET{reg,#REGIONS|unserialize}
+		#SET{comp,#COMPETENCES|unserialize}
+		#SET{rech,#RECHERCHES|unserialize}
+
+		[(#REM) on vérifie la présences de paramètres dans l'url de la page ]
+
+		<BOUCLE_condition(CONDITION){si #ENV{regions}|ou{#ENV{competences}}|ou{#ENV{recherches}}|ou{#ENV{date_debut}}|ou{#ENV{date_fin}}}>
+			[(#REM) toutes les réponses]
+			[(#SET{reponses, [(#GET{reponses}|push{#ID_FORMULAIRES_REPONSE})]})]
+
+			[(#REM) on vérifie ensuite dans les valeurs demandées pour chaque paramètre existe ]
+
+			<BOUCLE_t_regions(POUR){tableau #GET{reg}}>
+				<BOUCLE_test_regions(CONDITION){si #ENV{regions}|find{#VALEUR}}>
+					[(#SET{reponses_reg,#GET{reponses_reg}|push{#ID_FORMULAIRES_REPONSE}})]
+				</BOUCLE_test_regions>
+			</BOUCLE_t_regions>
+
+			<BOUCLE_t_competentes(POUR){tableau #GET{comp}}>
+				<BOUCLE_test_competences(CONDITION){si #ENV{competences}|find{#VALEUR}}>
+					[(#SET{reponses_comp,#GET{reponses_comp}|push{#ID_FORMULAIRES_REPONSE}})]
+				</BOUCLE_test_competences>
+			</BOUCLE_t_competentes>
+
+			<BOUCLE_t_recherches(POUR){tableau #GET{rech}}>
+				<BOUCLE_test_recherches(CONDITION){si #ENV{recherches}|find{#VALEUR}}>
+					[(#SET{reponses_rech,#GET{reponses_rech}|push{#ID_FORMULAIRES_REPONSE}})]
+				</BOUCLE_test_recherches>
+			</BOUCLE_t_recherches>
+
+			[(#ENV{date_debut}|oui)
+				[(#DATE_DEBUT|>={#ENV{date_debut}}|oui)
+					[(#SET{reponses_date_debut,#GET{reponses_date_debut}|push{#ID_FORMULAIRES_REPONSE}})]
+				]
+			]
+
+			[(#ENV{date_fin}|oui)
+				[(#DATE_FIN|<={#ENV{date_fin}}|oui)
+					[(#SET{reponses_date_fin,#GET{reponses_date_fin}|push{#ID_FORMULAIRES_REPONSE}})]
+				]
+			]
+		</BOUCLE_condition>
+
+		[(#REM) aucun paramètre dans l'url ]
+		<BOUCLE_condition2(CONDITION)
+			{si #ENV{regions}|is_null|et{#ENV{competences}|is_null}|et{#ENV{recherches}|is_null}|
+			et{#ENV{date_debut}|is_null}|et{#ENV{date_fin}|is_null}}>
+				[(#REM) par défaut on affiche que les offres en cours ]
+				[(#ENV{date}|affdate{Y-m-d}|<={#DATE_FIN}|oui)
+					[(#SET{reponses,#GET{reponses}|push{#ID_FORMULAIRES_REPONSE}})]
+				]
+		</BOUCLE_condition2>
+
+	</BOUCLE_reponses_stages>
+</BOUCLE_reponses>
+[(#REM) calcul des éléments communs dans chaque tableau ]
+[(#GET{reponses_reg}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_reg}}})]]
+[(#GET{reponses_comp}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_comp}}})]]
+[(#GET{reponses_rech}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_rech}}})]]
+[(#GET{reponses_date_debut}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_debut}}})]]
+[(#GET{reponses_date_fin}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
+
+<B_stages>
+<table id="stages-table">
+	<thead>
+		<tr>
+			<th colspan="2">Disponibilités</th>
+			<th colspan="2">Zone géo</th><th colspan="4">Formation</th>
+			<th colspan="2">Compétences et Recherches</th>
+		</tr>
+		<tr>
+			<th>Du</th><th>Au</th>
+			<th>Régions</th><th>Ville</th>
+			<th>École</th><th>Ville</th><th>Diplôme</th><th>Niveau</th>
+			<th>Compétences</th>
+			<th>Recherches</th>
+		</tr>
+	</thead>
+	<tbody>
+		<BOUCLE_stages(STAGES){id_formulaires_reponse IN #GET{reponses}}>
+		#SET{reg,#REGIONS|unserialize}
+		#SET{comp,#COMPETENCES|unserialize}
+		#SET{rech,#RECHERCHES|unserialize}
+		<tr id="stage#ID_FORMULAIRES_REPONSE"[ class="(#COMPTEUR_BOUCLE|alterner{'impair','pair'})"]>
+			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
+			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
+			<td>
+				<BOUCLE_r(POUR){tableau #GET{reg}}>
+				[<p[(#ENV{regions}|find{#VALEUR}|oui) class="on"]>(#GET{selection}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_r>
+			</td>
+			<td>#VILLE_STAGE</td>
+			<td>#ECOLE</td>
+			<td>#VILLE_ECOLE</td>
+			<td>#DIPLOME</td>
+			<td>#NIVEAU</td>
+			<td>
+				<BOUCLE_c(POUR){tableau #GET{comp}}>
+				[<p[(#ENV{competences}|find{#VALEUR}|oui) class="on"]>(#GET{checkbox}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_c>
+			</td>
+			<td>
+				<BOUCLE_re(POUR){tableau #GET{rech}}>
+				[<p[(#ENV{recherches}|find{#VALEUR}|oui) class="on"]>(#GET{checkbox}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_re>
+			</td>
+		</tr>
+		</BOUCLE_stages>
+	</tbody>
+</table>
+</B_stages>
+<p>Aucune offre de stage ne répond à vos critères</p>
+<//B_stages>
+
+</BOUCLE_form>

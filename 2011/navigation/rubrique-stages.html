@@ -1,2 +1,9 @@
-<h2><:stages:info_votre_selection:></h2>
-#FORMULAIRE_TRI_STAGES
+[(#REM) test pour déterminer si le visiteur est déjà connecté ou pas ]
+[(#SESSION{id_auteur}|oui)
+	<h2><:stages:info_votre_selection:></h2>
+	#FORMULAIRE_TRI_STAGES
+]
+
+[(#SESSION{id_auteur}|non)
+	<!-- vide -->
+]
