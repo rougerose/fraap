@@ -7,6 +7,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'activite' => "Activit&eacute;",
 
 	// C
+	'candidature' => 'Vous avez @nb@ candidature publi&eacute;e.',
+	'candidatures' => 'Vous avez @nb@ candidatures publi&eacute;es.',
 	'competences' => 'Comp&eacute;tences',
 
 	// D
@@ -36,10 +38,15 @@ la FRAAP.",
 	'legende_identifiants' => "Vos identifiants",
 	'legende_identite' => "Votre identit&eacute;",
 
+	// M
+	'menu_connexion_nom' => 'menu de connexion Stages',
+	'menu_connexion_description' => 'Lien permettant de s&#x27;identifier au site, affiche un message de Bienvenue ainsi qu&#x27;un lien vers le profil et lien de d&eacute;connexion',
+
 	// N
 	'nom' => "Votre nom",
 
 	// P
+	'pas_autorise' => 'Vous n&#x27;&ecirc;tes pas autoris&eacute; &agrave; consulter cette page',
 	'pass_pas_identique' => "Le mot de passe n'est pas identique",
 	'pass_trop_court' => "Votre mot de passe doit contenir plus de 6 caract&egrave;res",
 	'prenom' => "Votre pr&eacute;nom",

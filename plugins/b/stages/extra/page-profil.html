@@ -1,0 +1,71 @@
+#SET{candid_prop,#ARRAY} #SET{candid_publiees,#ARRAY} #SET{candid,#ARRAY}
+
+<BOUCLE_form(FORMULAIRES){identifiant=stages}>
+	<BOUCLE_champs(POUR){tableau #SAISIES*|unserialize|saisies_lister_par_nom{0}}>
+		[(#SET{saisies, [(#VALEUR|table_valeur{options}|table_valeur{datas})]})]
+
+		[(#REM) masques de recherche ]
+		#SET{regexp1,^0\|}
+		#SET{regexp2,[0-9]+}
+
+		[(#REM) tableau avec les valeurs du menu selection pour les régions ]
+
+		[(#CLE|match{^selection}|oui)
+			[(#SET{selection,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+			[(#SET{selection,[(#GET{selection}|replace{[(#GET{regexp2})]})]})]
+			[(#SET{selection,[(#GET{selection}|explode{|})]})]
+		]
+
+		[(#REM) tableau avec les valeurs des checkbox pour les compétences et domaines du stage ]
+		[(#CLE|match{checkbox_1}|oui)
+			[(#SET{checkbox,[(#GET{saisies}|replace{[(#GET{regexp1})]})]})]
+			[(#SET{checkbox,[(#GET{checkbox}|replace{[(#GET{regexp2})]})]})]
+			[(#SET{checkbox,[(#GET{checkbox}|explode{|})]})]
+		]
+	</BOUCLE_champs>
+</BOUCLE_form>
+
+[(#REM) les candidatures proposées ]
+	<BOUCLE_candid_prop(FORMULAIRES_REPONSES){tout}{id_auteur}{statut=prop}>[(#SET{candid_prop, [(#GET{candid_prop}|push{#ID_FORMULAIRES_REPONSE})]})]</BOUCLE_candid_prop>[(#SET{total_prop,#TOTAL_BOUCLE})]<//B_candid_prop>
+
+[(#REM) les candidatures publiées ]
+	<BOUCLE_candid_publiees(FORMULAIRES_REPONSES){tout}{id_auteur}{statut=publie}>[(#SET{candid_publiees, [(#GET{candid_publiees}|push{#ID_FORMULAIRES_REPONSE})]})]</BOUCLE_candid_publiees>[(#SET{total_publiees,#TOTAL_BOUCLE})]<//B_candid_publiees>
+
+[(#REM) le total des candidatures de l'auteur ]
+	[(#SET{total_candid,[(#GET{total_prop}|plus{#GET{total_publiees}})]})]
+
+[(#REM) les deux tableaux n'en font plus qu'un]
+	[(#SET_MERGE{candid,#GET{candid_prop},#GET{candid_publiees}})]
+
+[(#REM) vérification que c'est bien le profil du visiteur que l'on veut afficher ]
+
+<BOUCLE_autorisation(CONDITION){si #SESSION{id_auteur}|=={#ENV{id_auteur}}}>
+	<h2>Vos candidatures</h2>
+
+	[(#GET{total_candid}|singulier_ou_pluriel{stages:candidature,stages:candidatures,nb})]
+
+	<B_stages>
+	<ol>
+		<BOUCLE_stages(STAGES){id_formulaires_reponse IN #GET{candid}}>
+			#SET{reg,#REGIONS|unserialize} #SET{comp,#COMPETENCES|unserialize} #SET{rech,#RECHERCHES|unserialize}
+		<li>
+			<p>[Du (#DATE_DEBUT|affdate{d/m/Y})][ au (#DATE_FIN|affdate{d/m/Y})]</p>
+			<B_regions>
+				<p><BOUCLE_regions(POUR){tableau #GET{reg}}>
+					[[(#COMPTEUR_BOUCLE|=={1}|non) / ](#GET{selection}|table_valeur{#VALEUR})]</BOUCLE_regions>
+				</p>
+			</B_regions>
+
+			<B_recherches>
+				<p><BOUCLE_recherches(POUR){tableau #GET{rech}}>
+					[[(#COMPTEUR_BOUCLE|=={1}|non) / ](#GET{checkbox}|table_valeur{#VALEUR})]</BOUCLE_recherches>
+				</p>
+			</B_recherches>
+		</li>
+		</BOUCLE_stages>
+	</ol>
+	</B_stages>
+</BOUCLE_autorisation>
+
+
+

@@ -1,0 +1,10 @@
+<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+
+[(#SESSION{id_auteur}|=={#ID_AUTEUR}|?{
+	[(#FORMULAIRE_EDITER_AUTEUR{#ID_AUTEUR, [(#SELF|parametre_url{id_auteur, #ID_AUTEUR})]})]
+	,
+	<p><:stages:pas_autorise:>
+})]
+
+
+</BOUCLE_auteur>

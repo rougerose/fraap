@@ -23,6 +23,11 @@
 		margin-right: 10px;
 		width: 700px; }
 
+	.page_profil #contenu {
+		display: inline; float: left;
+		margin: 0 10px; padding-left: 240px;
+		width: 460px; }
+
 
 	/* entete */
 	#entete { margin-top: 4em; }
@@ -38,6 +43,12 @@
 		display: inline; float: left;
 		margin-left: 10px; width: 220px; }
 
+	.page_profil #navigation {
+		display: inline; float: left;
+		margin-left: 10px;
+		width: 220px; }
+
+	/* pied de page */
 
 
 /* menus */
