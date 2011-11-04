@@ -1,13 +1,13 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
-[(#INCLURE{fond=inclure/rubrique-stages-intro,env})]
+
 
 [(#REM) test pour déterminer si le visiteur est déjà connecté ou pas ]
 [(#SESSION{id_auteur}|oui)
-	[(#INCLURE{fond=inclure/rubrique-stages-connectes,env})]
+	<INCLURE{fond=inclure/rubrique-stages-connectes,env}>
 ]
 
 [(#SESSION{id_auteur}|non)
-
+	<INCLURE{fond=inclure/rubrique-stages-intro,env}>
 ]
 
 </BOUCLE_contenu_rubrique>

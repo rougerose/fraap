@@ -96,6 +96,9 @@
 [(#GET{reponses_date_fin}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
 
+[(#REM) zone relative à la session ouverte par l'utilisateur ]
+<INCLURE{fond=inclure/session-info,env}>
+
 <B_stages>
 <table id="stages-table">
 	<thead>

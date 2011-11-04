@@ -88,6 +88,7 @@ function formulaires_inscription_stages_verifier_dist($mode, $focus, $id=0) {
 					// deja inscrit
 					$erreurs['message_erreur'] = _T('form_forum_email_deja_enregistre');
 				spip_log($row['id_auteur'] . " veut se resinscrire");
+
 			}
 		}
 	}

@@ -1,22 +1,3 @@
 
-<BOUCLE_form(FORMULAIRES){identifiant=stage}>
-<BOUCLE_rep(FORMULAIRES_REPONSES){id_formulaire}>
-<dl>
-	<dt>#ID_AUTEUR</dt>
-
-<BOUCLE_chps(FORMULAIRES_REPONSES_CHAMPS){id_formulaires_reponse}>
-#SET{test_array,#VALEUR|unserialize}
-#SET{tableau,#GET{test_array}|is_array|?{#GET{test_array},#VALEUR}}
-[<dd>(#GET{tableau}|is_array|non)#GET{tableau}</dd>]
-<BOUCLE_tab(POUR){tableau #GET{tableau}}>
-<dd>#CLE/#VALEUR</dd>
-</BOUCLE_tab>
-
-</BOUCLE_chps>
-</dl>
-
-</BOUCLE_rep>
-</BOUCLE_form>
-
 
 

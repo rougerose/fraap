@@ -1,0 +1,8 @@
+
+
+
+[(#REM) le visiteur est-il un étudiant (activite=2) ? Alors on affiche le bouton de dépôt d'une candidature ]
+[(#SESSION{activite}|=={2}|oui)
+	<p><a href="#URL_ARTICLE{492}" class="bouton medium" onclick="jQuery.modalbox('[(#URL_ARTICLE{492}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" >Déposez votre candidature &#x2192;</a></p>
+
+]
