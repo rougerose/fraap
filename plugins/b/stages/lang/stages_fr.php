@@ -24,6 +24,7 @@ la FRAAP.",
 
 	// I
 	'info_votre_selection' => 'Votre s&eacute;lection',
+	'info_consultation_profil' => 'Consulter votre profil',
 
 	// L
 	'label_activite' => "Votre activit&eacute;",

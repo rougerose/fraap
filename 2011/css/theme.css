@@ -178,9 +178,14 @@ table#stages-table { width: 100%; border-bottom: 1px solid #000; }
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
 
 	/* tailles */
-	.small.bouton { font-size: 11px; }
+	.xsmall.bouton { font-size: 10px; padding: 5px 5px 4px; }
+	.small.bouton { font-size: 11px; padding: 6px 5px 5px; }
 	.medium.bouton { font-size: 13px; }
 	.large.bouton { font-size: 14px; padding: 8px 14px 9px; }
+
+	/* couleurs (les couleurs dynamiques en fonction des rubriques sont définies dans couleurs.css) */
+	.bouton.noir { background-color: #333 !important; }
+	.bouton:hover.noir { background-color: #000 !important; }
 
 	/* actions */
 	.bouton:hover { text-decoration: none; background-color: #111; color: #fff; }

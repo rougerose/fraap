@@ -30,12 +30,12 @@
 
 
 	/* entete */
-	#entete { margin-top: 4em; }
+	#entete { margin-top: 5em; }
 	#logo { position: relative; }
 		#logo h1, #logo p { margin: 9px 0; }
 		#baseline {
 			font-size: 24px;
-			position: absolute; top: -2em;
+			position: absolute; top: -2.25em;
 			width: 960px; }
 
 	/* #navigation */
@@ -49,6 +49,7 @@
 		width: 220px; }
 
 	/* pied de page */
+	#pied { margin: 0 10px; }
 
 
 /* menus */
@@ -125,11 +126,22 @@
 			#raccourcis ul li:last-child { margin-right: 0; }
 			#raccourcis ul li.on { margin-top: 0; border-color: #5a005a; border-top-width: 8px; }
 			#raccourcis ul li.marge { margin-top: 4px; }
-			#raccourcis ul li.recherche {
-				position: relative; }
+			#raccourcis ul li.recherche { position: relative; }
 				#raccourcis ul li.on a { color: #5a005a; }
 				#raccourcis ul li a { display: block; }
 
+	/* identification */
+	#identification { margin: 0 0 1em; }
+		#identification ul {
+			list-style-type: none;
+			margin: 0;
+			position: relative; left: 480px;
+			width: 220px; }
+			#identification li { margin: 0; }
+				#identification p {
+					text-align: right;
+					margin: 0 0 .25em; }
+				#identification p.bienvenue { font-size: 14px; }
 
 /* article */
 

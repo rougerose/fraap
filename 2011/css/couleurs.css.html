@@ -66,9 +66,12 @@
 	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
 	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
-	#stages-aiguillage li, #stages-aiguillage li p.xbouton { border-color: ##GET{couleur}; }
+	#stages-aiguillage li,
+	.couleurID#ID_RUBRIQUE #identification { border-color: ##GET{couleur}; }
+
 	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
-	.page_rubrique .couleurID#ID_RUBRIQUE h1 { color: ##GET{couleur}; }
+	.page_rubrique .couleurID#ID_RUBRIQUE h1,
+	.couleurID#ID_RUBRIQUE #identification p.bienvenue { color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE a.bouton { background-color: ##GET{couleur} }
 	.couleurID#ID_RUBRIQUE a.bouton:hover { background-color: ##GET{couleur_lum07}; }
@@ -87,13 +90,14 @@
 
 	/* /Liste de diffusion /#eb02b3 */
 	#raccourcis ul li.couleurListe.on, #raccourcis ul li.couleurListe:hover { border-color: #eb02b3; }
-	#raccourcis ul li.couleurListe.on a, #raccourcis ul li.couleurListe a:hover { color: #EB02B3; }
+	#raccourcis ul li.couleurListe.on a, #raccourcis ul li.couleurListe a:hover { color: #eb02b3; }
 
 
 [(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
 	/* /Page Contact /##GET{couleurQuiSommesNous} */
 	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover { border-color: ##GET{couleurQuiSommesNous}; }
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover { color: ##GET{couleurQuiSommesNous}; }
+
 
 
 
