@@ -6,7 +6,7 @@
 <p>[(#GET{time}|moins{14400}|>{#SESSION{time}}|oui)[(#SESSION|supprimer_sessions{#SESSION{id_auteur}})]]</p>
 
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
-	[(#FORMULAIRE_EDITER_AUTEUR{#ID_AUTEUR, [(#SELF|parametre_url{id_auteur, #ID_AUTEUR})]})]
+	[(#FORMULAIRE_EDITER_AUTEUR_LIGHT{#ID_AUTEUR, [(#SELF|parametre_url{id_auteur, #ID_AUTEUR})]})]
 ]
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|non)
 	<p><:stages:pas_autorise:></p>
