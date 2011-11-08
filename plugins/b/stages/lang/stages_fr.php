@@ -23,6 +23,9 @@ la FRAAP.",
 	'form_vos_id' => "Vos identifiants sont :",
 
 	// I
+	'identifiants_connexion' => 'Vos identifiants de connexion',
+	'info_confirmer_passe' => 'Confirmez ce mot de passe',
+	'info_modifier_profil' => 'Modifier votre profil',
 	'info_votre_selection' => 'Votre s&eacute;lection',
 	'info_consultation_profil' => 'Consulter votre profil',
 

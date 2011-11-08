@@ -40,6 +40,7 @@
 [(#REM) vérification que c'est bien le profil du visiteur que l'on veut afficher ]
 
 <BOUCLE_autorisation(CONDITION){si #SESSION{id_auteur}|=={#ENV{id_auteur}}}>
+<div id="extra">
 	<h2>Vos candidatures</h2>
 
 	[(#GET{total_candid}|singulier_ou_pluriel{stages:candidature,stages:candidatures,nb})]
@@ -65,6 +66,7 @@
 		</BOUCLE_stages>
 	</ol>
 	</B_stages>
+</div><!-- #extra -->
 </BOUCLE_autorisation>
 
 
