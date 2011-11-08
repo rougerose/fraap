@@ -43,7 +43,7 @@
 <div id="extra">
 	<h2>Vos candidatures</h2>
 
-	[(#GET{total_candid}|singulier_ou_pluriel{stages:candidature,stages:candidatures,nb})]
+	[<p>(#GET{total_candid}|singulier_ou_pluriel{stages:candidature,stages:candidatures,nb})</p>]
 
 	<B_stages>
 	<ol>

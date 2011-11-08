@@ -50,6 +50,7 @@
 
 	/* pied de page */
 	#pied { margin: 0 10px; }
+		#pied h2 { border-bottom: 1px solid #000; border: xnone; }
 
 
 /* menus */

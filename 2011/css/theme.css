@@ -142,7 +142,9 @@
 		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
 
 		/* extra */
-
+		.page_profil #extra ol { margin-left: 1.5em; }
+		.page_profil #extra li { margin-left: 0; margin-bottom: 1em;  }
+			.page_profil #extra li p { margin: 0; }
 
 
 

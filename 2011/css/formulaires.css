@@ -48,16 +48,16 @@
 		   -moz-border-radius: 2px;
 		        border-radius: 2px; }
 	.formulaire_spip select {  }
-	.formulaire_spip input[disabled] { color: #eee; background-image: none; }
+	.formulaire_spip input[disabled] { color: #ccc; background-image: none; }
 
 	/* focus */
 	.formulaire_spip input.text:focus, .formulaire_spip input.password:focus, .formulaire_spip textarea:focus {
-		border: 1px solid #2DAEBF; }
+		border: 1px solid #2daebf; }
 
 	/* Boutons */
 	.formulaire_spip .boutons { clear: both; margin: 0 0 1em 0; padding: 0; text-align: right; }
 	.formulaire_spip .boutons input { margin-left: 1em; }
-	.formulaire_spip .boutons input, input.submit {}
+	.formulaire_spip .boutons input, input.submit {  }
 
 	/* Reponses, previsu et erreurs */
 
