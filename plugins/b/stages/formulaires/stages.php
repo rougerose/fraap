@@ -18,7 +18,7 @@ function formulaires_stages_charger_dist($id_formulaires_reponse='new', $retour=
 }
 
 function formulaires_stages_verifier_dist($id_formulaires_reponse='new', $retour=''){
-        $erreurs = formulaires_editer_objet_verifier('stage', $id_formulaires_reponse, array('date_debut','date_fin','regions','ville'));
+        $erreurs = formulaires_editer_objet_verifier('stage', $id_formulaires_reponse, array());
         return $erreurs;
 }
 

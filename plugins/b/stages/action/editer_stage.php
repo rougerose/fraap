@@ -12,7 +12,7 @@ function action_editer_stage_dist() {
 			include_spip('inc/headers');
 		//	redirige_url_ecrire();
 		}
-		$id_formulaires_reponse = insert_chat();
+		$id_formulaires_reponse = insert_stage();
 	}
 	if ($id_formulaires_reponse) $err = revisions_stages($id_formulaires_reponse);
 	return array($id_formulaires_reponse,$err);
@@ -38,7 +38,9 @@ function revisions_stages($id_formulaires_reponse, $c=false) {
 	// recuperer les champs dans POST s'ils ne sont pas transmis
 	if ($c === false) {
 		$c = array();
-		foreach (array('nom', 'race', 'robe', 'annee_naissance', 'infos') as $champ) {
+		foreach (array(
+			'regions','ville','date_debut','date_fin','ecole','ville_ecole','diplome','niveau','competences','recherches'
+		) as $champ) {
 			if (($a = _request($champ)) !== null) {
 				$c[$champ] = $a;
 			}
@@ -46,9 +48,9 @@ function revisions_stages($id_formulaires_reponse, $c=false) {
 	}
 
 	include_spip('inc/modifier');
-	modifier_contenu('chat', $id_chat, array(
+	modifier_contenu('stage', $id_formulaires_reponse, array(
 			'nonvide' => array('nom' => _T('info_sans_titre')),
-			'invalideur' => "id='id_chat/$id_chat'"
+			'invalideur' => "id='id_formulaires_reponse/$id_formulaires_reponse'"
 		),
 		$c);
 }
