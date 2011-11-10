@@ -18,7 +18,8 @@
 		margin-top: 3em;
 		padding-left: 240px; }
 	.page_rubrique #contenu, .page_article #contenu, .page_login #contenu,
-	.page_inscription #contenu {
+	.page_inscription #contenu,
+	.page_candidature #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }

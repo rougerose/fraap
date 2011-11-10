@@ -1,0 +1,9 @@
+<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+
+[(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
+	#FORMULAIRE_STAGES{#ENV{id_formulaires_reponse,oui}}
+]
+[(#SESSION{id_auteur}|=={#ID_AUTEUR}|non)
+	<p><:stages:pas_autorise:></p>
+]
+</BOUCLE_auteur>
