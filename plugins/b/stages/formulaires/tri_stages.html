@@ -32,29 +32,29 @@
 			<div id="ac2">
 				<ul>
 					[(#SAISIE{selection_multiple,regions,
-						label=<:stages:label_regions:>,
+						label=<:stages:label_regions_consultation:>,
 						cacher_option_intro=oui,
 						size=4,
-						datas=#GET{selection}
+						datas=#GET{r}
 					})]
-					[(#SAISIE{input, ville, label=<:stages:ville:>, class=text})]
+					[(#SAISIE{input, ville, label=<:stages:label_ville_consultation:>, class=text})]
 				</ul>
 			</div>
-			<h3><a href="#ac3"><:stages:competences:></a></h3>
+			<h3><a href="#ac3"><:stages:label_competences_consultation:></a></h3>
 			<div id="ac3">
 				<ul>
 					[(#SAISIE{checkbox,competences,
-						label=<:stages:label_competences:>,
-						datas=#GET{checkbox}
+						label=<:stages:label_competences_menu_recherche:>,
+						datas=#GET{c}
 					})]
 				</ul>
 			</div>
-			<h3><a href="#ac3"><:stages:recherches:></a></h3>
+			<h3><a href="#ac3"><:stages:label_recherches_consultation:></a></h3>
 			<div id="ac3">
 				<ul>
 					[(#SAISIE{checkbox,recherches,
-						label=<:stages:label_recherches:>,
-						datas=#GET{checkbox}
+						label=<:stages:label_recherches_inscription:>,
+						datas=#GET{c}
 					})]
 				</ul>
 			</div>
