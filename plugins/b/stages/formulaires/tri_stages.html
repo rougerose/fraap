@@ -1,18 +1,14 @@
-#SET{selection,#ARRAY} #SET{checkbox,#ARRAY} #SET{saisies,#ARRAY}
+[(#REM)
+	tableau pour stocker les données du formulaires
+		- r = les régions,
+		- c = les compétences et les domaines recherchés (les données sont les mêmes)
+]
+#SET{r,#ARRAY} #SET{c,#ARRAY} #SET{saisies,#ARRAY}
 
-<BOUCLE_form(FORMULAIRES){identifiant=stages}>
-<BOUCLE_champs(POUR){tableau #SAISIES*|unserialize|saisies_lister_par_nom{0}}>
-[(#SET{saisies, [(#VALEUR|table_valeur{options}|table_valeur{datas})]})]
-[(#REM) tableau avec les valeurs de selection : régions]
-[(#CLE|match{^selection}|oui)
-#SET{selection,#GET{saisies}}
-]
-[(#REM) tableau avec les valeurs des checkbox : compétences et domaines du stage ]
-[(#CLE|match{checkbox_1}|oui)
-#SET{checkbox,#GET{saisies}}
-]
-</BOUCLE_champs>
-</BOUCLE_form>
+<BOUCLE_yaml(DATA){source yaml, #CHEMIN{formulaires/stages.yaml}}>
+	[(#CLE|=={regions}|oui)[(#SET{r, #VALEUR})]]
+	[(#CLE|=={competences}|oui)[(#SET{c,#VALEUR})]]
+</BOUCLE_yaml>
 
 
 [(#INCLURE{fond=formulaires/dateur/inc-dateur})]
@@ -25,14 +21,14 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 		[(#ENV{editable}|oui)
 		<div id="accordeon">
-			<h3><a href="#ac1"><:stages:disponibilite:></a></h3>
+			<h3><a href="#ac1"><:stages:label_dispo_consultation:></a></h3>
 			<div id="ac1">
 				<ul>
 					[(#SAISIE{input, date_debut, label=<:stages:label_date_debut:>, class=date})]
 					[(#SAISIE{input, date_fin, label=<:stages:label_date_fin:>, class=date})]
 				</ul>
 			</div>
-			<h3><a href="#ac2"><:stages:zone_geographique:></a></h3>
+			<h3><a href="#ac2"><:stages:label_localisation_geo_consultation:></a></h3>
 			<div id="ac2">
 				<ul>
 					[(#SAISIE{selection_multiple,regions,

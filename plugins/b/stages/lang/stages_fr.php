@@ -12,7 +12,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'competences' => 'Comp&eacute;tences',
 
 	// D
-	'disponibilite' => 'Disponibilit&eacute;',
 
 	// F
 	'form_forum_bonjour' => 'Bonjour @prenom@ @nom@,',
@@ -27,6 +26,7 @@ la FRAAP.",
 	'info_confirmer_passe' => 'Confirmez ce mot de passe',
 	'info_modifier_profil' => 'Modifier votre profil',
 	'info_modifier_stage' => 'Modifier votre candidature de stage',
+	'info_pas_de_resultat_stages' => 'Aucune offre de stage ne répond à vos critères',
 	'info_votre_profil' => 'Votre profil',
 	'info_votre_selection' => 'Votre s&eacute;lection',
 	'info_consultation_profil' => 'Consulter votre profil',
@@ -35,23 +35,31 @@ la FRAAP.",
 	'label_activite' => "Votre activit&eacute;",
 	'label_activites_inscription' => 'Vos domaines d&#x27;activité',
 	'label_cadre_stage' => 'Cadre du stage conventionné',
-	'label_competences' => 'Compétences',
+	'label_competences_consultation' => 'Compétences',
 	'label_competences_inscription' => 'Vos compétences (plusieurs choix possibles)',
+	'label_competences_recherches_consultation' => 'Compétences et Recherches',
 	'label_conditions_inscription_stage' => "J'ai lu et j'accepte <a href='@url_conditions@'>les conditions d'utilisation</a>.",
 	'label_date_debut' => 'Du',
 	'label_date_fin' => 'Au',
 	'label_diplome' => 'Diplôme préparé',
+	'label_diplome_abrev' => 'Diplôme',
 	'label_diplome_niveau' => 'Niveau du diplôme',
+	'label_diplome_niveau_abrev' => 'Niveau',
 	'label_dispo_inscription' => 'Vos disponibilités',
+	'label_dispo_consultation' => "Disponibilités",
 	'label_ecole' => 'Université/École',
-	'label_localisation_geo' => 'Votre localisation géographique',
+	'label_formation_consultation' => 'Formation',
+	'label_localisation_geo_inscription' => 'Votre localisation géographique',
+	'label_localisation_geo_consultation' => 'Localisation géographique',
+	'label_localisation_geo_consultation_abrev' => 'Localisation',
 	'label_pass' => "Votre mot de passe",
 	'label_pass2'=> "Confirmez votre mot de passe",
-	'label_recherches' => 'Recherches',
+	'label_recherches_consultation' => 'Recherches',
 	'label_recherches_inscription' => 'Les domaines que vous recherchez (plusieurs choix possibles)',
 	'label_regions_consultation' => 'Régions (plusieurs choix possibles)',
+	'label_regions_consultation_abrev' => 'Régions',
 	'label_regions_inscription' => 'Région(s) où vous souhaitez réaliser votre stage (plusieurs choix possibles)',
-	'label_ville_ecole' => 'Ville',
+	'label_ville_consultation' => 'Ville',
 	'label_ville_inscription' => 'Précisez éventuellement la ou les villes',
 	'legende_identifiants' => "Vos identifiants",
 	'legende_identite' => "Votre identit&eacute;",
@@ -75,11 +83,10 @@ la FRAAP.",
 	// T
 	'type_defaut'=>"quelle est votre activit&eacute; ?",
 	'type_1'=>"Artiste",
-	'type_2'=>"&Eacute;tudiant-e",
+	'type_2'=>"&Eacute;tudiant-e"
 
 	// V
-	'ville' => 'Ville',
 
 	// Z
-	'zone_geographique' => 'Zone g&eacute;ographique'
+
 );
