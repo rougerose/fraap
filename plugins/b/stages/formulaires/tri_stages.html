@@ -21,14 +21,14 @@
 		#ACTION_FORMULAIRE{#ENV{action}}
 		[(#ENV{editable}|oui)
 		<div id="accordeon">
-			<h3><a href="#ac1"><:stages:label_dispo_consultation:></a></h3>
+			<h3><a href="#"><:stages:label_dispo_consultation:></a></h3>
 			<div id="ac1">
 				<ul>
 					[(#SAISIE{input, date_debut, label=<:stages:label_date_debut:>, class=date})]
 					[(#SAISIE{input, date_fin, label=<:stages:label_date_fin:>, class=date})]
 				</ul>
 			</div>
-			<h3><a href="#ac2"><:stages:label_localisation_geo_consultation:></a></h3>
+			<h3><a href="#"><:stages:label_localisation_geo_consultation:></a></h3>
 			<div id="ac2">
 				<ul>
 					[(#SAISIE{selection_multiple,regions,
@@ -40,7 +40,7 @@
 					[(#SAISIE{input, ville, label=<:stages:label_ville_consultation:>, class=text})]
 				</ul>
 			</div>
-			<h3><a href="#ac3"><:stages:label_competences_consultation:></a></h3>
+			<h3><a href="#"><:stages:label_competences_consultation:></a></h3>
 			<div id="ac3">
 				<ul>
 					[(#SAISIE{checkbox,competences,
@@ -49,7 +49,7 @@
 					})]
 				</ul>
 			</div>
-			<h3><a href="#ac3"><:stages:label_recherches_consultation:></a></h3>
+			<h3><a href="#"><:stages:label_recherches_consultation:></a></h3>
 			<div id="ac3">
 				<ul>
 					[(#SAISIE{checkbox,recherches,
