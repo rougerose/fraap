@@ -14,9 +14,9 @@ function formulaires_tri_stages_charger_dist(){
 
 function formulaires_tri_stages_verifier_dist(){
 	$erreurs = array();
-	if ($date_debut = _request('date_debut'))
+/*	if ($date_debut = !_request('date_debut'))
 		$erreurs['message_erreur'] = 'Aucune saisie';
-	return $erreurs;
+*/	return $erreurs;
 }
 
 function formulaires_tri_stages_traiter_dist (){

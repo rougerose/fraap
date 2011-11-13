@@ -23,9 +23,9 @@
 ]
 </BOUCLE_champs>
 
-[(#REM) les réponses sont stockées dans trois tableaux ]
+[(#REM) les réponses sont stockées dans 4 tableaux temporaires + 1 tableau réponses en dernière étape ]
 
-#SET{reponses,#ARRAY} #SET{reponses_reg,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date_debut,#ARRAY} #SET{reponses_date_fin,#ARRAY}
+#SET{reponses,#ARRAY} #SET{reponses_reg,#ARRAY} #SET{reponses_comp,#ARRAY} #SET{reponses_rech,#ARRAY} #SET{reponses_date,#ARRAY}
 
 <BOUCLE_reponses(FORMULAIRES_REPONSES){id_formulaire}>
 	<BOUCLE_reponses_stages(STAGES){id_formulaires_reponse}>
@@ -59,23 +59,50 @@
 				</BOUCLE_test_recherches>
 			</BOUCLE_t_recherches>
 
-			[(#ENV{date_debut}|oui)
-				[(#DATE_DEBUT|>={#ENV{date_debut}}|oui)
-					[(#SET{reponses_date_debut,#GET{reponses_date_debut}|push{#ID_FORMULAIRES_REPONSE}})]
-				]
-			]
 
-			[(#ENV{date_fin}|oui)
-				[(#DATE_FIN|<={#ENV{date_fin}}|oui)
-					[(#SET{reponses_date_fin,#GET{reponses_date_fin}|push{#ID_FORMULAIRES_REPONSE}})]
+			[(#ENV{date_debut}|oui|et{#ENV{date_fin}|oui})
+				[(#REM) date_debut n'est pas au format AAA-MM-JJ, recup_date permet de la transformer en tableau ]
+				#SET{dd,#ENV{date_debut}|recup_date}
+
+				[(#REM) on la met maintenant au format attendu ]
+				#SET{dd,#GET{dd}|table_valeur{0}|concat{'-',#GET{dd}|table_valeur{1},'-',#GET{dd}|table_valeur{2}}}
+
+				[(#REM) date_fin n'est pas au format AAA-MM-JJ, recup_date permet de la transformer en tableau ]
+				#SET{df,#ENV{date_fin}|recup_date}
+
+				[(#REM) on la met maintenant au format attendu ]
+				#SET{df,#GET{df}|table_valeur{0}|concat{'-',#GET{df}|table_valeur{1},'-',#GET{df}|table_valeur{2}}}
+
+				[(#REM) comparaisons des dates des candidatures et des dates du formulaire de tri ]
+				[(#DATE_DEBUT|>={#GET{dd}}|et{#DATE_FIN|<={#GET{df}}}|oui)
+					[(#SET{reponses_date,#GET{reponses_date}|push{#ID_FORMULAIRES_REPONSE}})]
+					[<p>test1: (#GET{reponses_date}|print)</p>]
+				]
+
+				[(#DATE_DEBUT|<{#GET{dd}}|et{#DATE_FIN|>{#GET{dd}}}|oui)
+					[(#SET{reponses_date,#GET{reponses_date}|push{#ID_FORMULAIRES_REPONSE}})]
+					[<p>test2: (#GET{reponses_date}|print)</p>]
+
+				]
+
+				[(#DATE_DEBUT|>{#GET{dd}}|et{#DATE_DEBUT|<{#GET{df}}}|et{#DATE_FIN|>{#GET{df}}}|oui)
+					[(#SET{reponses_date,#GET{reponses_date}|push{#ID_FORMULAIRES_REPONSE}})]
+					[<p>test3: (#GET{reponses_date}|print)</p>]
 				]
 			]
 		</BOUCLE_condition>
 
-		[(#REM) aucun paramètre dans l'url ]
-		<BOUCLE_condition2(CONDITION)
-			{si #ENV{regions}|is_null|et{#ENV{competences}|is_null}|et{#ENV{recherches}|is_null}|
-			et{#ENV{date_debut}|is_null}|et{#ENV{date_fin}|is_null}}>
+		[(#REM) aucun paramètre dans l'url ou bien les paramètres sont vides si le formulaire a été renvoyé sans rien ]
+		<BOUCLE_condition2(CONDITION){si
+			#ENV{date_debut}|is_null|ou{#ENV{date_debut}|=={''}}|et{
+				#ENV{date_fin}|is_null|ou{#ENV{date_fin}|=={''}}}|et{
+					#ENV{regions}|is_null|ou{#ENV{regions}|=={''}}|et{
+						#ENV{competences}|is_null|ou{#ENV{competences}|=={''}}|et{
+							#ENV{recherches}|is_null|ou{#ENV{recherches}|=={''}}}
+					}
+				}
+			}
+		>
 				[(#REM) par défaut on affiche que les offres en cours ]
 				[(#ENV{date}|affdate{Y-m-d}|<={#DATE_FIN}|oui)
 					[(#SET{reponses,#GET{reponses}|push{#ID_FORMULAIRES_REPONSE}})]
@@ -84,6 +111,7 @@
 
 	</BOUCLE_reponses_stages>
 </BOUCLE_reponses>
+
 [(#REM) calcul des éléments communs dans chaque tableau ]
 [(#GET{reponses_reg}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_reg}}})]]
@@ -91,10 +119,8 @@
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_comp}}})]]
 [(#GET{reponses_rech}|oui)
 	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_rech}}})]]
-[(#GET{reponses_date_debut}|oui)
-	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_debut}}})]]
-[(#GET{reponses_date_fin}|oui)
-	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date_fin}}})]]
+[(#GET{reponses_date}|oui)
+	[(#SET{reponses,#GET{reponses}|array_intersect{#GET{reponses_date}}})]]
 
 [(#REM) zone relative à la session ouverte par l'utilisateur ]
 <INCLURE{fond=inclure/session-info,env}>
@@ -103,25 +129,35 @@
 <table id="stages-table">
 	<thead>
 		<tr>
+			<th></th>
+			<th>Candidat(e)</th>
 			<th colspan="2"><:stages:label_dispo_consultation:></th>
 			<th colspan="2"><:stages:label_localisation_geo_consultation_abrev:></th>
 			<th colspan="4"><:stages:label_formation_consultation:></th>
 			<th colspan="2"><:stages:label_competences_recherches_consultation:></th>
 		</tr>
 		<tr>
+			<th></th><th>Prénom Nom</th>
 			<th><:stages:label_date_debut:></th><th><:stages:label_date_fin:></th>
 			<th><:stages:label_regions_consultation_abrev:></th><th><:stages:label_ville_consultation:></th>
-			<th><:stages:label_ecole:></th><th><:stages:label_ville_consultation:></th><th><:stages:label_diplome_abrev:></th><th><:stages:label_diplome_niveau_abrev:></th>
+			<th><:stages:label_ecole:></th><th><:stages:label_ville_consultation:></th><th><:stages:label_diplome:></th><th><:stages:label_diplome_niveau:></th>
 			<th><:stages:label_competences_consultation:></th>
 			<th><:stages:label_recherches_consultation:></th>
 		</tr>
 	</thead>
 	<tbody>
 		<BOUCLE_stages(STAGES){id_formulaires_reponse IN #GET{reponses}}>
+
+		[(#REM) prenom et initiale nom du candidat ]
+		<BOUCLE_auteur_form(FORMULAIRES_REPONSES auteurs){id_formulaires_reponse}>
+		#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]</BOUCLE_auteur_form>
+
 		#SET{reg,#REGIONS|unserialize}
 		#SET{comp,#COMPETENCES|unserialize}
 		#SET{rech,#RECHERCHES|unserialize}
-		<tr id="stage#ID_FORMULAIRES_REPONSE"[ class="(#COMPTEUR_BOUCLE|alterner{'impair','pair'})"]>
+		<tr id="stage#ID_FORMULAIRES_REPONSE" class="[(#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
+			<td rowspan="2"><a href="#">b</a></td>
+			<td>#GET{auteur_prenom}</td>
 			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 			<td>
@@ -144,6 +180,9 @@
 				[<p[(#ENV{recherches}|find{#VALEUR}|oui) class="on"]>(#GET{checkbox}|table_valeur{#VALEUR})</p>]
 				</BOUCLE_re>
 			</td>
+		</tr>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
+			<td colspan="11">#GET{auteur_nom}</td>
 		</tr>
 		</BOUCLE_stages>
 	</tbody>

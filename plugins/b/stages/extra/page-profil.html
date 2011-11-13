@@ -34,7 +34,7 @@
 [(#REM) le total des candidatures de l'auteur ]
 	[(#SET{total_candid,[(#GET{total_prop}|plus{#GET{total_publiees}})]})]
 
-[(#REM) les deux tableaux n'en font plus qu'un]
+[(#REM) un seul tableau ]
 	[(#SET_MERGE{candid,#GET{candid_prop},#GET{candid_publiees}})]
 
 [(#REM) vérification que c'est bien le profil du visiteur que l'on veut afficher ]

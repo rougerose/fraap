@@ -24,6 +24,11 @@
 		margin-right: 10px;
 		width: 700px; }
 
+	.rubrique_stages #contenu {
+		float: left;
+		margin-left: 10px; margin-right: 10px;
+		width: 940px; }
+
 	.page_profil #contenu {
 		display: inline; float: left;
 		margin: 0 10px; padding-left: 240px;
@@ -51,7 +56,7 @@
 
 	/* pied de page */
 	#pied { margin: 0 10px; }
-		#pied h2 { border-bottom: 1px solid #000; border: xnone; }
+		#pied h2 { border-bottom: 1px solid #000; }
 
 
 /* menus */
@@ -132,18 +137,18 @@
 				#raccourcis ul li.on a { color: #5a005a; }
 				#raccourcis ul li a { display: block; }
 
-	/* identification */
-	#identification { margin: 0 0 1em; }
-		#identification ul {
+	/* stages-identification */
+	#stages-identification { margin: 0 0 1em; }
+		#stages-identification ul {
 			list-style-type: none;
 			margin: 0;
-			position: relative; left: 480px;
+			position: relative; left: 720px;
 			width: 220px; }
-			#identification li { margin: 0; }
-				#identification p {
+			#stages-identification li { margin: 0; }
+				#stages-identification p {
 					text-align: right;
 					margin: 0 0 .25em; }
-				#identification p.bienvenue { font-size: 14px; }
+				#stages-identification p.bienvenue { font-size: 14px; }
 
 /* article */
 

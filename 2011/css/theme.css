@@ -141,10 +141,18 @@
 	/* page profil */
 		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
 
-		/* extra */
+		/* page profil > #extra */
 		.page_profil #extra ol { margin-left: 1.5em; }
 		.page_profil #extra li { margin-left: 0; margin-bottom: 1em;  }
 			.page_profil #extra li p { margin: 0; }
+
+	/* consultation stages */
+	#contenu #stages-identification { margin-top: 1.5em; }
+		/* consultation stages > #navigation */
+		.navigation-tri-stages h2 {
+			border-bottom: 2px solid #000;
+			font-size: 1.5em; line-height: 1em;
+			margin: 0 0 1em; }
 
 
 
@@ -157,8 +165,11 @@ table#stages-table { width: 100%; border-bottom: 1px solid #000; }
 		font-weight: bold;
 		border-top: 2px solid #000; border-bottom-color: #fff; }
 		#stages-table tr:first-child th:first-child { border-left: 1px solid red; }
-	#stages-table th, #stages-table td { padding: 2px 4px 1px; }
-	#stages-table td { font-size: 12px; }
+	#stages-table th, #stages-table td {
+		padding: 4px 6px 2px;
+		font-size: 12px;
+		xfont-family: "Lucida Grande", sans-serif; }
+	#stages-table td {  }
 		#stages-table p { margin: 0; }
 
 
