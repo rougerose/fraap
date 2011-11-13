@@ -131,4 +131,84 @@
 			font-size: 12px; line-height: 18px;
 			margin: 0; }
 
+/* stages */
 
+	/* page de présentation/login/inscription */
+	#stages-aiguillage {  }
+		#stages-aiguillage li { text-align: center; }
+			#stages-aiguillage li h3 { text-align: left; }
+
+	/* page profil */
+		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
+
+		/* page profil > #extra */
+		.page_profil #extra ol { margin-left: 1.5em; }
+		.page_profil #extra li { margin-left: 0; margin-bottom: 1em;  }
+			.page_profil #extra li p { margin: 0; }
+
+	/* consultation stages */
+	#contenu #stages-identification { margin-top: 1.5em; }
+		/* consultation stages > #navigation */
+		.navigation-tri-stages h2 {
+			border-bottom: 2px solid #000;
+			font-size: 1.5em; line-height: 1em;
+			margin: 0 0 1em; }
+
+
+
+
+table#stages-table { width: 100%; border-bottom: 1px solid #000; }
+	#stages-table th {
+		color: #fff;
+		border: 1px solid #fff; }
+	#stages-table tr:first-child th {
+		font-weight: bold;
+		border-top: 2px solid #000; border-bottom-color: #fff; }
+		#stages-table tr:first-child th:first-child { border-left: 1px solid red; }
+	#stages-table th, #stages-table td {
+		padding: 4px 6px 2px;
+		font-size: 12px;
+		xfont-family: "Lucida Grande", sans-serif; }
+	#stages-table td {  }
+		#stages-table p { margin: 0; }
+
+
+/* bouton */
+
+	/* http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba */
+
+	.bouton,a:visited.bouton {
+		font-weight: bold;
+		line-height: 1;
+		text-transform: uppercase; text-decoration: none;
+		color: #fff; background: #222 url('../images/alert-overlay.png') repeat-x;
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		padding: 7px 10px 8px;
+		border-bottom: 1px solid rgba(0,0,0,0.25);
+		-webkit-border-radius: 5px;
+		   -moz-border-radius: 5px;
+		        border-radius: 5px;
+
+		-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		     -o-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		        box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
+
+	input.bouton { border: 0; }
+
+	/* tailles */
+	.xsmall.bouton { font-size: 10px; padding: 5px 5px 4px; }
+	.small.bouton { font-size: 11px; padding: 6px 5px 5px; }
+	.medium.bouton { font-size: 12px; padding: 6px 5px 5px; }
+	.large.bouton { font-size: 14px; padding: 8px 14px 9px; }
+
+	/* couleurs (les couleurs dynamiques en fonction des rubriques sont définies dans couleurs.css) */
+	.bouton.noir { background-color: #333 !important; }
+	.bouton:hover.noir { background-color: #000 !important; }
+
+	/* actions */
+	.bouton:hover { text-decoration: none; background-color: #111; color: #fff; }
+	.bouton:active { top:1px; }

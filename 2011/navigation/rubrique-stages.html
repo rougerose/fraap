@@ -1,0 +1,12 @@
+
+[(#REM) test pour déterminer si le visiteur est déjà connecté ou pas ]
+[(#SESSION{id_auteur}|oui)
+	<div class="navigation-tri-stages">
+		<h2><:stages:info_votre_selection:></h2>
+		#FORMULAIRE_TRI_STAGES
+	</div><!-- .navigation-tri-stages -->
+]
+
+[(#SESSION{id_auteur}|non)
+	<!-- vide -->
+]

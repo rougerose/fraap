@@ -1,4 +1,3 @@
-/* formulaire recherche */
 /* ======================================== */
 /*	Site : 		FRAAP						*/
 /*	URL : 		fraap.org					*/
@@ -7,6 +6,108 @@
 /*	Date :		2011						*/
 /*	Version :	2.0							*/
 /* ======================================== */
+
+
+/* définitions génériques */
+	input, select, textarea { font-size: 100%; font-family: inherit; }
+
+	.formulaire_spip { clear: both; padding: 0; text-align: left; }
+	.formulaire_spip form { margin: 0; padding: 0; } /* Bug IE/Win */
+
+	/* Fieldset */
+	.formulaire_spip fieldset { clear: both; margin: 0 0 1em 0; padding: 0; border: 0; }
+	.formulaire_spip fieldset legend { margin: 0; padding: 0; font-weight: bold; background-color: #fff; color: #333; } /* Preciser la couleur des legend et du fond pour IE/Win */
+	.formulaire_spip .legend { font-size: 14px; border-bottom: 1px solid #000; margin-bottom: .5em; }
+	.formulaire_spip fieldset fieldset { margin-top: 1em; }
+	.formulaire_spip fieldset fieldset legend { font-size: 1em; font-weight: normal; }
+
+	/* Explications */
+	.formulaire_spip .explication { margin: .5em 0; color: #999; }
+
+	/* Lignes */
+	.formulaire_spip ul { margin: 0; padding: 0; list-style: none; }
+	.formulaire_spip ul li { clear: both; margin: 0; padding: .7em 0 .7em; }
+	.formulaire_spip ul li.fieldset { padding: 0 0 .7em; }
+
+	/* Labels */
+	.formulaire_spip label { font-size: 12px; display: block; text-align: left; color: #666; font-weight: bold; /* pour IE/Win */ position: relative;  }
+	.formulaire_spip li p { margin-top: 0; margin-bottom: 0; }
+
+	.formulaire_spip .choix label { display:inline; font-weight:normal; }
+	.formulaire_spip .choix input.radio,
+	.formulaire_spip .choix input.checkbox { width:auto; }
+
+	/* Champs de saisie */
+	.formulaire_spip input.text, .formulaire_spip input.password { xwidth: 15em;  }
+	.formulaire_spip textarea { xwidth: 99%; }
+	.formulaire_spip input.text, .formulaire_spip input.password, .formulaire_spip textarea {
+		background: url('../images/input-bg.png') no-repeat 0 0;
+		padding: 3px 5px;
+		border: 1px solid #bbb;
+		-webkit-border-radius: 2px;
+		   -moz-border-radius: 2px;
+		        border-radius: 2px; }
+	.formulaire_spip select {  }
+	.formulaire_spip input[disabled] { color: #ccc; background-image: none; }
+
+	/* focus */
+	.formulaire_spip input.text:focus, .formulaire_spip input.password:focus, .formulaire_spip textarea:focus {
+		border: 1px solid #2daebf; }
+
+	/* Boutons */
+	.formulaire_spip .boutons { clear: both; margin: 0 0 1em 0; padding: 0; text-align: right; }
+	.formulaire_spip .boutons input { margin-left: 1em; }
+	.formulaire_spip .boutons input, input.submit {  }
+
+	/* Reponses, previsu et erreurs */
+
+	/* Champs obligatoires */
+	.formulaire_spip li.obligatoire {}
+	.formulaire_spip li.obligatoire label {}
+
+	/* Previsualisation du message */
+	.formulaire_spip fieldset.previsu { margin-bottom: 2em; padding: 1em; border: 2px dashed #F57900; }
+	.formulaire_spip fieldset.previsu legend { padding: 0 0.50em; font-weight: bold; color: #F57900; }
+	.formulaire_spip fieldset.previsu li { padding: 3px; border: none; }
+	.formulaire_spip fieldset.previsu p { margin: 1em 0; }
+
+	/* Reponse du formulaire */
+	.reponse_formulaire { font-weight: bold; color: #e86519; font-size: 1.20em; }
+	fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
+	fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Preciser la couleur des legend et du fond pour IE/Win */
+
+	/* * Erreurs */
+	.formulaire_spip li.erreur .erreur_message { display: block; color: #C30; font-weight: bold; }
+	.formulaire_spip li.erreur input.text, .formulaire_spip li.erreur textarea { background-color: #FCC; border-style: solid; border-color: #C30; }
+	.reponse_formulaire_erreur { margin: 0; color: #C30; font-weight: bold; }
+
+	/* * OK */
+	.reponse_formulaire_ok { margin: 0; color: #53AD20; font-weight: bold; }
+
+	/* présentation en ligne */
+	.enligne {  }
+		.formulaire_spip.enligne li.fieldset { padding-left: 0; }
+		.formulaire_spip.enligne ul.fields li {
+			overflow: hidden;
+			border-bottom: 1px solid #ddd;
+			padding-left: 230px;
+			margin: 0; }
+			.enligne label {
+				vertical-align: top;
+				float: left;
+				margin-right: 10px; margin-left: -220px;
+				width: 220px;
+				display: inline-block; }
+			.formulaire_spip.enligne input.text, .formulaire_spip.enligne input.password, .formulaire_spip.enligne textarea {
+				width: 208px; }
+			.enligne .explication {
+				font-size: 11px;
+				margin: .25em 0 0 10px; }
+
+/* formulaire tri stages */
+.formulaire_tri_stages h3 { font-size: 14px; }
+.formulaire_tri_stages label { margin-bottom: .5em; }
+
 
 /* recherche */
 #raccourcis #formulaire_recherche {
@@ -48,3 +149,9 @@
 			-webkit-border-radius: 4px;
 			   -moz-border-radius: 4px;
 			        border-radius: 4px; }
+
+/* page profil (stages) */
+.formulaire_editer_auteur_light {
+	margin: 0 0 2em;
+	padding: .5em 0;
+	border: 1px solid #196efa; border-width: 0 0 1px; }

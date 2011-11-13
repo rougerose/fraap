@@ -1,0 +1,29 @@
+[(#SET{titre, <:espace_prive:>})]
+[(#SET{titre_connecter, <:lien_connecter:>})]
+[(#ENV{titre}|oui)
+	#SET{titre, #ENV*{titre}|typo}
+]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos"> </div>
+][(#SESSION{id_auteur}|=={0}|oui)[(#SESSION|supprimer_sessions)]]
+<BOUCLE_appel(CONDITION){si #ENV{appel_menu}|oui}>
+	<BOUCLE_session_non(CONDITION){si #SESSION{id_auteur}|=={0}|ou{#SESSION|non}|oui}>
+		<li class="menu-entree item[ (#ENV{css})]">
+			<a href="#URL_PAGE{login}" class="small" onclick="jQuery.modalbox('[(#URL_PAGE{login}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" >Se connecter</a>
+		</li>
+	</BOUCLE_session_non>
+
+	<BOUCLE_session_oui(CONDITION){si #SESSION{id_auteur}|>{0}|oui}>
+		[(#SESSION{statut}|=={6forum}|oui)
+			[(#SESSION{time}|non)
+				[(#SESSION_SET{time,[(#DATE|affdate{U})]})]
+			]
+		]
+		<li class="menu-entree item[ (#ENV{css})]">
+			<p class="bienvenue">Bienvenue <a href="[(#URL_PAGE{profil}|parametre_url{id_auteur,#SESSION{id_auteur}})]" class="" title="<:stages:info_consultation_profil:>">[(#SESSION{prenom})] [(#SESSION{nom})]</a></p>
+			<p class="logout"><a href="#URL_LOGOUT" class="bouton xsmall noir">Se déconnecter</a></p>
+		</li>
+	</BOUCLE_session_oui>
+</BOUCLE_appel>

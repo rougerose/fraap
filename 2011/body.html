@@ -13,7 +13,7 @@
 
 	</div><!-- #head -->
 
-	<div id="conteneur"[ class="couleurID(#ENV{id_rubrique})"]>
+	<div id="conteneur" class="[couleurID(#ENV{id_rubrique}) ]clearfix">
 		[(#REM) le titre est affiché ici sauf pour le sommaire ]
 		[(#ENV{type}|=={page}|et{#ENV{composition}|=={sommaire}}|non)
 		<div id="titre">
@@ -31,7 +31,7 @@
 
 	</div><!-- #conteneur -->
 
-	<div id="pied">
+	<div id="pied" class="clearfix">
 		<INCLURE{fond=inclure/pied,env}>
 	</div><!-- #pied -->
 </div><!-- #page -->

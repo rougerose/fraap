@@ -31,7 +31,9 @@ jQuery(document).ready(function() {
 	/*
 	* jquery UI Tabs
 	*/
-	$("#tabs").tabs();
+	$("#accordeon").accordion({
+		autoHeight: false
+	});
 
 	/*
 	* Animation du formulaire Recherche
@@ -41,10 +43,9 @@ jQuery(document).ready(function() {
 			$slide = $recherche.find("form"),
 			$ul = $recherche.next("ul").addClass("ok");
 			compteur = 0;
-		$ul.prepend('<li class="bouton recherche filets"><a href="#">recherche</a></li>');
+		$ul.prepend('<li class="recherche filets"><a href="#">recherche</a></li>');
 		var $bouton = $ul.find(".recherche");
 
-		console.log($recherche);
 		$slide.hide();
 
 		// animation du bouton

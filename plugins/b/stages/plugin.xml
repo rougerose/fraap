@@ -12,13 +12,21 @@
 	<etat>stable</etat>
 
 	<version>0.1</version>
-	<version_base>0.3</version_base>
+	<version_base>0.45</version_base>
 	<prefix>stages</prefix>
 
 	<install>base/stages_install.php</install>
 	<pipeline>
 		<nom>declarer_champs_extras</nom>
 		<inclure>base/stages.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>declarer_tables_principales</nom>
+		<inclure>base/stages_tables.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>declarer_tables_interfaces</nom>
+		<inclure>base/stages_tables.php</inclure>
 	</pipeline>
 
 	<necessite id="SPIP" version="[2.1.10;]" />

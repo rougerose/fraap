@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<title>test</title>
+
+</head>
+<body class="untitled">
+	<B_ligne>
+	<table>
+	<BOUCLE_ligne (ARTICLES){par num titre}>
+	[(#COMPTEUR_BOUCLE|alterner{'<tr class="1">',''})]
+	<td width="50%">
+	[(#LOGO_ARTICLE{#URL_ARTICLE}|image_reduire{100,66})]
+	<div class="titre">
+	<a href="#URL_ARTICLE">#TITRE</a>
+	</div>
+	<div class="suite">
+	#SOUSTITRE
+	#DESCRIPTIF
+	</div>
+	</td>
+	[(#COMPTEUR_BOUCLE|alterner{'','</tr>'})]
+	</BOUCLE_ligne>
+	[(#TOTAL_BOUCLE|alterner{'<td class="2"></td></tr>', ''})]
+	</table>
+	</B_ligne>
+</body>
+</html>
