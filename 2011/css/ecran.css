@@ -18,21 +18,7 @@
 
 
 
-/* liens */
-a {
-	-webkit-transition: color .35s linear;
-	   -moz-transition: color .35s linear;
-	     -o-transition: color .35s linear;
-	        transition: color .35s linear;
-	text-decoration: none; color: #000; }
-a:visited {  }
-a:hover { text-decoration: underline; }
-a:active, a:focus { position: relative; top: 1px; outline: thin dotted; }
-a:active { outline: none; }
-a.suite:after {
-	font-family: "Helvetica Neue";
-	content:"\00A0\2192"; }
-#contenu a, #pied a { font-weight: bold; }
+
 
 
 
@@ -46,35 +32,7 @@ a.suite:after {
 /* article */
 
 
-	/* mots-clés */
-	#themes {}
-		#themes h3:before { content:'\2192\20'; }
-
-
-	/* documents */
-	#documents {}
-	#documents dl {
-		float: left; }
-		#documents a { display:block; }
-		#documents dl dt { float: left; width: 60px; }
-		#documents dl dd { overflow: hidden; }
-			#documents dl dd p span { display: block; color:#aaa; }
-
-
-
-
-
-/* vcard */
-.vcard h3 { margin: 0; font-size: 12px; }
-	.vcard p { margin: 0; }
-	.vcard a {
-		display: block;
-		background: url('../images/pied-icones.png') no-repeat 0 0;
-		padding-left: 22px; }
-		.vcard .adr a { background-position: 0 -160px; }
-		.vcard .mail a { background-position: 0 -29px; }
-		.vcard .url a { background-position: 0 -61px; }
-	.vcard span.type { display: none; }
+	
 
 
 
@@ -86,25 +44,5 @@ a.suite:after {
 
 
 
-/* Jquery UI Tabs */
-
-.ui-tabs { padding: 0; }
-.ui-tabs .ui-tabs-nav {
-	margin : 0;
-	border-bottom : 1px solid #000; }
-.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
-.ui-tabs .ui-tabs-nav li {
-	margin : 0 0 -1px 4px;
-	border: 1px solid #fff;
-	font-size: 12px; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
-	border-color: #000;
-	border-top-left-radius: 3px; border-top-right-radius: 3px;
-	background: #fff; }
-.ui-tabs .ui-tabs-nav li a { padding : 5px 4px; color: #ccc; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
-.ui-tabs .ui-tabs-nav li a:hover { color: #666 }
-
-.ui-tabs .related { margin-top: 1.5em; }
 
 

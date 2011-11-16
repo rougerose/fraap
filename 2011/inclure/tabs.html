@@ -1,0 +1,70 @@
+[(#REM)
+	définition de constantes
+]
+#SET{documents,''} #SET{mots,''} #SET{lire_articles,''} #SET{lire_breves,''} #SET{id_mot,#ARRAY}
+
+<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}>#SET{documents,oui}</BOUCLE_t_docs>
+<BOUCLE_t_mots(MOTS){id_article?}{id_rubrique?}{0,1}>
+	#SET{mots,oui}
+	<BOUCLE_lire_articles(ARTICLES){id_mot}{0,1}{exclus}>#SET{lire_articles,oui}</BOUCLE_lire_articles>
+	<BOUCLE_lire_breves(ARTICLES){id_breve}{0,1}{exclus}>#SET{lire_breves,oui}</BOUCLE_lire_breves>
+</BOUCLE_t_mots>
+
+<BOUCLE_condition(CONDITION){si #GET{documents}|ou{#GET{mots}}|ou{#GET{lire_articles}}|ou{#GET{lire_breves}}}>
+<div id="tabs" class="clearfix">
+	<ul class="liste">
+		[(#GET{documents}|oui)
+		<li><a href="#documents">Documents</a></li>
+		]
+		[(#GET{mots}|oui)
+		<li><a href="#themes">Thèmes</a></li>
+		]
+		[(#GET{lire_articles}|ou{#GET{lire_breves}}|oui)
+		<li><a href="#lire">Lire aussi</a></li>
+		]
+	</ul>
+
+	<B_documents>
+	<div id="documents" class="clearfix">
+		<BOUCLE_documents(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}>
+		[<dl id="document-#ID_DOCUMENT" class="liste">
+			<dt>
+				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
+			</dt>
+			<dd>
+				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
+				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+			</dd>
+		</dl>]
+		</BOUCLE_documents>
+	</div><!-- #documents -->
+	</B_documents>
+
+	<B_themes>
+	<div id="themes" class="liste">
+		<ul class="liste">
+			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
+			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
+			<li><h3><a href="#URL_MOT">#TITRE</a></h3></li>
+			</BOUCLE_themes>
+		</ul>
+	</div><!-- #themes -->
+	</B_themes>
+
+	<B_lire>
+	<div id="lire">
+		<ul class="hfeed liste">
+			<BOUCLE_lire(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
+			<li class="hentry clearfix">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div>
+					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_lire>
+		</ul>
+	</div><!-- #lire -->
+	</B_lire>
+</div><!-- #tabs -->
+</BOUCLE_condition>

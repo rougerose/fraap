@@ -7,6 +7,22 @@
 /*	Version :	2.0							*/
 /* ======================================== */
 
+/* liens */
+a {
+	color: #000;
+	text-decoration: none;
+	-webkit-transition: color .35s linear;
+	   -moz-transition: color .35s linear;
+	     -o-transition: color .35s linear;
+	        transition: color .35s linear; }
+a:visited {  }
+a:hover { text-decoration: underline; color: #000; }
+a:active, a:focus { position: relative; top: 1px; outline: thin dotted; }
+a:active { outline: none; }
+.textecourant a { text-decoration: underline; }
+span.suite a:after, a.suite:after { content:"\00A0\2192"; }
+#contenu a, #fil a, #pied a { font-weight: bold; }
+
 
 /* filets */
 .filet, .filetH { border-top: 2px solid #000; }
@@ -18,15 +34,26 @@
 
 
 /* logo des objets */
-.logoObjet {
-	outline: 1px solid #eee;
+.logo-objet {
+	outline: 1px solid #e9e9e9;
 	border-top: 1px solid #fff;
 	margin-top: 5px;
 	padding: 10px;
-	background: #fafafa; }
+	background: #f7f7f7; }
+
+/* puce Spip */
+img.puce { background-color: #000; }
+
+/* texte courant */
+	.textecourant p,
+	.textecourant ul, .textecourant ol { font-size: 14px; }
+
+/* notes */
+	.notes h2.spip { font-size: 16px; }
+	.notes.textecourant p { font-size: 12px; }
 
 
-/*  groupe */
+/*  groupe !!! à ranger ailleurs !!! */
 .groupe { margin-bottom: 3em; }
 
 
@@ -82,18 +109,10 @@
 	/* présentation en grille */
 
 	.grille h2.intertitre { border-bottom: 2px solid #000; }
-
 	.grille .intro { margin-bottom: 1em; }
 
 		.grille .hentry h2.entry-title { font-size: 16px; line-height: 18px; }
 		.grille .hentry .published { line-height: 18px; }
-
-	/* article */
-	#extra .published {
-		text-align: right;
-		font-size: 12px;
-		border-top: 1px solid #000;
-		margin-top: 2em; padding-top: .25em; }
 
 
 /* listes */
@@ -117,19 +136,47 @@
 	ul.liste li, dl.liste {
 		list-style-type: none;
 		margin: 0 0 1em; padding-bottom: 1em;
-		border-bottom: 1px dotted #000; }
+		border-bottom: 1px solid #000; }
 		.liste p.published {
 			float: left; display: inline;
 			width: 70px; }
 		.liste div {
-			float: left; display: inline;
-			width: 150px }
-		.liste h3 {
+			float: right; display: inline;
+			width: 140px }
+		.liste h3, .hfeed.liste h3 {
 			font-size: 13px; line-height: 18px;
 			margin-bottom: 0; }
 		.liste p.descriptif, .liste p.published {
 			font-size: 12px; line-height: 18px;
 			margin: 0; }
+
+
+/* article */
+	/* date de publication et auteurs */
+	#info-publi-objet-conteneur { margin-top: 1em; }
+		#info-publi-objet-conteneur p { text-align: right; font-size: 13px; margin: 0; }
+		#info-publi-objet-conteneur p.info-publi { border-top: 1px solid #000; padding-top: .5em; }
+
+	/* chapo */
+	#chapo-conteneur p { font-size: 15px; }
+
+
+/* contenu secondaire */
+	/* mots-clés */
+	#themes {}
+		#themes h3:before { content:'\2192\20'; }
+
+	/* documents */
+	#documents {}
+	#documents dl {}
+		#documents a { display:block; }
+		#documents dl dt { float: left; width: 60px; }
+		#documents dl dd { overflow: hidden; }
+			#documents dl dd p span { display: block; color:#aaa; }
+
+
+/* fil d'ariane */
+#fil strong { font-weight: normal; }
 
 /* stages */
 
@@ -155,22 +202,33 @@
 			margin: 0 0 1em; }
 
 
+		/* page consultation stages tableau des candidatures */
+		table#stages-table { width: 100%; border-bottom: 1px solid #000; }
+			#stages-table th {
+				color: #fff;
+				border: 1px solid #fff; }
+			#stages-table tr:first-child th {
+				font-weight: bold;
+				border-top: 2px solid #000; border-bottom-color: #fff; }
+				#stages-table tr:first-child th:first-child { border-left: 1px solid red; }
+			#stages-table th, #stages-table td {
+				padding: 4px 6px 2px;
+				font-size: 12px; }
+			#stages-table td {  }
+				#stages-table p { margin: 0; }
 
-
-table#stages-table { width: 100%; border-bottom: 1px solid #000; }
-	#stages-table th {
-		color: #fff;
-		border: 1px solid #fff; }
-	#stages-table tr:first-child th {
-		font-weight: bold;
-		border-top: 2px solid #000; border-bottom-color: #fff; }
-		#stages-table tr:first-child th:first-child { border-left: 1px solid red; }
-	#stages-table th, #stages-table td {
-		padding: 4px 6px 2px;
-		font-size: 12px;
-		xfont-family: "Lucida Grande", sans-serif; }
-	#stages-table td {  }
-		#stages-table p { margin: 0; }
+/* vcard */
+.vcard h3 { margin: 0; font-size: 12px; }
+	.vcard p { margin: 0; }
+	#pied .vcard a {
+		display: block;
+		background: url('../images/pied-icones.png') no-repeat 0 0;
+		padding-left: 22px; }
+		#pied .vcard .adr a { background-position: 0 -160px; }
+		#pied .vcard .mail a { background-position: 0 -29px; }
+		#pied .vcard .url a { background-position: 0 -61px; }
+	.vcard span.type { display: none; }
+	.vcard span.fn { font-weight: bold; }
 
 
 /* bouton */
@@ -212,3 +270,31 @@ table#stages-table { width: 100%; border-bottom: 1px solid #000; }
 	/* actions */
 	.bouton:hover { text-decoration: none; background-color: #111; color: #fff; }
 	.bouton:active { top:1px; }
+
+/* Jquery UI Tabs */
+#tabs.ui-widget-content { border: none; }
+	#tabs .ui-widget-header {
+		background: none;
+		border-width: 0 0 1px;
+		-webkit-border-radius: 0;
+		   -moz-border-radius: 0;
+		        border-radius: 0; }
+.ui-tabs {  }
+.ui-tabs .ui-tabs-nav {
+	margin : 0; padding: 0;
+	border-bottom : 2px solid #000; }
+.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
+.ui-tabs .ui-tabs-nav li {
+	margin : 0 0 -1px 4px;
+	border: 1px solid #fff;
+	font-size: 12px; }
+.ui-tabs .ui-tabs-nav li.ui-state-default {
+	background: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
+	border-color: #000;
+	border-top-left-radius: 0; border-top-right-radius: 0;
+	background: #fff; }
+.ui-tabs .ui-tabs-nav li a { padding : 5px 4px; color: #ccc; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
+.ui-tabs .ui-tabs-nav li a:hover { color: #666 }
+.ui-tabs .related { margin-top: 1.5em; }

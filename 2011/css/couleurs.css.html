@@ -30,29 +30,35 @@
 	.couleurID#ID_RUBRIQUE h2.intertitre,
 	.grille .couleurID#ID_RUBRIQUE .update dt,
 	.couleurID#ID_RUBRIQUE h1,
-
-	.item.couleurID#ID_RUBRIQUE.over, .intertitre.couleurID#ID_RUBRIQUE.over { border-color: ##GET{couleur}; }
+	.item.couleurID#ID_RUBRIQUE.over, .intertitre.couleurID#ID_RUBRIQUE.over,
+	.couleurID#ID_RUBRIQUE #titre p.surtitre, .couleurID#ID_RUBRIQUE #info-publi-objet-conteneur p.info-publi,
+	.couleurID#ID_RUBRIQUE .textecourant h2.spip, .couleurID#ID_RUBRIQUE .textecourant h3.spip, .couleurID#ID_RUBRIQUE .textecourant h4.spip, .couleurID#ID_RUBRIQUE .textecourant h5.spip, .couleurID#ID_RUBRIQUE .textecourant h6.spip
+	{ border-color: ##GET{couleur}; }
 
 	.une dt.intertitre.couleurID#ID_RUBRIQUE a,
 	.une .couleurID#ID_RUBRIQUE .intertitre a,
-	.une .couleurID#ID_RUBRIQUE .update dt,
+	.couleurID#ID_RUBRIQUE .textecourant a:hover,
+	.couleurID#ID_RUBRIQUE .contenu-secondaire a:hover,
+	.couleurID#ID_RUBRIQUE #fil strong, .couleurID#ID_RUBRIQUE #fil a:hover,
 	.une.grille .couleurID#ID_RUBRIQUE a:hover,
 	.hfeed .couleurID#ID_RUBRIQUE div a:hover,
-
-
-
 	.hentry.couleurID#ID_RUBRIQUE.over a,
 	.une .couleurID#ID_RUBRIQUE.over a, .une.couleurID#ID_RUBRIQUE.over a,
+	.une .couleurID#ID_RUBRIQUE .update dt,
 	.couleurID#ID_RUBRIQUE #titre h1,
-	.couleurID#ID_RUBRIQUE #titre h1 { color: ##GET{couleur}; }
+	.couleurID#ID_RUBRIQUE #titre p.surtitre,
+	.couleurID#ID_RUBRIQUE .textecourant h2.spip, .couleurID#ID_RUBRIQUE .textecourant h3.spip, .couleurID#ID_RUBRIQUE .textecourant h4.spip, .couleurID#ID_RUBRIQUE .textecourant h5.spip, .couleurID#ID_RUBRIQUE .textecourant h6.spip
+	{ color: ##GET{couleur}; }
 
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li,
-	.couleurID#ID_RUBRIQUE a.bouton { background-color: ##GET{couleur}; }
+	.couleurID#ID_RUBRIQUE a.bouton,
+	.couleurID#ID_RUBRIQUE img.puce { background-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE a.bouton:hover { background-color: ##GET{couleur_lum07}; }
 
 	li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
+
 
 </BOUCLE_principale>
 

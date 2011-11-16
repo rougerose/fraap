@@ -14,18 +14,23 @@
 
 	#contenu { margin-bottom: 3em; }
 
+
+	/* #contenu en fonction des pages */
 	.page_sommaire #contenu {
 		margin-top: 3em;
 		padding-left: 240px; }
-	.page_rubrique #contenu, .page_article #contenu, .page_login #contenu,
+
+	.page_rubrique #contenu,
+	.page_login #contenu,
 	.page_inscription #contenu,
 	.page_candidature #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }
 
+	.page_article #contenu,
 	.rubrique_stages #contenu {
-		float: left;
+		float: left; display: inline;
 		margin-left: 10px; margin-right: 10px;
 		width: 940px; }
 
@@ -33,6 +38,40 @@
 		display: inline; float: left;
 		margin: 0 10px; padding-left: 240px;
 		width: 460px; }
+
+/* zones communes */
+	/* #titre des pages */
+	#titre { margin: 2em 10px 3em; }
+
+	/* postscriptum */
+	.notes { margin-top: 3em; margin-left: 120px; }
+
+	/* article */
+	.page_article #extra-objet-conteneur {
+		float: left; display: inline;
+		margin-right: 10px;
+		width: 220px; }
+	.page_article #chapo-conteneur {
+		float: left; display: inline;
+		margin-left: 10px; xmargin-top: 2em;
+		width: 700px; }
+	.page_article #contenu .contenu {
+		float: right; display: inline;
+		position: relative;
+		width: 700px; }
+		.page_article #contenu .contenu-principal {
+			float: left; display: inline;
+			margin-top: 2em;
+			width: 460px; }
+		.page_article #contenu .contenu-secondaire {
+			float: right; display: inline;
+			margin-top: 2em;
+			width: 220px; }
+
+	.page_article #extra {
+		float: left; display: inline;
+		margin-left: 10px;
+		width: 220px; }
 
 
 	/* entete */
@@ -98,7 +137,7 @@
 	li.has-dropdown:hover { background-position: 100% -140px; }
 		#nav li.has-dropdown:hover ul.dropdown { visibility: visible; }
 			#nav ul.dropdown {
-				position: absolute; visibility: hidden;
+				position: absolute; visibility: hidden; z-index: 100;
 				margin-top: 0;
 				border: 0; }
 				#nav ul.dropdown li {
@@ -137,7 +176,7 @@
 				#raccourcis ul li.on a { color: #5a005a; }
 				#raccourcis ul li a { display: block; }
 
-	/* stages-identification */
+	/* zone stages-identification */
 	#stages-identification { margin: 0 0 1em; }
 		#stages-identification ul {
 			list-style-type: none;
@@ -150,23 +189,17 @@
 					margin: 0 0 .25em; }
 				#stages-identification p.bienvenue { font-size: 14px; }
 
-/* article */
-
-.page_article #contenu .principal {  }
-.page_article #extra {
-	float: left; display: inline;
-	margin-left: 10px;
-	width: 220px; }
-
-
 /* fil d'ariane */
 
-#fil { margin-bottom: 2em; }
-	#fil .ariane {
-		border: 1px dotted #000; border-width: 1px 0 1px; }
-		#fil .ariane li {
-			float: left;
-			margin-right: 10px; }
+#fil {
+	clear: both;
+	padding-left: 240px;
+	margin-bottom: 2em; margin-left: 10px;
+	width: 700px; }
+	#fil #ariane {
+		border: 1px dotted #000;
+		border-top-style: solid; 
+		border-width: 1px 0 1px; }
 
 /* pied de page */
 #pied { margin-top: 1em; margin-bottom: 2em; }

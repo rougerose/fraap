@@ -11,8 +11,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'entree' => 'entrée',
 	'entrees' => 'entrées',
+
+	//I
+	'info_ps' => 'Post-scriptum',
+
+	// F
+	'fichier' => 'Fichier',
+
 	// P
 	'pages' => 'pages',
+	'publie_le' => 'Publié le',
 
 	// S
 	'suite' => 'lire la suite',
