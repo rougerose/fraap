@@ -7,6 +7,13 @@
 /*	Version :	2.0							*/
 /* ======================================== */
 
+/* grille de mise en page */
+.gs { background: #fff url('../images/16_col.gif') repeat-y top center; }
+
+/* Les boutons d'admin survolent la page (sauf # FORMULAIRE_ADMIN) */
+/* surcharge des css par defaut */
+.spip-admin-bloc,
+.spip-admin-float { z-index: 100; position: fixed; right: auto; left: 0; width: 200px; }
 
 /* disposition des blocs principaux */
 
