@@ -1,0 +1,14 @@
+[(#REM) définition de constantes ]
+	#SET{format,#ENV{format}} #SET{logo,#ENV{logo,''}}
+<B_articles>
+<div class="groupe[ (#GET{format})][ (#ENV{ordre})]">
+	#ANCRE_PAGINATION
+	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
+
+	<BOUCLE_articles(ARTICLES){id_article IN #ENV{selection}}{pagination #ENV{pagination}}>
+	#INCLURE{fond=inclure/article-resume,id_article,logo=#GET{logo}}
+	</BOUCLE_articles>
+
+	[<p class="pagination bas clearfix">(#PAGINATION{page})</p>]
+</div><!-- .groupe #GET{format} -->
+</B_articles>

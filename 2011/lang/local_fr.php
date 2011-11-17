@@ -19,6 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'fichier' => 'Fichier',
 
 	// P
+	'page' => 'page',
 	'pages' => 'pages',
 	'publie_le' => 'Publié le',
 

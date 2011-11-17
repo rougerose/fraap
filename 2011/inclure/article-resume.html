@@ -1,0 +1,13 @@
+#SET{logo,#ENV{logo}}
+<BOUCLE_resume(ARTICLES){id_article}>
+<div id="article#ID_ARTICLE" class="hentry item clearfix">
+	<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+	<div class="resume-conteneur">
+		<h2 class="entry-title"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h2>
+		[<p class="entry-content intro">
+			[(#GET{logo}|oui)[<a href="#URL_ARTICLE" class="img">(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{140,0})</a>]]
+			(#DESCRIPITF|sinon{#INTRODUCTION}|PtoBR) <a href="#" class="suite"><:suite:></a>
+		</p>]
+	</div><!-- .article-resume-conteneur -->
+</div><!-- #article#ID_ARTICLE -->
+</BOUCLE_resume>

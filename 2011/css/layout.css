@@ -27,7 +27,6 @@
 		margin-top: 3em;
 		padding-left: 240px; }
 
-	.page_rubrique #contenu,
 	.page_login #contenu,
 	.page_inscription #contenu,
 	.page_candidature #contenu {
@@ -35,6 +34,7 @@
 		margin-right: 10px;
 		width: 700px; }
 
+	.page_rubrique #contenu,
 	.page_article #contenu,
 	.rubrique_stages #contenu {
 		float: left; display: inline;
@@ -49,23 +49,27 @@
 /* zones communes */
 	/* #titre des pages */
 	#titre { margin: 2em 10px 3em; }
+	#extra-objet-conteneur {
+		float: left; display: inline;
+		margin-right: 10px;
+		width: 220px; }
+	#chapo-conteneur {
+		float: left; display: inline;
+		margin-left: 10px; margin-bottom: 3em;
+		width: 700px; }
+	#contenu .contenu {
+		float: right; display: inline;
+		position: relative;
+		width: 700px; }
+
+	/* groupe d'articles */
+	.groupe { margin-bottom: 3em; border-bottom: 1px solid #000; }
 
 	/* postscriptum */
 	.notes { margin-top: 3em; margin-left: 120px; }
 
 	/* article */
-	.page_article #extra-objet-conteneur {
-		float: left; display: inline;
-		margin-right: 10px;
-		width: 220px; }
-	.page_article #chapo-conteneur {
-		float: left; display: inline;
-		margin-left: 10px; xmargin-top: 2em;
-		width: 700px; }
-	.page_article #contenu .contenu {
-		float: right; display: inline;
-		position: relative;
-		width: 700px; }
+	.page_article #chapo-conteneur { margin-bottom: 2em; }
 		.page_article #contenu .contenu-principal {
 			float: left; display: inline;
 			margin-top: 2em;
@@ -201,16 +205,16 @@
 #fil {
 	clear: both;
 	padding-left: 240px;
-	margin-bottom: 2em; margin-left: 10px;
+	margin-bottom: 2em;
 	width: 700px; }
 	#fil #ariane {
 		border: 1px dotted #000;
-		border-top-style: solid; 
+		border-top-style: solid;
 		border-width: 1px 0 1px; }
 
 /* pied de page */
 #pied { margin-top: 1em; margin-bottom: 2em; }
-	#pied .groupe {  }
+	#pied .groupe { border-bottom-width: 0;  }
 	#pied .colonne {
 		float: left; display: inline;
 		margin-right: 10px; }

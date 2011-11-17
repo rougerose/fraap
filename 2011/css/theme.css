@@ -40,34 +40,35 @@ span.suite a:after, a.suite:after { content:"\00A0\2192"; }
 	margin-top: 5px;
 	padding: 10px;
 	background: #f7f7f7; }
+a.img { display: block; float: left; }
 
 /* puce Spip */
 img.puce { background-color: #000; }
 
 /* texte courant */
-	.textecourant p,
+	.textecourant p, p.intro,
 	.textecourant ul, .textecourant ol { font-size: 14px; }
 
 /* notes */
 	.notes h2.spip { font-size: 16px; }
 	.notes.textecourant p { font-size: 12px; }
 
-
-/*  groupe !!! à ranger ailleurs !!! */
-.groupe { margin-bottom: 3em; }
-
-
 /* pagination */
 .pagination {
 	font-size: 12px;
-	color: #666;
-	text-align: right;
-	margin: 0 0 1em;
-	border: 1px dotted #999; border-width: 1px 0; }
-	.haut { border-width: 1px 0 0; }
-	.bas { border-width: 0 0 1px; }
-	.pagination strong { font-size: 14px; color: #fff; background-color: #000; padding: 0 3px; line-height: 14px; }
-	.pagination .separateur { color: #999; font-size: 14px; }
+	clear: both; text-align: right;
+	color: #999;
+	margin: 0 0 1em; }
+	.pagination * { display: block; float: left; margin-right: 5px; }
+	.pagination *:last-child { margin-right:0; }
+	.pagination .pagination-conteneur { float: right; padding-left: 10px; padding-right: 5px; }
+	.pagination.haut .pagination-conteneur { border-top: 1px solid #000; }
+	.pagination.bas .pagination-conteneur { border-bottom: 1px solid #000; }
+		.pagination strong { color: #fff; background-color: #000; padding: 0 3px; border: 1px solid #000; }
+		.pagination a { border: 1px solid #000; padding: 0 3px 1px; }
+		.pagination.haut a { border-top-width: 0; }
+		.pagination.bas a { border-bottom-width: 0; }
+		.pagination .separateur { display: none; }
 
 
 /* une */
@@ -86,25 +87,73 @@ img.puce { background-color: #000; }
 
 
 /* hfeed */
+	/* page rubrique et sommaire */
+	.groupe .hentry {
+		border-top: 2px solid #000;
+		padding-top: 1em; margin-bottom: 1em; }
+
+		.groupe .hentry .published {
+			color: #999;
+			line-height: 22px;
+			float: left; display: inline;
+			margin-right: 10px;
+			width: 100px; }
+
+		.groupe .hentry .logo-objet {
+			float: left;
+			margin: 1px 19px 1px 1px; }
+
+		.groupe .hentry .resume-conteneur {
+			float: left; display: inline;
+			margin-left: 10px; }
+
+	/* format horizontal */
+	.horizontal .hentry .resume-conteneur { width: 580px; }
+		.groupe .hentry h2 {
+			font-size: 20px; line-height: 22px;
+			margin-bottom: .5em; }
+		.horizontal .hentry h3 { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
+
+	/* format grille */
+	.grille {
+		display: inline;
+		float: left;
+		margin-right: 10px; margin-left: 10px;
+		width: 340px; }
+		.grille .hentry .resume-conteneur { width: 220px; }
+
+	/* hentry dans #tabs */
+
+	#tabs .hentry {
+		border-top-width: 0;
+		border-bottom-color: #000;
+		padding: 0 0 1em; }
+
+		.page_article #tabs .hentry p.published {
+			float: left; display: inline;
+			width: 70px; }
+
+		#tabs .hentry p.entry-content { margin-bottom: 0; }
+
+		.page_article #tabs .hentry .resume-conteneur {
+				float: right; display: inline;
+						width: 140px }
+
 
 /* sommaire */
 	dl.hfeed { margin: 0; }
 		.hfeed dt {
 			font-size: 23px; font-weight: bold;
-			border-bottom: 2px solid #000;
+			xborder-bottom: 2px solid #000;
 			margin-bottom: .5em; }
 
-	div.hfeed { border-top: 2px solid #000; }
+	div.hfeed {  }
 		div.hentry {
-			border-bottom: 1px solid #000;
-			padding-top: .5em; margin-bottom: 1em; }
-			.hfeed h3.entry-title { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
-			.hfeed .published {
-				color: #999;
-				line-height: 22px; }
-			.groupe .hfeed h2.entry-title {
-				font-size: 18px; line-height: 22px;
-				margin-bottom: .5em; }
+			 }
+
+			/*.hfeed h3.entry-title { font-size: 18px; line-height: 20px; margin-bottom: .5em; }*/
+			.hfeed .intro { overflow: hidden; }
+			.groupe .hfeed h2.entry-title { }
 
 	/* présentation en grille */
 
@@ -116,40 +165,51 @@ img.puce { background-color: #000; }
 
 
 /* listes */
-	/* pas de style */
-	ul.ns li { list-style-type: none; margin: 0; }
 
 	/* update (dernières mises à jour) */
 	dl.update {  }
-		.grille .update dt { border-bottom: 1px solid #000; }
+		.grille .update dt { border-bottom: 1px solid #000; margin-bottom: .5em; }
 		.grille .update dd {
 			border: none;
 			margin: 0 0 0 1.3em;
 			text-indent: -1.3em; }
 			.grille .update dd a:before { content: "\2192\00A0"; }
+
+
+	/* rubriquage #rubriques */
+	#rubriques ul.liste { border-bottom: 1px dotted #000; padding-left: 10px; }
+		#rubriques ul.liste li {
+			border-bottom-width: 0;
+			list-style-type: none;
+			margin: 0 0 .5em 1em; padding:0;
+			text-indent: -1.5em; }
+			#rubriques ul.liste li strong:before, #rubriques ul.liste li a:before { font-size: 16px; content: "\2192\00A0"; }
+			#rubriques ul.liste li ul { margin-left: 1.3em; }
 	ul.enumeration { margin-left: 1em; }
 		ul.enumeration li { font-family: "Helvetica Neue"; list-style-type: none; margin: 0 0 0 1em; text-indent: -1.5em; padding:0; }
 			ul.enumeration li strong:before, ul.enumeration li a:before { font-size: 16px; content: "\2192\00A0"; }
 			ul.enumeration li ul { margin-left: 1.3em; }
 
-	/* contenu secondaire en liste */
-	ul.liste li, dl.liste {
-		list-style-type: none;
-		margin: 0 0 1em; padding-bottom: 1em;
-		border-bottom: 1px solid #000; }
-		.liste p.published {
-			float: left; display: inline;
-			width: 70px; }
-		.liste div {
-			float: right; display: inline;
-			width: 140px }
+	/* contenu présenté en liste (colonne secondaire dans article ou #tabs) : styles génériques */
+	ul.liste {
+		list-style-type: none; }
+
+		ul.liste li { margin-left: 0; }
+		ul.liste li, dl.liste {
+			border-bottom: 1px dotted #000;
+			padding-bottom: 1em; margin-left: 0; margin-bottom: 1em; }
+			.liste h3 {
+				font-size: 13px; line-height: 18px;
+				margin-bottom: 0; }
+
+/*
 		.liste h3, .hfeed.liste h3 {
 			font-size: 13px; line-height: 18px;
 			margin-bottom: 0; }
 		.liste p.descriptif, .liste p.published {
 			font-size: 12px; line-height: 18px;
 			margin: 0; }
-
+*/
 
 /* article */
 	/* date de publication et auteurs */
@@ -174,9 +234,6 @@ img.puce { background-color: #000; }
 		#documents dl dd { overflow: hidden; }
 			#documents dl dd p span { display: block; color:#aaa; }
 
-
-/* fil d'ariane */
-#fil strong { font-weight: normal; }
 
 /* stages */
 
@@ -288,8 +345,8 @@ img.puce { background-color: #000; }
 	margin : 0 0 -1px 4px;
 	border: 1px solid #fff;
 	font-size: 12px; }
-.ui-tabs .ui-tabs-nav li.ui-state-default {
-	background: none; }
+.page_rubrique .ui-tabs .ui-tabs-nav li { font-size: 13px; }
+.ui-tabs .ui-tabs-nav li.ui-state-default { background: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
 	border-color: #000;
 	border-top-left-radius: 0; border-top-right-radius: 0;

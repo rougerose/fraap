@@ -1,20 +1,41 @@
 [(#REM)
 	définition de constantes
 ]
-#SET{documents,''} #SET{mots,''} #SET{lire_articles,''} #SET{lire_breves,''} #SET{id_mot,#ARRAY}
+	[(#REM) format de mise en page ]
+		#SET{format,#ENV{format,''}} #SET{ordre,#ENV{ordre,''}}
 
-<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}>#SET{documents,oui}</BOUCLE_t_docs>
+	[(#REM) contexte est une rubrique, déterminer s'il faut afficher le rubriquage ]
+		#SET{rubriquage,''}
+
+	[(#REM) déterminer si documents, mots, brèves, articles et brèves relatives aux mots-clés sont présents ]
+		#SET{documents,''} #SET{mots,''} #SET{breves,''}
+		#SET{lire_articles,''} #SET{lire_breves,''}
+
+	[(#REM) tableau des mots ]
+	#SET{id_mot,#ARRAY}
+
+[(#ENV{page}|=={rubrique}|oui) #SET{rubriquage,oui} ]
+
+<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}{0,1}>#SET{documents,oui}</BOUCLE_t_docs>
+[(#REM) on est bien dans une rubrique -- et non dans un article qui appartient à une rubrique avec des brèves -- ]
+	<BOUCLE_t_breves(BREVES){id_rubrique?}{0,1}>[(#ENV{page}|=={rubrique}|oui)[(#SET{breves,oui})]]</BOUCLE_t_breves>
 <BOUCLE_t_mots(MOTS){id_article?}{id_rubrique?}{0,1}>
 	#SET{mots,oui}
 	<BOUCLE_lire_articles(ARTICLES){id_mot}{0,1}{exclus}>#SET{lire_articles,oui}</BOUCLE_lire_articles>
-	<BOUCLE_lire_breves(ARTICLES){id_breve}{0,1}{exclus}>#SET{lire_breves,oui}</BOUCLE_lire_breves>
+	<BOUCLE_lire_breves(BREVES){id_mot}{0,1}{exclus}>#SET{lire_breves,oui}</BOUCLE_lire_breves>
 </BOUCLE_t_mots>
 
-<BOUCLE_condition(CONDITION){si #GET{documents}|ou{#GET{mots}}|ou{#GET{lire_articles}}|ou{#GET{lire_breves}}}>
-<div id="tabs" class="clearfix">
+<BOUCLE_condition(CONDITION){si #GET{rubriquage}|ou{#GET{documents}}|ou{#GET{mots}}|ou{#GET{breves}}|ou{#GET{lire_articles}}|ou{#GET{lire_breves}}}>
+<div id="tabs" class="clearfix[ (#GET{format})][ (#GET{ordre})]">
 	<ul class="liste">
+		[(#GET{rubriquage}|oui)
+		<li><a href="#rubriques">Rubriques</a></li>
+		]
 		[(#GET{documents}|oui)
 		<li><a href="#documents">Documents</a></li>
+		]
+		[(#GET{breves}|oui)
+		<li><a href="#breves">En bref</a></li>
 		]
 		[(#GET{mots}|oui)
 		<li><a href="#themes">Thèmes</a></li>
@@ -23,6 +44,30 @@
 		<li><a href="#lire">Lire aussi</a></li>
 		]
 	</ul>
+
+	<BOUCLE_condition_rubrique(CONDITION){si #GET{rubriquage}}>
+	<div id="rubriques">
+		<ul class="liste">
+			<BOUCLE_rubriquage(RUBRIQUES){racine}{par num titre, titre}>
+			<BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique}{id_rubrique=#ENV{id_secteur}}>
+			<li>
+				[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
+				<B_sous_rubriques>
+				<ul>
+					<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
+					<li>
+						[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
+						<BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>
+					</li>
+					</BOUCLE_sous_rubriques>
+				</ul>
+				</B_sous_rubriques>
+			</li>
+			</BOUCLE_rubrique_courante> </B_rubrique_courante>
+			</BOUCLE_rubriquage>
+		</ul>
+	</div><!-- #rubriques -->
+	</BOUCLE_condition_rubrique>
 
 	<B_documents>
 	<div id="documents" class="clearfix">
@@ -39,6 +84,24 @@
 		</BOUCLE_documents>
 	</div><!-- #documents -->
 	</B_documents>
+
+	<BOUCLE_condition_breves(CONDITION){si #GET{breves}}>[(#REM) test nécessaire ]
+	<B_breves>
+	<div id="breves" class="liste">
+		<ul class="liste">
+			<BOUCLE_breves(BREVES){id_rubrique?}{!par date}>
+			<li class="hentry clearfix">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div class="resume-conteneur">
+					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_breves>
+		</ul>
+	</div><!-- #breves -->
+	</B_breves>
+	</BOUCLE_condition_breves>
 
 	<B_themes>
 	<div id="themes" class="liste">
@@ -57,7 +120,7 @@
 			<BOUCLE_lire(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
 			<li class="hentry clearfix">
 				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
-				<div>
+				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
 					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
 				</div>

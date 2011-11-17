@@ -1,5 +1,5 @@
 [(#REM) définition de constantes ]
-#SET{articles_selection,#ARRAY} #SET{articles_rubrique,''}
+#SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
 
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
@@ -8,9 +8,9 @@
 	</div><!-- #logo-objet-conteneur -->]
 
 	<div id="info-publi-objet-conteneur">
-		
+
 		[(#REM) [(#MODELE{socialtags})] ]
-		
+
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
@@ -19,99 +19,26 @@
 </div><!-- #chapo-conteneur .introduction -->]
 
 [(#REM) les articles en sélection ]
-<BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>
-[(#SET_PUSH{articles_selection,#ID_ARTICLE})]
-</BOUCLE_articles_selection>
-
-<BOUCLE_articles(ARTICLES){id_rubrique}{0,1}>#SET{articles_rubrique,oui}</BOUCLE_articles>
+<BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
+[(#REM) les articles de la rubrique ]
+<BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
 
 <div class="contenu clearfix">
 	<BOUCLE_condition_articles(CONDITION){si #GET{articles_selection}|ou{#GET{articles_rubrique}}}>
 	<div class="hfeed">
-		<div class="groupe horizontal">
-			<div id="idarticle#ID_ARTICLE" class="hentry item">
-				<p class="info-publi updated published grid_2 alpha"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
-				<div class="grid_10 omega">
-					<h2 class="entry-title"><a href="#" rel="bookmark">Rencontres de la Fraap : les 29, 30 et 31 mai 2009 à Morlaix (Bretagne)</a></h2>
-					<p class="entry-content intro">Les 7èmes Rencontres nationales de la Fraap, les 29,30 et 31 mai 2009 à Morlaix (Bretagne). Trois jours de débats et de réflexions .... Ces Rencontres seront comme chaque année un rendez-vous professionnel important pour les associations et les collectifs d’artistes plasticiens de la Fraap, et l’ensemble du secteur des arts plastiques. Les différents thèmes abordés lors des ateliers constituent des enjeux majeurs pour la structuration et le développement de nos associations : les ressources <a href="#" class="suite">lire la suite</a></p>
-				</div>
-			</div>
-			<div id="idarticle124" class="hentry item couleurid3 clearfix">
-				<p class="info-publi updated published grid_2 alpha"><span class="value" title="">15/01/2009</span></p>
-				<div class="grid_10 omega">
-					<h2 class="entry-title"><a href="#" rel="bookmark">Enquête : les artistes plasticiens et la formation professionnelle</a></h2>
-					<p class="entry-content intro">Alors qu’elle constitue un droit pour tous en France, la formation professionnelle demeure inexistante pour les artistes auteurs. Privés de ce dispositif auquel ils n’ont pas accès, les artistes plasticiens n’en expriment pas moins un besoin essentiel et profond. L’enquête menée par la Fraap auprès de 1250 artistes, précise ces besoins et leurs demandes spécifiques en matière de formation professionnelle, qu’ils soient directement liées à la pratique artistique ou à l’environnement professionnel. <a href="#" class="suite">lire la suite</a></p>
-				</div>
-			</div>
-		</div><!-- .groupe horizontal -->
+		[(#REM) selection d'articles, format horizontal ]
+		<INCLURE{fond=inclure/articles-selection,
+			env,selection=#GET{articles_selection},pagination=5,format=horizontal,ajax,logo=140}>
 
-		<div class="groupe grille grid_6 alpha">
-			<div id="idarticle125" class="hentry item couleurid3 clearfix">
-				<p class="info-publi updated published grid_2 alpha"><span class="value" title="">17/03/2008</span></p>
-				<div class="grid_4 omega">
-					<h2 class="entry-title"><a href="#" rel="bookmark">Le Futuroscope : contrats abusifs et menace de destruction d’œuvre</a></h2>
-					<p class="entry-content intro">Le Futuroscope : contrats abusifs et menace de destruction d’œuvre, par le CAAP. <a href="#" class="suite">lire la suite</a></p>
-				</div>
-			</div>
-			<div id="idarticle126" class="hentry item couleurid3 clearfix">
-				<p class="info-publi updated published grid_2 alpha"><span class="value" title="">04/04/2007</span></p>
-				<div class="grid_4 omega">
-					<h2 class="entry-title"><a href="#" rel="bookmark">Rencontres nationales des associations et collectifs d’artistes plasticiens - 13-15 avril 2007, Luçon (Vendée)</a></h2>
-					<p class="entry-content intro">es Rencontres ont pour ambition de permettre à tous ceux qui s’impliquent dans le monde des arts plastiques de se rencontrer et d’engager une réflexion nouvelle.. <a href="#" class="suite">lire la suite</a></p>
-				</div>
-			</div>
-			<div id="idarticle127" class="hentry item couleurid3 clearfix">
-				<p class="info-publi updated published grid_2 alpha"><span class="value" title="">07/05/2006</span></p>
-				<div class="grid_4 omega">
-					<h2 class="entry-title"><a href="#" rel="bookmark">Cahiers #2 de la FRAAP</a></h2>
-					<p class="entry-content intro">Portrait des associations d’artistes plasticiens, membres de la FRAAP. <a href="#" class="suite">lire la suite</a></p>
-				</div>
-			</div>
+		[(#REM) les articles de la rubrique, format grille ]
+		<INCLURE{fond=inclure/articles-selection,
+			env,selection=#GET{articles_rubrique},format=grille,ordre=alpha,ajax,pagination=7}>
 
-		</div><!-- .groupe grille -->
+		<INCLURE{fond=inclure/tabs,
+			env,format='grille groupe',ordre=omega}>
 
-		<div id="tabs" class="groupe grid_6 omega">
-			<ul>
-				<li><a href="#sousrubriques">Rubriques</a></li>
-				<li><a href="#enbref">En bref</a></li>
-			</ul>
-			<div id="sousrubriques">
-				<ul class="enumeration">
-					<li>
-						<strong>Chantiers</strong>
-						<ul>
-							<li><a href="#">Élections Régionales 2004 : les réponses des candidats</a></li>
-							<li><a href="#">1ères rencontres nationales 2003</a></li>
-							<li><a href="#">Elections Présidentielles 2007 : les réponses des candidats</a></li>
-							<li><a href="#">Elections Législatives 2007 : les réponses des candidats</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div><!-- #sousrubriques -->
-			<div id="enbref">
-				<ul class="liste">
-					<li class="hentry clearfix">
-						<p class="info-publi updated published grid_2 alpha"><span class="value" title="">15/11/2010</span></p>
-						<h3 class="entry-title grid_4 omega"><a href="#">Titre breve 1 ipsum dolor sit amet</a></h3>
-					</li>
-					<li class="hentry clearfix">
-						<p class="info-publi updated published grid_2 alpha"><span class="value" title="">13/10/2010</span></p>
-						<h3 class="entry-title grid_4 omega"><a href="#">Titre breve 2 Lorem ipsum dolor sit</a></h3>
-					</li>
-					<li class="hentry clearfix">
-						<p class="info-publi updated published grid_2 alpha"><span class="value" title="">02/09/2010</span></p>
-						<h3 class="entry-title grid_4 omega"><a href="#">Titre breve 3 Lorem ipsum sit amet</a></h3>
-					</li>
-				</ul>
-
-			</div><!-- #breves -->
-		</div><!-- #tabs -->
-	</div><!-- .hfeed -->
-	
-	
-	
 	</BOUCLE_condition_articles>
-	
+
 </div><!-- .contenu -->
 
 
