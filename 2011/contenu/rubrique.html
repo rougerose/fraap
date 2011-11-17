@@ -19,7 +19,10 @@
 </div><!-- #chapo-conteneur .introduction -->]
 
 [(#REM) les articles en sélection ]
-<BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
+<B_articles_selection><BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
+</B_articles_selection>
+<BOUCLE_defaut(ARTICLES){id_rubrique}{!par date}{0,1}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_defaut>
+<//B_articles_selection>
 [(#REM) les articles de la rubrique ]
 <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
 
@@ -36,7 +39,7 @@
 
 		<INCLURE{fond=inclure/tabs,
 			env,format='grille groupe',ordre=omega}>
-
+	</div><!-- .hfeed -->
 	</BOUCLE_condition_articles>
 
 </div><!-- .contenu -->

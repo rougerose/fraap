@@ -29,19 +29,19 @@
 <div id="tabs" class="clearfix[ (#GET{format})][ (#GET{ordre})]">
 	<ul class="liste">
 		[(#GET{rubriquage}|oui)
-		<li><a href="#rubriques">Rubriques</a></li>
+		<li><a href="#rubriques"><:rubriques:></a></li>
 		]
 		[(#GET{documents}|oui)
-		<li><a href="#documents">Documents</a></li>
+		<li><a href="#documents"><:documents:></a></li>
 		]
 		[(#GET{breves}|oui)
-		<li><a href="#breves">En bref</a></li>
+		<li><a href="#breves"><:en_bref:></a></li>
 		]
 		[(#GET{mots}|oui)
-		<li><a href="#themes">Thèmes</a></li>
+		<li><a href="#themes"><:themes:></a></li>
 		]
 		[(#GET{lire_articles}|ou{#GET{lire_breves}}|oui)
-		<li><a href="#lire">Lire aussi</a></li>
+		<li><a href="#lire"><:lire_aussi:></a></li>
 		]
 	</ul>
 

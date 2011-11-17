@@ -22,6 +22,7 @@ a:active { outline: none; }
 .textecourant a { text-decoration: underline; }
 span.suite a:after, a.suite:after { content:"\00A0\2192"; }
 #contenu a, #fil a, #pied a { font-weight: bold; }
+#tabs a { font-weight: normal; }
 
 
 /* filets */
@@ -62,8 +63,8 @@ img.puce { background-color: #000; }
 	.pagination * { display: block; float: left; margin-right: 5px; }
 	.pagination *:last-child { margin-right:0; }
 	.pagination .pagination-conteneur { float: right; padding-left: 10px; padding-right: 5px; }
-	.pagination.haut .pagination-conteneur { border-top: 1px solid #000; }
-	.pagination.bas .pagination-conteneur { border-bottom: 1px solid #000; }
+	.pagination.haut .pagination-conteneur { border-top: 1px dotted #000; }
+	.pagination.bas .pagination-conteneur { border-bottom: 1px dotted #000; }
 		.pagination strong { color: #fff; background-color: #000; padding: 0 3px; border: 1px solid #000; }
 		.pagination a { border: 1px solid #000; padding: 0 3px 1px; }
 		.pagination.haut a { border-top-width: 0; }
@@ -344,7 +345,7 @@ img.puce { background-color: #000; }
 .ui-tabs .ui-tabs-nav li {
 	margin : 0 0 -1px 4px;
 	border: 1px solid #fff;
-	font-size: 12px; }
+	font-size: 13px; }
 .page_rubrique .ui-tabs .ui-tabs-nav li { font-size: 13px; }
 .ui-tabs .ui-tabs-nav li.ui-state-default { background: none; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
