@@ -108,6 +108,11 @@ img.puce { background-color: #000; }
 			float: left; display: inline;
 			margin-left: 10px; }
 
+		.hfeed .intro { overflow: hidden; }
+		.groupe .hfeed h2.entry-title { }
+
+		.groupe h2.intertitre { margin-bottom: 0; }
+
 	/* format horizontal */
 	.horizontal .hentry .resume-conteneur { width: 580px; }
 		.groupe .hentry h2 {
@@ -123,7 +128,7 @@ img.puce { background-color: #000; }
 		width: 340px; }
 		.grille .hentry .resume-conteneur { width: 220px; }
 
-	/* hentry dans #tabs */
+	/* hentry dans #tabs (rubriques) */
 
 	#tabs .hentry {
 		border-top-width: 0;
@@ -141,27 +146,12 @@ img.puce { background-color: #000; }
 						width: 140px }
 
 
-/* sommaire */
-	dl.hfeed { margin: 0; }
-		.hfeed dt {
-			font-size: 23px; font-weight: bold;
-			xborder-bottom: 2px solid #000;
-			margin-bottom: .5em; }
-
-	div.hfeed {  }
-		div.hentry {
-			 }
-
-			/*.hfeed h3.entry-title { font-size: 18px; line-height: 20px; margin-bottom: .5em; }*/
-			.hfeed .intro { overflow: hidden; }
-			.groupe .hfeed h2.entry-title { }
-
 	/* présentation en grille */
 
 	.grille h2.intertitre { border-bottom: 2px solid #000; }
 	.grille .intro { margin-bottom: 1em; }
 
-		.grille .hentry h2.entry-title { font-size: 16px; line-height: 18px; }
+		.grille .hentry h2.entry-title { font-size: 14px; line-height: 18px; }
 		.grille .hentry .published { line-height: 18px; }
 
 
@@ -239,7 +229,7 @@ img.puce { background-color: #000; }
 /* stages */
 
 	/* page de présentation/login/inscription */
-	#stages-aiguillage {  }
+	#stages-aiguillage { padding-left: 240px; }
 		#stages-aiguillage li { text-align: center; }
 			#stages-aiguillage li h3 { text-align: left; }
 

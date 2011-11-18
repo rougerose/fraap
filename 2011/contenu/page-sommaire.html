@@ -1,6 +1,11 @@
+[(#REM) définition de constantes ]
+#SET{articles_selection,#ARRAY}
+
+<BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=0}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
+
 <div class="contenu-principal">
 	[(#REM) articles en sélection ]
-	<INCLURE{fond=inclure/sommaire-articles-une,ajax,env}>
+	<INCLURE{fond=inclure/articles-selection,ajax,env,pagination=10,format=horizontal,logo=140,selection=#GET{articles_selection}}>
 
 	<div class="groupe une grille grid_12">
 		<BOUCLE_rubriques_permanentes(RUBRIQUES){id_rubrique IN 2,3,6}{par titre, num titre}>

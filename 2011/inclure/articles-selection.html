@@ -1,16 +1,19 @@
 [(#REM) définition de constantes
-	format : horizontal -- par defaut -- ou grille.
-	ordre : alpha ou omega -- cf. 960.css --. Facultatif
-	logo : la taille du logo. Facultatif
+	selection : tableau des id_article à afficher ;
+	format : horizontal -- par defaut -- ou grille ;
+	ordre : alpha ou omega -- cf. 960.css --. Facultatif ;
+	logo : la taille du logo. Facultatif ;
+	pagination : facultatif.
  ]
-	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,''}}
+	#SET{selection,#ENV{selection}}
+	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,140}} #SET{pagination,#ENV{pagination,10}}
 <B_articles>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})]">
 	#ANCRE_PAGINATION
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 
 	<BOUCLE_articles(ARTICLES){id_article IN #ENV{selection}}{pagination #ENV{pagination}}>
-	#INCLURE{fond=inclure/article-resume,id_article,logo=#GET{logo}}
+	#INCLURE{fond=inclure/article-resume,id_article,composition=#ENV{composition},logo=#GET{logo}}
 	</BOUCLE_articles>
 
 	[<p class="pagination bas clearfix">(#PAGINATION{page})</p>]
