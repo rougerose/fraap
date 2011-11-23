@@ -128,6 +128,9 @@ img.puce { background-color: #000; }
 		width: 340px; }
 		.grille .hentry .resume-conteneur { width: 220px; }
 
+		/* page sommaire */
+		.page_sommaire .grille { margin: 0; }
+
 	/* hentry dans #tabs (rubriques) */
 
 	#tabs .hentry {
