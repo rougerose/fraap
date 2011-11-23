@@ -25,6 +25,7 @@
 	/* #contenu en fonction des pages */
 	.page_sommaire #contenu {
 		margin-top: 3em;
+		margin: 3em 10px 0;
 		padding-left: 240px; }
 
 	.page_login #contenu,
@@ -105,7 +106,7 @@
 		width: 220px; }
 
 	/* pied de page */
-	#pied { wmargin-top: 1em; wmargin-bottom: 2em; margin: 1em 10px 2em;  }
+	#pied { margin: 1em 10px 2em;  }
 		#pied .groupe { border-bottom-width: 0;  }
 		#pied .colonne {
 			float: left; display: inline;

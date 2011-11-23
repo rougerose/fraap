@@ -17,7 +17,11 @@
 <BOUCLE_principale(RUBRIQUES){racine}>
 	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
 
+	[(#SET{couleur_lum01,[(#GET{couleur}|couleur_luminance{0.1})]})]
+	[(#SET{couleur_lum03,[(#GET{couleur}|couleur_luminance{0.3})]})]
 	[(#SET{couleur_lum07,[(#GET{couleur}|couleur_luminance{0.7})]})]
+	[(#SET{couleur_sat01,[(#GET{couleur}|couleur_saturation{0.1})]})]
+	
 
 	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
 	[(#ID_RUBRIQUE|=={12}|oui)
@@ -62,45 +66,42 @@
 
 	.couleurID#ID_RUBRIQUE a.bouton:hover { background-color: ##GET{couleur_lum07}; }
 
-	li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
+	#nav li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
+	
+	
+	[(#REM)
+		définitions spécifiques à la rubrique 10/Stages
+	]
+	[(#ID_SECTEUR|=={10}|oui)
+	
+		/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
+		#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
+		#stages-aiguillage li,
+		.couleurID#ID_RUBRIQUE #stages-identification,
+		/* profil > #extra */
+		.page_profil .couleurID#ID_RUBRIQUE h2 { border-color: ##GET{couleur}; }
+
+		#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
+		.couleurID#ID_RUBRIQUE #titre h1,
+		.couleurID#ID_RUBRIQUE #stages-identification p.bienvenue,
+		.page_profil .couleurID#ID_RUBRIQUE h2 { color: ##GET{couleur}; }
+
+		#stages-table th { background-color: ##GET{couleur_lum03}; border-bottom-color: ##GET{couleur_lum03}; }
+			#stages-table th:first-child { border-left-color: ##GET{couleur_lum03}; }
+			#stages-table th:last-child { border-right-color: ##GET{couleur_lum03}; }
+		#stages-table tr:first-child th { background-color: ##GET{couleur}; }
+			#stages-table tr:first-child th:first-child { border-left-color: ##GET{couleur}; }
+			#stages-table tr:first-child th:last-child { border-right-color: ##GET{couleur}; }
+		#stages-table tr.pair td { background-color: ##GET{couleur_sat01}; }
+
+		/* formulaires */
+		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne .xlegend { border-color: ##GET{couleur}; color: ##GET{couleur}; }
+		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne ul.fields li { xborder-color: ##GET{couleur_lum03}; }
+	
+	]
 
 </BOUCLE_principale>
-
-<BOUCLE_rubrique_stages(RUBRIQUES){id_rubrique=10}>
-	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
-
-	[(#SET{couleur_lum01,[(#GET{couleur}|couleur_luminance{0.1})]})]
-	[(#SET{couleur_lum03,[(#GET{couleur}|couleur_luminance{0.3})]})]
-	[(#SET{couleur_lum07,[(#GET{couleur}|couleur_luminance{0.7})]})]
-	[(#SET{couleur_sat01,[(#GET{couleur}|couleur_saturation{0.1})]})]
-
-	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
-
-	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
-	#stages-aiguillage li,
-	.couleurID#ID_RUBRIQUE #stages-identification,
-	/* profil > #extra */
-	.page_profil .couleurID#ID_RUBRIQUE h2 { border-color: ##GET{couleur}; }
-
-	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
-	.couleurID#ID_RUBRIQUE #titre h1,
-	.couleurID#ID_RUBRIQUE #stages-identification p.bienvenue,
-	.page_profil .couleurID#ID_RUBRIQUE h2 { color: ##GET{couleur}; }
-
-	#stages-table th { background-color: ##GET{couleur_lum03}; border-bottom-color: ##GET{couleur_lum03}; }
-		#stages-table th:first-child { border-left-color: ##GET{couleur_lum03}; }
-		#stages-table th:last-child { border-right-color: ##GET{couleur_lum03}; }
-	#stages-table tr:first-child th { background-color: ##GET{couleur}; }
-		#stages-table tr:first-child th:first-child { border-left-color: ##GET{couleur}; }
-		#stages-table tr:first-child th:last-child { border-right-color: ##GET{couleur}; }
-	#stages-table tr.pair td { background-color: ##GET{couleur_sat01}; }
-
-	/* formulaires */
-	.couleurID#ID_RUBRIQUE .formulaire_spip.enligne .xlegend { border-color: ##GET{couleur}; color: ##GET{couleur}; }
-	.couleurID#ID_RUBRIQUE .formulaire_spip.enligne ul.fields li { xborder-color: ##GET{couleur_lum03}; }
-
-</BOUCLE_rubrique_stages>
 
 [(#REM) couleur page liste diffusion Fraap-infos ]
 
