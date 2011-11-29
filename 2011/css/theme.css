@@ -232,7 +232,7 @@ img.puce { background-color: #000; }
 /* stages */
 
 	/* page de présentation/login/inscription */
-	#stages-aiguillage { padding-left: 240px; }
+	.rubrique_stages #stages-aiguillage, .rubrique_stages .texte { padding-left: 240px;  }
 		#stages-aiguillage li { text-align: center; }
 			#stages-aiguillage li h3 { text-align: left; }
 
@@ -286,7 +286,7 @@ img.puce { background-color: #000; }
 
 	/* http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba */
 
-	.bouton,a:visited.bouton {
+	.bouton {
 		font-weight: bold;
 		line-height: 1;
 		text-transform: uppercase; text-decoration: none;

@@ -1,37 +1,30 @@
 <plugin>
-	<nom>
-		<multi>[fr]Stages</multi>
-	</nom>
-	<description>
-		<multi>
-		[fr]Ajout de champs d'identifications sur les visiteurs pour les annonces de stages de la Fraap
-		</multi>
-	</description>
+	<nom>Stages</nom>
 	<auteur>christophe le drean</auteur>
-	<licence>GNU/GPL</licence>
-	<etat>stable</etat>
-
 	<version>0.1</version>
-	<version_base>0.45</version_base>
+	<version_base>0.3</version_base>
+	<install>base/stages_upgrade.php</install>
+
+
+	<etat>stable</etat>
+	<description>
+		gestion des candidatures de stages.
+	</description>
+	<lien>#</lien>
+	<icon></icon>
 	<prefix>stages</prefix>
 
-	<install>base/stages_install.php</install>
 	<pipeline>
-		<nom>declarer_champs_extras</nom>
+		<nom>declarer_tables_interfaces</nom>
 		<inclure>base/stages.php</inclure>
 	</pipeline>
 	<pipeline>
 		<nom>declarer_tables_principales</nom>
-		<inclure>base/stages_tables.php</inclure>
-	</pipeline>
-	<pipeline>
-		<nom>declarer_tables_interfaces</nom>
-		<inclure>base/stages_tables.php</inclure>
+		<inclure>base/stages.php</inclure>
 	</pipeline>
 
-	<necessite id="SPIP" version="[2.1.10;]" />
-	<necessite id="cextras" version="[1.10.0;]" />
+	<necessite id="SPIP" version="[2.1.12;]" />
 	<necessite id="accesrestreint" version="[3.3.1;]" />
-
-	<categorie>outil</categorie>
+	<necessite id="menus" version="[0.9.1;]">
 </plugin>
+

@@ -1,5 +1,7 @@
 <?php
-// Fichier ayant vocation à être surchargé depuis un autre plugin
+
+if (!defined("_ECRIRE_INC_VERSION")) return;
+
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
@@ -18,18 +20,21 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'form_forum_message_auto' => '(ceci est un message automatique, merci de ne pas y r&eacute;pondre)',
 	'form_forum_voici1' => 'Votre inscription sur le site "@nom_site_spip@" (@adresse_site@) a bien été enregistrée.',
 	'form_mail_signature' => "cordialement,
-la FRAAP.",
+	la FRAAP.",
 	'form_vos_id' => "Vos identifiants sont :",
 
 	// I
 	'identifiants_connexion' => 'Vos identifiants de connexion',
 	'info_confirmer_passe' => 'Confirmez ce mot de passe',
+	'info_consultation_profil' => 'Consulter votre profil',
+	'info_inscription' => "Veuillez préciser ci-dessous quelques informations. Vos identifiant et mot de passe vous parviendront par courrier électronique.",
 	'info_modifier_profil' => 'Modifier votre profil',
 	'info_modifier_stage' => 'Modifier votre candidature de stage',
 	'info_pas_de_resultat_stages' => 'Aucune offre de stage ne répond à vos critères',
+	'info_titre_inscription' => 'Vous inscrire sur le site @nom_site_spip@',
 	'info_votre_profil' => 'Votre profil',
 	'info_votre_selection' => 'Votre s&eacute;lection',
-	'info_consultation_profil' => 'Consulter votre profil',
+
 
 	// L
 	'label_activite' => "Votre activit&eacute;",
@@ -71,6 +76,8 @@ la FRAAP.",
 	// M
 	'menu_connexion_nom' => 'menu de connexion Stages',
 	'menu_connexion_description' => 'Lien permettant de s&#x27;identifier au site, affiche un message de Bienvenue ainsi qu&#x27;un lien vers le profil et lien de d&eacute;connexion',
+	'message_erreur' => 'Nous sommes désolés. Une erreur est survenue.',
+	'message_ok' => 'Vos modifications ont été enregistrées.',
 
 	// N
 	'nom' => "Votre nom",
@@ -91,5 +98,6 @@ la FRAAP.",
 	// V
 
 	// Z
+	);
 
-);
+?>

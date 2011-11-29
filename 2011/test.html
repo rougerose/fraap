@@ -8,24 +8,12 @@
 
 </head>
 <body class="untitled">
-	<B_ligne>
-	<table>
-	<BOUCLE_ligne (ARTICLES){par num titre}>
-	[(#COMPTEUR_BOUCLE|alterner{'<tr class="1">',''})]
-	<td width="50%">
-	[(#LOGO_ARTICLE{#URL_ARTICLE}|image_reduire{100,66})]
-	<div class="titre">
-	<a href="#URL_ARTICLE">#TITRE</a>
-	</div>
-	<div class="suite">
-	#SOUSTITRE
-	#DESCRIPTIF
-	</div>
-	</td>
-	[(#COMPTEUR_BOUCLE|alterner{'','</tr>'})]
-	</BOUCLE_ligne>
-	[(#TOTAL_BOUCLE|alterner{'<td class="2"></td></tr>', ''})]
-	</table>
-	</B_ligne>
+	<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+	#FORMULAIRE_EDITER_STAGE{#ENV{id_formulaires_reponse,new},#ENV{redirect,#SELF}}
+
+	</BOUCLE_auteur>
+
+
+
 </body>
 </html>

@@ -7,5 +7,9 @@
 <div class="contenu-principal">
 	[(#GET{prive}|oui)#MENU_LANG_ECRIRE]
 
-	[(#FORMULAIRE_LOGIN{#ENV{url}|sinon{#URL_ECRIRE{accueil}}})]
+	<div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
+		[(#FORMULAIRE_LOGIN{#ENV{url}|sinon{#URL_ECRIRE{accueil}}})]
+	</div><!-- .conteneur-formulaire -->
+
+
 </div>

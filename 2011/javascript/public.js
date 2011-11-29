@@ -14,8 +14,10 @@ jQuery(document).ready(function() {
 	*/
 	$("#tabs").tabs();
 
-
-
+/*	$("#accordeon").accordion({
+		autoHeight: false
+	});
+*/
 	/*
 	* Animation du formulaire Recherche
 	*/
