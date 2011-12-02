@@ -1,8 +1,11 @@
+
 <BOUCLE_article(ARTICLES){id_article}>
 
 #TEXTE
 
-#FORMULAIRE_EDITER_CANDIDATURE{#ENV{id_stage,new},#ENV{id_auteur},#ENV{redirect}}
+<div class="ajax">
+	#FORMULAIRE_CANDIDATURE{#ENV{id_candidature,new},#SESSION{id_auteur}}
+</div>
 
 
 </BOUCLE_article>
