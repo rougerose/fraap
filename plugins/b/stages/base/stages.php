@@ -8,7 +8,7 @@ function stages_declarer_tables_interfaces($interface){
 }
 function stages_declarer_tables_principales($tables_principales){
 	$stages = array(
-		"id_stage"	=> "bigint(21) NOT NULL",
+		"id_candidature" => "bigint(21) NOT NULL",
 		"id_auteur" => "bigint(21) NOT NULL",
 		"statut" 	=> "varchar(10) NOT NULL",
 		"date"		=> "datetime NOT NULL",
@@ -27,7 +27,7 @@ function stages_declarer_tables_principales($tables_principales){
 		);
 
 	$stages_cles = array(
-		"PRIMARY KEY"	=> "id_stage",
+		"PRIMARY KEY"	=> "id_candidature",
 		"KEY id_auteur" => "id_auteur"
 		);
 
@@ -37,7 +37,8 @@ function stages_declarer_tables_principales($tables_principales){
 		'join' => array('id_auteur' => 'id_auteur')
 	);
 
-	$tables_principales['spip_auteurs']['field']['prenom'] = 'text NOT NULL DEFAULT ""';
+	// ajout colonnes prenom et activite sur spip_auteurs
+	$tables_principales['spip_auteurs']['field']['prenom'] = 'tinyint(1) NOT NULL';
 	$tables_principales['spip_auteurs']['field']['activite'] = 'text NOT NULL DEFAULT ""';
 
 	return $tables_principales;
