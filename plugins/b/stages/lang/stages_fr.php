@@ -14,6 +14,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'competences' => 'Comp&eacute;tences',
 
 	// D
+	
+	// E
+	'erreur_date_avant_apres' => 'Indiquez une date de fin apr&egrave;s la date de d&eacute;but !',
 
 	// F
 	'form_forum_bonjour' => 'Bonjour @prenom@ @nom@,',
@@ -40,11 +43,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_activite' => "Votre activit&eacute;",
 	'label_activites_inscription' => 'Vos domaines d&#x27;activité',
 	'label_cadre_stage' => 'Cadre du stage conventionné',
-	'label_competences_consultation' => 'Compétences',
-	'label_competences_consultation_abrev' => 'Compét.',
-	'label_competences_inscription' => 'Vos compétences (plusieurs choix possibles)',
 	'label_competences_menu_recherche' => 'Compétences recherchées (plusieurs choix possibles)',
-	'label_competences_recherches_consultation' => 'Compétences et Recherches',
+	'label_competences_et_recherches_consultation' => 'Compétences et Recherches',
+	'label_competences_offre_consultation' => 'Compétences',
+	'label_competences_offre_consultation_abrev' => 'Compét.',
+	'label_competences_offre_inscription' => 'Vos compétences (plusieurs choix possibles)',
+	'label_competences_recherche_consultation_abrev' => 'Rech.',
+	'label_competences_recherche_inscription' => 'Domaines que vous recherchez (plusieurs choix possibles)',
 	'label_conditions_inscription_stage' => "J'ai lu et j'accepte <a href='@url_conditions@'>les conditions d'utilisation</a>.",
 	'label_date_debut' => 'Du',
 	'label_date_fin' => 'Au',
@@ -63,8 +68,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_pass' => "Votre mot de passe",
 	'label_pass2'=> "Confirmez votre mot de passe",
 	'label_recherches_consultation' => 'Recherches',
-	'label_recherches_consultation_abrev' => 'Rech.',
-	'label_recherches_inscription' => 'Domaines que vous recherchez (plusieurs choix possibles)',
 	'label_regions_consultation' => 'Régions (plusieurs choix possibles)',
 	'label_regions_consultation_abrev' => 'Régions',
 	'label_regions_inscription' => 'Région(s) où vous souhaitez réaliser votre stage (plusieurs choix possibles)',

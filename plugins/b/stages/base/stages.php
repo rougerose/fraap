@@ -23,7 +23,6 @@ function stages_declarer_tables_principales($tables_principales){
 		"niveau"	=> "text NOT NULL",
 		"competences_offre" => "text NOT NULL",
 		"competences_recherche" => "text NOT NULL",
-		"maj"		=> "TIMESTAMP"
 		);
 
 	$stages_cles = array(

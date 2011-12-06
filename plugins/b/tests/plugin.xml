@@ -1,0 +1,28 @@
+<plugin>
+	<nom>Tests</nom>
+	<auteur>christophe le drean</auteur>
+	<version>0.1</version>
+	<version_base>0.2</version_base>
+	<install>base/tests_upgrade.php</install>
+
+
+	<etat>stable</etat>
+	<description>
+		test
+	</description>
+	<lien>#</lien>
+	<icon></icon>
+	<prefix>tests</prefix>
+
+	<pipeline>
+		<nom>declarer_tables_interfaces</nom>
+		<inclure>base/tests.php</inclure>
+	</pipeline>
+	<pipeline>
+		<nom>declarer_tables_principales</nom>
+		<inclure>base/tests.php</inclure>
+	</pipeline>
+
+	<necessite id="SPIP" version="[2.1.12;]" />
+</plugin>
+
