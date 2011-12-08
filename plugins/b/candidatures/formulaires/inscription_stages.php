@@ -84,10 +84,12 @@ function formulaires_inscription_stages_verifier_dist($mode, $focus, $id=0) {
 				if (($row['statut'] == '5poubelle') AND !$declaration['pass'])
 					// irrecuperable
 					$erreurs['message_erreur'] = _T('form_forum_access_refuse');
-				elseif (($row['statut'] != 'nouveau') AND !$declaration['pass'])
+				// on autorise les doublons pour le développement du site
+			//	elseif (($row['statut'] != 'nouveau') AND !$declaration['pass'])
+
 					// deja inscrit
-					$erreurs['message_erreur'] = _T('form_forum_email_deja_enregistre');
-				spip_log($row['id_auteur'] . " veut se resinscrire");
+				//	$erreurs['message_erreur'] = _T('form_forum_email_deja_enregistre');
+			//	spip_log($row['id_auteur'] . " veut se resinscrire");
 
 			}
 		}
@@ -118,8 +120,10 @@ function formulaires_inscription_stages_traiter_dist($mode, $focus, $id=0) {
 			$desc = _T('titre_probleme_technique');
 		else {
 			$row = sql_fetch($res);
+			// on autorise les mails en doublons pour le développement du site
+			$desc = $row ? inscription_nouveau($desc) : '';
 			// s'il n'existe pas deja, creer les identifiants
-			$desc = $row ? $row : inscription_nouveau($desc);
+		//	$desc = $row ? $row : inscription_nouveau($desc);
 		}
 	}
 
