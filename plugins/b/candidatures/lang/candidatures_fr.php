@@ -80,6 +80,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// M
 	'menu_connexion_nom' => 'menu de connexion Stages',
 	'menu_connexion_description' => 'Lien permettant de s&#x27;identifier au site, affiche un message de Bienvenue ainsi qu&#x27;un lien vers le profil et lien de d&eacute;connexion',
+	'message_candidature_enregistree' => 'Votre candidature a été enregistrée',
+	'message_candidature_modifiee' => 'Votre candidature a été modifiée',
 	'message_erreur' => 'Nous sommes désolés. Une erreur est survenue.',
 	'message_ok' => 'Vos modifications ont été enregistrées.',
 

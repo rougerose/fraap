@@ -1,6 +1,5 @@
-[(#REM)
 <p>#ENV</p>
-<p>auteur #ENV{id_auteur} / test #ENV{id_candidature} / redirect #ENV{redirect} / retour #ENV{retour}</p>]
+<p>editable [(#ENV{editable}|?{'oui','non'}) / ]auteur #ENV{id_auteur} / test #ENV{id_candidature} / redirect #ENV{redirect} / retour #ENV{retour}</p>
 
 [(#REM)
 tableau pour stocker les données du formulaires
