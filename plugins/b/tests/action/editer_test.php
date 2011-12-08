@@ -27,8 +27,9 @@ function tests_action_insert_test($id_auteur){
 	}
 */
 	// nouvel evenement
-	$id_test = sql_insertq("spip_tests", array("maj"=>date("Y-m-d H:i:s"), 'id_auteur'=>intval($id_auteur)));
-spip_log('je suis passe par la','journal');
+	$id_test = sql_insertq("spip_tests", array(
+		'id_auteur'=>intval($id_auteur),'date'=>date("Y-m-d H:i:s"), "maj"=>date("Y-m-d H:i:s")
+		));
 	if (!$id_test){
 		spip_log("action formulaire test : impossible d'ajouter un test",'journal');
 		return false;
