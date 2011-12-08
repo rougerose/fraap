@@ -56,12 +56,12 @@ function formulaires_inscription_stages_verifier_dist($mode, $focus, $id=0) {
 	if (!$pass2 = _request('pass2_inscription_stages'))
 		$erreurs['pass2_inscription_stages'] = _T("info_obligatoire");
 	if (!$conditions = _request('conditions_inscription_stages'))
-		$erreurs['conditions_inscription_stages'] = _T("stages:accepter_conditions");
+		$erreurs['conditions_inscription_stages'] = _T("candidatures:accepter_conditions");
 	if (strlen($pass) < 6) {
-		$erreurs['pass'] = _T("stages:pass_trop_court");
+		$erreurs['pass'] = _T("candidatures:pass_trop_court");
 	} else {
 		if ($pass != $pass2) {
-			$erreurs['pass2'] = _T("stages:pass_pas_identique");
+			$erreurs['pass2'] = _T("candidatures:pass_pas_identique");
 		}
 	}
 
@@ -215,21 +215,21 @@ function envoyer_inscription_dist($desc, $nom, $prenom, $pass, $mode, $id) {
 	$adresse_site = $GLOBALS['meta']["adresse_site"];
 	if ($mode == '6forum') {
 		$adresse_login = generer_url_public('login');
-		$msg = 'stages:form_forum_voici1';
+		$msg = 'candidatures:form_forum_voici1';
 	} else {
 		$adresse_login = $adresse_site .'/'. _DIR_RESTREINT_ABS;
 		$msg = 'form_forum_voici2';
 	}
 
-	$msg = _T('stages:form_forum_message_auto')."\n\n"
-		. _T('stages:form_forum_bonjour', array('prenom' => $prenom, 'nom' => $nom))."\n\n"
+	$msg = _T('candidatures:form_forum_message_auto')."\n\n"
+		. _T('candidatures:form_forum_bonjour', array('prenom' => $prenom, 'nom' => $nom))."\n\n"
 		. _T($msg, array('nom_site_spip' => $nom_site_spip,
 			'adresse_site' => $adresse_site . '/',
 			'adresse_login' => $adresse_login)) . "\n\n"
-		. _T('stages:form_vos_id') . "\n "
+		. _T('candidatures:form_vos_id') . "\n "
 		. "\t- " . _T('form_forum_login')." " . $desc['login'] . "\n "
 		. "\t- " . _T('form_forum_pass')." " . $pass . "\n\n"
-		. _T('stages:form_mail_signature') . "\n";
+		. _T('candidatures:form_mail_signature') . "\n";
 
 	return array("[$nom_site_spip] "._T('form_forum_identifiants'), $msg);
 }
