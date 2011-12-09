@@ -89,7 +89,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'nom' => "Votre nom",
 
 	// P
-	'pas_autorise' => 'Vous n&#x27;&ecirc;tes pas autoris&eacute; &agrave; consulter cette page',
+	'pas_autorise' => "Vous n&#x27;&ecirc;tes pas autoris&eacute; &agrave; consulter cette page. Afficher <a href='@url_profil@'>votre profil</a>.",
 	'pass_pas_identique' => "Le mot de passe n'est pas identique",
 	'pass_trop_court' => "Votre mot de passe doit contenir plus de 6 caract&egrave;res",
 	'prenom' => "Votre pr&eacute;nom",
