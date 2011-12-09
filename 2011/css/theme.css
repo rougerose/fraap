@@ -240,9 +240,11 @@ img.puce { background-color: #000; }
 		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
 
 		/* page profil > #extra */
-		.page_profil #extra ol { margin-left: 1.5em; }
+		.page_profil #extra ol {  }
 		.page_profil #extra li { margin-left: 0; margin-bottom: 1em;  }
-			.page_profil #extra li p { margin: 0; }
+			.page_profil #extra li div.bloc { padding-right: 5px; padding-left: 10px; }
+				.page_profil #extra li .bloc p { margin: 0 0 .5em; }
+				.page_profil #extra li div.actions { margin-top: 1em; text-align: right; }
 
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
