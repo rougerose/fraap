@@ -21,7 +21,7 @@ function instituer_auteur_ici($auteur=array()){
 }
 
 // http://doc.spip.org/@inc_editer_mot_dist
-function formulaires_editer_profil_charger_dist($id_auteur='new', $retour='', $lier_id_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_auteur_public_charger_dist($id_auteur='new', $retour='', $lier_id_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
 	$valeurs = formulaires_editer_objet_charger('auteur',$id_auteur,0,0,$retour,$config_fonc,$row,$hidden);
 	if ($lier_id_article) $valeurs['lier_id_article'] = $lier_id_article;
 	// forcer la prise en compte du post, sans verifier si c'est bien le meme formulaire,
@@ -34,7 +34,7 @@ function formulaires_editer_profil_charger_dist($id_auteur='new', $retour='', $l
  * Identifier le formulaire en faisant abstraction des parametres qui
  * ne representent pas l'objet edite
  */
-function formulaires_editer_profil_identifier_dist($id_auteur='new', $retour='', $lier_id_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_auteur_public_identifier_dist($id_auteur='new', $retour='', $lier_id_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
 	return serialize(array($id_auteur,$lier_id_article));
 }
 
@@ -68,7 +68,7 @@ function auteurs_edit_config($row)
 	return $config;
 }
 
-function formulaires_editer_profil_verifier_dist($id_auteur='new', $retour='', $lier_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_auteur_public_verifier_dist($id_auteur='new', $retour='', $lier_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
 	$erreurs = formulaires_editer_objet_verifier('auteur',$id_auteur,array('nom'));
 
 	$auth_methode = sql_getfetsel('source','spip_auteurs','id_auteur='.intval($id_auteur));
@@ -112,7 +112,7 @@ function formulaires_editer_profil_verifier_dist($id_auteur='new', $retour='', $
 }
 
 // http://doc.spip.org/@inc_editer_mot_dist
-function formulaires_editer_profil_traiter_dist($id_auteur='new', $retour='', $lier_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
+function formulaires_editer_auteur_public_traiter_dist($id_auteur='new', $retour='', $lier_article=0, $config_fonc='auteurs_edit_config', $row=array(), $hidden=''){
 	if (_request('saisie_webmestre') OR _request('webmestre'))
 		set_request('webmestre',_request('webmestre')?_request('webmestre'):'non');
 	$retour = parametre_url($retour, 'email_confirm','');
@@ -137,8 +137,24 @@ function formulaires_editer_profil_traiter_dist($id_auteur='new', $retour='', $l
 		}
 	}
 
-	$res = formulaires_editer_objet_traiter('auteur',$id_auteur,0,0,$retour,$config_fonc,$row,$hidden);
+	$res = array();
+	$action_editer = charger_fonction("editer_auteur_public",'action');
+	list($id,$err) = $action_editer($id_auteur);
+//	$res['id_auteur'] = $id_auteur;
+	if ($err OR !$id_auteur){
+		$res['message_erreur'] = ($err?$err:_T('erreur'));
+	}
+	else{
+		if (preg_match("/email/",$retour)) $res['message_ok'] = _L("un email est envoye");
+		else $res['message_ok'] = _L("ok");
+		if ($retour)
+			$res['redirect'] = parametre_url($retour,'id_auteur',$id_auteur);
+	}
+	$res['editable'] = true;
 	return $res;
+
+//	$res = formulaires_editer_objet_traiter('auteur',$id_auteur,0,0,$retour,$config_fonc,$row,$hidden);
+//	return $res;
 }
 
 ?>

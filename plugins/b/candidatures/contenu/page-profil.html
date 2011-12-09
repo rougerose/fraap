@@ -11,8 +11,8 @@
 
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
 	<h2><:candidatures:info_modifier_profil:></h2>
-	<div class="ajax">
-		#FORMULAIRE_EDITER_PROFIL{#ENV{id_auteur,new},#ENV{redirect,#SELF}}
+	<div class="">
+		#FORMULAIRE_EDITER_AUTEUR_PUBLIC{#ID_AUTEUR,#SELF}
 	</div>
 ]
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|non)
