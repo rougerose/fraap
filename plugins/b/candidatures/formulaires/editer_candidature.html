@@ -1,14 +1,9 @@
 [(#REM)
-<p>#ENV</p>
-<p>editable [(#ENV{editable}|?{'oui','non'}) / ]auteur #ENV{id_auteur} / test #ENV{id_candidature} / redirect #ENV{redirect} / retour #ENV{retour}</p>
+	tableau pour stocker les données du formulaires
+	- r = les régions,
+	- c = les compétences et les domaines recherchés (les données sont les mêmes)
 ]
-
-[(#REM)
-tableau pour stocker les données du formulaires
-- r = les régions,
-- c = les compétences et les domaines recherchés (les données sont les mêmes)
-]
-#SET{r,#ARRAY} #SET{c,#ARRAY} #SET{saisies,#ARRAY}
+	#SET{r,#ARRAY} #SET{c,#ARRAY} #SET{saisies,#ARRAY}
 
 <BOUCLE_yaml(DATA){source yaml, #CHEMIN{formulaires/stages.yaml}}>
 [(#CLE|=={regions}|oui)[(#SET{r, #VALEUR})]]
