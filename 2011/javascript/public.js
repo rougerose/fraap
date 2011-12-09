@@ -14,6 +14,8 @@ jQuery(document).ready(function() {
 	*/
 	$("#tabs").tabs();
 
+	$("#accordeon-candidatures").accordion();
+
 /*	$("#accordeon").accordion({
 		autoHeight: false
 	});

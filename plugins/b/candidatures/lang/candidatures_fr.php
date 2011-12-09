@@ -9,8 +9,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'activite' => "Activit&eacute;",
 
 	// C
-	'candidature' => 'Vous avez @nb@ candidature publi&eacute;e.',
-	'candidatures' => 'Vous avez @nb@ candidatures publi&eacute;es.',
+	'candidature_enregistree' => 'Vous avez @nb@ candidature enregistr&eacute;e.',
+	'candidatures_enregistrees' => 'Vous avez @nb@ candidatures enregistr&eacute;es.',
+	'candidature_numero' => 'Candidature n°',
 	'competences' => 'Comp&eacute;tences',
 
 	// D
@@ -90,6 +91,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// P
 	'pas_autorise' => "Vous n&#x27;&ecirc;tes pas autoris&eacute; &agrave; consulter cette page. Afficher <a href='@url_profil@'>votre profil</a>.",
+	'pas_de_candidature' => "Vous n&#x27;avez d&eacute;pos&eacute; aucune candidature.",
 	'pass_pas_identique' => "Le mot de passe n'est pas identique",
 	'pass_trop_court' => "Votre mot de passe doit contenir plus de 6 caract&egrave;res",
 	'prenom' => "Votre pr&eacute;nom",
