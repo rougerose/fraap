@@ -14,14 +14,31 @@ jQuery(document).ready(function() {
 	*/
 	$("#tabs").tabs();
 
+
+	/*
+	* jquery UI accordeon
+	*/
+	/* page profil : liste des candidatures enregistrées */
 	$("#accordeon-candidatures").accordion({
 		autoHeight: false
 	});
 
-/*	$("#accordeon").accordion({
-		autoHeight: false
+
+	/*
+	* Stages
+	*/
+	/* Afficher/masquer le nom du candidat et le bouton d'envoi de message mail */
+
+/*	$("#stages-table").each(function(){
+		var $expand = $(this).find(".expand");
+
+		$expand.addClass("ui-icon ui-icon-circle-plus");
 	});
+
 */
+
+
+
 	/*
 	* Animation du formulaire Recherche
 	*/

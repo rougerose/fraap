@@ -21,7 +21,6 @@
 ]
 
 
-
 [(#REM) zone relative à la session ouverte par l'utilisateur ]
 <INCLURE{fond=inclure/session-info,env}>
 
@@ -31,18 +30,18 @@
 	<thead>
 		<tr>
 			<th></th>
-			<th>Candidat(e)</th>
+			<th><:candidatures:label_candidate:></th>
 			<th colspan="2"><:candidatures:label_dispo_consultation:></th>
 			<th colspan="2"><:candidatures:label_localisation_geo_consultation_abrev:></th>
 			<th colspan="4"><:candidatures:label_formation_consultation:></th>
 			<th colspan="2"><:candidatures:label_competences_recherches_consultation:></th>
 		</tr>
 		<tr>
-			<th></th><th>Prénom Nom</th>
+			<th></th><th><:candidatures:label_prenom:><br /><:candidatures:label_nom_tableau:></th>
 			<th><:candidatures:label_date_debut:></th><th><:candidatures:label_date_fin:></th>
 			<th><:candidatures:label_regions_consultation_abrev:></th><th><:candidatures:label_ville_consultation:></th>
 			<th><:candidatures:label_ecole:></th><th><:candidatures:label_ville_consultation:></th><th><:candidatures:label_diplome:></th><th><:candidatures:label_diplome_niveau:></th>
-			<th><:candidatures:label_competences_consultation:></th>
+			<th><:candidatures:label_competences_offre_consultation:></th>
 			<th><:candidatures:label_recherches_consultation:></th>
 		</tr>
 	</thead>
@@ -50,21 +49,24 @@
 		<BOUCLE_stages(CANDIDATURES){id_candidature IN #GET{candidatures}}>
 
 		[(#REM) prenom et initiale nom du candidat ]
-		<BOUCLE_auteur_form(FORMULAIRES_REPONSES auteurs){id_formulaires_reponse}>
-		#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]</BOUCLE_auteur_form>
+		[(#REM) todo : problème de jointure table candidature/table auteur ]
+		#SET{auteur,#ID_AUTEUR}
+		<BOUCLE_auteur(AUTEURS){id_auteur=#GET{auteur}}{tout}>
+		#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]
+		</BOUCLE_auteur>
 
 		#SET{reg,#REGIONS|unserialize}
-		#SET{comp,#COMPETENCES|unserialize}
-		#SET{rech,#RECHERCHES|unserialize}
+		#SET{comp,#COMPETENCES_OFFRE|unserialize}
+		#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
 		<tr id="stage#ID_FORMULAIRES_REPONSE" class="[(#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
-			<td rowspan="2"><a href="#">b</a></td>
+			<td rowspan="2" class="expand"></td>
 			<td>#GET{auteur_prenom}</td>
 			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 			<td>
-				<BOUCLE_r(POUR){tableau #GET{reg}}>
-				[<p[(#ENV{regions}|find{#VALEUR}|oui) class="on"]>(#GET{selection}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_r>
+				<BOUCLE_regions(POUR){tableau #GET{reg}}>
+				[<p>(#GET{regions}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_regions>
 			</td>
 			<td>#VILLE_STAGE</td>
 			<td>#ECOLE</td>
@@ -72,14 +74,14 @@
 			<td>#DIPLOME</td>
 			<td>#NIVEAU</td>
 			<td>
-				<BOUCLE_c(POUR){tableau #GET{comp}}>
-				[<p[(#ENV{competences}|find{#VALEUR}|oui) class="on"]>(#GET{checkbox}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_c>
+				<BOUCLE_offres(POUR){tableau #GET{comp}}>
+				[<p>(#GET{competences}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_offres>
 			</td>
 			<td>
-				<BOUCLE_re(POUR){tableau #GET{rech}}>
-				[<p[(#ENV{recherches}|find{#VALEUR}|oui) class="on"]>(#GET{checkbox}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_re>
+				<BOUCLE_recherches(POUR){tableau #GET{rech}}>
+				[<p>(#GET{competences}|table_valeur{#VALEUR})</p>]
+				</BOUCLE_recherches>
 			</td>
 		</tr>
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
