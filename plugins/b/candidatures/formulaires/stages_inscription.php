@@ -12,7 +12,7 @@
 
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
-function formulaires_inscription_stages_charger_dist($mode, $focus, $id=0) {
+function formulaires_stages_inscription_charger_dist($mode, $focus, $id=0) {
 	$valeurs = array(
 		'nom_inscription_stages'=>'',
 		'mail_inscription_stages'=>'',
@@ -36,7 +36,7 @@ function formulaires_inscription_stages_charger_dist($mode, $focus, $id=0) {
 }
 
 // Si inscriptions pas autorisees, retourner une chaine d'avertissement
-function formulaires_inscription_stages_verifier_dist($mode, $focus, $id=0) {
+function formulaires_stages_inscription_verifier_dist($mode, $focus, $id=0) {
 
 	$erreurs = array();
 	include_spip('inc/filtres');
@@ -97,7 +97,7 @@ function formulaires_inscription_stages_verifier_dist($mode, $focus, $id=0) {
 	return $erreurs;
 }
 
-function formulaires_inscription_stages_traiter_dist($mode, $focus, $id=0) {
+function formulaires_stages_inscription_traiter_dist($mode, $focus, $id=0) {
 
 	$nom = _request('nom_inscription_stages');
 	$prenom = _request('prenom_inscription_stages');
