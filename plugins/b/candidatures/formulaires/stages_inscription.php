@@ -13,17 +13,7 @@
 if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function formulaires_stages_inscription_charger_dist($mode, $focus, $id=0) {
-	$valeurs = array(
-		'nom_inscription_stages'=>'',
-		'mail_inscription_stages'=>'',
-		'prenom_inscription_stages' => '',
-		'activite_inscription_stages' => '',
-		'pass_inscription_stages' => '',
-		'pass2_inscription_stages' => '',
-		'conditions_inscription_stages' => '',
-		'id'=>$id
-	);
-
+	$valeurs = array('nom'=>'','mail'=>'', 'id'=>$id);
 	if ($mode=='1comite')
 		$valeurs['_commentaire'] = _T('pass_espace_prive_bla');
 	else
@@ -43,27 +33,10 @@ function formulaires_stages_inscription_verifier_dist($mode, $focus, $id=0) {
 	if (!tester_config($id, $mode) OR (strlen(_request('nobot'))>0))
 		$erreurs['message_erreur'] = _T('rien_a_faire_ici');
 
-	if (!$nom = _request('nom_inscription_stages'))
-		$erreurs['nom_inscription_stages'] = _T("info_obligatoire");
-	if (!$mail = _request('mail_inscription_stages'))
-		$erreurs['mail_inscription_stages'] = _T("info_obligatoire");
-	if (!$prenom = _request('prenom_inscription_stages'))
-		$erreurs['prenom_inscription_stages'] = _T("info_obligatoire");
-	if (!$activite = _request('activite_inscription_stages'))
-		$erreurs['activite_inscription_stages'] = _T("info_obligatoire");
-	if (!$pass = _request('pass_inscription_stages'))
-		$erreurs['pass_inscription_stages'] = _T("info_obligatoire");
-	if (!$pass2 = _request('pass2_inscription_stages'))
-		$erreurs['pass2_inscription_stages'] = _T("info_obligatoire");
-	if (!$conditions = _request('conditions_inscription_stages'))
-		$erreurs['conditions_inscription_stages'] = _T("candidatures:accepter_conditions");
-	if (strlen($pass) < 6) {
-		$erreurs['pass'] = _T("candidatures:pass_trop_court");
-	} else {
-		if ($pass != $pass2) {
-			$erreurs['pass2'] = _T("candidatures:pass_pas_identique");
-		}
-	}
+	if (!$nom = _request('nom'))
+		$erreurs['nom'] = _T("info_obligatoire");
+	if (!$mail = _request('mail'))
+		$erreurs['mail'] = _T("info_obligatoire");
 
 	// compatibilite avec anciennes fonction surchargeables
 	// plus de definition par defaut
@@ -75,7 +48,7 @@ function formulaires_stages_inscription_verifier_dist($mode, $focus, $id=0) {
 		$declaration = $f($mode, $mail, $nom, $id);
 		if (is_string($declaration)) {
 			$k = (strpos($declaration, 'mail')  !== false) ?
-			  'mail_inscription' : 'nom_inscription';
+			  'mail' : 'nom';
 			$erreurs[$k] = _T($declaration);
 		} else {
 			include_spip('base/abstract_sql');
@@ -84,13 +57,10 @@ function formulaires_stages_inscription_verifier_dist($mode, $focus, $id=0) {
 				if (($row['statut'] == '5poubelle') AND !$declaration['pass'])
 					// irrecuperable
 					$erreurs['message_erreur'] = _T('form_forum_access_refuse');
-				// on autorise les doublons pour le développement du site
-			//	elseif (($row['statut'] != 'nouveau') AND !$declaration['pass'])
-
+				elseif (($row['statut'] != 'nouveau') AND !$declaration['pass'])
 					// deja inscrit
-				//	$erreurs['message_erreur'] = _T('form_forum_email_deja_enregistre');
-			//	spip_log($row['id_auteur'] . " veut se resinscrire");
-
+					$erreurs['message_erreur'] = _T('form_forum_email_deja_enregistre');
+				spip_log($row['id_auteur'] . " veut se resinscrire");
 			}
 		}
 	}
@@ -99,17 +69,13 @@ function formulaires_stages_inscription_verifier_dist($mode, $focus, $id=0) {
 
 function formulaires_stages_inscription_traiter_dist($mode, $focus, $id=0) {
 
-	$nom = _request('nom_inscription_stages');
-	$prenom = _request('prenom_inscription_stages');
-	$mail_complet = _request('mail_inscription_stages');
-	$activite = _request('activite_inscription_stages');
-	$pass = _request('pass_inscription_stages'); spip_log('pass1 : '.$pass);
-	$mode = '6forum';
+	$nom = _request('nom');
+	$mail_complet = _request('mail');
 
 	if (function_exists('test_inscription'))
 		$f = 'test_inscription';
 	else 	$f = 'test_inscription_dist';
-	$desc = $f($mode, $mail_complet, $nom, $prenom, $pass, $activite, $id);
+	$desc = $f($mode, $mail_complet, $nom, $id);
 
 	if (!is_array($desc)) {
 		$desc = _T($desc);
@@ -120,22 +86,20 @@ function formulaires_stages_inscription_traiter_dist($mode, $focus, $id=0) {
 			$desc = _T('titre_probleme_technique');
 		else {
 			$row = sql_fetch($res);
-			// on autorise les mails en doublons pour le développement du site
-			$desc = $row ? inscription_nouveau($desc) : '';
 			// s'il n'existe pas deja, creer les identifiants
-		//	$desc = $row ? $row : inscription_nouveau($desc);
+			$desc = $row ? $row : inscription_nouveau($desc);
 		}
 	}
 
 	if (is_array($desc)) {
 	// generer le mot de passe (ou le refaire si compte inutilise)
-	// $desc['pass'] = creer_pass_pour_auteur($desc['id_auteur']);
+		$desc['pass'] = creer_pass_pour_auteur($desc['id_auteur']);
 		// charger de suite cette fonction, pour ses utilitaires
 		$envoyer_mail = charger_fonction('envoyer_mail','inc');
 		if (function_exists('envoyer_inscription'))
 			$f = 'envoyer_inscription';
 		else 	$f = 'envoyer_inscription_dist';
-		list($sujet,$msg,$from,$head) = $f($desc, $nom, $prenom, $pass, $mode, $id);
+		list($sujet,$msg,$from,$head) = $f($desc, $nom, $mode, $id);
 		if (!$envoyer_mail($mail_complet, $sujet, $msg, $from, $head))
 			$desc = _T('form_forum_probleme_mail');
 		// Notifications
@@ -158,14 +122,14 @@ function formulaires_stages_inscription_traiter_dist($mode, $focus, $id=0) {
 // - si ko une chaine de langue servant d'argument a  _T expliquant le refus
 
 // http://doc.spip.org/@test_inscription_dist
-function test_inscription_dist($mode, $mail, $nom, $prenom, $pass, $activite, $id=0) {
-
+function test_inscription_dist($mode, $mail, $nom, $id=0) {
+	spip_log('test_inscription_dist '.$mode." ".$mail." ".$nom." ".$id,'journal');
 	include_spip('inc/filtres');
 	$nom = trim(corriger_caracteres($nom));
 	if((strlen ($nom) < _LOGIN_TROP_COURT) OR (strlen($nom) > 64))
 	    return 'ecrire:info_login_trop_court';
 	if (!$r = email_valide($mail)) return 'info_email_invalide';
-	return array('email' => $r, 'nom' => $nom, 'prenom' => $prenom, 'pass' => $pass, 'activite' => $activite, 'bio' => $mode);
+	return array('email' => $r, 'nom' => $nom, 'bio' => $mode);
 }
 
 // On enregistre le demandeur comme 'nouveau', en memorisant le statut final
@@ -178,32 +142,13 @@ function inscription_nouveau($desc)
 	if (!isset($desc['login']))
 		$desc['login'] = test_login($desc['nom'], $desc['email']);
 
-	// visiteur
-	$desc['statut'] = '6forum';
-
-	// ajout calcul accès
-	include_spip('inc/acces');
-	$pass = $desc['pass'];
-	$htpass = generer_htpass($pass);
-	$alea_actuel = creer_uniqid();
-	$alea_futur = creer_uniqid();
-	$pass_crypte = md5($alea_actuel.$pass);
-	$desc['pass'] = $pass_crypte;
-	$desc['htpass'] = $htpass;
-	$desc['alea_actuel'] = $alea_actuel;
-	$desc['alea_futur'] = $alea_futur;
-	$desc['low_sec'] = '';
-
+	$desc['statut'] = 'nouveau';
 
 	$n = sql_insertq('spip_auteurs', $desc);
 
 	if (!$n) return _T('titre_probleme_technique');
 
-	$id_auteur = $n;
 	$desc['id_auteur'] = $n;
-
-	// ajout de l'auteur à la zone 1 (stages) via plugin accès restreint
-	$ajout_auteur_zone = sql_insertq("spip_zones_auteurs",array('id_zone'=>'1',"id_auteur"=>$id_auteur));
 
 	return $desc;
 }
@@ -213,27 +158,25 @@ function inscription_nouveau($desc)
 // dont les elements seront les arguments de inc_envoyer_mail
 
 // http://doc.spip.org/@envoyer_inscription_dist
-function envoyer_inscription_dist($desc, $nom, $prenom, $pass, $mode, $id) {
+function envoyer_inscription_dist($desc, $nom, $mode, $id) {
 
 	$nom_site_spip = nettoyer_titre_email($GLOBALS['meta']["nom_site"]);
 	$adresse_site = $GLOBALS['meta']["adresse_site"];
 	if ($mode == '6forum') {
 		$adresse_login = generer_url_public('login');
-		$msg = 'candidatures:form_forum_voici1';
+		$msg = 'form_forum_voici1';
 	} else {
 		$adresse_login = $adresse_site .'/'. _DIR_RESTREINT_ABS;
 		$msg = 'form_forum_voici2';
 	}
 
-	$msg = _T('candidatures:form_forum_message_auto')."\n\n"
-		. _T('candidatures:form_forum_bonjour', array('prenom' => $prenom, 'nom' => $nom))."\n\n"
+	$msg = _T('form_forum_message_auto')."\n\n"
+		. _T('form_forum_bonjour', array('nom'=>$nom))."\n\n"
 		. _T($msg, array('nom_site_spip' => $nom_site_spip,
 			'adresse_site' => $adresse_site . '/',
-			'adresse_login' => $adresse_login)) . "\n\n"
-		. _T('candidatures:form_vos_id') . "\n "
-		. "\t- " . _T('form_forum_login')." " . $desc['login'] . "\n "
-		. "\t- " . _T('form_forum_pass')." " . $pass . "\n\n"
-		. _T('candidatures:form_mail_signature') . "\n";
+			'adresse_login' => $adresse_login)) . "\n\n- "
+		. _T('form_forum_login')." " . $desc['login'] . "\n- "
+		. _T('form_forum_pass'). " " . $desc['pass'] . "\n\n";
 
 	return array("[$nom_site_spip] "._T('form_forum_identifiants'), $msg);
 }
