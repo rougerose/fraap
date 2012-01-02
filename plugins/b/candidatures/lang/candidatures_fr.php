@@ -25,6 +25,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'form_forum_voici1' => 'Votre inscription sur le site "@nom_site_spip@" (@adresse_site@) a bien été enregistrée.',
 	'form_mail_signature' => "cordialement,
 	la FRAAP.",
+	'form_activite_obligatoire' => 'Veuillez indiquer votre activité',
+	'form_conditions_obligatoire' => "Veuillez accepter les conditions d'utilisation",
+	'form_mail_obligatoire' => 'Veuillez indiquer votre adresse mail',
+	'form_nom_obligatoire' => 'Veuillez indiquer votre nom',
+	'form_pass_obligatoire' => 'Veuillez indiquer un mot de passe',
+	'form_prenom_obligatoire' => 'Veuillez indiquer votre prénom',
 	'form_vos_id' => "Vos identifiants sont :",
 
 	// I
