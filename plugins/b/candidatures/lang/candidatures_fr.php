@@ -35,6 +35,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'identifiants_connexion' => 'Vos identifiants de connexion',
+	'identifiant_mail' => "Votre identifiant vient de vous &ecirc;tre envoy&eacute; par email. Il vous sera nécessaire pour <a href='spip.php?page=login&id_rubrique=10'>vous identifier</a> et utiliser le service de stages de la FRAAP.",
 	'info_confirmer_passe' => 'Confirmez ce mot de passe',
 	'info_consultation_profil' => 'Consulter votre profil',
 	'info_inscription' => "Veuillez préciser ci-dessous quelques informations. Vos identifiant et mot de passe vous parviendront par courrier électronique.",
@@ -50,6 +51,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_activite' => "Votre activit&eacute;",
 	'label_activites_inscription' => 'Vos domaines d&#x27;activité',
+	'label_bouton_inscription' => 'Vous inscrire &#x2192;',
+	'label_bouton_identification' => 'Vous identifier &#x2192;',
 	'label_candidate' => 'Candidat(e)',
 	'label_cadre_stage' => 'Cadre du stage conventionné',
 	'label_competences_menu_recherche' => 'Compétences recherchées (plusieurs choix possibles)',

@@ -1,5 +1,4 @@
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
-
 [<div class="texte">
 	(#TEXTE)
 </div><!-- .texte -->]
@@ -7,12 +6,11 @@
 <ul id="stages-aiguillage" class="clearfix">
 	<li class="visite-habitue grid_6 alpha filets2px">
 		<h3>Déjà inscrit ?</h3>
-		<p><a href="[(#URL_PAGE{login}|parametre_url{id_rubrique,#ENV{id_rubrique}})]" class="bouton medium" onclick="jQuery.modalbox('[(#URL_PAGE{login}|parametre_url{id_rubrique,#ENV{id_rubrique}}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" >Vous identifier &#x2192;</a></p>
+		<p><a href="[(#URL_PAGE{login}|parametre_url{id_rubrique,#ENV{id_rubrique}})]" class="bouton medium"><:candidatures:label_bouton_identification:></a></p>
 	</li>
 	<li class="visite-nouveau grid_6 omega filets2px">
 		<h3>Première visite ?</h3>
-		<p><a href="[(#URL_PAGE{inscription}|parametre_url{id_rubrique,#ENV{id_rubrique}})]" class="bouton medium" onclick="jQuery.modalbox('[(#URL_PAGE{inscription}|parametre_url{id_rubrique,#ENV{id_rubrique}}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" >Vous inscrire &#x2192;</a></p>
+		<p><a href="[(#URL_PAGE{inscription}|parametre_url{id_rubrique,#ENV{id_rubrique}})]" class="bouton medium"><:candidatures:label_bouton_inscription:></a></p>
 	</li>
 </ul>
-
 </BOUCLE_rubrique>
