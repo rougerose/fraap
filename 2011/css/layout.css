@@ -29,6 +29,7 @@
 		padding-left: 240px; }
 
 	.page_login #contenu,
+	.page_identification #contenu,
 	.page_inscription #contenu,
 	.page_candidature #contenu {
 		float:right; display: inline;

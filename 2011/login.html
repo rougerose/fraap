@@ -1,0 +1,6 @@
+<B_rubrique_stages><BOUCLE_rubrique_stages(CONDITION){si #ENV{id_rubrique}|=={10}}>
+	<INCLURE{fond=structure}{id_secteur=#ENV{id_rubrique}}{id_rubrique=#ENV{id_rubrique}}{env}{type=page}{composition=login} />
+</BOUCLE_rubrique_stages>
+</B_rubrique_stages>
+	<INCLURE{fond=structure}{env}{type=page}{composition=login} />
+<//B_rubrique_stages>
