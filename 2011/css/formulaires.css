@@ -111,6 +111,7 @@
 
 /* recherche */
 #raccourcis #formulaire_recherche {
+	position: relative; z-index: 2;
 	-webkit-border-bottom-right-radius: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	-moz-border-radius-bottomright: 3px;

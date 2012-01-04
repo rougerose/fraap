@@ -7,6 +7,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'accepter_conditions' => "Veuillez accepter les conditions d'utilisation",
 	'activite' => "Activit&eacute;",
+	
+	//B
+	'bienvenue' => 'Bienvenue',
 
 	// C
 	'candidature_enregistree' => 'Vous avez @nb@ candidature enregistr&eacute;e.',
@@ -51,6 +54,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_activite' => "Votre activit&eacute;",
 	'label_activites_inscription' => 'Vos domaines d&#x27;activité',
+	'label_bouton_depot_candidature' => 'Déposez votre candidature &#x2192;',
 	'label_bouton_inscription' => 'Vous inscrire &#x2192;',
 	'label_bouton_identification' => 'Vous identifier &#x2192;',
 	'label_candidate' => 'Candidat(e)',

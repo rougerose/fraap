@@ -14,6 +14,12 @@
 /* surcharge des css par defaut */
 .spip-admin-bloc,
 .spip-admin-float { z-index: 100; position: fixed; right: auto; left: 0; width: 200px; }
+.spip-admin-float a {
+	-webkit-border-radius: 0 4px 4px 0;
+	   -moz-border-radius: 0 4px 4px 0;
+	        border-radius: 0 4px 4px 0;
+	float: left; clear: both;
+	margin: 10px 0 0; padding: 5px; }
 
 /* disposition des blocs principaux */
 
@@ -192,6 +198,7 @@
 		width: 940px; clear: both; }
 
 		#raccourcis ul {
+			z-index: 0;
 			margin:0;
 			float: right; }
 			#raccourcis ul li {
@@ -207,18 +214,27 @@
 				#raccourcis ul li.on a { color: #5a005a; }
 				#raccourcis ul li a { display: block; }
 
-	/* zone stages-identification */
-	#stages-identification { margin: 0 0 1em; }
-		#stages-identification ul {
-			list-style-type: none;
-			margin: 0;
-			position: relative; left: 720px;
-			width: 220px; }
-			#stages-identification li { margin: 0; }
-				#stages-identification p {
+	/* zone menu-identification (rubrique Stages) */
+	#menu-identification {
+		color: #fff;
+		width: 220px;
+		position: absolute; top: 0; z-index: 1;
+		border: 1px solid #000; border-width: 0;
+		-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+		   -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+		     -o-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+		        box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+		-webkit-border-radius: 0 0 2px 2px;
+		   -moz-border-radius: 0 0 2px 2px;
+		        border-radius: 0 0 2px 2px; }
+		#menu-identification ul { list-style-type: none; margin: 5px; }
+			#menu-identification li { margin: 0; }
+				#menu-identification p {
+					font-size: 13px;
 					text-align: right;
 					margin: 0 0 .25em; }
-				#stages-identification p.bienvenue { font-size: 14px; }
+					#menu-identification p a { color: #fff; text-decoration: underline; font-weight: normal; }
+					#menu-identification p a:hover { text-decoration: none; }
 
 /* fil d'ariane */
 

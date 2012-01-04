@@ -1,4 +1,4 @@
-#CACHE{0} [(#REM)
+[(#REM)
 	<!--
 		TODO à terminer
 	-->
@@ -11,12 +11,13 @@
 ]
 
 [(#REM) menu d'identification ]
-[<div id="stages-identification" class="filetH">
+[<div id="menu-identification">
 	(#INCLURE{fond=inclure/menu, env, identifiant=identification})
 </div><!-- #identification -->]
 
 [(#REM) le visiteur est-il un étudiant (activite=2) ? Alors on affiche le bouton de dépôt d'une candidature ]
 [(#SESSION{activite}|=={2}|oui)
-	<p><a href="#URL_PAGE{candidature}" class="bouton medium" onclick="jQuery.modalbox('[(#URL_PAGE{candidature}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" >Déposez votre candidature &#x2192;</a></p>
-
+	<div id="depot-candidature">
+		<p><a href="#URL_PAGE{candidature}" class="bouton medium" onclick="jQuery.modalbox('[(#URL_PAGE{candidature}|parametre_url{url,#SELF}|parametre_url{var_zajax,contenu})]');return false;" ><:candidatures:label_bouton_depot_candidature:></a></p>
+	</div><!-- #depot-candidature -->
 ]
