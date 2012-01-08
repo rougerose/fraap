@@ -218,7 +218,7 @@
 	#menu-identification {
 		color: #fff;
 		width: 220px;
-		position: absolute; top: 0; z-index: 1;
+		position: absolute; top: 0; left: 10px; z-index: 1;
 		border: 1px solid #000; border-width: 0;
 		-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 		   -moz-box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
