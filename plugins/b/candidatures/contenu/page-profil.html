@@ -4,7 +4,10 @@
 
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
 	<h2><:candidatures:info_modifier_profil:></h2>
-		#FORMULAIRE_EDITER_AUTEUR_PUBLIC{#ID_AUTEUR,#SELF}
+	[<div class="ajax">
+		(#FORMULAIRE_EDITER_PROFIL{#ID_AUTEUR,#SELF})
+	</div>]
+
 ]
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|non)
 

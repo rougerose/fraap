@@ -38,8 +38,8 @@
 	.formulaire_spip .choix input.checkbox { width:auto; }
 
 	/* Champs de saisie */
-	.formulaire_spip input.text, .formulaire_spip input.password { xwidth: 15em;  }
-	.formulaire_spip textarea { xwidth: 99%; }
+	.formulaire_spip input.text, .formulaire_spip input.password {  }
+	.formulaire_spip textarea {  }
 	.formulaire_spip input.text, .formulaire_spip input.password, .formulaire_spip textarea {
 		background: url('../images/input-bg.png') no-repeat 0 0;
 		padding: 3px 5px;
@@ -82,7 +82,7 @@
 	.reponse_formulaire_erreur { margin: 0; color: #C30; font-weight: bold; }
 
 	/* * OK */
-	.reponse_formulaire_ok { margin: 0; color: #53AD20; font-weight: bold; }
+	.reponse_formulaire_ok { color: #53AD20; font-weight: bold; }
 
 	/* présentation en ligne */
 	.enligne {  }

@@ -1,3 +1,5 @@
  <div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
-	#FORMULAIRE_INSCRIPTION{6forum}
+	<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+	#FORMULAIRE_EDITER_P{#ID_AUTEUR,#SELF}
+	</BOUCLE_auteur>
 </div><!-- .conteneur-formulaire -->

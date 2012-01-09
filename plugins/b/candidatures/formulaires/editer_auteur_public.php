@@ -150,7 +150,7 @@ function formulaires_editer_auteur_public_traiter_dist($id_auteur='new', $retour
 		if ($retour)
 			$res['redirect'] = parametre_url($retour,'id_auteur',$id_auteur);
 	}
-	$res['editable'] = true;
+//	$res['editable'] = true;
 	return $res;
 
 //	$res = formulaires_editer_objet_traiter('auteur',$id_auteur,0,0,$retour,$config_fonc,$row,$hidden);

@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'erreur_date_avant_apres' => 'Indiquez une date de fin apr&egrave;s la date de d&eacute;but !',
 
 	// F
+	'form_champ_obligatoire' => 'Ce champ est obligatoire',
 	'form_forum_bonjour' => 'Bonjour @prenom@ @nom@,',
 	'form_forum_message_auto' => '(ceci est un message automatique, merci de ne pas y r&eacute;pondre)',
 	'form_forum_voici1' => 'Votre inscription sur le site "@nom_site_spip@" (@adresse_site@) a bien été enregistrée.',
@@ -32,6 +33,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'form_conditions_obligatoire' => "Veuillez accepter les conditions d'utilisation",
 	'form_mail_obligatoire' => 'Veuillez indiquer votre adresse mail',
 	'form_nom_obligatoire' => 'Veuillez indiquer votre nom',
+	'form_profil_modifie' => 'Votre profil a bien été modifié',
 	'form_pass_obligatoire' => 'Veuillez indiquer un mot de passe',
 	'form_prenom_obligatoire' => 'Veuillez indiquer votre prénom',
 	'form_vos_id' => "Vos identifiants sont :",
@@ -109,7 +111,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// P
 	'pas_autorise' => "Vous n&#x27;&ecirc;tes pas autoris&eacute; &agrave; consulter cette page. Afficher <a href='@url_profil@'>votre profil</a>.",
 	'pas_de_candidature' => "Vous n&#x27;avez d&eacute;pos&eacute; aucune candidature.",
-	'pass_pas_identique' => "Le mot de passe n'est pas identique",
+	'pass_pas_identique' => "Les deux mots de passe ne sont pas identiques",
 	'pass_trop_court' => "Votre mot de passe doit contenir plus de 6 caract&egrave;res",
 	'prenom' => "Votre pr&eacute;nom",
 
