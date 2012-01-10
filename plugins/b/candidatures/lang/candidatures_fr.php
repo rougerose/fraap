@@ -13,7 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// C
 	'candidature_enregistree' => '1 candidature est enregistr&eacute;e.',
-	'candidatures_enregistrees' => '@nb@ sont candidatures enregistr&eacute;es.',
+	'candidatures_enregistrees' => '@nb@ candidatures sont enregistr&eacute;es.',
 	'candidature_numero' => 'Candidature n°',
 	'competences' => 'Comp&eacute;tences',
 
