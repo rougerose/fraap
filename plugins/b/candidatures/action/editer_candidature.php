@@ -67,7 +67,7 @@ function action_candidature_set($id_candidature, $set=null){
 	return $err;
 }
 
-// Enregistre une revision d'evenement
+// Enregistre une revision de candidature
 function stage_action_revision_candidature ($id_candidature, $c=false) {
 	modifier_contenu('candidature', $id_candidature,'',$c);
 

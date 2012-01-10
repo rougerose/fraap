@@ -46,7 +46,7 @@ function formulaires_editer_candidature_traiter_dist($id_candidature='new',$id_a
 	}
 	else {
 	//	spip_log('candidature '.$id_candidature.' / retour '.$retour.' / id '.$id,'journal');
-		($id_candidature == 'oui') ? $res['message_ok'] = _T('candidatures:message_candidature_enregistree') : $res['message_ok'] = _T('candidatures:message_candidature_modifiee');
+		($id_candidature == 'new') ? $res['message_ok'] = _T('candidatures:message_candidature_enregistree') : $res['message_ok'] = _T('candidatures:message_candidature_modifiee');
 		if ($retour) {
 			$retour = parametre_url($retour,'id_candidature',$id_candidature);
 			$res['redirect'] = $retour;
