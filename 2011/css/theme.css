@@ -241,8 +241,8 @@ img.puce { background-color: #000; }
 
 		/* page profil > #extra */
 		.page_profil #extra ol {  }
-		.page_profil #extra li { margin-left: 0; margin-bottom: 1em;  }
-			.page_profil #extra li div.bloc { padding-right: 5px; padding-left: 10px; }
+		.page_profil #extra li { margin-left: 0; xmargin-bottom: 1em;  }
+			.page_profil #extra li div.bloc { xpadding-right: 5px; xpadding-left: 10px; }
 				.page_profil #extra li .bloc p { margin: 0 0 .5em; }
 				.page_profil #extra li div.actions { margin-top: 1em; text-align: right; }
 
@@ -355,3 +355,22 @@ img.puce { background-color: #000; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
 .ui-tabs .ui-tabs-nav li a:hover { color: #666 }
 .ui-tabs .related { margin-top: 1.5em; }
+
+/* Jquery UI Accordion */
+#accordeon-candidatures { }
+	#accordeon-candidatures .ui-accordion-li-fix { display: block; }
+	#accordeon-candidatures .ui-state-default {
+		background: none; color: #999;
+		padding-bottom: 5px;
+		border: 1px solid #ccc; border-width: 0 0 1px; }
+	#accordeon-candidatures .ui-state-active {
+		padding-bottom: 5px; color: #000;
+		border: 1px solid #000; border-width: 0 0 1px; }
+	#accordeon-candidatures .ui-state-hover { color: #000; }
+	#accordeon-candidatures .ui-widget-content { border-width: 0 0 1px; border-bottom-color: #000; }
+	#accordeon-candidatures .ui-accordion-content {
+		margin-top: 0;
+		padding: .8em 0; }
+
+	#accordeon-candidatures .ui-accordion-header .ui-icon { display: none; }
+		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }

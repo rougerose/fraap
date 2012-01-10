@@ -12,8 +12,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bienvenue' => 'Bienvenue',
 
 	// C
-	'candidature_enregistree' => 'Vous avez @nb@ candidature enregistr&eacute;e.',
-	'candidatures_enregistrees' => 'Vous avez @nb@ candidatures enregistr&eacute;es.',
+	'candidature_enregistree' => '1 candidature est enregistr&eacute;e.',
+	'candidatures_enregistrees' => '@nb@ sont candidatures enregistr&eacute;es.',
 	'candidature_numero' => 'Candidature n°',
 	'competences' => 'Comp&eacute;tences',
 

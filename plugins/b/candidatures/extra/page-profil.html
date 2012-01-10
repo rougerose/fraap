@@ -49,10 +49,10 @@
 				<BOUCLE_candidatures(CANDIDATURES){id_candidature IN #GET{c}}{par date}>
 				#SET{reg,#REGIONS|unserialize} #SET{offres,#COMPETENCES_OFFRE|unserialize} #SET{recherches,#COMPETENCES_RECHERCHE|unserialize}
 				<li>
-					<h3><a href="#"><:candidatures:candidature_numero:> #COMPTEUR_BOUCLE</a></h3>
+					<h3><span class="uiHeader"><:candidatures:candidature_numero:> #COMPTEUR_BOUCLE</span></h3>
 					<div class="bloc">
 						<p>
-							[<a href="">Du (#DATE_DEBUT|affdate{d/m/Y})[ au (#DATE_FIN|affdate{d/m/Y})]</a>]
+							[Du (#DATE_DEBUT|affdate{d/m/Y})[ au (#DATE_FIN|affdate{d/m/Y})]]
 						</p>
 						<B_regions>
 						<p>
