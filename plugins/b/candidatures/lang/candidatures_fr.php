@@ -96,6 +96,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_ville_inscription' => 'Précisez éventuellement la ou les villes',
 	'legende_identifiants' => "Vos identifiants",
 	'legende_identite' => "Votre identit&eacute;",
+	'lien_page_identification' => "Veuillez <a href='@url@'>vous identifier</a> à nouveau.",
 
 	// M
 	'menu_connexion_nom' => 'menu de connexion Stages',
