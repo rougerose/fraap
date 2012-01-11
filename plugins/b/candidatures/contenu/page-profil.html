@@ -1,6 +1,5 @@
-
+<B_auteur>
 <BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
-[(#REM)]
 
 [(#SESSION{id_auteur}|=={#ID_AUTEUR}|oui)
 	<h2><:candidatures:info_modifier_profil:></h2>
@@ -16,3 +15,10 @@
 	<p><:candidatures:pas_autorise{url_profil=#GET{url_profil}}:></p>
 ]
 </BOUCLE_auteur>
+</B_auteur>
+[(#REM) pas d'id_auteur dans l'environnement ]
+<h2><:candidatures:info_modifier_profil:></h2>
+[<div class="ajax">
+	(#FORMULAIRE_EDITER_PROFIL{[(#SESSION{id_auteur})],#SELF})
+</div>]
+<//B_auteur>
