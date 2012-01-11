@@ -241,10 +241,10 @@ img.puce { background-color: #000; }
 
 		/* page profil > #extra */
 		.page_profil #extra ol {  }
-		.page_profil #extra li { margin-left: 0; xmargin-bottom: 1em;  }
-			.page_profil #extra li div.bloc { xpadding-right: 5px; xpadding-left: 10px; }
-				.page_profil #extra li .bloc p { margin: 0 0 .5em; }
-				.page_profil #extra li div.actions { margin-top: 1em; text-align: right; }
+		.page_profil #extra li { margin-left: 0; }
+		.page_profil #extra p.compteur-candidatures { text-align: left; font-size: 12px; }
+			.page_profil #extra li .bloc p { margin: 0 0 .5em; font-size: 12px; }
+			.page_profil #extra li div.actions { margin-top: 1em; text-align: right; }
 
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
@@ -371,6 +371,11 @@ img.puce { background-color: #000; }
 	#accordeon-candidatures .ui-accordion-content {
 		margin-top: 0;
 		padding: .8em 0; }
-
-	#accordeon-candidatures .ui-accordion-header .ui-icon { display: none; }
+	#accordeon-candidatures .ui-accordion-header > .ui-icon { display: none; }
 		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }
+		#accordeon-candidatures div.actions a.icon {
+			display: block;
+			height: 16px; width: 16px;
+			background: url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat 0 0;
+			text-indent: -9999px;
+			 }

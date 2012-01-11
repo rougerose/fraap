@@ -43,7 +43,7 @@
 		<div id="extra">
 			<h2>Vos candidatures</h2>
 
-			[<p>(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
+			[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
 			<B_candidatures>
 			<ol id="accordeon-candidatures">
 				<BOUCLE_candidatures(CANDIDATURES){id_candidature IN #GET{c}}{par date}>

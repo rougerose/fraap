@@ -31,21 +31,29 @@ jQuery(document).ready(function($) {
 	onAjaxLoad(modifierForm_init);
 
 
-	// confirmation lors de la suppression d'une candidature
-	$("#accordeon-candidatures a.supprimer").click(function(){
-		var $lien = $(this).attr('href');
-		var $dialog = $('<div></div>').html("Souhaitez-vous continuer ?").dialog({
-			autoOpen: false,
-			title: "Vous avez demandé la suppression d'une candidature",
-			resizable: false,
-			modal: true,
-			buttons: {
-				"Ok": function() { $(this).dialog("close"); location.href = $lien; },
-				"Annuler": function() { $(this).dialog("close"); }
-			}
+	// page profil > candidatures : boutons d'actions "supprimer" et "modifier" :
+	// 		class ui-icon sur les boutons "modifier" et "supprimer"
+	//		confirmation préalable avant de supprimer
+	$("#accordeon-candidatures").each(function(){
+		var $tous = $(this).find("div.actions a").addClass("icon"),
+			$modifier = $(this).find("div.actions a.modifier").attr("title","modifier"),
+			$supprimer = $(this).find('div.actions a.supprimer').attr("title","supprimer");
+
+		$supprimer.click(function(){
+			var	$lien = $(this).attr('href'),
+				$dialog = $('<div></div>').html("Souhaitez-vous continuer ?").dialog({
+					autoOpen: false,
+					title: "Vous avez demandé la suppression d'une candidature",
+					resizable: false,
+					modal: true,
+					buttons: {
+						"Ok": function(){ $(this).dialog("close"); location.href = $lien; },
+						"Annuler": function(){ $(this).dialog("close"); }
+					}
+				});
+			$dialog.dialog("open");
+			return false;
 		});
-		$dialog.dialog('open');
-		return false;
 	});
 
 });
