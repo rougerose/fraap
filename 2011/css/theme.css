@@ -334,7 +334,7 @@ img.puce { background-color: #000; }
 		        box-shadow: 0 1px 3px rgba(0,0,0,0.5);
 		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
 
-	input.bouton { border: 0; }
+	input.bouton, button.bouton  { border: 0; }
 
 	/* tailles */
 	.xsmall.bouton { font-size: 10px; padding: 5px 5px 4px; }
@@ -395,4 +395,16 @@ img.puce { background-color: #000; }
 		padding: .8em 0; }
 	#accordeon-candidatures .ui-accordion-header > .ui-icon { display: none; }
 		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }
+
+/* Jquery UI Dialog */
+.ui-dialog {
+	padding: 0;
+	-webkit-border-radius: 5px;
+	   -moz-border-radius: 5px;
+	        border-radius: 5px; }
+.ui-dialog.ui-widget-content { border: 8px solid rgba(0,0,0,0.5); }
+	.ui-dialog .ui-widget-header {
+		background: none; background-color: #000; color: #fff; border: none; }
+	.ui-dialog .ui-dialog-content p { margin: 0; }
+
 

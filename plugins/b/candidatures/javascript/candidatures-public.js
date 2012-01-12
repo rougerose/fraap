@@ -42,15 +42,22 @@ jQuery(document).ready(function($) {
 
 		$supprimer.click(function(){
 			var	$lien = $(this).attr('href'),
-				$dialog = $('<div></div>').html("Souhaitez-vous continuer ?").dialog({
+				$dialog = $('<div></div>').html("<p>Souhaitez-vous continuer ?</p>").dialog({
 					autoOpen: false,
 					title: "Vous avez demandé la suppression d'une candidature",
 					resizable: false,
+					width: '460',
+					minHeight:'auto',
 					modal: true,
-					buttons: {
-						"Ok": function(){ $(this).dialog("close"); location.href = $lien; },
-						"Annuler": function(){ $(this).dialog("close"); }
-					}
+					buttons: [{
+						text: "Ok",
+						class: "bouton small",
+						click: function(){ $(this).dialog("close"); location.href  = $lien; }
+					},{
+						text: "Annuler",
+						class: "bouton small",
+						click: function(){ $(this).dialog("close"); }
+					}]
 				});
 			$dialog.dialog("open");
 			return false;
