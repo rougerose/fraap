@@ -6,7 +6,13 @@
 /*	Date :		2011						*/
 /*	Version :	2.0							*/
 /* ======================================== */
+/*
+a { -webkit-transition: color .35s linear;
+   -moz-transition: color .35s linear;
+     -o-transition: color .35s linear;
+        transition: color .35s linear; }
 
+*/
 .une .intertitre.over,
 .une .item.over,
 .une.over,

@@ -34,8 +34,9 @@ jQuery(document).ready(function($) {
 	// page profil > candidatures : boutons d'actions "supprimer" et "modifier" :
 	// 		class ui-icon sur les boutons "modifier" et "supprimer"
 	//		confirmation préalable avant de supprimer
-	$("#accordeon-candidatures").each(function(){
+	$(".page_profil #extra").each(function(){
 		var $tous = $(this).find("div.actions a").addClass("icon"),
+			$ajouter = $(this).find("div.actions a.ajouter").attr("title","ajouter");
 			$modifier = $(this).find("div.actions a.modifier").attr("title","modifier"),
 			$supprimer = $(this).find('div.actions a.supprimer').attr("title","supprimer");
 

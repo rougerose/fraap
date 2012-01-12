@@ -239,12 +239,34 @@ img.puce { background-color: #000; }
 	/* page profil */
 		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
 
-		/* page profil > #extra */
-		.page_profil #extra ol {  }
-		.page_profil #extra li { margin-left: 0; }
-		.page_profil #extra p.compteur-candidatures { text-align: left; font-size: 12px; }
-			.page_profil #extra li .bloc p { margin: 0 0 .5em; font-size: 12px; }
-			.page_profil #extra li div.actions { margin-top: 1em; text-align: right; }
+		/* page profil > #extra #gestion-candidatures */
+		#gestion-candidatures p.compteur-candidatures { text-align: left; font-size: 12px; margin: 0; }
+		#gestion-candidatures ol {  }
+		#gestion-candidatures li { margin-left: 0; }
+			#gestion-candidatures li .bloc > p { margin: 0 0 .5em; font-size: 12px; }
+		#gestion-candidatures div.actions { text-align: right; }
+			#gestion-candidatures .actions p { float: right; margin: 0; }
+				#gestion-candidatures .actions a.icon.modifier { background-position: -64px -112px; }
+				#gestion-candidatures .actions a.icon.ajouter { background-position: -16px -128px; }
+				#gestion-candidatures .actions a.icon.supprimer {
+					margin-right: 5px;
+					background-position: -176px -96px; }
+				#gestion-candidatures .actions a.icon {
+					font-size: 0;
+					display: inline-block;
+					height: 16px; width: 16px;
+					background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat 0 0;
+					border: 1px solid #ddd;
+					-webkit-border-radius: 4px;
+					   -moz-border-radius: 4px;
+					        border-radius: 4px;
+					-webkit-transition: background 0.15s ease;
+					   -moz-transition: background 0.15s ease;
+					     -o-transition: background 0.15s ease;
+					        transition: background 0.15s ease; }
+				#gestion-candidatures .actions a:hover {
+					background: #000 url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat;
+					border-color: #000; }
 
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
@@ -357,14 +379,14 @@ img.puce { background-color: #000; }
 .ui-tabs .related { margin-top: 1.5em; }
 
 /* Jquery UI Accordion */
-#accordeon-candidatures { }
+#accordeon-candidatures { margin-top: 1em; }
 	#accordeon-candidatures .ui-accordion-li-fix { display: block; }
 	#accordeon-candidatures .ui-state-default {
 		background: none; color: #999;
-		padding-bottom: 5px;
+		padding-bottom: 5px; padding-top: 3px;
 		border: 1px solid #ccc; border-width: 0 0 1px; }
 	#accordeon-candidatures .ui-state-active {
-		padding-bottom: 5px; color: #000;
+		padding-bottom: 5px; padding-top: 3px; color: #000;
 		border: 1px solid #000; border-width: 0 0 1px; }
 	#accordeon-candidatures .ui-state-hover { color: #000; }
 	#accordeon-candidatures .ui-widget-content { border-width: 0 0 1px; border-bottom-color: #000; }
@@ -373,9 +395,4 @@ img.puce { background-color: #000; }
 		padding: .8em 0; }
 	#accordeon-candidatures .ui-accordion-header > .ui-icon { display: none; }
 		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }
-		#accordeon-candidatures div.actions a.icon {
-			display: block;
-			height: 16px; width: 16px;
-			background: url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat 0 0;
-			text-indent: -9999px;
-			 }
+

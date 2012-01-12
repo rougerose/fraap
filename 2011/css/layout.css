@@ -25,8 +25,7 @@
 
 #page { position: relative; }
 
-	#contenu { margin-bottom: 3em; }
-
+	#contenu, #extra { margin-bottom: 3em; }
 
 	/* #contenu en fonction des pages */
 	.page_sommaire #contenu {
@@ -51,7 +50,7 @@
 
 	.page_profil #contenu {
 		display: inline; float: left;
-		margin: 0 10px; padding-left: 240px;
+		margin: 0 10px 3em; padding-left: 240px;
 		width: 460px; }
 
 /* zones communes */

@@ -18,7 +18,7 @@
 [(#REM) le visiteur est-il un étudiant (activite=2) ? Alors on affiche le bouton de dépôt d'une candidature ]
 [(#SESSION{activite}|=={2}|oui)
 	[(#REM) est-ce la page candidature ? Le bouton n'est pas affiché car il fait doublon ]
-	[(#ENV{page}|=={candidature}|non)
+	[(#ENV{page}|match{candidature|profil}|non)
 		<div id="depot-candidature">
 			<p><a href="#URL_PAGE{candidature}" class="bouton medium"><:candidatures:label_bouton_depot_candidature:></a></p>
 		</div><!-- #depot-candidature -->
