@@ -50,8 +50,8 @@
 
 		[(#REM) prenom et initiale nom du candidat ]
 		[(#REM) todo : problème de jointure table candidature/table auteur ]
-		#SET{auteur,#ID_AUTEUR}
-		<BOUCLE_auteur(AUTEURS){id_auteur=#GET{auteur}}{tout}>
+		#SET{id_auteur,#ID_AUTEUR}
+		<BOUCLE_auteur(AUTEURS){id_auteur=#GET{id_auteur}}{tout}>
 		#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]
 		</BOUCLE_auteur>
 
@@ -88,6 +88,7 @@
 			<td colspan="12">
 				<div>
 					#GET{auteur_nom}
+					<p><a href="[(#URL_PAGE{contact}|parametre_url{id_auteur,#GET{id_auteur}})]">envoyer un mail</a></p>
 				</div>
 			</td>
 		</tr>

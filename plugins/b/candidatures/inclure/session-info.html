@@ -11,9 +11,9 @@
 ]
 
 [(#REM) menu d'identification ]
-[<div id="menu-identification">
-	(#INCLURE{fond=inclure/menu, env, identifiant=identification})
-</div><!-- #identification -->]
+<div id="menu-identification">
+	#INCLURE{fond=inclure/menu, env, identifiant=identification}
+</div><!-- #identification -->
 
 [(#REM) le visiteur est-il un étudiant (activite=2) ? Alors on affiche le bouton de dépôt d'une candidature ]
 [(#SESSION{activite}|=={2}|oui)
