@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
 	$("#stages-table tbody").each(function(){
 		var	i = '',
 			$parent = $(this).find("tr:nth-child(odd)"),
-			$enfant = $(this).find("tr:nth-child(even) td div").hide(),
+			$enfant = $(this).find("tr:nth-child(even) > td > div").hide(),
 			$icon = "ui-icon-triangle-1-e",
 			$iconSelected = "ui-icon-triangle-1-s",
 			$lien = $parent.children("td.expand").html("<a class='icon'></a>"),
