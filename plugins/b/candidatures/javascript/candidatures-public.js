@@ -64,5 +64,38 @@ jQuery(document).ready(function($) {
 		});
 	});
 
+
+	// Stages : affichage du nom du candidat + bouton vers le formulaire de contact
+	$("#stages-table tbody").each(function(){
+		var	i = '',
+			$parent = $(this).find("tr:nth-child(odd)"),
+			$enfant = $(this).find("tr:nth-child(even) td div").hide(),
+			$icon = "ui-icon-triangle-1-e",
+			$iconSelected = "ui-icon-triangle-1-s",
+			$lien = $parent.children("td.expand").html("<a class='icon'></a>"),
+			$liens = $parent.find("a.icon").addClass($icon);
+
+		$liens.click(function(){
+			var	idx = $liens.index($(this)),
+				$visible = $enfant.filter(":visible");
+			// un bloc est déjà ouvert ?
+			if(!$visible.length == 0) {
+				if (i == idx) { // s'agit-il du même bloc ?
+					$enfant.eq(idx).slideUp("fast");
+				} else { // on ferme celui déjà ouvert et on ouvert celui demandé
+					$visible.slideUp("fast");
+					$liens.eq(i).toggleClass($icon).toggleClass($iconSelected);
+					$enfant.eq(idx).delay(200).slideDown("fast");
+					i = idx;
+				}
+			} else {
+				$enfant.eq(idx).slideDown("fast");
+				i = idx;
+			}
+			$(this).toggleClass($icon).toggleClass($iconSelected);
+		});
+	});
+
+
 });
 

@@ -25,21 +25,6 @@ jQuery(document).ready(function() {
 
 
 	/*
-	* Stages
-	*/
-	/* Afficher/masquer le nom du candidat et le bouton d'envoi de message mail */
-
-/*	$("#stages-table").each(function(){
-		var $expand = $(this).find(".expand");
-
-		$expand.addClass("ui-icon ui-icon-circle-plus");
-	});
-
-*/
-
-
-
-	/*
 	* Animation du formulaire Recherche
 	*/
 	$("#formulaire_recherche").each(function(){
