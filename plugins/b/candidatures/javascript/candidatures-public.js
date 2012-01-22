@@ -36,9 +36,9 @@ jQuery(document).ready(function($) {
 	//		confirmation préalable avant de supprimer
 	$(".page_profil #extra").each(function(){
 		var $tous = $(this).find("div.actions a").addClass("icon"),
-			$ajouter = $(this).find("div.actions a.ajouter").attr("title","ajouter");
-			$modifier = $(this).find("div.actions a.modifier").attr("title","modifier"),
-			$supprimer = $(this).find('div.actions a.supprimer').attr("title","supprimer");
+			$ajouter = $(this).find("div.actions a.ajouter");
+			$modifier = $(this).find("div.actions a.modifier"),
+			$supprimer = $(this).find('div.actions a.supprimer');
 
 		$supprimer.click(function(){
 			var	$lien = $(this).attr('href'),

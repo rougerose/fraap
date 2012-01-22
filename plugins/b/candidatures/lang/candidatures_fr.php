@@ -58,9 +58,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_activite' => "Votre activit&eacute;",
 	'label_activites_inscription' => 'Vos domaines d&#x27;activité',
+	'label_bouton_ajouter_candidature' => 'Ajouter une candidature',
 	'label_bouton_depot_candidature' => 'Déposez votre candidature &#x2192;',
 	'label_bouton_inscription' => 'Vous inscrire &#x2192;',
 	'label_bouton_identification' => 'Vous identifier &#x2192;',
+	'label_bouton_modifier_candidature' => 'Modifier la candidature',
+	'label_bouton_supprimer_candidature' => 'Supprimer la candidature',
 	'label_candidate' => 'Candidat(e)',
 	'label_cadre_stage' => 'Cadre du stage conventionné',
 	'label_competences_menu_recherche' => 'Compétences recherchées (plusieurs choix possibles)',
