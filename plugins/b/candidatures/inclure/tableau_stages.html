@@ -1,0 +1,201 @@
+#CACHE{0}
+
+[(#REM)	les données transmises par #inclure
+]
+	#SET{candidatures,#ENV{candidatures}}
+	#SET{data_regions,#ENV{data_regions}}
+	#SET{data_competences,#ENV{data_competences}}
+
+[(#REM)	tableau des candidatures triées en fonction des critères du visiteur
+]
+	#SET{candidatures_tri,#ARRAY}
+
+[(#REM)	tableau des candidatures triées par date,
+		qui seront affichées par défaut
+]
+	#SET{candidatures_date_defaut,#ARRAY}
+
+[(#REM)	critères de tri par défaut du tableau
+]
+	[(#SET{defaut_tri,#ARRAY{
+		id_candidature,1
+		date_debut,1
+		date_fin,1
+		}})
+	]
+
+[(#REM) le visiteur a-t-il indiqué des critères de tri ?
+]
+	[(#ENV{regions}
+		|ou{#ENV{competences_offre}}
+		|ou{#ENV{competences_recherche}}
+		|ou{#ENV{date_debut}}
+		|ou{#ENV{date_fin}}
+		|oui)
+		[(#SET{stages_tri,oui})]
+	]
+
+[(#REM)	conversion des dates au format Y-m-d
+		TODO :	il devrait être possible de convertir
+				la date au niveau du traitement du formulaire,
+				mais impossible de l'obtenir. A revoir.
+]
+	[(#GET{stages_tri}|et{#ENV{date_debut}|et{#ENV{date_fin}}}|oui)
+		#SET{date_d,#ENV{date_debut}|recup_date}
+		#SET{date_d,#GET{date_d}|table_valeur{0}|concat{'-',#GET{date_d}|table_valeur{1},'-',#GET{date_d}|table_valeur{2}}}
+
+		#SET{date_f,#ENV{date_fin}|recup_date}
+		#SET{date_f,#GET{date_f}|table_valeur{0}|concat{'-',#GET{date_f}|table_valeur{1},'-',#GET{date_f}|table_valeur{2}}}
+	]
+
+[(#REM)	affichage par défaut des stages :
+		on n'affiche que les stages encore valables, selon la date de fin
+]
+<BOUCLE_condition_tri_date_defaut(CONDITION){si #GET{stages_tri}|non}>
+	<BOUCLE_candidatures_defaut(CANDIDATURES){id_candidature IN #GET{candidatures}}>
+		[(#ENV{date}|affdate{Y-m-d}|<={#DATE_FIN}|oui)
+			[(#SET{candidatures_date_defaut,#GET{candidatures_date_defaut}|push{#ID_CANDIDATURE}})]
+		]
+	</BOUCLE_candidatures_defaut>
+
+	[(#REM)	on ne retient que les candidatures ayant la date par défaut
+	]
+		[(#SET{candidatures,#GET{candidatures}|array_intersect{#GET{candidatures_date_defaut}}})]
+
+</BOUCLE_condition_tri_date_defaut>
+
+
+[(#REM)	afficher les critères de tri de l'utilisateur
+]
+
+
+[(#REM)	récupérer les candidatures qui répondent aux critères de tri
+		mais uniquement pour dates, régions, compétences et recherches
+		les autres critères sont traintés dans la boucle.
+]
+
+<BOUCLE_stages_tri(CONDITION){si #GET{stages_tri}}>
+	<BOUCLE_candidatures(CANDIDATURES){id_candidature IN #GET{candidatures}}>
+
+		[(#SET{regions_tri,#REGIONS|unserialize})]
+		[(#SET{competences_tri,#COMPETENCES_OFFRE|unserialize})]
+		[(#SET{recherches_tri,#COMPETENCES_RECHERCHE|unserialize})]
+
+		<BOUCLE_regions_tri(POUR){tableau #GET{regions_tri}}>
+			[(#ENV{regions}|find{#VALEUR}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+		</BOUCLE_regions_tri>
+
+		<BOUCLE_competences_tri(POUR){tableau #GET{competences_tri}}>
+			[(#ENV{competences_offre}|find{#VALEUR}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+		</BOUCLE_competences_tri>
+
+		<BOUCLE_recherches_tri(POUR){tableau #GET{recherches_tri}}>
+			[(#ENV{recherches_offre}|find{#VALEUR}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+		</BOUCLE_recherches_tri>
+
+		[(#GET{date_d}|et{#GET{date_f}}|oui)
+			[(#GET{date_d}|>={#DATE_DEBUT}|et{#GET{date_f}|<={#DATE_FIN}}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+
+			[(#DATE_DEBUT|<{#GET{date_d}}|et{#DATE_FIN|>{#GET{date_d}}}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+
+			[(#DATE_DEBUT|>{#GET{date_d}}|et{#DATE_DEBUT|<{#GET{date_f}}}|et{#DATE_FIN|>{#GET{date_f}}}|oui)
+				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+			]
+		]
+	</BOUCLE_candidatures>
+
+	[(#REM) tableau des candidatures pertinentes selon les critères de tri ]
+		[(#SET{candidatures,#GET{candidatures}|array_intersect{#GET{candidatures_tri}}})]
+
+</BOUCLE_stages_tri>
+
+<div id="stages-affichage">
+	<B_stages>
+	[(#ANCRE_PAGINATION)]
+	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
+	<table id="stages-table">
+		<thead>
+			<tr>
+				<th></th>
+				<th><:candidatures:label_candidate:></th>
+				<th colspan="2"><:candidatures:label_dispo_consultation:></th>
+				<th colspan="2"><:candidatures:label_localisation_geo_consultation_abrev:></th>
+				<th colspan="4"><:candidatures:label_formation_consultation:></th>
+				<th colspan="2"><:candidatures:label_competences_recherches_consultation:></th>
+			</tr>
+			<tr>
+				<th></th>
+				<th><:candidatures:label_prenom:><br /><:candidatures:label_nom_tableau:></th>
+				<th><:candidatures:label_date_debut:></th><th><:candidatures:label_date_fin:></th>
+				<th><:candidatures:label_regions_consultation_abrev:></th><th><:candidatures:label_ville_consultation:></th>
+				<th><:candidatures:label_ecole:></th><th><:candidatures:label_ville_consultation:></th><th><:candidatures:label_diplome:></th><th><:candidatures:label_diplome_niveau:></th>
+				<th><:candidatures:label_competences_offre_consultation:></th>
+				<th><:candidatures:label_recherches_consultation:></th>
+			</tr>
+		</thead>
+		<tbody>
+			<BOUCLE_stages(CANDIDATURES){id_candidature IN #GET{candidatures}}{ville_stage?}{ecole?}{ville_ecole?}{diplome?}{niveau?}{!par date_debut}{pagination}>
+
+			[(#REM) prenom et initiale nom du candidat ]
+			[(#REM) todo : problème de jointure table candidature/table auteur ]
+			#SET{id_auteur,#ID_AUTEUR}
+			<BOUCLE_auteur(AUTEURS){id_auteur=#GET{id_auteur}}{tout}>
+			#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]
+			</BOUCLE_auteur>
+
+			#SET{reg,#REGIONS|unserialize}
+			#SET{comp,#COMPETENCES_OFFRE|unserialize}
+			#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
+			<tr id="stage#ID_FORMULAIRES_REPONSE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
+				<td class="expand"></td>
+				<td>#ID_CANDIDATURE - #GET{auteur_prenom}</td>
+				<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
+				<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
+				<td>
+					<BOUCLE_regions(POUR){tableau #GET{reg}}>
+					[<p>(#GET{data_regions}|table_valeur{#VALEUR})</p>]
+					</BOUCLE_regions>
+				</td>
+				<td>#VILLE_STAGE</td>
+				<td>#ECOLE</td>
+				<td>#VILLE_ECOLE</td>
+				<td>#DIPLOME</td>
+				<td>#NIVEAU</td>
+				<td>
+					<BOUCLE_offres(POUR){tableau #GET{comp}}>
+					[<p>(#GET{data_competences}|table_valeur{#VALEUR})</p>]
+					</BOUCLE_offres>
+				</td>
+				<td>
+					<BOUCLE_recherches(POUR){tableau #GET{rech}}>
+					[<p>(#GET{data_competences}|table_valeur{#VALEUR})</p>]
+					</BOUCLE_recherches>
+				</td>
+			</tr>
+			<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
+				<td colspan="12">
+					<div>
+						#GET{auteur_nom}
+						<p><a href="[(#URL_PAGE{contact}|parametre_url{id_auteur,#GET{id_auteur}})]">envoyer un mail</a></p>
+					</div>
+				</td>
+			</tr>
+			</BOUCLE_stages>
+		</tbody>
+	</table>
+	[<p class="pagination bas clearfix">(#PAGINATION{page})</p>]
+	</B_stages>
+	<p><:candidatures:info_pas_de_resultat_stages:></p>
+	<//B_stages>
+</div>
+

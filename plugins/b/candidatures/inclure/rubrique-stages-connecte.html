@@ -6,8 +6,8 @@
 	#SET{regions,#ARRAY} #SET{competences,#ARRAY}
 
 <BOUCLE_yaml(DATA){source yaml, #CHEMIN{formulaires/stages.yaml}}>
-[(#CLE|=={regions}|oui)[(#SET{regions, #VALEUR})]]
-[(#CLE|=={competences}|oui)[(#SET{competences,#VALEUR})]]
+[(#CLE|=={regions}|oui)[(#SET{data_regions, #VALEUR})]]
+[(#CLE|=={competences}|oui)[(#SET{data_competences,#VALEUR})]]
 </BOUCLE_yaml>
 
 <BOUCLE_candidatures(CANDIDATURES){tout}>
@@ -20,81 +20,13 @@
 	TODO il faudra ajouter les critères de tri de l'utilisateur
 ]
 
-
 [(#REM) zone relative à la session ouverte par l'utilisateur ]
 <INCLURE{fond=inclure/session-info,env}>
 
+[(#REM) formulaire de tri
+]
+#FORMULAIRE_TRI_STAGES
 
-<B_stages>
-<table id="stages-table">
-	<thead>
-		<tr>
-			<th></th>
-			<th><:candidatures:label_candidate:></th>
-			<th colspan="2"><:candidatures:label_dispo_consultation:></th>
-			<th colspan="2"><:candidatures:label_localisation_geo_consultation_abrev:></th>
-			<th colspan="4"><:candidatures:label_formation_consultation:></th>
-			<th colspan="2"><:candidatures:label_competences_recherches_consultation:></th>
-		</tr>
-		<tr>
-			<th></th><th><:candidatures:label_prenom:><br /><:candidatures:label_nom_tableau:></th>
-			<th><:candidatures:label_date_debut:></th><th><:candidatures:label_date_fin:></th>
-			<th><:candidatures:label_regions_consultation_abrev:></th><th><:candidatures:label_ville_consultation:></th>
-			<th><:candidatures:label_ecole:></th><th><:candidatures:label_ville_consultation:></th><th><:candidatures:label_diplome:></th><th><:candidatures:label_diplome_niveau:></th>
-			<th><:candidatures:label_competences_offre_consultation:></th>
-			<th><:candidatures:label_recherches_consultation:></th>
-		</tr>
-	</thead>
-	<tbody>
-		<BOUCLE_stages(CANDIDATURES){id_candidature IN #GET{candidatures}}>
-
-		[(#REM) prenom et initiale nom du candidat ]
-		[(#REM) todo : problème de jointure table candidature/table auteur ]
-		#SET{id_auteur,#ID_AUTEUR}
-		<BOUCLE_auteur(AUTEURS){id_auteur=#GET{id_auteur}}{tout}>
-		#SET{auteur_prenom,#PRENOM}[(#SET{auteur_nom,#NOM})]
-		</BOUCLE_auteur>
-
-		#SET{reg,#REGIONS|unserialize}
-		#SET{comp,#COMPETENCES_OFFRE|unserialize}
-		#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
-		<tr id="stage#ID_FORMULAIRES_REPONSE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
-			<td class="expand"></td>
-			<td>#GET{auteur_prenom}</td>
-			<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
-			<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
-			<td>
-				<BOUCLE_regions(POUR){tableau #GET{reg}}>
-				[<p>(#GET{regions}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_regions>
-			</td>
-			<td>#VILLE_STAGE</td>
-			<td>#ECOLE</td>
-			<td>#VILLE_ECOLE</td>
-			<td>#DIPLOME</td>
-			<td>#NIVEAU</td>
-			<td>
-				<BOUCLE_offres(POUR){tableau #GET{comp}}>
-				[<p>(#GET{competences}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_offres>
-			</td>
-			<td>
-				<BOUCLE_recherches(POUR){tableau #GET{rech}}>
-				[<p>(#GET{competences}|table_valeur{#VALEUR})</p>]
-				</BOUCLE_recherches>
-			</td>
-		</tr>
-		<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
-			<td colspan="12">
-				<div>
-					#GET{auteur_nom}
-					<p><a href="[(#URL_PAGE{contact}|parametre_url{id_auteur,#GET{id_auteur}})]">envoyer un mail</a></p>
-				</div>
-			</td>
-		</tr>
-		</BOUCLE_stages>
-	</tbody>
-</table>
-</B_stages>
-<p><:candidatures:info_pas_de_resultat_stages:></p>
-<//B_stages>
+[(#REM) affichage des stages
+]
+[(#INCLURE{fond=inclure/tableau_stages,env,ajax,candidatures=#GET{candidatures},data_regions=#GET{data_regions},data_competences=#GET{data_competences}})]

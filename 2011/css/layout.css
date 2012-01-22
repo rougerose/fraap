@@ -10,6 +10,17 @@
 /* grille de mise en page */
 .gs { background: #fff url('../images/16_col.gif') repeat-y top center; }
 
+/* #debug */
+
+#debug {
+	font-size: 10px;
+	background:rgba(255,83,13,0.5);
+	color:black;
+	position:fixed;top:50px;right:0;
+	text-align:left;
+	width: 280px; height: 400px; overflow: scroll;
+	padding:8px; }
+
 /* Les boutons d'admin survolent la page (sauf # FORMULAIRE_ADMIN) */
 /* surcharge des css par defaut */
 .spip-admin-bloc,

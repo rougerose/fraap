@@ -26,7 +26,7 @@
 
 	/* Lignes */
 	.formulaire_spip ul { margin: 0; padding: 0; list-style: none; }
-	.formulaire_spip ul li { clear: both; margin: 0; padding: .7em 0 .7em; }
+	.formulaire_spip ul li { xclear: both; margin: 0; padding: .7em 0 .7em; }
 	.formulaire_spip ul li.fieldset { padding: 0 0 .7em; }
 
 	/* Labels */
@@ -105,9 +105,24 @@
 				margin: .25em 0 0 10px; }
 
 /* formulaire tri stages */
-.formulaire_tri_stages h3 { font-size: 14px; }
-.formulaire_tri_stages label { margin-bottom: .5em; }
+/*
 
+	.formulaire_tri_stages h3 { font-size: 14px; }
+	.formulaire_tri_stages label { margin-bottom: .5em; }
+
+	.formulaire_tri_stages ul.triple li div.choix { width: 33.333%; }
+		.formulaire_tri_stages ul li.saisie_checkbox {
+			overflow: hidden; }
+
+
+	.formulaire_tri_stages li.saisie_checkbox div.choix {
+		float: left; display: inline;
+		line-height: 1.5em; }
+
+*/
+/*	.formulaire_tri_stages .saisie_checkbox div.choix:nth-of-type(4n+4) {
+		background-color: #ddd; }
+*/
 
 /* recherche */
 #raccourcis #formulaire_recherche {

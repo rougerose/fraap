@@ -19,10 +19,15 @@ a:visited {  }
 a:hover { text-decoration: underline; color: #000; }
 a:active, a:focus { position: relative; top: 1px; outline: thin dotted; }
 a:active { outline: none; }
+
 .textecourant a { text-decoration: underline; }
+
 span.suite a:after, a.suite:after { content:"\00A0\2192"; }
+
 #contenu a, #fil a, #pied a { font-weight: bold; }
+
 #tabs a { font-weight: normal; }
+	#tabs a:focus { outline: none; }
 
 
 /* filets */
@@ -286,22 +291,23 @@ img.puce { background-color: #000; }
 			font-size: 1.5em; line-height: 1em;
 			margin: 0 0 1em; }
 
-		/* page consultation stages tableau des candidatures */
-		table#stages-table { width: 100%; border-bottom: 1px solid #000; }
-			#stages-table th {
-				color: #fff;
-				border: 1px solid #fff; }
-			#stages-table tr { border: 1px solid #fff; }
-			#stages-table tr.enfant { border-top-width: 0;  }
-			#stages-table tr.pair { border-bottom-width: 0; }
-			#stages-table tr:first-child th {
-				font-weight: bold;
-				border-top: 2px solid #000; border-bottom-color: #fff; }
-				#stages-table tr:first-child th:first-child {  }
-			#stages-table th, #stages-table td {
-				padding: 4px 6px 2px;
-				font-size: 12px; }
-			#stages-table td {  }
+		/* page consultation stages : tableau des candidatures */
+		#stages-affichage {
+			xborder: 1px solid #000; xborder-width: 1px 0;
+			padding: 1em 0; }
+
+
+		table#stages-table { width: 100%; border: 1px solid #000; border-width: 2px 0 1px; }
+			#stages-table th { color: #fff; }
+			#stages-table tr {  }
+			#stages-table tr.enfant {  }
+			#stages-table tr.pair {  }
+				#stages-table tr th { border-left: 1px solid #fff; }
+				#stages-table th, #stages-table td {
+					padding: 4px 6px 2px;
+					font-size: 12px; }
+			#stages-table tr:first-child th { font-weight: bold; }
+
 				#stages-table .expand {  }
 				#stages-table .expand .icon {
 					background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
@@ -424,4 +430,8 @@ img.puce { background-color: #000; }
 		background: none; background-color: #000; color: #fff; border: none; }
 	.ui-dialog .ui-dialog-content p { margin: 0; }
 
+/* table de développement */
 
+#dev td {
+	border: 2px solid #999;
+	padding: .5em; }

@@ -10,6 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	//B
 	'bienvenue' => 'Bienvenue',
+	'bouton_recharger' => 'Recharger',
 
 	// C
 	'candidature_enregistree' => '1 candidature est enregistr&eacute;e.',
