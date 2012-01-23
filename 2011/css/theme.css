@@ -59,10 +59,10 @@ img.puce { background-color: #000; }
 	overflow: hidden;
 	height: 16px; width: 16px;
 	background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png');
-	-webkit-border-radius: 4px;
+/*	-webkit-border-radius: 4px;
 	   -moz-border-radius: 4px;
 	        border-radius: 4px;
-	-webkit-transition: background 0.15s ease;
+*/	-webkit-transition: background 0.15s ease;
 	   -moz-transition: background 0.15s ease;
 	     -o-transition: background 0.15s ease;
 	        transition: background 0.15s ease; }
@@ -252,6 +252,24 @@ img.puce { background-color: #000; }
 
 /* stages */
 
+	/* zone d'actions : styles communs */
+	.actions a.icon {
+		background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat;
+		border: 1px solid #ddd; }
+	.actions a.icon:hover {
+		background: #000 url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat;
+		border-color: #000; }
+	.actions a.icon.ajouter { background-position: -16px -128px; }
+	.actions a.icon.modifier { background-position: -64px -112px; }
+	.actions a.icon.supprimer {
+		margin-right: 5px;
+		background-position: -176px -96px; }
+	.actions a.icon.trier { background-position: -160px -112px; }
+	.actions a.trier.ouvert {
+		background: #196efa url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat -160px -112px;
+		border-color: #000 #e5e5e5 #e5e5e5 #000; }
+
+
 	/* page de présentation/login/inscription */
 	.rubrique_stages #stages-aiguillage, .rubrique_stages .texte { padding-left: 240px;  }
 		#stages-aiguillage li { text-align: center; }
@@ -267,20 +285,21 @@ img.puce { background-color: #000; }
 			#gestion-candidatures li .bloc > p { margin: 0 0 .5em; font-size: 12px; }
 		#gestion-candidatures div.actions { text-align: right; }
 			#gestion-candidatures .actions p { float: right; margin: 0; }
-				#gestion-candidatures .actions a.icon.modifier { background-position: -64px -112px; }
-				#gestion-candidatures .actions a.icon.ajouter { background-position: -16px -128px; }
-				#gestion-candidatures .actions a.icon.supprimer {
-					margin-right: 5px;
-					background-position: -176px -96px; }
-				#gestion-candidatures .actions a.icon {
-					background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat;
-					border: 1px solid #ddd; }
-				#gestion-candidatures .actions a:hover {
-					background: #000 url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat;
-					border-color: #000; }
 
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
+
+		/* zone d'action */
+		.rubrique_stages .actions {
+			border: 1px solid #000; border-width: 1px 0 0;
+			text-align: right; }
+			.actions ul { padding: .5em 0 0; margin: 0; }
+			.actions li {
+				list-style-type: none;
+				display: inline;
+				margin: 0 10px 0 0; }
+			.actions li:last-child { margin-right: 0; }
+			.actions #formulaire_tri_stages { border-bottom: 1px solid #000; }
 
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }
@@ -369,7 +388,7 @@ img.puce { background-color: #000; }
 	.bouton.noir { background-color: #333 !important; }
 	.bouton:hover.noir { background-color: #000 !important; }
 
-	/* actions */
+	/* action */
 	.bouton:hover { text-decoration: none; background-color: #111; color: #fff; }
 	.bouton:active { top:1px; }
 

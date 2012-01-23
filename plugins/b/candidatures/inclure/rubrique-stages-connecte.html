@@ -23,9 +23,27 @@
 [(#REM) zone relative à la session ouverte par l'utilisateur ]
 <INCLURE{fond=inclure/session-info,env}>
 
-[(#REM) formulaire de tri
-]
-#FORMULAIRE_TRI_STAGES
+<div class="actions">
+	<ul class="clearfix">
+		<li>
+			<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
+				<:candidatures:label_bouton_trier_candidatures:>
+			</a>
+		</li>
+		[(#SESSION{activite}|=={2}|oui)
+		<li>
+			<a href="#URL_PAGE{candidature}" title="<:candidatures:label_bouton_ajouter_candidature:>" class="bt ajouter">
+				<:candidatures:label_bouton_ajouter_candidature:>
+			</a>
+		</li>
+		]
+	</ul>
+
+	[(#REM) formulaire de tri ]
+	#FORMULAIRE_TRI_STAGES
+
+</div><!-- .actions -->
+
 
 [(#REM) affichage des stages
 ]

@@ -45,7 +45,7 @@
 				<h2>Vos candidatures</h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
 				<div class="actions clearfix">
-					<p><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="ajouter" title="<:candidatures:label_bouton_ajouter_candidature:>">[<:candidatures:label_bouton_ajouter_candidature:>]</a></p>
+					<p><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="bt ajouter" title="<:candidatures:label_bouton_ajouter_candidature:>">[<:candidatures:label_bouton_ajouter_candidature:>]</a></p>
 				</div><!-- .actions -->
 				<B_candidatures>
 				<ol id="accordeon-candidatures">
@@ -79,7 +79,7 @@
 							</p>
 							</B_recherches>
 							<div class="actions clearfix">
-								<p><a href="[(#URL_ACTION_AUTEUR{supprimer_candidature,#ID_CANDIDATURE,#SELF})]" class="supprimer" title="<:candidatures:label_bouton_supprimer_candidature:>">[<:candidatures:label_bouton_supprimer_candidature:>]</a><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="modifier" title="<:candidatures:label_bouton_modifier_candidature:>">[<:candidatures:label_bouton_modifier_candidature:>]</a></p>
+								<p><a href="[(#URL_ACTION_AUTEUR{supprimer_candidature,#ID_CANDIDATURE,#SELF})]" class="bt supprimer" title="<:candidatures:label_bouton_supprimer_candidature:>">[<:candidatures:label_bouton_supprimer_candidature:>]</a><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="bt modifier" title="<:candidatures:label_bouton_modifier_candidature:>">[<:candidatures:label_bouton_modifier_candidature:>]</a></p>
 							</div><!-- .actions -->
 						</div><!-- .bloc -->
 					</li>

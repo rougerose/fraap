@@ -31,14 +31,18 @@ jQuery(document).ready(function($) {
 	onAjaxLoad(modifierForm_init);
 
 
-	// page profil > candidatures : boutons d'actions "supprimer" et "modifier" :
-	// 		class ui-icon sur les boutons "modifier" et "supprimer"
+	// Stages : boutons d'actions "supprimer", "modifier", "ajouter" et "trier" :
+	// 		class ui-icon sur les boutons
 	//		confirmation préalable avant de supprimer
-	$(".page_profil #extra").each(function(){
-		var $tous = $(this).find("div.actions a").addClass("icon"),
-			$ajouter = $(this).find("div.actions a.ajouter");
-			$modifier = $(this).find("div.actions a.modifier"),
-			$supprimer = $(this).find('div.actions a.supprimer');
+	//		le bouton trier fait apparaitre le formulaire
+
+	$(".actions").each(function(){
+		var $tous = $(this).find("a.bt").addClass("icon"), $actions = $(this),
+		//	$ajouter = $tous.filter(".ajouter"),
+		//	$modifier = $tous.filter(".modifier"),
+			$supprimer = $tous.filter(".supprimer"),
+			$trier = $tous.filter(".trier"),
+			$formulaire_tri = $(this).find("#formulaire_tri_stages").hide();
 
 		$supprimer.click(function(){
 			var	$lien = $(this).attr('href'),
@@ -60,6 +64,14 @@ jQuery(document).ready(function($) {
 					}]
 				});
 			$dialog.dialog("open");
+			return false;
+		});
+
+		// afficher le formulaire de tri
+		$trier.click(function(){
+			$(this).removeAttr("href");
+			$(this).toggleClass('ouvert');
+			$formulaire_tri.slideToggle();
 			return false;
 		});
 	});
