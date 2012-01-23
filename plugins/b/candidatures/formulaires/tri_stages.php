@@ -64,10 +64,6 @@ function formulaires_tri_stages_traiter_dist(){
 	}
 */
 	$res["editable"] = true;
-
-	$res['_hidden'] = "<input type='hidden' name='date_debut' value='2012-01-01' />";
-
-
 	return $res;
 }
 
