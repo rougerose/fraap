@@ -48,13 +48,14 @@ jQuery(document).ready(function($) {
 		// critères de recherche utilisateur
 		$("#criteres-utilisateur").each(function(){
 			var $criteres = $(this).find("dd"),
+			//	$champs = $criteres.children("span.data-env"),
 				$checkbox = $criteres.filter(".formTypeCheckbox").find("span.data-env"),
 				$input = $criteres.filter(".formTypeInput"),
 				$tableau_criteres = $.merge($checkbox,$input);
 
 			// ajout bouton de suppression du critère
 			$tableau_criteres.map(function(i,el){
-				$(el).append(" <a href='#champ_"+el.id+"' title='supprimer'>x</a>");
+				$(el).append("<a href='#champ_"+el.id+"' title='supprimer'> </a>");
 				return el;
 			});
 

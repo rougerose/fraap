@@ -110,17 +110,14 @@
 		<dl>
 			<dt><:candidatures:votre_recherche:></dt>
 
-			[<dd id="date_debut" class="formTypeInput">
-				<span class="label"><:candidatures:label_date_debut:></span> (#ENV{date_debut})
-			</dd>]
+			[<dd id="date_debut" class="formTypeInput clearfix"><span class="label"><:candidatures:label_date_debut:> </span><span class="data-env">(#ENV{date_debut})</span></dd>]
 
-			[<dd id="date_fin" class="formTypeInput">
-				<span class="label"><:candidatures:label_date_fin:></span> (#ENV{date_fin})</dd>]
+			[<dd id="date_fin" class="formTypeInput clearfix"><span class="label"><:candidatures:label_date_fin:> </span><span class="data-env">(#ENV{date_fin})</span></dd>]
 
 			<BOUCLE_test_regions(CONDITION){si #ENV{regions}}>
 			[(#SET{compteur_regions,#ENV{regions}|count})]
 			<B_choix_regions>
-			<dd class="formTypeCheckbox">
+			<dd class="formTypeCheckbox clearfix">
 				<span class="label"><:candidatures:label_regions_consultation_abrev:></span>
 				<BOUCLE_choix_regions(POUR){tableau #GET{data_regions}}>
 				[<span id="regions_#CLE" class="data-env">(#ENV{regions}|find{#CLE}|oui)#VALEUR</span> ]
@@ -134,13 +131,12 @@
 
 	<div id="actions-utilisateur">
 		<ul class="clearfix">
-			<li>
-				[<span class="info-resultats">
-				(#GET{candidatures}|count|>{0}|?{
+			<li class="info-resultats">
+				[(#GET{candidatures}|count|>{0}|?{
 					[(#GET{candidatures}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})]
 					,
 					<:candidatures:criteres_pas_de_resultat:>
-				})</span>]
+				})]
 			</li>
 			<li>
 				<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
@@ -202,7 +198,7 @@
 			#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
 			<tr id="stage#ID_FORMULAIRES_REPONSE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
 				<td class="expand"></td>
-				<td>#ID_CANDIDATURE - #GET{auteur_prenom}</td>
+				<td>#GET{auteur_prenom}</td>
 				<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 				<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 				<td>
@@ -229,8 +225,7 @@
 			<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
 				<td colspan="12">
 					<div>
-						#GET{auteur_nom}
-						<p><a href="[(#URL_PAGE{contact}|parametre_url{id_auteur,#GET{id_auteur}})]">envoyer un mail</a></p>
+						<p>#GET{auteur_nom} <a class="icon ui-icon-mail-closed" href="[(#URL_PAGE{contact}|parametre_url{id_auteur,#GET{id_auteur}})]" title="<:candidatures:envoyer_message:>"><:candidatures:envoyer_message:></a></p>
 					</div>
 				</td>
 			</tr>

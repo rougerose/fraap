@@ -24,6 +24,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// D
 
 	// E
+	'envoyer_message' => 'Envoyer un message',
 	'erreur_date_avant_apres' => 'Indiquez une date de fin apr&egrave;s la date de d&eacute;but !',
 
 	// F

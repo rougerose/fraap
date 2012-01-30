@@ -89,12 +89,15 @@
 		.couleurID#ID_RUBRIQUE #titre h1,
 		.couleurID#ID_RUBRIQUE #stages-identification p.bienvenue,
 		.page_profil .couleurID#ID_RUBRIQUE h2,
-		.actions li span.info-resultats { color: ##GET{couleur}; }
+		.actions li.info-resultats { color: ##GET{couleur}; }
 
 		#stages-table th { background-color: ##GET{couleur_lum03}; border-bottom-color: ##GET{couleur_lum03}; }
 			#stages-table th:first-child { border-left-color: ##GET{couleur_lum03}; }
 			#stages-table th:last-child { border-right-color: ##GET{couleur_lum03}; }
-		#stages-table tr:first-child th { background-color: ##GET{couleur}; }
+		#stages-table tr:first-child th,
+		#stages-table .expand .icon,
+		#stages-table tr.enfant p .icon:hover,
+		.actions a.icon:hover { background-color: ##GET{couleur}; }
 			#stages-table tr:first-child th:first-child { border-left-color: ##GET{couleur}; }
 			#stages-table tr:first-child th:last-child { border-right-color: ##GET{couleur}; }
 		#stages-table tr.pair td { background-color: ##GET{couleur_sat01}; }

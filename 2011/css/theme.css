@@ -257,8 +257,8 @@ img.puce { background-color: #000; }
 		background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat;
 		border: 1px solid #ddd; }
 	.actions a.icon:hover {
-		background: #000 url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat;
-		border-color: #000; }
+		background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
+		border-color: #ddd #f9f9f9 #f9f9f9 #ddd; }
 	.actions a.icon.ajouter { background-position: -16px -128px; }
 	.actions a.icon.modifier { background-position: -64px -112px; }
 	.actions a.icon.supprimer {
@@ -309,16 +309,27 @@ img.puce { background-color: #000; }
 					display: inline; vertical-align: top;
 					margin: 0 10px 0 0; }
 				.actions li:last-child { margin-right: 0; }
-				.actions li span.info-resultats {
-					display: inline-block;
-					height: 18px;
-					padding: 0 3px; }
 			/* #criteres-utilisateur */
 			.actions #criteres-utilisateur { text-align: left; }
 				.actions dl dt { font-weight: bold; }
 				.actions dl dd {
-					display: inline-block; }
-					.actions dl dd span.label { font-weight: bold; color: #666; }
+					margin: 7px 0 7px 10px; clear: both; line-height: 17px; }
+					.actions dl dd span, .actions dl dd > a[title='supprimer'] {
+						float: left; padding: 1px 3px 2px; }
+					.actions dl dd span.data-env {
+						border-left: 1px solid #e9e9e9;
+						border-bottom: 1px solid #d3d3d3;
+						border-top: 1px solid #e9e9e9; }
+					.actions dl dd span.label {
+						font-weight: bold; color: #666;
+						border: 1px solid #fff; }
+					.actions dl dd.formTypeCheckbox span.data-env { margin-right: 20px; }
+					.actions dl dd a[title='supprimer'] {
+						background: url('../images/sprite.png') no-repeat 0px 0px;
+						margin: 0; padding: 0;
+						width: 17px; height: 22px; }
+						.actions dl dd span.data-env a[title='supprimer'] {
+							margin-top: -2px; margin-bottom: -3px; margin-right: -17px; margin-left: 3px; float: right; }
 
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }
@@ -330,9 +341,7 @@ img.puce { background-color: #000; }
 			margin: 0 0 1em; }
 
 		/* page consultation stages : tableau des candidatures */
-		#stages-affichage {
-			xborder: 1px solid #000; xborder-width: 1px 0;
-			padding: 1em 0; }
+		#stages-affichage { padding: 1em 0; }
 
 
 		table#stages-table { width: 100%; border: 1px solid #000; border-width: 2px 0 1px; }
@@ -345,17 +354,28 @@ img.puce { background-color: #000; }
 					padding: 4px 6px 2px;
 					font-size: 12px; }
 			#stages-table tr:first-child th { font-weight: bold; }
-
-				#stages-table .expand {  }
+				/* #stages-table .expand {  }*/
 				#stages-table .expand .icon {
 					background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
-					background-color: #0073ea;
 					background-repeat: no-repeat;
 					-webkit-transition: none;
 					   -moz-transition: none;
 					     -o-transition: none;
 					        transition: none; }
-				#stages-table p { margin: 0; }
+				#stages-table p { margin: 0 }
+				#stages-table tr.enfant p { margin-bottom: .5em; margin-left: 28px; }
+					#stages-table tr.enfant p .icon {
+						border: 1px solid #ddd;
+						background-color: #f9f9f9;
+						margin-left: 10px; margin-top: 5px;
+						vertical-align: bottom; }
+					#stages-table tr.enfant p .icon:hover {
+						background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
+						border-color: #ddd #f9f9f9 #f9f9f9 #ddd;
+						-webkit-transition: none;
+						   -moz-transition: none;
+						     -o-transition: none;
+						        transition: none; }
 
 /* vcard */
 .vcard h3 { margin: 0; font-size: 12px; }
