@@ -14,37 +14,8 @@
 #SET_PUSH{candidatures,#ID_CANDIDATURE}
 </BOUCLE_candidatures>
 
-[(#REM)
-	tableau des offres disponibles.
-
-	TODO il faudra ajouter les critères de tri de l'utilisateur
-]
-
 [(#REM) zone relative à la session ouverte par l'utilisateur ]
 <INCLURE{fond=inclure/session-info,env}>
 
-<div class="actions">
-	<ul class="clearfix">
-		<li>
-			<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
-				<:candidatures:label_bouton_trier_candidatures:>
-			</a>
-		</li>
-		[(#SESSION{activite}|=={2}|oui)
-		<li>
-			<a href="#URL_PAGE{candidature}" title="<:candidatures:label_bouton_ajouter_candidature:>" class="bt ajouter">
-				<:candidatures:label_bouton_ajouter_candidature:>
-			</a>
-		</li>
-		]
-	</ul>
-
-	[(#REM) formulaire de tri ]
-	#FORMULAIRE_TRI_STAGES
-
-</div><!-- .actions -->
-
-
-[(#REM) affichage des stages
-]
+[(#REM) affichage des stages ]
 [(#INCLURE{fond=inclure/tableau_stages,env,ajax,candidatures=#GET{candidatures},data_regions=#GET{data_regions},data_competences=#GET{data_competences}})]

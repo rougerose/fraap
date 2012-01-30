@@ -17,6 +17,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'candidatures_enregistrees' => '@nb@ candidatures sont enregistr&eacute;es.',
 	'candidature_numero' => 'Candidature n°',
 	'competences' => 'Comp&eacute;tences',
+	'criteres_resultat' => '1 résultat',
+	'criteres_resultats' => '@nb@ résultats',
+	'criteres_pas_de_resultat' => '0 résultat',
 
 	// D
 
@@ -126,9 +129,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'type_defaut'=>"quelle est votre activit&eacute; ?",
 	'type_1'=>"Artiste",
-	'type_2'=>"&Eacute;tudiant-e"
+	'type_2'=>"&Eacute;tudiant-e",
 
 	// V
+	'votre_recherche' => "Votre recherche"
 
 	// Z
 	);

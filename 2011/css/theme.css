@@ -289,17 +289,36 @@ img.puce { background-color: #000; }
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
 
-		/* zone d'action */
+		/* stages : zone d'action */
 		.rubrique_stages .actions {
 			border: 1px solid #000; border-width: 1px 0 0;
 			text-align: right; }
-			.actions ul { padding: .5em 0 0; margin: 0; }
-			.actions li {
-				list-style-type: none;
-				display: inline;
-				margin: 0 10px 0 0; }
-			.actions li:last-child { margin-right: 0; }
-			.actions #formulaire_tri_stages { border-bottom: 1px solid #000; }
+			.actions #criteres-utilisateur {
+				width: 700px;
+				float: left; }
+			.actions #actions-utilisateur {
+				width: 220px;
+				float: right; }
+			.actions #formulaire_tri_stages {
+				clear: both; width: 940px;
+				border-bottom: 1px solid #000; }
+				/* #actions-utilisateur */
+				.actions ul, .actions dl { padding: .5em 0 0; margin: 0; }
+				.actions li {
+					list-style-type: none;
+					display: inline; vertical-align: top;
+					margin: 0 10px 0 0; }
+				.actions li:last-child { margin-right: 0; }
+				.actions li span.info-resultats {
+					display: inline-block;
+					height: 18px;
+					padding: 0 3px; }
+			/* #criteres-utilisateur */
+			.actions #criteres-utilisateur { text-align: left; }
+				.actions dl dt { font-weight: bold; }
+				.actions dl dd {
+					display: inline-block; }
+					.actions dl dd span.label { font-weight: bold; color: #666; }
 
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }

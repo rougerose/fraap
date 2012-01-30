@@ -31,19 +31,48 @@ jQuery(document).ready(function($) {
 	onAjaxLoad(modifierForm_init);
 
 
-	// Stages : boutons d'actions "supprimer", "modifier", "ajouter" et "trier" :
-	// 		class ui-icon sur les boutons
-	//		confirmation préalable avant de supprimer
-	//		le bouton trier fait apparaitre le formulaire
+	// Stages > zones d'actions :
+	// 	- class ui-icon sur tous les boutons ajouter, trier, modifier et supprimer,
+	//	- confirmation préalable avant de supprimer,
+	//	- le bouton trier fait apparaitre le formulaire,
+	//	- les critères de recherche de l'utilisateur sont affichés par spip,
+	//	mais on peut les supprimer individuellement et soumettre à nouveau le formulaire.
 
 	$(".actions").each(function(){
-		var $tous = $(this).find("a.bt").addClass("icon"), $actions = $(this),
-		//	$ajouter = $tous.filter(".ajouter"),
-		//	$modifier = $tous.filter(".modifier"),
-			$supprimer = $tous.filter(".supprimer"),
-			$trier = $tous.filter(".trier"),
-			$formulaire_tri = $(this).find("#formulaire_tri_stages").hide();
+		var $boutons = $(this).find("a.bt").addClass("icon"),
+			$supprimer = $boutons.filter(".supprimer"),
+			$trier = $boutons.filter(".trier"),
+			$formulaire_tri_conteneur = $(this).find("#formulaire_tri_stages").hide(),
+			$formulaire_tri = $formulaire_tri_conteneur.children("form");
 
+		// critères de recherche utilisateur
+		$("#criteres-utilisateur").each(function(){
+			var $criteres = $(this).find("dd"),
+				$checkbox = $criteres.filter(".formTypeCheckbox").find("span.data-env"),
+				$input = $criteres.filter(".formTypeInput"),
+				$tableau_criteres = $.merge($checkbox,$input);
+
+			// ajout bouton de suppression du critère
+			$tableau_criteres.map(function(i,el){
+				$(el).append(" <a href='#champ_"+el.id+"' title='supprimer'>x</a>");
+				return el;
+			});
+
+			var $liens = $tableau_criteres.children("a");
+			$liens.click(function(){
+				// supprimer le parent immédiat
+				$(this).parent().remove();
+				// à partir du hash chercher l'élément équivalent dans le formulaire et vider le champs
+				$input = $(this.hash);
+				if ($input.attr("type") == "text") { $input.val(''); }
+				else if ($input.get(0).type == "checkbox") { $input.attr("checked",false); }
+				// soumettre à nouveau le formulaire
+				$formulaire_tri.submit();
+				return false;
+			});
+		});
+
+		// confirmation préalable avant de supprimer une candidature (page profil)
 		$supprimer.click(function(){
 			var	$lien = $(this).attr('href'),
 				$dialog = $('<div></div>').html("<p>Souhaitez-vous continuer ?</p>").dialog({
@@ -71,7 +100,7 @@ jQuery(document).ready(function($) {
 		$trier.click(function(){
 			$(this).removeAttr("href");
 			$(this).toggleClass('ouvert');
-			$formulaire_tri.slideToggle();
+			$formulaire_tri_conteneur.slideToggle();
 			return false;
 		});
 	});
@@ -111,8 +140,4 @@ jQuery(document).ready(function($) {
 	}
 	stagesContactCandidat(); onAjaxLoad(stagesContactCandidat);
 
-
-
-
 });
-

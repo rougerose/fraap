@@ -15,15 +15,6 @@
 ]
 	#SET{candidatures_date_defaut,#ARRAY}
 
-[(#REM)	critères de tri par défaut du tableau
-]
-	[(#SET{defaut_tri,#ARRAY{
-		id_candidature,1
-		date_debut,1
-		date_fin,1
-		}})
-	]
-
 [(#REM) le visiteur a-t-il indiqué des critères de tri ?
 ]
 	[(#ENV{regions}
@@ -64,16 +55,10 @@
 
 </BOUCLE_condition_tri_date_defaut>
 
-
-[(#REM)	afficher les critères de tri de l'utilisateur
-]
-
-
 [(#REM)	récupérer les candidatures qui répondent aux critères de tri
 		mais uniquement pour dates, régions, compétences et recherches
-		les autres critères sont traintés dans la boucle.
+		les autres critères sont traités dans la boucle.
 ]
-
 <BOUCLE_stages_tri(CONDITION){si #GET{stages_tri}}>
 	<BOUCLE_candidatures(CANDIDATURES){id_candidature IN #GET{candidatures}}>
 
@@ -118,6 +103,65 @@
 		[(#SET{candidatures,#GET{candidatures}|array_intersect{#GET{candidatures_tri}}})]
 
 </BOUCLE_stages_tri>
+
+<div class="actions clearfix">
+	<BOUCLE_stages_tri_2(CONDITION){si #GET{stages_tri}}>
+	<div id="criteres-utilisateur">
+		<dl>
+			<dt><:candidatures:votre_recherche:></dt>
+
+			[<dd id="date_debut" class="formTypeInput">
+				<span class="label"><:candidatures:label_date_debut:></span> (#ENV{date_debut})
+			</dd>]
+
+			[<dd id="date_fin" class="formTypeInput">
+				<span class="label"><:candidatures:label_date_fin:></span> (#ENV{date_fin})</dd>]
+
+			<BOUCLE_test_regions(CONDITION){si #ENV{regions}}>
+			[(#SET{compteur_regions,#ENV{regions}|count})]
+			<B_choix_regions>
+			<dd class="formTypeCheckbox">
+				<span class="label"><:candidatures:label_regions_consultation_abrev:></span>
+				<BOUCLE_choix_regions(POUR){tableau #GET{data_regions}}>
+				[<span id="regions_#CLE" class="data-env">(#ENV{regions}|find{#CLE}|oui)#VALEUR</span> ]
+				</BOUCLE_choix_regions>
+			</dd>
+			</B_choix_regions>
+			</BOUCLE_test_regions>
+		</dl>
+	</div><!-- #criteres-utilisateur -->
+	</BOUCLE_stages_tri_2>
+
+	<div id="actions-utilisateur">
+		<ul class="clearfix">
+			<li>
+				[<span class="info-resultats">
+				(#GET{candidatures}|count|>{0}|?{
+					[(#GET{candidatures}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})]
+					,
+					<:candidatures:criteres_pas_de_resultat:>
+				})</span>]
+			</li>
+			<li>
+				<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
+					<:candidatures:label_bouton_trier_candidatures:>
+				</a>
+			</li>
+			[(#SESSION{activite}|=={2}|oui)
+			<li>
+				<a href="#URL_PAGE{candidature}" title="<:candidatures:label_bouton_ajouter_candidature:>" class="bt ajouter">
+					<:candidatures:label_bouton_ajouter_candidature:>
+				</a>
+			</li>
+			]
+		</ul>
+	</div><!-- #actions-utilisateur -->
+
+	[(#REM) formulaire de tri ]
+	#FORMULAIRE_TRI_STAGES
+
+</div><!-- .actions -->
+
 
 <div id="stages-affichage">
 	<B_stages>
