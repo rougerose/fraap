@@ -159,7 +159,7 @@ jQuery(document).ready(function($) {
 			$enfants = $t.children(settings.cible),
 			enfants_nombre = $enfants.length;
 			enfants_blocs = Math.ceil(enfants_nombre / settings.col);
-console.log($t);
+
 			$t.wrapInner('<div class="js-conteneur clearfix" />');
 
 			for (i = 1; i <= settings.col; i++) {
@@ -169,7 +169,7 @@ console.log($t);
 			}
 
 			var $blocs = $t.children('div.js-conteneur').children('div.bloc'),
-			k = 1; console.log($blocs);
+			k = 1;
 			$enfants.each(function(index) {
 				var idx = index + 1;
 				if (idx > enfants_blocs * (settings.col - 1)) {
