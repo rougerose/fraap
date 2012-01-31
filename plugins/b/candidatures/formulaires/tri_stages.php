@@ -27,6 +27,29 @@ function formulaires_tri_stages_charger_dist() {
 function formulaires_tri_stages_verifier_dist(){
 	$erreurs = array();
 
+	// vérfication champs ville stage qui peut comporter plusieurs villes
+	$ville_stage = _request('ville_stage');
+	if ($ville_stage) {
+		preg_match_all("/[-0-9a-zA-Z_]+/",$ville_stage,$recherche);
+		$nbre = count($recherche[0]);
+		$sortie = '';
+		if ($recherche && $nbre > 1) {
+			foreach ($recherche[0] as $k => $v) {
+				if ($k < ($nbre - 1)) {
+					$sortie .= $v.', ';
+				} else {
+					$sortie .= $v;
+				}
+			}
+			if ($input == $sortie) {
+				return;
+			} else {
+			//	$erreurs["ville_stage"] = _T('candidatures:erreur_champ_ville_stage');
+				set_request("ville_stage",$sortie);
+			}
+		}
+	}
+
 	// vérification des dates (via spip-bonux)
 	$horaire = false;
 

@@ -144,7 +144,37 @@ jQuery(document).ready(function($) {
 	$("#formulaire_tri_stages #localisation li.editer_regions,#formulaire_tri_stages #competences li.editer_competences_offre,#formulaire_tri_stages #recherches li.editer_competences_recherche").columnSplit({
 		col:4,cible:'div.choix'
 	});
+
+
+
+	// vérification du champ ville_stage dans le formulaire de stages (tri, dépot de candidature)
+	// afin que la saisie soit de la forme "Paris, Lyon, Marseille".
+	$("#champ_ville_stage").blur(function(){
+		var entree = $(this).val(),
+			recherche = entree.match(/[-0-9a-zA-Z_]+/g),
+			sortie = '',
+			nbre = recherche.length,
+			$parent = $(this).parent("li"),
+			$precedent = $(this).prev("p.explication");
+		if (recherche && nbre > 1) {
+			jQuery.each(recherche,function(k,v){
+				if (k < (nbre - 1)) {sortie += v+', ';}
+				else {sortie += v;}
+			});
+			if (entree == sortie) {
+				return; }
+			else {
+				$(this).val(sortie);
+				// mettre en évidence qu'il y a une correction
+				$parent.addClass("erreur");
+				$precedent.before("<span class='erreur_message'>Votre saisie a été corrigée. Veuillez vérifier.</span>");
+			}
+		}
+	});
 });
+
+
+
 
 (function($) {
 	$.fn.columnSplit = function(options) {

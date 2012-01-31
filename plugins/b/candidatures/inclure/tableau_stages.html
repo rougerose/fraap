@@ -22,6 +22,11 @@
 		|ou{#ENV{competences_recherche}}
 		|ou{#ENV{date_debut}}
 		|ou{#ENV{date_fin}}
+		|ou{#ENV{ville_stage}}
+		|ou{#ENV{ecole}}
+		|ou{#ENV{ville_ecole}}
+		|ou{#ENV{diplome}}
+		|ou{#ENV{niveau}}
 		|oui)
 		[(#SET{stages_tri,oui})]
 	]
@@ -79,7 +84,7 @@
 		</BOUCLE_competences_tri>
 
 		<BOUCLE_recherches_tri(POUR){tableau #GET{recherches_tri}}>
-			[(#ENV{recherches_offre}|find{#VALEUR}|oui)
+			[(#ENV{competences_recherche}|find{#VALEUR}|oui)
 				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
 			]
 		</BOUCLE_recherches_tri>
@@ -97,6 +102,32 @@
 				[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
 			]
 		]
+
+		<BOUCLE_test_ville_stage(CONDITION){si #ENV{ville_stage}}>
+			[(#SET{ville_stage,#ENV{ville_stage}|explode{', '}})]
+			<BOUCLE_ville_stage(POUR){tableau #GET{ville_stage}}>
+				[(#VILLE_STAGE|match{#VALEUR}|oui)
+					[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+				]
+			</BOUCLE_ville_stage>
+		</BOUCLE_test_ville_stage>
+
+		[(#ENV{ecole}|et{#ECOLE|match{#ENV{ecole}}}|oui)
+			[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+		]
+
+		[(#ENV{ville_ecole}|et{#VILLE_ECOLE|match{#ENV{ville_ecole}}}|oui)
+			[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+		]
+
+		[(#ENV{diplome}|et{#DIPLOME|match{#ENV{diplome}}}|oui)
+			[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+		]
+
+		[(#ENV{niveau}|et{#NIVEAU|match{#ENV{niveau}}}|oui)
+			[(#SET{candidatures_tri,#GET{candidatures_tri}|push{#ID_CANDIDATURE}})]
+		]
+
 	</BOUCLE_candidatures>
 
 	[(#REM) tableau des candidatures pertinentes selon les critères de tri ]
@@ -125,6 +156,41 @@
 			</dd>
 			</B_choix_regions>
 			</BOUCLE_test_regions>
+
+			[<dd id="ville_stage" class="formTypeInput clearfix"><span class="label"><:candidatures:label_ville_consultation:> </span><span class="data-env">(#ENV{ville_stage})</span></dd>]
+
+			[<dd id="ecole" class="formTypeInput clearfix"><span class="label"><:candidatures:label_ecole:> </span><span class="data-env">(#ENV{ecole})</span></dd>]
+
+			[<dd id="ville_ecole" class="formTypeInput clearfix"><span class="label"><:candidatures:label_ville_ecole_tri:> </span><span class="data-env">(#ENV{ville_ecole})</span></dd>]
+
+			[<dd id="diplome" class="formTypeInput clearfix"><span class="label"><:candidatures:label_diplome:> </span><span class="data-env">(#ENV{diplome})</span></dd>]
+
+			[<dd id="niveau" class="formTypeInput clearfix"><span class="label"><:candidatures:label_diplome_niveau:> </span><span class="data-env">(#ENV{niveau})</span></dd>]
+
+			<BOUCLE_test_competences(CONDITION){si #ENV{competences_offre}}>
+			[(#SET{compteur_competences,#ENV{competences_offre}|count})]
+			<B_choix_competences>
+			<dd class="formTypeCheckbox clearfix">
+				<span class="label"><:candidatures:label_competences_offre_consultation_tri:></span>
+				<BOUCLE_choix_competences(POUR){tableau #GET{data_competences}}>
+				[<span id="competences_offre_#CLE" class="data-env">(#ENV{competences_offre}|find{#CLE}|oui)#VALEUR</span> ]
+				</BOUCLE_choix_competences>
+			</dd>
+			</B_choix_competences>
+			</BOUCLE_test_competences>
+
+			<BOUCLE_test_recherches(CONDITION){si #ENV{competences_recherche}}>
+			[(#SET{compteur_recherches,#ENV{recherches_offre}|count})]
+			<B_choix_recherches>
+			<dd class="formTypeCheckbox clearfix">
+				<span class="label"><:candidatures:label_competences_recherche_consultation_tri:></span>
+				<BOUCLE_choix_recherches(POUR){tableau #GET{data_competences}}>
+				[<span id="competences_offre_#CLE" class="data-env">(#ENV{competences_recherche}|find{#CLE}|oui)#VALEUR</span> ]
+				</BOUCLE_choix_recherches>
+			</dd>
+			</B_choix_recherches>
+			</BOUCLE_test_recherches>
+
 		</dl>
 	</div><!-- #criteres-utilisateur -->
 	</BOUCLE_stages_tri_2>
@@ -184,7 +250,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<BOUCLE_stages(CANDIDATURES){id_candidature IN #GET{candidatures}}{ville_stage?}{ecole?}{ville_ecole?}{diplome?}{niveau?}{!par date_debut}{pagination}>
+			<BOUCLE_stages(CANDIDATURES){id_candidature IN #GET{candidatures}}{!par date_debut}{pagination}>
 
 			[(#REM) prenom et initiale nom du candidat ]
 			[(#REM) todo : problème de jointure table candidature/table auteur ]
@@ -198,7 +264,7 @@
 			#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
 			<tr id="stage#ID_FORMULAIRES_REPONSE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
 				<td class="expand"></td>
-				<td>#GET{auteur_prenom}</td>
+				<td>#ID_CANDIDATURE - #GET{auteur_prenom}</td>
 				<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 				<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 				<td>

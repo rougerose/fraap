@@ -12,7 +12,7 @@
 	<lien>#</lien>
 	<icon></icon>
 	<prefix>candidatures</prefix>
-
+	<options>candidatures_options.php</options>
 	<pipeline>
 		<nom>declarer_tables_interfaces</nom>
 		<inclure>base/candidatures.php</inclure>

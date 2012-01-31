@@ -1,5 +1,13 @@
  <div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
 
-	#FORMULAIRE_TEST
+	<BOUCLE_c(CANDIDATURES){ville_stage LIKE #ENV{ville_stage}}>
+	<p>#ID_CANDIDATURE</p>
+	</BOUCLE_c>
+
+
+
+
+
+
 
 </div><!-- .conteneur-formulaire -->

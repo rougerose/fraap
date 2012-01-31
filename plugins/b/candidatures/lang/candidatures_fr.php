@@ -26,6 +26,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'envoyer_message' => 'Envoyer un message',
 	'erreur_date_avant_apres' => 'Indiquez une date de fin apr&egrave;s la date de d&eacute;but !',
+	'erreur_champ_ville_stage' => 'Votre saisie a été corrigée. Veuillez vérifier.',
 
 	// F
 	'form_champ_obligatoire' => 'Ce champ est obligatoire',
@@ -54,6 +55,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_modifier_profil' => 'Modifier votre profil',
 	'info_pas_de_resultat_stages' => 'Aucune offre de stage ne répond à vos critères',
 	'info_modifier_candidature' => 'Modifier votre candidature de stage',
+	'info_saisie_ville_stage' => 'Séparez les villes d&#x27;une virgule et d&#x27;une espace. Ex : Paris, Lyon',
 	'info_titre_inscription' => 'Vous inscrire sur le site @nom_site_spip@',
 	'info_votre_profil' => 'Votre profil',
 	'info_votre_selection' => 'Votre s&eacute;lection',
@@ -74,8 +76,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_competences_menu_recherche' => 'Compétences recherchées (plusieurs choix possibles)',
 	'label_competences_recherches_consultation' => 'Compétences et Recherches',
 	'label_competences_offre_consultation' => 'Compétences',
+	'label_competences_offre_consultation_tri' => 'Compétences offertes',
 	'label_competences_offre_consultation_abrev' => 'Compét.',
 	'label_competences_offre_inscription' => 'Vos compétences (plusieurs choix possibles)',
+	'label_competences_recherche_consultation_tri' => 'Compétences recherchées',
 	'label_competences_recherche_consultation_abrev' => 'Rech.',
 	'label_competences_recherche_inscription' => 'Domaines que vous recherchez (plusieurs choix possibles)',
 	'label_conditions_inscription_stage' => "J'ai lu et j'accepte <a href='@url_conditions@'>les conditions d'utilisation</a>.",
@@ -102,6 +106,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_regions_consultation_abrev' => 'Régions',
 	'label_regions_inscription' => 'Région(s) où vous souhaitez réaliser votre stage (plusieurs choix possibles)',
 	'label_ville_consultation' => 'Ville',
+	'label_ville_ecole_tri' => 'Ville (école)',
 	'label_ville_inscription' => 'Précisez éventuellement la ou les villes',
 	'legende_identifiants' => "Vos identifiants",
 	'legende_identite' => "Votre identit&eacute;",

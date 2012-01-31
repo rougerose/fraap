@@ -23,8 +23,8 @@
 				<li><a href="#disponibilite"><:candidatures:label_dispo_consultation:></a></li>
 				<li><a href="#localisation"><:candidatures:label_localisation_geo_consultation_abrev:></a></li>
 				<li><a href="#formation"><:candidatures:label_formation_consultation:></a></li>
-				<li><a href="#competences"><:candidatures:label_competences_offre_consultation:></a></li>
-				<li><a href="#recherches"><:candidatures:label_recherches_consultation:></a></li>
+				<li><a href="#competences"><:candidatures:label_competences_offre_consultation_tri:></a></li>
+				<li><a href="#recherches"><:candidatures:label_competences_recherche_consultation_tri:></a></li>
 			</ul>
 			<div id="disponibilite">
 				<ul class="fields clearfix">
@@ -43,7 +43,8 @@
 					[(#SAISIE{checkbox,regions,
 						label=<:candidatures:label_regions_consultation:>,
 						datas=#GET{r}})]
-					[(#SAISIE{input, ville_stage, label=<:candidatures:label_ville_inscription:>, class=text})]
+					[(#SAISIE{input, ville_stage,
+						label=<:candidatures:label_ville_inscription:>, explication=<:candidatures:info_saisie_ville_stage:>, class=text})]
 				</ul>
 			</div><!-- #localisation -->
 
