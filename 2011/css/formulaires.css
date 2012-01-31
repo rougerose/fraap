@@ -30,7 +30,13 @@
 	.formulaire_spip ul li.fieldset { padding: 0 0 .7em; }
 
 	/* Labels */
-	.formulaire_spip label { font-size: 12px; display: block; text-align: left; color: #666; font-weight: bold; /* pour IE/Win */ position: relative;  }
+	.formulaire_spip label { 
+		font-size: 12px; 
+		display: block; margin: 0 0 .5em;
+		text-align: left; 
+		color: #666; 
+		font-weight: bold;
+		/* pour IE/Win */ position: relative;  }
 	.formulaire_spip li p { margin-top: 0; margin-bottom: 0; }
 
 	.formulaire_spip .choix label { display:inline; font-weight:normal; }
@@ -105,13 +111,15 @@
 				margin: .25em 0 0 10px; }
 
 /* formulaire tri stages */
-	#formulaire_tri_stages #localisation .bloc {
-		float: left;
-		width: 220px;
-		margin: 0 10px; }
-	#formulaire_tri_stages #localisation .item1 { margin-left: 0; }
-	.js-conteneur .bloc:first-child { background-color: #ddd; }
-	#formulaire_tri_stages #localisation div.bloc:last-child { margin-right: 0; }
+	#formulaire_tri_stages .ui-tabs { padding:0; }
+	.actions #formulaire_tri_stages li { display: block; }
+		#formulaire_tri_stages .bloc {
+			float: left;
+			width: 220px;
+			margin: 0 10px; }
+		#formulaire_tri_stages .item1 { margin-left: 0; }
+		#formulaire_tri_stages .bloc:last-child { margin-right: 0; }
+
 /*
 .item1 { background-color: red; }
 .item2 { background-color: yellow; }

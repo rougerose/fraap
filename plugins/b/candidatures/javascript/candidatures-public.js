@@ -141,7 +141,7 @@ jQuery(document).ready(function($) {
 	}
 	stagesContactCandidat(); onAjaxLoad(stagesContactCandidat);
 
-	$("#formulaire_tri_stages #localisation li.editer_regions").columnSplit({
+	$("#formulaire_tri_stages #localisation li.editer_regions,#formulaire_tri_stages #competences li.editer_competences_offre,#formulaire_tri_stages #recherches li.editer_competences_recherche").columnSplit({
 		col:4,cible:'div.choix'
 	});
 });
@@ -159,15 +159,17 @@ jQuery(document).ready(function($) {
 			$enfants = $t.children(settings.cible),
 			enfants_nombre = $enfants.length;
 			enfants_blocs = Math.ceil(enfants_nombre / settings.col);
-
+console.log($t);
 			$t.wrapInner('<div class="js-conteneur clearfix" />');
 
 			for (i = 1; i <= settings.col; i++) {
-				$t.children('div.js-conteneur').append('<div class="bloc item' + i + '" />');
+				var rang = '';
+				if (i == settings.col) rang = 'last-child';
+				$t.children('div.js-conteneur').append('<div class="bloc item' + i + ' ' + rang + '" />');
 			}
 
-			var $blocs = $('div.js-conteneur').children('div.bloc'),
-			k = 1;
+			var $blocs = $t.children('div.js-conteneur').children('div.bloc'),
+			k = 1; console.log($blocs);
 			$enfants.each(function(index) {
 				var idx = index + 1;
 				if (idx > enfants_blocs * (settings.col - 1)) {
