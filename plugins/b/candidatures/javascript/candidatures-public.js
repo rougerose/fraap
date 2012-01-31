@@ -141,4 +141,48 @@ jQuery(document).ready(function($) {
 	}
 	stagesContactCandidat(); onAjaxLoad(stagesContactCandidat);
 
+	$("#formulaire_tri_stages #localisation li.editer_regions").columnSplit({
+		col:4,cible:'div.choix'
+	});
 });
+
+(function($) {
+	$.fn.columnSplit = function(options) {
+		var defaults = {
+			col: 2,
+			cible: ''
+		};
+
+		this.each(function() {
+			var $t = $(this),
+			settings = jQuery.extend(defaults, options),
+			$enfants = $t.children(settings.cible),
+			enfants_nombre = $enfants.length;
+			enfants_blocs = Math.ceil(enfants_nombre / settings.col);
+
+			$t.wrapInner('<div class="js-conteneur clearfix" />');
+
+			for (i = 1; i <= settings.col; i++) {
+				$t.children('div.js-conteneur').append('<div class="bloc item' + i + '" />');
+			}
+
+			var $blocs = $('div.js-conteneur').children('div.bloc'),
+			k = 1;
+			$enfants.each(function(index) {
+				var idx = index + 1;
+				if (idx > enfants_blocs * (settings.col - 1)) {
+					$blocs.filter('.item' + settings.col).append($(this));
+				}
+				else {
+					if (idx <= (enfants_blocs * k)) {
+						$blocs.filter('.item' + k).append($(this));
+					}
+					else {
+						$blocs.filter('.item' + (k + 1)).append($(this));
+						k = k + 1;
+					}
+				}
+			});
+		});
+	}
+})(jQuery);

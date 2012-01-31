@@ -346,9 +346,9 @@ img.puce { background-color: #000; }
 
 		table#stages-table { width: 100%; border: 1px solid #000; border-width: 2px 0 1px; }
 			#stages-table th { color: #fff; }
-			#stages-table tr {  }
-			#stages-table tr.enfant {  }
-			#stages-table tr.pair {  }
+			/*#stages-table tr {  }*/
+			/*#stages-table tr.enfant {  }*/
+			/*#stages-table tr.pair {  }*/
 				#stages-table tr th { border-left: 1px solid #fff; }
 				#stages-table th, #stages-table td {
 					padding: 4px 6px 2px;
