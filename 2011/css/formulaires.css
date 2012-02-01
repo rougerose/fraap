@@ -58,7 +58,7 @@
 		   -moz-border-radius: 2px;
 		        border-radius: 2px; }
 	.formulaire_spip select {  }
-	.formulaire_spip input[disabled] { color: #ccc; background-image: none; }
+	.formulaire_spip input[disabled] { background-color: #f5f5f5; background-image: none;  }
 
 	/* focus */
 	.formulaire_spip input.text:focus, .formulaire_spip input.password:focus, .formulaire_spip textarea:focus {
@@ -94,6 +94,8 @@
 	/* * OK */
 	.reponse_formulaire_ok { color: #53AD20; font-weight: bold; }
 
+	.formulaire_spip .bugajaxie { display: none; }
+
 	/* présentation en ligne */
 /*	.enligne {  }
 		.formulaire_spip.enligne li.fieldset { padding-left: 0; }
@@ -117,7 +119,7 @@
 	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
 		.enligne label {
 			display: inline-block;
-			vertical-align: top;
+			xvertical-align: top;
 			margin-right: 20px;
 			width: 80px; }
 		.enligne p.explication {
@@ -142,6 +144,21 @@
 			margin: 0 10px; }
 		#formulaire_tri_stages .item1 { margin-left: 0; }
 		#formulaire_tri_stages .bloc:last-child { margin-right: 0; }
+
+/* plugin messagerie */
+
+	/* formulaire ecrire message */
+	.formulaire_ecrire_message input.text, .formulaire_ecrire_message textarea { width: 340px; }
+	.formulaire_ecrire_message div.faux_input { display: inline; }
+
+	/* formulaire messages recus */
+	.formulaire_messages_recus select { display: block; margin: 0 0 10px; }
+	.formulaire_messages_envoyes select { margin: 0 0 10px; }
+	.formulaire_spip .liste_items li.item:hover { background-color: transparent; }
+	.formulaire_spip li.on { font-weight: normal; }
+	.formulaire_spip .messages li .message h3 { font-size: 14px; margin-top: .5em; margin-bottom: .5em; }
+	.formulaire_spip .messages li .intro { font-size: 13px; }
+	.formulaire_spip .messages .message .texte p { font-size: 13px; margin-bottom: 20px; }
 
 /* recherche */
 #raccourcis #formulaire_recherche {

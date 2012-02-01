@@ -87,10 +87,10 @@
 	.notes { margin-top: 3em; margin-left: 120px; }
 
 	/* article */
-	.page_article #chapo-conteneur { margin-bottom: 2em; }
+	.page_article #chapo-conteneur { margin-bottom: 2em; padding-top: .5em; }
 		.page_article #contenu .contenu-principal {
 			float: left; display: inline;
-			margin-top: 2em;
+			xmargin-top: 2em;
 			width: 460px; }
 		.page_article #contenu .contenu-secondaire {
 			float: right; display: inline;
@@ -121,6 +121,13 @@
 		display: inline; float: left;
 		margin-left: 10px;
 		width: 220px; }
+
+		/* navigation messagerie */
+		#navigation-messagerie li {
+			list-style-type: none;
+			font-size: 14px;
+			margin: 0 0 .5em; padding: 0;
+			border-bottom: 1px solid #ccc; }
 
 	/* pied de page */
 	#pied { margin: 1em 10px 2em;  }
@@ -243,6 +250,7 @@
 					font-size: 13px;
 					text-align: right;
 					margin: 0 0 .25em; }
+				#menu-identification p.bienvenue { margin: 0; }
 					#menu-identification p a { color: #fff; text-decoration: underline; font-weight: normal; }
 					#menu-identification p a:hover { text-decoration: none; }
 

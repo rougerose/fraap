@@ -25,6 +25,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// E
 	'envoyer_message' => 'Envoyer un message',
+	'envoyer_message_a' => 'Envoyer un message &agrave; @auteur@',
+
 	'erreur_date_avant_apres' => 'Indiquez une date de fin apr&egrave;s la date de d&eacute;but !',
 	'erreur_champ_ville_stage' => 'Votre saisie a été corrigée. Veuillez vérifier.',
 
@@ -119,6 +121,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'message_candidature_modifiee' => 'Votre candidature a été modifiée',
 	'message_erreur' => 'Nous sommes désolés. Une erreur est survenue.',
 	'message_ok' => 'Vos modifications ont été enregistrées.',
+	'message_nonlu' => '1 non lu',
+	'messages_nonlus' => '@nb@ non lus',
+	'message_nouveau' => 'Vous avez 1 message',
+	'messages_nouveaux' => 'Vous avez @nb@ messages',
 
 	// N
 	'nom' => "Votre nom",

@@ -291,7 +291,7 @@
 			<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
 				<td colspan="12">
 					<div>
-						<p>#GET{auteur_nom} <a class="icon ui-icon-mail-closed" href="[(#URL_PAGE{message_ecrire}|parametre_url{id_auteur,#GET{id_auteur}})]" title="<:candidatures:envoyer_message:>"><:candidatures:envoyer_message:></a></p>
+						<p>#GET{auteur_nom} <a class="icon ui-icon-mail-closed" href="[(#URL_ARTICLE{504}|parametre_url{destinataire,#GET{id_auteur}})]" title="<:candidatures:envoyer_message:>"><:candidatures:envoyer_message:></a></p>
 					</div>
 				</td>
 			</tr>
