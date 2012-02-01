@@ -14,8 +14,5 @@
 #SET_PUSH{candidatures,#ID_CANDIDATURE}
 </BOUCLE_candidatures>
 
-[(#REM) zone relative à la session ouverte par l'utilisateur ]
-<INCLURE{fond=inclure/session-info,env}>
-
 [(#REM) affichage des stages ]
 [(#INCLURE{fond=inclure/tableau_stages,env,ajax,candidatures=#GET{candidatures},data_regions=#GET{data_regions},data_competences=#GET{data_competences}})]

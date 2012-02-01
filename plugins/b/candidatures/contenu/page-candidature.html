@@ -1,6 +1,3 @@
-[(#REM) zone relative à la session ouverte par l'utilisateur ]
-<INCLURE{fond=inclure/session-info,env}>
-
 <div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
 	#FORMULAIRE_EDITER_CANDIDATURE{#ENV{id_candidature,new},#SESSION{id_auteur}}
 </div><!-- .conteneur-formulaire -->
