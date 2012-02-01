@@ -22,19 +22,22 @@
 	.formulaire_spip fieldset fieldset legend { font-size: 1em; font-weight: normal; }
 
 	/* Explications */
-	.formulaire_spip .explication { margin: .5em 0; color: #999; }
+	.formulaire_spip .explication {
+		font-size: 12px;
+		margin: 0;
+		color: #999; }
 
 	/* Lignes */
 	.formulaire_spip ul { margin: 0; padding: 0; list-style: none; }
-	.formulaire_spip ul li { xclear: both; margin: 0; padding: .7em 0 .7em; }
+	.formulaire_spip ul li { margin: 0; padding: .7em 0 .7em; }
 	.formulaire_spip ul li.fieldset { padding: 0 0 .7em; }
 
 	/* Labels */
-	.formulaire_spip label { 
-		font-size: 12px; 
-		display: block; margin: 0 0 .5em;
-		text-align: left; 
-		color: #666; 
+	.formulaire_spip label {
+		font-size: 12px;
+		display: block; margin: 0;
+		text-align: left;
+		color: #666;
 		font-weight: bold;
 		/* pour IE/Win */ position: relative;  }
 	.formulaire_spip li p { margin-top: 0; margin-bottom: 0; }
@@ -48,6 +51,7 @@
 	.formulaire_spip textarea {  }
 	.formulaire_spip input.text, .formulaire_spip input.password, .formulaire_spip textarea {
 		background: url('../images/input-bg.png') no-repeat 0 0;
+		margin: .5em 0;
 		padding: 3px 5px;
 		border: 1px solid #bbb;
 		-webkit-border-radius: 2px;
@@ -91,7 +95,7 @@
 	.reponse_formulaire_ok { color: #53AD20; font-weight: bold; }
 
 	/* présentation en ligne */
-	.enligne {  }
+/*	.enligne {  }
 		.formulaire_spip.enligne li.fieldset { padding-left: 0; }
 		.formulaire_spip.enligne ul.fields li {
 			overflow: hidden;
@@ -100,7 +104,7 @@
 			margin: 0; }
 			.enligne label {
 				vertical-align: top;
-				float: left;
+				xfloat: left; text-align: left;
 				margin-right: 10px; margin-left: -220px;
 				width: 220px;
 				display: inline-block; }
@@ -109,10 +113,29 @@
 			.enligne .explication {
 				font-size: 11px;
 				margin: .25em 0 0 10px; }
+*/
+	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
+		.enligne label {
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 20px;
+			width: 80px; }
+		.enligne p.explication {
+			display: inline-block; vertical-align: top;
+			position: absolute; top: .7em;
+			width: 220px; }
+		.enligne input, .enligne textarea {
+			vertical-align: top; }
+		.enligne p.explication + input { margin-top: 1.7em; }
+
 
 /* formulaire tri stages */
-	#formulaire_tri_stages .ui-tabs { padding:0; }
+	#formulaire_tri_stages .ui-tabs { padding:0; margin-bottom: 1em;}
 	.actions #formulaire_tri_stages li { display: block; }
+	#formulaire_tri_stages #localisation li { border-bottom: 1px solid #ddd; }
+	#formulaire_tri_stages #formation label { width: 100px; }
+	#formulaire_tri_stages #formation input,
+	#formulaire_tri_stages #localisation input.text { width: 220px; }
 		#formulaire_tri_stages .bloc {
 			float: left;
 			width: 220px;
@@ -120,11 +143,6 @@
 		#formulaire_tri_stages .item1 { margin-left: 0; }
 		#formulaire_tri_stages .bloc:last-child { margin-right: 0; }
 
-/*
-.item1 { background-color: red; }
-.item2 { background-color: yellow; }
-.item3 { background-color: blue; }
-*/
 /* recherche */
 #raccourcis #formulaire_recherche {
 	position: relative; z-index: 2;
