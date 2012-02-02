@@ -1,5 +1,3 @@
-<div class="contenu-principal">
-	<div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
-		[(#FORMULAIRE_LOGIN{#ENV{url,''}})]
-	</div><!-- .conteneur-formulaire -->
-</div>
+<BOUCLE_rubrique_stages(RUBRIQUES){id_rubrique=#ENV{id_rubrique}}{tout_voir}>
+<INCLURE{fond=inclure/rubrique-stages-intro,env}>
+</BOUCLE_rubrique_stages>
