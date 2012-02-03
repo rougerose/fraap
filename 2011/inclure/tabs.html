@@ -1,20 +1,18 @@
 [(#REM)
 	définition de constantes
 ]
+	[(#REM) par défaut rien ne s'affiche ]
+		#SET{condition,''}
+
 	[(#REM) format de mise en page ]
 		#SET{format,#ENV{format,''}} #SET{ordre,#ENV{ordre,''}}
 
-	[(#REM) contexte est une rubrique, déterminer s'il faut afficher le rubriquage ]
-		#SET{rubriquage,''}
-
-	[(#REM) déterminer si documents, mots, brèves, articles et brèves relatives aux mots-clés sont présents ]
+	[(#REM) déterminer si documents, mots, brèves, articles et brèves relatives aux mots-clés sont présents et passer la condition à oui ]
 		#SET{documents,''} #SET{mots,''} #SET{breves,''}
 		#SET{lire_articles,''} #SET{lire_breves,''}
 
 	[(#REM) tableau des mots ]
 	#SET{id_mot,#ARRAY}
-
-[(#ENV{page}|=={rubrique}|oui) #SET{rubriquage,oui} ]
 
 <BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}{0,1}>#SET{documents,oui}</BOUCLE_t_docs>
 [(#REM) on est bien dans une rubrique -- et non dans un article qui appartient à une rubrique avec des brèves -- ]
@@ -25,12 +23,19 @@
 	<BOUCLE_lire_breves(BREVES){id_mot}{0,1}{exclus}>#SET{lire_breves,oui}</BOUCLE_lire_breves>
 </BOUCLE_t_mots>
 
-<BOUCLE_condition(CONDITION){si #GET{rubriquage}|ou{#GET{documents}}|ou{#GET{mots}}|ou{#GET{breves}}|ou{#GET{lire_articles}}|ou{#GET{lire_breves}}}>
+	[(#GET{documents}
+		|ou{#GET{mots}}
+		|ou{#GET{breves}}
+		|ou{#GET{mots}}
+		|ou{#GET{lire_articles}}
+		|ou{#GET{lire_breves}}
+		|oui)
+		#SET{condition,oui}
+	]
+
+<BOUCLE_condition(CONDITION){si #GET{condition}}>
 <div id="tabs" class="clearfix[ (#GET{format})][ (#GET{ordre})]">
 	<ul class="liste">
-		[(#GET{rubriquage}|oui)
-		<li><a href="#rubriques"><:rubriques:></a></li>
-		]
 		[(#GET{documents}|oui)
 		<li><a href="#documents"><:documents:></a></li>
 		]
@@ -45,34 +50,11 @@
 		]
 	</ul>
 
-	<BOUCLE_condition_rubrique(CONDITION){si #GET{rubriquage}}>
-	<div id="rubriques">
-		<ul class="liste">
-			<BOUCLE_rubriquage(RUBRIQUES){racine}{par num titre, titre}>
-			<BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique}{id_rubrique=#ENV{id_secteur}}>
-			<li>
-				[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
-				<B_sous_rubriques>
-				<ul>
-					<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
-					<li>
-						[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
-						<BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>
-					</li>
-					</BOUCLE_sous_rubriques>
-				</ul>
-				</B_sous_rubriques>
-			</li>
-			</BOUCLE_rubrique_courante> </B_rubrique_courante>
-			</BOUCLE_rubriquage>
-		</ul>
-	</div><!-- #rubriques -->
-	</BOUCLE_condition_rubrique>
-
 	<B_documents>
 	<div id="documents" class="clearfix">
 		<BOUCLE_documents(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}>
-		[<dl id="document-#ID_DOCUMENT" class="liste">
+		[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
 			<dt>
 				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
 			</dt>
@@ -88,9 +70,10 @@
 	<BOUCLE_condition_breves(CONDITION){si #GET{breves}}>[(#REM) test nécessaire ]
 	<B_breves>
 	<div id="breves" class="liste">
-		<ul class="liste">
+		<ul class="liste clearfix">
 			<BOUCLE_breves(BREVES){id_rubrique?}{!par date}>
-			<li class="hentry clearfix">
+			[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+			<li class="hentry[ (#GET{alterner})]">
 				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>

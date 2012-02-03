@@ -1,5 +1,6 @@
 [(#REM) définition de constantes ]
 #SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
+#SET{menu,''}
 
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
@@ -8,8 +9,17 @@
 	</div><!-- #logo-objet-conteneur -->]
 
 	<div id="info-publi-objet-conteneur">
-
 		[(#REM) [(#MODELE{socialtags})] ]
+
+		[(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
+		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
+
+		[(#REM) menu rubriques ]
+		[(#GET{menu}|oui)
+			[(#INCLURE{fond=inclure/menu-rubriques,env})]
+		]
+
+
 
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
@@ -35,10 +45,9 @@
 
 		[(#REM) les articles de la rubrique, format grille ]
 		<INCLURE{fond=inclure/articles-selection,
-			env,selection=#GET{articles_rubrique},format=grille,ordre=alpha,ajax,pagination=7}>
+			env,selection=#GET{articles_rubrique},format=grille,ordre=alpha,ajax,pagination=4}>
 
-		<INCLURE{fond=inclure/tabs,
-			env,format='grille groupe',ordre=omega}>
+		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>
 	</div><!-- .hfeed -->
 	</BOUCLE_condition_articles>
 

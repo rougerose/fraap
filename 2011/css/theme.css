@@ -26,8 +26,7 @@ span.suite a:after, a.suite:after { content:"\00A0\2192"; }
 
 #contenu a, #fil a, #pied a { font-weight: bold; }
 
-#tabs a { font-weight: normal; }
-	#tabs a:focus { outline: none; }
+#tabs a:focus { outline: none; }
 
 
 /* filets */
@@ -131,23 +130,13 @@ img.puce { background-color: #000; }
 
 		.groupe h2.intertitre { margin-bottom: 0; }
 
-	/* format horizontal */
-	.horizontal .hentry .resume-conteneur { width: 580px; }
+	/* contenu en format horizontal */
+
 		.groupe .hentry h2 {
 			font-size: 20px; line-height: 22px;
 			margin-bottom: .5em; }
 		.horizontal .hentry h3 { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
 
-	/* format grille */
-	.grille {
-		display: inline;
-		float: left;
-		margin-right: 10px; margin-left: 10px;
-		width: 340px; }
-		.grille .hentry .resume-conteneur { width: 220px; }
-
-		/* page sommaire */
-		.page_sommaire .grille { margin-left: 0; margin-right: 0; }
 
 	/* hentry dans #tabs (rubriques) */
 
@@ -187,25 +176,9 @@ img.puce { background-color: #000; }
 			text-indent: -1.3em; }
 			.grille .update dd a:before { content: "\2192\00A0"; }
 
-
-	/* rubriquage #rubriques */
-	#rubriques ul.liste { border-bottom: 1px dotted #000; padding-left: 10px; }
-		#rubriques ul.liste li {
-			border-bottom-width: 0;
-			list-style-type: none;
-			margin: 0 0 .5em 1em; padding:0;
-			text-indent: -1.5em; }
-			#rubriques ul.liste li strong:before, #rubriques ul.liste li a:before { font-size: 16px; content: "\2192\00A0"; }
-			#rubriques ul.liste li ul { margin-left: 1.3em; }
-	ul.enumeration { margin-left: 1em; }
-		ul.enumeration li { font-family: "Helvetica Neue"; list-style-type: none; margin: 0 0 0 1em; text-indent: -1.5em; padding:0; }
-			ul.enumeration li strong:before, ul.enumeration li a:before { font-size: 16px; content: "\2192\00A0"; }
-			ul.enumeration li ul { margin-left: 1.3em; }
-
 	/* contenu présenté en liste (colonne secondaire dans article ou #tabs) : styles génériques */
 	ul.liste {
 		list-style-type: none; }
-
 		ul.liste li { margin-left: 0; }
 		ul.liste li, dl.liste {
 			border-bottom: 1px dotted #000;
@@ -214,6 +187,26 @@ img.puce { background-color: #000; }
 				font-size: 13px; line-height: 18px;
 				margin-bottom: 0; }
 
+
+	/* rubriquage #rubriques */
+	.page_article #rubriques { border-top: 1px solid #000; margin-top: 2em; }
+		#rubriques ul.liste { margin-left: 1.5em; }
+		.page_article #rubriques ul.liste { padding-top: .5em; }
+			#rubriques ul.liste li {
+				line-height: 18px;
+				border-bottom-width: 0;
+				list-style-type: none;
+				margin: 0 0 .5em 0; padding:0;
+				text-indent: -1.5em; }
+				#rubriques ul.liste li strong:before, #rubriques ul.liste li a:before { font-size: 16px; content: "\2192\00A0"; }
+				#rubriques ul.liste li ul { margin-left: 1.5em; margin-top: .5em; }
+
+/* TODO à supprimer ? */
+/*	ul.enumeration { margin-left: 1em; }
+		ul.enumeration li { font-family: "Helvetica Neue"; list-style-type: none; margin: 0 0 0 1em; text-indent: -1.5em; padding:0; }
+			ul.enumeration li strong:before, ul.enumeration li a:before { font-size: 16px; content: "\2192\00A0"; }
+			ul.enumeration li ul { margin-left: 1.3em; }
+*/
 /*
 		.liste h3, .hfeed.liste h3 {
 			font-size: 13px; line-height: 18px;
@@ -235,7 +228,7 @@ img.puce { background-color: #000; }
 
 /* contenu secondaire */
 	/* logo objet */
-	#logo-objet-conteneur { margin-bottom: .5em; }
+	#logo-objet-conteneur { margin-bottom: 2em; }
 
 	/* mots-clés */
 	#themes {}
@@ -247,7 +240,8 @@ img.puce { background-color: #000; }
 		#documents a { display:block; }
 		#documents dl dt { float: left; width: 60px; }
 		#documents dl dd { overflow: hidden; }
-			#documents dl dd p span { display: block; color:#aaa; }
+			#documents dl dd p { margin: 0; }
+				#documents dl dd p span { display: block; color:#aaa; }
 
 	/* #extra */
 	#extra > div { margin-bottom: 2em; }
@@ -446,14 +440,16 @@ img.puce { background-color: #000; }
 	.bouton:active { top:1px; }
 
 /* Jquery UI Tabs */
+.page_rubrique #tabs { border-bottom: 1px solid #000; }
 #tabs.ui-widget-content { border: none; }
+#tabs .ui-corner-top a { font-weight: normal; }
 	#tabs .ui-widget-header {
 		background: none;
 		border-width: 0 0 1px;
 		-webkit-border-radius: 0;
 		   -moz-border-radius: 0;
 		        border-radius: 0; }
-.ui-tabs {  }
+.ui-tabs { padding: 0; }
 .ui-tabs .ui-tabs-nav {
 	margin : 0; padding: 0;
 	border-bottom : 2px solid #000; }

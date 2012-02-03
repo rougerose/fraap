@@ -1,9 +1,8 @@
 [(#REM) définition de constantes
-	selection : tableau des id_article à afficher ;
-	format : horizontal -- par defaut -- ou grille ;
-	ordre : alpha ou omega -- cf. 960.css --. Facultatif ;
-	logo : la taille du logo. Facultatif ;
-	pagination : facultatif.
+	selection : 	tableau des id_article à afficher ;
+	format : 		horizontal (par defaut) ou grille ;
+	logo : 			la taille du logo. Facultatif ;
+	pagination : 	facultatif.
  ]
 	#SET{selection,#ENV{selection}}
 	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,140}} #SET{pagination,#ENV{pagination,10}}
@@ -13,7 +12,8 @@
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 
 	<BOUCLE_articles(ARTICLES){id_article IN #ENV{selection}}{pagination #ENV{pagination}}>
-	#INCLURE{fond=inclure/article-resume,id_article,composition=#ENV{composition},logo=#GET{logo}}
+	[(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})]
+	#INCLURE{fond=inclure/article-resume,id_article,composition=#ENV{composition},logo=#GET{logo},alterner=#GET{alterner}}
 	</BOUCLE_articles>
 
 	[<p class="pagination bas clearfix">(#PAGINATION{page})</p>]

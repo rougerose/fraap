@@ -1,0 +1,21 @@
+<div id="rubriques">
+	<ul class="liste">
+		<BOUCLE_rubriquage(RUBRIQUES){racine}{par num titre, titre}>
+		<BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique}{id_rubrique=#ENV{id_secteur}}>
+		<li>
+			[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
+			<B_sous_rubriques>
+			<ul>
+				<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
+				<li>
+					[(#URL_RUBRIQUE|lien_ou_expose{#TITRE, #ENV{id_rubrique}|=={#ID_RUBRIQUE}})]
+					<BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>
+				</li>
+				</BOUCLE_sous_rubriques>
+			</ul>
+			</B_sous_rubriques>
+		</li>
+		</BOUCLE_rubrique_courante> </B_rubrique_courante>
+		</BOUCLE_rubriquage>
+	</ul>
+</div><!-- #rubriques -->

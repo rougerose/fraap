@@ -64,6 +64,30 @@
 		margin: 0 10px 3em; padding-left: 240px;
 		width: 460px; }
 
+/* groupe */
+.groupe {
+	margin-bottom: 3em;
+	border: 1px solid #000; border-width: 0 0 1px; }
+
+/* presentation horizontale */
+.horizontal .hentry .resume-conteneur { width: 580px; }
+
+/* présentation grille */
+.groupe.grille { padding-top: 1em; }
+	.grille .impair { margin-right: 10px; clear: left; }
+	.grille .pair { margin-left: 10px; }
+
+	/* articles en grille dans les rubriques */
+	.grille .hentry { display: inline; float: left; width: 340px; }
+	.grille .hentry .resume-conteneur { width: 220px; }
+
+	/* documents en grille dans les rubriques */
+	.grille #documents dl { width: 340px; display: inline; float: left; }
+
+	/* page sommaire */
+	.page_sommaire .grille { margin-left: 0; margin-right: 0; }
+
+
 /* zones communes */
 	/* #titre des pages */
 	#titre { margin: 2em 10px 3em; }
@@ -80,9 +104,6 @@
 		position: relative;
 		width: 700px; }
 
-	/* groupe d'articles */
-	.groupe { margin-bottom: 3em; border-bottom: 1px solid #000; }
-
 	/* postscriptum */
 	.notes { margin-top: 3em; margin-left: 120px; }
 
@@ -90,11 +111,9 @@
 	.page_article #chapo-conteneur { margin-bottom: 2em; padding-top: .5em; }
 		.page_article #contenu .contenu-principal {
 			float: left; display: inline;
-			xmargin-top: 2em;
 			width: 460px; }
 		.page_article #contenu .contenu-secondaire {
 			float: right; display: inline;
-			margin-top: 2em;
 			width: 220px; }
 
 	.page_article #extra {
