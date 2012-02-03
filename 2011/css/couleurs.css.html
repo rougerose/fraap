@@ -77,7 +77,7 @@
 
 		/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
-		.couleurID#ID_RUBRIQUE #menu-identification {
+		#menu-identification {
 			background-color: ##GET{couleur}; [(#SET{couleur_lum06,[(#GET{couleur}|couleur_luminance{0.6})]})]
 			border-color: ##GET{couleur_lum06} ##GET{couleur_lum06} ##GET{couleur_lum06} ##GET{couleur_sat01} }
 
@@ -92,7 +92,7 @@
 		.page_profil .couleurID#ID_RUBRIQUE h2,
 		.actions li.info-resultats,
 		#navigation-messagerie li strong.on { color: ##GET{couleur}; }
-		
+
 		.formulaire_spip .liste_items li.item.on,
 		.formulaire_spip .liste_items li.item.on:hover { background-color: ##GET{couleur_sat01};  }
 

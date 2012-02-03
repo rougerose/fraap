@@ -29,7 +29,7 @@
 
 [(#REM) sinon il faut s'identifier à nouveau ]
 [(#SESSION{id_auteur}|non)
-	[(#SET{lien,[(#URL_PAGE{login}|parametre_url{id_rubrique,10}|parametre_url{url,#GET{url}})]})]
+	[(#SET{lien,[(#URL_PAGE{identification}|parametre_url{id_rubrique,10}|parametre_url{url,#GET{url}})]})]
 	<p><:candidatures:lien_page_identification{url=#GET{lien}}:>
 ]
 <//B_auteur>
