@@ -189,9 +189,9 @@ img.puce { background-color: #000; }
 
 
 	/* rubriquage #rubriques */
-	.page_article #rubriques { border-top: 1px solid #000; margin-top: 2em; }
-		#rubriques ul.liste { margin-left: 1.5em; }
-		.page_article #rubriques ul.liste { padding-top: .5em; }
+	#rubriques { border-top: 1px solid #000; }
+			.page_article #rubriques { margin-top: 2em; }
+		#rubriques ul.liste { margin-left: 1.5em; padding-top: .5em; }
 			#rubriques ul.liste li {
 				line-height: 18px;
 				border-bottom-width: 0;
