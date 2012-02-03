@@ -59,10 +59,7 @@ img.puce { background-color: #000; }
 	overflow: hidden;
 	height: 16px; width: 16px;
 	background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png');
-/*	-webkit-border-radius: 4px;
-	   -moz-border-radius: 4px;
-	        border-radius: 4px;
-*/	-webkit-transition: background 0.15s ease;
+	-webkit-transition: background 0.15s ease;
 	   -moz-transition: background 0.15s ease;
 	     -o-transition: background 0.15s ease;
 	        transition: background 0.15s ease; }
@@ -237,6 +234,9 @@ img.puce { background-color: #000; }
 
 
 /* contenu secondaire */
+	/* logo objet */
+	#logo-objet-conteneur { margin-bottom: .5em; }
+
 	/* mots-clés */
 	#themes {}
 		#themes h3:before { content:'\2192\20'; }
@@ -248,6 +248,9 @@ img.puce { background-color: #000; }
 		#documents dl dt { float: left; width: 60px; }
 		#documents dl dd { overflow: hidden; }
 			#documents dl dd p span { display: block; color:#aaa; }
+
+	/* #extra */
+	#extra > div { margin-bottom: 2em; }
 
 
 /* stages */
@@ -298,8 +301,8 @@ img.puce { background-color: #000; }
 			/* dans la page profil (#extra) */
 			#gestion-messages #navigation-messagerie li { font-size: 12px; }
 			#gestion-messages #navigation-messagerie li span.info-nonlu { line-height: 18px; }
-		
-	
+
+
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
 
@@ -347,6 +350,9 @@ img.puce { background-color: #000; }
 
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }
+
+		/* bouton retour profil */
+		.retour-profil { text-align: right; }
 
 		/* page consultation stages : tableau des candidatures */
 		#stages-affichage { padding: 1em 0; }
@@ -496,8 +502,3 @@ img.puce { background-color: #000; }
 		background: none; background-color: #000; color: #fff; border: none; }
 	.ui-dialog .ui-dialog-content p { margin: 0; }
 
-/* table de développement */
-
-#dev td {
-	border: 2px solid #999;
-	padding: .5em; }

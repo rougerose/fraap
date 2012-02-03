@@ -139,6 +139,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'prenom' => "Votre pr&eacute;nom",
 
 	// R
+	'retour_profil' => '&#x2190; votre profil',
 
 	// T
 	'titre_candidatures' => 'Vos candidatures',
