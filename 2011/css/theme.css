@@ -249,9 +249,6 @@ img.puce { background-color: #000; }
 		#documents dl dd { overflow: hidden; }
 			#documents dl dd p span { display: block; color:#aaa; }
 
-	/* menu messagerie */
-	#navigation-messagerie li span.info-nonlu { font-size: 12px; float: right; line-height: 23px; color: #f60; }
-
 
 /* stages */
 
@@ -289,6 +286,20 @@ img.puce { background-color: #000; }
 		#gestion-candidatures div.actions { text-align: right; }
 			#gestion-candidatures .actions p { float: right; margin: 0; }
 
+	/* messagerie */
+		/* navigation messagerie */
+		#navigation-messagerie li {
+			list-style-type: none;
+			font-size: 14px;
+			margin: 0 0 .5em; padding: 0;
+			border-bottom: 1px solid #000; }
+		#navigation-messagerie li.on { border-bottom-width: 2px; }
+		#navigation-messagerie li span.info-nonlu { font-size: 12px; float: right; line-height: 23px; color: #f60; }
+			/* dans la page profil (#extra) */
+			#gestion-messages #navigation-messagerie li { font-size: 12px; }
+			#gestion-messages #navigation-messagerie li span.info-nonlu { line-height: 18px; }
+		
+	
 	/* consultation stages */
 	#contenu #stages-identification { margin-top: 1.5em; }
 
@@ -337,16 +348,10 @@ img.puce { background-color: #000; }
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }
 
-		/* consultation stages > #navigation */
-		.navigation-tri-stages h2 {
-			border-bottom: 2px solid #000;
-			font-size: 1.5em; line-height: 1em;
-			margin: 0 0 1em; }
-
 		/* page consultation stages : tableau des candidatures */
 		#stages-affichage { padding: 1em 0; }
 
-
+		/* tableau des stages */
 		table#stages-table { width: 100%; border: 1px solid #000; border-width: 2px 0 1px; }
 			#stages-table th { color: #fff; }
 			/*#stages-table tr {  }*/

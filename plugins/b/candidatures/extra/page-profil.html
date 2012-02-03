@@ -41,8 +41,12 @@
 		[(#SET_MERGE{c,#GET{c_poubelle},#GET{c_publiees}})] [(#SET_MERGE{c,#GET{c_prop}})]
 
 		<div id="extra">
+			<div id="gestion-messages">
+				<h2><:candidatures:titre_messages:></h2>
+				[(#INCLURE{fond=inclure/navigation-messagerie,env})]
+			</div><!-- #gestion-messages -->
 			<div id="gestion-candidatures">
-				<h2><:candidatures:candidatures:></h2>
+				<h2><:candidatures:titre_candidatures:></h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
 				<div class="actions clearfix">
 					<p><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="bt ajouter" title="<:candidatures:label_bouton_ajouter_candidature:>">[<:candidatures:label_bouton_ajouter_candidature:>]</a></p>

@@ -122,13 +122,6 @@
 		margin-left: 10px;
 		width: 220px; }
 
-		/* navigation messagerie */
-		#navigation-messagerie li {
-			list-style-type: none;
-			font-size: 14px;
-			margin: 0 0 .5em; padding: 0;
-			border-bottom: 1px solid #ccc; }
-
 	/* pied de page */
 	#pied { margin: 1em 10px 2em;  }
 		#pied .groupe { border-bottom-width: 0;  }

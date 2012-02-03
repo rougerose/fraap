@@ -97,25 +97,6 @@
 	.formulaire_spip .bugajaxie { display: none; }
 
 	/* présentation en ligne */
-/*	.enligne {  }
-		.formulaire_spip.enligne li.fieldset { padding-left: 0; }
-		.formulaire_spip.enligne ul.fields li {
-			overflow: hidden;
-			border-bottom: 1px solid #ddd;
-			padding-left: 230px;
-			margin: 0; }
-			.enligne label {
-				vertical-align: top;
-				xfloat: left; text-align: left;
-				margin-right: 10px; margin-left: -220px;
-				width: 220px;
-				display: inline-block; }
-			.formulaire_spip.enligne input.text, .formulaire_spip.enligne input.password, .formulaire_spip.enligne textarea {
-				width: 208px; }
-			.enligne .explication {
-				font-size: 11px;
-				margin: .25em 0 0 10px; }
-*/
 	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
 		.enligne label {
 			display: inline-block;
@@ -130,20 +111,25 @@
 			vertical-align: top; }
 		.enligne p.explication + input { margin-top: 1.7em; }
 
+	/* présentation en colonne */
+	.formulaire_spip li.colonnes { border-bottom: 1px solid #ddd; }
+	.formulaire_spip .bloc { float: left; margin: 0 10px; }
+	.formulaire_spip .bloc.item1 { margin-left: 0; }
+	.formulaire_spip .bloc:last-child { margin-right: 0; }
+
 
 /* formulaire tri stages */
 	#formulaire_tri_stages .ui-tabs { padding:0; margin-bottom: 1em;}
 	.actions #formulaire_tri_stages li { display: block; }
-	#formulaire_tri_stages #localisation li { border-bottom: 1px solid #ddd; }
+	#formulaire_tri_stages li.editer_ville_stage { border-bottom: 1px solid #ddd; }
 	#formulaire_tri_stages #formation label { width: 100px; }
-	#formulaire_tri_stages #formation input,
-	#formulaire_tri_stages #localisation input.text { width: 220px; }
-		#formulaire_tri_stages .bloc {
-			float: left;
-			width: 220px;
-			margin: 0 10px; }
-		#formulaire_tri_stages .item1 { margin-left: 0; }
-		#formulaire_tri_stages .bloc:last-child { margin-right: 0; }
+		#formulaire_tri_stages .bloc { width: 220px; }
+
+/* formulaire editer candidature */
+	#formulaire_editer_candidature .bloc { width: 220px; }
+
+
+	#formation input, #localisation input.text { width: 220px; }
 
 /* plugin messagerie */
 

@@ -13,7 +13,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_recharger' => 'Recharger',
 
 	// C
-	'candidatures' => 'Vos candidatures',
 	'candidature_enregistree' => '1 candidature est enregistr&eacute;e.',
 	'candidatures_enregistrees' => '@nb@ candidatures sont enregistr&eacute;es.',
 	'candidature_numero' => 'Candidature n°',
@@ -142,6 +141,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// R
 
 	// T
+	'titre_candidatures' => 'Vos candidatures',
+	'titre_messages' => 'Vos messages',
 	'type_defaut'=>"quelle est votre activit&eacute; ?",
 	'type_1'=>"Artiste",
 	'type_2'=>"&Eacute;tudiant-e",
