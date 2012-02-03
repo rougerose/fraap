@@ -54,6 +54,7 @@
 
 	.page_rubrique #contenu,
 	.page_article #contenu,
+	.page_breve #contenu,
 	.rubrique_stages #contenu {
 		float: left; display: inline;
 		margin-left: 10px; margin-right: 10px;
@@ -107,12 +108,13 @@
 	/* postscriptum */
 	.notes { margin-top: 3em; margin-left: 120px; }
 
-	/* article */
+	/* articles et breves */
 	.page_article #chapo-conteneur { margin-bottom: 2em; padding-top: .5em; }
-		.page_article #contenu .contenu-principal {
+		.page_article #contenu .contenu-principal, .page_breve #contenu .contenu-principal {
 			float: left; display: inline;
+			padding-top: .5em;
 			width: 460px; }
-		.page_article #contenu .contenu-secondaire {
+		.page_article #contenu .contenu-secondaire, .page_breve #contenu .contenu-secondaire {
 			float: right; display: inline;
 			width: 220px; }
 

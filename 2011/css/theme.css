@@ -145,13 +145,13 @@ img.puce { background-color: #000; }
 		border-bottom-color: #000;
 		padding: 0 0 1em; }
 
-		.page_article #tabs .hentry p.published {
+		.contenu-secondaire #tabs .hentry p.published {
 			float: left; display: inline;
 			width: 70px; }
 
 		#tabs .hentry p.entry-content { margin-bottom: 0; }
 
-		.page_article #tabs .hentry .resume-conteneur {
+		.contenu-secondaire #tabs .hentry .resume-conteneur {
 				float: right; display: inline;
 						width: 140px }
 

@@ -14,7 +14,7 @@
 	[(#REM) tableau des mots ]
 	#SET{id_mot,#ARRAY}
 
-<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}{0,1}>#SET{documents,oui}</BOUCLE_t_docs>
+<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{id_breve?}{vu=non}{0,1}>#SET{documents,oui}</BOUCLE_t_docs>
 [(#REM) on est bien dans une rubrique -- et non dans un article qui appartient à une rubrique avec des brèves -- ]
 	<BOUCLE_t_breves(BREVES){id_rubrique?}{0,1}>[(#ENV{page}|=={rubrique}|oui)[(#SET{breves,oui})]]</BOUCLE_t_breves>
 <BOUCLE_t_mots(MOTS){id_article?}{id_rubrique?}{0,1}>
@@ -52,7 +52,7 @@
 
 	<B_documents>
 	<div id="documents" class="clearfix">
-		<BOUCLE_documents(DOCUMENTS){id_article?}{id_rubrique?}{vu=non}>
+		<BOUCLE_documents(DOCUMENTS){id_article?}{id_rubrique?}{id_breve?}{vu=non}>
 		[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
 		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
 			<dt>

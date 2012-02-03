@@ -1,3 +1,4 @@
+[(#SET{secteur,#ENV{id_secteur,#ID_RUBRIQUE}})]
 <div id="page" class="container_16">
 	<div id="head" class="clearfix">
 		<div id="raccourcis" class="menu clearfix">
@@ -13,7 +14,7 @@
 
 	</div><!-- #head -->
 
-	<div id="conteneur" class="[couleurID(#ENV{id_secteur}) ]clearfix">
+	<div id="conteneur" class="[couleurID(#GET{secteur}) ]clearfix">
 		[(#REM) zone relative à la session ouverte par l'utilisateur ]
 		[(#SESSION|oui)
 		<INCLURE{fond=inclure/session-info,env}>
