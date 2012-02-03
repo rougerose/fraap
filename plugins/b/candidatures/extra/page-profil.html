@@ -42,7 +42,7 @@
 
 		<div id="extra">
 			<div id="gestion-candidatures">
-				<h2>Vos candidatures</h2>
+				<h2><:candidatures:candidatures:></h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
 				<div class="actions clearfix">
 					<p><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="bt ajouter" title="<:candidatures:label_bouton_ajouter_candidature:>">[<:candidatures:label_bouton_ajouter_candidature:>]</a></p>
@@ -55,7 +55,7 @@
 						<h3><span class="uiHeader"><:candidatures:candidature_numero:> #COMPTEUR_BOUCLE</span></h3>
 						<div class="bloc">
 							<p>
-								[Du (#DATE_DEBUT|affdate{d/m/Y})[ au (#DATE_FIN|affdate{d/m/Y})]]
+								[<:candidatures:periode_du_maj:> (#DATE_DEBUT|affdate{d/m/Y})[ <:candidatures:periode_au_min:> (#DATE_FIN|affdate{d/m/Y})]]
 							</p>
 							<B_regions>
 							<p>

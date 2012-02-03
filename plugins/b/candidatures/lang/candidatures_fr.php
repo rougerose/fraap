@@ -13,6 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'bouton_recharger' => 'Recharger',
 
 	// C
+	'candidatures' => 'Vos candidatures',
 	'candidature_enregistree' => '1 candidature est enregistr&eacute;e.',
 	'candidatures_enregistrees' => '@nb@ candidatures sont enregistr&eacute;es.',
 	'candidature_numero' => 'Candidature n°',
@@ -134,6 +135,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'pas_de_candidature' => "Vous n&#x27;avez d&eacute;pos&eacute; aucune candidature.",
 	'pass_pas_identique' => "Les deux mots de passe ne sont pas identiques",
 	'pass_trop_court' => "Votre mot de passe doit contenir plus de 6 caract&egrave;res",
+	'periode_au_min' => 'au',
+	'periode_du_maj' => 'Du',
 	'prenom' => "Votre pr&eacute;nom",
 
 	// R
