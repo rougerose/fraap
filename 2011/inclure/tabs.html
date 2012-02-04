@@ -91,7 +91,11 @@
 		<ul class="liste">
 			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
 			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
-			<li><h3><a href="#URL_MOT">#TITRE</a></h3></li>
+			<li>
+				<h3>#ID_RUBRIQUE
+					<a href="[(#ENV{idrubrique}|=={2}|?{#URL_RUBRIQUE{2}#theme#ID_MOT,#URL_MOT})]">#TITRE</a>
+				</h3>
+			</li>
 			</BOUCLE_themes>
 		</ul>
 	</div><!-- #themes -->

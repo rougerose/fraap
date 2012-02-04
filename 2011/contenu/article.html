@@ -18,10 +18,10 @@
 		#MODELE{article_traductions}
 
 		[(#REM) [(#MODELE{socialtags})] ]
-		
+
 		[(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
 		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
-		
+
 		[(#REM) menu rubriques ]
 		[(#GET{menu}|oui)
 			[(#INCLURE{fond=inclure/menu-rubriques,env})]
@@ -51,7 +51,7 @@
 	</div><!-- .contenu-principal -->
 
 	[<div class="contenu-secondaire">
-		(#INCLURE{fond=inclure/tabs,id_article})
+		(#INCLURE{fond=inclure/tabs,id_article,idrubrique=#ID_RUBRIQUE})
 	</div><!-- .contenu-secondaire -->]
 </div><!-- .contenu -->
 
