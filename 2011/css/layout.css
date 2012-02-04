@@ -97,7 +97,7 @@
 		margin-right: 10px;
 		width: 220px; }
 	#chapo-conteneur {
-		float: left; display: inline;
+		float: right; display: inline;
 		margin-left: 10px; margin-bottom: 3em;
 		width: 700px; }
 	#contenu .contenu {

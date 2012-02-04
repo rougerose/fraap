@@ -22,6 +22,11 @@ jQuery(document).ready(function() {
 	$("#accordeon-candidatures").accordion({
 		autoHeight: false
 	});
+	// Rubrique ressources
+	$("#ressources").accordion({
+		header:'dt',
+		autoHeight: false
+	});
 
 
 	/*
