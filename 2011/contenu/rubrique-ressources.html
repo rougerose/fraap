@@ -30,7 +30,7 @@
 		<dt><a class="theme" href="#theme#ID_MOT">#TITRE</a></dt>
 		<B_articles_lies>
 		<dd id="theme#GET{idmot}" class="groupe horizontal">
-			<BOUCLE_articles_lies(ARTICLES){id_mot}{par titre}>
+			<BOUCLE_articles_lies(ARTICLES){id_rubrique}{id_mot}{par titre}>
 			#INCLURE{fond=inclure/article-resume,id_article,composition=#ENV{composition},logo=#GET{logo}}
 			</BOUCLE_articles_lies>
 		</dd>
