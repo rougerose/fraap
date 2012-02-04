@@ -20,7 +20,8 @@ jQuery(document).ready(function() {
 	*/
 	/* page profil : liste des candidatures enregistrées */
 	$("#accordeon-candidatures").accordion({
-		autoHeight: false
+		autoHeight: false,
+		icons:false
 	});
 	// Rubrique ressources
 	$("#ressources").accordion({

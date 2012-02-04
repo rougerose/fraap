@@ -440,7 +440,9 @@ img.puce { background-color: #000; }
 	.bouton:active { top:1px; }
 
 /* Jquery UI Tabs */
-.page_rubrique #tabs { border-bottom: 1px solid #000; }
+	/* stages > profil */
+	.page_rubrique #tabs { border-bottom: 1px solid #000; }
+
 #tabs.ui-widget-content { border: none; }
 #tabs .ui-corner-top a { font-weight: normal; }
 	#tabs .ui-widget-header {
@@ -484,7 +486,6 @@ img.puce { background-color: #000; }
 	#accordeon-candidatures .ui-accordion-content {
 		margin-top: 0;
 		padding: .8em 0; }
-	#accordeon-candidatures .ui-accordion-header > .ui-icon { display: none; }
 		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }
 
 /* Jquery UI Dialog */
