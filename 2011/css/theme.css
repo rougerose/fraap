@@ -440,7 +440,7 @@ img.puce { background-color: #000; }
 	.bouton:active { top:1px; }
 
 /* Jquery UI Tabs */
-	/* stages > profil */
+	/* page rubrique */
 	.page_rubrique #tabs { border-bottom: 1px solid #000; }
 
 #tabs.ui-widget-content { border: none; }
@@ -472,21 +472,30 @@ img.puce { background-color: #000; }
 .ui-tabs .related { margin-top: 1.5em; }
 
 /* Jquery UI Accordion */
-#accordeon-candidatures { margin-top: 1em; }
-	#accordeon-candidatures .ui-accordion-li-fix { display: block; }
-	#accordeon-candidatures .ui-state-default {
+	/* surcharges génériques des styles */
+	.ui-accordion .ui-state-default {
 		background: none; color: #999;
 		padding-bottom: 5px; padding-top: 3px;
 		border: 1px solid #ccc; border-width: 0 0 1px; }
-	#accordeon-candidatures .ui-state-active {
+	.ui-accordion .ui-state-active {
 		padding-bottom: 5px; padding-top: 3px; color: #000;
 		border: 1px solid #000; border-width: 0 0 1px; }
-	#accordeon-candidatures .ui-state-hover { color: #000; }
-	#accordeon-candidatures .ui-widget-content { border-width: 0 0 1px; border-bottom-color: #000; }
-	#accordeon-candidatures .ui-accordion-content {
-		margin-top: 0;
-		padding: .8em 0; }
-		#accordeon-candidatures .ui-accordion-header .uiHeader { margin-left: 0; }
+	.ui-accordion .ui-widget-content { border-width: 0 0 1px; border-bottom-color: #000; }
+	.ui-accordion .ui-accordion-content { margin-top: 0; padding: .8em 0; }
+		.ui-accordion .ui-accordion-header .uiHeader, .ui-accordion .ui-accordion-header a { margin-left: 0; padding: 0; }
+
+	/* stages > profil > #extra */
+	#accordeon-candidatures { margin-top: 1em; }
+		#accordeon-candidatures .ui-state-hover { color: #000; }
+		#accordeon-candidatures .ui-accordion-li-fix { display: block; }
+
+	/* rubrique ressources */
+	#ressources .ui-accordion-header.ui-state-active { border-width: 0 0 2px; }
+	#ressources .ui-accordion-header a { font-size: 16px; }
+	#ressources .ui-accordion-content { padding: 10px 0 0; margin-bottom: 5px; }
+		#ressources .groupe .hentry { margin-bottom: 0; border-top-width: 1px; }
+		#ressources .groupe .hentry:first-child { border-top: none; padding-top: 0; }
+		#ressources .ui-accordion-content h2 { font-size: 16px; }
 
 /* Jquery UI Dialog */
 .ui-dialog {

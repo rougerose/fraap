@@ -23,11 +23,24 @@ jQuery(document).ready(function() {
 		autoHeight: false,
 		icons:false
 	});
-	// Rubrique ressources
+	// Rubrique Ressources
 	$("#ressources").accordion({
 		header:'dt',
-		autoHeight: false
+		autoHeight: false,
+		icons:false,
+		navigation:true
 	});
+		// le hash s'ajoute dans l'url de la page, ce qui permet de pointer plus précisément
+		// http://michaeljacobdavis.com/tutorials/statesavingaccordion.html
+		$("#ressources a.theme").click(function(event){
+			window.location.hash=this.hash;
+		});
+		// on se met doucement là où il faut
+		// http://stackoverflow.com/a/3621845
+		$('#ressources').bind('accordionchange', function(event, ui) {
+			/* In here, ui.newHeader = the newly active header as a jQ object */
+			$.scrollTo(ui.newHeader,500);
+		});
 
 
 	/*
@@ -35,13 +48,13 @@ jQuery(document).ready(function() {
 	*/
 	$("#formulaire_recherche").each(function(){
 		var $recherche = $(this),
-			$slide = $recherche.find("form"),
+			$slide = $recherche.find("form").hide(),
 			$ul = $recherche.next("ul").addClass("ok");
 			compteur = 0;
 		$ul.prepend('<li class="recherche filets"><a href="#">recherche</a></li>');
 		var $bouton = $ul.find(".recherche");
 
-		$slide.hide();
+	//	$slide.hide();
 
 		// animation du bouton
 		$bouton.hover(
