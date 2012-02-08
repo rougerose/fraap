@@ -25,6 +25,7 @@ a:active { outline: none; }
 span.suite a:after, a.suite:after { content:"\00A0\2192"; }
 
 #contenu a, #fil a, #pied a { font-weight: bold; }
+#contenu .tabs .ui-tabs-nav a { font-weight: normal; }
 
 #tabs a:focus { outline: none; }
 
@@ -140,18 +141,18 @@ img.puce { background-color: #000; }
 
 	/* hentry dans #tabs (rubriques) */
 
-	#tabs .hentry {
+	#extra-tabs .hentry {
 		border-top-width: 0;
 		border-bottom-color: #000;
 		padding: 0 0 1em; }
 
-		.contenu-secondaire #tabs .hentry p.published {
+		.contenu-secondaire #extra-tabs .hentry p.published {
 			float: left; display: inline;
 			width: 70px; }
 
-		#tabs .hentry p.entry-content { margin-bottom: 0; }
+		#extra-tabs .hentry p.entry-content { margin-bottom: 0; }
 
-		.contenu-secondaire #tabs .hentry .resume-conteneur {
+		.contenu-secondaire #extra-tabs .hentry .resume-conteneur {
 				float: right; display: inline;
 						width: 140px }
 
@@ -248,15 +249,15 @@ img.puce { background-color: #000; }
 
 	/* syndication */
 	.syndication > h3 {
-		font-size: 16px;
+		font-size: 15px;
 		border-bottom: 1px solid #000;
 		margin-bottom: 1em; }
 		.syndication .groupe { border-bottom-width: 0; }
 		.syndication .liste li { padding-bottom: 0; }
 			.syndication .groupe .hentry { border-top-width: 0; padding-top: 0; }
 				.syndication .groupe .hentry .resume-conteneur { width: 340px; }
-				.syndication .liste .hentry h3 { font-size: 14px; margin-bottom: 15px; }
-				.syndication .liste .hentry p, .enclosures { margin-bottom: 15px; }
+				.syndication .liste .hentry h3 { font-size: 14px; margin-bottom: 9px; }
+				.syndication .liste .hentry p, .enclosures { margin-bottom: 9px; }
 
 /* stages */
 
@@ -398,7 +399,7 @@ img.puce { background-color: #000; }
 
 /* vcard */
 	/* styles communs */
-	.vcard h3 { margin: 0; font-size: 16px; }
+	.vcard h3 { margin: 0; font-size: 14px; }
 		.vcard h3 span.referent { font-weight: normal; }
 	.vcard p { margin: 0; }
 	.vcard .adr span, .vcard .mail, .vcard .tel {
@@ -410,9 +411,8 @@ img.puce { background-color: #000; }
 	.vcard .mail { background-position: 0 -29px; }
 		.vcard .tel .type {display: none;}
 
-
 	/* pied de page */
-	#pied .vcard h3 { font-size: 12px; }
+
 
 /* bouton */
 
@@ -455,36 +455,40 @@ img.puce { background-color: #000; }
 	.bouton:active { top:1px; }
 
 /* Jquery UI Tabs */
-	/* page rubrique */
-	.page_rubrique #tabs { border-bottom: 1px solid #000; }
-
-#tabs.ui-widget-content { border: none; }
-#tabs .ui-corner-top a { font-weight: normal; }
-	#tabs .ui-widget-header {
+	/* styles communs (surcharges des styles de jquery ui) */
+	.tabs.ui-widget-content { border: none; }
+	.tabs .ui-corner-top a { font-weight: normal; }
+		.tabs .ui-widget-header {
+			background: none;
+			border-width: 0 0 1px;
+			-webkit-border-radius: 0;
+			   -moz-border-radius: 0;
+			        border-radius: 0; }
+	.ui-tabs { padding: 0; }
+	.ui-tabs .ui-tabs-nav { padding: 2px 0 0 5px; }
+	.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
+	.ui-tabs .ui-tabs-nav li { font-size: 13px; }
+	.ui-tabs .ui-tabs-nav li.ui-state-default { background: none; border-color: #fff; }
+	.ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
 		background: none;
-		border-width: 0 0 1px;
-		-webkit-border-radius: 0;
-		   -moz-border-radius: 0;
-		        border-radius: 0; }
-.ui-tabs { padding: 0; }
-.ui-tabs .ui-tabs-nav {
-	margin : 0; padding: 0;
-	border-bottom : 2px solid #000; }
-.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
-.ui-tabs .ui-tabs-nav li {
-	margin : 0 0 -1px 4px;
-	border: 1px solid #fff;
-	font-size: 13px; }
-.page_rubrique .ui-tabs .ui-tabs-nav li { font-size: 13px; }
-.ui-tabs .ui-tabs-nav li.ui-state-default { background: none; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
-	border-color: #000;
-	border-top-left-radius: 0; border-top-right-radius: 0;
-	background: #fff; }
-.ui-tabs .ui-tabs-nav li a { padding : 5px 4px; color: #ccc; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
-.ui-tabs .ui-tabs-nav li a:hover { color: #666 }
-.ui-tabs .related { margin-top: 1.5em; }
+		border-color: #000;
+		border-top-left-radius: 0; border-top-right-radius: 0;
+		background-color: #fff; }
+	.ui-tabs .ui-tabs-nav li a { padding : 5px 4px; color: #aaa; }
+	.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
+	.ui-tabs .ui-tabs-nav li a:hover { color: #000; }
+	.ui-tabs .related { margin-top: 1.5em; }
+
+	/* page rubrique */
+	.page_rubrique #extra-tabs { border-bottom: 1px solid #000; }
+
+	/* page article > #extra */
+	#extra-tabs .ui-tabs-nav {  }
+	#extra-tabs .ui-tabs-nav li { font-size: 13px;  }
+
+	/* annuaire > page article */
+	#annuaire-contact .ui-tabs-nav li { font-size: 16px; }
+
 
 /* Jquery UI Accordion */
 	/* surcharges génériques des styles */

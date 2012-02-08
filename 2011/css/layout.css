@@ -104,8 +104,12 @@
 		float: right; display: inline;
 		position: relative;
 		width: 700px; }
-
-	/* postscriptum */
+		
+	/* .textecourant : blocs de texte, notes, ps */
+	.textecourant { margin-bottom: 3em; }
+	
+	
+	/* notes */
 	.notes { margin-top: 3em; margin-left: 120px; }
 
 	/* articles et breves */

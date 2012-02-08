@@ -47,12 +47,12 @@
 		<BOUCLE_site(SITES){id_syndic=#SITE}>#SET{site,oui} #SET{nomsite,#NOM_SITE}</BOUCLE_site>
 
 		<BOUCLE_condition(CONDITION){si #GET{contact}|ou{#GET{site}}}>
-		<div id="annuaire-contact" class="clearfix">
+		<div id="annuaire-contact" class="tabs clearfix">
 			<ul class="liste">
 				[(#GET{contact}|oui)
 				<li><a href="#contact"><:contact:></a></li>
 				][(#GET{site}|oui)
-				<li><a href="publications"><:dernieres_publications_abrev:></a></li>
+				<li><a href="#publications"><:dernieres_publications_abrev:></a></li>
 				]
 			</ul>
 
@@ -79,14 +79,14 @@
 							</p>]
 							[<div class="enclosures">(#TAGS|afficher_enclosures)</div>]
 
-						</div><!-- .article-resume-conteneur -->
+						</div><!-- .resume-conteneur -->
 					</li>
 					</BOUCLE_publications>
 				</ul>
-			</div><!-- #actualites -->
+			</div><!-- #publications -->
 			</B_publications>
 
-		</div><!-- #fiche-contact -->
+		</div><!-- #annuaire-contact -->
 		</BOUCLE_condition>
 
 		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
