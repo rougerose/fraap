@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	/*
 	* jquery UI Tabs
 	*/
-	$("#tabs").tabs();
+	$("#extra-tabs, #annuaire-contact").tabs();
 
 
 	/*
@@ -29,7 +29,12 @@ jQuery(document).ready(function() {
 		autoHeight: false,
 		icons:false,
 		navigation:true,
-		// on se met doucement là où il faut http://stackoverflow.com/a/3621845
+/*		navigationFilter: function() {
+			var hash = window.location.hash;
+			var dt = $('a[href='+hash+']').parent('dt');
+			console.log(dt); //return dt;
+		},
+*/		// on se met doucement là où il faut http://stackoverflow.com/a/3621845
 		change: function(event,ui) {
 			$.scrollTo(ui.newHeader,500);
 		}
@@ -39,6 +44,11 @@ jQuery(document).ready(function() {
 		$("#ressources a.theme").click(function(event){
 			window.location.hash=this.hash;
 		});
+
+		$.localScroll.hash();
+
+
+
 
 	/*
 	* Animation du formulaire Recherche

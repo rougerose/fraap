@@ -6,9 +6,15 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'afficher_map' => 'Afficher l&#x27;adresse dans une carte',
 	'annuaire_compte' => "L’annuaire des associations et collectifs d’artistes membres de la FRAAP compte",
-	
+
+	// C
+	'contact' => 'Contact',
+
 	// D
+	'dernieres_publications_abrev' => 'Dernières publications',
+	'dernieres_publications' => 'Les dernières publications de @site@',
 	'documents' => 'Documents',
 
 	// E
@@ -21,7 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// F
 	'fichier' => 'Fichier',
-	
+
 	// L
 	'lire_aussi' => 'Lire aussi',
 
@@ -29,14 +35,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'page' => 'page',
 	'pages' => 'pages',
 	'publie_le' => 'Publié le',
-	
+
 	//R
+	'referent' => 'Référent FRAAP',
 	'rubriques' => 'Rubriques',
 
 	// S
 	'suite' => 'lire la suite',
-	
+
 	// T
+	'telephone' => 'Téléphone',
 	'themes' => 'Thèmes',
 
 	// U

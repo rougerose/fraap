@@ -1,0 +1,38 @@
+[(#REM) la classe .vcard doit être posée sur le conteneur de ce modèle ]
+
+[(#REM)
+	paramètre :
+		- urlmap => url google map pour l'adresse / facultatif
+]
+	#SET{urlmap,#ENV{urlmap,''}}
+
+<BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
+	[(#ID_AUTEUR|=={1}|non)
+		[<h3><span class="fn">(#NOM)</span> [<span class="referent">((#ANNUAIRE_REFERENT))</span>]</h3>]
+		[<h3 class="org[(#URL_SITE|oui) url]">[<a href="(#URL_SITE)">](#ANNUAIRE_NOM_ASSO)[(#URL_SITE|oui)</a>]</h3>]
+	]
+	[(#ID_AUTEUR|=={1}|oui)
+		[<h3 class="fn org url"><a href="#URL_SITE_SPIP">(#NOM)</a></h3>]
+	]
+	<p class="adr">
+		[<a href="(#GET{urlmap})"[ (#ID_AUTEUR|=={1}|oui)rel="me"] title="<:afficher_map:>">]
+			[<span class="street-address">(#ANNUAIRE_ADRESSE1)</span><br />]
+			[<span class="extended-address">(#ANNUAIRE_ADRESSE2)</span><br />]
+			[<span class="postal-code">(#ANNUAIRE_CODEPOSTAL)</span>][ <span class="locality">(#ANNUAIRE_VILLE)</span>][, <span class="country-name">(#ANNUAIRE_PAYS)</span>]
+		[(#GET{urlmap}|oui)</a>]
+	</p>
+	[<p class="tel">
+		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE1"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE1)</a>
+	</p>]
+	[<p class="tel">
+		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE2"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE2)</a>
+	</p>]
+	[(#ID_AUTEUR|=={1}|et{#EMAIL}|oui)
+		<p class="mail"><a href="#URL_AUTEUR" rel="me" class="email">formulaire de contact</a></p>
+	]
+	[(#ID_AUTEUR|=={1}|non)
+		[(#EMAIL|oui)
+		<p class="mail"><:email:>[ (#VAL{<a href="mailto:#EMAIL" class="email">#EMAIL</a>}|mailcrypt)]</p>
+		]
+	]
+</BOUCLE_auteur>

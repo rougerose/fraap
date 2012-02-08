@@ -246,6 +246,17 @@ img.puce { background-color: #000; }
 	/* #extra */
 	#extra > div { margin-bottom: 2em; }
 
+	/* syndication */
+	.syndication > h3 {
+		font-size: 16px;
+		border-bottom: 1px solid #000;
+		margin-bottom: 1em; }
+		.syndication .groupe { border-bottom-width: 0; }
+		.syndication .liste li { padding-bottom: 0; }
+			.syndication .groupe .hentry { border-top-width: 0; padding-top: 0; }
+				.syndication .groupe .hentry .resume-conteneur { width: 340px; }
+				.syndication .liste .hentry h3 { font-size: 14px; margin-bottom: 15px; }
+				.syndication .liste .hentry p, .enclosures { margin-bottom: 15px; }
 
 /* stages */
 
@@ -386,18 +397,22 @@ img.puce { background-color: #000; }
 						        transition: none; }
 
 /* vcard */
-.vcard h3 { margin: 0; font-size: 12px; }
+	/* styles communs */
+	.vcard h3 { margin: 0; font-size: 16px; }
+		.vcard h3 span.referent { font-weight: normal; }
 	.vcard p { margin: 0; }
-	#pied .vcard a {
-		display: block;
-		background: url('../images/pied-icones.png') no-repeat 0 0;
+	.vcard .adr span, .vcard .mail, .vcard .tel {
 		padding-left: 22px; }
-		#pied .vcard .adr a { background-position: 0 -160px; }
-		#pied .vcard .mail a { background-position: 0 -29px; }
-		#pied .vcard .url a { background-position: 0 -61px; }
-	.vcard span.type { display: none; }
-	.vcard span.fn { font-weight: bold; }
+	.vcard .adr .locality, .vcard .adr .country-name { padding-left: 0; }
+	.vcard .street-address, .vcard .mail, .vcard .tel { background: url('../images/pied-icones.png') no-repeat 0 0; }
+	.vcard .street-address { background-position: 0 -160px; }
+	.vcard .tel { background-position: 0 0; }
+	.vcard .mail { background-position: 0 -29px; }
+		.vcard .tel .type {display: none;}
 
+
+	/* pied de page */
+	#pied .vcard h3 { font-size: 12px; }
 
 /* bouton */
 

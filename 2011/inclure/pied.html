@@ -8,13 +8,15 @@
 		<div class="about colonne">
 			<p class="intro">La Fraap est une fédération ouverte à toutes les associations et collectifs d’artistes plasticiens. Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="suite">lire la suite</a></p>
 		</div><!-- .about -->
+
 		<div class="vcard colonne">
-			<h3 class="fn org">FRAAP</h3>
-			<p class="adr">
-				<a href="http://maps.google.fr/maps/place?q=15+rue+de+la+condamine+paris&hl=fr&ftid=0x47e66fad50199af1:0x6115c8148f9848ff" rel="me" title="Afficher dans Google Maps"><span class="street-address">15 rue de la Condamine</span><br /><span class="postal-code">75017</span> <span class="locality">Paris</span>, <span class="country-name">France</span></a>
-			</p>
-			<p class="tel"><span class="type">Work</span> <a href="callto:+331XXXXXX" rel="me">+33-1-XX-XX-XX-XX</a></p>
-			<p class="mail"><a href="#" rel="me">contact par mail</a></p>
+
+			<BOUCLE_auteur_fraap(AUTEURS){id_auteur=1}{tout}>
+			[(#MODELE{auteur_vcard,id_auteur,
+				urlmap=http://maps.google.fr/maps/place?q=15+rue+de+la+condamine+paris&hl=fr&ftid=0x47e66fad50199af1:0x6115c8148f9848ff}
+			)]
+			</BOUCLE_auteur_fraap>
+
 		</div><!-- .vcard -->
 	</div><!-- .groupe -->
 	<div class="groupe grid_4 omega">

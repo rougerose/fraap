@@ -71,7 +71,6 @@
 
 	#nav li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
 
-
 	[(#REM)	définitions supplémentaires et spécifiques à la rubrique 2/Ressources ]
 	[(#ID_SECTEUR|=={2}|oui)
 		#ressources .ui-state-default a { color: ##GET{couleur_lum03}; }
@@ -81,8 +80,6 @@
 		#ressources dt.ui-state-default { xborder-color: ##GET{couleur_lum03}; }
 		#ressources dt.ui-state-active,
 		#ressources .ui-widget-content { border-color: ##GET{couleur}; }
-
-
 	]
 
 	[(#REM)
@@ -127,6 +124,12 @@
 		/* formulaires */
 		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne .xlegend { border-color: ##GET{couleur}; color: ##GET{couleur}; }
 		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne ul.fields li { xborder-color: ##GET{couleur_lum03}; }
+
+	]
+
+	[(#REM) définitions spécifiques à la rubrique 11/Réseau ]
+	[(#ID_SECTEUR|=={11}|oui)
+		.syndication > h3 { border-color: ##GET{couleur} }
 
 	]
 
