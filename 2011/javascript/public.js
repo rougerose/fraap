@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	/*
 	* jquery UI Tabs
 	*/
-	$("#extra-tabs, #annuaire-contact").tabs();
+	$("#extra-tabs, #annuaire-contact, #formulaire_tri_criteres").tabs();
 
 
 	/*
