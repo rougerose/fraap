@@ -22,6 +22,7 @@
 				<label for='#GET{name}'>[(#ENV{form}|concat{':label_',#GET{name}}|_T)]</label>[<span
 				class='erreur_message'>(#GET{erreur})</span>]<div class='faux_input'>
 					<span class='details'><span class='dest' style='display:none;'><img src='#CHEMIN{habillage/croix.gif}' alt='X' /></span>[(#INCLURE{fond=formulaires/ecrire_message_destinataires}{destinataires=#ENV*{destinataires}})]</span>
+					[[#REM] TODO : compte tenu du fait que le champs est disabled, vérifier si ça n'empêche pas les données d'être transmises ]
 					<input type="text" name='#GET{name}' id='#GET{name}' value="#GET{d} #ENV*{#GET{name}}" class='text' disabled="disabled" /></div>
 				</li>
 				]
