@@ -34,6 +34,10 @@
 <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
 
 <div class="contenu clearfix">
+	[(#INCLURE{fond=formulaires/tri_annuaire,env})]
+
+
+
 	<BOUCLE_condition_articles(CONDITION){si #GET{articles_selection}|ou{#GET{articles_rubrique}}}>
 	<div class="hfeed">
 		[(#REM) selection d'articles, format horizontal ]

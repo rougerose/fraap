@@ -47,7 +47,11 @@ jQuery(document).ready(function() {
 
 		$.localScroll.hash();
 
-
+	/*
+	* Rubrique annuaire : formulaire de tri
+	* le bouton ok est masqué et le rechargement de la page est géré sur onchange des select
+	*/
+	$("#formulaire_tri_annuaire .boutons").hide();
 
 
 	/*
