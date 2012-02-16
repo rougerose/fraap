@@ -30,15 +30,6 @@
 	<BOUCLE_annuaire_region_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe=1}>#SET{annuaire_region,oui}</BOUCLE_annuaire_region_t>
 	<BOUCLE_annuaire_activites_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe=2}>#SET{annuaire_activites,oui}</BOUCLE_annuaire_activites_t>
 
-[(#GET{documents_article}|oui)<p>documents_articles</p>]
-[(#GET{documents_rubrique}|oui)<p>documents_rubriques</p>]
-[(#GET{breves}|oui)<p>breves</p>]
-[(#GET{lire_articles}|oui)<p>lire_articles</p>]
-[(#GET{lire_breves}|oui)<p>lire_breves</p>]
-[(#GET{lire_rubriques}|oui)<p>lire_rubriques</p>]
-[(#GET{annuaire_region}|oui)<p>annuaire_region</p>]
-[(#GET{annuaire_activites}|oui)<p>annuaire_activites</p>]
-
 [(#REM) rubrique annuaire : les mots-clés]
 [(#GET{annuaire_region}|ou{#GET{annuaire_activites}}|oui)
 	#INCLURE{fond=inclure/tabs-contenu,env,annuaire_region=#GET{annuaire_region},annuaire_activite=#GET{annuaire_activites}}
