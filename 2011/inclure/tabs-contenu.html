@@ -1,0 +1,142 @@
+[(#REM) tableau des mots ]
+#SET{id_mot,#ARRAY}
+
+<div class="tabs clearfix[ (#ENV{format})][ (#ENV{ordre})]">
+	<ul class="liste onglets">
+		[(#ENV{documents_article}|ou{#ENV{documents_rubrique}}|oui)
+		<li class="documents"><a href="#documents"><span class="icon"></span><:documents:></a></li>]
+		[(#ENV{breves}|oui)
+		<li class="breves"><a href="#breves"><span class="icon"></span><:en_bref:></a></li>]
+		[(#ENV{mots}|oui)
+		<li class="themes"><a href="#themes"><span class="icon"></span><:themes:></a></li>]
+		[(#ENV{lire_articles}|ou{#ENV{lire_breves}}|ou{#ENV{lire_rubriques}}|oui)
+		<li class="lire"><a href="#lire"><span class="icon"></span><:lire_aussi:></a></li>]
+		[(#ENV{annuaire_region}|oui)
+		<li class="region"><a href="#region"><span class="icon"></span><:region:></a></li>]
+		[(#ENV{annuaire_activite}|oui)
+		<li class="activites"><a href="#activites"><span class="icon"></span><:activites:></a></li>]
+	</ul>
+	
+	[(#REM) annuaire]
+	<BOUCLE_condition_annuaire_region(CONDITION){si #ENV{annuaire_region}}>
+	<div id="region" class="clearfix liste">
+		<ul class="liste">
+			<BOUCLE_region(MOTS){id_article?}{id_rubrique?}{id_groupe=1}{par titre}>
+			<li>#TITRE</li>
+			</BOUCLE_region>
+		</ul>
+	</div><!-- #region -->
+	</BOUCLE_condition_annuaire_region>
+	
+	<BOUCLE_condition_annuaire_activite(CONDITION){si #ENV{annuaire_activite}}>
+	<div id="activites" class="clearfix liste">
+		<ul class="liste">
+			<BOUCLE_activites(MOTS){id_article?}{id_rubrique?}{id_groupe=2}{par titre}>
+			<li>#TITRE</li>
+			</BOUCLE_activites>
+		</ul>
+	</div><!-- #activites -->
+	</BOUCLE_condition_annuaire_activite>
+
+	[(#REM) les documents de l'article/breve sont affichés ici ]
+	<BOUCLE_condition_article(CONDITION){si #ENV{documents_article}}>
+	<div id="documents" class="clearfix">
+		<BOUCLE_documents_article(DOCUMENTS){id_article?}{id_breve?}{vu=non}>
+		[<dl id="document-#ID_DOCUMENT" class="liste">
+			<dt>
+				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
+			</dt>
+			<dd>
+				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
+				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+			</dd>
+		</dl>]
+		</BOUCLE_documents_article>
+	</div><!-- #documents -->
+	</BOUCLE_condition_article>
+
+	[(#REM) les documents de la rubrique ici ]
+	<BOUCLE_condition_rubrique(CONDITION){si #ENV{documents_rubrique}}>
+	<div id="documents" class="clearfix">
+		<BOUCLE_documents_rubrique(DOCUMENTS){id_rubrique}{vu=non}>
+		[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
+			<dt>
+				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
+			</dt>
+			<dd>
+				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
+				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+			</dd>
+		</dl>]
+		</BOUCLE_documents_rubrique>
+	</div><!-- #documents -->
+	</BOUCLE_condition_rubrique>
+
+	<B_breves>
+	<div id="breves" class="liste">
+		<ul class="liste clearfix">
+			<BOUCLE_breves(BREVES){id_rubrique}{!par date}>
+			[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+			<li class="hentry[ (#GET{alterner})]">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div class="resume-conteneur">
+					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_breves>
+		</ul>
+	</div><!-- #breves -->
+	</B_breves>
+
+	<BOUCLE_condition_mots(CONDITION){si #ENV{mots}}>
+	<div id="themes" class="liste">
+		<ul class="liste">
+			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
+			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
+			<li>
+				<h3>
+					<a href="[(#ENV{idrubrique}|=={2}|?{#URL_RUBRIQUE{2}#theme#ID_MOT,#URL_MOT})]">#TITRE</a>
+				</h3>
+			</li>
+			</BOUCLE_themes>
+		</ul>
+	</div><!-- #themes -->
+	</BOUCLE_condition_mots>
+
+	<BOUCLE_condition_lire(CONDITION){si #ENV{lire_articles}|ou{#ENV{lire_breves}}|ou{#ENV{lire_rubriques}}}>
+	<div id="lire">
+		<ul class="hfeed liste">
+			<BOUCLE_lire_articles(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
+			<li class="hentry clearfix">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div class="resume-conteneur">
+					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_lire_articles>
+			<BOUCLE_lire_breves(BREVES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
+			<li class="hentry clearfix">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div class="resume-conteneur">
+					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_BREVE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_lire_breves>
+			<BOUCLE_lire_rubriques(RUBRIQUES){id_mot IN #GET{id_mot}}{par titre}{exclus}>
+			<li class="hentry clearfix">
+				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+				<div class="resume-conteneur">
+					<h3 class="entry-title"><a href="#URL_RUBRIQUE">#TITRE</a></h3>
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_RUBRIQUE"><:suite:></a></span></p>]
+				</div>
+			</li>
+			</BOUCLE_lire_rubriques>
+		</ul>
+	</div><!-- #lire -->
+	</BOUCLE_condition_lire>
+
+</div><!-- .tabs -->

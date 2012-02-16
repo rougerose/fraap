@@ -1,120 +1,68 @@
-[(#REM)
-	définition de constantes
-]
+[(#REM) définition de constantes ]
 	[(#REM) par défaut rien ne s'affiche ]
-		#SET{condition,''}
+		#SET{condition,''} #SET{condition_annuaire,''}
 
 	[(#REM) format de mise en page ]
 		#SET{format,#ENV{format,''}} #SET{ordre,#ENV{ordre,''}}
 
-	[(#REM) déterminer si documents, mots, brèves, articles et brèves relatives aux mots-clés sont présents et passer la condition à oui ]
-		#SET{documents,''} #SET{mots,''} #SET{breves,''}
-		#SET{lire_articles,''} #SET{lire_breves,''}
+	[(#REM) déterminer s'il existe : documents (article/breve ou rubrique), breves/articles/rubriques liées, des breves et des mots-clés ]
+		#SET{documents_article,''} #SET{documents_rubrique,''}
+		#SET{lire_articles,''} #SET{lire_breves,''} #SET{lire_rubriques,''}
+		#SET{mots,''} #SET{breves,''}
 
-	[(#REM) tableau des mots ]
-	#SET{id_mot,#ARRAY}
+	[(#REM) pour la rubrique annuaire : mots-clés région ? et mots-clés activités ? ]
+		#SET{annuaire_region,''} #SET{annuaire_activites,''}
 
-<BOUCLE_t_docs(DOCUMENTS){id_article?}{id_rubrique?}{id_breve?}{vu=non}{0,1}>#SET{documents,oui}</BOUCLE_t_docs>
-[(#REM) on est bien dans une rubrique -- et non dans un article qui appartient à une rubrique avec des brèves -- ]
-	<BOUCLE_t_breves(BREVES){id_rubrique?}{0,1}>[(#ENV{page}|=={rubrique}|oui)[(#SET{breves,oui})]]</BOUCLE_t_breves>
-<BOUCLE_t_mots(MOTS){id_article?}{id_rubrique?}{0,1}>
-	#SET{mots,oui}
-	<BOUCLE_lire_articles(ARTICLES){id_mot}{0,1}{exclus}>#SET{lire_articles,oui}</BOUCLE_lire_articles>
-	<BOUCLE_lire_breves(BREVES){id_mot}{0,1}{exclus}>#SET{lire_breves,oui}</BOUCLE_lire_breves>
-</BOUCLE_t_mots>
+	[(#REM) boucles de test]
+	<BOUCLE_documents_t(DOCUMENTS){id_rubrique?}{id_article?}{id_breve?}{vu=non}{0,1}>
+	[(#ENV{type}|=={rubrique}|oui)#SET{documents_rubrique,oui}]
+	[(#ENV{type}|=={rubrique}|non)#SET{documents_article,oui}]</BOUCLE_documents_t>
 
-	[(#GET{documents}
-		|ou{#GET{mots}}
-		|ou{#GET{breves}}
-		|ou{#GET{mots}}
-		|ou{#GET{lire_articles}}
-		|ou{#GET{lire_breves}}
-		|oui)
-		#SET{condition,oui}
-	]
+	<BOUCLE_breves_t(BREVES){id_rubrique}{0,1}>#SET{breves,oui}</BOUCLE_breves_t>
 
-<BOUCLE_condition(CONDITION){si #GET{condition}}>
-<div id="extra-tabs" class="tabs clearfix[ (#GET{format})][ (#GET{ordre})]">
-	<ul class="liste">
-		[(#GET{documents}|oui)
-		<li><a href="#documents"><:documents:></a></li>
-		]
-		[(#GET{breves}|oui)
-		<li><a href="#breves"><:en_bref:></a></li>
-		]
-		[(#GET{mots}|oui)
-		<li><a href="#themes"><:themes:></a></li>
-		]
-		[(#GET{lire_articles}|ou{#GET{lire_breves}}|oui)
-		<li><a href="#lire"><:lire_aussi:></a></li>
-		]
-	</ul>
+	<BOUCLE_mots_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe !IN 1,2}{0,1}>
+		#SET{mots,oui}
+		<BOUCLE_lire_articles_t(ARTICLES){id_mot}{exclus}{0,1}>#SET{lire_articles,oui}</BOUCLE_lire_articles_t>
+		<BOUCLE_lire_breves_t(BREVES){id_mot}{exclus}{0,1}>#SET{lire_breves,oui}</BOUCLE_lire_breves_t>
+		<BOUCLE_lire_rubriques_t(RUBRIQUES){id_mot}{exclus}{0,1}>#SET{lire_rubriques,oui}</BOUCLE_lire_rubriques_t>
+	</BOUCLE_mots_t>
 
-	<B_documents>
-	<div id="documents" class="clearfix">
-		<BOUCLE_documents(DOCUMENTS){id_article?}{id_rubrique?}{id_breve?}{vu=non}>
-		[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
-		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
-			<dt>
-				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
-			</dt>
-			<dd>
-				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
-				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
-			</dd>
-		</dl>]
-		</BOUCLE_documents>
-	</div><!-- #documents -->
-	</B_documents>
+	<BOUCLE_annuaire_region_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe=1}>#SET{annuaire_region,oui}</BOUCLE_annuaire_region_t>
+	<BOUCLE_annuaire_activites_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe=2}>#SET{annuaire_activites,oui}</BOUCLE_annuaire_activites_t>
 
-	<BOUCLE_condition_breves(CONDITION){si #GET{breves}}>[(#REM) test nécessaire ]
-	<B_breves>
-	<div id="breves" class="liste">
-		<ul class="liste clearfix">
-			<BOUCLE_breves(BREVES){id_rubrique?}{!par date}>
-			[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
-			<li class="hentry[ (#GET{alterner})]">
-				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
-				<div class="resume-conteneur">
-					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
-				</div>
-			</li>
-			</BOUCLE_breves>
-		</ul>
-	</div><!-- #breves -->
-	</B_breves>
-	</BOUCLE_condition_breves>
+[(#GET{documents_article}|oui)<p>documents_articles</p>]
+[(#GET{documents_rubrique}|oui)<p>documents_rubriques</p>]
+[(#GET{breves}|oui)<p>breves</p>]
+[(#GET{lire_articles}|oui)<p>lire_articles</p>]
+[(#GET{lire_breves}|oui)<p>lire_breves</p>]
+[(#GET{lire_rubriques}|oui)<p>lire_rubriques</p>]
+[(#GET{annuaire_region}|oui)<p>annuaire_region</p>]
+[(#GET{annuaire_activites}|oui)<p>annuaire_activites</p>]
 
-	<B_themes>
-	<div id="themes" class="liste">
-		<ul class="liste">
-			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
-			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
-			<li>
-				<h3>#ID_RUBRIQUE
-					<a href="[(#ENV{idrubrique}|=={2}|?{#URL_RUBRIQUE{2}#theme#ID_MOT,#URL_MOT})]">#TITRE</a>
-				</h3>
-			</li>
-			</BOUCLE_themes>
-		</ul>
-	</div><!-- #themes -->
-	</B_themes>
+[(#REM) rubrique annuaire : les mots-clés]
+[(#GET{annuaire_region}|ou{#GET{annuaire_activites}}|oui)
+	#INCLURE{fond=inclure/tabs-contenu,env,annuaire_region=#GET{annuaire_region},annuaire_activite=#GET{annuaire_activites}}
+]
 
-	<B_lire>
-	<div id="lire">
-		<ul class="hfeed liste">
-			<BOUCLE_lire(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
-			<li class="hentry clearfix">
-				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
-				<div class="resume-conteneur">
-					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
-				</div>
-			</li>
-			</BOUCLE_lire>
-		</ul>
-	</div><!-- #lire -->
-	</B_lire>
-</div><!-- #tabs -->
-</BOUCLE_condition>
+[(#REM) les documents d'un article/une breve sont affichés à part ]
+[(#GET{documents_article}|oui)
+	#INCLURE{fond=inclure/tabs-contenu,env,format=#ENV{format},ordre=#ENV{ordre},documents_article=#GET{documents_article}}
+]
+
+[(#REM) les autres contenus sont affichés ensemble ]
+[(#GET{documents_rubrique}
+	|ou{#GET{breves}}
+	|ou{#GET{mots}}
+	|ou{#GET{lire_articles}}
+	|ou{#GHET{lire_breves}}
+	|ou{#GET{lire_rubriques}}
+	|oui)
+	#INCLURE{fond=inclure/tabs-contenu,env,format=#ENV{format},ordre=#ENV{ordre},
+		documents_rubrique=#GET{documents_rubrique},
+		breves=#GET{breves},
+		mots=#GET{mots},
+		lire_articles=#GET{lire_articles},
+		lire_breves=#GET{lire_breves},
+		lire_rubriques=#GET{lire_rubriques}
+	}
+]
