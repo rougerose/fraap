@@ -1,3 +1,5 @@
 <BOUCLE_titre(RUBRIQUES){id_rubrique}>
-	<h1>#TITRE</h1>
+	<h1>#TITRE
+		<BOUCLE_region(MOTS){id_mot=#ENV{region}}>[ &gt; (#TITRE)]</BOUCLE_region><BOUCLE_activites(MOTS){id_mot=#ENV{activites}}>[ &gt; (#TITRE)]</BOUCLE_activites>
+	</h1>
 </BOUCLE_titre>
