@@ -1,6 +1,32 @@
 [(#REM) définition de constantes ]
-#SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
-#SET{menu,''}
+	#SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
+	#SET{menu,''}
+
+[(#REM) éléments nécessaires pour le calcul des articles à afficher ]
+	#SET{tous,#ARRAY} #SET{regions,#ARRAY} #SET{activites,#ARRAY} #SET{intersection,#ARRAY}
+
+<BOUCLE_articles_tous(ARTICLES){id_rubrique}{!par date}>[(#SET{tous,#GET{tous}|push{#ID_ARTICLE}})]</BOUCLE_articles_tous>
+<BOUCLE_regions(spip_mots_articles spip_mots){id_groupe=1}>
+	[(#ENV{region}|oui)
+		[(#ID_MOT|=={#ENV{region}}|oui)
+			[(#SET{regions,#GET{regions}|push{#ID_ARTICLE}})]
+		]
+	][(#ENV{region}|non)
+		[(#SET{regions,#GET{regions}|push{#ID_ARTICLE}})]
+	]
+</BOUCLE_regions>
+<BOUCLE_activites(spip_mots_articles spip_mots){id_groupe=2}>
+	[(#ENV{activites}|oui)
+		[(#ID_MOT|=={#ENV{activites}}|oui)
+			[(#SET{activites,#GET{activites}|push{#ID_ARTICLE}})]
+		]
+	][(#ENV{activites}|non)
+		[(#SET{activites,#GET{activites}|push{#ID_ARTICLE}})]
+	]
+</BOUCLE_activites>
+
+[(#REM) calcul des id présents avec les deux critères ]
+[(#SET{intersection,#GET{tous}|array_intersect{#GET{regions},#GET{activites}}})]
 
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
@@ -25,28 +51,22 @@
 	(#TEXTE|image_reduire{220,0})
 </div><!-- #chapo-conteneur .introduction -->]
 
-[(#REM) les articles en sélection ]
-<B_articles_selection><BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
-</B_articles_selection>
-<BOUCLE_defaut(ARTICLES){id_rubrique}{!par date}{0,1}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_defaut>
-<//B_articles_selection>
-[(#REM) les articles de la rubrique ]
-<BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
-
 <div class="contenu clearfix">
+
+	[(#REM) formulaire de tri]
 	[(#INCLURE{fond=formulaires/tri_annuaire,env})]
 
+	[(#REM) todo : ajouter un compteur du nombre d'entrées ]
+	[(#GET{intersection}|count|>{0}|?{
+		[<p class="info-resultats">(#GET{intersection}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})</p>]
+		,
+		<p id="resultat" class="info-resultats"><:candidatures:criteres_pas_de_resultat:></p>
+	})]
 
 
-	<BOUCLE_condition_articles(CONDITION){si #GET{articles_selection}|ou{#GET{articles_rubrique}}}>
+	<BOUCLE_condition_articles(CONDITION){si #GET{intersection}}>
 	<div class="hfeed">
-		[(#REM) selection d'articles, format horizontal ]
-		<INCLURE{fond=inclure/articles-selection,
-			env,selection=#GET{articles_selection},pagination=5,format=horizontal,ajax,logo=140}>
-
-		[(#REM) les articles de la rubrique, format grille ]
-		<INCLURE{fond=inclure/articles-selection,
-			env,selection=#GET{articles_rubrique},format=grille,ajax,pagination=4}>
+		<INCLURE{fond=inclure/articles-selection,env,selection=#GET{intersection},format=grille,ajax,pagination=10}>
 
 		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>
 	</div><!-- .hfeed -->

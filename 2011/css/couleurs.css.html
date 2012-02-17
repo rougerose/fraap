@@ -58,14 +58,17 @@
 	.couleurID#ID_RUBRIQUE #titre h1,
 	.couleurID#ID_RUBRIQUE #titre p.surtitre,
 	.couleurID#ID_RUBRIQUE .textecourant h2.spip, .couleurID#ID_RUBRIQUE .textecourant h3.spip, .couleurID#ID_RUBRIQUE .textecourant h4.spip, .couleurID#ID_RUBRIQUE .textecourant h5.spip, .couleurID#ID_RUBRIQUE .textecourant h6.spip,
-	.couleurID#ID_RUBRIQUE #rubriques strong.on
+	.couleurID#ID_RUBRIQUE #rubriques strong.on,
+	.couleurID#ID_RUBRIQUE .info-resultats
 	{ color: ##GET{couleur}; }
 
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li,
 	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton,
 	.couleurID#ID_RUBRIQUE img.puce,
-	.couleurID#ID_RUBRIQUE .pagination strong.on { background-color: ##GET{couleur}; }
+	.couleurID#ID_RUBRIQUE .pagination strong.on,
+	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
+	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon { background-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE a.bouton:hover { background-color: ##GET{couleur_lum07}; }
 
@@ -104,7 +107,6 @@
 		.couleurID#ID_RUBRIQUE #titre h1,
 		.couleurID#ID_RUBRIQUE #stages-identification p.bienvenue,
 		.page_profil .couleurID#ID_RUBRIQUE h2,
-		.actions li.info-resultats,
 		#navigation-messagerie li strong.on { color: ##GET{couleur}; }
 
 		.formulaire_spip .liste_items li.item.on,
@@ -122,15 +124,22 @@
 		#stages-table tr.pair td { background-color: ##GET{couleur_sat01}; }
 
 		/* formulaires */
-		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne .xlegend { border-color: ##GET{couleur}; color: ##GET{couleur}; }
-		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne ul.fields li { xborder-color: ##GET{couleur_lum03}; }
+		/*.couleurID#ID_RUBRIQUE .formulaire_spip.enligne .xlegend { border-color: ##GET{couleur}; color: ##GET{couleur}; }
+		.couleurID#ID_RUBRIQUE .formulaire_spip.enligne ul.fields li { xborder-color: ##GET{couleur_lum03}; } */
+		.actions #formulaire_tri_stages { border-color: ##GET{couleur}; }
 
 	]
 
 	[(#REM) définitions spécifiques à la rubrique 11/Réseau ]
 	[(#ID_SECTEUR|=={11}|oui)
-		.syndication > h3 { border-color: ##GET{couleur} }
+		.syndication > h3 { color: ##GET{couleur} }
 
+	]
+
+	[(#REM) définition spécifique à la rubrique 3/Annuaire ]
+	[(#ID_SECTEUR|=={11}|oui)
+		dl.annuaire-tags dt.region, dl.annuaire-tags dt.activites { background-color: ##GET{couleur}; }
+		#formulaire_tri_annuaire ul { background-color: ##GET{couleur} }
 	]
 
 </BOUCLE_principale>
@@ -146,7 +155,4 @@
 	/* /Page Contact /##GET{couleurQuiSommesNous} */
 	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover { border-color: ##GET{couleurQuiSommesNous}; }
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover { color: ##GET{couleurQuiSommesNous}; }
-
-
-
 

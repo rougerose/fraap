@@ -100,7 +100,6 @@
 	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
 		.enligne label {
 			display: inline-block;
-			xvertical-align: top;
 			margin-right: 20px;
 			width: 80px; }
 		.enligne p.explication {
@@ -116,6 +115,17 @@
 	.formulaire_spip .bloc { float: left; margin: 0 10px; }
 	.formulaire_spip .bloc.item1 { margin-left: 0; }
 	.formulaire_spip .bloc:last-child { margin-right: 0; }
+
+/* formulaire tri annuaire */
+	#formulaire_tri_annuaire { margin-bottom: 1em; }
+	#formulaire_tri_annuaire ul {
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		        border-radius: 4px; }
+		#formulaire_tri_annuaire li {
+			padding: 3px 5px;
+			display: inline; float: left; }
+			#formulaire_tri_annuaire li label { color: #fff; }
 
 
 /* formulaire tri stages */

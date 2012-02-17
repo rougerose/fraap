@@ -51,18 +51,40 @@ a.img { display: block; float: left; }
 /* puce Spip */
 img.puce { background-color: #000; }
 
-/* icone */
-.icon {
-	cursor: pointer;
-	font-size: 0;
-	display: inline-block;
-	overflow: hidden;
-	height: 16px; width: 16px;
-	background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png');
-	-webkit-transition: background 0.15s ease;
-	   -moz-transition: background 0.15s ease;
-	     -o-transition: background 0.15s ease;
-	        transition: background 0.15s ease; }
+/* icones */
+	/* style générique */
+	.icon {
+		cursor: pointer;
+		font-size: 0;
+		display: inline-block;
+		overflow: hidden;
+		height: 16px; width: 16px;
+		-webkit-transition: background 0.15s ease;
+		   -moz-transition: background 0.15s ease;
+		     -o-transition: background 0.15s ease;
+		        transition: background 0.15s ease; }
+
+	/* tabs : icones des onglets */
+	.onglets li span.icon {
+		background: #aaa url('../images/sprite.png') no-repeat -17px 0;
+		vertical-align: top;
+		margin-right: 3px; }
+
+	/* annuaire asso */
+	.onglets li.region span.icon { background-position: -17px 0; }
+	.onglets li.activites span.icon { background-position: -34px 0; }
+
+	/* article */
+	.onglets li.themes span.icon { background-position: -51px 0; }
+	.onglets li.lire span.icon { background-position: -68px 0; }
+	.onglets li.documents span.icon { background-position: -17px -17px; }
+	.onglets li.breves span.icon { background-position: -34px -17px; }
+
+	/* rubrique annuaire > article > liste tags */
+	dl.annuaire-tags dt.icon { background: #000 url('../images/sprite.png') no-repeat -17px 0; vertical-align: top; float: left; }
+	dl.annuaire-tags dt.icon.region { background-position: -17px 0; }
+	dl.annuaire-tags dt.icon.activites { background-position: -34px 0; }
+
 
 /* texte courant */
 	.textecourant p, p.intro,
@@ -84,7 +106,7 @@ img.puce { background-color: #000; }
 	.pagination.haut .pagination-conteneur { border-top: 1px dotted #000; }
 	.pagination.bas .pagination-conteneur { border-bottom: 1px dotted #000; }
 		.pagination strong { color: #fff; background-color: #000; padding: 0 3px; border: 1px solid #000; }
-		.pagination a { border: 1px solid #000; padding: 0 3px 1px; }
+		.pagination .pagination-conteneur a { border: 1px solid #000; padding: 0 3px 1px; }
 		.pagination.haut a { border-top-width: 0; }
 		.pagination.bas a { border-bottom-width: 0; }
 		.pagination .separateur { display: none; }
@@ -139,20 +161,20 @@ img.puce { background-color: #000; }
 		.horizontal .hentry h3 { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
 
 
-	/* hentry dans #tabs (rubriques) */
+	/* hentry dans .tabs (rubriques) */
 
-	#extra-tabs .hentry {
+	.tabs .hentry {
 		border-top-width: 0;
 		border-bottom-color: #000;
 		padding: 0 0 1em; }
 
-		.contenu-secondaire #extra-tabs .hentry p.published {
+		.contenu-secondaire .tabs .hentry p.published {
 			float: left; display: inline;
 			width: 70px; }
 
-		#extra-tabs .hentry p.entry-content { margin-bottom: 0; }
+		.tabs .hentry p.entry-content { margin-bottom: 0; }
 
-		.contenu-secondaire #extra-tabs .hentry .resume-conteneur {
+		.contenu-secondaire .tabs .hentry .resume-conteneur {
 				float: right; display: inline;
 						width: 140px }
 
@@ -188,6 +210,12 @@ img.puce { background-color: #000; }
 				font-size: 13px; line-height: 18px;
 				margin-bottom: 0; }
 
+	/* Rubrique annuaire > article > liste des tags */
+	dl.annuaire-tags dt.region + dd { margin-bottom: 10px; }
+	dl.annuaire-tags dd {
+		font-size: 12px; line-height: 14px;
+		margin-left: 22px; margin-bottom: 5px; }
+
 
 	/* rubriquage #rubriques */
 	#rubriques { border-top: 1px solid #000; }
@@ -216,6 +244,15 @@ img.puce { background-color: #000; }
 			font-size: 12px; line-height: 18px;
 			margin: 0; }
 */
+
+/* messages d'informations */
+.info-resultats { font-weight: bold; }
+
+	/* rubrique annuaire */
+	.rubrique_annuaire .info-resultats { 
+		text-align: right;
+		font-size: 20px; }
+
 
 /* article */
 	/* date de publication et auteurs */
@@ -250,7 +287,6 @@ img.puce { background-color: #000; }
 	/* syndication */
 	.syndication > h3 {
 		font-size: 15px;
-		border-bottom: 1px solid #000;
 		margin-bottom: 1em; }
 		.syndication .groupe { border-bottom-width: 0; }
 		.syndication .liste li { padding-bottom: 0; }
@@ -386,7 +422,7 @@ img.puce { background-color: #000; }
 				#stages-table tr.enfant p { margin-bottom: .5em; margin-left: 28px; }
 					#stages-table tr.enfant p .icon {
 						border: 1px solid #ddd;
-						background-color: #f9f9f9;
+						background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat -80px -96px;
 						margin-left: 10px; margin-top: 5px;
 						vertical-align: bottom; }
 					#stages-table tr.enfant p .icon:hover {
@@ -480,14 +516,14 @@ img.puce { background-color: #000; }
 	.ui-tabs .related { margin-top: 1.5em; }
 
 	/* page rubrique */
-	.page_rubrique #extra-tabs { border-bottom: 1px solid #000; }
+	.page_rubrique .tabs { xborder-bottom: 1px solid #000; }
 
-	/* page article > #extra */
-	#extra-tabs .ui-tabs-nav {  }
-	#extra-tabs .ui-tabs-nav li { font-size: 13px;  }
+	/* page article > colonne secondaire */
+	.tabs .ui-tabs-nav {  }
+	.tabs .ui-tabs-nav li { font-size: 13px;  }
 
 	/* annuaire > page article */
-	#annuaire-contact .ui-tabs-nav li { font-size: 16px; }
+	#annuaire-contact .ui-tabs-nav li { font-size: 14px; }
 
 
 /* Jquery UI Accordion */

@@ -6,6 +6,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// A
+	'activites' => 'Activités',
 	'afficher_map' => 'Afficher l&#x27;adresse dans une carte',
 	'annuaire_compte' => "L’annuaire des associations et collectifs d’artistes membres de la FRAAP compte",
 
@@ -38,6 +39,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	//R
 	'referent' => 'Référent FRAAP',
+	'region' => 'Région',
 	'rubriques' => 'Rubriques',
 
 	// S

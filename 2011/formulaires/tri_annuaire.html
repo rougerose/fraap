@@ -1,6 +1,6 @@
-<div class="formulaire_spip" id="formulaire_tri_annuaire">
-	<form action="#SELF" method="get"><div>
-		<ul>
+<div id="formulaire_tri_annuaire" class="formulaire_spip">
+	<form action="[(#SELF)]" method="get"><div>
+		<ul class="clearfix">
 			<B_regions>
 			<li>
 				<label for=champ_region>Trier par région</label>
@@ -12,17 +12,17 @@
 				</select>
 			</li>
 			</B_regions>
-			<B_categorie>
+			<B_activites>
 			<li>
-				<label for="champ_categorie">Trier par catégorie</label>
-				<select name="categorie" id="champ_categorie" onchange="this.form.submit()">
-					<option value=""[ (#ENV{categorie}|=={''}|oui)selected='selected']>Toutes</option>
-					<BOUCLE_categorie(spip_mots_articles spip_mots){id_groupe=2}{par titre}>
-					<option value="#ID_MOT"[ (#ENV{categorie}|=={#ID_MOT}|oui)selected='selected']>#TITRE</option>
-					</BOUCLE_categorie>
+				<label for="champ_activites">Trier par activités</label>
+				<select name="activites" id="champ_activites" onchange="this.form.submit()">
+					<option value=""[ (#ENV{activites}|=={''}|oui)selected='selected']>Toutes</option>
+					<BOUCLE_activites(spip_mots_articles spip_mots){id_groupe=2}{par titre}>
+					<option value="#ID_MOT"[ (#ENV{activites}|=={#ID_MOT}|oui)selected='selected']>[(#TITRE|couper{60})]</option>
+					</BOUCLE_activites>
 				</select>
 			</li>
-			</B_categorie>
+			</B_activites>
 		</ul>
 		<p class="boutons"><input type="submit" class="submit" value="<:pass_ok:>" /></p>
 	</div></form>

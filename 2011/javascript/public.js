@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 	/*
 	* jquery UI Tabs
 	*/
-	$("#extra-tabs, #annuaire-contact, #formulaire_tri_criteres").tabs();
+	$(".tabs, #annuaire-contact, #formulaire_tri_criteres").tabs();
 
 
 	/*
@@ -29,12 +29,7 @@ jQuery(document).ready(function() {
 		autoHeight: false,
 		icons:false,
 		navigation:true,
-/*		navigationFilter: function() {
-			var hash = window.location.hash;
-			var dt = $('a[href='+hash+']').parent('dt');
-			console.log(dt); //return dt;
-		},
-*/		// on se met doucement là où il faut http://stackoverflow.com/a/3621845
+		// on se met doucement là où il faut http://stackoverflow.com/a/3621845
 		change: function(event,ui) {
 			$.scrollTo(ui.newHeader,500);
 		}

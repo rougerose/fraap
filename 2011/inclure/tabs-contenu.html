@@ -14,25 +14,25 @@
 		[(#ENV{annuaire_region}|oui)
 		<li class="region"><a href="#region"><span class="icon"></span><:region:></a></li>]
 		[(#ENV{annuaire_activite}|oui)
-		<li class="activites"><a href="#activites"><span class="icon"></span><:activites:></a></li>]
+		<li class="activites"><a href="#activite"><span class="icon"></span><:activites:></a></li>]
 	</ul>
-	
+
 	[(#REM) annuaire]
 	<BOUCLE_condition_annuaire_region(CONDITION){si #ENV{annuaire_region}}>
 	<div id="region" class="clearfix liste">
 		<ul class="liste">
 			<BOUCLE_region(MOTS){id_article?}{id_rubrique?}{id_groupe=1}{par titre}>
-			<li>#TITRE</li>
+			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{region,#ID_MOT})]">#TITRE</a></li>
 			</BOUCLE_region>
 		</ul>
 	</div><!-- #region -->
 	</BOUCLE_condition_annuaire_region>
-	
+
 	<BOUCLE_condition_annuaire_activite(CONDITION){si #ENV{annuaire_activite}}>
-	<div id="activites" class="clearfix liste">
+	<div id="activite" class="clearfix liste">
 		<ul class="liste">
 			<BOUCLE_activites(MOTS){id_article?}{id_rubrique?}{id_groupe=2}{par titre}>
-			<li>#TITRE</li>
+			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{activites,#ID_MOT})]">#TITRE</li>
 			</BOUCLE_activites>
 		</ul>
 	</div><!-- #activites -->
@@ -59,7 +59,7 @@
 	<BOUCLE_condition_rubrique(CONDITION){si #ENV{documents_rubrique}}>
 	<div id="documents" class="clearfix">
 		<BOUCLE_documents_rubrique(DOCUMENTS){id_rubrique}{vu=non}>
-		[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+		[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
 		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
 			<dt>
 				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
@@ -77,7 +77,7 @@
 	<div id="breves" class="liste">
 		<ul class="liste clearfix">
 			<BOUCLE_breves(BREVES){id_rubrique}{!par date}>
-			[(#GET{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
 			<li class="hentry[ (#GET{alterner})]">
 				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">

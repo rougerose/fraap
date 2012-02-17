@@ -19,7 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'competences' => 'Comp&eacute;tences',
 	'criteres_resultat' => '1 résultat',
 	'criteres_resultats' => '@nb@ résultats',
-	'criteres_pas_de_resultat' => '0 résultat',
+	'criteres_pas_de_resultat' => 'Aucun résultat',
 
 	// D
 
