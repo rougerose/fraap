@@ -255,18 +255,6 @@ img.puce { background-color: #000; }
 			margin: 0; }
 */
 
-/* messages d'informations */
-.info-resultats { font-weight: bold; }
-
-	/* recherche > page resultats */
-	.introduction .info-resultats { text-align: center; padding: 2px 3px 3px; }
-
-	/* rubrique annuaire */
-	.rubrique_annuaire .info-resultats {
-		text-align: right;
-		font-size: 20px; }
-
-
 /* article */
 	/* date de publication et auteurs */
 	#info-publi-objet-conteneur { xmargin-top: 1em; }
@@ -275,7 +263,6 @@ img.puce { background-color: #000; }
 
 	/* chapo */
 	#chapo-conteneur p { font-size: 15px; }
-	.page_recherche #chapo-conteneur p { font-size: 17px; }
 
 
 /* contenu secondaire */
@@ -308,6 +295,25 @@ img.puce { background-color: #000; }
 				.syndication .groupe .hentry .resume-conteneur { width: 340px; }
 				.syndication .liste .hentry h3 { font-size: 14px; margin-bottom: 9px; }
 				.syndication .liste .hentry p, .enclosures { margin-bottom: 9px; }
+
+
+/* messages d'informations */
+.info-resultats { font-weight: bold; }
+
+	/* recherche > page resultats */
+	.page_recherche #chapo-conteneur p.info-resultats {
+		font-size: 18px;
+		text-align: center; padding: 2px 3px 3px;
+		-webkit-border-radius: 3px;
+		   -moz-border-radius: 3px;
+		        border-radius: 3px; }
+	h2.info-resultats { font-size: 20px; border-bottom: 3px solid #000; }
+
+	/* rubrique annuaire */
+	.rubrique_annuaire .info-resultats {
+		text-align: right;
+		font-size: 20px; }
+
 
 /* stages */
 
