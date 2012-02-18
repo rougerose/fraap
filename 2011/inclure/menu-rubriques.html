@@ -3,7 +3,7 @@
 		<BOUCLE_rubriquage(RUBRIQUES){racine}{par num titre, titre}>
 		<BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique}{id_rubrique=#ENV{id_secteur}}>
 		<li[(#ID_RUBRIQUE|=={#ENV{id_rubrique}}|oui) class="on"]>
-			<a href="#URL_RUBRIQUE">#TITRE</a>
+			<a href="#URL_RUBRIQUE">[(#EXPOSE{<strong>})]#TITRE[(#EXPOSE{</strong>})]</a>
 			<B_sous_rubriques>
 			<ul>
 				<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
