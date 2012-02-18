@@ -128,27 +128,28 @@ img.puce { background-color: #000; }
 
 
 /* hfeed */
-	/* page rubrique et sommaire */
-	.groupe .hentry {
+	/* page rubrique, recherche et sommaire */
+	/* pour la page recherche on utilise les équivalences de classes pour les contenus qui ne sont pas des hentry en tant que tels */
+	.groupe .hentry, .groupe .item {
 		border-top: 2px solid #000;
 		padding-top: 1em; margin-bottom: 1em; }
 
-		.groupe .hentry .published {
+		.groupe .hentry .published, .groupe .item .info-publi {
 			color: #999;
 			line-height: 22px;
 			float: left; display: inline;
 			margin-right: 10px;
 			width: 100px; }
 
-		.groupe .hentry .logo-objet {
+		.groupe .hentry .logo-objet, .groupe .item .logo-objet {
 			float: left;
 			margin: 1px 19px 1px 1px; }
 
-		.groupe .hentry .resume-conteneur {
+		.groupe .hentry .resume-conteneur, .groupe .item .resume-conteneur {
 			float: left; display: inline;
 			margin-left: 10px; }
 
-		.hfeed .intro { overflow: hidden; }
+		.hfeed .intro, .recherche .intro { overflow: hidden; }
 		.groupe .hfeed h2.entry-title { }
 
 		.groupe h2.intertitre { margin-bottom: 0; }
@@ -158,7 +159,7 @@ img.puce { background-color: #000; }
 		.groupe .hentry h2 {
 			font-size: 20px; line-height: 22px;
 			margin-bottom: .5em; }
-		.horizontal .hentry h3 { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
+		.horizontal .hentry h3, .horizontal .item h3.titre { font-size: 18px; line-height: 20px; margin-bottom: .5em; }
 
 
 	/* hentry dans .tabs (rubriques) */
@@ -175,8 +176,8 @@ img.puce { background-color: #000; }
 		.tabs .hentry p.entry-content { margin-bottom: 0; }
 
 		.contenu-secondaire .tabs .hentry .resume-conteneur {
-				float: right; display: inline;
-						width: 140px }
+			float: right; display: inline;
+			width: 140px }
 
 
 	/* présentation en grille */
@@ -209,6 +210,15 @@ img.puce { background-color: #000; }
 			.liste h3 {
 				font-size: 13px; line-height: 18px;
 				margin-bottom: 0; }
+
+	/* recherche : contenus en liste et en grille */
+	.recherche .grille ul.liste li, .recherche .grille dl.liste {
+		border-top: 2px solid #000;
+		padding-top: 1em; padding-bottom: 0;
+		border-bottom-width:0; }
+	#breves ul.liste li { margin-bottom: 0; }
+		.recherche .grille dl.liste h3 { font-size: 13px; line-height: 16px; margin-bottom: .3em; }
+		.recherche .grille dl.liste p { font-size: 13px; line-height: 16px; }
 
 	/* Rubrique annuaire > article > liste des tags */
 	dl.annuaire-tags dt.region + dd { margin-bottom: 10px; }
@@ -248,8 +258,11 @@ img.puce { background-color: #000; }
 /* messages d'informations */
 .info-resultats { font-weight: bold; }
 
+	/* recherche > page resultats */
+	.introduction .info-resultats { text-align: center; padding: 2px 3px 3px; }
+
 	/* rubrique annuaire */
-	.rubrique_annuaire .info-resultats { 
+	.rubrique_annuaire .info-resultats {
 		text-align: right;
 		font-size: 20px; }
 
@@ -262,6 +275,7 @@ img.puce { background-color: #000; }
 
 	/* chapo */
 	#chapo-conteneur p { font-size: 15px; }
+	.page_recherche #chapo-conteneur p { font-size: 17px; }
 
 
 /* contenu secondaire */

@@ -53,7 +53,8 @@
 		background: url('../images/input-bg.png') no-repeat 0 0;
 		margin: .5em 0;
 		padding: 3px 5px;
-		border: 1px solid #bbb;
+		width: 340px;
+		border: 1px solid rgba(187,187,187,0.8);
 		-webkit-border-radius: 2px;
 		   -moz-border-radius: 2px;
 		        border-radius: 2px; }
@@ -62,7 +63,7 @@
 
 	/* focus */
 	.formulaire_spip input.text:focus, .formulaire_spip input.password:focus, .formulaire_spip textarea:focus {
-		border: 1px solid #000; }
+		border-color: #000; }
 
 	/* Boutons */
 	.formulaire_spip .boutons { clear: both; margin: 0 0 1em 0; padding: 0; text-align: right; }
@@ -159,44 +160,25 @@
 /* recherche */
 #raccourcis #formulaire_recherche {
 	position: relative; z-index: 2;
-	-webkit-border-bottom-right-radius: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-bottomright: 3px;
-	-moz-border-radius-bottomleft: 3px;
-	border-bottom-right-radius: 3px;
-	border-bottom-left-radius: 3px;
+	-webkit-border-radius: 0 0 4px 4px;
+	   -moz-border-radius: 0 0 4px 4px;
+	        border-radius: 0 0 4px 4px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	   -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	     -o-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	        box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
 	text-align: right;
-	background-color: #5a005a;
 	width: 940px; }
 	#formulaire_recherche form {
-		margin: 1em 0 1em 485px;
+		margin: 1em 0 1em 480px;
 		float:left; }
 		#formulaire_recherche label { display: none; }
 		#formulaire_recherche input[type=text] {
-			background: #fff url('../images/icones.png') no-repeat 1px 1px;
-			border: 1px solid #900090; border-color: #650065 #900090 #900090 #650065;
-			font-size: 12px;
-			padding-left: 20px;
-			width: 317px; }
-		#formulaire_recherche input[type=text]:focus { background-position: 1px -31px; }
-		#formulaire_recherche .submit {
-			-webkit-transition: background-color .2s linear, border-color .1s linear;
-			   -moz-transition: background-color .2s linear, border-color .1s linear;
-			     -o-transition: background-color .2s linear, border-color .1s linear;
-			        transition: background-color .2s linear, border-color .1s linear;
-			background-color: #909; color: #fff;
-			text-transform: uppercase; font-size: 11px;
-			border: 1px solid #909; border-color: #909 #4b004b #4b004b #909; }
-		#formulaire_recherche .submit:hover {
-		background-color: purple;
-		border-color: #909 #4b004b #4b004b #b100b1; }
-		#formulaire_recherche .submit:active {
-			border-color: #4b004b #b100b1 #b100b1 #4b004b;
-			background-color: #650065; }
-		#formulaire_recherche input[type=text], #formulaire_recherche .submit {
-			-webkit-border-radius: 4px;
-			   -moz-border-radius: 4px;
-			        border-radius: 4px; }
+			background-color: #fff;
+			margin-right: 10px;
+			width: 280px; }
+		#formulaire_recherche input[type=text]:focus { border-color: rgba(153,0,153,0.5);  }
+			
 
 /* page profil (stages) */
 .formulaire_editer_auteur_light {

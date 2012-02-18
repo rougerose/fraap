@@ -8,10 +8,12 @@
 	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,140}} #SET{pagination,#ENV{pagination,10}}
 <B_articles>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
-
+	[(#ENV{composition}|=={recherche}|oui)
+	[<h2 class="info-resultats">(#GET{selection}|count) articles</h2>]
+	]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 
-	<BOUCLE_articles(ARTICLES){id_article IN #ENV{selection}}{pagination #ENV{pagination}}>
+	<BOUCLE_articles(ARTICLES){id_article IN #GET{selection}}{pagination #GET{pagination}}>
 	[(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})]
 	#INCLURE{fond=inclure/article-resume,id_article,composition=#ENV{composition},logo=#GET{logo},alterner=#GET{alterner}}
 	</BOUCLE_articles>

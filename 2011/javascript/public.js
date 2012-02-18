@@ -65,27 +65,27 @@ jQuery(document).ready(function() {
 		// animation du bouton
 		$bouton.hover(
 			function(){
-				$(this).stop().animate({ borderTopWidth: '8px' }, 'normal');
+				$(this).stop().animate({ borderTopWidth: '10px' }, 'normal');
 			}
 			,
 			function(){
 				if ($(this).hasClass("on")) { return false; }
 				else {
-					$(this).stop().animate({ borderTopWidth:'2px' }, 'normal');
+					$(this).stop().animate({ borderTopWidth:'4px' }, 'normal');
 				}
 			}
 		);
 
 		// et le clic
 		$bouton.click(function(){
-			$(this).addClass("on").animate({ borderTopWidth:'8px' }, 'normal');
+			$(this).addClass("on").animate({ borderTopWidth:'10px' }, 'normal');
 			compteur ++;
 			$slide.slideToggle("normal", function(){
 				if (compteur %2 == 0) {
-					$bouton.removeClass("on").stop().animate({borderTopWidth: '2px'}, "fast");
+					$bouton.removeClass("on").stop().animate({borderTopWidth: '4px'}, "fast");
 				 }
 				else {
-					$bouton.stop().animate({borderTopWidth: '8px'},"fast").addClass("on");
+					$bouton.stop().animate({borderTopWidth: '10px'},"fast").addClass("on");
 				}
 			});
 			$ul.find(">li").slice(1).toggleClass("marge");

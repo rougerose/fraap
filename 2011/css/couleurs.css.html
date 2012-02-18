@@ -70,7 +70,7 @@
 	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
 	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon { background-color: ##GET{couleur}; }
 
-	.couleurID#ID_RUBRIQUE a.bouton:hover { background-color: ##GET{couleur_lum07}; }
+	.couleurID#ID_RUBRIQUE a.bouton:hover, .couleurID#ID_RUBRIQUE input.bouton:hover { background-color: ##GET{couleur_lum07}; }
 
 	#nav li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
 
@@ -143,6 +143,22 @@
 	]
 
 </BOUCLE_principale>
+
+[(#REM) couleur page Recherche ]
+	/* /Recherche /#5a005a - 90,0,90 */
+
+	/* formulaire de recherche */
+	#raccourcis #formulaire_recherche { background-color: rgb(115,0,115); }
+		#formulaire_recherche input[type=text]:focus { border-color: rgba(166,0,166,0.5); }
+		#formulaire_recherche .bouton { background-color: rgba(115,0,115,0.5); }
+		#formulaire_recherche .bouton:hover { background-color: rgb(89,0,89); }
+
+	/* menu #raccourcis > recherche */
+	#raccourcis ul li.recherche.on, #raccourcis ul li.recherche:hover { border-color: rgb(115,0,115); }
+	#raccourcis ul li.recherche.on a, #raccourcis ul li.recherche:hover { color: rgb(115,0,115); }
+
+	/* page resultats */
+	.page_recherche p.info-resultats { background-color: rgb(115,0,115); color: #fff; }
 
 [(#REM) couleur page liste diffusion Fraap-infos ]
 

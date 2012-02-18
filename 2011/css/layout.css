@@ -47,7 +47,8 @@
 	.page_login #contenu,
 	.page_identification #contenu,
 	.page_inscription #contenu,
-	.page_candidature #contenu {
+	.page_candidature #contenu,
+	.page_recherche #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }
@@ -71,7 +72,7 @@
 	border: 1px solid #000; border-width: 0 0 1px; }
 
 /* presentation horizontale */
-.horizontal .hentry .resume-conteneur { width: 580px; }
+.horizontal .hentry .resume-conteneur, .horizontal .item .resume-conteneur { width: 580px; }
 
 /* présentation grille */
 .groupe.grille { padding-top: 1em; }
@@ -84,6 +85,21 @@
 
 	/* documents en grille dans les rubriques */
 	.grille #documents dl { width: 340px; display: inline; float: left; }
+
+	/* résultats de recherche */
+		/* breves en grille */
+		.recherche .grille .hentry { width: 220px; }
+		.recherche .grille .hentry .resume-conteneur { width: 140px; float: right; }
+		.recherche .grille .hentry .published { width: 70px; margin-right: 0; }
+		/* documents en grille */
+		.recherche.grid_12 { margin-left: 0; }
+		.recherche.grille .item {
+			float: left;
+			width: 220px;
+			margin-left: 10px; margin-right: 10px; }
+		.recherche.grille .item:first-child { margin-left: 0; }
+		.recherche.grille .item:last-child { margin-right: 0; }
+		.recherche.grille #documents dl { width: auto; }
 
 	/* page sommaire */
 	.page_sommaire .grille { margin-left: 0; margin-right: 0; }
@@ -104,11 +120,11 @@
 		float: right; display: inline;
 		position: relative;
 		width: 700px; }
-		
+
 	/* .textecourant : blocs de texte, notes, ps */
 	.textecourant { margin-bottom: 3em; }
-	
-	
+
+
 	/* notes */
 	.notes { margin-top: 3em; margin-left: 120px; }
 
@@ -233,7 +249,7 @@
 		width: 940px; clear: both; }
 
 		#raccourcis ul {
-			z-index: 0;
+			z-index: 2;
 			margin:0;
 			float: right; }
 			#raccourcis ul li {
@@ -243,10 +259,14 @@
 				min-height: 3.25em;
 				width: 100px; }
 			#raccourcis ul li:last-child { margin-right: 0; }
-			#raccourcis ul li.on { margin-top: 0; border-color: #5a005a; border-top-width: 8px; }
+			#raccourcis ul li.on { margin-top: 0; border-color: #5a005a; border-top-width: 8px;  }
 			#raccourcis ul li.marge { margin-top: 4px; }
-			#raccourcis ul li.recherche { position: relative; }
-				#raccourcis ul li.on a { color: #5a005a; }
+			#raccourcis ul li.recherche {
+				position: relative; xz-index: 2;
+				border-top-width: 4px;
+				margin-top:-2px }
+			#raccourcis ul li.on.recherche { border-top-width: 8px; }
+				#raccourcis ul li.on a {  }
 				#raccourcis ul li a { display: block; }
 
 	/* zone menu-identification (rubrique Stages) */
@@ -284,5 +304,3 @@
 		border: 1px dotted #000;
 		border-top-style: solid;
 		border-width: 1px 0 1px; }
-
-
