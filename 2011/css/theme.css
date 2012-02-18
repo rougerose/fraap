@@ -227,7 +227,7 @@ img.puce { background-color: #000; }
 				list-style-type: none;
 				margin: 0 0 .5em 0; padding:0;
 				text-indent: -1.5em; }
-				#rubriques ul.liste li strong:before, #rubriques ul.liste li a:before { font-size: 16px; content: "\2192\00A0"; }
+				#rubriques ul.liste li a:before { font-size: 16px; content: "\2192\00A0"; }
 				#rubriques ul.liste li ul { margin-left: 1.5em; margin-top: .5em; }
 
 /* TODO à supprimer ? */
