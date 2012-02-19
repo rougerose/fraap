@@ -44,6 +44,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'publie_le' => 'Publié le',
 
 	//R
+	'recherche' => 'Recherche',
 	'referent' => 'Référent FRAAP',
 	'region' => 'Région',
 	'rubrique_rech' => '1 rubrique',
