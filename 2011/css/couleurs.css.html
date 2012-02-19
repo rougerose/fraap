@@ -1,4 +1,3 @@
-#CACHE{0}
 #HTTP_HEADER{Content-Type: text/css; charset=utf-8}
 #HTTP_HEADER{Vary: Accept-Encoding}
 [(#REM) css des couleurs des rubriques définies via l'espace privé ]
@@ -144,31 +143,49 @@
 
 </BOUCLE_principale>
 
+[(#REM) couleur squelette Mot ]
+	[(#SET{mot,#VAL{#54c8d9}|hex2rgb})]
+	/* /Mot /#54c8d9 - rgb:#GET{mot} */
+
+	.mot h2.info-resultats { border-color: rgb(#GET{mot}); color: rgb(#GET{mot}); }
+
+	.mot .groupe, .page_recherche .groupe .hentry, .mot .groupe .item,
+	.mot .grille dl.liste, .mot .grille ul.liste li,
+	.page_mot .pagination, .page_mot .pagination strong, .page_mot .pagination a { border-color: rgb(#GET{mot}); }
+
+	.mot .groupe a:hover, .page_mot #titre h1,
+	.page_mot #fil strong, .page_mot #fil a:hover { color: rgb(#GET{mot}); }
+
+	.page_mot .pagination strong.on { background-color: rgb(#GET{mot}); }
+
+
 [(#REM) couleur page Recherche ]
-	/* /Recherche /#5a005a - 90,0,90 */
+
+	[(#SET{recherche,#VAL{#730073}|hex2rgb})]
+	/* /Recherche /#730073 - rgb:#GET{recherche} */
 
 	/* formulaire de recherche */
-	#raccourcis #formulaire_recherche { background-color: rgb(115,0,115); }
+	#raccourcis #formulaire_recherche { background-color: rgb(#GET{recherche}); }
 		#formulaire_recherche input[type=text]:focus { border-color: rgba(166,0,166,0.5); }
-		#formulaire_recherche .bouton { background-color: rgba(115,0,115,0.5); }
+		#formulaire_recherche .bouton { background-color: rgba(#GET{recherche},0.5); }
 		#formulaire_recherche .bouton:hover { background-color: rgb(89,0,89); }
 
 	/* menu #raccourcis > recherche */
-	#raccourcis ul li.recherche.on, #raccourcis ul li.recherche:hover { border-color: rgb(115,0,115); }
-	#raccourcis ul li.recherche.on a, #raccourcis ul li.recherche:hover { color: rgb(115,0,115); }
+	#raccourcis ul li.recherche.on, #raccourcis ul li.recherche:hover { border-color: rgb(#GET{recherche}); }
+	#raccourcis ul li.recherche.on a, #raccourcis ul li.recherche:hover { color: rgb(#GET{recherche}); }
 
 	/* page resultats */
-	.page_recherche p.info-resultats { background-color: rgb(115,0,115); color: #fff; }
-	h2.info-resultats { border-color: rgb(115,0,115); color: rgb(115,0,115); }
+	.page_recherche p.info-resultats { background-color: rgb(#GET{recherche}); color: #fff; }
+	.page_recherche h2.info-resultats { border-color: rgb(#GET{recherche}); color: rgb(#GET{recherche}); }
 
 	.page_recherche .groupe, .page_recherche .groupe .hentry, .page_recherche .groupe .item,
 	.page_recherche .grille dl.liste, .page_recherche .grille ul.liste li,
-	.page_recherche .pagination, .page_recherche .pagination strong, .page_recherche .pagination a { border-color: rgb(115,0,115); }
+	.page_recherche .pagination, .page_recherche .pagination strong, .page_recherche .pagination a { border-color: rgb(#GET{recherche}); }
 
 	.page_recherche .groupe a:hover, .page_recherche #titre h1,
-	.page_recherche #fil strong, .page_recherche #fil a:hover { color: rgb(115,0,115); }
+	.page_recherche #fil strong, .page_recherche #fil a:hover { color: rgb(#GET{recherche}); }
 
-	.page_recherche .pagination strong.on { background-color: rgb(115,0,115); }
+	.page_recherche .pagination strong.on { background-color: rgb(#GET{recherche}); }
 
 [(#REM) couleur page liste diffusion Fraap-infos ]
 

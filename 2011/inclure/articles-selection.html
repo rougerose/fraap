@@ -8,7 +8,7 @@
 	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,140}} #SET{pagination,#ENV{pagination,10}}
 <B_articles>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
-	[(#ENV{composition}|=={recherche}|oui)
+	[(#ENV{composition}|=={recherche}|ou{#ENV{type}|=={mot}}|oui)
 	[<h2 class="info-resultats">(#GET{selection}|count) articles</h2>]
 	]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]

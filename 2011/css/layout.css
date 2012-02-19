@@ -165,7 +165,7 @@
 
 	/* pied de page */
 	#pied { margin: 1em 10px 2em;  }
-		#pied .groupe { border-bottom-width: 0;  }
+		#pied .groupe { border-bottom-width: 0; border-color: #000;  }
 		#pied .colonne {
 			float: left; display: inline;
 			margin-right: 10px; }

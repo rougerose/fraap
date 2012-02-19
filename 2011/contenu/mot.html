@@ -1,0 +1,46 @@
+<BOUCLE_mot(MOTS){id_mot}>
+<div id="extra-objet-conteneur">
+	[<div id="logo-objet-conteneur">
+		(#LOGO_MOT|inserer_attribut{class,logo-objet}|image_reduire{200,0})
+	</div><!-- #logo-objet-conteneur -->]
+
+	<div id="info-publi-objet-conteneur">
+
+		[(#REM) [(#MODELE{socialtags})] ]
+
+	</div><!-- #info-publi-objet-conteneur -->
+</div><!-- #extra-objet -->
+
+[<div id="chapo-conteneur" class="introduction surlignable #EDIT{texte}">
+	(#TEXTE|image_reduire{220,0})
+</div><!-- #chapo-conteneur .introduction -->]
+
+[(#REM) tableaux des résultats ]
+#SET{articles,#ARRAY} #SET{rubriques,#ARRAY} #SET{breves,#ARRAY}
+
+<BOUCLE_articles(ARTICLES){id_mot}{!par date}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles>
+<BOUCLE_rubriques(RUBRIQUES){id_mot}{par titre}>[(#SET{rubriques,#GET{rubriques}|push{#ID_RUBRIQUE}})]</BOUCLE_rubriques>
+<BOUCLE_breves(BREVES){id_mot}{!par date}>[(#SET{breves,#GET{breves}|push{#ID_BREVE}})]</BOUCLE_breves>
+
+<div class="contenu surlignable clearfix">
+	<BOUCLE_condition_articles(CONDITION){si #GET{articles}}>
+	<div class="hfeed mot">
+		[(#REM) articles, format horizontal ]
+		<INCLURE{fond=inclure/articles-selection,env,selection=#GET{articles},pagination=5,format=horizontal,ajax,logo=140}>
+	</div><!-- .hfeed recherche -->
+	</BOUCLE_condition_articles>
+
+	<BOUCLE_condition_rubriques(CONDITION){si #GET{rubriques}}>
+	<div class="mot">
+		[(#REM) rubriques, format horizontal ]
+		<INCLURE{fond=inclure/recherche-rubriques,env,selection=#GET{rubriques},pagination=5,format=horizontal,ajax,logo=140}>
+	</div><!-- .recherche -->
+	</BOUCLE_condition_rubriques>
+
+	<BOUCLE_condition_breves(CONDITION){si #GET{breves}}>
+	<div class="hfeed mot">
+		<INCLURE{fond=inclure/recherche-breves,env,selection=#GET{breves},format=horizontal,pagination=5,ajax}>
+	</div><!--  -->
+	</BOUCLE_condition_breves>
+</div><!-- .contenu -->
+</BOUCLE_mot>

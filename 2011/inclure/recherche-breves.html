@@ -14,7 +14,7 @@
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 	<ul class="liste clearfix">
 		<BOUCLE_breves(BREVES){id_breve IN #GET{selection}}{pagination #GET{pagination}}>
-		<li class="hentry[ (#GET{alterner})]">
+		<li class="hentry clearfix[ (#GET{alterner})]">
 			<p class="info-publi updated published"><span class="value" title="[(#DATE|affdate{c})]">[(#DATE|affdate{d/m/Y})]</span></p>
 			<div class="resume-conteneur">
 				<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
