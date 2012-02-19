@@ -91,7 +91,7 @@ jQuery(document).ready(function() {
 			$ul.find(">li").slice(1).toggleClass("marge");
 		});
 		// le formulaire est affiché par défaut sur la page de recherche
-		if ($("body.page_recherche")) { $bouton.trigger("click"); }
+		if ($("body.page_recherche").length) { $bouton.trigger("click"); }
 	});
 });
 
