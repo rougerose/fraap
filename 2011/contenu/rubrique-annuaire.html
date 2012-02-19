@@ -47,7 +47,7 @@
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
-[<div id="chapo-conteneur" class="introduction #EDIT{texte}">
+[<div id="chapo-conteneur" class="introduction surlignable #EDIT{texte}">
 	(#TEXTE|image_reduire{220,0})
 </div><!-- #chapo-conteneur .introduction -->]
 
@@ -65,7 +65,7 @@
 
 
 	<BOUCLE_condition_articles(CONDITION){si #GET{intersection}}>
-	<div class="hfeed">
+	<div class="hfeed surlignable">
 		<INCLURE{fond=inclure/articles-selection,env,selection=#GET{intersection},format=grille,ajax,pagination=10}>
 
 		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>

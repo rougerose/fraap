@@ -6,6 +6,7 @@
  ]
 	#SET{selection,#ENV{selection}}
 	#SET{format,#ENV{format,horizontal}} #SET{logo,#ENV{logo,140}} #SET{pagination,#ENV{pagination,10}}
+	#SET{url,''}
 
 <B_mots>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
@@ -14,7 +15,12 @@
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 	<ul class="liste">
 		<BOUCLE_mots(MOTS){id_mot IN #GET{selection}}{pagination #GET{pagination}}>
-		<li><h3>#TITRE</h3></li>
+		[(#REM) calcul url]
+		[(#ID_GROUPE|=={5}|oui)#SET{url,#URL_RUBRIQUE{2}#theme#ID_MOT}]
+		[(#ID_GROUPE|=={1}|oui)#SET{url,#URL_RUBRIQUE{3}|parametre_url{region,#ID_MOT}}]
+		[(#ID_GROUPE|=={2}|oui)#SET{url,#URL_RUBRIQUE{3}|parametre_url{activites,#ID_MOT}}]
+		[(#ID_GROUPE|match{1|2|5}|non)#SET{url,#URL_MOT}]
+		<li><h3><a href="#GET{url}">#TITRE</a></h3></li>
 		</BOUCLE_mots>
 	</ul>
 	[<p class="pagination bas clearfix">(#PAGINATION{page})</p>]

@@ -60,7 +60,7 @@ jQuery(document).ready(function() {
 		$ul.prepend('<li class="recherche filets"><a href="#">recherche</a></li>');
 		var $bouton = $ul.find(".recherche");
 
-	//	$slide.hide();
+
 
 		// animation du bouton
 		$bouton.hover(
@@ -90,6 +90,8 @@ jQuery(document).ready(function() {
 			});
 			$ul.find(">li").slice(1).toggleClass("marge");
 		});
+		// le formulaire est affiché par défaut sur la page de recherche
+		if ($("body.page_recherche")) { $bouton.trigger("click"); }
 	});
 });
 

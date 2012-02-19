@@ -1,6 +1,6 @@
 [(#REM) tableau des mots ]
 #SET{id_mot,#ARRAY}
-
+#SET{mediabox,''}
 <div class="tabs clearfix[ (#ENV{format})][ (#ENV{ordre})]">
 	<ul class="liste onglets">
 		[(#ENV{documents_article}|ou{#ENV{documents_rubrique}}|oui)
@@ -42,12 +42,13 @@
 	<BOUCLE_condition_article(CONDITION){si #ENV{documents_article}}>
 	<div id="documents" class="clearfix">
 		<BOUCLE_documents_article(DOCUMENTS){id_article?}{id_breve?}{vu=non}>
+		[(#EXTENSION|match{jpg|jpeg|png|gif}|oui)#SET{mediabox,oui}]
 		[<dl id="document-#ID_DOCUMENT" class="liste">
 			<dt>
-				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
+				<a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT})"]>(#LOGO_DOCUMENT|image_reduire{52,52})</a>
 			</dt>
 			<dd>
-				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
+				<h3><a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
 				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
 			</dd>
 		</dl>]
@@ -60,12 +61,13 @@
 	<div id="documents" class="clearfix">
 		<BOUCLE_documents_rubrique(DOCUMENTS){id_rubrique}{vu=non}>
 		[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+		[(#EXTENSION|match{jpg|jpeg|png|gif}|oui)#SET{mediabox,oui}]
 		[<dl id="document-#ID_DOCUMENT" class="liste[ (#GET{alterner})]">
 			<dt>
-				<a href="#URL_DOCUMENT" type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT}) - #TYPE_DOCUMENT"]>(#LOGO_DOCUMENT|#URL_DOCUMENT|image_reduire{52,52})</a>
+				<a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] type="#MIME_TYPE"[ title="(#TITRE|couper|sinon{<:info_document:> #ID_DOCUMENT})"]>(#LOGO_DOCUMENT|image_reduire{52,52})</a>
 			</dt>
 			<dd>
-				<h3><a href="#URL_DOCUMENT" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
+				<h3><a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
 				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
 			</dd>
 		</dl>]

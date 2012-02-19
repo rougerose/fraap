@@ -19,13 +19,13 @@
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
-[<div id="chapo-conteneur" class="introduction #EDIT{texte}">
+[<div id="chapo-conteneur" class="introduction surlignable #EDIT{texte}">
 	(#TEXTE|image_reduire{220,0})
 </div><!-- #chapo-conteneur .introduction -->]
 
 <div class="contenu clearfix">
 	<B_categories>
-	<dl id="ressources" class="hfeed">
+	<dl id="ressources" class="hfeed surlignable">
 		<BOUCLE_categories(MOTS){id_groupe=5}{par titre}>#SET{idmot,#ID_MOT}
 		<dt><a class="theme" href="#theme#ID_MOT">#TITRE</a></dt>
 		<B_articles_lies>
