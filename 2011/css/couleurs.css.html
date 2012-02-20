@@ -11,10 +11,12 @@
 /*	Version :	2.0							*/
 /* ======================================== */
 
-[(#SET{couleur,[(#VAL{0}|couleur_rubrique)]})]
+
 
 <BOUCLE_principale(RUBRIQUES){racine}{tout_voir}>
-	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
+	#SET{defaut,000}
+	
+	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{defaut})]})]})]
 
 	[(#SET{couleur_lum01,[(#GET{couleur}|couleur_luminance{0.1})]})]
 	[(#SET{couleur_lum03,[(#GET{couleur}|couleur_luminance{0.3})]})]
@@ -25,7 +27,7 @@
 
 	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
 	[(#ID_RUBRIQUE|=={12}|oui)
-		[(#SET{QSN,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
+		[(#SET{QSN,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{defaut})]})]})]
 	]
 
 	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
@@ -70,6 +72,9 @@
 	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon { background-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE a.bouton:hover, .couleurID#ID_RUBRIQUE input.bouton:hover { background-color: ##GET{couleur_lum07}; }
+
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover { border-color: ##GET{couleur}; color: ##GET{couleur}; }
 
 	#nav li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
 
