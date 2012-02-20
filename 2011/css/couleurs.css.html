@@ -196,8 +196,9 @@
 
 [(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
 	/* /Page Contact /##GET{QSN} */
-	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover, 
+	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover,
 	.couleurID12 .formulaire_spip fieldset.previsu { border-color: ##GET{QSN}; }
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
-	.couleurID12 #titre h1 { color: ##GET{QSN}; }
+	.page_contact #titre h1,
+	.page_contact #fil strong, .page_contact #fil a:hover { color: ##GET{QSN}; }
 
