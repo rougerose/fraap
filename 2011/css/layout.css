@@ -48,7 +48,8 @@
 	.page_identification #contenu,
 	.page_inscription #contenu,
 	.page_candidature #contenu,
-	.page_recherche #contenu {
+	.page_recherche #contenu,
+	.page_contact #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }

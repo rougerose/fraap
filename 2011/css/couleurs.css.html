@@ -25,7 +25,7 @@
 
 	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
 	[(#ID_RUBRIQUE|=={12}|oui)
-		[(#SET{couleurQuiSommesNous,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
+		[(#SET{QSN,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{couleur})]})]})]
 	]
 
 	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
@@ -195,7 +195,9 @@
 
 
 [(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
-	/* /Page Contact /##GET{couleurQuiSommesNous} */
-	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover { border-color: ##GET{couleurQuiSommesNous}; }
-	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover { color: ##GET{couleurQuiSommesNous}; }
+	/* /Page Contact /##GET{QSN} */
+	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover, 
+	.couleurID12 .formulaire_spip fieldset.previsu { border-color: ##GET{QSN}; }
+	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
+	.couleurID12 #titre h1 { color: ##GET{QSN}; }
 
