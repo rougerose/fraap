@@ -29,9 +29,11 @@
 				<a href="http://www.facebook.com/profile.php?id=100000199187123">Facebook</a>
 			</li>
 			<li class="rss">
-				<a href="#">RSS</a>
+				<a href="#URL_PAGE{backend}">RSS</a>
 			</li>
-			<li class="credits"><a href="#">Crédits et mentions légales</a></li>
+			<BOUCLE_legal(ARTICLES){page=credits}>
+			<li class="credits"><a href="#URL_ARTICLE">#TITRE</a></li>
+			</BOUCLE_legal>
 		</ul>
 	</div><!-- .groupe -->
 </div>
