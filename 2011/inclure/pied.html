@@ -6,7 +6,11 @@
 	<div class="groupe grid_8 alpha">
 		<h2>Qui sommes-nous ?</h2>
 		<div class="about colonne">
-			<p class="intro">La Fraap est une fédération ouverte à toutes les associations et collectifs d’artistes plasticiens. Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="#" class="suite">lire la suite</a></p>
+			#SET{suite,''}
+			<BOUCLE_article_qsn(ARTICLES){id_article=2}>[(#SET{suite,<a href="#URL_ARTICLE" class="suite"><:plus:></a>})]</BOUCLE_article_qsn>
+			[<p class="intro">
+				(#DESCRIPTIF_SITE_SPIP|PtoBR)[ (#GET{suite})]
+			</p>]
 		</div><!-- .about -->
 
 		<div class="vcard colonne">
