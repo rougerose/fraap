@@ -26,10 +26,12 @@
 </div><!-- #chapo-conteneur .introduction -->]
 
 [(#REM) les articles en sélection ]
-<B_articles_selection><BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
-</B_articles_selection>
+<BOUCLE_articles_selection(ARTICLES pb_selection){par ordre}{spip_pb_selection.id_rubrique=#ID_RUBRIQUE}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_articles_selection>
+[(#REM) si pas de sélection ]
+<BOUCLE_condition_selection(CONDITION){si #GET{articles_selection}|count|=={0}}>
 <BOUCLE_defaut(ARTICLES){id_rubrique}{!par date}{0,1}{doublons}>#SET_PUSH{articles_selection,#ID_ARTICLE}</BOUCLE_defaut>
-<//B_articles_selection>
+</BOUCLE_condition_selection>
+
 [(#REM) les articles de la rubrique ]
 <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
 
