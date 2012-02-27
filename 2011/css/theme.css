@@ -58,15 +58,22 @@ img.puce { background-color: #000; }
 		font-size: 0;
 		display: inline-block;
 		overflow: hidden;
-		height: 16px; width: 16px;
-		-webkit-transition: background 0.15s ease;
-		   -moz-transition: background 0.15s ease;
-		     -o-transition: background 0.15s ease;
-		        transition: background 0.15s ease; }
+		height: 22px; width: 22px;
+		background: #000 url('../images/sprite.png') no-repeat 0 0;
+		border: 1px solid #000;
+		-webkit-border-radius: 2px;
+		   -moz-border-radius: 2px;
+		        border-radius: 2px;
+		-webkit-transition: background-color 0.15s ease;
+		   -moz-transition: background-color 0.15s ease;
+		     -o-transition: background-color 0.15s ease;
+		        transition: background-color 0.15s ease; }
 
 	/* tabs : icones des onglets */
 	.onglets li span.icon {
 		background: #aaa url('../images/sprite.png') no-repeat -17px 0;
+		height: 16px; width: 16px;
+		border: none; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;
 		vertical-align: top;
 		margin-right: 3px; }
 
@@ -316,21 +323,20 @@ img.puce { background-color: #000; }
 /* stages */
 
 	/* zone d'actions : styles communs */
-	.actions a.icon {
-		background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat;
-		border: 1px solid #ddd; }
-	.actions a.icon:hover {
-		background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
-		border-color: #ddd #f9f9f9 #f9f9f9 #ddd; }
-	.actions a.icon.ajouter { background-position: -16px -128px; }
-	.actions a.icon.modifier { background-position: -64px -112px; }
-	.actions a.icon.supprimer {
-		margin-right: 5px;
-		background-position: -176px -96px; }
-	.actions a.icon.trier { background-position: -160px -112px; }
+	.actions a.icon.ajouter { background-position: -73px -39px; }
+	.actions a.icon.ajouter:hover { background-position: -73px -72px; }
+	.actions a.icon.modifier { background-position: -5px -105px; }
+	.actions a.icon.modifier:hover { background-position: -38px -105px; }
+	.actions a.icon.supprimer { margin-right: 5px; background-position: -72px -105px; }
+	.actions a.icon.supprimer:hover { background-position: -72px -138px; }
+	.actions a.icon.trier { background-position: -4px -38px; }
+	.actions a.icon.trier:hover { background-position: -38px -38px; }
 	.actions a.trier.ouvert {
-		background: #196efa url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png') no-repeat -160px -112px;
-		border-color: #000 #e5e5e5 #e5e5e5 #000; }
+		background-position: -38px -38px;
+		-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset;
+		   -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset;
+		     -o-box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset;
+		        box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset; }
 
 
 	/* page de présentation/login/inscription */
@@ -420,36 +426,22 @@ img.puce { background-color: #000; }
 		/* tableau des stages */
 		table#stages-table { width: 100%; border: 1px solid #000; border-width: 2px 0 1px; }
 			#stages-table th { color: #fff; }
-			/*#stages-table tr {  }*/
-			/*#stages-table tr.enfant {  }*/
-			/*#stages-table tr.pair {  }*/
 				#stages-table tr th { border-left: 1px solid #fff; }
 				#stages-table th, #stages-table td {
 					padding: 4px 6px 2px;
 					font-size: 12px; }
 			#stages-table tr:first-child th { font-weight: bold; }
 				/* #stages-table .expand {  }*/
-				#stages-table .expand .icon {
-					background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
-					background-repeat: no-repeat;
-					-webkit-transition: none;
-					   -moz-transition: none;
-					     -o-transition: none;
-					        transition: none; }
+				#stages-table .expand .icon { width: 16px; height: 16px; }
+				#stages-table .expand .icon.fermer { background-position: -43px -75px; }
+				#stages-table .expand .icon.ouvert { background-position: -9px -75px; }
 				#stages-table p { margin: 0 }
 				#stages-table tr.enfant p { margin-bottom: .5em; margin-left: 28px; }
-					#stages-table tr.enfant p .icon {
-						border: 1px solid #ddd;
-						background: #f9f9f9 url('jquery-ui-1.8.16/css/flick/images/ui-icons_666666_256x240.png') no-repeat -80px -96px;
+					#stages-table tr.enfant p .icon.mail {
+						background-position: -5px -139px;
 						margin-left: 10px; margin-top: 5px;
 						vertical-align: bottom; }
-					#stages-table tr.enfant p .icon:hover {
-						background-image: url('jquery-ui-1.8.16/css/flick/images/ui-icons_ffffff_256x240.png');
-						border-color: #ddd #f9f9f9 #f9f9f9 #ddd;
-						-webkit-transition: none;
-						   -moz-transition: none;
-						     -o-transition: none;
-						        transition: none; }
+					#stages-table tr.enfant p .icon:hover { background-position: -38px -139px; }
 
 /* vcard */
 	/* styles communs */

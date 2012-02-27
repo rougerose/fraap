@@ -113,8 +113,8 @@ jQuery(document).ready(function($) {
 			var	i = '',
 				$parent = $(this).find("tr:nth-child(odd)"),
 				$enfant = $(this).find("tr:nth-child(even) > td > div").hide(),
-				$icon = "ui-icon-triangle-1-e",
-				$iconSelected = "ui-icon-triangle-1-s",
+				$icon = "fermer",
+				$iconSelected = "ouvert",
 				$lien = $parent.children("td.expand").html("<a class='icon'></a>"),
 				$liens = $parent.find("a.icon").addClass($icon);
 
