@@ -170,7 +170,7 @@
 		#pied .colonne {
 			float: left; display: inline;
 			margin-right: 10px; }
-			#pied h2 { font-size: 14px; margin: 1em 0; }
+			#pied h2 { font-size: 14px; margin: 1em 0; border: none; }
 		#pied .colonne:last-child {  }
 			#pied .about { width: 220px; }
 				#pied .about p { font-size: 14px; }
@@ -291,6 +291,10 @@
 					text-align: right;
 					margin: 0 0 .25em; }
 				#menu-identification p.bienvenue { margin: 0; }
+					#menu-identification p span.icon {
+						vertical-align: bottom;
+						height: 16px; width: 16px;
+						background-position: -9px -75px;  }
 					#menu-identification p a { color: #fff; text-decoration: underline; font-weight: normal; }
 					#menu-identification p a:hover { text-decoration: none; }
 
