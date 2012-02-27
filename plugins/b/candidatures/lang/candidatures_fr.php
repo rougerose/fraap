@@ -34,7 +34,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'form_champ_obligatoire' => 'Ce champ est obligatoire',
 	'form_forum_bonjour' => 'Bonjour @prenom@ @nom@,',
 	'form_forum_message_auto' => '(ceci est un message automatique, merci de ne pas y r&eacute;pondre)',
-	'form_forum_voici1' => 'Votre inscription sur le site "@nom_site_spip@" (@adresse_site@) a bien été enregistrée.',
+	'form_forum_voici1' => 'Votre inscription au service de stages proposé par la Fraap (@adresse_site@/rubrique10.html) a bien été enregistrée.',
 	'form_mail_signature' => "cordialement,
 	la FRAAP.",
 	'form_activite_obligatoire' => 'Veuillez indiquer votre activité',

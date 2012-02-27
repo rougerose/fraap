@@ -211,7 +211,7 @@ function envoyer_inscription($desc, $nom, $prenom, $pass, $mode, $id) {
 	$adresse_site = $GLOBALS['meta']["adresse_site"];
 	if ($mode == '6forum') {
 		$adresse_login = generer_url_public('login');
-		$msg = 'form_forum_voici1';
+		$msg = 'candidatures:form_forum_voici1';
 	} else {
 		$adresse_login = $adresse_site .'/'. _DIR_RESTREINT_ABS;
 		$msg = 'form_forum_voici2';
