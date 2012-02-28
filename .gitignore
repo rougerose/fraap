@@ -2,6 +2,7 @@
 .DS_Store
 
 # projet spip : les fichiers et dossiers ignorés
+/howto
 .htaccess
 config/connect.php
 config/chmod.php
