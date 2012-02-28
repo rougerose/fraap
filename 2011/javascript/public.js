@@ -57,7 +57,7 @@ jQuery(document).ready(function() {
 			$slide = $recherche.find("form").hide(),
 			$ul = $recherche.next("ul").addClass("ok");
 			compteur = 0;
-		$ul.prepend('<li class="recherche filets"><a href="#">recherche</a></li>');
+		$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
 		var $bouton = $ul.find(".recherche");
 
 
