@@ -72,6 +72,7 @@ img.puce { background-color: #000; }
 	/* tabs : icones des onglets */
 	.onglets li span.icon {
 		background: #aaa url('../images/sprite.png') no-repeat -17px 0;
+		background-color: #aaa;
 		height: 16px; width: 16px;
 		border: none; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;
 		vertical-align: top;
@@ -80,6 +81,8 @@ img.puce { background-color: #000; }
 	/* annuaire asso */
 	.onglets li.region span.icon { background-position: -17px 0; }
 	.onglets li.activites span.icon { background-position: -34px 0; }
+	.onglets li.contact span.icon { background-position: -51px -17px; }
+	.onglets li.publications span.icon { background-position: -68px -17px; }
 
 	/* article */
 	.onglets li.themes span.icon { background-position: -51px 0; }

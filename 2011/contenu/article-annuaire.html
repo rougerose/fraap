@@ -48,11 +48,11 @@
 
 		<BOUCLE_condition(CONDITION){si #GET{contact}|ou{#GET{site}}}>
 		<div id="annuaire-contact" class="tabs clearfix">
-			<ul class="liste">
+			<ul class="liste onglets">
 				[(#GET{contact}|oui)
-				<li><a href="#contact"><:contact:></a></li>
+				<li class="contact"><a href="#contact"><span class="icon"></span><:contact:></a></li>
 				][(#GET{site}|oui)
-				<li><a href="#publications"><:dernieres_publications_abrev:></a></li>
+				<li class="publications"><a href="#publications"><span class="icon"></span><:dernieres_publications_abrev:></a></li>
 				]
 			</ul>
 
