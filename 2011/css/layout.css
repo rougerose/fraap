@@ -292,9 +292,9 @@
 					margin: 0 0 .25em; }
 				#menu-identification p.bienvenue { margin: 0; }
 					#menu-identification p span.icon {
-						vertical-align: bottom;
-						height: 16px; width: 16px;
-						background-position: -9px -75px;  }
+						vertical-align: top;
+						height: 14px; width: 14px;
+						background: url('../images/icones.png') no-repeat 100% -140px; }
 					#menu-identification p a { color: #fff; text-decoration: underline; font-weight: normal; }
 					#menu-identification p a:hover { text-decoration: none; }
 
