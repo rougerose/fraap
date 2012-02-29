@@ -1,8 +1,13 @@
  <div class="conteneur-formulaire[ couleurID(#ENV{id_rubrique})]">
+	<BOUCLE_stages(CANDIDATURES){tout}{!par date}>
 
-	<BOUCLE_c(CANDIDATURES){ville_stage LIKE #ENV{ville_stage}}>
-	<p>#ID_CANDIDATURE</p>
-	</BOUCLE_c>
+	<BOUCLE_auteur(AUTEURS candidatures){id_auteur}{id_candidature}{tout}>
+	<p>#NOM/#PRENOM</p>
+	</BOUCLE_auteur>
+	</BOUCLE_stages>
+
+
+
 
 
 
@@ -11,3 +16,6 @@
 
 
 </div><!-- .conteneur-formulaire -->
+
+
+

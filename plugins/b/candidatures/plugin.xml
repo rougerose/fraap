@@ -1,7 +1,7 @@
 <plugin>
 	<nom>Candidatures de stages</nom>
 	<auteur>christophe le drean</auteur>
-	<version>0.1</version>
+	<version>0.1.1</version>
 	<version_base>0.33</version_base>
 	<install>base/candidatures_upgrade.php</install>
 
@@ -25,6 +25,14 @@
 	    <nom>insert_head</nom>
 	    <inclure>candidatures_pipelines.php</inclure>
 	</pipeline>
+	<pipeline>
+		<nom>header_prive</nom>
+		<action>insert_head_prive</action>
+		<inclure>candidatures_pipelines.php</inclure>
+	</pipeline>
+	<bouton id='candidatures' parent='bando_edition'>
+		<titre>candidatures:stages</titre>
+	</bouton>
 
 	<necessite id="SPIP" version="[2.1.12;]" />
 	<necessite id="accesrestreint" version="[3.3.1;]" />
