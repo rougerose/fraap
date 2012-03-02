@@ -101,7 +101,7 @@ img.puce { background-color: #000; }
 
 
 /* texte courant */
-	.textecourant p, p.intro,
+	.textecourant p, p.intro, div.intro p,
 	.textecourant ul, .textecourant ol { font-size: 14px; }
 
 /* notes */
@@ -127,23 +127,17 @@ img.puce { background-color: #000; }
 
 
 /* une */
-/* div.une.item, dl.une dd.item {
-	margin-bottom: 2em;
-	border-bottom: 1px solid #000; }
-	div.une.item { width: 218px; }
-	dl.une dd.item div { width: 578px; }
-		.une h2 { border-bottom: 2px solid #000; margin-bottom: .5em; }
-
-	div.une.over, dl.une dd.item.over {  }
-*/
+div.intro p { margin: 0; }
 .une dd {
 	margin-bottom: 2em;
 	border-bottom: 1px solid #000; }
 
 
 /* hfeed */
-	/* page rubrique, recherche et sommaire */
-	/* pour la page recherche on utilise les équivalences de classes pour les contenus qui ne sont pas des hentry en tant que tels */
+	/* 	page rubrique, recherche et sommaire */
+	/* 	pour la page recherche 
+		on utilise les équivalences de classes pour les contenus 
+		qui ne sont pas des hentry en tant que tels */
 	.groupe .hentry, .groupe .item {
 		border-top: 2px solid #000;
 		padding-top: 1em; margin-bottom: 1em; }

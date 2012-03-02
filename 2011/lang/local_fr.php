@@ -8,7 +8,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'activites' => 'Activités',
 	'afficher_map' => 'Afficher l&#x27;adresse dans une carte',
-	'annuaire_compte' => "L’annuaire des associations et collectifs d’artistes membres de la FRAAP compte",
 
 	// B
 	'breve_rech' => '1 brève',
@@ -26,8 +25,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// E
 	'en_bref' => 'En bref',
-	'entree' => 'entrée',
-	'entrees' => 'entrées',
+	'entree' => 'entrée est disponible',
+	'entrees' => 'entrées sont disponibles &#x2192;',
 
 	//I
 	'info_ps' => 'Post-scriptum',

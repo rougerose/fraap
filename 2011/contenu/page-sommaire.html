@@ -26,7 +26,10 @@
 			#SET{cpt_entrees,#TOTAL_BOUCLE}
 			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{local:entree, local:entrees})]})]</B_cpte_entrees>
 
-			<p class="intro"><:annuaire_compte:> <a href="#URL_RUBRIQUE">[(#GET{cpt_entrees})] #GET{entrees}.</a></p>
+			<div class="intro">
+				[(#INTRODUCTION)]
+				<p><a href="#URL_RUBRIQUE">[(#GET{cpt_entrees})] #GET{entrees}</a></p>
+			</div>
 
 			<B_dernieres_annuaire>
 			<dl class="update">
@@ -43,7 +46,9 @@
 			[(#REM) test Chantiers]
 			<BOUCLE_cond_chantiers(CONDITION){si #ID_RUBRIQUE|=={6}}>
 			<BOUCLE_rub_chantiers(RUBRIQUES){id_rubrique=6}>
-			[<p class="intro">(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a></p>]
+			<div class="intro">
+				[<p>(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a></p>]
+			</div>
 
 			<B_derniers_art>
 			<dl class="update">
@@ -58,8 +63,20 @@
 
 			[(#REM) test Ressources]
 			<BOUCLE_test_ressources(CONDITION){si #ID_RUBRIQUE|=={2}}>
+
+			[(#REM) on compte le nombre d'entrées disponibles ]
+			#SET{cpt_entrees,0} #SET{entrees,''}
+
 			<BOUCLE_rub_ressources(RUBRIQUES){id_rubrique=2}>
-			[<p class="intro">(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a></p>]
+			<BOUCLE_cpte_entrees2(ARTICLES){id_rubrique}> </BOUCLE_cpte_entrees2>
+			#SET{cpt_entrees,#TOTAL_BOUCLE}
+			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{local:entree, local:entrees})]})]</B_cpte_entrees2>
+
+
+			<div class="intro">
+				[(#INTRODUCTION)]
+				<p><a href="#URL_RUBRIQUE">[(#GET{cpt_entrees})] #GET{entrees}</a></p>
+			</div>
 			<B_dernieres_ressources>
 			<dl class="update">
 				<dt><:update:></dt>
