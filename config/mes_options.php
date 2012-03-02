@@ -1,6 +1,6 @@
 <?php
 
-define('_NO_CACHE', -1);
+// define('_NO_CACHE', -1);
 
 
 // $GLOBALS['dossier_squelettes'] = 'squelettes';
