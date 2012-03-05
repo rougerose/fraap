@@ -1,3 +1,5 @@
+[(#REM) surcharge d'un modèle du plugin menus. Permet d'ajouter les couleurs de rubriques aux LI du menu. ]
+
 [(#SET{id_rubrique, #ENV{id_rubrique}|intval})]
 [(#SET{id_secteur_exclus, #ENV{id_secteur_exclus}|?{#ENV{id_secteur_exclus}|explode{','},#ARRAY}})]
 [(#SET{niveau_max_txt, #ENV{niveau}|intval|?{#ENV{niveau},infini}})]

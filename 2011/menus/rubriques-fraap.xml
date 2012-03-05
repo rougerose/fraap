@@ -1,7 +1,7 @@
 <entree>
 	<nom>menu principal fraap</nom>
 	<rang>04</rang>
-	<description><:menus:description_menu_rubriques:></description>
+	<description>Permet de gérer le menu principal du site, pour les rubriques uniquement.</description>
 	<icone>images/menus_rubriques.png</icone>
 	<parametre nom="id_rubrique" label="menus:entree_id_rubrique" />
 	<parametre nom="id_secteur_exclus" label="menus:entree_id_secteur_exclus" />
