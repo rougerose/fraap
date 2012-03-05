@@ -523,12 +523,11 @@ div.intro p { margin: 0; }
 	.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a:hover { color: #000; }
 	.ui-tabs .ui-tabs-nav li a:hover { color: #000; }
 	.ui-tabs .related { margin-top: 1.5em; }
-
-	/* page rubrique */
-
-	/* page article > colonne secondaire */
+	
 	.tabs .ui-tabs-nav {  }
 	.tabs .ui-tabs-nav li { font-size: 13px;  }
+	
+	.contenu-secondaire .tabs { margin-bottom: 2em; }
 
 	/* annuaire > page article */
 	#annuaire-contact .ui-tabs-nav li { font-size: 14px; }

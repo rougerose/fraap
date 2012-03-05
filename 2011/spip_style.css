@@ -8,7 +8,7 @@ p.surtitre {
 	font-size: 14px; font-weight: bold;
 	text-transform: uppercase;
 	float: left;
-	border-bottom: 2px solid #000;
+	border-bottom: 1px solid #000;
 	margin-bottom: .5em; padding-right: 10px; }
 #titre h1.h1 {
 	clear: both;
@@ -28,9 +28,9 @@ h2.spip { font-size: 22px; line-height: 1; margin-bottom: 0.5em; padding-bottom:
 h3.spip { font-size: 20px; line-height: 1; margin-bottom: .75em; padding-bottom: .25em; }
 h4.spip { font-size: 18px; line-height: 1.25; margin-bottom: 1em; }
 h5.spip { font-size: 16px; margin-bottom: 1.25em; }
-h6.spip { font-size: 14px; line-height: 1; margin-bottom: 1em; padding-bottom: .5em;  }
+h6.spip { font-size: 15px; line-height: 1.3; margin-bottom: 1em; padding-bottom: .5em;  }
 
-hr.spip { margin: 2em auto; }
+hr.spip { margin: 3em 40px; background-color: #000; color: #000; border: 2px dotted #000; }
 
 /* Listes SPIP */
 ul.spip {  }
