@@ -30,7 +30,7 @@ h4.spip { font-size: 18px; line-height: 1.25; margin-bottom: 1em; }
 h5.spip { font-size: 16px; margin-bottom: 1.25em; }
 h6.spip { font-size: 15px; line-height: 1.3; margin-bottom: 1em; padding-bottom: .5em;  }
 
-hr.spip { margin: 3em 40px; background-color: #000; color: #000; border: 2px dotted #000; }
+hr.spip { margin: 3em 40px; background-color: #000; color: #000; border: 1px solid #000; }
 
 /* Listes SPIP */
 ul.spip {  }
