@@ -22,7 +22,7 @@
 	<div id="region" class="clearfix liste">
 		<ul class="liste">
 			<BOUCLE_region(MOTS){id_article?}{id_rubrique?}{id_groupe=1}{par titre}>
-			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{region,#ID_MOT})]">#TITRE</a></li>
+			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{region,#ID_MOT})#tri]">#TITRE</a></li>
 			</BOUCLE_region>
 		</ul>
 	</div><!-- #region -->
@@ -32,7 +32,7 @@
 	<div id="activite" class="clearfix liste">
 		<ul class="liste">
 			<BOUCLE_activites(MOTS){id_article?}{id_rubrique?}{id_groupe=2}{par titre}>
-			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{activites,#ID_MOT})]">#TITRE</li>
+			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{activites,#ID_MOT})#tri]">#TITRE</li>
 			</BOUCLE_activites>
 		</ul>
 	</div><!-- #activites -->
