@@ -1,6 +1,6 @@
 <div id="formulaire_tri_annuaire" class="formulaire_spip">
-	<form action="[(#SELF)]" method="get"><div>
-		<ul class="clearfix">
+	<form action="[(#SELF)#tri]" method="get"><div>
+		<ul id="tri" class="clearfix">
 			<B_regions>
 			<li>
 				<label for=champ_region>Trier par région</label>
@@ -24,6 +24,8 @@
 			</li>
 			</B_activites>
 		</ul>
+		<input type="hidden" name="" value="#tri">
+
 		<p class="boutons"><input type="submit" class="submit" value="<:pass_ok:>" /></p>
 	</div></form>
 </div>
