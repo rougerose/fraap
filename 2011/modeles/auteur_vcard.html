@@ -28,7 +28,7 @@
 		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE2"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE2)</a>
 	</p>]
 	[(#ID_AUTEUR|=={1}|et{#EMAIL}|oui)
-		<p class="mail"><a href="#URL_AUTEUR" rel="me" class="email">formulaire de contact</a></p>
+		<p class="mail"><a href="#URL_PAGE{contact}" rel="me" class="email">formulaire de contact</a></p>
 	]
 	[(#ID_AUTEUR|=={1}|non)
 		[(#EMAIL|oui)
