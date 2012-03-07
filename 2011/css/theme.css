@@ -448,8 +448,8 @@ div.intro p { margin: 0; }
 
 /* vcard */
 	/* styles communs */
-	.vcard h3 { margin: 0; font-size: 14px; }
-		.vcard h3 span.referent { font-weight: normal; }
+	.vcard h3 { margin: 0; font-size: 14px; font-weight: normal; }
+		.vcard h3 span.referent { font-style: italic; }
 	.vcard p { margin: 0; }
 	.vcard .adr span, .vcard .mail, .vcard .tel {
 		padding-left: 22px; }

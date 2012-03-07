@@ -9,7 +9,7 @@
 <BOUCLE_auteur(AUTEURS){id_auteur}{tout}>
 	[(#ID_AUTEUR|=={1}|non)
 		[<h3><span class="fn">(#NOM)</span> [<span class="referent">((#ANNUAIRE_REFERENT))</span>]</h3>]
-		[<h3 class="org[(#URL_SITE|oui) url]">[<a href="(#URL_SITE)">](#ANNUAIRE_NOM_ASSO)[(#URL_SITE|oui)</a>]</h3>]
+		[<h3 class="org[(#URL_SITE|oui) url]">[<a href="(#URL_SITE)" class="spip_out">](#ANNUAIRE_NOM_ASSO)[(#URL_SITE|oui)</a>]</h3>]
 	]
 	[(#ID_AUTEUR|=={1}|oui)
 		[<h3 class="fn org url"><a href="#URL_SITE_SPIP">(#NOM)</a></h3>]
