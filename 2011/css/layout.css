@@ -49,7 +49,8 @@
 	.page_inscription #contenu,
 	.page_candidature #contenu,
 	.page_recherche #contenu,
-	.page_contact #contenu {
+	.page_contact #contenu,
+	.page_404 #contenu, .page_401 #contenu {
 		float:right; display: inline;
 		margin-right: 10px;
 		width: 700px; }
