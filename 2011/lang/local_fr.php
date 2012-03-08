@@ -27,6 +27,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'en_bref' => 'En bref',
 	'entree' => 'entrée est disponible',
 	'entrees' => 'entrées sont disponibles &#x2192;',
+	'erreur_401' => "Une erreur est survenue : vous n'êtes pas autorisé-e à afficher cette page",
+	'erreur_401_titre' => 'Erreur 401',
+	'erreur_404' => "La page que vous demandez n'est pas disponible.",
+	'erreur_404_titre' => 'Erreur 404',
 
 	//I
 	'info_ps' => 'Post-scriptum',
