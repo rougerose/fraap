@@ -11,7 +11,10 @@
 </BOUCLE_yaml>
 
 <BOUCLE_candidatures(CANDIDATURES){tout}>
-#SET_PUSH{candidatures,#ID_CANDIDATURE}
+[(#REM) on ne retient que les candidatures valable à la date du jour ]
+[(#ENV{date}|affdate{Y-m-d}|<={#DATE_FIN}|oui)
+	[(#SET_PUSH{candidatures,#ID_CANDIDATURE})]
+]
 </BOUCLE_candidatures>
 
 [(#REM) affichage des stages ]

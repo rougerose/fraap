@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
 			//	$champs = $criteres.children("span.data-env"),
 				$checkbox = $criteres.filter(".formTypeCheckbox").find("span.data-env"),
 				$input = $criteres.filter(".formTypeInput"),
-				$tableau_criteres = $.merge($checkbox,$input);
+				$tableau_criteres = $.merge($checkbox,$input); console.log($tableau_criteres);
 
 			// ajout bouton de suppression du critère
 			$tableau_criteres.map(function(i,el){
