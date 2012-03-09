@@ -426,7 +426,7 @@ div.intro p { margin: 0; }
 						.actions dl dd span.data-env a[title='supprimer'] {
 							margin-top: -2px; margin-bottom: -3px; margin-right: -17px; margin-left: 3px; float: right; }
 			#gestion-candidatures .actions li {
-				font-size: 12px; text-align: left;
+				font-size: 11px; text-align: left;
 				display: block;
 				margin-bottom: .5em; }
 				#gestion-candidatures .actions li span { margin-right: 5px; margin-bottom: 2px; vertical-align: middle; }
