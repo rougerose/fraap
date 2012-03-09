@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 	//	mais on peut les supprimer individuellement et soumettre à nouveau le formulaire.
 
 	$(".actions").each(function(){
-		var $boutons = $(this).find("a.bt").addClass("icon"),
+		var $boutons = $(this).find(".bt").prepend('<span class="icon" />'),
 			$supprimer = $boutons.filter(".supprimer"),
 			$trier = $boutons.filter(".trier"),
 			$formulaire_tri_conteneur = $(this).find("#formulaire_tri_stages").hide(),

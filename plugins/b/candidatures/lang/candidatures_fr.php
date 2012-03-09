@@ -160,6 +160,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'type_2'=>"&Eacute;tudiant-e",
 
 	// V
+	'vos_criteres_tri' => "Vos critères de tri",
 	'votre_recherche' => "Votre recherche"
 
 	// Z

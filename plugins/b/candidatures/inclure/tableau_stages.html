@@ -154,10 +154,34 @@
 
 
 <div class="actions clearfix">
+	<div id="actions-utilisateur">
+		<ul class="clearfix">
+			<li class="info-resultats">
+				[(#GET{candidatures}|count|>{0}|?{
+					[(#GET{candidatures}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})]
+					,
+					<:candidatures:criteres_pas_de_resultat:>
+				})]
+			</li>
+			<li>
+				<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
+					<:candidatures:label_bouton_trier_candidatures:>
+				</a>
+			</li>
+			[(#SESSION{activite}|=={2}|oui)
+			<li>
+				<a href="#URL_PAGE{candidature}" title="<:candidatures:label_bouton_ajouter_candidature:>" class="bt ajouter">
+					<:candidatures:label_bouton_ajouter_candidature:>
+				</a>
+			</li>
+			]
+		</ul>
+	</div><!-- #actions-utilisateur -->
+
 	<BOUCLE_stages_tri_2(CONDITION){si #GET{stages_tri}}>
 	<div id="criteres-utilisateur">
 		<dl>
-			<dt><:candidatures:votre_recherche:></dt>
+			<dt><:candidatures:vos_criteres_tri:></dt>
 
 			[<dd id="date_debut" class="formTypeInput clearfix"><span class="label"><:candidatures:label_date_debut:> </span><span class="data-env">(#ENV{date_debut})</span></dd>]
 
@@ -212,30 +236,6 @@
 		</dl>
 	</div><!-- #criteres-utilisateur -->
 	</BOUCLE_stages_tri_2>
-
-	<div id="actions-utilisateur">
-		<ul class="clearfix">
-			<li class="info-resultats">
-				[(#GET{candidatures}|count|>{0}|?{
-					[(#GET{candidatures}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})]
-					,
-					<:candidatures:criteres_pas_de_resultat:>
-				})]
-			</li>
-			<li>
-				<a href="#formulaire_tri_stages" title="<:candidatures:label_bouton_trier_candidatures:>" class="bt trier">
-					<:candidatures:label_bouton_trier_candidatures:>
-				</a>
-			</li>
-			[(#SESSION{activite}|=={2}|oui)
-			<li>
-				<a href="#URL_PAGE{candidature}" title="<:candidatures:label_bouton_ajouter_candidature:>" class="bt ajouter">
-					<:candidatures:label_bouton_ajouter_candidature:>
-				</a>
-			</li>
-			]
-		</ul>
-	</div><!-- #actions-utilisateur -->
 
 	[(#REM) formulaire de tri ]
 	#FORMULAIRE_TRI_STAGES

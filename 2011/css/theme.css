@@ -326,15 +326,15 @@ div.intro p { margin: 0; }
 /* stages */
 
 	/* zone d'actions : styles communs */
-	.actions a.icon.ajouter { background-position: -73px -39px; }
-	.actions a.icon.ajouter:hover { background-position: -73px -72px; }
-	.actions a.icon.modifier { background-position: -5px -105px; }
-	.actions a.icon.modifier:hover { background-position: -38px -105px; }
-	.actions a.icon.supprimer { margin-right: 5px; background-position: -72px -105px; }
-	.actions a.icon.supprimer:hover { background-position: -72px -138px; }
-	.actions a.icon.trier { background-position: -4px -38px; }
-	.actions a.icon.trier:hover { background-position: -38px -38px; }
-	.actions a.trier.ouvert {
+	.actions .ajouter .icon { background-position: -73px -39px; }
+	.actions .ajouter:hover .icon { background-position: -73px -72px; }
+	.actions .modifier .icon { background-position: -5px -105px; }
+	.actions .modifier:hover .icon { background-position: -38px -105px; }
+	.actions .supprimer .icon { margin-right: 5px; background-position: -72px -105px; }
+	.actions .supprimer:hover .icon { background-position: -72px -138px; }
+	.actions .trier .icon { background-position: -4px -38px; }
+	.actions .trier:hover .icon { background-position: -38px -38px; }
+	.actions .ouvert .icon {
 		background-position: -38px -38px;
 		-webkit-box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset;
 		   -moz-box-shadow: 2px 2px 4px rgba(0,0,0,.6) inset;
@@ -383,18 +383,27 @@ div.intro p { margin: 0; }
 				width: 700px;
 				float: left; }
 			.actions #actions-utilisateur {
-				width: 220px;
+				width: 700px;
 				float: right; }
+				.actions #actions-utilisateur li {
+					height: 24px;
+					display: inline-block;
+					padding-right: 5px; margin-right: 5px;
+					border-right: 1px inset #ccc; }
+				.actions #actions-utilisateur li:last-child { margin-right: 0; }
+					.actions #actions-utilisateur li span.icon { line-height: 10px; vertical-align: middle; }
 			.actions #formulaire_tri_stages {
 				clear: both; width: 940px;
 				border-bottom: 1px solid #000; }
 				/* #actions-utilisateur */
 				.actions ul, .actions dl { padding: .5em 0 0; margin: 0; }
 				.actions li {
+					font-size: 13px; font-weight: bold;
 					list-style-type: none;
-					display: inline; vertical-align: top;
+					display: inline;
 					margin: 0 10px 0 0; }
 				.actions li:last-child { margin-right: 0; }
+					.actions li a { display: inline-block; }
 			/* #criteres-utilisateur */
 			.actions #criteres-utilisateur { text-align: left; }
 				.actions dl dt { font-weight: bold; }
@@ -416,6 +425,11 @@ div.intro p { margin: 0; }
 						width: 17px; height: 22px; }
 						.actions dl dd span.data-env a[title='supprimer'] {
 							margin-top: -2px; margin-bottom: -3px; margin-right: -17px; margin-left: 3px; float: right; }
+			#gestion-candidatures .actions li {
+				font-size: 12px; text-align: left;
+				display: block;
+				margin-bottom: .5em; }
+				#gestion-candidatures .actions li span { margin-right: 5px; margin-bottom: 2px; vertical-align: middle; }
 
 		/* bouton depot d'une candidature */
 		#depot-candidature { text-align: right; }
