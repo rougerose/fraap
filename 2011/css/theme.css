@@ -457,14 +457,15 @@ div.intro p { margin: 0; }
 	.vcard h3 { margin: 0; font-size: 14px; font-weight: normal; }
 		.vcard h3 span.referent { font-style: italic; }
 	.vcard p { margin: 0; }
-	.vcard .adr span, .vcard .mail, .vcard .tel {
+	.vcard .adr span, .vcard .mail, .vcard .tel, .vcard .web {
 		padding-left: 22px; }
 	.vcard .adr .locality, .vcard .adr .country-name { padding-left: 0; }
-	.vcard .street-address, .vcard .mail, .vcard .tel { background: url('../images/pied-icones.png') no-repeat 0 0; }
+	.vcard .street-address, .vcard .mail, .vcard .tel, .vcard .web { background: url('../images/pied-icones.png') no-repeat 0 0; }
 	.vcard .street-address { background-position: 0 -160px; }
 	.vcard .tel { background-position: 0 0; }
 	.vcard .mail { background-position: 0 -29px; }
 		.vcard .tel .type {display: none;}
+	.vcard .web {}
 
 
 /* bouton */

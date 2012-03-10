@@ -25,6 +25,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'documents_rech' => '@nb@ documents',
 
 	// E
+	'email' => 'E-mail',
 	'en_bref' => 'En bref',
 	'entree' => 'entrée est disponible',
 	'entrees' => 'entrées sont disponibles &#x2192;',
@@ -57,6 +58,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'rubriques' => 'Rubriques',
 
 	// S
+	'site_web' => 'Site internet',
 	'sousrubriques' => 'Les sous-rubriques',
 	'suite' => 'lire la suite',
 
