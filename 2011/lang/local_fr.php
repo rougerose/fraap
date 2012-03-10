@@ -8,6 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'activites' => 'Activités',
 	'afficher_map' => 'Afficher l&#x27;adresse dans une carte',
+	'articles_rubrique' => 'Les articles de cette rubrique',
 
 	// B
 	'breve_rech' => '1 brève',
@@ -56,6 +57,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'rubriques' => 'Rubriques',
 
 	// S
+	'sousrubriques' => 'Les sous-rubriques',
 	'suite' => 'lire la suite',
 
 	// T

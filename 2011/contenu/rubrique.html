@@ -46,9 +46,9 @@
 		<div class="tabs clearfix">
 			<ul class="liste onglets">
 				[(#GET{articles_rubrique}|oui)
-				<li class="articles"><a href="#articles"><span class="icon"></span><:documents:></a></li>]
+				<li class="articles"><a href="#articles"><span class="icon"></span><:articles_rubrique:></a></li>]
 				[(#GET{menu}|oui)
-				<li class="rubriques"><a href="#sousrubriques"><span class="icon"></span><:rubriques !!:></a></li>]
+				<li class="rubriques"><a href="#sousrubriques"><span class="icon"></span><:sousrubriques:></a></li>]
 			</ul>
 			<div id="articles" class="clearfix liste">
 				<INCLURE{fond=inclure/articles-selection,
