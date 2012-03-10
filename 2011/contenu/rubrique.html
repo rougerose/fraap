@@ -36,19 +36,33 @@
 <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{doublons}>#SET_PUSH{articles_rubrique,#ID_ARTICLE}</BOUCLE_articles>
 
 <div class="contenu clearfix">
-	<BOUCLE_condition_articles(CONDITION){si #GET{articles_selection}|ou{#GET{articles_rubrique}}}>
 	<div class="hfeed">
 		[(#REM) selection d'articles, format horizontal ]
 		<INCLURE{fond=inclure/articles-selection,
 			env,selection=#GET{articles_selection},pagination=5,format=horizontal,ajax,logo=140}>
 
 		[(#REM) les articles de la rubrique, format grille ]
-		<INCLURE{fond=inclure/articles-selection,
-			env,selection=#GET{articles_rubrique},format=grille,ajax,pagination=4}>
+		[(#GET{articles_rubrique}|ou{#GET{menu}}|oui)
+		<div class="tabs clearfix">
+			<ul class="liste onglets">
+				[(#GET{articles_rubrique}|oui)
+				<li class="articles"><a href="#articles"><span class="icon"></span><:documents:></a></li>]
+				[(#GET{menu}|oui)
+				<li class="rubriques"><a href="#sousrubriques"><span class="icon"></span><:rubriques !!:></a></li>]
+			</ul>
+			<div id="articles" class="clearfix liste">
+				<INCLURE{fond=inclure/articles-selection,
+					env,selection=#GET{articles_rubrique},format=grille,ajax,pagination=4}>
+			</div>
+			[(#GET{menu}|oui)
+			<div id="sousrubriques" class="clearfix liste">
+				<INCLURE{fond=inclure/sousrubriques,env}>
+			</div>]
+		</div><!-- .tabs clearfix -->]
 
 		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>
+
 	</div><!-- .hfeed -->
-	</BOUCLE_condition_articles>
 
 </div><!-- .contenu -->
 </BOUCLE_contenu_rubrique>
