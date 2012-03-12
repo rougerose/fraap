@@ -52,52 +52,60 @@ jQuery(document).ready(function() {
 	* Animation du formulaire Recherche
 	*/
 	var rechercheFormAnim = function (){
-		$("#formulaire_recherche").each(function(){
-			var $recherche = $(this),
-				$slide = $recherche.find("form").hide(),
-				$ul = $recherche.next("ul").addClass("ok");
-				compteur = 0;
-			$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
-			var $bouton = $ul.find(".recherche");
 
-
-
-			// animation du bouton
-			$bouton.hover(
-				function(){
-					$(this).stop().animate({ borderTopWidth: '10px' }, 'normal');
-				}
-				,
-				function(){
-					if ($(this).hasClass("on")) { return false; }
-					else {
-						$(this).stop().animate({ borderTopWidth:'4px' }, 'normal');
-					}
-				}
-			);
-
-			// et le clic
-			$bouton.click(function(){
-				$(this).addClass("on").animate({ borderTopWidth:'10px' }, 'normal');
-				compteur ++;
-				$slide.slideToggle("normal", function(){
-					if (compteur %2 == 0) {
-						$bouton.removeClass("on").stop().animate({borderTopWidth: '4px'}, "fast");
-					 }
-					else {
-						$bouton.stop().animate({borderTopWidth: '10px'},"fast").addClass("on");
-					}
-				});
-				$ul.find(">li").slice(1).toggleClass("marge");
-			});
-			// le formulaire est affiché par défaut sur la page de recherche
-			if ($("body.page_recherche").length) { $bouton.trigger("click"); }
-		});
 	}
 
-	rechercheFormAnim(); onAjaxLoad(rechercheFormAnim);
+//	rechercheFormAnim(); onAjaxLoad(rechercheFormAnim);
 
 });
 
+var my_lib =
+{
+	recherche :
+	{
+		init: function()
+		{
+			$("#formulaire_recherche").each(function(){
+				var $recherche = $(this),
+					$slide = $recherche.find("form").hide(),
+					$ul = $recherche.next("ul").addClass("ok"),
+					compteur = 0;
+				$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
+				var $bouton = $ul.find(".recherche");
+
+				// animation du bouton
+				$bouton.hover(
+					function(){
+						$(this).stop().animate({ borderTopWidth: '10px' }, 'normal');
+					}
+					,
+					function(){
+						if ($(this).hasClass("on")) { return false; }
+						else {
+							$(this).stop().animate({ borderTopWidth:'4px' }, 'normal');
+						}
+					}
+				);
+
+				// et le clic
+				$bouton.click(function(){
+					$(this).addClass("on").animate({ borderTopWidth:'10px' }, 'normal');
+					compteur ++;
+					$slide.slideToggle("normal", function(){
+						if (compteur %2 == 0) {
+							$bouton.removeClass("on").stop().animate({borderTopWidth: '4px'}, "fast");
+						 }
+						else {
+							$bouton.stop().animate({borderTopWidth: '10px'},"fast").addClass("on");
+						}
+					});
+					$ul.find(">li").slice(1).toggleClass("marge");
+				});
+				// le formulaire est affiché par défaut sur la page de recherche
+				if ($("body.page_recherche").length) { $bouton.trigger("click"); }
+			});
+		}
+	}
+}
 
 
