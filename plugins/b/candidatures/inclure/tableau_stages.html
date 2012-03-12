@@ -280,7 +280,7 @@
 			#SET{reg,#REGIONS|unserialize}
 			#SET{comp,#COMPETENCES_OFFRE|unserialize}
 			#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
-			<tr id="stage#ID_FORMULAIRES_REPONSE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
+			<tr id="stage#ID_CANDIDATURE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
 				<td class="expand"></td>
 				<td>#GET{auteur_prenom}</td>
 				<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
