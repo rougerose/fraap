@@ -1,3 +1,6 @@
+
+
+
 jQuery(document).ready(function($) {
 
 	// menu disponible lorsqu'un visiteur est identifié
@@ -51,7 +54,7 @@ jQuery(document).ready(function($) {
 			//	$champs = $criteres.children("span.data-env"),
 				$checkbox = $criteres.filter(".formTypeCheckbox").find("span.data-env"),
 				$input = $criteres.filter(".formTypeInput"),
-				$tableau_criteres = $.merge($checkbox,$input); console.log($tableau_criteres);
+				$tableau_criteres = $.merge($checkbox,$input);
 
 			// ajout bouton de suppression du critère
 			$tableau_criteres.map(function(i,el){

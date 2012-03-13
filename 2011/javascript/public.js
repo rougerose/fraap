@@ -48,19 +48,13 @@ jQuery(document).ready(function() {
 	*/
 	$("#formulaire_tri_annuaire .boutons").hide();
 
-	/*
-	* Animation du formulaire Recherche
-	*/
-	var rechercheFormAnim = function (){
 
-	}
-
-//	rechercheFormAnim(); onAjaxLoad(rechercheFormAnim);
 
 });
 
-var my_lib =
+var public_jslib =
 {
+	// formulaire de recherche
 	recherche :
 	{
 		init: function()
@@ -69,7 +63,7 @@ var my_lib =
 				var $recherche = $(this),
 					$slide = $recherche.find("form").hide(),
 					$ul = $recherche.next("ul").addClass("ok"),
-					compteur = 0;
+					compteur = 0; console.log($slide);
 				$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
 				var $bouton = $ul.find(".recherche");
 
