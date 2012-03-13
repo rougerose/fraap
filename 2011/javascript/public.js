@@ -62,7 +62,7 @@ var public_jslib =
 			$("#formulaire_recherche").each(function(){
 				var $recherche = $(this),
 					$slide = $recherche.find("form").hide(),
-					$ul = $recherche.next("ul").addClass("ok"),
+					$ul = $recherche.next("ul"),
 					compteur = 0;
 				$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
 				var $bouton = $ul.find(".recherche");
