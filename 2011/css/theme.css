@@ -465,7 +465,7 @@ div.intro p { margin: 0; }
 	.vcard .tel { background-position: 0 0; }
 	.vcard .mail { background-position: 0 -29px; }
 		.vcard .tel .type {display: none;}
-	.vcard .web {}
+	.vcard .web { background-position: 0 -238px; }
 
 
 /* bouton */
