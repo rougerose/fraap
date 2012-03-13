@@ -84,15 +84,17 @@ jQuery(document).ready(function($) {
 					width: '460',
 					minHeight:'auto',
 					modal: true,
-					buttons: [{
+					buttons: [
+					{
 						text: "Ok",
-						class: "bouton small",
+						className: "bouton small",
 						click: function(){ $(this).dialog("close"); location.href  = $lien; }
 					},{
 						text: "Annuler",
-						class: "bouton small",
+						className: "bouton small",
 						click: function(){ $(this).dialog("close"); }
-					}]
+					}
+					]
 				});
 			$dialog.dialog("open");
 			return false;
