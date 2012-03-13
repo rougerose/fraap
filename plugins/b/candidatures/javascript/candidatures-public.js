@@ -1,18 +1,6 @@
 jQuery(document).ready(function($) {
 
-	// menu disponible lorsqu'un visiteur est identifié
-	// seule la phrase de bienvenu est visible, le reste est masqué
-	// et accessible par survol de la souris
-	$("#identification-detail").hide().parent().children("p.bienvenue").append('<span class="icon" />');
-	$("#menu-identification").hoverIntent( showDetail, hideDetail );
 
-	function showDetail(){
-		$(this).find("#identification-detail").slideDown();
-	}
-
-	function hideDetail(){
-		$(this).find("#identification-detail").slideUp();
-	}
 
 
 	// formulaire_editer : bouton "enregistrer" est masqué tant qu'on a pas saisi ou modifié un champ
@@ -221,3 +209,24 @@ jQuery(document).ready(function($) {
 		});
 	}
 })(jQuery);
+
+var candidatures_lib = {
+	menu_identification : {
+		init: function(){
+			// menu disponible lorsqu'un visiteur est identifié
+			// seule la phrase de bienvenu est visible, le reste est masqué
+			// et accessible par survol de la souris
+			$("#identification-detail").hide().parent().children("p.bienvenue").append('<span class="icon" />');
+			$("#menu-identification").hoverIntent( showDetail, hideDetail );
+
+			function showDetail(){
+				$(this).find("#identification-detail").slideDown();
+			}
+
+			function hideDetail(){
+				$(this).find("#identification-detail").slideUp();
+			}
+		}
+	}
+}
+

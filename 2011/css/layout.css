@@ -195,7 +195,7 @@
 	display: inline; float: left;
 	margin: 0 10px; }
 .menu > ul:first-child { margin-left: 0; }
-.menu ul.last-child { margin-right: 0; }
+.menu .last-child { margin-right: 0; } /* pour IE-8 */
 .menu > ul:last-child { margin-right: 0; }
 	.menu li {
 		text-align: right;
