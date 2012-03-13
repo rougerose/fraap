@@ -44,7 +44,7 @@
 		margin: 3em 10px 0;
 		padding-left: 240px; }
 
-	.page_login #contenu,
+	.page_login #contenu, .page_spip_pass #contenu,
 	.page_identification #contenu,
 	.page_inscription #contenu,
 	.page_candidature #contenu,
