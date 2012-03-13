@@ -63,7 +63,7 @@ var public_jslib =
 				var $recherche = $(this),
 					$slide = $recherche.find("form").hide(),
 					$ul = $recherche.next("ul").addClass("ok"),
-					compteur = 0; console.log($slide);
+					compteur = 0;
 				$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
 				var $bouton = $ul.find(".recherche");
 

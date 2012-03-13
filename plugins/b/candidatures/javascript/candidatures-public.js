@@ -1,6 +1,3 @@
-
-
-
 jQuery(document).ready(function($) {
 
 	// menu disponible lorsqu'un visiteur est identifié
