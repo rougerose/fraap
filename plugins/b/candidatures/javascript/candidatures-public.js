@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 	var modifierForm_init = function() {
 		$(".formulaire_editer").each(function(){
 			var	$bouton = $(this).find('p.boutons'),
-				$champs = $('input,' + 'select');
+				$champs = $('input' + 'select');
 			$bouton.hide();
 			$champs.change(function(){
 				$bouton.slideDown();
