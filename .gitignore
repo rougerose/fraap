@@ -20,8 +20,7 @@ spip.php
 svn.revision
 /tmp
 /plugins/*
-/tests
-/_st
+
 
 # excepte
 !/plugins/b
