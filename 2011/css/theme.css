@@ -521,7 +521,7 @@ div.intro p { margin: 0; }
 	.ui-tabs { padding: 0; }
 	.ui-tabs .ui-tabs-nav { padding: 2px 0 0 5px; }
 	.ui-tabs .ui-tabs-panel { margin-top: 1em; padding: 0; }
-	.ui-tabs .ui-tabs-nav li { font-size: 13px; }
+	.ui-tabs .ui-tabs-nav li { font-size: 13px; clear: none; }
 	.ui-tabs .ui-tabs-nav li.ui-state-default { background: none; border-color: #fff; }
 	.ui-tabs .ui-tabs-nav li.ui-tabs-selected, .ui-tabs .ui-tabs-nav li.ui-state-hover {
 		background: none;
