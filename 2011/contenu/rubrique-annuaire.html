@@ -5,7 +5,7 @@
 [(#REM) éléments nécessaires pour le calcul des articles à afficher ]
 	#SET{tous,#ARRAY} #SET{regions,#ARRAY} #SET{activites,#ARRAY} #SET{intersection,#ARRAY}
 
-<BOUCLE_articles_tous(ARTICLES){id_rubrique}{!par date}>[(#SET{tous,#GET{tous}|push{#ID_ARTICLE}})]</BOUCLE_articles_tous>
+<BOUCLE_articles_tous(ARTICLES){id_rubrique}{par num titre, titre}>[(#SET{tous,#GET{tous}|push{#ID_ARTICLE}})]</BOUCLE_articles_tous>
 <BOUCLE_regions(spip_mots_articles spip_mots){id_groupe=1}>
 	[(#ENV{region}|oui)
 		[(#ID_MOT|=={#ENV{region}}|oui)

@@ -137,8 +137,9 @@
 		        border-radius: 4px; }
 		#formulaire_tri_annuaire li {
 			padding: 3px 5px;
-			display: inline; float: left; }
+			display: inline; float: left; clear: none; }
 			#formulaire_tri_annuaire li label { color: #fff; }
+			#formulaire_tri_annuaire li select { max-width: 280px; }
 
 
 /* formulaire tri stages */

@@ -254,10 +254,10 @@ div.intro p { margin: 0; }
 
 				#sousrubriques ul.liste li { margin-bottom: 1em; }
 					#sousrubriques ul.liste li h3 { font-size: 16px; margin-bottom: .5em; }
-					#sousrubriques ul.liste p.intro { text-indent: 0; margin-bottom: .5em; }
+					#sousrubriques ul.liste p.intro { text-indent: 0; margin-bottom: .5em; font-weight: normal; }
 						#sousrubriques .articles-rubrique { margin-left: 20px; text-indent: 0; margin-bottom: 2em; }
 							#sousrubriques .articles-rubrique h4 { font-size: 13px; margin-bottom: .5em; }
-							#sousrubriques .articles-rubrique p.voir-rubrique { text-align: right; margin-top: 1em; }
+							#sousrubriques .articles-rubrique p.voir-rubrique { text-align: right; margin-top: 1em; font-weight: normal; }
 
 /* article */
 	/* date de publication et auteurs */
