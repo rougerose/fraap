@@ -8,6 +8,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'activites' => 'Activités',
 	'afficher_map' => 'Afficher l&#x27;adresse dans une carte',
+	'article_rech' => '1 article',
+	'articles_rech' => '@nb@ articles',
 	'articles_rubrique' => 'Les articles de cette rubrique',
 
 	// B

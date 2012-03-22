@@ -9,7 +9,7 @@
 <B_articles>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
 	[(#ENV{composition}|=={recherche}|ou{#ENV{type}|=={mot}}|oui)
-	[<h2 class="info-resultats">(#GET{selection}|count) articles</h2>]
+		[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{article_rech,articles_rech,nb})</h2>]
 	]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 
