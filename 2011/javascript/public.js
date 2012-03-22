@@ -1,3 +1,6 @@
+// eviter un FOUC http://www.learningjquery.com/2008/10/1-way-to-avoid-the-flash-of-unstyled-content
+$('html').addClass('js');
+
 jQuery(document).ready(function() {
 
 	/*
@@ -61,7 +64,7 @@ var public_jslib =
 		{
 			$("#formulaire_recherche").each(function(){
 				var $recherche = $(this),
-					$slide = $recherche.find("form").hide(),
+					$slide = $recherche.find("form"),//.hide(),
 					$ul = $recherche.next("ul"),
 					compteur = 0;
 				$ul.prepend('<li class="recherche filets"><a href="#">Recherche</a></li>');
