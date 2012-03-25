@@ -1,3 +1,12 @@
+[(#REM)
+	les articles sans affichage de date :
+		- adhérer : 			article 1
+		- liste de diffusion : 	article 505
+		- amis de la fraap: 	article 506
+		- partenaires : 		article 508
+		- credits : 			article 509
+]
+
 <BOUCLE_contenu_article(ARTICLES){id_article}>
 <div id="extra-objet-conteneur">
 	[<div id="logo-objet-conteneur">
@@ -5,11 +14,13 @@
 	</div><!-- #logo-objet-conteneur -->]
 
 	<div id="info-publi-objet-conteneur">
+		[(#ID_ARTICLE|match{^(1|505|506|508|509)$}|non)
 		<p class="info-publi updated published">
 			<span class="value-title" title="[(#DATE|date_iso)]">
 				[<:publie_le:> (#DATE|affdate{'d'})][/(#DATE|mois)][/(#DATE|annee)]
 			</span>
 		</p>
+		]
 		[<p class="auteurs">
 			<:par_auteur:> (#MODELE{auteurs})
 		</p>]
