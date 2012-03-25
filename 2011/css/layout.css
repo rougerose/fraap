@@ -219,8 +219,6 @@
 			display: block; }
 		#nav li a:hover { color:#fff; text-decoration: none; }
 
-	#nav li.on {  }
-
 	/* dropdown */
 	li.has-dropdown {
 		position: relative;

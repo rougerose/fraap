@@ -98,10 +98,10 @@
 	/* * Erreurs */
 	.formulaire_spip li.erreur .erreur_message { display: block; color: #C30; font-weight: bold; }
 	.formulaire_spip li.erreur input.text, .formulaire_spip li.erreur textarea { background-color: #FCC; border-style: solid; border-color: #C30; }
-	.reponse_formulaire_erreur { background-color: rgba(217,12,22,.8); color: #fff; }
+	.reponse_formulaire_erreur { background-color: rgba(217,12,22,.8); color: #fff !important; }
 
 	/* * OK */
-	.reponse_formulaire_ok { background-color: rgba(75,169,0,.8); color: #fff; }
+	.reponse_formulaire_ok { background-color: rgba(75,169,0,.8); color: #fff !important; }
 
 	.formulaire_spip .bugajaxie { display: none; }
 
