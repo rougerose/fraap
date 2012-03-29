@@ -26,7 +26,8 @@
 
 
 	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
-	[(#ID_RUBRIQUE|=={12}|oui)
+	[(#ID_RUBRIQUE|=={14}|oui)
+		[(#SET{numeroQSN,#ID_RUBRIQUE})]
 		[(#SET{QSN,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{defaut})]})]})]
 	]
 
@@ -95,7 +96,7 @@
 	[(#REM)
 		définitions spécifiques à la rubrique 10/Stages
 	]
-	[(#ID_SECTEUR|=={10}|oui)
+	[(#ID_SECTEUR|=={12}|oui)
 
 		/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
 
@@ -145,7 +146,7 @@
 	]
 
 	[(#REM) définition spécifique à la rubrique 3/Annuaire ]
-	[(#ID_SECTEUR|=={11}|oui)
+	[(#ID_SECTEUR|=={15}|oui)
 		dl.annuaire-tags dt.region, dl.annuaire-tags dt.activites { background-color: ##GET{couleur}; }
 		#formulaire_tri_annuaire ul { background-color: ##GET{couleur} }
 	]
@@ -206,7 +207,7 @@
 [(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
 	/* /Page Contact /##GET{QSN} */
 	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover,
-	.couleurID12 .formulaire_spip fieldset.previsu { border-color: ##GET{QSN}; }
+	.couleur#GET{numeroQSN} .formulaire_spip fieldset.previsu { border-color: ##GET{QSN}; }
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
 	.page_contact #titre h1,
 	.page_contact #fil strong, .page_contact #fil a:hover { color: ##GET{QSN}; }
