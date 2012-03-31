@@ -7,9 +7,9 @@
 		<ul>
 			<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
 			<li[(#ID_RUBRIQUE|=={#ENV{id_rubrique}}|oui) class="on"]>
-				<h3><a href="#URL_RUBRIQUE">[(#EXPOSE{<strong>})]#TITRE[(#EXPOSE{</strong>})]</a></h3>
+				<h3><a href="#URL_RUBRIQUE">#ENV{id_rubrique} [(#EXPOSE{<strong>})]#TITRE[(#EXPOSE{</strong>})]</a></h3>
 				[<p class="intro">(#INTRODUCTION|PtoBR)</p>]
-				<BOUCLE_condition(CONDITION){si #ID_RUBRIQUE|!={#ENV{id_rubrique}}}>
+
 				<B_articles>
 				<div class="articles-rubrique">
 					<BOUCLE_articles(ARTICLES){id_rubrique}{id_secteur!=15}{!par date}{0,3}>
@@ -18,7 +18,7 @@
 					[<p class="voir-rubrique">Voir tous les articles de la rubrique <a href="#URL_RUBRIQUE"><em> (#TITRE_PARENT|couper{35})</em> &#x2192;</a></p>]
 				</div>
 				</B_articles>
-				</BOUCLE_condition>
+
 				<BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re>
 			</li>
 			</BOUCLE_sous_rubriques>
