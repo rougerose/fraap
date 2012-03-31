@@ -12,7 +12,7 @@
 				<BOUCLE_condition(CONDITION){si #ID_RUBRIQUE|!={#ENV{id_rubrique}}}>
 				<B_articles>
 				<div class="articles-rubrique">
-					<BOUCLE_articles(ARTICLES){id_rubrique}{id_secteur!=11}{!par date}{0,3}>
+					<BOUCLE_articles(ARTICLES){id_rubrique}{id_secteur!=15}{!par date}{0,3}>
 					[<h4><a href="#URL_ARTICLE">(#TITRE)</a></h4>]
 					</BOUCLE_articles>
 					[<p class="voir-rubrique">Voir tous les articles de la rubrique <a href="#URL_RUBRIQUE"><em> (#TITRE_PARENT|couper{35})</em> &#x2192;</a></p>]

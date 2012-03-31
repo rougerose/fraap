@@ -228,7 +228,7 @@ div.intro p { margin: 0; }
 		border-top: 2px solid #000;
 		padding-top: 1em; padding-bottom: 0;
 		border-bottom-width:0; }
-	#breves ul.liste li { margin-bottom: 0; }
+	#breves ul.liste li {  }
 		.recherche .grille dl.liste h3 { font-size: 13px; line-height: 16px; margin-bottom: .3em; }
 		.recherche .grille dl.liste p { font-size: 13px; line-height: 16px; }
 

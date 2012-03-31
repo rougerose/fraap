@@ -76,8 +76,8 @@
 	</BOUCLE_condition_rubrique>
 
 	<B_breves>
-	<div id="breves" class="liste">
-		<ul class="liste clearfix">
+	<div id="breves" class="liste clearfix">
+		<ul class="liste">
 			<BOUCLE_breves(BREVES){id_rubrique}{!par date}>
 			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
 			<li class="hentry[ (#GET{alterner})]">
@@ -93,7 +93,7 @@
 	</B_breves>
 
 	<BOUCLE_condition_mots(CONDITION){si #ENV{mots}}>
-	<div id="themes" class="liste">
+	<div id="themes" class="liste clearfix">
 		<ul class="liste">
 			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
 			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
@@ -108,19 +108,23 @@
 	</BOUCLE_condition_mots>
 
 	<BOUCLE_condition_lire(CONDITION){si #ENV{lire_articles}|ou{#ENV{lire_breves}}|ou{#ENV{lire_rubriques}}}>
-	<div id="lire">
+	#SET{total_articles,0}
+	<div id="lire" class="clearfix">
 		<ul class="hfeed liste">
 			<BOUCLE_lire_articles(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
-			<li class="hentry clearfix">
+			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
+			<li class="hentry clearfix[ (#GET{alterner})]">
 				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
 					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
 				</div>
 			</li>
+			[(#SET{total_articles,#TOTAL_BOUCLE})]
 			</BOUCLE_lire_articles>
 			<BOUCLE_lire_breves(BREVES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
-			<li class="hentry clearfix">
+			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|plus{#GET{total_articles}}|alterner{impair,pair}})] ]
+			<li class="hentry clearfix[ (#GET{alterner})]">
 				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
