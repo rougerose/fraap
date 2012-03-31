@@ -3,6 +3,10 @@
 
 # projet spip : les fichiers et dossiers ignorés
 /howto
+/asso
+/log
+/newsletter
+.bash_history
 .htaccess
 config/connect.php
 config/chmod.php
