@@ -7,7 +7,7 @@
 		<ul>
 			<BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre, titre}>
 			<li[(#ID_RUBRIQUE|=={#ENV{id_rubrique}}|oui) class="on"]>
-				<h3><a href="#URL_RUBRIQUE">#ENV{id_rubrique} [(#EXPOSE{<strong>})]#TITRE[(#EXPOSE{</strong>})]</a></h3>
+				<h3><a href="#URL_RUBRIQUE">[(#EXPOSE{<strong>})]#TITRE[(#EXPOSE{</strong>})]</a></h3>
 				[<p class="intro">(#INTRODUCTION|PtoBR)</p>]
 
 				<B_articles>
