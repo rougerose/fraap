@@ -1,5 +1,5 @@
 <?php
-
+// define('_CACHE_CONTEXTES_AJAX',true);
 // define('_NO_CACHE', -1);
 
 
