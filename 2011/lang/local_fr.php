@@ -61,7 +61,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// S
 	'site_web' => 'Site internet',
-	'sousrubriques' => 'Les sous-rubriques',
+	'sousrubriques' => 'les sous-rubriques',
 	'suite' => 'lire la suite',
 
 	// T
