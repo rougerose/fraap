@@ -44,6 +44,18 @@
 		<div id="articles" class="clearfix liste">
 			<INCLURE{fond=inclure/articles-selection,env,selection=#GET{articles_rubrique},format=grille,ajax,pagination=4}>
 		</div>
+		
+		[(#REM) les articles de la rubrique, format grille ]
+		[(#GET{menu}|oui)
+		<div class="tabs clearfix">
+			<ul class="liste onglets">
+				<li class="rubriques"><a href="#sousrubriques"><span class="icon"></span><:sousrubriques:></a></li>
+			</ul>
+			<div id="sousrubriques" class="clearfix liste">
+				<INCLURE{fond=inclure/sousrubriques,env}>
+			</div>
+		</div><!-- .tabs clearfix -->]
+		
 
 		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>
 
