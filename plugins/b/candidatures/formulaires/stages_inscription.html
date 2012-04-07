@@ -61,7 +61,7 @@
 				[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{conditions})</span>]
 				<input type="checkbox" name="conditions" id="conditions" value="1"[ checked="(#ENV{conditions}|=={1}|oui)checked"]>
 				<label for="">
-					<a href="[(#URL_ARTICLE{500})]" rel="nofollow" onclick="if (jQuery.modalbox) {jQuery.modalbox('[(#URL_ARTICLE{500}|parametre_url{var_zajax,contenu})]');return false;}" ><:candidatures:label_conditions_inscription_stage:></a>
+					<a href="[(#GET{url_conditions})]" rel="nofollow" onclick="if (jQuery.modalbox) {jQuery.modalbox('[(#GET{url_conditions}|parametre_url{var_zajax,contenu})]');return false;}" ><:candidatures:label_conditions_inscription_stage:></a>
 				</label>
 					<!-- class='mediabox boxIframe boxWidth-960px boxHeight-800px' -->
 			</div>
