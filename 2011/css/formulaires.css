@@ -24,8 +24,8 @@
 	/* Explications */
 	.formulaire_spip .explication {
 		font-size: 12px;
-		margin: 0 ;
-		color: #999; }
+		margin: 0 !important;
+		color: #999 !important; }
 
 	/* Intro (formulaire inscription stages) */
 	.formulaire_spip .intro { color: #999; }
@@ -108,7 +108,7 @@
 	/* présentation en ligne */
 	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
 		.enligne label {
-			display: inline-block;
+			display: inline-block !important;
 			margin-right: 20px;
 			width: 80px; }
 		.enligne p.explication {

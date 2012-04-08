@@ -50,7 +50,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'identifiants_connexion' => 'Vos identifiants de connexion',
-	'identifiant_mail' => "Votre identifiant vient de vous &ecirc;tre envoy&eacute; par email. Il vous sera nécessaire pour <a href='spip.php?page=login&id_rubrique=12'>vous identifier</a> et utiliser le service de stages de la FRAAP.",
+	'identifiant_mail' => "Votre identifiant vient de vous &ecirc;tre envoy&eacute; par email. Il vous sera nécessaire pour <a href='spip.php?page=login&id_rubrique=12&url=rubrique12.html'>vous identifier</a> et utiliser le service de stages de la FRAAP.",
 	'info_confirmer_passe' => 'Confirmez ce mot de passe',
 	'info_consultation_profil' => 'Consulter votre profil',
 	'info_depot_candidature' => 'Déposer votre candidature de stage',

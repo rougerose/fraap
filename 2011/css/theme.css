@@ -338,6 +338,7 @@ div.intro p { margin: 0; }
 	.rubrique_stages #stages-aiguillage, .rubrique_stages .texte { padding-left: 240px;  }
 		#stages-aiguillage li { text-align: center; }
 			#stages-aiguillage li h3 { text-align: left; }
+	.page_identification .texte { margin-bottom: 2em; }
 
 	/* page profil */
 		.page_profil h2 { font-size: 16px; border-bottom: 3px solid #999; }
