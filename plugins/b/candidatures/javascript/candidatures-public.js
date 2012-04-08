@@ -109,41 +109,6 @@ jQuery(document).ready(function($) {
 		});
 	});
 
-
-	// Stages : affichage du nom du candidat + bouton vers le formulaire de contact
-/*	var stagesContactCandidat = function () {
-		$("#stages-table tbody").each(function(){
-			var	i = '',
-				$parent = $(this).find("tr:nth-child(odd)"),
-				$enfant = $(this).find("tr:nth-child(even) > td > div").hide(),
-				$icon = "fermer",
-				$iconSelected = "ouvert",
-				$lien = $parent.children("td.expand").html("<a class='icon'></a>"),
-				$liens = $parent.find("a.icon").addClass($icon);
-
-			$liens.click(function(){
-				var	idx = $liens.index($(this)),
-					$visible = $enfant.filter(":visible");
-				// un bloc est déjà ouvert ?
-				if(!$visible.length == 0) {
-					if (i == idx) { // s'agit-il du même bloc ?
-						$enfant.eq(idx).slideUp("fast");
-					} else { // on ferme celui déjà ouvert et on ouvert celui demandé
-						$visible.slideUp("fast");
-						$liens.eq(i).toggleClass($icon).toggleClass($iconSelected);
-						$enfant.eq(idx).delay(200).slideDown("fast");
-						i = idx;
-					}
-				} else {
-					$enfant.eq(idx).slideDown("fast");
-					i = idx;
-				}
-				$(this).toggleClass($icon).toggleClass($iconSelected);
-			});
-		});
-	}
-	stagesContactCandidat(); onAjaxLoad(stagesContactCandidat);
-*/
 	// Présentation en colonnes de certaines parties des formulaires
 	$("#formulaire_tri_stages #localisation li.editer_regions,#formulaire_tri_stages #competences li.editer_competences_offre,#formulaire_tri_stages #recherches li.editer_competences_recherche").columnSplit({
 		col:4,cible:'div.choix'
