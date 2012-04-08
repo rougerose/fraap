@@ -36,9 +36,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'form_champ_obligatoire' => 'Ce champ est obligatoire',
 	'form_forum_bonjour' => 'Bonjour @prenom@ @nom@,',
 	'form_forum_message_auto' => '(ceci est un message automatique, merci de ne pas y r&eacute;pondre)',
-	'form_forum_voici1' => 'Votre inscription au service de stages proposé par la Fraap (@adresse_site@/rubrique10.html) a bien été enregistrée.',
+	'form_forum_voici1' => 'Votre inscription au service de stages proposé par la Fraap (@adresse_site@rubrique12.html) a bien été enregistrée.',
 	'form_mail_signature' => "cordialement,
-	la FRAAP.",
+	Le service stages de la FRAAP.",
 	'form_activite_obligatoire' => 'Veuillez indiquer votre activité',
 	'form_conditions_obligatoire' => "Veuillez accepter les conditions d'utilisation",
 	'form_mail_obligatoire' => 'Veuillez indiquer votre adresse mail',
@@ -50,7 +50,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// I
 	'identifiants_connexion' => 'Vos identifiants de connexion',
-	'identifiant_mail' => "Votre identifiant vient de vous &ecirc;tre envoy&eacute; par email. Il vous sera nécessaire pour <a href='spip.php?page=login&id_rubrique=10'>vous identifier</a> et utiliser le service de stages de la FRAAP.",
+	'identifiant_mail' => "Votre identifiant vient de vous &ecirc;tre envoy&eacute; par email. Il vous sera nécessaire pour <a href='spip.php?page=login&id_rubrique=12'>vous identifier</a> et utiliser le service de stages de la FRAAP.",
 	'info_confirmer_passe' => 'Confirmez ce mot de passe',
 	'info_consultation_profil' => 'Consulter votre profil',
 	'info_depot_candidature' => 'Déposer votre candidature de stage',

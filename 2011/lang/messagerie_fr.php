@@ -14,9 +14,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// M
 	'mail_sujet_envoyermessage' => '[@nom_site@] Vous avez un nouveau message',
-	'mail_texte_envoyermessage' => '@prenom@ @nom@ vous a envoyé un nouveau message.
+	'mail_texte_envoyermessage' => '(ceci est un message automatique, merci de ne pas y r&eacute;pondre)
 
-Pour le consulter @url_site@/article502.html
+@prenom@ @nom@ vous a envoyé un nouveau message.
+
+Pour le consulter @url_site@/article511.html
 
 La @nom_site@',
 

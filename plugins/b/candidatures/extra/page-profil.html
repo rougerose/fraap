@@ -48,12 +48,17 @@
 			<div id="gestion-candidatures">
 				<h2><:candidatures:titre_candidatures:></h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
+
+				[[#REM] s'il le visiteur est un étudiant, on affiche bouton d'ajout de candidatures ]
+				[(#SESSION{activite}|=={2}|oui)
 				<div class="actions clearfix">
 					<ul>
 						<li><a href="[(#URL_PAGE{candidature}|parametre_url{id_candidature,#ID_CANDIDATURE})]" class="bt ajouter" title="<:candidatures:label_bouton_ajouter_candidature:>"><:candidatures:label_bouton_ajouter_candidature:></a></li>
 					</ul>
 					<p></p>
 				</div><!-- .actions -->
+				]
+
 				<B_candidatures>
 				<ol id="accordeon-candidatures">
 					<BOUCLE_candidatures(CANDIDATURES){id_candidature IN #GET{c}}{par date}>
