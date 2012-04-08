@@ -47,7 +47,7 @@
 			</div><!-- #gestion-messages -->
 
 			[(#REM) s'il le visiteur est un étudiant, on affiche rien à propos des candidatures ]
-			<BOUCLE_test_etudiant(CONDITION){si #SESSION{activite}|==2}>
+			<BOUCLE_test_etudiant(CONDITION){si #ACTIVITE|=={2}|oui}>
 			<div id="gestion-candidatures">
 				<h2><:candidatures:titre_candidatures:></h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
