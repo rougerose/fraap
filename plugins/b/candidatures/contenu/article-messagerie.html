@@ -29,11 +29,11 @@
 		]
 		[<div class="texte textecourant">
 			(#ENV{repondre}|oui)
-			[(#FORMULAIRE_ECRIRE_MESSAGE{art503,#ENV{destinataire}})]
+			[(#FORMULAIRE_ECRIRE_MESSAGE{art510,#ENV{destinataire}})]
 		</div>]
 		[<div class="texte textecourant">
 			(#ENV{destinataire}|oui)
-			[(#FORMULAIRE_ECRIRE_MESSAGE{art503,#ENV{destinataire}})]
+			[(#FORMULAIRE_ECRIRE_MESSAGE{art510,#ENV{destinataire}})]
 		</div>]
 
 		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
