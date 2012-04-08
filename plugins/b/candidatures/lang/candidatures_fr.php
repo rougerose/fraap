@@ -148,6 +148,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// R
 	'retour_profil' => '&#x2190; votre profil',
+	'retour_stages'	=> '&#x2190; les stages',
 
 	// S
 	'stages' => 'Stages',
