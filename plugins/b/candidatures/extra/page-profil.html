@@ -49,7 +49,7 @@
 				<h2><:candidatures:titre_candidatures:></h2>
 				[<p class="compteur-candidatures">(#GET{total_c}|singulier_ou_pluriel{candidatures:candidature_enregistree,candidatures:candidatures_enregistrees,nb})</p>]
 
-				[[#REM] s'il le visiteur est un étudiant, on affiche bouton d'ajout de candidatures ]
+				[(#REM) s'il le visiteur est un étudiant, on affiche bouton d'ajout de candidatures ]
 				[(#SESSION{activite}|=={2}|oui)
 				<div class="actions clearfix">
 					<ul>
