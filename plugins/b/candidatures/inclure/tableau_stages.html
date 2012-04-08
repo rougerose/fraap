@@ -250,7 +250,7 @@
 	<table id="stages-table">
 		<thead>
 			<tr>
-				<th></th>
+				<th><:candidatures:label_contact:></th>
 				<th><:candidatures:label_candidate:></th>
 				<th colspan="2"><:candidatures:label_dispo_consultation:></th>
 				<th colspan="2"><:candidatures:label_localisation_geo_consultation_abrev:></th>
@@ -281,8 +281,8 @@
 			#SET{comp,#COMPETENCES_OFFRE|unserialize}
 			#SET{rech,#COMPETENCES_RECHERCHE|unserialize}
 			<tr id="stage#ID_CANDIDATURE" class="parent[ (#COMPTEUR_BOUCLE|alterner{'impaire','pair'})][ (#COMPTEUR_BOUCLE|modulo{3})]">
-				<td class="expand"></td>
-				<td>#GET{auteur_prenom}</td>
+				<td class="mail"><a class="icon mail" href="[(#URL_ARTICLE{509}|parametre_url{destinataire,#GET{id_auteur}})]" title="<:candidatures:envoyer_message:>"><:candidatures:envoyer_message:></a></td>
+				<td>#GET{auteur_prenom}<br />#GET{auteur_nom}</td>
 				<td>[(#DATE_DEBUT|affdate{d/m/Y})]</td>
 				<td>[(#DATE_FIN|affdate{d/m/Y})]</td>
 				<td>
@@ -304,13 +304,6 @@
 					<BOUCLE_recherches(POUR){tableau #GET{rech}}>
 					[<p>(#GET{data_competences}|table_valeur{#VALEUR})</p>]
 					</BOUCLE_recherches>
-				</td>
-			</tr>
-			<tr class="[(#COMPTEUR_BOUCLE|alterner{'impaire enfant','pair enfant'})]">
-				<td colspan="12">
-					<div>
-						<p>#GET{auteur_nom} <a class="icon mail" href="[(#URL_ARTICLE{509}|parametre_url{destinataire,#GET{id_auteur}})]" title="<:candidatures:envoyer_message:>"><:candidatures:envoyer_message:></a></p>
-					</div>
 				</td>
 			</tr>
 			</BOUCLE_stages>

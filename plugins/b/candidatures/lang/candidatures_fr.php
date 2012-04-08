@@ -87,6 +87,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_competences_recherche_consultation_abrev' => 'Rech.',
 	'label_competences_recherche_inscription' => 'Domaines que vous recherchez (plusieurs choix possibles)',
 	'label_conditions_inscription_stage' => "J'ai lu et j'accepte les conditions d'utilisation.",
+	'label_contact' => 'Contact',
 	'label_date_debut' => 'Du',
 	'label_date_fin' => 'Au',
 	'label_diplome' => 'Diplôme préparé',

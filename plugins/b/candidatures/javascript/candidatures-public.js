@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 
 
 	// Stages : affichage du nom du candidat + bouton vers le formulaire de contact
-	var stagesContactCandidat = function () {
+/*	var stagesContactCandidat = function () {
 		$("#stages-table tbody").each(function(){
 			var	i = '',
 				$parent = $(this).find("tr:nth-child(odd)"),
@@ -143,7 +143,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 	stagesContactCandidat(); onAjaxLoad(stagesContactCandidat);
-
+*/
 	// Présentation en colonnes de certaines parties des formulaires
 	$("#formulaire_tri_stages #localisation li.editer_regions,#formulaire_tri_stages #competences li.editer_competences_offre,#formulaire_tri_stages #recherches li.editer_competences_recherche").columnSplit({
 		col:4,cible:'div.choix'

@@ -439,19 +439,12 @@ div.intro p { margin: 0; }
 				#stages-table tr th { border-left: 1px solid #fff; }
 				#stages-table th, #stages-table td {
 					padding: 4px 6px 2px;
-					font-size: 12px; }
+					font-size: 12px;
+					vertical-align: middle; }
 			#stages-table tr:first-child th { font-weight: bold; }
-				/* #stages-table .expand {  }*/
-				#stages-table .expand .icon { width: 16px; height: 16px; }
-				#stages-table .expand .icon.fermer { background-position: -43px -75px; }
-				#stages-table .expand .icon.ouvert { background-position: -9px -75px; }
 				#stages-table p { margin: 0 }
-				#stages-table tr.enfant p { margin-bottom: .5em; margin-left: 28px; }
-					#stages-table tr.enfant p .icon.mail {
-						background-position: -5px -139px;
-						margin-left: 10px; margin-top: 5px;
-						vertical-align: bottom; }
-					#stages-table tr.enfant p .icon:hover { background-position: -38px -139px; }
+					#stages-table td.mail .icon.mail { background-position: -5px -139px; }
+					#stages-table td.mail .icon:hover { background-position: -38px -139px; }
 
 /* vcard */
 	/* styles communs */
