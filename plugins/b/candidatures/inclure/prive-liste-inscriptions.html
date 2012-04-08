@@ -1,7 +1,7 @@
-[(#REM)	on récupère les visiteurs (6forum) ]
+[(#REM)	on récupère les visiteurs (6forum ou nouveau) ]
 #SET{visiteurs,#ARRAY}
 
-<BOUCLE_tableau_visiteurs(AUTEURS){bio=6forum}{tout}>[(#SET{visiteurs,#GET{visiteurs}|push{#ID_AUTEUR}})]</BOUCLE_tableau_visiteurs>
+<BOUCLE_tableau_visiteurs(AUTEURS){statut IN 6forum,nouveau}{tout}>[(#SET{visiteurs,#GET{visiteurs}|push{#ID_AUTEUR}})]</BOUCLE_tableau_visiteurs>
 
 <div>
 	<B_inscriptions>
