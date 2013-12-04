@@ -16,9 +16,7 @@
 		<div class="vcard colonne">
 
 			<BOUCLE_auteur_fraap(AUTEURS){id_auteur=1}{tout}>
-			[(#MODELE{auteur_vcard,id_auteur,
-				urlmap=http://maps.google.fr/maps/place?q=15+rue+de+la+condamine+paris&hl=fr&ftid=0x47e66fad50199af1:0x6115c8148f9848ff}
-			)]
+			[(#MODELE{auteur_vcard,id_auteur})]
 			</BOUCLE_auteur_fraap>
 
 		</div><!-- .vcard -->

@@ -15,11 +15,9 @@
 		[<h3 class="fn org url"><a href="#URL_SITE_SPIP">(#NOM)</a></h3>]
 	]
 	<p class="adr">
-		[<a href="(#GET{urlmap})"[ (#ID_AUTEUR|=={1}|oui)rel="me"] title="<:afficher_map:>">]
-			[<span class="street-address">(#ANNUAIRE_ADRESSE1)</span><br />]
-			[<span class="extended-address">(#ANNUAIRE_ADRESSE2)</span><br />]
-			[<span class="postal-code">(#ANNUAIRE_CODEPOSTAL)</span>][ <span class="locality">(#ANNUAIRE_VILLE)</span>][, <span class="country-name">(#ANNUAIRE_PAYS)</span>]
-		[(#GET{urlmap}|oui)</a>]
+		[<span class="street-address">(#ANNUAIRE_ADRESSE1)</span><br />]
+		[<span class="extended-address">(#ANNUAIRE_ADRESSE2)</span><br />]
+		[<span class="postal-code">(#ANNUAIRE_CODEPOSTAL)</span>][ <span class="locality">(#ANNUAIRE_VILLE)</span>][, <span class="country-name">(#ANNUAIRE_PAYS)</span>]
 	</p>
 	[<p class="tel">
 		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE1"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE1)</a>
