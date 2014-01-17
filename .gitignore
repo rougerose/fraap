@@ -24,7 +24,8 @@ spip.php
 svn.revision
 /tmp
 /plugins/*
-
+*.sublime-project
+*.sublime-workspace
 
 # excepte
 !/plugins/b
