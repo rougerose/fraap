@@ -1,0 +1,67 @@
+<div id="extra-objet-conteneur">
+
+	<div id="info-publi-objet-conteneur">
+
+		[(#REM) [(#MODELE{socialtags})] ]
+
+	</div><!-- #info-publi-objet-conteneur -->
+</div><!-- #extra-objet -->
+
+[(#REM) tableaux des résultats ]
+#SET{articles,#ARRAY} #SET{rubriques,#ARRAY} #SET{mots,#ARRAY} #SET{documents,#ARRAY} #SET{breves,#ARRAY} #SET{total,''}
+
+<BOUCLE_articles(ARTICLES){recherche}{!par points}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles>
+<BOUCLE_rubriques(RUBRIQUES){recherche}{!par points}>[(#SET{rubriques,#GET{rubriques}|push{#ID_RUBRIQUE}})]</BOUCLE_rubriques>
+<BOUCLE_mots(MOTS){recherche}{!par points}>[(#SET{mots,#GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
+<BOUCLE_documents(DOCUMENTS){recherche}{!par points}>[(#SET{documents,#GET{documents}|push{#ID_DOCUMENT}})]</BOUCLE_documents>
+<BOUCLE_breves(BREVES){recherche}{!par points}>[(#SET{breves,#GET{breves}|push{#ID_BREVE}})]</BOUCLE_breves>
+
+[(#SET{total,
+	#GET{articles}|count
+		|plus{#GET{rubriques}|count}
+		|plus{#GET{mots}|count}
+		|plus{#GET{documents}|count}
+		|plus{#GET{breves}|count}
+})]
+
+<div id="chapo-conteneur" class="introduction">
+	[(#GET{total}|>{0}|?{
+		[<p class="info-resultats">(#GET{total}|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})</p>]
+		,
+		<p id="resultat" class="info-resultats"><:candidatures:criteres_pas_de_resultat:></p>
+	})]
+</div><!-- #chapo-conteneur .introduction -->
+
+<div class="contenu surlignable clearfix">
+	<BOUCLE_condition_articles(CONDITION){si #GET{articles}}>
+	<div class="hfeed recherche">
+		[(#REM) articles, format horizontal ]
+		<INCLURE{fond=inclure/articles-selection,env,selection=#GET{articles},pagination=5,format=horizontal,ajax,logo=140}>
+	</div><!-- .hfeed recherche -->
+	</BOUCLE_condition_articles>
+
+	<BOUCLE_condition_rubriques(CONDITION){si #GET{rubriques}}>
+	<div class="recherche">
+		[(#REM) rubriques, format horizontal ]
+		<INCLURE{fond=inclure/recherche-rubriques,env,selection=#GET{rubriques},pagination=5,format=horizontal,ajax,logo=140}>
+	</div><!-- .recherche -->
+	</BOUCLE_condition_rubriques>
+
+	<BOUCLE_condition_autres(CONDITION){si #GET{mots}|ou{#GET{documents}}|ou{#GET{breves}}}>
+	<div class="recherche grid_12 grille">
+		[(#GET{documents}|oui)
+		<div id="documents" class="item">]
+			<INCLURE{fond=inclure/recherche-documents,env,selection=#GET{documents},format=grille,pagination=3,ajax}>
+		[(#GET{documents}|oui)
+		</div>][(#GET{mots}|oui)
+		<div id="mots" class="item">]
+			<INCLURE{fond=inclure/recherche-mots,env,selection=#GET{mots},format=grille,pagination=5,ajax}>
+		[(#GET{mots}|oui)
+		</div>][(#GET{breves}|oui)
+		<div id="breves" class="hfeed item">]
+			<INCLURE{fond=inclure/recherche-breves,env,selection=#GET{breves},format=grille,pagination=3,ajax}>
+		[(#GET{breves}|oui)
+		</div>]
+	</div><!-- .recherche -->
+	</BOUCLE_condition_autres>
+</div><!-- .contenu -->

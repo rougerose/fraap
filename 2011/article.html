@@ -1,0 +1,6 @@
+<BOUCLE_principale_article(ARTICLES){id_article}>
+<INCLURE{fond=structure}{env}{id_rubrique=#ENV{id_rubrique,#ID_RUBRIQUE}}{id_secteur=#ID_SECTEUR}{type=article}{composition=#COMPOSITION} />
+</BOUCLE_principale_article>
+[(#ID_ARTICLE|accesrestreint_article_restreint|oui)<INCLURE{fond=identification}{id_article}>]
+[(#ID_ARTICLE|accesrestreint_article_restreint|non)<INCLURE{fond=401}{id_article}>]
+<//B_principale_article>

@@ -1,0 +1,46 @@
+[(#SET{secteur,#ENV{id_secteur,#ID_RUBRIQUE}})]
+<div id="page" class="container_16">
+	<div id="head" class="clearfix">
+		<div id="raccourcis" class="menu clearfix">
+			<INCLURE{fond=inclure/raccourcis,env}>
+		</div><!-- #raccourcis -->
+		<div id="entete">
+			<INCLURE{fond=inclure/entete,env}>
+		</div><!-- #entete -->
+		<div id="nav" class="grid_12 menu">
+			<INCLURE{fond=inclure/barre-nav,env}>
+		</div><!-- #nav -->
+
+
+	</div><!-- #head -->
+
+	<div id="conteneur" class="[couleurID(#GET{secteur}) ]clearfix">
+		[(#REM) zone relative à la session ouverte par l'utilisateur ]
+		[(#SESSION|oui)
+		<INCLURE{fond=inclure/session-info,env}>
+		]
+		[(#REM) le titre est affiché ici sauf pour le sommaire ]
+		[(#ENV{type}|=={page}|et{#ENV{composition}|=={sommaire}}|non)
+		<div id="titre">
+			<INCLURE{fond=titre/#ENV{type},env}>
+		</div><!-- #titre -->]
+
+		<div id="contenu" class="clearfix">
+			<INCLURE{fond=contenu/#ENV{type},env}>
+		</div><!-- #contenu -->
+
+		<div id="navigation">
+			<INCLURE{fond=navigation/#ENV{type},env}>
+			<INCLURE{fond=extra/#ENV{type},env}>
+		</div><!-- #navigation -->
+
+		<div id="fil">
+			<INCLURE{fond=fil/#ENV{type},env}>
+		</div><!-- #fil -->
+
+	</div><!-- #conteneur -->
+
+	<div id="pied" class="clearfix">
+		<INCLURE{fond=inclure/pied,env}>
+	</div><!-- #pied -->
+</div><!-- #page -->

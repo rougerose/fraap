@@ -1,0 +1,202 @@
+/* ======================================== */
+/*	Site : 		FRAAP						*/
+/*	URL : 		fraap.org					*/
+/*	Author : 	christophe le drean			*/
+/*				rouge-rose.net				*/
+/*	Date :		2011						*/
+/*	Version :	2.0							*/
+/* ======================================== */
+
+
+/* définitions génériques */
+	input, select, textarea { font-size: 100%; font-family: inherit; }
+
+	.formulaire_spip { clear: both; padding: 0; text-align: left; }
+	.formulaire_spip form { margin: 0; padding: 0; } /* Bug IE/Win */
+
+	/* Fieldset */
+	.formulaire_spip fieldset { clear: both; margin: 0 0 1em 0; padding: 0; border: 0; }
+	.formulaire_spip fieldset legend { margin: 0; padding: 0; font-weight: bold; background-color: #fff; color: #333; } /* Preciser la couleur des legend et du fond pour IE/Win */
+	.formulaire_spip .legend { font-size: 14px; border-bottom: 1px solid #000; margin-bottom: .5em; }
+	.formulaire_spip fieldset fieldset { margin-top: 1em; }
+	.formulaire_spip fieldset fieldset legend { font-size: 1em; font-weight: normal; }
+
+	/* Explications */
+	.formulaire_spip .explication {
+		font-size: 12px;
+		margin: 0 !important;
+		color: #999 !important; }
+
+	/* Intro (formulaire inscription stages) */
+	.formulaire_spip .intro { color: #999; }
+
+	/* Lignes */
+	.formulaire_spip ul { margin: 0; padding: 0; list-style: none; }
+	.formulaire_spip ul li { margin: 0; padding: .7em 0 .7em; }
+	.formulaire_spip ul li.fieldset { padding: 0 0 .7em; }
+
+	/* Labels */
+	.formulaire_spip label {
+		font-size: 12px;
+		display: block; margin: 0;
+		text-align: left;
+		color: #666;
+		font-weight: bold;
+		/* pour IE/Win */ position: relative;  }
+	.formulaire_spip li p { margin-top: 0; margin-bottom: 0; }
+
+	.formulaire_spip .choix label { display:inline; font-weight:normal; }
+	.formulaire_spip .choix input.radio,
+	.formulaire_spip .choix input.checkbox { width:auto; }
+
+	/* Champs de saisie */
+	.formulaire_spip input.text, .formulaire_spip input.password {  }
+	.formulaire_spip textarea {  }
+	.formulaire_spip input.text, .formulaire_spip input.password, .formulaire_spip textarea {
+		background: url('../images/input-bg.png') no-repeat 0 0;
+		margin: .5em 0;
+		padding: 3px 5px;
+		width: 340px;
+		border: 1px solid rgba(187,187,187,0.8);
+		-webkit-border-radius: 2px;
+		   -moz-border-radius: 2px;
+		        border-radius: 2px; }
+	.formulaire_spip select {  }
+	.formulaire_spip input[disabled] { background-color: #f5f5f5; background-image: none;  }
+
+	/* focus */
+	.formulaire_spip input.text:focus, .formulaire_spip input.password:focus, .formulaire_spip textarea:focus {
+		border-color: #000; }
+
+	/* Boutons */
+	.formulaire_spip .boutons { clear: both; margin: 0 0 1em 0; padding: 0; text-align: right; }
+	.formulaire_spip .boutons input { margin-left: 1em; }
+	.formulaire_spip .boutons input, input.submit {  }
+
+	/* Reponses, previsu et erreurs */
+
+	/* Champs obligatoires */
+	.formulaire_spip li.obligatoire {}
+	.formulaire_spip li.obligatoire label {}
+
+	/* Previsualisation du message */
+	.formulaire_spip fieldset.previsu { margin-bottom: 2em; padding: 1em; border: 2px solid #F57900; }
+	.formulaire_spip fieldset.previsu legend { padding: 0 0.50em; font-weight: bold; color: #F57900; }
+	.formulaire_spip fieldset.previsu li { padding: 3px; border: none; }
+	.formulaire_spip fieldset.previsu p { margin: 0 0 1em; }
+
+	/* Reponse du formulaire */
+	.reponse_formulaire {
+		text-align: center;
+		padding: 3px 5px 5px;
+		-webkit-border-radius: 5px;
+		   -moz-border-radius: 5px;
+		        border-radius: 5px; }
+	fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
+	fieldset.reponse_formulaire.reponse_formulaire legend { color: #F57900; } /* Preciser la couleur des legend et du fond pour IE/Win */
+
+	/* * Erreurs */
+	.formulaire_spip li.erreur .erreur_message { display: block; color: #C30; font-weight: bold; }
+	.formulaire_spip li.erreur input.text, .formulaire_spip li.erreur textarea { background-color: #FCC; border-style: solid; border-color: #C30; }
+	.reponse_formulaire_erreur { background-color: rgba(217,12,22,.8); color: #fff !important; }
+
+	/* * OK */
+	.reponse_formulaire_ok { background-color: rgba(75,169,0,.8); color: #fff !important; }
+
+	.formulaire_spip .bugajaxie { display: none; }
+
+	/* présentation en ligne */
+	.enligne li { border-bottom: 1px solid #ddd; position: relative; }
+		.enligne label {
+			display: inline-block !important;
+			margin-right: 20px;
+			width: 80px; }
+		.enligne p.explication {
+			display: inline-block; vertical-align: top;
+			font-weight: normal;
+			position: absolute; top: .7em;
+			width: 220px; }
+		.enligne input, .enligne textarea {
+			vertical-align: top; }
+		.enligne p.explication + input { margin-top: 1.7em; }
+
+	/* présentation en colonne */
+	.formulaire_spip li.colonnes { border-bottom: 1px solid #ddd; }
+	.formulaire_spip .bloc { float: left; margin: 0 10px; }
+	.formulaire_spip .bloc.item1 { margin-left: 0; }
+	.formulaire_spip .bloc:last-child { margin-right: 0; }
+
+/* formulaire de contact */
+	#formulaire_contact.enligne label { width: 217px; }
+
+/* formulaire tri annuaire */
+	#formulaire_tri_annuaire { margin-bottom: 1em; }
+	#formulaire_tri_annuaire ul {
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+		        border-radius: 4px; }
+		#formulaire_tri_annuaire li {
+			padding: 3px 5px;
+			display: inline; float: left; clear: none; }
+			#formulaire_tri_annuaire li label { color: #fff; }
+			#formulaire_tri_annuaire li select { max-width: 280px; }
+
+
+/* formulaire tri stages */
+	#formulaire_tri_stages .ui-tabs { padding:0; margin-bottom: 1em;}
+	.actions #formulaire_tri_stages li { display: block; }
+	#formulaire_tri_stages li.editer_ville_stage { border-bottom: 1px solid #ddd; }
+	#formulaire_tri_stages #formation label { width: 100px; }
+		#formulaire_tri_stages .bloc { width: 220px; }
+
+/* formulaire editer candidature */
+	#formulaire_editer_candidature .bloc { width: 220px; }
+
+
+	#formation input, #localisation input.text { width: 220px; }
+
+/* plugin messagerie */
+
+	/* formulaire ecrire message */
+	.formulaire_ecrire_message input.text, .formulaire_ecrire_message textarea { width: 340px; }
+	.formulaire_ecrire_message div.faux_input { display: inline; }
+
+	/* formulaire messages recus */
+	.formulaire_messages_recus select { display: block; margin: 0 0 10px; }
+	.formulaire_messages_envoyes select { margin: 0 0 10px; }
+	.formulaire_spip .liste_items li.item:hover { background-color: transparent; }
+	.formulaire_spip li.on { font-weight: normal; }
+	.formulaire_spip .messages li .message h3 { font-size: 14px; margin-top: .5em; margin-bottom: .5em; }
+	.formulaire_spip .messages li .intro { font-size: 13px; }
+	.formulaire_spip .messages .message .texte p { font-size: 13px; margin-bottom: 20px; }
+
+/* recherche */
+#raccourcis #formulaire_recherche {
+	position: relative; z-index: 2;
+	-webkit-border-radius: 0 0 4px 4px;
+	   -moz-border-radius: 0 0 4px 4px;
+	        border-radius: 0 0 4px 4px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	   -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	     -o-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	        box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+	text-align: right;
+	width: 940px; }
+	/* eviter un FOUC http://www.learningjquery.com/2008/10/1-way-to-avoid-the-flash-of-unstyled-content */
+	.js #formulaire_recherche form { display: none; }
+	#formulaire_recherche form {
+		margin: 1em 0 1em 480px;
+		float:left; }
+		#formulaire_recherche label { display: none; }
+		#formulaire_recherche input[type=text] {
+			background-color: #fff;
+			margin-right: 10px;
+			width: 280px; }
+		#formulaire_recherche input[type=text]:focus { border-color: rgba(153,0,153,0.5);  }
+
+
+/* page profil (stages) */
+.formulaire_editer_auteur_light {
+	margin: 0 0 2em;
+	padding: .5em 0;
+	border: 1px solid #196efa; border-width: 0 0 1px; }

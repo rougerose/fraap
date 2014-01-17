@@ -2,13 +2,20 @@
 .DS_Store
 
 # projet spip : les fichiers et dossiers ignorés
+/howto
+/asso
+/log
+/newsletter
+.bash_history
 .htaccess
 config/connect.php
 config/chmod.php
+config/.*
 /ecrire
 /extensions
 /IMG
 index.php
+/lib
 /local
 /prive
 rien.gif
@@ -17,6 +24,8 @@ spip.php
 svn.revision
 /tmp
 /plugins/*
+*.sublime-project
+*.sublime-workspace
 
 # excepte
 !/plugins/b

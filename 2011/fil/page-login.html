@@ -1,0 +1,22 @@
+[(#ENV{url}|=={''}|?{#SET{prive,' '}})]
+[(#ENV{url}|match{^#EVAL{_DIR_RESTREINT_ABS}}|?{#SET{prive,' '}})]
+
+<p id="ariane">
+	<a href="#URL_SITE_SPIP/"><:accueil_site:></a>
+	<BOUCLE_test_rubrique_stages(CONDITION){si #ENV{id_rubrique}|==10}>
+	<BOUCLE_rubrique_stages(RUBRIQUES){id_rubrique}>
+	<BOUCLE_ariane(HIERARCHIE){id_rubrique}> &rarr; <a href="#URL_RUBRIQUE">[(#TITRE|couper{70})]</a></BOUCLE_ariane>[ &rarr; <a href="#URL_RUBRIQUE">(#TITRE|couper{70})</a>]
+	</BOUCLE_rubrique_stages>
+	</BOUCLE_test_rubrique_stages>
+	[ &rarr; <strong class="on">(#GET{prive}|?{<:login_acces_prive:>,<:lien_connecter:>})</strong>]
+</p>
+
+
+
+
+
+
+
+
+
+
