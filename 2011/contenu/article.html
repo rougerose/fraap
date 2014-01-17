@@ -29,7 +29,7 @@
 		[(#REM) Inclure le modele des liens de traductions ]
 		#MODELE{article_traductions}
 
-		[(#REM) [(#MODELE{socialtags})] ]
+		[(#MODELE{socialtags})]
 
 		[(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
 		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
