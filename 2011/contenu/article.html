@@ -41,7 +41,13 @@
 
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
-
+[(#ID_SECTEUR|=={2}|oui)
+	[(#DATE|date_comparaison{730}|oui) [(#SET{d,#DATE|annee})]
+		<div class="contenu">
+			<p class="message--info-article-perime"><:info_message_article_perime{date=#GET{d}}:></p>
+		</div><!-- #chapo-conteneur .introduction -->
+	]
+]
 [<div id="chapo-conteneur" class="introduction #EDIT{chapo}">
 	(#CHAPO|image_reduire{220,0})
 </div><!-- #chapo-conteneur .introduction -->]

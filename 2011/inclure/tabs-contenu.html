@@ -114,10 +114,8 @@
 			<BOUCLE_lire_articles(ARTICLES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
 			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|alterner{impair,pair}})] ]
 			<li class="hentry clearfix[ (#GET{alterner})]">
-				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_ARTICLE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
 				</div>
 			</li>
 			[(#SET{total_articles,#TOTAL_BOUCLE})]
@@ -125,19 +123,15 @@
 			<BOUCLE_lire_breves(BREVES){id_mot IN #GET{id_mot}}{!par date}{exclus}>
 			[(#ENV{format}|match{grille}|oui) [(#SET{alterner,#COMPTEUR_BOUCLE|plus{#GET{total_articles}}|alterner{impair,pair}})] ]
 			<li class="hentry clearfix[ (#GET{alterner})]">
-				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_BREVE"><:suite:></a></span></p>]
 				</div>
 			</li>
 			</BOUCLE_lire_breves>
 			<BOUCLE_lire_rubriques(RUBRIQUES){id_mot IN #GET{id_mot}}{par titre}{exclus}>
 			<li class="hentry clearfix">
-				<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_RUBRIQUE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_RUBRIQUE"><:suite:></a></span></p>]
 				</div>
 			</li>
 			</BOUCLE_lire_rubriques>

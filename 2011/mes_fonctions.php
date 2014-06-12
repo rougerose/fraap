@@ -35,4 +35,21 @@ function hex2rgb($hexStr, $returnAsString = true, $seperator = ',') {
 	return $returnAsString ? implode($seperator, $rgbArray) : $rgbArray; // returns the rgb string or the associative array
 }
 
+/**
+ * comparaison d'une date par rapport à celle du jour
+ * usage : [(#DATE|date_comparaison{365}|?{oui,non})]
+ */
+
+function date_comparaison($date,$jours) {
+    $datetime1 = new DateTime($date);
+    $datetime2 = new DateTime('now');
+    $interval = $datetime1->diff($datetime2);
+    $nbre = $interval->format('%a');
+    if ($nbre >= $jours) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>
