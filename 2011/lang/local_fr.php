@@ -38,6 +38,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	//I
 	'info_ps' => 'Post-scriptum',
+	'info_message_article_perime' => "Attention, cet article a été publié en @date@ et certaines informations sont susceptibles de ne plus être à jour.",
 
 	// F
 	'fichier' => 'Fichier',
