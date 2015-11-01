@@ -1,0 +1,16 @@
+<plugin>
+  <nom>FRAAP</nom>
+  <auteur>christophe le drean</auteur>
+  <version>0.0.1</version>
+  <icon>images/fraap.png</icon>
+
+  <etat>dev</etat>
+  <description>
+    Squelettes du site http://fraap.org
+  </description>
+  <lien>#</lien>
+  <icon></icon>
+  <prefix>fraap</prefix>
+  <options>fraap_options.php</options>
+  <necessite id="SPIP" version="[2.1.12;]" />
+</plugin>
