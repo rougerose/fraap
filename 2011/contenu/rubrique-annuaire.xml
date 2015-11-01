@@ -1,6 +1,0 @@
-<composition>
-	<nom>Rubrique Annuaire</nom>
-	<description>Composition pour la rubrique Annuaire.</description>
-	<icon>images/article-portfolio.png</icon>
-	<branche type="article" composition="annuaire" />
-</composition>
