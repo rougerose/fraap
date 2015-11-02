@@ -1,9 +1,0 @@
-<BOUCLE_rubrique_courante(RUBRIQUES){id_rubrique}><BOUCLE_test_secteur(RUBRIQUES){id_enfant}>
-  <ul><BOUCLE_rubriques_filles(RUBRIQUES){id_parent}{par num titre}>
-   <li id="localisationRub1#ID_RUBRIQUE">[<a href="#URL_RUBRIQUE" class="rubrique_[(#EXPOSE|{'on','off'})]"[ title="(#DESCRIPTIF)"]>(#TITRE|supprimer_numero)</a>]</li></BOUCLE_rubriques_filles>
-  </ul>
-  </BOUCLE_test_secteur></B_test_secteur>
-  <ul><BOUCLE_rubriques_filles2(RUBRIQUES){id_parent}{par num titre}>
-   <li id="localisationRub1#ID_RUBRIQUE">[<a href="#URL_RUBRIQUE" class="rubrique_[(#EXPOSE|{'on','off'})]"[ title="(#DESCRIPTIF)"]>(#TITRE|supprimer_numero)</a>]</li></BOUCLE_rubriques_filles2>
-  </ul><//B_test_secteur>
-  </BOUCLE_rubrique_courante>

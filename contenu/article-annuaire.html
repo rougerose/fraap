@@ -1,0 +1,107 @@
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+<div id="extra-objet-conteneur">
+	[<div id="logo-objet-conteneur">
+		(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
+	</div><!-- #logo-objet-conteneur -->]
+
+	<div id="info-publi-objet-conteneur">
+		<p class="info-publi updated published">
+			<span class="value-title" title="[(#DATE|date_iso)]">
+				[<:publie_le:> (#DATE|affdate{'d'})][/(#DATE|mois)][/(#DATE|annee)]
+			</span>
+		</p>
+		[<p class="auteurs">
+			<:par_auteur:> (#MODELE{auteurs})
+		</p>]
+
+		[(#REM) Inclure le modele des liens de traductions ]
+		#MODELE{article_traductions}
+
+		[(#REM) [(#MODELE{socialtags})] ]
+
+		[(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
+		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
+
+		[(#REM) menu rubriques ]
+		[(#GET{menu}|oui)
+			[(#INCLURE{fond=inclure/menu-rubriques,env})]
+		]
+
+	</div><!-- #info-publi-objet-conteneur -->
+</div><!-- #extra-objet -->
+
+[<div id="chapo-conteneur" class="introduction #EDIT{chapo}">
+	(#CHAPO|image_reduire{220,0})
+</div><!-- #chapo-conteneur .introduction -->]
+
+<div class="contenu clearfix">
+	<div class="contenu-principal">
+		<div class="surlignable">
+			[<div class="#EDIT{texte} texte textecourant">(#TEXTE|image_reduire{220,0})</div>]
+		</div><!-- .surlignable -->
+
+
+		[(#REM) infos de contact : issus champs extra auteur et site référencé ]
+		#SET{contact,''} #SET{site,''} #SET{urlsite,''}
+		<BOUCLE_contact(AUTEURS){tout}{id_auteur=#CONTACT}>#SET{contact,oui}</BOUCLE_contact>
+		<BOUCLE_site(SYNDIC_ARTICLES){id_syndic=#SITE}{0,1}>#SET{site,oui} #SET{nomsite,#NOM_SITE}</BOUCLE_site>
+
+		<BOUCLE_condition(CONDITION){si #GET{contact}|ou{#GET{site}}}>
+		<div id="annuaire-contact" class="tabs clearfix">
+			<ul class="liste onglets">
+				[(#GET{contact}|oui)
+				<li class="contact"><a href="#contact"><span class="icon"></span><:contact:></a></li>
+				][(#GET{site}|oui)
+				<li class="publications"><a href="#publications"><span class="icon"></span><:dernieres_publications_abrev:></a></li>
+				]
+			</ul>
+
+			<BOUCLE_auteur(AUTEURS){tout}{id_auteur=#CONTACT}>
+			<div id="contact" class="vcard clearfix">
+				#MODELE{auteur_vcard,id_auteur}
+			</div><!-- #contact -->
+			</BOUCLE_auteur>
+
+			<B_publications>
+			<div id="publications" class="syndication">
+				<h3><:dernieres_publications{site=#GET{nomsite}}:></h3>
+				<ul class="liste groupe hfeed">
+					<BOUCLE_publications(SYNDIC_ARTICLES){id_syndic=#SITE}{!par date}{0,5}>
+					<li id="article#ID_SYNDIC_ARTICLE" class="hentry item clearfix">
+						<p class="info-publi updated published"><span class="value" title="">[(#DATE|affdate{d/m/Y})]</span></p>
+						<div class="resume-conteneur">
+							<h3 class="entry-title">
+								<a href="#URL_ARTICLE" rel="bookmark" class="spip_out">#TITRE</a>
+							</h3>
+							<p class="auteur">[<:par_auteur:> (#LESAUTEURS)][ &mdash; <em>(#TAGS|afficher_tags)</em>]</p>
+							[<p class="entry-content intro">
+								(#DESCRIPTIF|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
+							</p>]
+							[<div class="enclosures">(#TAGS|afficher_enclosures)</div>]
+
+						</div><!-- .resume-conteneur -->
+					</li>
+					</BOUCLE_publications>
+				</ul>
+			</div><!-- #publications -->
+			</B_publications>
+
+		</div><!-- #annuaire-contact -->
+		</BOUCLE_condition>
+
+		[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+		[<div class="ps textecourant">
+			<h2 class="h2 spip"><:info_ps:></h2>
+			<div class="#EDIT{ps} surlignable">(#PS|image_reduire{220,0})</div>
+		</div>]
+
+		[<div class="notes surlignable textecourant"><h2 class="h2 spip pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+	</div><!-- .contenu-principal -->
+
+	[<div class="contenu-secondaire">
+		(#INCLURE{fond=inclure/tabs,id_article})
+	</div><!-- .contenu-secondaire -->]
+</div><!-- .contenu -->
+
+</BOUCLE_contenu_article>
