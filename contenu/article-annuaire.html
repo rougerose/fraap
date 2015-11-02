@@ -44,7 +44,7 @@
 		[(#REM) infos de contact : issus champs extra auteur et site référencé ]
 		#SET{contact,''} #SET{site,''} #SET{urlsite,''}
 		<BOUCLE_contact(AUTEURS){tout}{id_auteur=#CONTACT}>#SET{contact,oui}</BOUCLE_contact>
-		<BOUCLE_site(SITES){id_syndic=#SITE}>#SET{site,oui} #SET{nomsite,#NOM_SITE}</BOUCLE_site>
+		<BOUCLE_site(SYNDIC_ARTICLES){id_syndic=#SITE}{0,1}>#SET{site,oui} #SET{nomsite,#NOM_SITE}</BOUCLE_site>
 
 		<BOUCLE_condition(CONDITION){si #GET{contact}|ou{#GET{site}}}>
 		<div id="annuaire-contact" class="tabs clearfix">
@@ -100,7 +100,7 @@
 	</div><!-- .contenu-principal -->
 
 	[<div class="contenu-secondaire">
-		(#INCLURE{fond=inclure/tabs,id_article,idrubrique=#ID_RUBRIQUE})
+		(#INCLURE{fond=inclure/tabs,id_article})
 	</div><!-- .contenu-secondaire -->]
 </div><!-- .contenu -->
 

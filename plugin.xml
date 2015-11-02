@@ -13,4 +13,5 @@
   <prefix>fraap</prefix>
   <options>fraap_options.php</options>
   <necessite id="SPIP" version="[2.1.12;]" />
+  <necessite id="Z" version="[1.7.25;]" />
 </plugin>
