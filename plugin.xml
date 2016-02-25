@@ -1,7 +1,7 @@
 <plugin>
   <nom>FRAAP</nom>
   <auteur>christophe le drean</auteur>
-  <version>0.0.2</version>
+  <version>2.0.1</version>
   <icon>images/fraap.png</icon>
 
   <etat>dev</etat>
