@@ -1,0 +1,18 @@
+<paquet
+    prefix="fraap"
+    version="3.0.0"
+    etat="test"
+    categorie="squelette"
+    compatibilite="[3.0.0;3.0.*]"
+    logo="images/fraap.png"
+>
+    <nom>Fraap: squelettes pour Spip 3.0</nom>
+    <auteur lien="http://rouge-rose.net">Christophe Le Drean</auteur>
+
+    <pipeline nom="jqueryui_plugins" inclure="fraap_pipelines.php" />
+    <pipeline nom="insert_head" inclure="fraap_pipelines.php" />
+
+    <necessite nom="Z" compatibilite="[1.7.29;]" />
+    <necessite nom="menus" compatibilite="[1.5.15;]" />
+    <utilise nom="fraap_candidatures" />
+</paquet>

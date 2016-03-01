@@ -67,7 +67,7 @@
 
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li,
-	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton,
+	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton, 
 	.couleurID#ID_RUBRIQUE img.puce,
 	.couleurID#ID_RUBRIQUE .pagination strong.on,
 	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
@@ -153,7 +153,7 @@
 </BOUCLE_principale>
 
 [(#REM) couleur squelette Mot ]
-	[(#SET{mot,#VAL{#54c8d9}|hex2rgb})]
+	[(#SET{mot,#VAL{54c8d9}|couleur_hex2dec})]
 	/* /Mot /#54c8d9 - rgb:#GET{mot} */
 
 	.mot h2.info-resultats { border-color: rgb(#GET{mot}); color: rgb(#GET{mot}); }
@@ -170,7 +170,7 @@
 
 [(#REM) couleur page Recherche ]
 
-	[(#SET{recherche,#VAL{#730073}|hex2rgb})]
+	[(#SET{recherche,#VAL{730073}|couleur_hex2dec})]
 	/* /Recherche /#730073 - rgb:#GET{recherche} */
 
 	/* formulaire de recherche */
@@ -210,4 +210,3 @@
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
 	.page_contact #titre h1,
 	.page_contact #fil strong, .page_contact #fil a:hover { color: ##GET{QSN}; }
-
