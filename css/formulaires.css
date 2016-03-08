@@ -114,11 +114,12 @@
 		.enligne p.explication {
 			display: inline-block; vertical-align: top;
 			font-weight: normal;
-			position: absolute; top: .7em;
-			width: 220px; }
+			/*position: absolute; top: .7em;*/
+			/*width: 220px;*/
+		}
 		.enligne input, .enligne textarea {
 			vertical-align: top; }
-		.enligne p.explication + input { margin-top: 1.7em; }
+		/*.enligne p.explication + input { margin-top: 1.7em; }*/
 
 	/* présentation en colonne */
 	.formulaire_spip li.colonnes { border-bottom: 1px solid #ddd; }

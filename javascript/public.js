@@ -1,7 +1,7 @@
-// eviter un FOUC http://www.learningjquery.com/2008/10/1-way-to-avoid-the-flash-of-unstyled-content
-$('html').addClass('js');
 
 jQuery(document).ready(function() {
+// eviter un FOUC http://www.learningjquery.com/2008/10/1-way-to-avoid-the-flash-of-unstyled-content
+$('html').addClass('js');
 
 	/*
 	 * Grille de mise en page ajoutée aux boutons d'administration de spip

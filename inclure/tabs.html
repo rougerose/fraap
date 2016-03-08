@@ -37,7 +37,7 @@
 
 [(#REM) les documents d'un article/une breve sont affichés à part ]
 [(#GET{documents_article}|oui)
-	#INCLURE{fond=inclure/tabs-contenu,format=#ENV{format},ordre=#ENV{ordre},documents_article=#GET{documents_article}}
+	#INCLURE{fond=inclure/tabs-contenu,id_article, id_breve, format=#ENV{format},ordre=#ENV{ordre},documents_article=#GET{documents_article}}
 ]
 
 [(#REM) les autres contenus sont affichés ensemble ]
