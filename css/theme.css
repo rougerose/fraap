@@ -46,7 +46,22 @@ span.suite a:after, a.suite:after { content:"\00A0\2192"; }
 	margin-top: 5px;
 	padding: 10px;
 	background: #fff; }
-a.img { display: block; float: left; }
+a.img { display: block; }
+
+/* media */
+.media {
+	display: block;
+	margin-bottom: 1em;
+}
+	.media__img {
+		float: left;
+		margin-right: 20px;
+	}
+
+	.media__body {
+		overflow: hidden;
+		display: block;
+	}
 
 /* puce Spip */
 img.puce { background-color: #000; }
@@ -83,6 +98,18 @@ img.puce { background-color: #000; }
 	.onglets li.activites span.icon { background-position: -34px 0; }
 	.onglets li.contact span.icon { background-position: -51px -17px; }
 	.onglets li.publications span.icon { background-position: -68px -17px; }
+
+	/* logo annuaire associations membres */
+	.logo-membre-annuaire {
+		width: 128px;
+		height: 128px;
+		float: right;
+		transform: translate(0,-30%);
+	}
+
+	.introduction-p {
+		overflow: hidden;
+	}
 
 	/* article */
 	.onglets li.themes span.icon { background-position: -51px 0; }
@@ -150,8 +177,9 @@ div.intro p { margin: 0; }
 			width: 100px; }
 
 		.groupe .hentry .logo-objet, .groupe .item .logo-objet {
-			float: left;
-			margin: 1px 19px 1px 1px; }
+			/*float: left;*/
+			/*margin: 1px 19px 1px 1px; */
+		}
 
 		.groupe .hentry .resume-conteneur, .groupe .item .resume-conteneur {
 			float: left; display: inline;
@@ -238,7 +266,6 @@ div.intro p { margin: 0; }
 		font-size: 12px; line-height: 14px;
 		margin-left: 22px; margin-bottom: 5px; }
 
-
 	/* rubriquage #rubriques */
 	#rubriques { border-top: 1px solid #000; }
 			.page_article #rubriques { margin-top: 2em; }
@@ -266,13 +293,13 @@ div.intro p { margin: 0; }
 
 	/* socialtags */
 	#socialtags { text-align: right;  }
-		.socialtags__heading { 
+		.socialtags__heading {
 			margin-bottom: 0;
 			margin-top: 2em;
 			border-top: 1px solid #000;
 			padding-top: .5em;
 			font-size: 13px;
-			font-weight: normal; 
+			font-weight: normal;
 		}
 
 	/* chapo */
@@ -331,9 +358,7 @@ div.intro p { margin: 0; }
 	h2.info-resultats { font-size: 20px; border-top: 3px solid #000; }
 
 	/* rubrique annuaire */
-	.rubrique_annuaire .info-resultats {
-		text-align: right;
-		font-size: 20px; }
+
 
 
 /* stages */
@@ -482,6 +507,10 @@ div.intro p { margin: 0; }
 		.vcard .tel .type {display: none;}
 	.vcard .web { background-position: 0 -238px; }
 
+	/* annuaire */
+	.vcard--annuaire {
+		margin-bottom: 3em;
+	}
 
 /* bouton */
 
@@ -514,6 +543,11 @@ div.intro p { margin: 0; }
 	.small.bouton { font-size: 11px; padding: 6px 5px 5px; }
 	.medium.bouton { font-size: 12px; padding: 6px 5px 5px; }
 	.large.bouton { font-size: 14px; padding: 8px 14px 9px; }
+
+	.bouton--full {
+		width: 100%;
+		margin: 0 !important;
+	}
 
 	/* couleurs (les couleurs dynamiques en fonction des rubriques sont définies dans couleurs.css) */
 	.bouton.noir { background-color: #333 !important; }
@@ -593,4 +627,3 @@ div.intro p { margin: 0; }
 	.ui-dialog .ui-widget-header {
 		background: none; background-color: #000; color: #fff; border: none; }
 	.ui-dialog .ui-dialog-content p { margin: 0; }
-

@@ -131,16 +131,34 @@
 	#formulaire_contact.enligne label { width: 217px; }
 
 /* formulaire tri annuaire */
-	#formulaire_tri_annuaire { margin-bottom: 1em; }
-	#formulaire_tri_annuaire ul {
+	#formulaire_annuaire_tri {
+		margin-bottom: 1em;
+		padding: 0.5em 0.5em;
+	}
+	#formulaire_annuaire_tri ul {
 		-webkit-border-radius: 4px;
 		   -moz-border-radius: 4px;
 		        border-radius: 4px; }
-		#formulaire_tri_annuaire li {
+		#formulaire_annuaire_tri li {
 			padding: 3px 5px;
-			display: inline; float: left; clear: none; }
-			#formulaire_tri_annuaire li label { color: #fff; }
-			#formulaire_tri_annuaire li select { max-width: 280px; }
+			/*display: inline; float: left; clear: none; */
+		}
+			#formulaire_annuaire_tri li label {
+				color: #fff;
+				float: left;
+				width: 30%;
+				text-transform: uppercase;
+			}
+			#formulaire_annuaire_tri li select {
+				width: 70%;
+			}
+	#formulaire_annuaire_tri .boutons {
+		text-align: center;
+		padding: 1em 0 0 30%;
+		margin-left: 0;
+		margin-right: 0;
+		width: 70%;
+	}
 
 
 /* formulaire tri stages */
@@ -189,7 +207,8 @@
 		margin: 1em 0 1em 480px;
 		float:left; }
 		#formulaire_recherche label { display: none; }
-		#formulaire_recherche input[type=text] {
+		#formulaire_recherche input[type=text],
+		#formulaire_recherche input[type=search] {
 			background-color: #fff;
 			margin-right: 10px;
 			width: 280px; }

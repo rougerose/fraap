@@ -1,0 +1,5 @@
+#SET{articles,#ARRAY}
+<BOUCLE_articles_annuaire(ARTICLES){id_rubrique=3}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
+<BOUCLE_geo(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{articles}}{id_groupe=2}{par id_mot}>
+#ID_MOT <br>
+</BOUCLE_geo>

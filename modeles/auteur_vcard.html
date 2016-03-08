@@ -33,5 +33,9 @@
 		<p class="mail"><:email:>[ (#VAL{<a href="mailto:#EMAIL" class="email">#EMAIL</a>}|mailcrypt)]</p>
 		]
 	]
-	[<p class="web"><:site_web:> <a href="(#URL_SITE)">[(#NOM_SITE|sinon{#ANNUAIRE_NOM_ASSO})]</a></p>]
+	[(#URL_SITE|oui)
+		[<p class="web"><:site_web:> <a href="(#URL_SITE)">[(#NOM_SITE|sinon{#ANNUAIRE_NOM_ASSO})]</a></p>]
+	][(#URL_SITE|non)
+		[(#ENV{site}|oui) <p class="web"><:site_web:> <a href="[(#ENV{site}|table_valeur{url})]">[(#ENV{site}|table_valeur{nom})]</a></p> ]
+	]
 </BOUCLE_auteur>
