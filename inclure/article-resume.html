@@ -17,29 +17,21 @@
 				<[h(#ENV{composition}|match{sommaire|recherche}|?{3,2})] class="entry-title">
 					<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
 				</[h(#ENV{composition}|match{sommaire|sommaire}|?{3,2})]>
-				[<p class="entry-content intro">
-					[(#GET{logo}|oui)[<a href="#URL_ARTICLE" class="img">(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{#GET{logo},0})</a>]]
-					(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
-				</p>]
-
-				<BOUCLE_composition(CONDITION){si #ENV{composition}|=={annuaire}}>
-				<dl class="annuaire-tags">
-					<B_localisation>
-					<dt class="region icon" title="<:region:>"><:region:></dt>
-					<BOUCLE_localisation(MOTS){id_article}{id_groupe=1}>
-					<dd>#TITRE</dd>
-					</BOUCLE_localisation>
-					</B_localisation>
-
-					<B_activites>
-					<dt class="activites icon" title="<:activites:>"><:activites:></dt>
-					<BOUCLE_activites(MOTS){id_article}{id_groupe=2}>
-					<dd>#TITRE</dd>
-					</BOUCLE_activites>
-					</B_activites>
-				</dl>
-				</BOUCLE_composition>
-
+				[(#GET{logo}|oui)
+					<div class="media clearfix">
+						[<a href="#URL_ARTICLE" class="img media__img">(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{#GET{logo},0})</a>]
+						<div class="media__body">
+							[<p class="entry-content intro">
+								(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
+							</p>]
+							[(#INCLURE{fond=inclure/article-resume-annuaire-mots,id_article,id_secteur,composition=#ENV{composition}})]
+						</div>
+					</div>
+				][(#GET{logo}|non)
+					[<p class="entry-content intro">
+						(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
+					</p>]
+				]
 			</div><!-- .article-resume-conteneur -->
 		</div><!-- #article#ID_ARTICLE -->
 [(#ENV{composition}|=={sommaire}|oui)

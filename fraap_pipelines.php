@@ -14,6 +14,7 @@ function fraap_insert_head($flux) {
   $scripts = array(
 		// script
 		'public.js',
+    'src/formulaire_annuaire_tri.js',
     'public_init.js'
   );
   foreach($scripts as $valeur) {

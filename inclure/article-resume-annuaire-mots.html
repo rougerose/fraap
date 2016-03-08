@@ -1,0 +1,12 @@
+<B_categories>
+<ul class="list-bare">
+  <BOUCLE_categories(GROUPES_MOTS){id_groupe IN 1,2,7,8,9}{si #ENV{composition}|=={annuaire}}>
+    <B_mot>
+      <li>
+        [<span class="categorie-label couleurID#ID_SECTEUR">(#TITRE)</span> ]
+        <BOUCLE_mot(MOTS){id_article}{id_groupe}{par num titre, titre}{'&#9642;'}>[ (#TITRE) ]</BOUCLE_mot>
+      </li>
+    </B_mot>
+  </BOUCLE_categories>
+</ul>
+</B_categories>

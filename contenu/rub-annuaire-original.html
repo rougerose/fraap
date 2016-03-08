@@ -6,7 +6,24 @@
 	#SET{tous,#ARRAY} #SET{regions,#ARRAY} #SET{activites,#ARRAY} #SET{intersection,#ARRAY}
 
 <BOUCLE_articles_tous(ARTICLES){id_rubrique}{par num titre, titre}>[(#SET{tous,#GET{tous}|push{#ID_ARTICLE}})]</BOUCLE_articles_tous>
-
+<BOUCLE_regions(spip_mots_articles spip_mots){id_groupe=1}>
+	[(#ENV{region}|oui)
+		[(#ID_MOT|=={#ENV{region}}|oui)
+			[(#SET{regions,#GET{regions}|push{#ID_ARTICLE}})]
+		]
+	][(#ENV{region}|non)
+		[(#SET{regions,#GET{regions}|push{#ID_ARTICLE}})]
+	]
+</BOUCLE_regions>
+<BOUCLE_activites(spip_mots_articles spip_mots){id_groupe=2}>
+	[(#ENV{activites}|oui)
+		[(#ID_MOT|=={#ENV{activites}}|oui)
+			[(#SET{activites,#GET{activites}|push{#ID_ARTICLE}})]
+		]
+	][(#ENV{activites}|non)
+		[(#SET{activites,#GET{activites}|push{#ID_ARTICLE}})]
+	]
+</BOUCLE_activites>
 
 [(#REM) calcul des id présents avec les deux critères ]
 [(#SET{intersection,#GET{tous}|array_intersect{#GET{regions},#GET{activites}}})]
@@ -35,15 +52,25 @@
 </div><!-- #chapo-conteneur .introduction -->]
 
 <div class="contenu clearfix">
-	<div class="ajax">
-		[(#REM)
-		  Les articles de la rubrique Annuaire.
-		][(#SET{articles,#ARRAY})]
-		<BOUCLE_articles_annuaire(ARTICLES){id_rubrique=3}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
-		[(#FORMULAIRE_ANNUAIRE_TRI{#GET{articles},#SELF})]
-	</div>
 
-	<INCLURE{fond=inclure/annuaire-contenu, env, ajax} />
+	[(#REM) formulaire de tri]
+	[(#INCLURE{fond=formulaires/tri_annuaire,env})]
+
+	[(#REM) compteur du nombre d'entrées ]
+	[(#GET{intersection}|count|>{0}|?{
+		[<p class="info-resultats">(#GET{intersection}|count|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})</p>]
+		,
+		<p id="resultat" class="info-resultats"><:candidatures:criteres_pas_de_resultat:></p>
+	})]
+
+
+	<BOUCLE_condition_articles(CONDITION){si #GET{intersection}}>
+	<div class="hfeed surlignable">
+		<INCLURE{fond=inclure/articles-selection,env,selection=#GET{intersection},format=grille,ajax,pagination=10}>
+
+		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>
+	</div><!-- .hfeed -->
+	</BOUCLE_condition_articles>
 
 </div><!-- .contenu -->
 </BOUCLE_contenu_rubrique>
