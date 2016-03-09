@@ -10,7 +10,7 @@
 <B_documents>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
 	#ANCRE_PAGINATION
-	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{document_rech,documents_rech,nb})</h2>]
+	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{fraap:document_rech,fraap:documents_rech,nb})</h2>]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 	<BOUCLE_documents(DOCUMENTS){id_document IN #GET{selection}}{pagination #GET{pagination}}>
 	[(#REM) calcul de l'url ]
@@ -27,7 +27,7 @@
 		</dt>
 		<dd>
 			<h3><a href="#GET{url}#documents" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
-			<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+			<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fraap:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
 		</dd>
 	</dl>]
 	</BOUCLE_documents>

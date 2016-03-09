@@ -1,15 +1,5 @@
 [(#REM) définition de constantes ]
-	#SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
 	#SET{menu,''}
-
-[(#REM) éléments nécessaires pour le calcul des articles à afficher ]
-	#SET{tous,#ARRAY} #SET{regions,#ARRAY} #SET{activites,#ARRAY} #SET{intersection,#ARRAY}
-
-<BOUCLE_articles_tous(ARTICLES){id_rubrique}{par num titre, titre}>[(#SET{tous,#GET{tous}|push{#ID_ARTICLE}})]</BOUCLE_articles_tous>
-
-
-[(#REM) calcul des id présents avec les deux critères ]
-[(#SET{intersection,#GET{tous}|array_intersect{#GET{regions},#GET{activites}}})]
 
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">

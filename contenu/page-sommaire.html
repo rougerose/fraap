@@ -24,7 +24,7 @@
 			<BOUCLE_rub_annuaire(RUBRIQUES){id_rubrique=3}>
 			<BOUCLE_cpte_entrees(ARTICLES){id_rubrique}> </BOUCLE_cpte_entrees>
 			#SET{cpt_entrees,#TOTAL_BOUCLE}
-			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{local:entree, local:entrees})]})]</B_cpte_entrees>
+			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap:entree, fraap:entrees})]})]</B_cpte_entrees>
 
 			<div class="intro">
 				[(#INTRODUCTION)]
@@ -47,7 +47,7 @@
 			<BOUCLE_cond_chantiers(CONDITION){si #ID_RUBRIQUE|=={6}}>
 			<BOUCLE_rub_chantiers(RUBRIQUES){id_rubrique=6}>
 			<div class="intro">
-				[<p>(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a></p>]
+				[<p>(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a></p>]
 			</div>
 
 			<B_derniers_art>

@@ -22,14 +22,14 @@
 						[<a href="#URL_ARTICLE" class="img media__img">(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{#GET{logo},0})</a>]
 						<div class="media__body">
 							[<p class="entry-content intro">
-								(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
+								(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a>
 							</p>]
 							[(#INCLURE{fond=inclure/article-resume-annuaire-mots,id_article,id_secteur,composition=#ENV{composition}})]
 						</div>
 					</div>
 				][(#GET{logo}|non)
 					[<p class="entry-content intro">
-						(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a>
+						(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a>
 					</p>]
 				]
 			</div><!-- .article-resume-conteneur -->

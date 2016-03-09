@@ -4,17 +4,17 @@
 <div class="tabs clearfix[ (#ENV{format})][ (#ENV{ordre})]">
 	<ul class="liste onglets">
 		[(#ENV{documents_article}|ou{#ENV{documents_rubrique}}|oui)
-		<li class="documents"><a href="#documents"><span class="icon"></span><:documents:></a></li>]
+		<li class="documents"><a href="#documents"><span class="icon"></span><:fraap:documents:></a></li>]
 		[(#ENV{breves}|oui)
-		<li class="breves"><a href="#breves"><span class="icon"></span><:en_bref:></a></li>]
+		<li class="breves"><a href="#breves"><span class="icon"></span><:fraap:en_bref:></a></li>]
 		[(#ENV{mots}|oui)
-		<li class="themes"><a href="#themes"><span class="icon"></span><:themes:></a></li>]
+		<li class="themes"><a href="#themes"><span class="icon"></span><:fraap:themes:></a></li>]
 		[(#ENV{lire_articles}|ou{#ENV{lire_breves}}|ou{#ENV{lire_rubriques}}|oui)
-		<li class="lire"><a href="#lire"><span class="icon"></span><:lire_aussi:></a></li>]
+		<li class="lire"><a href="#lire"><span class="icon"></span><:fraap:lire_aussi:></a></li>]
 		[(#ENV{annuaire_region}|oui)
-		<li class="region"><a href="#region"><span class="icon"></span><:region:></a></li>]
+		<li class="region"><a href="#region"><span class="icon"></span><:fraap:region:></a></li>]
 		[(#ENV{annuaire_activite}|oui)
-		<li class="activites"><a href="#activite"><span class="icon"></span><:activites:></a></li>]
+		<li class="activites"><a href="#activite"><span class="icon"></span><:fraap:activites:></a></li>]
 	</ul>
 
 	[(#REM) annuaire]
@@ -49,7 +49,7 @@
 			</dt>
 			<dd>
 				<h3><a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
-				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fraap:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
 			</dd>
 		</dl>]
 		</BOUCLE_documents_article>
@@ -68,7 +68,7 @@
 			</dt>
 			<dd>
 				<h3><a href="#URL_DOCUMENT"[ (#GET{mediabox}|oui)class="mediabox"] title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:> #ID_DOCUMENT})]</a></h3>
-				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
+				<p class='descriptif'>[(#DESCRIPTIF|PtoBR) ]<span><:fraap:fichier:> #TYPE_DOCUMENT/[(#TAILLE|taille_en_octets).][ (#DATE|affdate{d/m/Y}).]</span></p>
 			</dd>
 		</dl>]
 		</BOUCLE_documents_rubrique>
@@ -84,7 +84,7 @@
 				<p class="info-publi updated published"><span class="value" title="[(#DATE|affdate{c})]">[(#DATE|affdate{d/m/Y})]</span></p>
 				<div class="resume-conteneur">
 					<h3 class="entry-title"><a href="#URL_BREVE">#TITRE</a></h3>
-					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:suite:></a></span></p>]
+					[<p class="entry-content descriptif">(#INTRODUCTION|couper{100}) <span class="suite"><a href="#URL_ARTICLE"><:fraap:suite:></a></span></p>]
 				</div>
 			</li>
 			</BOUCLE_breves>

@@ -9,7 +9,7 @@
 <B_articles>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
 	[(#ENV{selection_type}|=={tous}|?{
-		<h2 class="intertitre--rubrique">Tous les articles</h2>
+		<h2 class="intertitre--rubrique"><:fraap:articles_tous:></h2>
 	})]
 	[(#ENV{composition}|=={recherche}|ou{#ENV{type}|=={mot}}|oui)
 		[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{fraap:article_rech,fraap:articles_rech,nb})</h2>]

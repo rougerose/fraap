@@ -10,6 +10,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'article_rech'                 => '1 article',
 	'articles_rech'                => '@nb@ articles',
 	'articles_rubrique'            => 'Les articles de cette rubrique',
+	'articles_tous' => "Tous les articles",
 
 	// B
 	'breve_rech'                   => '1 brève',

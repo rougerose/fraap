@@ -18,7 +18,7 @@
 		[(#ID_ARTICLE|match{^(1|505|507|508|512|513)$}|non)
 		<p class="info-publi updated published">
 			<span class="value-title" title="[(#DATE|date_iso)]">
-				[<:publie_le:> (#DATE|affdate{'d'})][/(#DATE|mois)][/(#DATE|annee)]
+				[<:fraap:publie_le:> (#DATE|affdate{'d'})][/(#DATE|mois)][/(#DATE|annee)]
 			</span>
 		</p>
 		]
@@ -44,7 +44,7 @@
 [(#ID_SECTEUR|=={2}|oui)
 	[(#DATE|date_comparaison{730}|oui) [(#SET{d,#DATE|annee})]
 		<div class="contenu">
-			<p class="message--info-article-perime"><:info_message_article_perime{date=#GET{d}}:></p>
+			<p class="message--info-article-perime"><:fraap:info_message_article_perime{date=#GET{d}}:></p>
 		</div><!-- #chapo-conteneur .introduction -->
 	]
 ]
