@@ -6,7 +6,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'activites'                    => 'Activités',
-	'afficher_map'                 => 'Afficher l&#x27;adresse dans une carte',
+	'afficher_map'                 => "Afficher l'adresse dans une carte",
 	'article_rech'                 => '1 article',
 	'articles_rech'                => '@nb@ articles',
 	'articles_rubrique'            => 'Les articles de cette rubrique',
