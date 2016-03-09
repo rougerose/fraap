@@ -49,6 +49,7 @@
 	{ border-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE h2.intertitre a,
+	.couleurID#ID_RUBRIQUE .intertitre--rubrique,
 	.couleurID#ID_RUBRIQUE .textecourant a:hover,
 	.couleurID#ID_RUBRIQUE .contenu-secondaire a:hover,
 	.couleurID#ID_RUBRIQUE #fil strong, .couleurID#ID_RUBRIQUE #fil a:hover,
@@ -65,13 +66,19 @@
 	.couleurID#ID_RUBRIQUE .info-resultats
 	{ color: ##GET{couleur}; }
 
+	.sousrubriques-fleche.couleurID#ID_RUBRIQUE {
+		[color: #(#GET{couleur}|couleur_saturation{0.5});]
+	}
+
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li,
 	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton,
 	.couleurID#ID_RUBRIQUE img.puce,
 	.couleurID#ID_RUBRIQUE .pagination strong.on,
 	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
-	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon { background-color: ##GET{couleur}; }
+	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon,
+	.sousrubriques-item.couleurID#ID_RUBRIQUE a
+	{ background-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE .textecourant hr.spip { border-color: ##GET{couleur}; background-color: ##GET{couleur}; color: ##GET{couleur}; }
 

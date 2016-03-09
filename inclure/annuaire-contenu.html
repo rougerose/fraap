@@ -29,7 +29,7 @@
 ][(#REM)
   Vue Liste
 ]
-<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{articles}}{si #GET{vue}|=={liste}}{0,1}>
+<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{articles}}{par titre}{si #GET{vue}|=={liste}}{0,1}>
   <div class="annuaire-contenu">
     <INCLURE{fond=inclure/articles-selection, env, selection=#GET{articles}, pagination=5, format=horizontal, ajax, logo=140} />
   </div>
