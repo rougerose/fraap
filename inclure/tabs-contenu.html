@@ -11,32 +11,7 @@
 		<li class="themes"><a href="#themes"><span class="icon"></span><:fraap:themes:></a></li>]
 		[(#ENV{lire_articles}|ou{#ENV{lire_breves}}|ou{#ENV{lire_rubriques}}|oui)
 		<li class="lire"><a href="#lire"><span class="icon"></span><:fraap:lire_aussi:></a></li>]
-		[(#ENV{annuaire_region}|oui)
-		<li class="region"><a href="#region"><span class="icon"></span><:fraap:region:></a></li>]
-		[(#ENV{annuaire_activite}|oui)
-		<li class="activites"><a href="#activite"><span class="icon"></span><:fraap:activites:></a></li>]
 	</ul>
-
-	[(#REM) annuaire]
-	<BOUCLE_condition_annuaire_region(CONDITION){si #ENV{annuaire_region}}>
-	<div id="region" class="clearfix liste">
-		<ul class="liste">
-			<BOUCLE_region(MOTS){id_article?}{id_rubrique?}{id_groupe=1}{par titre}>
-			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{region,#ID_MOT})#tri]">#TITRE</a></li>
-			</BOUCLE_region>
-		</ul>
-	</div><!-- #region -->
-	</BOUCLE_condition_annuaire_region>
-
-	<BOUCLE_condition_annuaire_activite(CONDITION){si #ENV{annuaire_activite}}>
-	<div id="activite" class="clearfix liste">
-		<ul class="liste">
-			<BOUCLE_activites(MOTS){id_article?}{id_rubrique?}{id_groupe=2}{par titre}>
-			<li><a href="[(#URL_RUBRIQUE{3}|parametre_url{activites,#ID_MOT})#tri]">#TITRE</li>
-			</BOUCLE_activites>
-		</ul>
-	</div><!-- #activites -->
-	</BOUCLE_condition_annuaire_activite>
 
 	[(#REM) les documents de l'article/breve sont affichés ici ]
 	<BOUCLE_condition_article(CONDITION){si #ENV{documents_article}}>
@@ -95,7 +70,7 @@
 	<BOUCLE_condition_mots(CONDITION){si #ENV{mots}}>
 	<div id="themes" class="liste clearfix">
 		<ul class="liste">
-			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_rubrique?}{id_breve?}{par titre}>
+			<BOUCLE_themes(MOTS){id_rubrique?}{id_article?}{id_breve?}{par titre}>
 			#SET{id_mot,#GET{id_mot}|push{#ID_MOT}}
 			<li>
 				<h3>
