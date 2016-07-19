@@ -26,30 +26,42 @@ $('html').addClass('js');
 		autoHeight: false,
 		icons:false
 	});
+
 	// Rubrique Ressources
-	$("#ressources").accordion({
-		header:'dt',
-		autoHeight: false,
-		icons:false,
-		navigation:true,
-		// on se met doucement là où il faut http://stackoverflow.com/a/3621845
-		change: function(event,ui) {
-			$.scrollTo(ui.newHeader,500);
-		}
-	});
+	if ($("#ressources").length) {
+
+		$("#ressources").accordion({
+			header:'dt',
+			autoHeight: false,
+			icons:false,
+			navigation:true
+			// on se met doucement là où il faut http://stackoverflow.com/a/3621845
+			// change: function(event,ui) {
+			// 	$.scrollTo(ui.newHeader,500);
+			// }
+		});
 		// le hash s'ajoute dans l'url de la page, ce qui permet de pointer plus précisément
 		// http://michaeljacobdavis.com/tutorials/statesavingaccordion.html
 		$("#ressources a.theme").click(function(event){
 			window.location.hash=this.hash;
 		});
 
-		$.localScroll.hash();
+		$('#ressources dt').bind('click',function(){
+			var self = this;
+      setTimeout(function() {
+				var off = $(self).offset();
+				console.log(off);
+        // $('body,html').animate({ scrollTop: offset.top - 100 });
+				$('body').animate({scrollTop: off.top});
+      }, 310);
+    });
+	}
 
 	/*
 	* Rubrique annuaire : formulaire de tri
 	* le bouton ok est masqué et le rechargement de la page est géré sur onchange des select
 	*/
-	$("#formulaire_tri_annuaire .boutons").hide();
+	// $("#formulaire_tri_annuaire .boutons").hide();
 
 
 
