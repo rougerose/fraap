@@ -1,12 +1,4 @@
 <BOUCLE_contenu_article(ARTICLES){id_article}>
-[(#REM)
-  Logo membre associé ou partenaire ?
-]#SET{logo_membre,''}
-<BOUCLE_asso_membre(MOTS){id_article}{id_mot IN 118,119}>
-  [(#REM) membre associé]
-  [(#ID_MOT|=={118}|oui) [(#SET{logo_membre,images/fraap-membre-associe.min.svg})] ]
-  [(#ID_MOT|=={119}|oui) [(#SET{logo_membre,images/fraap-membre-partenaire.min.svg})] ]
-</BOUCLE_asso_membre>
 <div id="extra-objet-conteneur">
   [<div id="logo-objet-conteneur">
     (#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
@@ -38,9 +30,8 @@
   </div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
-[(#CHAPO|ou{#GET{logo_membre}}|oui)
+[(#CHAPO|oui)
   <div id="chapo-conteneur" class="introduction #EDIT{chapo}">
-    [(#GET{logo_membre}|oui) [(#INCLURE{fond=#GET{logo_membre}})] ]
     [<div class="introduction-p">
       (#CHAPO|image_reduire{220,0})
     </div>]
@@ -51,25 +42,11 @@
     <h2 class="section-heading[ couleurID(#ID_SECTEUR)]">à propos</h2>
     [<div class="#EDIT{texte} texte textecourant section-content">(#TEXTE|image_reduire{220,0})</div>]
 
-    [(#REM)
-      Aire géographique. Groupe mot-clé #1
-    ]<INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe=1, id_secteur} />
-
-    [(#REM)
-      Activités principales. Groupe mot-clé #7
-    ]<INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe=7, id_secteur} />
-
-    [(#REM)
-      Activités secondaires. Groupe mot-clé #2
-    ]<INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe=2, id_secteur} />
-
-    [(#REM)
-      Localisation. Groupe mot-clé #8
-    ]<INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe=8, id_secteur} />
-
-    [(#REM)
-      Moyens techniques. Groupe mot-clé #9
-    ]<INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe=9, id_secteur} />
+    <BOUCLE_groupe_annuaire(GROUPES_MOTS){id_groupe=11}>
+      <BOUCLE_sous_groupes(GROUPES_MOTS){id_parent}{par num titre, titre}>
+        [(#INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe, id_secteur})]
+      </BOUCLE_sous_groupes>
+    </BOUCLE_groupe_annuaire>
 
     [(#REM) Test site web] #SET{site,''}
     <BOUCLE_site(SITES){id_syndic=#SITE}{0,1}>[(#SET{site,#ARRAY{nom,#NOM_SITE,url,#URL_SITE}})]</BOUCLE_site>
