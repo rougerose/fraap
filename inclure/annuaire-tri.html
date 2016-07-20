@@ -9,10 +9,9 @@
 
 <div class="annuaire-tri">
   <div class="annuaire-tri__mod">
-    <div class="accordeon-annuaire clearfix">
-  		<h3 class="accordeon-annuaire__label"><:fraap:afficher:></h3>
-  		<div class="accordeon-annuaire__item">
-  			<h4 class="accordeon-annuaire__header">[(#GET{vue}|=={liste}|?{<:fraap:voir_liste:>,<:fraap:voir_carte:>})]</h4>
+    <div class="clearfix">
+  		<h3 class="annuaire-tri__label"><:fraap:afficher:></h3>
+  		<div class="annuaire-tri__item">
   			<div class="accordeon-annuaire__body">
   				<ul class="list-inline">
   					<li>
@@ -29,12 +28,12 @@
   <div class="annuaire-tri__mod">
     <BOUCLE_tri_annuaire(GROUPES_MOTS){id_groupe=11}>
   		<div class="accordeon-annuaire clearfix">
-  			<h3 class="accordeon-annuaire__label"><:fraap:trier_par:></h3>
+  			<h3 class="annuaire-tri__label"><:fraap:trier_par:></h3>
   			<BOUCLE_catégories(GROUPES_MOTS){id_parent}{par num titre, titre}>
   			[(#SET{compteur,#COMPTEUR_BOUCLE})]
   				<B_mots_activites>
-  					<div class="accordeon-annuaire__item">
-  						<h4 class="accordeon-annuaire__header">Activités</h4>
+  					<div class="annuaire-tri__item">
+  						<h4 class="accordeon-annuaire__header"><:fraap:activites:></h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
   								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
@@ -50,7 +49,7 @@
   					</div>
   				</B_mots_activites>
   				<B_autres_mots>
-  					<div class="accordeon-annuaire__item">
+  					<div class="annuaire-tri__item">
   						<h4 class="accordeon-annuaire__header">#TITRE</h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
