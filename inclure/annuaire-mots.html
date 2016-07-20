@@ -3,7 +3,7 @@
   <div class="section-content">
     <ul class="list-inline">
       <BOUCLE_annuaire_mots(MOTS){id_article}{id_groupe}>
-        <li><a href="[(#URL_RUBRIQUE{3}|parametre_url{mots\[\],#ID_MOT})]" class="pill pill--on categorie[ couleurID(#ENV{id_secteur})]">#TITRE</a></li>
+        <li><a href="[(#URL_RUBRIQUE{3}|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire is-active[ couleurID(#ENV{id_secteur})]">#TITRE</a></li>
       </BOUCLE_annuaire_mots>
     </ul>
   </div>
