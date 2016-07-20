@@ -6,6 +6,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'activites'                    => 'Activités',
+	'afficher' => "Afficher",
 	'afficher_map'                 => "Afficher l'adresse dans une carte",
 	'article_rech'                 => '1 article',
 	'articles_rech'                => '@nb@ articles',
@@ -73,7 +74,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'theme_rech'                   => '1 thème',
 	'themes_rech'                  => '@nb@ thèmes',
 	'themes'                       => 'Thèmes',
-	'trier' => "Trier",
+	'trier_par' => "Trier par",
 
 	// U
 	'update'                       => 'Dernières mises à jour&nbsp;:',

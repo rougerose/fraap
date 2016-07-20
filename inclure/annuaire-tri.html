@@ -10,7 +10,7 @@
 <div class="annuaire-tri">
   <div class="annuaire-tri__mod">
     <div class="accordeon-annuaire clearfix">
-  		<h3 class="accordeon-annuaire__label">Afficher</h3>
+  		<h3 class="accordeon-annuaire__label"><:fraap:afficher:></h3>
   		<div class="accordeon-annuaire__item">
   			<h4 class="accordeon-annuaire__header">[(#GET{vue}|=={liste}|?{<:fraap:voir_liste:>,<:fraap:voir_carte:>})]</h4>
   			<div class="accordeon-annuaire__body">
@@ -29,7 +29,7 @@
   <div class="annuaire-tri__mod">
     <BOUCLE_tri_annuaire(GROUPES_MOTS){id_groupe=11}>
   		<div class="accordeon-annuaire clearfix">
-  			<h3 class="accordeon-annuaire__label">Trier</h3>
+  			<h3 class="accordeon-annuaire__label"><:fraap:trier_par:></h3>
   			<BOUCLE_catégories(GROUPES_MOTS){id_parent}{par num titre, titre}>
   			[(#SET{compteur,#COMPTEUR_BOUCLE})]
   				<B_mots_activites>
