@@ -21,6 +21,9 @@ $('html').addClass('js');
 	/*
 	* jquery UI accordeon
 	*/
+	// Page Annuaire
+	
+
 	/* page profil : liste des candidatures enregistrées */
 	$("#accordeon-candidatures").accordion({
 		autoHeight: false,
@@ -35,10 +38,6 @@ $('html').addClass('js');
 			autoHeight: false,
 			icons:false,
 			navigation:true
-			// on se met doucement là où il faut http://stackoverflow.com/a/3621845
-			// change: function(event,ui) {
-			// 	$.scrollTo(ui.newHeader,500);
-			// }
 		});
 		// le hash s'ajoute dans l'url de la page, ce qui permet de pointer plus précisément
 		// http://michaeljacobdavis.com/tutorials/statesavingaccordion.html

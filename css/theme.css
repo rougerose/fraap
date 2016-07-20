@@ -629,31 +629,76 @@ div.intro p { margin: 0; }
 	#annuaire-contact .ui-tabs-nav li { font-size: 14px; }
 
 
-/* Jquery UI Accordion */
-	/* surcharges génériques des styles */
-	.ui-accordion .ui-state-default {
-		background: none; color: #999;
-		padding-bottom: 5px; padding-top: 3px;
-		border: 1px solid #ccc; border-width: 0 0 1px; }
-	.ui-accordion .ui-state-active {
-		padding-bottom: 5px; padding-top: 3px; color: #000;
-		border: 1px solid #000; border-width: 0 0 1px; }
-	.ui-accordion .ui-widget-content { border-width: 0 0 1px; border-bottom-color: #000; }
-	.ui-accordion .ui-accordion-content { margin-top: 0; padding: .8em 0; }
-		.ui-accordion .ui-accordion-header .uiHeader, .ui-accordion .ui-accordion-header a { margin-left: 0; padding: 0; }
+	/*
+	   =annuaire
+	   ========================================================================== */
+
+		 .annuaire-tri {
+			 margin-bottom: 2em;
+	 			/*border-top: 1px solid #000;*/
+	 		}
+
+			.annuaire-tri__mod {
+				border-top: 1px solid #000;
+				padding-bottom: 20px;
+			}
+
+			.annuaire-tri__mod--selection {
+				padding: 20px 0 0 110px;
+			}
+
+			.annuaire-tri__compteur {
+				margin-top: 20px;
+				font-size: 18px;
+				font-weight: bold;
+			}
+
+
+	 	.annuaire-nav__compteur {
+	 		border-bottom: 1px dotted #000;
+	 		text-align: center;
+	 		font-size: 24px;
+	 	}
+
+	 	.annuaire-nav__vue {
+	 		text-align: center;
+	 	}
+
+
+	.accordeon-annuaire {}
+
+	.accordeon-annuaire__label {
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 0;
+		padding: 0.5em 0;
+		width: 100px;
+		font-size: 16px;
+		line-height: 1;
+	}
+
+	.accordeon-annuaire__item {
+		padding-left: 110px;
+	}
+
+	.accordeon-annuaire__header {
+		padding: 0.5em 0;
+		border-style: dotted;
+		font-size: 16px;
+		line-height: 1;
+	}
+
+	.accordeon-annuaire .ui-accordion-header .ui-icon {
+		left: auto;
+		right: 0.5em;
+	}
 
 	/* stages > profil > #extra */
 	#accordeon-candidatures { margin-top: 1em; }
 		#accordeon-candidatures .ui-state-hover { color: #000; }
 		#accordeon-candidatures .ui-accordion-li-fix { display: block; }
+		#accordeon-candidatures .ui-accordion-header { font-weight: bold; padding: 0.3em 0; border-color: #000; }
 
-	/* rubrique ressources */
-	#ressources .ui-accordion-header.ui-state-active { border-width: 0 0 2px; }
-	#ressources .ui-accordion-header a { font-size: 16px; }
-	#ressources .ui-accordion-content { padding: 10px 0 0; margin-bottom: 5px; }
-		#ressources .groupe .hentry { margin-bottom: 0; border-top-width: 1px; }
-		#ressources .groupe .hentry:first-child { border-top: none; padding-top: 0; }
-		#ressources .ui-accordion-content h2 { font-size: 16px; }
 
 /* Jquery UI Dialog */
 .ui-dialog {

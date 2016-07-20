@@ -1,49 +1,39 @@
 [(#REM)
-  Tableau des articles
-][(#SET{articles,#ARRAY})]
-<BOUCLE_articles_annuaire(ARTICLES){id_rubrique}{mots?}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
+  Tableau transmis de l'ensemble des articles
+][(#SET{articles, #ENV{articles}})]
+
+[(#REM)
+  Tableau de la liste des articles triés (ou pas)
+][(#SET{selection, #ARRAY})]
+<BOUCLE_selection(ARTICLES){id_article IN #GET{articles}}{mots?}>[(#SET{selection,#GET{selection}|push{#ID_ARTICLE}})]</BOUCLE_selection>
 
 [(#REM)
   Compteur des articles
-][(#SET{cpt,#GET{articles}|count})]
+][(#SET{cpt,#GET{selection}|count})]
 
 [(#REM)
   Vue liste ou carte ? Liste par défaut, sinon carte.
 ][(#SET{vue,#ENV{vue,liste}})]
 
-<div class="annuaire-nav">
-  [(#GET{cpt}|>{0}|?{
-    [<p class="annuaire-nav__compteur info-resultats couleurID#ID_SECTEUR">(#GET{cpt}|singulier_ou_pluriel{fraap:resultat,fraap:resultats,nb})</p>],
-    <p class="annuaire-nav__compteur info-resultats couleurID#ID_SECTEUR"><:fraap:resultat_null:></p>
-  })]
-  [(#GET{cpt}|>{0}|?{
-    <ul class="annuaire-nav__vue list-inline">
-      <li>[(#SELF|parametre_url{vue,liste}|lien_expose{<:fraap:voir_liste:>, #GET{vue}|=={liste},pill pill--on couleurID#ID_SECTEUR, pill pill--off couleurID#ID_SECTEUR ajax})]</li>
-      <li>[(#SELF|parametre_url{vue,carte}|lien_expose{<:fraap:voir_carte:>, #GET{vue}|=={carte},pill pill--on couleurID#ID_SECTEUR, pill pill--off couleurID#ID_SECTEUR ajax})]</li>
-    </ul>
-  })]
-</div>
-
 [(#REM)
-  Afficher les résultats, selon la vue choisie
-][(#REM)
-  Vue Liste
-]
-<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{articles}}{par titre}{si #GET{vue}|=={liste}}{0,1}>
+  Menu de tri et d'affichage
+]<INCLURE{fond=inclure/annuaire-tri, articles=#GET{articles}, cpt=#GET{cpt}, env} />
+
+<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{selection}}{par titre}{si #GET{vue}|=={liste}}{0,1}>
   <div class="annuaire-contenu">
-    <INCLURE{fond=inclure/articles-selection, env, selection=#GET{articles}, pagination=5, format=horizontal, ajax, logo=140} />
+    <INCLURE{fond=inclure/articles-selection, env, selection=#GET{selection}, pagination=5, format=horizontal, ajax, logo=140} />
   </div>
 </BOUCLE_articles_annuaire_liste>
 
 [(#REM)
   Vue Carte
 ]
-<BOUCLE_articles_annuaire_carte(ARTICLES){id_article IN #GET{articles}}{si #GET{vue}|=={carte}}{0,1}>
+<BOUCLE_articles_annuaire_carte(ARTICLES){id_article IN #GET{selection}}{si #GET{vue}|=={carte}}{0,1}>
   <div class="annuaire-contenu">
     [(#INCLURE{fond=modeles/carte_gis,
       id_carte_gis=_all,
       objets=articles,
-      id_article=#GET{articles},
+      id_article=#GET{selection},
       lon=2.890619,
       lat=46.940328,
       zoom=6,

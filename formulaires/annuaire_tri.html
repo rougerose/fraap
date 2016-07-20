@@ -1,65 +1,38 @@
+[(#REM) Tableau des articles ]
 #SET{id_articles,#ENV{id_articles}}
+
 <div id="formulaire_annuaire_tri" class="formulaire_spip">
   <form action="[(#ENV{action})]" method="post"><div>
     #ACTION_FORMULAIRE{#ENV{action}}
-    <ul id="tri" class="clearfix">
-      [(#REM) critères géographiques ]
-      <B_geo>
-        <li>
-          <label for="geo">#INFO_TITRE{id_groupe,1}</label>
-          <select name="mots[0]" id="geo">
-            <option value=""> </option>
-            <BOUCLE_geo(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{id_articles}}{id_groupe=1}{par num titre}>
-              <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
-            </BOUCLE_geo>
-          </select>
-        </li>
-      </B_geo>
-      <B_act_principales>
-        <li>
-          <label for="act_p">#INFO_TITRE{id_groupe,7}</label>
-          <select name="mots[1]" id="act_p">
-            <option value=""> </option>
-            <BOUCLE_act_principales(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{id_articles}}{id_groupe=7}{par num titre}>
-              <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
-            </BOUCLE_act_principales>
-          </select>
-        </li>
-      </B_act_principales>
-      <B_act_secondaires>
-        <li>
-          <label for="act_s">#INFO_TITRE{id_groupe,2}</label>
-          <select name="mots[2]" id="act_s">
-            <option value=""> </option>
-            <BOUCLE_act_secondaires(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{id_articles}}{id_groupe=2}{par num titre}>
-              <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
-            </BOUCLE_act_secondaires>
-          </select>
-        </li>
-      </B_act_secondaires>
-      <B_localisation>
-        <li>
-          <label for="loc">#INFO_TITRE{id_groupe,8}</label>
-          <select name="mots[3]" id="loc">
-            <option value=""> </option>
-            <BOUCLE_localisation(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{id_articles}}{id_groupe=8}{par num titre}>
-              <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
-            </BOUCLE_localisation>
-          </select>
-        </li>
-      </B_localisation>
-      <B_moyens>
-        <li>
-          <label for="moyens">#INFO_TITRE{id_groupe,9}</label>
-          <select name="mots[4]" id="moyens">
-            <option value=""> </option>
-            <BOUCLE_moyens(MOTS spip_mots_liens){objet=article}{id_objet IN #GET{id_articles}}{id_groupe=9}{par num titre}>
-              <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
-            </BOUCLE_moyens>
-          </select>
-        </li>
-      </B_moyens>
-    </ul>
+    <BOUCLE_annuaire(GROUPES_MOTS){id_groupe=11}>
+      <ul id="tri">
+        <BOUCLE_catégories(GROUPES_MOTS){id_parent}{par num titre, titre}>
+        [(#SET{compteur,#COMPTEUR_BOUCLE})]
+          <B_mots_activites>
+            <li>
+              <label for="select#ID_GROUPE">#TITRE</label>
+              <select name="[mots\[(#GET{compteur}|moins{1})\]]" id="select#ID_GROUPE">
+                <option value=""> </option>
+                <BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{id_articles}}{id_groupe IN 2,7}{par num titre}{doublons}>
+                  <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
+                </BOUCLE_mots_activites>
+              </select>
+            </li>
+          </B_mots_activites>
+          <B_autres_mots>
+            <li>
+              <label for="select#ID_GROUPE">#TITRE</label>
+              <select name="[mots\[(#GET{compteur}|moins{1})\]]" id="select#ID_GROUPE">
+                <option value=""> </option>
+                <BOUCLE_autres_mots(MOTS spip_mots_liens){id_objet IN #GET{id_articles}}{id_groupe !IN 2,7}{id_groupe}{par num titre}{doublons}>
+                  <option value="#ID_MOT"[ (#ENV{mots}|find{#ID_MOT}|?{selected}) ]>#TITRE</option>
+                </BOUCLE_autres_mots>
+              </select>
+            </li>
+          </B_autres_mots>
+        </BOUCLE_catégories>
+      </ul>
+    </BOUCLE_annuaire>
     <p class="boutons"><input type="submit" class="submit bouton bouton--full medium" value="<:fraap:trier:>" /></p>
   </div></form>
 </div>

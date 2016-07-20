@@ -1,39 +1,34 @@
 [(#REM) définition de constantes ]
-	#SET{menu,''}
+  #SET{menu,''}
 
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
-	[<div id="logo-objet-conteneur">
-		(#LOGO_RUBRIQUE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
-	</div><!-- #logo-objet-conteneur -->]
+  [<div id="logo-objet-conteneur">
+    (#LOGO_RUBRIQUE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
+  </div><!-- #logo-objet-conteneur -->]
 
-	<div id="info-publi-objet-conteneur">
-		[(#REM) [(#MODELE{socialtags})] ]
+  <div id="info-publi-objet-conteneur">
+    [(#REM) [(#MODELE{socialtags})] ]
 
-		[(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
-		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
+    [(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
+    <BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
 
-		[(#REM) menu rubriques ]
-		[(#GET{menu}|oui)
-			[(#INCLURE{fond=inclure/menu-rubriques,env})]
-		]
-	</div><!-- #info-publi-objet-conteneur -->
+    [(#REM) menu rubriques ]
+    [(#GET{menu}|oui)
+      [(#INCLURE{fond=inclure/menu-rubriques,env})]
+    ]
+  </div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
 [<div id="chapo-conteneur" class="introduction surlignable #EDIT{texte}">
-	(#TEXTE|image_reduire{220,0})
+  (#TEXTE|image_reduire{220,0})
 </div><!-- #chapo-conteneur .introduction -->]
 
 <div class="contenu clearfix">
-	<div class="ajax">
-		[(#REM)
-		  Les articles de la rubrique Annuaire.
-		][(#SET{articles,#ARRAY})]
-		<BOUCLE_articles_annuaire(ARTICLES){id_rubrique=3}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
-		[(#FORMULAIRE_ANNUAIRE_TRI{#GET{articles},#SELF})]
-	</div>
-
-	<INCLURE{fond=inclure/annuaire-contenu, env, ajax} />
-
+	[(#REM)
+	  Tableau des articles
+	][(#SET{articles,#ARRAY})]
+	<BOUCLE_articles_annuaire(ARTICLES){id_rubrique}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
+  <INCLURE{fond=inclure/annuaire-contenu, articles=#GET{articles}, env, ajax} />
 </div><!-- .contenu -->
 </BOUCLE_contenu_rubrique>
