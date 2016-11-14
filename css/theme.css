@@ -653,9 +653,7 @@ div.intro p { margin: 0; }
 				font-weight: bold;
 			}
 
-			/*.accordeon-annuaire {}*/
-
-			.accordeon-annuaire__label {
+			.annuaire-tri__label {
 				float: left;
 				margin-right: 10px;
 				margin-bottom: 0;
@@ -665,9 +663,11 @@ div.intro p { margin: 0; }
 				line-height: 1;
 			}
 
-			.accordeon-annuaire__item {
+			.annuaire-tri__item {
 				padding-left: 110px;
 			}
+
+			/*.accordeon-annuaire {}*/
 
 			.accordeon-annuaire__header {
 				padding: 0.5em 0;
