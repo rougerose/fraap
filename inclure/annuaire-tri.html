@@ -7,6 +7,10 @@
 [(#REM) Compteur des articles en sélection ]
   [(#SET{cpt, #ENV{cpt}})]
 
+<BOUCLE_articles_gis(ARTICLES){gis}{id_rubrique}{0,1}>#SET{test_carte,' '}</BOUCLE_articles_gis>
+#SET{carte,''}
+<//B_articles_gis>
+
 <div class="annuaire-tri">
   <div class="annuaire-tri__mod">
     <div class="clearfix">
@@ -17,9 +21,11 @@
   					<li>
               [(#SELF|parametre_url{vue,liste}|lien_expose{<:fraap:voir_liste:>, #GET{vue}|=={liste}, btn btn--small btn--block btn--outline-annuaire is-active, btn btn--small btn--block btn--outline-annuaire ajax})]
   					</li>
-  					<li>
-              [(#SELF|parametre_url{vue,carte}|lien_expose{<:fraap:voir_carte:>, #GET{vue}|=={carte}, btn btn--small btn--block btn--outline-annuaire is-active, btn btn--small btn--block btn--outline-annuaire ajax})]
-  					</li>
+            [(#GET{test_carte}|?{
+              <li>
+                [(#SELF|parametre_url{vue,carte}|lien_expose{<:fraap:voir_carte:>, #GET{vue}|=={carte}, btn btn--small btn--block btn--outline-annuaire is-active, btn btn--small btn--block btn--outline-annuaire ajax})]
+    					</li>,''
+            })]
   				</ul>
   			</div>
   		</div>

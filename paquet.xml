@@ -22,6 +22,7 @@
     <necessite nom="gma" compatibilite="[1.2.8;1.2.*]" />
     <necessite nom="gis" compatibilite="[4.42.3;4.42.*]" />
     <necessite nom="cextras" compatibilite="[3.8.0;3.8.*]" />
+    <necessite nom="compositions" compatibilite="[3.5.7;3.5.*]" />
 
     <utilise nom="fraap_candidatures" />
     <utilise nom="contact" />
