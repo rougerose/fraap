@@ -6,7 +6,7 @@
     compatibilite="[3.0.0;3.0.*]"
     logo="images/fraap.png"
 >
-    <nom>Fraap.org : squelettes du site x(pour Spip 3.0)</nom>
+    <nom>Fraap.org : squelettes du site (pour Spip 3.0)</nom>
     <auteur lien="http://rouge-rose.net">Christophe Le Drean</auteur>
 
     <pipeline nom="jqueryui_plugins" inclure="fraap_pipelines.php" />
