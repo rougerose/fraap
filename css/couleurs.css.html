@@ -49,6 +49,7 @@
 	{ border-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE h2.intertitre a,
+	.couleurID#ID_RUBRIQUE .intertitre--rubrique,
 	.couleurID#ID_RUBRIQUE .textecourant a:hover,
 	.couleurID#ID_RUBRIQUE .contenu-secondaire a:hover,
 	.couleurID#ID_RUBRIQUE #fil strong, .couleurID#ID_RUBRIQUE #fil a:hover,
@@ -65,13 +66,19 @@
 	.couleurID#ID_RUBRIQUE .info-resultats
 	{ color: ##GET{couleur}; }
 
+	.sousrubriques-fleche.couleurID#ID_RUBRIQUE {
+		[color: #(#GET{couleur}|couleur_saturation{0.5});]
+	}
+
 	#nav li:hover.couleurID#ID_RUBRIQUE,
 	.couleurID#ID_RUBRIQUE ul.dropdown li,
 	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton,
 	.couleurID#ID_RUBRIQUE img.puce,
 	.couleurID#ID_RUBRIQUE .pagination strong.on,
 	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
-	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon { background-color: ##GET{couleur}; }
+	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon,
+	.sousrubriques-item.couleurID#ID_RUBRIQUE a
+	{ background-color: ##GET{couleur}; }
 
 	.couleurID#ID_RUBRIQUE .textecourant hr.spip { border-color: ##GET{couleur}; background-color: ##GET{couleur}; color: ##GET{couleur}; }
 
@@ -140,20 +147,44 @@
 
 	[(#REM) définitions spécifiques à la rubrique 11/Réseau ]
 	[(#ID_SECTEUR|=={11}|oui)
-		.syndication > h3 { color: ##GET{couleur} }
+		.syndication > h3 { color: ##GET{couleur}; }
 
 	]
 
 	[(#REM) définition spécifique à la rubrique 3/Annuaire ]
 	[(#ID_SECTEUR|=={15}|oui)
-		dl.annuaire-tags dt.region, dl.annuaire-tags dt.activites { background-color: ##GET{couleur}; }
-		#formulaire_tri_annuaire ul { background-color: ##GET{couleur} }
+		#formulaire_annuaire_tri { background-color: ##GET{couleur}; }
+		.section-heading.couleurID#ID_RUBRIQUE,
+		.annuaire-nav__compteur.couleurID#ID_RUBRIQUE
+		 {
+			color: ##GET{couleur};
+			border-bottom-color: ##GET{couleur};
+		}
+
+		.annuaire-tri__mod,
+		.couleurID#ID_RUBRIQUE .ui-state-active,
+		.couleurID#ID_RUBRIQUE .ui-state-default {
+			[border-color: #(#GET{couleur});]
+		}
+
+		.categorie-label.couleurID#ID_RUBRIQUE {
+			color: ##GET{couleur};
+		}
+		.btn--outline-annuaire {
+			[border-color: #(#GET{couleur});]
+			[color: #(#GET{couleur}|couleur_luminance{0.7});]
+		}
+		.btn--outline-annuaire.is-active,
+		.btn--outline-annuaire:hover  {
+			[background: #(#GET{couleur});]
+			[color: #(#GET{couleur}|couleur_inverser|couleur_extreme);]
+		}
 	]
 
 </BOUCLE_principale>
 
 [(#REM) couleur squelette Mot ]
-	[(#SET{mot,#VAL{#54c8d9}|hex2rgb})]
+	[(#SET{mot,#VAL{54c8d9}|couleur_hex2dec})]
 	/* /Mot /#54c8d9 - rgb:#GET{mot} */
 
 	.mot h2.info-resultats { border-color: rgb(#GET{mot}); color: rgb(#GET{mot}); }
@@ -170,7 +201,7 @@
 
 [(#REM) couleur page Recherche ]
 
-	[(#SET{recherche,#VAL{#730073}|hex2rgb})]
+	[(#SET{recherche,#VAL{730073}|couleur_hex2dec})]
 	/* /Recherche /#730073 - rgb:#GET{recherche} */
 
 	/* formulaire de recherche */
@@ -210,4 +241,3 @@
 	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
 	.page_contact #titre h1,
 	.page_contact #fil strong, .page_contact #fil a:hover { color: ##GET{QSN}; }
-

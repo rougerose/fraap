@@ -1,0 +1,104 @@
+[(#REM) Tableau des articles]
+  [(#SET{articles, #ENV{articles}})]
+
+[(#REM) Vue liste ou carte ? Liste par défaut, sinon carte.]
+  [(#SET{vue,#ENV{vue,liste}})]
+
+[(#REM) Compteur des articles en sélection ]
+  [(#SET{cpt, #ENV{cpt}})]
+
+<BOUCLE_articles_gis(ARTICLES){gis}{id_rubrique}{0,1}>#SET{test_carte,' '}</BOUCLE_articles_gis>
+#SET{carte,''}
+<//B_articles_gis>
+
+<div class="annuaire-tri">
+  <div class="annuaire-tri__mod">
+    <div class="clearfix">
+  		<h3 class="annuaire-tri__label"><:fraap:afficher:></h3>
+  		<div class="annuaire-tri__item">
+  			<div class="accordeon-annuaire__body">
+  				<ul class="list-inline">
+  					<li>
+              [(#SELF|parametre_url{vue,liste}|lien_expose{<:fraap:voir_liste:>, #GET{vue}|=={liste}, btn btn--small btn--block btn--outline-annuaire is-active, btn btn--small btn--block btn--outline-annuaire ajax})]
+  					</li>
+            [(#GET{test_carte}|?{
+              <li>
+                [(#SELF|parametre_url{vue,carte}|lien_expose{<:fraap:voir_carte:>, #GET{vue}|=={carte}, btn btn--small btn--block btn--outline-annuaire is-active, btn btn--small btn--block btn--outline-annuaire ajax})]
+    					</li>,''
+            })]
+  				</ul>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="annuaire-tri__mod">
+    <BOUCLE_tri_annuaire(GROUPES_MOTS){id_groupe=11}>
+  		<div class="accordeon-annuaire clearfix">
+  			<h3 class="annuaire-tri__label"><:fraap:trier_par:></h3>
+  			<BOUCLE_catégories(GROUPES_MOTS){id_parent}{par num titre, titre}>
+  			[(#SET{compteur,#COMPTEUR_BOUCLE})]
+  				<B_mots_activites>
+  					<div class="annuaire-tri__item">
+  						<h4 class="accordeon-annuaire__header"><:fraap:activites:></h4>
+  						<div class="accordeon-annuaire__body">
+  							<ul class="list-inline">
+  								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+  								<li>
+                    [(#ENV{mots}|find{#ID_MOT}|?{
+                      [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
+                      [<a href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
+                    })]
+                  </li>
+  								</BOUCLE_mots_activites>
+  							</ul>
+  						</div>
+  					</div>
+  				</B_mots_activites>
+  				<B_autres_mots>
+  					<div class="annuaire-tri__item">
+  						<h4 class="accordeon-annuaire__header">#TITRE</h4>
+  						<div class="accordeon-annuaire__body">
+  							<ul class="list-inline">
+  								<BOUCLE_autres_mots(MOTS spip_mots_liens){id_objet IN #GET{articles}}{id_groupe !IN 2,7}{id_groupe}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+  								<li>
+                    [(#ENV{mots}|find{#ID_MOT}|?{
+                      [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
+                      [<a href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
+                    })]
+                  </li>
+  								</BOUCLE_autres_mots>
+  							</ul>
+  						</div>
+  					</div>
+  				</B_autres_mots>
+  			</BOUCLE_catégories>
+  		</div>
+  	</BOUCLE_tri_annuaire>
+  </div>
+  <div class="annuaire-tri__mod annuaire-tri__mod--selection">
+    <B_criteres_selection>
+      <ul class="list-inline">
+        <BOUCLE_criteres_selection(DATA){source tableau, #ENV{mots}}>
+          [(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#VALEUR}})]
+          [<li><strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#INFO_TITRE{mot,#VALEUR}) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong></li>]
+        </BOUCLE_criteres_selection>
+      </ul>
+    </B_criteres_selection>
+    [(#GET{cpt}|>{0}|?{
+      [<p class="annuaire-tri__compteur">(#GET{cpt}|singulier_ou_pluriel{fraap:resultat,fraap:resultats,nb})</p>],
+      <p class="annuaire-tri__compteur"><:fraap:resultat_null:></p>
+    })]
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $(".accordeon-annuaire").accordion({
+      header: 'h4',
+      active: false,
+      collapsible: true,
+      icons: { "header": "ui-icon-carat-1-s", "headerSelected": "ui-icon-carat-1-n" },
+      autoHeight: false
+    });
+  });
+</script>

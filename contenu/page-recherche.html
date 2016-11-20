@@ -26,9 +26,9 @@
 
 <div id="chapo-conteneur" class="introduction">
 	[(#GET{total}|>{0}|?{
-		[<p class="info-resultats">(#GET{total}|singulier_ou_pluriel{candidatures:criteres_resultat,candidatures:criteres_resultats,nb})</p>]
+		[<p class="info-resultats">(#GET{total}|singulier_ou_pluriel{fraap_candidatures:criteres_resultat,fraap_candidatures:criteres_resultats,nb})</p>]
 		,
-		<p id="resultat" class="info-resultats"><:candidatures:criteres_pas_de_resultat:></p>
+		<p id="resultat" class="info-resultats"><:fraap_candidatures:criteres_pas_de_resultat:></p>
 	})]
 </div><!-- #chapo-conteneur .introduction -->
 

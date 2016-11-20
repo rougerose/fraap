@@ -10,7 +10,7 @@
 <B_rubriques>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})]">
 	#ANCRE_PAGINATION
-	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{rubrique_rech,rubriques_rech,nb})</h2>]
+	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{fraap:rubrique_rech,fraap:rubriques_rech,nb})</h2>]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 	<BOUCLE_rubriques(RUBRIQUES){id_rubrique IN #GET{selection}}{pagination #GET{pagination}}>
 	<div id="rubrique#ID_RUBRIQUE" class="item clearfix">
@@ -19,7 +19,7 @@
 			<h3 class="titre"><a href="#URL_RUBRIQUE">#TITRE</a></h3>
 			[<p class="intro">
 				[(#GET{logo}|oui)[<a href="#URL_RUBRIQUE" class="img">(#LOGO_RUBRIQUE|inserer_attribut{class,logo-objet}|image_reduire{#GET{logo},0})</a>]]
-				(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_RUBRIQUE" class="suite"><:suite:></a>
+				(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_RUBRIQUE" class="suite"><:fraap:suite:></a>
 			</p>]
 		</div><!-- .resume-conteneur -->
 	</div><!-- #rubrique#ID_RUBRIQUE -->

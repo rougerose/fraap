@@ -7,6 +7,82 @@
 /*	Version :	2.0							*/
 /* ======================================== */
 
+
+/* Styles généraux */
+
+	/* list */
+	.list-inline {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.list-inline > li {
+		display: inline-block;
+		margin: 0;
+	}
+
+	.list-bare {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.list-bare > li {
+		margin: 0;
+	}
+
+	/* pill */
+	.pill {
+		display: inline-block;
+		margin: 0 0.1em;
+		min-width: 16px;
+		padding: 0;
+		border-radius: 50%;
+		color: #fff;
+		background-color: #000;
+		font-weight: normal !important;
+		line-height: 1.3;
+		vertical-align: baseline;
+	}
+
+	.pill--remove {
+		background-color: #d6180a;
+		color: #fff;
+	}
+
+	.pill--remove:hover {
+		background-color: #fff;
+		color: #d6180a;
+		text-decoration: none;
+	}
+
+/* btn */
+.btn {
+	display: inline-block;
+  border: 1px solid transparent;
+	padding: 0.375em .5em;
+	border-radius: 0.25em;
+	vertical-align: middle;
+	white-space: nowrap;
+	font-weight: normal !important;
+	text-align: center;
+}
+
+.btn:hover {
+	text-decoration: none;
+}
+
+.btn--block {
+	margin: 0.2em;
+}
+
+.btn--small {
+	padding: 0.3em;
+	border-radius: 0.2em;
+	font-size: 1em;
+	/*line-height: 1.5;*/
+}
+
+
 /* grille de mise en page */
 .gs { background: #fff url('../images/16_col.gif') repeat-y top center; }
 
@@ -144,6 +220,32 @@
 		float: left; display: inline;
 		margin-left: 10px;
 		width: 220px; }
+
+
+	/* Annuaire */
+	.page_article #contenu .contenu-principal--annuaire {
+		width: 100%;
+	}
+		.section-heading {
+			border-bottom: 2px solid;
+			font-size: 20px;
+			font-weight: normal;
+			text-transform: uppercase;
+		}
+		.section-content {
+			margin-left: 3em;
+			margin-bottom: 3em;
+		}
+
+	/* categorie annuaire */
+	.categorie {
+		font-weight: normal !important;
+		font-size: 14px;
+	}
+
+	.categorie-label {
+		font-weight: bold;
+	}
 
 
 	/* entete */

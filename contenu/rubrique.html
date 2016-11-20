@@ -39,26 +39,20 @@
 	<div class="hfeed">
 		[(#REM) selection d'articles, format horizontal ]
 		<INCLURE{fond=inclure/articles-selection,
-			env,selection=#GET{articles_selection},pagination=5,format=horizontal,ajax,logo=140}>
+			env,selection=#GET{articles_selection},selection_type=selection,pagination=5,format=horizontal,ajax,logo=140} />
 
+		[(#REM) les articles de la rubrique, format horizontal ]
 		<div id="articles" class="clearfix liste">
-			<INCLURE{fond=inclure/articles-selection,env,selection=#GET{articles_rubrique},format=grille,ajax,pagination=4}>
+			<INCLURE{fond=inclure/articles-selection,env,selection=#GET{articles_rubrique},selection_type=tous,format=horizontal,ajax,pagination=4} />
 		</div>
 
-		[(#REM) les articles de la rubrique, format grille ]
-
-		[(#REM) le titre du secteur ]
-		<BOUCLE_titre_secteur(RUBRIQUES){id_rubrique=#ID_SECTEUR}>#SET{titre_secteur,#TITRE}</BOUCLE_titre_secteur>
-
-		[(#GET{menu}|oui)
-		<div class="tabs clearfix">
-			<ul class="liste onglets">
-				<li class="rubriques"><a href="#sousrubriques"><span class="icon"></span>[(#GET{titre_secteur})&nbsp;: ]<:sousrubriques:></a></li>
-			</ul>
-			<div id="sousrubriques" class="clearfix liste">
-				<INCLURE{fond=inclure/sousrubriques,env}>
-			</div>
-		</div><!-- .tabs clearfix -->]
+		<B_sous_rubriques>
+		<div class="sousrubriques-container">
+			<BOUCLE_sous_rubriques(RUBRIQUES){id_parent=#ID_RUBRIQUE}{par num titre, titre}>
+			[(#INCLURE{fond=inclure/sousrubriques,id_rubrique})]
+			</BOUCLE_sous_rubriques>
+		</div>
+		</B_sous_rubriques>
 
 
 		<INCLURE{fond=inclure/tabs,env,format='grille groupe'}>

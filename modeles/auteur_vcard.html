@@ -20,18 +20,22 @@
 		[<span class="postal-code">(#ANNUAIRE_CODEPOSTAL)</span>][ <span class="locality">(#ANNUAIRE_VILLE)</span>][, <span class="country-name">(#ANNUAIRE_PAYS)</span>]
 	</p>
 	[<p class="tel">
-		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE1"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE1)</a>
+		<:fraap:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE1"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE1)</a>
 	</p>]
 	[<p class="tel">
-		<:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE2"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE2)</a>
+		<:fraap:telephone:> <span class="type">Work</span> <a href="callto:#ANNUAIRE_TELEPHONE2"[ (#ID_AUTEUR|=={1}|oui)rel="me"]>(#ANNUAIRE_TELEPHONE2)</a>
 	</p>]
 	[(#ID_AUTEUR|=={1}|et{#EMAIL}|oui)
 		<p class="mail"><a href="#URL_PAGE{contact}" rel="me" class="email">formulaire de contact</a></p>
 	]
 	[(#ID_AUTEUR|=={1}|non)
 		[(#EMAIL|oui)
-		<p class="mail"><:email:>[ (#VAL{<a href="mailto:#EMAIL" class="email">#EMAIL</a>}|mailcrypt)]</p>
+		<p class="mail"><:fraap:email:>[ (#VAL{<a href="mailto:#EMAIL" class="email">#EMAIL</a>}|mailcrypt)]</p>
 		]
 	]
-	[<p class="web"><:site_web:> <a href="(#URL_SITE)">[(#NOM_SITE|sinon{#ANNUAIRE_NOM_ASSO})]</a></p>]
+	[(#URL_SITE|oui)
+		[<p class="web"><:fraap:site_web:> <a href="(#URL_SITE)">[(#NOM_SITE|sinon{#ANNUAIRE_NOM_ASSO})]</a></p>]
+	][(#URL_SITE|non)
+		[(#ENV{site}|oui) <p class="web"><:fraap:site_web:> <a href="[(#ENV{site}|table_valeur{url})]">[(#ENV{site}|table_valeur{nom})]</a></p> ]
+	]
 </BOUCLE_auteur>

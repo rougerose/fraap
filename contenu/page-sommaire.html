@@ -8,12 +8,12 @@
 	<INCLURE{fond=inclure/articles-selection,ajax,env,pagination=10,format=horizontal,logo=140,selection=#GET{articles_selection}}>
 
 	<div class="groupe une grille grid_12">
-		<BOUCLE_rubriques_permanentes(RUBRIQUES){id_rubrique IN 2,3,6}{par titre, num titre}>
+		<BOUCLE_rubriques_permanentes(RUBRIQUES){id_rubrique IN 32,3,6}{par id_rubrique}>
 		[(#REM) ajustement des marges du premier et dernier blocs -- classe alpha et omega -- ]
 		#SET{cpte,#GET{cpte}|plus{1}}
 
 		<div class="item couleurID#ID_SECTEUR grid_4[ (#GET{cpte}|=={1}|oui)alpha][ (#GET{cpte}|=={3}|oui)omega]">
-			<h2 class="intertitre"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+			<h2 class="intertitre"><a href="#URL_RUBRIQUE">[(#ID_RUBRIQUE|=={3}|?{#TITRE})][(#ID_RUBRIQUE|=={6}|?{#TITRE})][(#ID_RUBRIQUE|=={32}|?{Ressources})]</a></h2>
 
 			[(#REM) test Annuaire]
 			<BOUCLE_cond_annuaire(CONDITION){si #ID_RUBRIQUE|=={3}}>
@@ -24,7 +24,7 @@
 			<BOUCLE_rub_annuaire(RUBRIQUES){id_rubrique=3}>
 			<BOUCLE_cpte_entrees(ARTICLES){id_rubrique}> </BOUCLE_cpte_entrees>
 			#SET{cpt_entrees,#TOTAL_BOUCLE}
-			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{local:entree, local:entrees})]})]</B_cpte_entrees>
+			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap:entree, fraap:entrees})]})]</B_cpte_entrees>
 
 			<div class="intro">
 				[(#INTRODUCTION)]
@@ -33,7 +33,7 @@
 
 			<B_dernieres_annuaire>
 			<dl class="update">
-				<dt><:update:></dt>
+				<dt><:fraap:update:></dt>
 				<BOUCLE_dernieres_annuaire(ARTICLES){id_rubrique}{!par date}{0,3}>
 				<dd><a href="#URL_ARTICLE">#TITRE</a></dd>
 				</BOUCLE_dernieres_annuaire>
@@ -47,12 +47,12 @@
 			<BOUCLE_cond_chantiers(CONDITION){si #ID_RUBRIQUE|=={6}}>
 			<BOUCLE_rub_chantiers(RUBRIQUES){id_rubrique=6}>
 			<div class="intro">
-				[<p>(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:suite:></a></p>]
+				[<p>(#INTRODUCTION|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a></p>]
 			</div>
 
 			<B_derniers_art>
 			<dl class="update">
-				<dt><:update:></dt>
+				<dt><:fraap:update:></dt>
 				<BOUCLE_derniers_art(ARTICLES){branche}{!par date}{0,3}>
 				<dd><a href="#URL_ARTICLE">#TITRE</a></dd>
 				</BOUCLE_derniers_art>
@@ -62,16 +62,15 @@
 			</BOUCLE_cond_chantiers>
 
 			[(#REM) test Ressources]
-			<BOUCLE_test_ressources(CONDITION){si #ID_RUBRIQUE|=={2}}>
+			<BOUCLE_test_ressources(CONDITION){si #ID_RUBRIQUE|=={32}}>
 
 			[(#REM) on compte le nombre d'entrées disponibles ]
 			#SET{cpt_entrees,0} #SET{entrees,''}
 
-			<BOUCLE_rub_ressources(RUBRIQUES){id_rubrique=2}>
+			<BOUCLE_rub_ressources(RUBRIQUES){id_rubrique=32}>
 			<BOUCLE_cpte_entrees2(ARTICLES){id_rubrique}> </BOUCLE_cpte_entrees2>
 			#SET{cpt_entrees,#TOTAL_BOUCLE}
-			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{local:entree, local:entrees})]})]</B_cpte_entrees2>
-
+			[(#SET{entrees,[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap:entree,fraap:entrees})]})]</B_cpte_entrees2>
 
 			<div class="intro">
 				[(#INTRODUCTION)]
@@ -79,7 +78,7 @@
 			</div>
 			<B_dernieres_ressources>
 			<dl class="update">
-				<dt><:update:></dt>
+				<dt><:fraap:update:></dt>
 				<BOUCLE_dernieres_ressources(ARTICLES){id_rubrique}{!par date}{0,3}>
 				<dd><a href="#URL_ARTICLE">#TITRE</a></dd>
 				</BOUCLE_dernieres_ressources>

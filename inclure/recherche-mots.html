@@ -11,7 +11,7 @@
 <B_mots>
 <div class="groupe[ (#GET{format})][ (#ENV{ordre})] clearfix">
 	#ANCRE_PAGINATION
-	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{theme_rech,themes_rech,nb})</h2>]
+	[<h2 class="info-resultats">(#GET{selection}|count|singulier_ou_pluriel{fraap:theme_rech,fraap:themes_rech,nb})</h2>]
 	[<p class="pagination haut clearfix">(#PAGINATION{page})</p>]
 	<ul class="liste">
 		<BOUCLE_mots(MOTS){id_mot IN #GET{selection}}{pagination #GET{pagination}}>
