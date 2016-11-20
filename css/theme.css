@@ -341,7 +341,7 @@ div.intro p { margin: 0; }
 		}
 
 	/* chapo */
-	#chapo-conteneur p { font-size: 18px; }
+	#chapo-conteneur p { font-size: 16px; }
 
 	/*message info article daté de plus de 2 ans */
 	.message--info-article-perime {
