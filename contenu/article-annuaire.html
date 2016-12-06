@@ -62,7 +62,7 @@
         </div><!-- #contact -->
       </BOUCLE_contact>
       <BOUCLE_gis(GIS){id_article}{0,1}>
-        [(#INCLURE{fond=modeles/carte_gis, id_gis, zoom=#ZOOM, lat=#LAT, lon=#LON, objets=articles_annuaire, hauteur=600px})]
+        [(#INCLURE{fond=modeles/carte_gis, id_article=#ID_ARTICLE, zoom=#ZOOM, lat=#LAT, lon=#LON, hauteur=600px})]
       </BOUCLE_gis>
     </div>
 
