@@ -5,7 +5,7 @@
 [(#REM)
   Tableau de la liste des articles triés (ou pas)
 ][(#SET{selection, #ARRAY})]
-<BOUCLE_selection(ARTICLES){id_article IN #GET{articles}}{mots?}>[(#SET{selection,#GET{selection}|push{#ID_ARTICLE}})]</BOUCLE_selection>
+<BOUCLE_selection(ARTICLES){id_article IN #GET{articles}}{mots?}{par titre}>[(#SET{selection,#GET{selection}|push{#ID_ARTICLE}})]</BOUCLE_selection>
 
 [(#REM)
   Compteur des articles
@@ -19,7 +19,7 @@
   Menu de tri et d'affichage
 ]<INCLURE{fond=inclure/annuaire-tri, articles=#GET{articles}, cpt=#GET{cpt}, env} />
 
-<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{selection}}{par titre}{si #GET{vue}|=={liste}}{0,1}>
+<BOUCLE_articles_annuaire_liste(ARTICLES){id_article IN #GET{selection}}{si #GET{vue}|=={liste}}{0,1}>
   <div class="annuaire-contenu">
     <INCLURE{fond=inclure/articles-selection, env, selection=#GET{selection}, pagination=5, format=horizontal, ajax, logo=140} />
   </div>
