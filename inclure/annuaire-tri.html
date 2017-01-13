@@ -1,5 +1,5 @@
-[(#REM) Tableau des articles]
-  [(#SET{articles, #ENV{articles}})]
+[(#REM) Tableau de la sélection des articles]
+  [(#SET{selection, #ENV{selection}})]
 
 [(#REM) Vue liste ou carte ? Liste par défaut, sinon carte.]
   [(#SET{vue,#ENV{vue,liste}})]
@@ -42,11 +42,11 @@
   						<h4 class="accordeon-annuaire__header"><:fraap:activites:></h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
-  								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+  								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
   								<li>
                     [(#ENV{mots}|find{#ID_MOT}|?{
                       [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
-                      [<a href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
+                      [<a rel="nofollow" href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
                     })]
                   </li>
   								</BOUCLE_mots_activites>
@@ -59,11 +59,11 @@
   						<h4 class="accordeon-annuaire__header">#TITRE</h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
-  								<BOUCLE_autres_mots(MOTS spip_mots_liens){id_objet IN #GET{articles}}{id_groupe !IN 2,7}{id_groupe}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+  								<BOUCLE_autres_mots(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe !IN 2,7}{id_groupe}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
   								<li>
                     [(#ENV{mots}|find{#ID_MOT}|?{
                       [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
-                      [<a href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
+                      [<a rel="nofollow" href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
                     })]
                   </li>
   								</BOUCLE_autres_mots>
@@ -80,7 +80,7 @@
       <ul class="list-inline">
         <BOUCLE_criteres_selection(DATA){source tableau, #ENV{mots}}>
           [(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#VALEUR}})]
-          [<li><strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#INFO_TITRE{mot,#VALEUR}) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong></li>]
+          [<li><strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#INFO_TITRE{mot,#VALEUR}) <a rel="nofollow" href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong></li>]
         </BOUCLE_criteres_selection>
       </ul>
     </B_criteres_selection>

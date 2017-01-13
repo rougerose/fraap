@@ -28,7 +28,6 @@
 	[(#REM)
 	  Tableau des articles
 	][(#SET{articles,#ARRAY})]
-	<BOUCLE_articles_annuaire(ARTICLES){id_rubrique}>[(#SET{articles,#GET{articles}|push{#ID_ARTICLE}})]</BOUCLE_articles_annuaire>
-  <INCLURE{fond=inclure/annuaire-contenu, articles=#GET{articles}, env, ajax} />
+  <INCLURE{fond=inclure/annuaire-contenu, env, ajax} />
 </div><!-- .contenu -->
 </BOUCLE_contenu_rubrique>
