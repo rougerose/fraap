@@ -39,7 +39,7 @@
   			[(#SET{compteur,#COMPTEUR_BOUCLE})]
   				<B_mots_activites>
   					<div class="annuaire-tri__item">
-  						<h4 class="accordeon-annuaire__header"><:fraap:activites:></h4>
+  						<h4 class="accordeon-annuaire__header">#TITRE</h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
   								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]

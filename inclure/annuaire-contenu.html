@@ -1,8 +1,4 @@
 [(#REM)
-  Tableau transmis de l'ensemble des articles
-][(#SET{articles, #ENV{articles}})]
-
-[(#REM)
   Tableau de la liste des articles triés (ou pas)
 ][(#SET{selection, #ARRAY})]
 <BOUCLE_selection(ARTICLES){id_rubrique}{mots?}{par titre}>[(#SET{selection,#GET{selection}|push{#ID_ARTICLE}})]</BOUCLE_selection>
