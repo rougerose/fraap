@@ -1,6 +1,6 @@
 <paquet
     prefix="fraap"
-    version="3.0.3"
+    version="3.0.4"
     etat="test"
     categorie="squelette"
     compatibilite="[3.0.0;3.0.*]"
