@@ -37,40 +37,23 @@
   			<h3 class="annuaire-tri__label"><:fraap:trier_par:></h3>
   			<BOUCLE_catégories(GROUPES_MOTS){id_parent}{par num titre, titre}>
   			[(#SET{compteur,#COMPTEUR_BOUCLE})]
-  				<B_mots_activites>
+  				<B_mots>
   					<div class="annuaire-tri__item">
   						<h4 class="accordeon-annuaire__header">#TITRE</h4>
   						<div class="accordeon-annuaire__body">
   							<ul class="list-inline">
-  								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+  								<BOUCLE_mots(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
   								<li>
                     [(#ENV{mots}|find{#ID_MOT}|?{
                       [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
                       [<a rel="nofollow" href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
                     })]
                   </li>
-  								</BOUCLE_mots_activites>
+  								</BOUCLE_mots>
   							</ul>
   						</div>
   					</div>
-  				</B_mots_activites>
-  				<B_autres_mots>
-  					<div class="annuaire-tri__item">
-  						<h4 class="accordeon-annuaire__header">#TITRE</h4>
-  						<div class="accordeon-annuaire__body">
-  							<ul class="list-inline">
-  								<BOUCLE_autres_mots(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe !IN 2,7}{id_groupe}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
-  								<li>
-                    [(#ENV{mots}|find{#ID_MOT}|?{
-                      [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
-                      [<a rel="nofollow" href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
-                    })]
-                  </li>
-  								</BOUCLE_autres_mots>
-  							</ul>
-  						</div>
-  					</div>
-  				</B_autres_mots>
+  				</B_mots>
   			</BOUCLE_catégories>
   		</div>
   	</BOUCLE_tri_annuaire>
