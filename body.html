@@ -16,9 +16,7 @@
 
 	<div id="conteneur" class="[couleurID(#GET{secteur}) ]clearfix">
 		[(#REM) zone relative à la session ouverte par l'utilisateur ]
-		[(#SESSION|oui)
 		<INCLURE{fond=inclure/session-info,env}>
-		]
 		[(#REM) le titre est affiché ici sauf pour le sommaire ]
 		[(#ENV{type}|=={page}|et{#ENV{composition}|=={sommaire}}|non)
 		<div id="titre">
