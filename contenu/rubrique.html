@@ -1,8 +1,7 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 [(#REM) définition de constantes ]
 #SET{articles_selection,#ARRAY} #SET{articles_rubrique,#ARRAY}
 #SET{menu,''}
-
-<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
 	[<div id="logo-objet-conteneur">
 		(#LOGO_RUBRIQUE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
@@ -15,9 +14,9 @@
 		<BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
 
 		[(#REM) menu rubriques ]
-		[(#GET{menu}|oui)
-			[(#INCLURE{fond=inclure/menu-rubriques,env})]
-		]
+		<BOUCLE_test_menu(CONDITION){si #GET{menu}}>
+      <INCLURE{fond=inclure/menu-rubriques, env}/>
+    </BOUCLE_test_menu>
 	</div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
@@ -49,7 +48,7 @@
 		<B_sous_rubriques>
 		<div class="sousrubriques-container">
 			<BOUCLE_sous_rubriques(RUBRIQUES){id_parent=#ID_RUBRIQUE}{par num titre, titre}>
-			[(#INCLURE{fond=inclure/sousrubriques,id_rubrique})]
+			<INCLURE{fond=inclure/sousrubriques,id_rubrique}/>
 			</BOUCLE_sous_rubriques>
 		</div>
 		</B_sous_rubriques>

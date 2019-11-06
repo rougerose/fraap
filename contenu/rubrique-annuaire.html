@@ -1,22 +1,18 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 [(#REM) définition de constantes ]
   #SET{menu,''}
-
-<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div id="extra-objet-conteneur">
   [<div id="logo-objet-conteneur">
     (#LOGO_RUBRIQUE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
   </div><!-- #logo-objet-conteneur -->]
 
   <div id="info-publi-objet-conteneur">
-    [(#REM) [(#MODELE{socialtags})] ]
-
     [(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
     <BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
 
-    [(#REM) menu rubriques ]
-    [(#GET{menu}|oui)
-      [(#INCLURE{fond=inclure/menu-rubriques,env})]
-    ]
+    <BOUCLE_test_menu(CONDITION){si #GET{menu}}>
+      <INCLURE{fond=inclure/menu-rubriques, env}/>
+    </BOUCLE_test_menu>
   </div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 

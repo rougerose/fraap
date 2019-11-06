@@ -1,4 +1,5 @@
 <BOUCLE_contenu_article(ARTICLES){id_article}>
+#SET{menu, ''}
 <div id="extra-objet-conteneur">
   [<div id="logo-objet-conteneur">
     (#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
@@ -17,26 +18,24 @@
     [(#REM) Inclure le modele des liens de traductions ]
     #MODELE{article_traductions}
 
-    [(#REM) [(#MODELE{socialtags})] ]
-
-    [(#REM) on compte le nombre de rubrique. S'il n'y en a qu'une, pas de menu ]
+    [(#REM) on compte le nombre de rubriques. S'il n'y en a qu'une, pas de menu ]
     <BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
 
     [(#REM) menu rubriques ]
-    [(#GET{menu}|oui)
-      [(#INCLURE{fond=inclure/menu-rubriques,env})]
-    ]
+    <BOUCLE_test_menu(CONDITION){si #GET{menu}}>
+      <INCLURE{fond=inclure/menu-rubriques, env}/>
+    </BOUCLE_test_menu>
 
   </div><!-- #info-publi-objet-conteneur -->
 </div><!-- #extra-objet -->
 
-[(#CHAPO|oui)
-  <div id="chapo-conteneur" class="introduction #EDIT{chapo}">
-    [<div class="introduction-p">
+
+  [<div id="chapo-conteneur" class="introduction #EDIT{chapo}">
+    <div class="introduction-p">
       (#CHAPO|image_reduire{220,0})
-    </div>]
-  </div><!-- #chapo-conteneur .introduction -->
-]
+    </div>
+  </div><!-- #chapo-conteneur .introduction -->]
+
 <div class="contenu clearfix">
   <div class="contenu-principal contenu-principal--annuaire">
     <h2 class="section-heading[ couleurID(#ID_SECTEUR)]">à propos</h2>
@@ -44,7 +43,7 @@
 
     <BOUCLE_groupe_annuaire(GROUPES_MOTS){id_groupe=11}>
       <BOUCLE_sous_groupes(GROUPES_MOTS){id_parent}{par num titre, titre}>
-        [(#INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe, id_secteur})]
+        <INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe, id_secteur}/>
       </BOUCLE_sous_groupes>
     </BOUCLE_groupe_annuaire>
 
@@ -62,7 +61,7 @@
         </div><!-- #contact -->
       </BOUCLE_contact>
       <BOUCLE_gis(GIS){id_article}{0,1}>
-        [(#INCLURE{fond=modeles/carte_gis, id_article=#ID_ARTICLE, zoom=#ZOOM, lat=#LAT, lon=#LON, hauteur=600px})]
+        <INCLURE{fond=modeles/carte_gis, id_article=#ID_ARTICLE, zoom=#ZOOM, lat=#LAT, lon=#LON, hauteur=600px}/>
       </BOUCLE_gis>
     </div>
 
