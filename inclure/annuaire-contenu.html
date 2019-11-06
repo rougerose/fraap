@@ -26,7 +26,7 @@
 ]
 <BOUCLE_articles_annuaire_carte(ARTICLES){id_article IN #GET{selection}}{si #GET{vue}|=={carte}}{0,1}>
   <div class="annuaire-contenu">
-    [(#INCLURE{fond=modeles/carte_gis,
+    <INCLURE{fond=modeles/carte_gis,
       id_carte_gis=_all,
       objets=articles,
       id_article=#GET{selection},
@@ -34,6 +34,6 @@
       lat=46.940328,
       zoom=6,
       hauteur=600px
-    })]
+    }/>
   </div>
 </BOUCLE_articles_annuaire_carte>
