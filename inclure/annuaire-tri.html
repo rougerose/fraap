@@ -45,7 +45,7 @@
   								<BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{selection}}{id_groupe IN 2,7}{par num titre}{doublons}>[(#SET{autresMots, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
   								<li>
                     [(#ENV{mots}|find{#ID_MOT}|?{
-                      [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" class="pill pill--remove ajax">x</a></strong>],
+                      [<strong class="btn btn--small btn--block btn--outline-annuaire is-active">(#TITRE) <a href="[(#SELF|parametre_url{mots,''}|parametre_url{mots,#GET{autresMots}})]" rel="nofollow" class="pill pill--remove ajax">x</a></strong>],
                       [<a rel="nofollow" href="[(#SELF|parametre_url{mots\[\],#ID_MOT})]" class="btn btn--small btn--block btn--outline-annuaire ajax">(#TITRE)</a>]
                     })]
                   </li>
