@@ -4,6 +4,9 @@
 # vscode
 .vscode/*
 
+#
+theme/src/css/*
+
 # yarn
 node_modules/
 # .yarn/*
