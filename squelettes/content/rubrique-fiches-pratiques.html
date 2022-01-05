@@ -1,0 +1,18 @@
+<BOUCLE_fiches_pratiques(RUBRIQUES){id_rubrique}>
+  <article>
+    <h1>#TITRE</h1>
+    [<div>
+      (#TEXTE)
+    </div>]
+    <BOUCLE_selections_categories(SELECTIONS){identifiant=fiches-pratiques}>
+      <ul class="">
+        <BOUCLE_categorie(SELECTIONS_CONTENUS){id_selection}{par rang}>
+          <li>
+            <h2>#TITRE</h2>
+            [<div>(#DESCRIPTIF)</div>]
+          </li>
+        </BOUCLE_categorie>
+      </ul>
+    </BOUCLE_selections_categories>
+  </article>
+</BOUCLE_fiches_pratiques>
