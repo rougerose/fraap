@@ -10,4 +10,5 @@
 	<auteur lien="http://rouge-rose.net">christophe le drean</auteur>
 	<licence>GPLv3</licence>
   <necessite nom="zcore" compatibilite="[3.0.0;[" />
+  <necessite nom="compositions" compatibilite="[3.9.3;[" />
 </paquet>
