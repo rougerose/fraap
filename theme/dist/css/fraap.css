@@ -1,0 +1,207 @@
+@font-face {
+  font-family: "u001";
+  src: url("../fonts/u001-bol.woff2") format("woff2"), url("../fonts/u001-bol.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001";
+  src: url("../fonts/u001-bolita.woff2") format("woff2"), url("../fonts/u001-bolita.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001";
+  src: url("../fonts/u001-ita.woff2") format("woff2"), url("../fonts/u001-ita.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001";
+  src: url("../fonts/u001-reg.woff2") format("woff2"), url("../fonts/u001-reg.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001con";
+  src: url("../fonts/u001con-bol.woff2") format("woff2"), url("../fonts/u001con-bol.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001con";
+  src: url("../fonts/u001con-bolita.woff2") format("woff2"), url("../fonts/u001con-bolita.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001con";
+  src: url("../fonts/u001con-ita.woff2") format("woff2"), url("../fonts/u001con-ita.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "u001con";
+  src: url("../fonts/u001con-reg.woff2") format("woff2"), url("../fonts/u001con-reg.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+* {
+  margin: 0;
+}
+
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  background-color: #f3f3f3;
+  color: #1a1a1a;
+  font-family: u001, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: normal;
+}
+
+.o-wrapper {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.spip-admin-float {
+  display: flex;
+  top: auto !important;
+  right: auto !important;
+  bottom: 0.5rem !important;
+  left: 0.5rem !important;
+}
+
+.spip-admin-float .spip-admin-boutons {
+  margin: 0 0.25rem 0 0;
+  border-radius: 0.25rem;
+  box-shadow: 0.01875rem 0.03125rem 0.04375rem rgba(150, 150, 150, 0.48), 0.08125rem 0.1625rem 0.20625rem -0.075rem rgba(150, 150, 150, 0.48), 0.3125rem 0.625rem 0.7875rem -0.15625rem rgba(150, 150, 150, 0.48);
+  font-size: 0.625rem;
+  letter-spacing: 0.04rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  background-color: rgba(68, 64, 60, 0.88);
+  color: #f2f2f2;
+  opacity: 1;
+  transition: color 0.2s;
+}
+.spip-admin-float .spip-admin-boutons:hover {
+  background-color: #1c1917;
+}
+
+.u-visually-hidden {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
