@@ -1,1 +1,26 @@
+// https://piccalil.li/blog/a-modern-css-reset/
 @use "modern-css-reset/dist/reset";
+
+// https://www.joshwcomeau.com/css/custom-css-reset/
+* {
+  margin: 0;
+}
+
+// img,
+// picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
