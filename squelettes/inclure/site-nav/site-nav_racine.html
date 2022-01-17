@@ -1,0 +1,41 @@
+<BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
+  <nav>
+    <B_racine_entrees>
+      <ul[ data-depth="(#ENV{depth,0})"]>
+        <BOUCLE_racine_entrees(MENUS_ENTREES){id_menu}{par rang}>
+          [(#REM)
+            <!--
+              Si un sous-menu est à ajouter :
+                -1- pour garder une cohérence hiérarchique (sémantique) du html et sans introduire des exceptions supplémentaires dans les inclusions d'éléments du menu réalisées par Spip (inclusions qui ne générent que des listes), un conteneur de type section est ajouté automatiquement ci-dessous.
+                -2- ce conteneur affiche le titre du secteur, son url et éventuellement un descriptif.
+            -->
+          ]
+          [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+          [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+          [(#SET{entree, ''})]
+
+          [(#MENUS_AFFICHER_ENTREE)
+            #SET{entree, ' '}
+            [(#SET{titre, #PARAMETRES|table_valeur{titre}|sinon{#INFO_TITRE{#GET{objet}, #GET{id_objet}}}})]
+            [(#SET{url, #INFO_URL{#GET{objet}, #GET{id_objet}}})]
+            [(#SET{descriptif, #PARAMETRES|table_valeur{descriptif}|typo})]
+          ]
+          <BOUCLE_sous_menu(MENUS){id_menus_entree}{si #GET{entree}}>
+            <div>
+              [<div><a href="#GET{url}">(#GET{titre})</a></div>]
+              [<div>(#GET{descriptif})</div>]
+              <INCLURE{fond=inclure/site-nav/site-nav_sous-menu, env, id_menu, identifiant, depth=#ENV{depth, 0}|plus{1}} />
+            </div>
+          </BOUCLE_sous_menu>
+          [(#REM)
+            <!--
+              On ferme le li si le type d'entrée accepte des sous-menus
+              et si on a bien quelque chose dans le <li>
+            -->]
+          [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+          </li>]
+        </BOUCLE_racine_entrees>
+      </ul>
+    </B_racine_entrees>
+  </nav>
+</BOUCLE_sitenav_racine>
