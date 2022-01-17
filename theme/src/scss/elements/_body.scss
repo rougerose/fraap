@@ -1,0 +1,8 @@
+@use "../tools";
+
+body {
+  background-color: tools.get-color("light");
+  color: tools.get-color("dark");
+  font-family: tools.get-utility-value("font", "base");
+  font-weight: normal;
+}
