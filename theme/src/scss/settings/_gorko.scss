@@ -1,3 +1,5 @@
+@use "colors";
+
 /// BASE SIZE
 /// All calculations are based on this. It’s recommended that
 /// you keep it at 1rem because that is the root font size. You
@@ -25,8 +27,13 @@ $gorko-size-scale: (
 /// You can also use them to power borders, fills or shadows, for example.
 ///
 $gorko-colors: (
-  'dark': #1a1a1a,
-  'light': #f3f3f3
+  "dark": colors.$black,
+  "light": colors.$white,
+) !default;
+
+/// FONTS
+$gorko-fonts: (
+  "base": 'u001, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 ) !default;
 
 /// CORE CONFIG
@@ -60,9 +67,7 @@ $gorko-config: (
     'property': 'display'
   ),
   'font': (
-    'items': (
-      'base': 'Helvetica, Arial, sans-serif'
-    ),
+    'items': $gorko-fonts,
     'output': 'standard',
     'property': 'font-family'
   ),
