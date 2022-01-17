@@ -1,0 +1,22 @@
+#SET{id_objet, #ENV{id_objet}}
+[(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
+[(#SET{descriptif, #ENV*{descriptif}|sinon{''}})]
+
+#SET{visible, oui}
+[(#ENV{type_objet}|objet_test_si_publie{#GET{id_objet}}|non) #SET{visible, non}]
+
+[(#SET{afficher_icone, #ENV{afficher_icone, oui}})]
+[(#GET{afficher_icone}|!=={oui}|?{#SET{afficher_icone, non}})]
+
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	[<div class="titre">(#GET{descriptif})</div>]
+	<div class="infos">#ENV{type_objet}-#GET{id_objet}</div>
+]
+
+<BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
+	#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}}
+	<li class="[(#ENV{css})]">
+    <a href="[(#GET{afficher_icone}|=={oui}|?{\#, #GET{url}})]" class="[(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, 'is-active'})]">[(#GET{titre})][ (#GET{afficher_icone}|=={oui}|oui)#INCLURE{fond=images/icon-caret-down-100.svg, class=icon-dropdown}]</a>
+</BOUCLE_public>
