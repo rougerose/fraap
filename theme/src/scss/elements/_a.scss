@@ -1,0 +1,12 @@
+// ========================================
+// liens
+// ========================================
+
+// @use "../tools";
+@use "../settings";
+@use "sass:map";
+
+a:not([class]) {
+  color: currentColor;
+  text-decoration-color: map.get(settings.$gorko-colors, "primaire");
+}

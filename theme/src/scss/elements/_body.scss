@@ -1,8 +1,10 @@
 @use "../tools";
+@use "../settings";
+@use "sass:map";
 
 body {
-  background-color: tools.get-color("light");
-  color: tools.get-color("dark");
+  background-color: map.get(settings.$gorko-colors, "light-glare");
+  color: map.get(settings.$gorko-colors, "dark-shade");
   font-family: tools.get-utility-value("font", "base");
   font-weight: normal;
 }

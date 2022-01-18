@@ -1,0 +1,13 @@
+
+// @use "../tools";
+@use "../settings";
+@use "sass:map";
+
+:focus {
+  outline: 2px dashed map.get(settings.$gorko-colors, "primaire-dark");
+  outline-offset: 0.25rem;
+}
+
+main:focus {
+  outline: none;
+}
