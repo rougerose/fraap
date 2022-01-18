@@ -24,7 +24,6 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.0.0",
     "gulp-size": "^4.0.1",
-    "modern-css-reset": "^1.4.0",
     "postcss": "^8.4.5",
     "postcss-csso": "^6.0.0",
     "sass": "1.32.13",
