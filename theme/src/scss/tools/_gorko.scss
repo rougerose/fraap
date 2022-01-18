@@ -1,9 +1,8 @@
 @use "../settings" as config;
-@use "gorko/gorko" with (
+@forward "gorko/gorko" with (
   $generate-css-vars: true,
   $generate-utility-classes: false,
   $gorko-base-size: config.$gorko-base-size,
   $gorko-size-scale: config.$gorko-size-scale,
   $gorko-config: config.$gorko-config
 );
-@forward "gorko/gorko";
