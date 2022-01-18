@@ -8,9 +8,10 @@
 @use "sass:color";
 @use "../settings";
 @use "sass-rem/rem";
+@use "../tools";
 
-$color-bg: map.get(settings.$gray, "warm", "700");
-$color-bg-hover: map.get(settings.$gray, "warm", "900");
+$color-bg: map.get(settings.$gorko-colors, "primaire");
+$color-bg-hover: map.get(settings.$gorko-colors, "primaire-light");
 
 // Conteneur
 .spip-admin-float {
@@ -25,7 +26,7 @@ $color-bg-hover: map.get(settings.$gray, "warm", "900");
 .spip-admin-float .spip-admin-boutons {
   margin: 0 0.25rem 0 0;
   border-radius: rem.convert(4px);
-  box-shadow: map.get(settings.$box-shadow, "medium");
+  @include tools.apply-utility("box-shadow", "medium");
   font-size: rem.convert(10px);
   letter-spacing: 0.04rem;
   letter-spacing: 0.1em;
