@@ -10,8 +10,8 @@
 @use "sass-rem/rem";
 @use "../tools";
 
-$color-bg: map.get(settings.$gorko-colors, "primaire");
-$color-bg-hover: map.get(settings.$gorko-colors, "primaire-light");
+$color-bg: map.get(settings.$gorko-colors, "primary");
+$color-bg-hover: map.get(settings.$gorko-colors, "primary-light");
 
 // Conteneur
 .spip-admin-float {

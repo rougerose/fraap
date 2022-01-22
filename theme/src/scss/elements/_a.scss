@@ -8,5 +8,5 @@
 
 a:not([class]) {
   color: currentColor;
-  text-decoration-color: map.get(settings.$gorko-colors, "primaire");
+  text-decoration-color: map.get(settings.$gorko-colors, "primary");
 }

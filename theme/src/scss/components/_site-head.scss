@@ -1,0 +1,30 @@
+// ========================================
+// c-site-head
+// ========================================
+
+@use "../tools";
+@use "../settings";
+@use "sass:map";
+
+.c-site-head {
+  padding: tools.get-size("800") 0 tools.get-size("700");
+  position: relative;
+
+  &_nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &_name {
+    flex-shrink: 0;
+  }
+
+  // &_logo {}
+
+  &_baseline {
+    position: absolute;
+    top: 0.5rem;
+    width: 100%;
+  }
+}

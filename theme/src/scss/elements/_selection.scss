@@ -8,6 +8,6 @@
 @use "sass:map";
 
 ::selection {
-  color: map.get(settings.$gorko-colors, "light-glare");
-  background-color: rgba(map.get(settings.$gorko-colors, "dark-shade"), 0.99);
+  color: map.get(settings.$gorko-colors, "light");
+  background-color: rgba(map.get(settings.$gorko-colors, "dark"), 0.99);
 }
