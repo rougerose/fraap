@@ -6,9 +6,9 @@ const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const size = require("gulp-size");
 const rename = require("gulp-rename");
-// const rollup = require("rollup");
-// const { nodeResolve } = require("@rollup/plugin-node-resolve");
-// const { terser } = require("rollup-plugin-terser");
+const rollup = require("rollup");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
+const { terser } = require("rollup-plugin-terser");
 
 /**
  * Clean task
@@ -48,7 +48,7 @@ const js = function (done) {
   if (!config.tasks.js) return done();
   return rollup
     .rollup({
-      input: config.js.src + "/main.js",
+      input: config.js.src + "/index.js",
       plugins: [
         nodeResolve(),
         process.env.NODE_ENV === "production" && terser(),

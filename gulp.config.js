@@ -22,7 +22,7 @@ module.exports = {
   clean: ["theme/dist/css/*.css", "theme/dist/js/*.js", "!theme/dist/"],
   tasks: {
     scss: true,
-    js: false,
+    js: true,
     clean: true,
     reload: true,
   },
