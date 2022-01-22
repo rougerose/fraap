@@ -1,3 +1,19 @@
+[(#REM)
+  <!--
+    Surcharge de menus/objet.html
+    .
+    Les classes par défaut sont supprimées.
+    L'option d'affichage de l'icone de menu déroulant est ajoutée
+    (choix par défaut non). L'option d'affichage de l'icone d'un lien (>)
+    est ajoutée également (choix par défaut oui). Vérification que
+    les deux options ne sont pas "oui", dans cette hypothèse, l'option
+    icone du menu déroulant l'emporte.
+    L'état actif de la page est affiché dans data-state (et non plus dans
+    la classe).
+    .
+  -->
+]
+
 #SET{id_objet, #ENV{id_objet}}
 [(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
 [(#SET{descriptif, #ENV*{descriptif}|sinon{''}})]
@@ -5,18 +21,31 @@
 #SET{visible, oui}
 [(#ENV{type_objet}|objet_test_si_publie{#GET{id_objet}}|non) #SET{visible, non}]
 
-[(#SET{afficher_icone, #ENV{afficher_icone, oui}})]
-[(#GET{afficher_icone}|!=={oui}|?{#SET{afficher_icone, non}})]
+[(#SET{afficher_icone_md, #ENV*{afficher_icone_md, non}})]
+[(#GET{afficher_icone_md}|!=={oui}|?{#SET{afficher_icone_md, non}})]
 
+[(#SET{afficher_icone_lien, #ENV*{afficher_icone_lien, oui}})]
+[(#GET{afficher_icone_lien}|!=={non}|?{#SET{afficher_icone_lien, oui}})]
+
+[(#GET{afficher_icone_lien}|=={oui}|et{#GET{afficher_icone_md}|=={oui}}|oui) #SET{afficher_icone_lien, non}]
+
+[(#SET{type,''})]
+[(#SET{type, [(#GET{afficher_icone_md}|=={oui}|oui)dropdown][(#GET{afficher_icone_lien}|=={oui}|oui)link]})]
 
 [(#ENV{appel_formulaire}|oui)
 	<div class="titre">#GET{titre}</div>
 	[<div class="titre">(#GET{descriptif})</div>]
-	<div class="infos">#ENV{type_objet}-#GET{id_objet}</div>
+	<div class="infos">#ENV{type_objet}-#GET{id_objet}[(#GET{afficher_icone_md}|=={oui}|oui). Afficher l'icone Menu déroulant][(#GET{afficher_icone_lien}|=={oui}|oui). Afficher l'icone Lien]</div>
 ]
 
 <BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
 	#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}}
-	<li class="[(#ENV{css})]">
-    <a href="[(#GET{afficher_icone}|=={oui}|?{\#, #GET{url}})]" class="[(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, 'is-active'})]">[(#GET{titre})][ (#GET{afficher_icone}|=={oui}|oui)#INCLURE{fond=images/icon-caret-down-100.svg, class=icon-dropdown}]</a>
+	<li class="c-nav_list-item[ (#ENV{css})]">
+    <a class="c-nav_link" data-type="[(#GET{type}|trim)]" href="[(#GET{afficher_icone}|=={oui}|?{\#, #GET{url}})]"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
+      [(#GET{titre})][
+        (#GET{afficher_icone_md}|=={oui}|oui)
+          #INCLURE{fond=images/icon-caret-down-100.svg, class=c-nav_icon} ][
+        (#GET{afficher_icone_lien}|=={oui}|oui)
+          #INCLURE{fond=images/icon-caret-right-100.svg, class=c-nav_icon-link}]
+    </a>
 </BOUCLE_public>
