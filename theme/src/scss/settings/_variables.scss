@@ -4,6 +4,17 @@
 
 @use "sass-rem/rem";
 
+// Breakpoints
+$breakpoints: (
+  "standardPoints": (
+    "sm": "(min-width: 36em)", // 576px
+    "md": "(min-width: 48em)", // 768px
+    "lg": "(min-width: 68em)", // 1088px
+  ),
+  "tweakPoints": (),
+);
+
+
 // Wrapper
 $wrapper-width: rem.convert(1280px);
 $wrapper-padding: (

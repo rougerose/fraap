@@ -6,6 +6,8 @@
 @use "../settings";
 @use "sass:map";
 
+$wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
+
 .c-site-head {
   padding: tools.get-size("800") 0 tools.get-size("700");
   position: relative;
@@ -14,17 +16,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 0 $wrapper-padding-sm;
   }
 
-  &_name {
-    flex-shrink: 0;
-  }
+  // &_name {}
 
   // &_logo {}
 
   &_baseline {
     position: absolute;
+    // width: 100%;
     top: 0.5rem;
-    width: 100%;
+    padding-right: $wrapper-padding-sm;
   }
 }

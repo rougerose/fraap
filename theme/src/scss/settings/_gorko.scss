@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "colors";
 @use "sass-rem/rem";
+@use "variables";
 
 /// BASE SIZE
 /// All calculations are based on this. It’s recommended that
@@ -189,8 +190,11 @@ $gorko-config: (
     'property': 'width'
   ),
   'breakpoints': (
-    'sm': '(min-width: 36em)',
-    'md': '(min-width: 48em)',
-    'lg': '(min-width: 62em)'
+    // 'sm': '(min-width: 36em)',
+    // 'md': '(min-width: 48em)',
+    // 'lg': '(min-width: 62em)',
+    "sm": map.get(variables.$breakpoints, "standardPoints", "sm"),
+    "md": map.get(variables.$breakpoints, "standardPoints", "md"),
+    "lg": map.get(variables.$breakpoints, "standardPoints", "lg"),
   )
 );

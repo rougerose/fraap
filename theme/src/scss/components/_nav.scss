@@ -8,11 +8,16 @@
 @use "sass:map";
 
 
-// Règles par défaut
+// Règles communes
 // ========================================
 
 .c-nav {
   line-height: 1.1;
+}
+
+.c-nav_toggle[hidden],
+.c-nav_toggle[enabled="false"] {
+  display: none;
 }
 
 .c-nav_list {
@@ -25,26 +30,67 @@
     color: map.get(settings.$gorko-colors, "dark");
     text-decoration: none;
   }
+}
 
-  &[data-depth="0"] {
+.c-nav_link {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-align: left;
+  transition: color 0.3s;
+
+  & svg {
+    flex-shrink: 0;
+  }
+
+  &[data-type="link"] {
+    align-items: center;
+    width: 100%;
+  }
+
+  &:hover,
+  &[aria-expanded="true"] {
+    color: map.get(settings.$gorko-colors, "primary-light");
+  }
+}
+
+.c-nav_icon {
+  margin-inline-start: 0.5rem;
+}
+
+
+// Règles sans js
+// ========================================
+
+// La navigation s'affiche dans un conteneur flexible,
+// et les sous-menus sont des menus déroulants
+// disponibles via un hover.
+
+.c-nav_panel[data-js="false"] {
+
+  & ul[data-depth="0"] {
     display: flex;
     flex-wrap: wrap;
 
-    & li .c-nav_section {
-      visibility: hidden;
-    }
-
-    & li:hover .c-nav_section,
-    & li:focus-within .c-nav_section {
-      visibility: visible;
-    }
-
     & > li {
+      position: relative;
       margin-right: 1rem;
+
+      & .c-nav_section {
+        visibility: hidden;
+      }
+
+      &:hover .c-nav_section {
+        visibility: visible;
+      }
+
+      &:focus-within .c-nav_section {
+        visibility: visible;
+      }
     }
   }
 
-  &[data-depth="1"] {
+  & ul[data-depth="1"] {
     border-top: 1px solid #ddd;
     padding-top: var(--flow-space);
     margin-top: 1rem;
@@ -55,95 +101,195 @@
       margin-left: 0.25rem;
     }
   }
-}
 
-.c-nav_list-item {
-  position: relative;
-}
-
-.c-nav_link {
-  display: inline-flex;
-  align-items: baseline;
-  justify-content: space-between;
-  transition: color 0.3s;
-
-  & svg {
-    flex-shrink: 0;
-  }
-
-  &[data-type="dropdown"] {
+  a[data-type="dropdown"] {
     padding-bottom: 0.5rem;
   }
 
-  &[data-type="link"] {
-    align-items: center;
+  // Sous-menu : menu déroulant
+  .c-nav_section {
+    position: absolute;
+    top: 100%;
+    left: -0.5rem;
+    z-index: tools.get-utility-value("stack", "300");
+    min-width: rem.convert(200px);
     width: 100%;
-  }
+    padding: 1rem 0.5rem;
+    @include tools.apply-utility("box-shadow", "medium");
+    background-color: map.get(settings.$gorko-colors, "light");
 
-  &:hover {
-    color: map.get(settings.$gorko-colors, "primary-light");
-  }
-}
-
-//* Conteneur affiché comme un menu déroulant */
-.c-nav_section {
-  position: absolute;
-  top: 100%;
-  left: -0.5rem;
-  z-index: tools.get-utility-value("stack", "300");
-  min-width: rem.convert(200px);
-  width: 100%;
-  padding: 1rem 0.5rem;
-  @include tools.apply-utility("box-shadow", "medium");
-  background-color: map.get(settings.$gorko-colors, "light");
-
-  h2 {
-    @include tools.apply-utility("text", "400");
-  }
-}
-
-.c-nav_icon {
-  margin-inline-start: 0.5rem;
-}
-
-
-//* Conteneur principal de la navigation */
-// .c-nav {}
-
-//* Bouton d'affichage de la navigation */
-.c-nav_toggle {
-  position: relative;
-  z-index: tools.get-utility-value("stack", "300");
-  display: flex;
-  align-self: center;
-
-  //* État actif du bouton et de la navigation */
-  &[aria-expanded="true"] {
-    & + .c-nav_panel {
-      opacity: 1;
-      visibility: visible;
+    h2 {
+      @include tools.apply-utility("text", "400");
     }
   }
 }
 
-//* Conteneur de la navigation */
-// .c-nav_panel {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   z-index: tools.get-utility-value("stack", "200");
-//   overflow-y: auto;
-//   background-color: rgba(map.get(settings.$gorko-colors, "dark"), 0.2);
-//   visibility: hidden;
-//   opacity: 0;
+
+
+// Conteneur sous forme d'un menu déroulant
+
+
+
+
+// Variante standard. Avec Js (via menu-clicky)
+// ========================================
+
+.c-nav_toggle[enabled="true"] {
+  position: relative;
+  z-index: tools.get-utility-value("stack", "300");
+  display: flex;
+  align-self: flex-start;
+  margin-right: -0.5rem;
+
+  > span {
+    background-color: map.get(settings.$gorko-colors, "light");
+  }
+
+  @include tools.media-query("lg") {
+    display: none;
+  }
+
+  // État visible déclenché par le js.
+  // Ce qui permet de définir les règles d'affichage spécifiques
+  // du menu
+  // &[data-state="visible"] {
+  //   & + .c-nav_panel {
+  //     position: fixed;
+  //     top: 0;
+  //     left: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     z-index: tools.get-utility-value("stack", "200");
+  //     overflow-y: auto;
+  //     background-color: rgba(map.get(settings.$gorko-colors, "dark"), 0.2);
+  //     opacity: 0;
+  //     visibility: hidden;
+
+  //     > ul {
+  //       position: absolute;
+  //       right: 0;
+  //       max-width: calc(100vw - 3.75rem);
+  //       background-color: map.get(settings.$gorko-colors, "light");
+  //       // transform: translateX(100%);
+  //     }
+  //   }
+  // }
+
+  // État actif du bouton et de la navigation
+  // &[aria-expanded="true"] {
+  //   & + .c-nav_panel {
+  //     opacity: 1;
+  //     visibility: visible;
+  //   }
+  // }
+}
+
+.c-nav_panel[data-js="true"] {
+
+  button.c-nav_link {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  & ul[data-depth="0"] {
+    & > li > .c-nav_link {
+      // Version mobile
+      font-size: 20px;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 100%;
+
+      &:focus {
+        outline-offset: 0;
+      }
+    }
+  }
+
+  & ul[data-depth="1"] {
+    & li {
+      font-size: 18px;
+    }
+  }
+
+  h2 {
+    margin-top: 0.5rem;
+  }
+
+  .c-nav_section {
+    margin-left: 1rem;
+
+    &[aria-hidden="true"] {
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    > ul {
+      margin-bottom: 1.5rem;
+    }
+
+    & svg {
+      display: none;
+    }
+  }
+}
+
+// .c-nav_link[aria-expanded] {
+//   padding-bottom: 0;
+//   border: 0;
+//   background-color: transparent;
+
+//   & + .c-nav_section[aria-hidden="false"] {
+//     visibility: visible;
+//   }
 // }
 
-// .c-nav_list {
-//   position: absolute;
-//   right: 0;
-//   max-width: calc(100vw - 3.75rem);
-//   background-color: map.get(settings.$gorko-colors, "light");
-//   transform: translateX(100%);
-// }
+
+
+.c-nav_panel[enabled="true"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: auto;
+  // visibility: hidden;
+  // opacity: 0;
+  background-color: map.get(settings.$gorko-colors, "light");
+  transform: translateX(100%);
+  transition: transform 0.5s, opacity 0.3s;
+
+  & ul[data-depth="0"] {
+    display: block;
+    border-bottom: 2px solid;
+    margin: 8rem 1rem 2rem;
+
+    > li {
+      border-top: 2px solid;
+    }
+  }
+
+  @include tools.media-query("lg") {
+    position: unset;
+    background-color: none;
+    transform: translateX(0);
+
+    & ul[data-depth="0"] {
+      display: flex;
+      border: none;
+      margin: 0;
+
+      > li {
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.c-nav_panel[enabled="true"][status="open"] {
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.5s, opacity 0.3s, visibility 0.5s;
+  transform: translateX(0);
+}
