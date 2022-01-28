@@ -54,23 +54,8 @@
       } else {
         button.setAttribute("aria-expanded", true);
         submenu.setAttribute("aria-hidden", false);
-        preventOffScreenSubmenu(submenu);
+        // preventOffScreenSubmenu(submenu);
         currentMenuItem = button;
-      }
-    }
-
-    function preventOffScreenSubmenu(submenu) {
-      const screenWidth =
-          window.innerWidth ||
-          document.documentElement.clientWidth ||
-          document.body.clientWidth,
-        parent = submenu.offsetParent,
-        menuLeftEdge = parent.getBoundingClientRect().left,
-        menuRightEdge = menuLeftEdge + submenu.offsetWidth;
-
-      if (menuRightEdge + 32 > screenWidth) {
-        // adding 32 so it's not too close
-        submenu.classList.add("sub-menu--right");
       }
     }
 
@@ -175,7 +160,7 @@
     this.root = nav;
 
     this.options = {
-      maxWidth: 1140,
+      maxWidth: 1120,
     };
 
     this.options = Object.assign(this.options, options);
@@ -198,11 +183,20 @@
       }
     );
 
-    // this.observer = new ResizeObserver(observedItems => {
-    //   const { contentRect } = observedItems[0];
-    //   let stateEnabled = contentRect.width <= self.options.maxWidth;
-    //   self.state.enabled = stateEnabled;
-    // });
+
+
+    this.observer = new ResizeObserver(observedItems => {
+      const { contentRect } = observedItems[0];
+      let setWidth = contentRect.width >= self.options.maxWidth;
+
+      if (setWidth) {
+        let menuWidth = self.navMenu.clientWidth / 16 + "rem";
+        self.navMenu.style.setProperty("--menuWidth", menuWidth);
+      }
+
+      // let stateEnabled = contentRect.width <= self.options.maxWidth;
+      // self.state.enabled = stateEnabled;
+    });
 
     function toggle(forcedStatus) {
       if (forcedStatus) {
@@ -219,9 +213,9 @@
     function processStateChange() {
       self.root.setAttribute("status", self.state.status);
       self.root.setAttribute("enabled", self.state.enabled ? "true" : "false");
-      self.navToggle.setAttribute("enabled", self.state.enabled ? "true" : "false");
-      self.navPanel.setAttribute("status", self.state.status);
-      self.navPanel.setAttribute("enabled", self.state.enabled ? "true" : "false");
+      self.navToggle.setAttribute("data-enabled", self.state.enabled ? "true" : "false");
+      self.navMenu.setAttribute("data-status", self.state.status);
+      self.navMenu.setAttribute("enabled", self.state.enabled ? "true" : "false");
 
       switch (self.state.status) {
         case "closed":
@@ -237,19 +231,29 @@
 
     function setupResponsiveNav() {
       self.navToggle = self.root.querySelector("#nav-toggle");
-      self.navPanel = self.root.querySelector("#nav-panel");
+      self.navMenu = self.root.querySelector("#nav-menu");
+      self.btns = self.navMenu.querySelectorAll("button.c-nav_link");
 
-      if (self.navToggle && self.navPanel) {
+      if (self.navToggle && self.navMenu && self.btns) {
         // Afficher le bouton d'activation de la navigation
         self.navToggle.removeAttribute("hidden");
-        self.navPanel.dataset.js = "true";
-        // self.observer.observe(self.root.parentNode);
+        // Le js est actif
+        self.navMenu.dataset.js = "true";
+        // Ajouter l'API Observer sur header.c-site-head
+        self.observer.observe(self.root.parentNode);
         toggle();
 
         self.navToggle.addEventListener("click", (event) => {
           event.preventDefault();
           toggle();
         });
+        for (let btn of self.btns) {
+          btn.addEventListener("click", (event) => {
+            event.preventDefault();
+            console.log(event);
+            // toggle();
+          });
+        }
       }
     }
   };
@@ -318,9 +322,13 @@
   const nav = document.getElementById("nav");
   const navList = document.getElementById("nav-list");
 
-  if (nav) {
-    let responsiveNav = new ResponsiveNav(nav, {});
-    responsiveNav.init();
+  if (nav && navList) {
+    new ClickyMenus(navList, {
+      submenuSelector: ".c-nav_section",
+    });
+    // clickyMenu.init();
+    new ResponsiveNav(nav, {});
+    // responsiveNav.init();
 
     // const navToggle = nav.querySelector("#nav-toggle");
     // let isNavExpanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -334,14 +342,6 @@
     // };
 
     // navToggle.addEventListener("click", toggleNavVisibility);
-  }
-
-  /**
-   * ClickyMenus
-   */
-  if (navList) {
-    let clickyMenu = new ClickyMenus(navList, {submenuSelector: ".c-nav_section"});
-    clickyMenu.init();
   }
 
 })();

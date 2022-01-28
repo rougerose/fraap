@@ -51,11 +51,18 @@ const ClickyMenus = function (menu, options) {
     } else {
       button.setAttribute("aria-expanded", true);
       submenu.setAttribute("aria-hidden", false);
-      preventOffScreenSubmenu(submenu);
+      // preventOffScreenSubmenu(submenu);
       currentMenuItem = button;
     }
   }
 
+  /**
+
+      TODO:
+      - Débugger parent.getBoundingClientRect
+      - Second todo item
+
+  */
   function preventOffScreenSubmenu(submenu) {
     const screenWidth =
         window.innerWidth ||

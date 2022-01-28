@@ -7,9 +7,13 @@ import ResponsiveNav from "./responsive-nav";
 const nav = document.getElementById("nav");
 const navList = document.getElementById("nav-list");
 
-if (nav) {
+if (nav && navList) {
+  let clickyMenu = new ClickyMenus(navList, {
+    submenuSelector: ".c-nav_section",
+  });
+  // clickyMenu.init();
   let responsiveNav = new ResponsiveNav(nav, {});
-  responsiveNav.init();
+  // responsiveNav.init();
 
   // const navToggle = nav.querySelector("#nav-toggle");
   // let isNavExpanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -23,12 +27,4 @@ if (nav) {
   // };
 
   // navToggle.addEventListener("click", toggleNavVisibility);
-}
-
-/**
- * ClickyMenus
- */
-if (navList) {
-  let clickyMenu = new ClickyMenus(navList, {submenuSelector: ".c-nav_section"});
-  clickyMenu.init();
 }
