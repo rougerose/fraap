@@ -6,7 +6,8 @@
 @use "../settings";
 @use "sass:map";
 
-$wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
+$site-head-wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
+$site-head-wrapper-padding-lg: map.get(settings.$wrapper-padding, "lg");
 
 .c-site-head {
   padding: tools.get-size("800") 0 tools.get-size("700");
@@ -16,7 +17,7 @@ $wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 0 $wrapper-padding-sm;
+    padding-left: $site-head-wrapper-padding-sm;
   }
 
   // &_name {}
@@ -25,8 +26,15 @@ $wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
 
   &_baseline {
     position: absolute;
-    // width: 100%;
     top: 0.5rem;
-    padding-right: $wrapper-padding-sm;
+    padding-right: $site-head-wrapper-padding-sm;
+  }
+}
+
+@include tools.mq($from: lg) {
+  .c-site-head {
+    &_nav {
+      padding-left: $site-head-wrapper-padding-lg;
+    }
   }
 }
