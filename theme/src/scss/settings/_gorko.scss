@@ -46,6 +46,13 @@ $gorko-fonts: (
   "base": 'u001, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 );
 
+/// BREAKPOINTS
+$gorko-breakpoints: (
+  "sm": map.get(variables.$fraap-breakpoints, "standardPoints", "sm") / 16 * 1em,
+  "md": map.get(variables.$fraap-breakpoints, "standardPoints", "md") / 16 * 1em,
+  "lg": map.get(variables.$fraap-breakpoints, "standardPoints", "lg") / 16 * 1em,
+);
+
 /// CORE CONFIG
 /// This powers everything from utility class generation to breakpoints
 /// to enabling/disabling pre-built components/utilities.
@@ -193,8 +200,11 @@ $gorko-config: (
     // 'sm': '(min-width: 36em)',
     // 'md': '(min-width: 48em)',
     // 'lg': '(min-width: 62em)',
-    "sm": map.get(variables.$breakpoints, "standardPoints", "sm"),
-    "md": map.get(variables.$breakpoints, "standardPoints", "md"),
-    "lg": map.get(variables.$breakpoints, "standardPoints", "lg"),
+    // "sm": map.get(variables.$breakpoints, "standardPoints", "sm"),
+    // "md": map.get(variables.$breakpoints, "standardPoints", "md"),
+    // "lg": map.get(variables.$breakpoints, "standardPoints", "lg"),
+    "sm": "(min-width: #{map.get($gorko-breakpoints, "sm")})",
+    "md": "(min-width: #{map.get($gorko-breakpoints, "md")})",
+    "lg": "(min-width: #{map.get($gorko-breakpoints, "lg")})",
   )
 );
