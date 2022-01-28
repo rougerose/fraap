@@ -5,15 +5,14 @@
 @use "sass-rem/rem";
 
 // Breakpoints
-$breakpoints: (
+$fraap-breakpoints: (
   "standardPoints": (
-    "sm": "(min-width: 36em)", // 576px
-    "md": "(min-width: 48em)", // 768px
-    "lg": "(min-width: 68em)", // 1088px
+    "sm": 576, // 576px
+    "md": 768, // 768px
+    "lg": 1120, // 1088px
   ),
   "tweakPoints": (),
 );
-
 
 // Wrapper
 $wrapper-width: rem.convert(1280px);
