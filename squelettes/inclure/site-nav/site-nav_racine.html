@@ -1,7 +1,7 @@
 <BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
   <B_racine_entrees>
-    <div id="nav-panel" class="c-nav_panel" data-js="false">
-      <ul id="nav-list" class="c-nav_list no-js"[ data-depth="(#ENV{depth,0})"]>
+    <div id="nav-menu" class="c-nav_menu" data-js="false">
+      <ul id="nav-list" class="c-nav_list"[ data-depth="(#ENV{depth,0})"]>
         <BOUCLE_racine_entrees(MENUS_ENTREES){id_menu}{par rang}>
           [(#REM)
             <!--
