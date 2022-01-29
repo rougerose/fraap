@@ -1,347 +1,533 @@
 (function () {
   'use strict';
 
-  /**
-   * Object for creating click-triggered navigation submenus
-   * https://github.com/mrwweb/clicky-menus
-   *
-   * Thanks for the inspiration:
-   * 		- https://www.lottejackson.com/learning/a-reusable-javascript-toggle-pattern
-   * 		- https://codepen.io/lottejackson/pen/yObQRM
-   */
-  const ClickyMenus = function (menu, options) {
-    // Surcharge
-    this.options = {
-      submenuSelector: "ul",
-      buttonClass: "",
+  function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+  // Older browsers don't support event options, feature detect it.
+
+  // Adopted and modified solution from Bohdan Didukh (2017)
+  // https://stackoverflow.com/questions/41594997/ios-10-safari-prevent-scrolling-behind-a-fixed-overlay-and-maintain-scroll-posi
+
+  var hasPassiveEvents = false;
+  if (typeof window !== 'undefined') {
+    var passiveTestOptions = {
+      get passive() {
+        hasPassiveEvents = true;
+        return undefined;
+      }
     };
-    this.options = Object.assign(this.options, options);
+    window.addEventListener('testPassive', null, passiveTestOptions);
+    window.removeEventListener('testPassive', null, passiveTestOptions);
+  }
 
-    // DOM element(s)
-    let container = menu.parentElement,
-      currentMenuItem,
-      i,
-      len;
+  var isIosDevice = typeof window !== 'undefined' && window.navigator && window.navigator.platform && (/iP(ad|hone|od)/.test(window.navigator.platform) || window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
 
-    this.init = function () {
-      menuSetup(this.options);
-      document.addEventListener("click", closeOpenMenu);
-    };
 
-    /*===================================================
-    =            Menu Open / Close Functions            =
-    ===================================================*/
-    function toggleOnMenuClick(e) {
-      const button = e.currentTarget;
+  var locks = [];
+  var documentListenerAdded = false;
+  var initialClientY = -1;
+  var previousBodyOverflowSetting = void 0;
+  var previousBodyPosition = void 0;
+  var previousBodyPaddingRight = void 0;
 
-      // close open menu if there is one
-      if (currentMenuItem && button !== currentMenuItem) {
-        toggleSubmenu(currentMenuItem);
+  // returns true if `el` should be allowed to receive touchmove events.
+  var allowTouchMove = function allowTouchMove(el) {
+    return locks.some(function (lock) {
+      if (lock.options.allowTouchMove && lock.options.allowTouchMove(el)) {
+        return true;
       }
 
-      toggleSubmenu(button);
+      return false;
+    });
+  };
+
+  var preventDefault = function preventDefault(rawEvent) {
+    var e = rawEvent || window.event;
+
+    // For the case whereby consumers adds a touchmove event listener to document.
+    // Recall that we do document.addEventListener('touchmove', preventDefault, { passive: false })
+    // in disableBodyScroll - so if we provide this opportunity to allowTouchMove, then
+    // the touchmove event on document will break.
+    if (allowTouchMove(e.target)) {
+      return true;
     }
 
-    function toggleSubmenu(button) {
-      const submenu = document.getElementById(
-        button.getAttribute("aria-controls")
-      );
+    // Do not prevent if the event has more than one touch (usually meaning this is a multi touch gesture like pinch to zoom).
+    if (e.touches.length > 1) return true;
 
-      if ("true" === button.getAttribute("aria-expanded")) {
-        button.setAttribute("aria-expanded", false);
-        submenu.setAttribute("aria-hidden", true);
-        currentMenuItem = false;
-      } else {
-        button.setAttribute("aria-expanded", true);
-        submenu.setAttribute("aria-hidden", false);
-        // preventOffScreenSubmenu(submenu);
-        currentMenuItem = button;
-      }
-    }
+    if (e.preventDefault) e.preventDefault();
 
-    function closeOnEscKey(e) {
-      if (27 === e.keyCode) {
-        // we're in a submenu item
-        if (null !== e.target.closest('ul[aria-hidden="false"]')) {
-          currentMenuItem.focus();
-          toggleSubmenu(currentMenuItem);
+    return false;
+  };
 
-          // we're on a parent item
-        } else if ("true" === e.target.getAttribute("aria-expanded")) {
-          toggleSubmenu(currentMenuItem);
-        }
-      }
-    }
+  var setOverflowHidden = function setOverflowHidden(options) {
+    // If previousBodyPaddingRight is already set, don't set it again.
+    if (previousBodyPaddingRight === undefined) {
+      var _reserveScrollBarGap = !!options && options.reserveScrollBarGap === true;
+      var scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
 
-    function closeOpenMenu(e) {
-      if (currentMenuItem && !e.target.closest("#" + container.id)) {
-        toggleSubmenu(currentMenuItem);
+      if (_reserveScrollBarGap && scrollBarGap > 0) {
+        var computedBodyPaddingRight = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'), 10);
+        previousBodyPaddingRight = document.body.style.paddingRight;
+        document.body.style.paddingRight = computedBodyPaddingRight + scrollBarGap + 'px';
       }
     }
 
-    /*===========================================================
-    =            Modify Menu Markup & Bind Listeners            =
-    =============================================================*/
-    function menuSetup(options) {
-      menu.classList.remove("no-js");
-
-      // surcharge (options.submenuSelector)
-      menu.querySelectorAll(options.submenuSelector).forEach((submenu) => {
-        // const menuItem = submenu.parentElement;
-        const menuItem = submenu.closest("li");
-
-        if ("undefined" !== typeof submenu) {
-          let button = convertLinkToButton(menuItem);
-
-          setUpAria(submenu, button);
-
-          // Surcharge
-          if (options.buttonClass !== "") {
-            button.classList.add(options.buttonClass);
-          }
-
-          // bind event listener to button
-          button.addEventListener("click", toggleOnMenuClick);
-          menu.addEventListener("keyup", closeOnEscKey);
-        }
-      });
-    }
-
-    /**
-     * Why do this? See https://justmarkup.com/articles/2019-01-21-the-link-to-button-enhancement/
-     */
-    function convertLinkToButton(menuItem) {
-      const link = menuItem.getElementsByTagName("a")[0],
-        linkHTML = link.innerHTML,
-        linkAtts = link.attributes,
-        button = document.createElement("button");
-
-      if (null !== link) {
-        // copy button attributes and content from link
-        button.innerHTML = linkHTML.trim();
-        for (i = 0, len = linkAtts.length; i < len; i++) {
-          let attr = linkAtts[i];
-          if ("href" !== attr.name) {
-            button.setAttribute(attr.name, attr.value);
-          }
-        }
-
-        menuItem.replaceChild(button, link);
-      }
-
-      return button;
-    }
-
-    function setUpAria(submenu, button) {
-      const submenuId = submenu.getAttribute("id");
-      let id;
-      if (null === submenuId) {
-        id =
-          button.textContent.trim().replace(/\s+/g, "-").toLowerCase() +
-          "-submenu";
-      } else {
-        // surcharge
-        id = submenuId; // + "-submenu";
-      }
-
-      // set button ARIA
-      button.setAttribute("aria-controls", id);
-      button.setAttribute("aria-expanded", false);
-
-      // set submenu ARIA
-      submenu.setAttribute("id", id);
-      submenu.setAttribute("aria-hidden", true);
+    // If previousBodyOverflowSetting is already set, don't set it again.
+    if (previousBodyOverflowSetting === undefined) {
+      previousBodyOverflowSetting = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
     }
   };
 
+  var restoreOverflowSetting = function restoreOverflowSetting() {
+    if (previousBodyPaddingRight !== undefined) {
+      document.body.style.paddingRight = previousBodyPaddingRight;
+
+      // Restore previousBodyPaddingRight to undefined so setOverflowHidden knows it
+      // can be set again.
+      previousBodyPaddingRight = undefined;
+    }
+
+    if (previousBodyOverflowSetting !== undefined) {
+      document.body.style.overflow = previousBodyOverflowSetting;
+
+      // Restore previousBodyOverflowSetting to undefined
+      // so setOverflowHidden knows it can be set again.
+      previousBodyOverflowSetting = undefined;
+    }
+  };
+
+  var setPositionFixed = function setPositionFixed() {
+    return window.requestAnimationFrame(function () {
+      // If previousBodyPosition is already set, don't set it again.
+      if (previousBodyPosition === undefined) {
+        previousBodyPosition = {
+          position: document.body.style.position,
+          top: document.body.style.top,
+          left: document.body.style.left
+        };
+
+        // Update the dom inside an animation frame 
+        var _window = window,
+            scrollY = _window.scrollY,
+            scrollX = _window.scrollX,
+            innerHeight = _window.innerHeight;
+
+        document.body.style.position = 'fixed';
+        document.body.style.top = -scrollY;
+        document.body.style.left = -scrollX;
+
+        setTimeout(function () {
+          return window.requestAnimationFrame(function () {
+            // Attempt to check if the bottom bar appeared due to the position change
+            var bottomBarHeight = innerHeight - window.innerHeight;
+            if (bottomBarHeight && scrollY >= innerHeight) {
+              // Move the content further up so that the bottom bar doesn't hide it
+              document.body.style.top = -(scrollY + bottomBarHeight);
+            }
+          });
+        }, 300);
+      }
+    });
+  };
+
+  var restorePositionSetting = function restorePositionSetting() {
+    if (previousBodyPosition !== undefined) {
+      // Convert the position from "px" to Int
+      var y = -parseInt(document.body.style.top, 10);
+      var x = -parseInt(document.body.style.left, 10);
+
+      // Restore styles
+      document.body.style.position = previousBodyPosition.position;
+      document.body.style.top = previousBodyPosition.top;
+      document.body.style.left = previousBodyPosition.left;
+
+      // Restore scroll
+      window.scrollTo(x, y);
+
+      previousBodyPosition = undefined;
+    }
+  };
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#Problems_and_solutions
+  var isTargetElementTotallyScrolled = function isTargetElementTotallyScrolled(targetElement) {
+    return targetElement ? targetElement.scrollHeight - targetElement.scrollTop <= targetElement.clientHeight : false;
+  };
+
+  var handleScroll = function handleScroll(event, targetElement) {
+    var clientY = event.targetTouches[0].clientY - initialClientY;
+
+    if (allowTouchMove(event.target)) {
+      return false;
+    }
+
+    if (targetElement && targetElement.scrollTop === 0 && clientY > 0) {
+      // element is at the top of its scroll.
+      return preventDefault(event);
+    }
+
+    if (isTargetElementTotallyScrolled(targetElement) && clientY < 0) {
+      // element is at the bottom of its scroll.
+      return preventDefault(event);
+    }
+
+    event.stopPropagation();
+    return true;
+  };
+
+  var disableBodyScroll = function disableBodyScroll(targetElement, options) {
+    // targetElement must be provided
+    if (!targetElement) {
+      // eslint-disable-next-line no-console
+      console.error('disableBodyScroll unsuccessful - targetElement must be provided when calling disableBodyScroll on IOS devices.');
+      return;
+    }
+
+    // disableBodyScroll must not have been called on this targetElement before
+    if (locks.some(function (lock) {
+      return lock.targetElement === targetElement;
+    })) {
+      return;
+    }
+
+    var lock = {
+      targetElement: targetElement,
+      options: options || {}
+    };
+
+    locks = [].concat(_toConsumableArray(locks), [lock]);
+
+    if (isIosDevice) {
+      setPositionFixed();
+    } else {
+      setOverflowHidden(options);
+    }
+
+    if (isIosDevice) {
+      targetElement.ontouchstart = function (event) {
+        if (event.targetTouches.length === 1) {
+          // detect single touch.
+          initialClientY = event.targetTouches[0].clientY;
+        }
+      };
+      targetElement.ontouchmove = function (event) {
+        if (event.targetTouches.length === 1) {
+          // detect single touch.
+          handleScroll(event, targetElement);
+        }
+      };
+
+      if (!documentListenerAdded) {
+        document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+        documentListenerAdded = true;
+      }
+    }
+  };
+
+  var enableBodyScroll = function enableBodyScroll(targetElement) {
+    if (!targetElement) {
+      // eslint-disable-next-line no-console
+      console.error('enableBodyScroll unsuccessful - targetElement must be provided when calling enableBodyScroll on IOS devices.');
+      return;
+    }
+
+    locks = locks.filter(function (lock) {
+      return lock.targetElement !== targetElement;
+    });
+
+    if (isIosDevice) {
+      targetElement.ontouchstart = null;
+      targetElement.ontouchmove = null;
+
+      if (documentListenerAdded && locks.length === 0) {
+        document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+        documentListenerAdded = false;
+      }
+    }
+
+    if (isIosDevice) {
+      restorePositionSetting();
+    } else {
+      restoreOverflowSetting();
+    }
+  };
+
+  /**
+   * responsive-nav
+   * ---------------
+   *
+   * Trame du script inspiré de
+   * https://github.com/mrwweb/clicky-menus
+   * https://piccalil.li/tutorial/build-a-fully-responsive-progressively-enhanced-burger-menu/
+   *
+   */
+
+
+  /**
+      TODO:
+      - Utiliser BodyScroll pour la version écrans larges : stocker le conteneur cible dans une variable ?
+      - Ajouter commentaires au fil du code.
+  */
+
+  const defaults = {
+    maxWidth: 1120,
+    subNavSelector: ".c-nav_section",
+  };
+
   const ResponsiveNav = function (nav, options) {
-    const self = this;
+    const responsiveNav = {};
 
-    this.root = nav;
+    let settings,
+      navToggle,
+      navMenu,
+      navOverlay,
+      processNavMenuStatus = false;
 
-    this.options = {
-      maxWidth: 1120,
+    responsiveNav.init = function () {
+      settings = Object.assign(defaults, options);
+      navSetup();
     };
 
-    this.options = Object.assign(this.options, options);
+    const observer = new ResizeObserver((observedItems) => {
+      const { contentRect } = observedItems[0];
+      let setWidth = contentRect.width >= settings.maxWidth;
 
-    this.init = function () {
-      setupResponsiveNav();
-    };
+      if (setWidth) {
+        let menuWidth = navMenu.clientWidth / 16 + "rem";
+        navMenu.style.setProperty("--menuWidth", menuWidth);
+        navMenu.setAttribute("aria-hidden", "false");
+        processNavMenuStatus = true;
+        state.navMenu = state.navMenu === "closed" ? "closed" : "open";
+      } else {
+        navMenu.setAttribute("aria-hidden", "true");
+        processNavMenuStatus = false;
+        state.navMenu = "closed";
+      }
+    });
 
-    this.state = new Proxy(
-      { status: "open", enabled: true },
+    const state = new Proxy(
+      { currentSubNav: null, navMenu: "closed", navToggle: "closed" },
       {
-        set(state, key, value) {
+        set: function (state, key, value) {
           const oldValue = state[key];
-          state[key] = value;
-          if (oldValue !== value) {
-            processStateChange();
+
+          if (key == "navToggle") {
+            navToggle.setAttribute(
+              "aria-expanded",
+              value === "closed" ? "false" : "true"
+            );
+            navMenu.setAttribute(
+              "aria-hidden",
+              value === "closed" ? "true" : "false"
+            );
           }
-          return state;
+
+          if (key == "currentSubNav") {
+            let button = value;
+            let subNav = document.getElementById(
+              button.getAttribute("aria-controls")
+            );
+
+            // console.log(button, subNav);
+
+            if ("true" === button.getAttribute("aria-expanded")) {
+              button.setAttribute("aria-expanded", "false");
+              subNav.setAttribute("aria-hidden", "true");
+            } else {
+              button.setAttribute("aria-expanded", "true");
+              subNav.setAttribute("aria-hidden", "false");
+            }
+
+            if (value == oldValue) {
+              value = null;
+            }
+          }
+
+          if (key == "navMenu") {
+            navMenu.setAttribute("data-status", value);
+          }
+
+          state[key] = value;
+
+          // console.log("value", value);
+          // console.log("oldvalue", oldValue);
+
+          return true;
         },
       }
     );
 
-
-
-    this.observer = new ResizeObserver(observedItems => {
-      const { contentRect } = observedItems[0];
-      let setWidth = contentRect.width >= self.options.maxWidth;
-
-      if (setWidth) {
-        let menuWidth = self.navMenu.clientWidth / 16 + "rem";
-        self.navMenu.style.setProperty("--menuWidth", menuWidth);
+    const navSetup = () => {
+      navToggle = nav.querySelector("#nav-toggle");
+      if (navToggle) {
+        navMenu = nav.querySelector(
+          "#" + navToggle.getAttribute("aria-controls")
+        );
       }
 
-      // let stateEnabled = contentRect.width <= self.options.maxWidth;
-      // self.state.enabled = stateEnabled;
-    });
+      if (navMenu) {
+        // Ajouter l'observer sur header.c-site-head
+        observer.observe(nav.parentElement);
 
-    function toggle(forcedStatus) {
-      if (forcedStatus) {
-        if (self.state.status === forcedStatus) {
-          return;
-        }
+        // Confirmer l'activation du JS
+        navMenu.setAttribute("data-js", true);
+        navToggle.setAttribute("data-enabled", true);
 
-        self.state.status = forcedStatus;
-      } else {
-        self.state.status = self.state.status === "closed" ? "open" : "closed";
-      }
-    }
+        nav.querySelectorAll(settings.subNavSelector).forEach((subNav) => {
+          const navItem = subNav.closest("li");
 
-    function processStateChange() {
-      self.root.setAttribute("status", self.state.status);
-      self.root.setAttribute("enabled", self.state.enabled ? "true" : "false");
-      self.navToggle.setAttribute("data-enabled", self.state.enabled ? "true" : "false");
-      self.navMenu.setAttribute("data-status", self.state.status);
-      self.navMenu.setAttribute("enabled", self.state.enabled ? "true" : "false");
-
-      switch (self.state.status) {
-        case "closed":
-          self.navToggle.setAttribute("aria-expanded", "false");
-          self.navToggle.setAttribute("aria-label", "Ouvrir le menu principal");
-          break;
-        case "open":
-          self.navToggle.setAttribute("aria-expanded", "true");
-          self.navToggle.setAttribute("aria-label", "Fermer le menu principal");
-          break;
-      }
-    }
-
-    function setupResponsiveNav() {
-      self.navToggle = self.root.querySelector("#nav-toggle");
-      self.navMenu = self.root.querySelector("#nav-menu");
-      self.btns = self.navMenu.querySelectorAll("button.c-nav_link");
-
-      if (self.navToggle && self.navMenu && self.btns) {
-        // Afficher le bouton d'activation de la navigation
-        self.navToggle.removeAttribute("hidden");
-        // Le js est actif
-        self.navMenu.dataset.js = "true";
-        // Ajouter l'API Observer sur header.c-site-head
-        self.observer.observe(self.root.parentNode);
-        toggle();
-
-        self.navToggle.addEventListener("click", (event) => {
-          event.preventDefault();
-          toggle();
+          if ("undefined" !== typeof navItem) {
+            let button = convertLinkToButton(navItem);
+            setupAria(subNav, button);
+            button.addEventListener("click", toggleOnMenuClick);
+          }
         });
-        for (let btn of self.btns) {
-          btn.addEventListener("click", (event) => {
-            event.preventDefault();
-            console.log(event);
-            // toggle();
-          });
+
+        navMenu.addEventListener("keyup", closeOnEscKey);
+        navOverlay = nav.querySelector("div[data-menu-overlay]");
+        navOverlay.addEventListener("click", closeOnOverlay);
+
+        navToggle.addEventListener("click", (event) => {
+          let button = event.currentTarget.closest("button");
+          if (button) {
+            toggle(button);
+          }
+        });
+      }
+    };
+
+    const convertLinkToButton = (navItem) => {
+      const link = navItem.getElementsByTagName("a")[0],
+        linkHTML = link.innerHTML,
+        linkAttr = link.attributes,
+        button = document.createElement("button");
+
+      if (null !== link) {
+        // Copier contenu et attributs du lien vers le bouton
+        button.innerHTML = linkHTML.trim();
+
+        for (let i = 0; i < linkAttr.length; i++) {
+          let attr = linkAttr[i];
+          if ("href" !== attr.name) {
+            button.setAttribute(attr.name, attr.value);
+          }
+        }
+        navItem.replaceChild(button, link);
+      }
+      return button;
+    };
+
+    const setupAria = (subNav, button) => {
+      let id;
+      const subNavId = subNav.getAttribute("id");
+
+      if (null === subNavId) {
+        id =
+          button.textContent.trim().replace(/\s+/g, "-").toLowerCase() +
+          "-submenu";
+      } else {
+        id = subNavId;
+      }
+
+      // ajouter button ARIA
+      button.setAttribute("aria-controls", id);
+      button.setAttribute("aria-expanded", false);
+      // ajouter subNav ARIA
+      subNav.setAttribute("id", id);
+      subNav.setAttribute("aria-hidden", true);
+    };
+
+    const toggle = (el) => {
+      if (el.tagName === "BUTTON") {
+        if (el.id === "nav-toggle") {
+          state.navToggle = state.navToggle === "closed" ? "open" : "closed";
+          // if (processNavMenuStatus) {
+          //   // Synchroniser le statut du menu
+          //   state.navMenu = state.navToggle;
+          // }
+
+          if (state.navToggle == "open") {
+            // Bloquer le scroll sur l'élément body
+            disableBodyScroll(navMenu);
+          } else {
+            // Supprimer le blocage du scroll
+            enableBodyScroll(navMenu);
+          }
+
+          // Fermer également le sous-menu laissé ouvert
+          if (state.navToggle === "closed" && state.currentSubNav) {
+            state.currentSubNav = state.currentSubNav;
+          }
+        } else {
+          state.currentSubNav = el;
         }
       }
-    }
+    };
+
+    const toggleOnMenuClick = (event) => {
+      let target = event.currentTarget;
+      let stateNavMenu = state.navMenu === "closed" ? "open" : "closed";
+
+      if (processNavMenuStatus && !state.currentSubNav) {
+        stateNavMenu = "open";
+      }
+
+      if (state.currentSubNav && target !== state.currentSubNav) {
+        // console.log("toggle 1", stateNavMenu, state.currentSubNav);
+        toggle(state.currentSubNav);
+        stateNavMenu = "open";
+      }
+
+      if (processNavMenuStatus) {
+        // if (stateNavMenu == "open") {
+        //   console.log("toggle 2", target);
+        // } else {
+        //   console.log("toggle 3", stateNavMenu, target);
+        // }
+        state.navMenu = stateNavMenu;
+      }
+
+      toggle(target);
+    };
+
+    const closeOnEscKey = (event) => {
+      if (27 === event.keyCode) {
+        // console.log(
+        //   "esc event",
+        //   event.target,
+        //   event.target.closest("div.c-nav_section[aria-hidden='false']")
+        // );
+        // Hypothèse 1 : le curseur est dans un sous-menu ouvert
+        // Hypothèse 2 : le curseur est sur le bouton d'ouverture du sous-menu
+        if (
+          null !== event.target.closest("div.c-nav_section[aria-hidden='false']")
+        ) {
+          state.currentSubNav.focus();
+          toggle(state.currentSubNav);
+          state.navMenu = "closed";
+        } else if ("true" === event.target.getAttribute("aria-expanded")) {
+          toggle(state.currentSubNav);
+          state.navMenu = "closed";
+        }
+      }
+    };
+
+    const closeOnOverlay = (event) => {
+      // console.log("overlay", state.currentSubNav);
+      toggle(state.currentSubNav);
+      state.navMenu = "closed";
+    };
+
+    return responsiveNav;
   };
 
-  /*
-  class BurgerMenu extends HTMLElement {
-    constructor() {
-      super();
-
-      const self = this;
-
-      this.state = new Proxy(
-        {
-          status: "open",
-          enabled: false,
-        },
-        {
-          set(state, key, value) {
-            const oldValue = state[key];
-
-            state[key] = value;
-            if (oldValue !== value) {
-              self.processStateChange();
-            }
-            return state;
-          },
-        }
-      );
-    }
-
-    get maxWidth() {
-      return parseInt(this.getAttribute("max-width") || 9999, 10);
-    }
-
-    connectedCallback() {
-      this.initialMarkup = this.innerHTML;
-      this.render();
-    }
-
-    render() {
-      this.innerHTML = `
-        <div class="burger-menu" data-element="burger-root">
-          <button class="burger-menu__trigger" data-element="burger-menu-trigger" type="button" aria-label="Open menu">
-            <span class="burger-menu__bar" aria-hidden="true"></span>
-          </button>
-          <div class="burger-menu__panel" data-element="burger-menu-panel">
-            ${this.initialMarkup}
-          </div>
-        </div>
-      `;
-
-      this.postRender();
-    }
-  }
-
-  if ("customElements" in window) {
-    customElements.define("burger-menu", BurgerMenu);
-  }
-
-  export default BurgerMenu;
-  */
-
-  /**
-   *
-   */
   const nav = document.getElementById("nav");
   const navList = document.getElementById("nav-list");
 
   if (nav && navList) {
-    new ClickyMenus(navList, {
-      submenuSelector: ".c-nav_section",
-    });
-    // clickyMenu.init();
-    new ResponsiveNav(nav, {});
-    // responsiveNav.init();
-
-    // const navToggle = nav.querySelector("#nav-toggle");
-    // let isNavExpanded = navToggle.getAttribute("aria-expanded") === "true";
-
-    // navToggle.removeAttribute("hidden");
-    // navToggle.setAttribute("data-state", "visible");
-
-    // const toggleNavVisibility = () => {
-    //   isNavExpanded = !isNavExpanded;
-    //   navToggle.setAttribute("aria-expanded", isNavExpanded);
-    // };
-
-    // navToggle.addEventListener("click", toggleNavVisibility);
+    let responsiveNav = new ResponsiveNav(nav, {});
+    responsiveNav.init();
   }
 
 })();

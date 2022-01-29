@@ -1,163 +1,273 @@
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+
+/**
+ * responsive-nav
+ * ---------------
+ *
+ * Trame du script inspiré de
+ * https://github.com/mrwweb/clicky-menus
+ * https://piccalil.li/tutorial/build-a-fully-responsive-progressively-enhanced-burger-menu/
+ *
+ */
+
+
+/**
+    TODO:
+    - Utiliser BodyScroll pour la version écrans larges : stocker le conteneur cible dans une variable ?
+    - Ajouter commentaires au fil du code.
+*/
+
+const defaults = {
+  maxWidth: 1120,
+  subNavSelector: ".c-nav_section",
+};
+
 const ResponsiveNav = function (nav, options) {
-  const self = this;
+  const responsiveNav = {};
 
-  this.root = nav;
+  let settings,
+    navToggle,
+    navMenu,
+    navOverlay,
+    currentSubNav,
+    processNavMenuStatus = false;
 
-  this.options = {
-    maxWidth: 1120,
+  responsiveNav.init = function () {
+    settings = Object.assign(defaults, options);
+    navSetup();
   };
 
-  this.options = Object.assign(this.options, options);
+  const observer = new ResizeObserver((observedItems) => {
+    const { contentRect } = observedItems[0];
+    let setWidth = contentRect.width >= settings.maxWidth;
 
-  this.init = function () {
-    setupResponsiveNav();
-  };
+    if (setWidth) {
+      let menuWidth = navMenu.clientWidth / 16 + "rem";
+      navMenu.style.setProperty("--menuWidth", menuWidth);
+      navMenu.setAttribute("aria-hidden", "false");
+      processNavMenuStatus = true;
+      state.navMenu = state.navMenu === "closed" ? "closed" : "open";
+    } else {
+      navMenu.setAttribute("aria-hidden", "true");
+      processNavMenuStatus = false;
+      state.navMenu = "closed";
+    }
+  });
 
-  this.state = new Proxy(
-    { status: "open", enabled: true },
+  const state = new Proxy(
+    { currentSubNav: null, navMenu: "closed", navToggle: "closed" },
     {
-      set(state, key, value) {
+      set: function (state, key, value) {
         const oldValue = state[key];
-        state[key] = value;
-        if (oldValue !== value) {
-          processStateChange();
+
+        if (key == "navToggle") {
+          navToggle.setAttribute(
+            "aria-expanded",
+            value === "closed" ? "false" : "true"
+          );
+          navMenu.setAttribute(
+            "aria-hidden",
+            value === "closed" ? "true" : "false"
+          );
         }
-        return state;
+
+        if (key == "currentSubNav") {
+          let button = value;
+          let subNav = document.getElementById(
+            button.getAttribute("aria-controls")
+          );
+
+          // console.log(button, subNav);
+
+          if ("true" === button.getAttribute("aria-expanded")) {
+            button.setAttribute("aria-expanded", "false");
+            subNav.setAttribute("aria-hidden", "true");
+          } else {
+            button.setAttribute("aria-expanded", "true");
+            subNav.setAttribute("aria-hidden", "false");
+          }
+
+          if (value == oldValue) {
+            value = null;
+          }
+        }
+
+        if (key == "navMenu") {
+          navMenu.setAttribute("data-status", value);
+        }
+
+        state[key] = value;
+
+        // console.log("value", value);
+        // console.log("oldvalue", oldValue);
+
+        return true;
       },
     }
   );
 
-
-
-  this.observer = new ResizeObserver(observedItems => {
-    const { contentRect } = observedItems[0];
-    let setWidth = contentRect.width >= self.options.maxWidth;
-
-    if (setWidth) {
-      let menuWidth = self.navMenu.clientWidth / 16 + "rem";
-      self.navMenu.style.setProperty("--menuWidth", menuWidth);
+  const navSetup = () => {
+    navToggle = nav.querySelector("#nav-toggle");
+    if (navToggle) {
+      navMenu = nav.querySelector(
+        "#" + navToggle.getAttribute("aria-controls")
+      );
     }
 
-    // let stateEnabled = contentRect.width <= self.options.maxWidth;
-    // self.state.enabled = stateEnabled;
-  });
+    if (navMenu) {
+      // Ajouter l'observer sur header.c-site-head
+      observer.observe(nav.parentElement);
 
-  function toggle(forcedStatus) {
-    if (forcedStatus) {
-      if (self.state.status === forcedStatus) {
-        return;
-      }
+      // Confirmer l'activation du JS
+      navMenu.setAttribute("data-js", true);
+      navToggle.setAttribute("data-enabled", true);
 
-      self.state.status = forcedStatus;
-    } else {
-      self.state.status = self.state.status === "closed" ? "open" : "closed";
-    }
-  }
+      nav.querySelectorAll(settings.subNavSelector).forEach((subNav) => {
+        const navItem = subNav.closest("li");
 
-  function processStateChange() {
-    self.root.setAttribute("status", self.state.status);
-    self.root.setAttribute("enabled", self.state.enabled ? "true" : "false");
-    self.navToggle.setAttribute("data-enabled", self.state.enabled ? "true" : "false");
-    self.navMenu.setAttribute("data-status", self.state.status);
-    self.navMenu.setAttribute("enabled", self.state.enabled ? "true" : "false");
-
-    switch (self.state.status) {
-      case "closed":
-        self.navToggle.setAttribute("aria-expanded", "false");
-        self.navToggle.setAttribute("aria-label", "Ouvrir le menu principal");
-        break;
-      case "open":
-        self.navToggle.setAttribute("aria-expanded", "true");
-        self.navToggle.setAttribute("aria-label", "Fermer le menu principal");
-        break;
-    }
-  }
-
-  function setupResponsiveNav() {
-    self.navToggle = self.root.querySelector("#nav-toggle");
-    self.navMenu = self.root.querySelector("#nav-menu");
-    self.btns = self.navMenu.querySelectorAll("button.c-nav_link");
-
-    if (self.navToggle && self.navMenu && self.btns) {
-      // Afficher le bouton d'activation de la navigation
-      self.navToggle.removeAttribute("hidden");
-      // Le js est actif
-      self.navMenu.dataset.js = "true";
-      // Ajouter l'API Observer sur header.c-site-head
-      self.observer.observe(self.root.parentNode);
-      toggle();
-
-      self.navToggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        toggle();
+        if ("undefined" !== typeof navItem) {
+          let button = convertLinkToButton(navItem);
+          setupAria(subNav, button);
+          button.addEventListener("click", toggleOnMenuClick);
+        }
       });
-      for (let btn of self.btns) {
-        btn.addEventListener("click", (event) => {
-          event.preventDefault();
-          console.log(event);
-          // toggle();
-        });
+
+      navMenu.addEventListener("keyup", closeOnEscKey);
+      navOverlay = nav.querySelector("div[data-menu-overlay]");
+      navOverlay.addEventListener("click", closeOnOverlay);
+
+      navToggle.addEventListener("click", (event) => {
+        let button = event.currentTarget.closest("button");
+        if (button) {
+          toggle(button);
+        }
+      });
+    }
+  };
+
+  const convertLinkToButton = (navItem) => {
+    const link = navItem.getElementsByTagName("a")[0],
+      linkHTML = link.innerHTML,
+      linkAttr = link.attributes,
+      button = document.createElement("button");
+
+    if (null !== link) {
+      // Copier contenu et attributs du lien vers le bouton
+      button.innerHTML = linkHTML.trim();
+
+      for (let i = 0; i < linkAttr.length; i++) {
+        let attr = linkAttr[i];
+        if ("href" !== attr.name) {
+          button.setAttribute(attr.name, attr.value);
+        }
+      }
+      navItem.replaceChild(button, link);
+    }
+    return button;
+  };
+
+  const setupAria = (subNav, button) => {
+    let id;
+    const subNavId = subNav.getAttribute("id");
+
+    if (null === subNavId) {
+      id =
+        button.textContent.trim().replace(/\s+/g, "-").toLowerCase() +
+        "-submenu";
+    } else {
+      id = subNavId;
+    }
+
+    // ajouter button ARIA
+    button.setAttribute("aria-controls", id);
+    button.setAttribute("aria-expanded", false);
+    // ajouter subNav ARIA
+    subNav.setAttribute("id", id);
+    subNav.setAttribute("aria-hidden", true);
+  };
+
+  const toggle = (el) => {
+    if (el.tagName === "BUTTON") {
+      if (el.id === "nav-toggle") {
+        state.navToggle = state.navToggle === "closed" ? "open" : "closed";
+        // if (processNavMenuStatus) {
+        //   // Synchroniser le statut du menu
+        //   state.navMenu = state.navToggle;
+        // }
+
+        if (state.navToggle == "open") {
+          // Bloquer le scroll sur l'élément body
+          disableBodyScroll(navMenu);
+        } else {
+          // Supprimer le blocage du scroll
+          enableBodyScroll(navMenu);
+        }
+
+        // Fermer également le sous-menu laissé ouvert
+        if (state.navToggle === "closed" && state.currentSubNav) {
+          state.currentSubNav = state.currentSubNav;
+        }
+      } else {
+        state.currentSubNav = el;
       }
     }
-  }
+  };
+
+  const toggleOnMenuClick = (event) => {
+    let target = event.currentTarget;
+    let stateNavMenu = state.navMenu === "closed" ? "open" : "closed";
+
+    if (processNavMenuStatus && !state.currentSubNav) {
+      stateNavMenu = "open";
+    }
+
+    if (state.currentSubNav && target !== state.currentSubNav) {
+      // console.log("toggle 1", stateNavMenu, state.currentSubNav);
+      toggle(state.currentSubNav);
+      stateNavMenu = "open";
+    }
+
+    if (processNavMenuStatus) {
+      // if (stateNavMenu == "open") {
+      //   console.log("toggle 2", target);
+      // } else {
+      //   console.log("toggle 3", stateNavMenu, target);
+      // }
+      state.navMenu = stateNavMenu;
+    }
+
+    toggle(target);
+  };
+
+  const closeOnEscKey = (event) => {
+    if (27 === event.keyCode) {
+      // console.log(
+      //   "esc event",
+      //   event.target,
+      //   event.target.closest("div.c-nav_section[aria-hidden='false']")
+      // );
+      // Hypothèse 1 : le curseur est dans un sous-menu ouvert
+      // Hypothèse 2 : le curseur est sur le bouton d'ouverture du sous-menu
+      if (
+        null !== event.target.closest("div.c-nav_section[aria-hidden='false']")
+      ) {
+        state.currentSubNav.focus();
+        toggle(state.currentSubNav);
+        state.navMenu = "closed";
+      } else if ("true" === event.target.getAttribute("aria-expanded")) {
+        toggle(state.currentSubNav);
+        state.navMenu = "closed";
+      }
+    }
+  };
+
+  const closeOnOverlay = (event) => {
+    // console.log("overlay", state.currentSubNav);
+    toggle(state.currentSubNav);
+    state.navMenu = "closed";
+  };
+
+  return responsiveNav;
 };
 
 export default ResponsiveNav;
-
-/*
-class BurgerMenu extends HTMLElement {
-  constructor() {
-    super();
-
-    const self = this;
-
-    this.state = new Proxy(
-      {
-        status: "open",
-        enabled: false,
-      },
-      {
-        set(state, key, value) {
-          const oldValue = state[key];
-
-          state[key] = value;
-          if (oldValue !== value) {
-            self.processStateChange();
-          }
-          return state;
-        },
-      }
-    );
-  }
-
-  get maxWidth() {
-    return parseInt(this.getAttribute("max-width") || 9999, 10);
-  }
-
-  connectedCallback() {
-    this.initialMarkup = this.innerHTML;
-    this.render();
-  }
-
-  render() {
-    this.innerHTML = `
-      <div class="burger-menu" data-element="burger-root">
-        <button class="burger-menu__trigger" data-element="burger-menu-trigger" type="button" aria-label="Open menu">
-          <span class="burger-menu__bar" aria-hidden="true"></span>
-        </button>
-        <div class="burger-menu__panel" data-element="burger-menu-panel">
-          ${this.initialMarkup}
-        </div>
-      </div>
-    `;
-
-    this.postRender();
-  }
-}
-
-if ("customElements" in window) {
-  customElements.define("burger-menu", BurgerMenu);
-}
-
-export default BurgerMenu;
-*/

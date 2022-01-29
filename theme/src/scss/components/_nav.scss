@@ -11,6 +11,9 @@ $nav-wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
 $nav-wrapper-padding-lg: map.get(settings.$wrapper-padding, "lg");
 $total-padding: $nav-wrapper-padding-lg * 2;
 
+$nav-overlay-zindex: tools.get-utility-value("stack", "500");
+$nav-overlay-zindex: tools.to-number($nav-overlay-zindex);
+
 // Règles communes
 // ========================================
 
@@ -28,7 +31,7 @@ $total-padding: $nav-wrapper-padding-lg * 2;
   // si JS actif
   &[data-enabled="true"] {
     position: relative;
-    z-index: tools.get-utility-value("stack", "300");
+    z-index: ($nav-overlay-zindex + 2);
     display: flex;
     align-self: flex-start;
     margin-right: calc(#{$nav-wrapper-padding-sm} / 2);
@@ -41,6 +44,34 @@ $total-padding: $nav-wrapper-padding-lg * 2;
     @include tools.media-query("lg") {
       display: none;
     }
+  }
+}
+
+.c-nav_menu {
+  z-index: ($nav-overlay-zindex + 1);
+
+  @include tools.media-query("lg") {
+    padding-left: $nav-wrapper-padding-lg;
+    padding-right: $nav-wrapper-padding-lg;
+  }
+}
+
+.c-nav_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: $nav-overlay-zindex;
+  display: block;
+  background-color: rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  .c-nav_menu[data-status="open"] + & {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -80,7 +111,7 @@ $total-padding: $nav-wrapper-padding-lg * 2;
     flex-shrink: 0;
   }
 
-  &[data-type="link"] {
+  &[data-link-type="link"] {
     align-items: center;
     width: 100%;
   }
@@ -188,7 +219,7 @@ $total-padding: $nav-wrapper-padding-lg * 2;
     opacity: 0;
     transition: visibility 0.5s, opacity 0.3s;
 
-    &[data-status="open"] {
+    &[aria-hidden="false"] {
       visibility: visible;
       opacity: 1;
 
@@ -206,11 +237,11 @@ $total-padding: $nav-wrapper-padding-lg * 2;
 
       > li {
         border-top: 2px solid;
-        margin-right: 0;
+        margin-left: 0;
       }
 
       & > li > .c-nav_link {
-        font-size: 20px;
+        font-size: rem.convert(20px);
         padding: 0.5rem;
         margin: 0.5rem 0;
         width: 100%;
@@ -223,8 +254,14 @@ $total-padding: $nav-wrapper-padding-lg * 2;
 
     & ul[data-depth="1"] {
       & li {
-        font-size: 18px;
+        font-size: rem.convert(18px);
       }
+    }
+
+    & ul[data-depth="2"] {
+      margin-left: 0.5rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
     }
 
     h2 {
@@ -254,12 +291,10 @@ $total-padding: $nav-wrapper-padding-lg * 2;
 @include tools.mq($from: lg) {
   .c-nav_menu[data-js="true"] {
     position: relative;
-    padding-left: $nav-wrapper-padding-lg;
-    padding-right: $nav-wrapper-padding-lg;
 
     &::before {
       content: "";
-      background-color: red;
+      background-color: map.get(settings.$gorko-colors, "light");
       display: block;
       position: fixed;
       z-index: -1;
@@ -267,39 +302,65 @@ $total-padding: $nav-wrapper-padding-lg * 2;
       top: 0;
       bottom: 0;
       right: 0;
+      @include tools.apply-utility("box-shadow", "high");
       transform: translateX(100%);
-      transition: transform 05s;
+      transition: transform 0.3s;
+    }
+
+    &[data-status="open"] {
+
+      &::before {
+        transform: translateX(0);
+      }
     }
 
     & .c-nav_section {
       position: absolute;
       left: $nav-wrapper-padding-lg;
       width: calc(var(--menuWidth, 855px) - #{$total-padding});
+      padding-right: 3rem;
+      padding-top: 3rem;
+      overflow-y: auto;
       visibility: hidden;
+      transition: visibility 0.3s 0;
     }
 
     & .c-nav_section[aria-hidden="false"] {
       visibility: visible;
+      transition-delay: 0.3s;
+    }
+
+    & h2 {
+      font-size: tools.get-utility-value("text", "800");
+      font-weight: normal;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+    }
+
+    & ul[data-depth="0"] > li > .c-nav_link {
+      font-size: rem.convert(18px);
+    }
+
+    & ul[data-depth="1"] {
+      margin-top: 1rem;
+      --flow-space: 1.5rem;
+
+      & li {
+        font-size: tools.get-utility-value("text", "600");
+      }
+    }
+
+    & ul[data-depth="2"] {
+      & li {
+        display: flex;
+
+        &::before {
+          content: "—";
+          margin-right: 0.5rem;
+          color: rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+        }
+      }
     }
   }
 }
-
-
-
-// .c-nav_menu[enabled="true"] {
-  // @include tools.media-query("lg") {
-  //   position: unset;
-  //   background-color: none;
-  //   transform: translateX(0);
-
-  //   & ul[data-depth="0"] {
-  //     display: flex;
-  //     border: none;
-  //     margin: 0;
-
-  //     > li {
-  //       border-top: 0;
-  //     }
-  //   }
-  // }
-// }

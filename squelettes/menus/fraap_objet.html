@@ -41,7 +41,7 @@
 <BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
 	#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}}
 	<li class="c-nav_list-item[ (#ENV{css})]">
-    <a class="c-nav_link" data-action-type="[(#GET{type}|trim)]" href="[(#GET{afficher_icone_md}|=={oui}|?{\#, #GET{url}})]"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
+    <a class="c-nav_link" data-link-type="[(#GET{type}|trim)]" href="[(#GET{afficher_icone_md}|=={oui}|?{\#, #GET{url}})]"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
       [(#GET{titre})][
         (#GET{afficher_icone_md}|=={oui}|oui)
           #INCLURE{fond=images/icon-caret-down-100.svg, class=c-nav_icon} ][
