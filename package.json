@@ -17,6 +17,7 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",
     "autoprefixer": "^10.4.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "gorko": "^0.9.0",
