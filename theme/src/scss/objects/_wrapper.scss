@@ -1,0 +1,14 @@
+// ========================================
+// o-wrapper
+// ========================================
+
+@use "sass:map";
+@use "../settings";
+
+.o-wrapper {
+  max-width: settings.$wrapper-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: map.get(settings.$wrapper-padding, "lg");
+  padding-right: map.get(settings.$wrapper-padding, "lg")
+}

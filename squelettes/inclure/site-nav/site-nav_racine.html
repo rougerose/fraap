@@ -1,0 +1,41 @@
+<BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
+  <B_racine_entrees>
+    <div id="nav-menu" class="c-nav_menu" data-js="false" data-status="closed">
+      <ul id="nav-list" class="c-nav_list"[ data-depth="(#ENV{depth,0})"]>
+        <BOUCLE_racine_entrees(MENUS_ENTREES){id_menu}{par rang}>
+          [(#REM)
+            <!--
+              Si un sous-menu est à ajouter :
+                -1- pour garder une cohérence hiérarchique (sémantique) du html et sans introduire des exceptions supplémentaires dans les inclusions d'éléments du menu réalisées par Spip (inclusions qui ne générent que des listes), un conteneur de type div (.c-nav_panel) est ajouté automatiquement ci-dessous.
+                -2- ce conteneur affiche dans un premier temps le titre du secteur, son url, puis le sous-menu.
+            -->
+            <!-- TODO: supprimer le champ Descriptif dans menus/fraap_objet.xml s'il est inutile -->
+          ]
+          [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+          [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+          [(#SET{entree, ''})]
+
+          [(#MENUS_AFFICHER_ENTREE)
+            #SET{entree, ' '}
+            [(#SET{titre, #PARAMETRES|table_valeur{titre}|sinon{#INFO_TITRE{#GET{objet}, #GET{id_objet}}}})]
+            [(#SET{url, #INFO_URL{#GET{objet}, #GET{id_objet}}})]
+          ]
+          <BOUCLE_sous_menu(MENUS){id_menus_entree}{si #GET{entree}}>
+            <div id="nav-section-#ID_MENUS_ENTREE" class="c-nav_section">
+              [<h2><a href="#GET{url}" data-link-type="link" class="c-nav_link">(#GET{titre}) #INCLURE{fond=images/icon-caret-right-100.svg, class=c-nav_icon-link}</a></h2>]
+              <INCLURE{fond=inclure/site-nav/site-nav_sous-menu, env, id_menu, identifiant, depth=#ENV{depth, 0}|plus{1}} />
+            </div>
+          </BOUCLE_sous_menu>
+          [(#REM)
+            <!--
+              On ferme le li si le type d'entrée accepte des sous-menus
+              et si on a bien quelque chose dans le <li>
+            -->]
+          [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+          </li>]
+        </BOUCLE_racine_entrees>
+      </ul>
+    </div>
+    <div class="c-nav_overlay" data-menu-overlay=""></div>
+  </B_racine_entrees>
+</BOUCLE_sitenav_racine>

@@ -12,8 +12,15 @@
 @use "elements";
 
 // 05 - objects
+@use "objects";
 
-// 06 - components
+// 06 - tiers
+@use "thirdparty";
 
-// 07 - utilities
+// 07 - components
+@use "components";
+
+// 08 - utilities
 @use "utilities";
+
+// @include tools.generate-utility-classes();

@@ -1,0 +1,29 @@
+// ========================================
+// c-post
+// ========================================
+
+// Conteneur principal du contenu d'une page.
+
+
+@use "../settings";
+@use "../tools";
+@use "sass-rem/rem";
+@use "sass:map";
+
+
+.c-post {
+  margin-top: 4rem;
+  font-size: tools.get-utility-value("text", "500");
+
+  & blockquote,
+  & dl,
+  & figcaption,
+  & li,
+  & p {
+    max-width: 60ch;
+  }
+
+  h1 {
+    font-size: tools.get-utility-value("text", "700");
+  }
+}

@@ -1,0 +1,42 @@
+// ========================================
+// spip-admin
+//
+// Styles des boutons admin de spip
+// ========================================
+
+@use "sass:map";
+@use "sass:color";
+@use "../settings";
+@use "sass-rem/rem";
+@use "../tools";
+
+$color-bg: map.get(settings.$gorko-colors, "primary");
+$color-bg-hover: map.get(settings.$gorko-colors, "primary-light");
+
+// Conteneur
+.spip-admin-float {
+	display: flex;
+	top: auto !important;
+	right: auto !important;
+	bottom: rem.convert(8px) !important;
+	left: rem.convert(8px) !important;
+}
+
+// Boutons
+.spip-admin-float .spip-admin-boutons {
+  margin: 0 0.25rem 0 0;
+  border-radius: rem.convert(4px);
+  @include tools.apply-utility("box-shadow", "medium");
+  font-size: rem.convert(10px);
+  letter-spacing: 0.04rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  background-color: color.scale($color-bg, $alpha: -12%);
+  color: settings.$white;
+  opacity: 1;
+  transition: color 0.2s;
+
+  &:hover {
+    background-color: $color-bg-hover;
+  }
+}

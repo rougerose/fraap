@@ -11,4 +11,7 @@
 	<licence>GPLv3</licence>
 	<necessite nom="fraap_squelettes" />
 	<chemin path="" />
+  <spip compatibilite="[4.0.0;4.99.*]">
+		<style type="public" source="dist/css/fraap.css" />
+	</spip>
 </paquet>

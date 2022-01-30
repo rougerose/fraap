@@ -1,0 +1,22 @@
+// ========================================
+// Variables
+// ========================================
+
+@use "sass-rem/rem";
+
+// Breakpoints
+$fraap-breakpoints: (
+  "standardPoints": (
+    "sm": 576, // 576px
+    "md": 768, // 768px
+    "lg": 1120, // 1088px
+  ),
+  "tweakPoints": (),
+);
+
+// Wrapper
+$wrapper-width: rem.convert(1280px);
+$wrapper-padding: (
+  "sm": rem.convert(16px),
+  "lg": rem.convert(24px),
+);
