@@ -643,3 +643,13 @@ h4 {
   left: 1.25rem;
   z-index: 99;
 }
+.c-post {
+  margin-top: 4rem;
+  font-size: 1.25rem;
+}
+.c-post blockquote, .c-post dl, .c-post figcaption, .c-post li, .c-post p {
+  max-width: 60ch;
+}
+.c-post h1 {
+  font-size: 1.953rem;
+}
