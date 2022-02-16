@@ -1,0 +1,32 @@
+
+@use "../settings";
+// @use "../tools";
+// @use "sass-rem/rem";
+@use "sass:map";
+
+.c-breadcrumb {
+  & ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  & li {
+    &::before {
+      content: "/";
+      margin-right: 0.3rem;
+      color: map.get(settings.$gorko-colors, "shadow");
+    }
+  }
+
+  & li:nth-child(n+1) {
+    margin-right: 0.3rem;
+  }
+
+  // & a {
+  //   &::after {
+  //     content: "/";
+  //     margin: 0 1ch;
+  //   }
+  // }
+}

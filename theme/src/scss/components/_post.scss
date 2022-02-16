@@ -12,7 +12,9 @@
 
 
 .c-post {
+  --flow-space: 1.5rem;
   margin-top: 4rem;
+  margin-bottom: 4rem;
   font-size: tools.get-utility-value("text", "500");
 
   & blockquote,
@@ -24,6 +26,12 @@
   }
 
   h1 {
-    font-size: tools.get-utility-value("text", "700");
+    font-size: tools.get-utility-value("text", "800");
   }
+}
+
+.c-post_demo {
+  margin-top: calc(var(--flow-space) * 3);
+  // padding-top: calc(var(--flow-space) * 3);
+  // border-top: 1px solid; //map.get(settings.$gorko-colors, "shadow");
 }

@@ -6,7 +6,13 @@
 @use "../settings";
 @use "sass:map";
 
-a:not([class]) {
+a:not([class]),
+a.spip_in {
   color: currentColor;
   text-decoration-color: map.get(settings.$gorko-colors, "primary");
+  transition: color 0.3s;
+
+  &:hover {
+    color: map.get(settings.$gorko-colors, "primary-light");
+  }
 }
