@@ -80,6 +80,7 @@ $nav-overlay-zindex: tools.to-number($nav-overlay-zindex);
   margin-top: var(--flow-space);
   padding: 0;
   list-style: none;
+  max-width: none;
 
   &:first-child {
     margin-top: 0;

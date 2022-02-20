@@ -7,26 +7,21 @@
 .c-breadcrumb {
   & ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
   }
 
   & li {
-    &::before {
-      content: "/";
-      margin-right: 0.3rem;
-      color: map.get(settings.$gorko-colors, "shadow");
+    list-style-image: url("../../images/icon-caret-right-100.svg");
+    list-style-position: inside;
+
+    & > span {
+      color: map.get(settings.$gorko-colors, "primary-light");
     }
   }
 
   & li:nth-child(n+1) {
     margin-right: 0.3rem;
   }
-
-  // & a {
-  //   &::after {
-  //     content: "/";
-  //     margin: 0 1ch;
-  //   }
-  // }
 }

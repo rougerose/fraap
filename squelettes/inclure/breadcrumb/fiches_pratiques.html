@@ -1,0 +1,21 @@
+[(#ENV{id_article}|?{
+  [(#SET{objet, article})][(#SET{id_objet, #ENV{id_article}})],
+  [(#SET{objet, mot})][(#SET{id_objet, #ENV{id_mot}})]
+})]
+<nav class="c-breadcrumb">
+  <ul>
+    <li><a href="#URL_RUBRIQUE{1}">#INFO_TITRE{rubrique, 1}</a></li>
+    <BOUCLE_mot(MOTS){id_mot=#ENV{id_mot}}>
+      <BOUCLE_si_article(CONDITION){si #GET{objet}|=={article}}>
+        <BOUCLE_mots_tous(HIERARCHIE_MOTS){id_mot}{tout}>
+          <li><a href="#URL_MOT">[(#TITRE|couper{50, '…'})]</a></li>
+        </BOUCLE_mots_tous>
+      </BOUCLE_si_article>
+        <BOUCLE_mots(HIERARCHIE_MOTS){id_mot}>
+          <li><a href="#URL_MOT">[(#TITRE|couper{50, '…'})]</a></li>
+        </BOUCLE_mots>
+      <//B_si_article>
+    </BOUCLE_mot>
+    [<li><span>(#INFO_TITRE{#GET{objet}, #GET{id_objet}}|couper{50, '…'})</span></li>]
+  </ul>
+</nav>

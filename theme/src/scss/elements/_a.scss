@@ -7,7 +7,8 @@
 @use "sass:map";
 
 a:not([class]),
-a.spip_in {
+a.spip_in,
+a.spip_out {
   color: currentColor;
   text-decoration-color: map.get(settings.$gorko-colors, "primary");
   transition: color 0.3s;

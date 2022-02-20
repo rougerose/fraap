@@ -1,43 +1,41 @@
 <BOUCLE_fiche_pratique(ARTICLES){id_article}>
   <div class="o-wrapper">
-    <nav class="c-breadcrumb">
-      <ul>
-        <li><BOUCLE_fil0(RUBRIQUES){id_rubrique=1}><a href="#URL_RUBRIQUE">#TITRE</a></BOUCLE_fil0></li>
-        <BOUCLE_mot(MOTS){id_mot=#ENV{id_mot}}>
-          <BOUCLE_fil1(HIERARCHIE_MOTS){id_mot}{tout}>
-            <li><a href="#URL_MOT">#TITRE</a></li>
-          </BOUCLE_fil1>
-        </BOUCLE_mot>
-        <li><span>#TITRE</span></li>
-      </ul>
-    </nav>
+    <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_article, id_mot=#ENV{id_mot}}/>
     <article class="c-post u-flow">
-      <h1>#TITRE</h1>
-      <div class="c-post_cluster u-flow">
-        <p>[Publié le (#DATE|affdate).[ (#DATE|!=={#DATE_MODIF}|oui)Mis à jour le [(#DATE_MODIF|affdate).]]]</p>
-        <B_mots_article>
-          <div class="o-stack -row">
-            <BOUCLE_mots_article(MOTS){id_article}{par titre}>
-              <a href="#URL_MOT" class="c-pill">#TITRE</a>
-            </BOUCLE_mots_article>
-          </div>
-        </B_mots_article>
-      </div>
+      <header class="c-post_header u-flow">
+        <h1 class="c-post_title">#TITRE</h1>
+        [<p class="c-post_subtitle">(#SOUSTITRE)</p>]
+        <div class="c-post_metas u-flow">
+          <p class="c-post_date">[Fiche publiée le (#DATE|affdate).[ (#DATE|!=={#DATE_MODIF}|oui)Mise à jour le [(#DATE_MODIF|affdate).]]]</p>
+          <B_mots_article>
+            <div class="o-cluster">
+              <BOUCLE_mots_article(MOTS){id_article}{par titre}>
+                <a href="#URL_MOT" class="c-pill">#TITRE</a>
+              </BOUCLE_mots_article>
+            </div>
+          </B_mots_article>
+        </div>
+      </header>
       [<div class="c-post_body u-flow">
         (#TEXTE)
       </div>]
-      <div class="u-flow">
-        <hr style="margin:3rem 0;">
-        <h3>Sur le même sujet : <span class="c-pill">[(#INFO_TITRE{mot, #ENV{id_mot}})]</span></h3>
-        <ul class="u-flow">
-          <BOUCLE_prolonger(ARTICLES){id_mot=#ENV{id_mot}}{exclus}>
-            <li>
-              <a href="[(#URL_ARTICLE|parametre_url{id_mot, #ENV{id_mot}})]">#TITRE</a>
-
-            </li>
-          </BOUCLE_prolonger>
-        </ul>
-      </div>
+      <B_prolonger>
+        <div class="c-related text-500 measure-long">
+          <h2 class="c-related_title">Sur le même sujet</h2>
+          <ul class="c-fiches-liste">
+            <BOUCLE_prolonger(ARTICLES){id_mot=#ENV{id_mot}}{exclus}>
+              <li>
+                <article class="c-fiche-resume">
+                  <h3 class="c-fiche-resume_title text-500"><a href="[(#URL_ARTICLE|parametre_url{id_mot, #ENV{id_mot}})]">#TITRE</a></h3>
+                  <p class="o-cluster c-fiche-resume_pills">
+                    <BOUCLE_mots_article_prolonger(MOTS){id_article}{par titre}>[<a class="c-pill" href="[(#URL_MOT{#ID_PARENT})]">(#INFO_TITRE{mot, #ID_PARENT})</a>]</BOUCLE_mots_article_prolonger>
+                  </p>
+                </article>
+              </li>
+            </BOUCLE_prolonger>
+          </ul>
+        </div>
+      </B_prolonger>
     </article>
   </div>
 </BOUCLE_fiche_pratique>

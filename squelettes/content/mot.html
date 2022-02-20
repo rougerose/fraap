@@ -1,40 +1,18 @@
 <BOUCLE_mot(MOTS){id_mot}>
   [(#SET{mots_exclus, #ARRAY{0, #ID_MOT}})]
   <div class="o-wrapper">
-    <nav class="c-breadcrumb">
-      <ul>
-        <li><BOUCLE_fil0(RUBRIQUES){id_rubrique=1}><a href="#URL_RUBRIQUE">#TITRE</a></BOUCLE_fil0></li>
-        <BOUCLE_fil1(HIERARCHIE_MOTS){id_mot}>
-          [(#SET{mots_exclus, #GET{mots_exclus}|push{#ID_MOT}})]
-          <li><a href="#URL_MOT">#TITRE</a></li>
-        </BOUCLE_fil1>
-        <li><span>#TITRE</span></li>
-      </ul>
-    </nav>
-
+    <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_mot}/>
     <article class="c-post u-flow">
-      <h1>#TITRE</h1>
-      [<div class="c-post_body">
-        (#TEXTE)
-      </div>]
-      <div class="c-fiche-mot-articles">
-        <BOUCLE_articles_mot(ARTICLES){id_mot}{par titre}>
-          <article class="c-fiche-mot-article u-flow">
-            <h2> <a href="[(#URL_ARTICLE|parametre_url{id_mot, #ID_MOT})]">#TITRE</a></h2>
-            <div class="u-flow">#DESCRIPTIF</div>
-            <B_mots_article>
-              <p class="c-fiche-mot-article_tag">
-                [(#TOTAL_BOUCLE|>{1}|?{
-                  [(#VAL{Thèmes associés :})],
-                  [(#VAL{Thème associé :})]
-                })]
-                <BOUCLE_mots_article(MOTS){id_article}{par titre}>
-                  <a href="#URL_MOT" class="c-pill">#TITRE</a>
-                </BOUCLE_mots_article>
-              </p>
-            </B_mots_article>
-          </article>
-        </BOUCLE_articles_mot>
+      <h1 class="c-post_title">#TITRE</h1>
+      <div class="c-post_body">
+        [(#DESCRIPTIF)]
+      </div>
+      <div class="measure-long text-500">
+        <BOUCLE_condition_mot_niveau_1(CONDITION){si #ID_PARENT|=={0}}>
+          <INCLURE{fond=inclure/liste/fiches_pratiques/mots_enfants, id_mot}/>
+        </BOUCLE_condition_mot_niveau_1>
+          <INCLURE{fond=inclure/liste/fiches_pratiques/resume, id_mot}/>
+        <//B_condition_mot_niveau_1>
       </div>
     </article>
   </div>

@@ -15,23 +15,49 @@
   --flow-space: 1.5rem;
   margin-top: 4rem;
   margin-bottom: 4rem;
+}
+
+.c-post_header {
+  margin-bottom: (tools.get-size("900") * 1.5);
+}
+
+.c-post_title {
+  font-size: tools.get-utility-value("text", "800");
+  max-width: tools.get-utility-value("measure", "short");
+}
+
+.c-post_subtitle {
+  font-size: tools.get-size("700");
+}
+
+.c-post_metas {
+  margin-top: (tools.get-size("900") * 1.25);
+}
+
+.c-post_date {
+  font-size: tools.get-size("400");
+}
+
+.c-post_body {
   font-size: tools.get-utility-value("text", "500");
 
   & blockquote,
   & dl,
   & figcaption,
   & li,
-  & p {
-    max-width: 60ch;
+  & p,
+  & h4,
+  & h5 {
+    max-width: tools.get-utility-value("measure", "long");
   }
 
-  h1 {
-    font-size: tools.get-utility-value("text", "800");
+  & h1,
+  & h2,
+  & h3 {
+    max-width: tools.get-utility-value("measure", "short");
   }
 }
 
 .c-post_demo {
   margin-top: calc(var(--flow-space) * 3);
-  // padding-top: calc(var(--flow-space) * 3);
-  // border-top: 1px solid; //map.get(settings.$gorko-colors, "shadow");
 }

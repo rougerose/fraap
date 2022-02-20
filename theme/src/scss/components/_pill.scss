@@ -1,13 +1,22 @@
+@use "../settings";
+@use "../tools";
+// @use "sass-rem/rem";
+@use "sass:map";
+
 .c-pill {
   padding: 0.3rem 0.3rem 0.3rem;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
+  border-radius: 5px;
+  border: 1px solid rgba(map.get(settings.$gorko-colors, "primary-light"), 0.5);
+  background-color: transparent;
+  color: map.get(settings.$gorko-colors, "dark");
   font-size: 1rem;
+  font-size: tools.get-size('300');
   line-height: 1;
   text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
 
-  &::before {
-    content: "#";
-    margin-right: 0.125rem;
+  &:hover {
+    background-color: map.get(settings.$gorko-colors, "primary-light");
+    color: map.get(settings.$gorko-colors, "light");
   }
 }

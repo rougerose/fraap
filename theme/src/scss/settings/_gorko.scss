@@ -68,11 +68,11 @@ $gorko-config: (
   //   'output': 'standard',
   //   'property': 'background'
   // ),
-  'color': (
-    'items': $gorko-colors,
-    'output': 'standard',
-    'property': 'color'
-  ),
+  // 'color': (
+  //   'items': $gorko-colors,
+  //   'output': 'standard',
+  //   'property': 'color'
+  // ),
   // 'box': (
   //   'items': (
   //     'block': 'block',
@@ -111,26 +111,26 @@ $gorko-config: (
     'output': 'standard',
     'property': 'font-family'
   ),
-  'gap-top': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'margin-top'
-  ),
-  'gap-right': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'margin-right'
-  ),
-  'gap-bottom': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'margin-bottom'
-  ),
-  'gap-left': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'margin-left'
-  ),
+  // 'gap-top': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'margin-top'
+  // ),
+  // 'gap-right': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'margin-right'
+  // ),
+  // 'gap-bottom': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'margin-bottom'
+  // ),
+  // 'gap-left': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'margin-left'
+  // ),
   // Interlignage
   "leading": (
     "items": (
@@ -141,26 +141,26 @@ $gorko-config: (
     "output": "standard",
     "property": "line-height",
   ),
-  'pad-top': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'padding-top'
-  ),
-  'pad-right': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'padding-right'
-  ),
-  'pad-bottom': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'padding-bottom'
-  ),
-  'pad-left': (
-    'items': $gorko-size-scale,
-    'output': 'standard',
-    'property': 'padding-left'
-  ),
+  // 'pad-top': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'padding-top'
+  // ),
+  // 'pad-right': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'padding-right'
+  // ),
+  // 'pad-bottom': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'padding-bottom'
+  // ),
+  // 'pad-left': (
+  //   'items': $gorko-size-scale,
+  //   'output': 'standard',
+  //   'property': 'padding-left'
+  // ),
   'stack': (
     'items': (
       '100': 0,
@@ -171,6 +171,16 @@ $gorko-config: (
     ),
     'output': 'standard',
     'property': 'z-index'
+  ),
+  'measure': (
+    'items': (
+      'micro': '10ch',
+      'compact': '30ch',
+      'short': '40ch',
+      'long': '60ch',
+    ),
+    'output': 'responsive',
+    'property': 'max-width',
   ),
   'text': (
     'items': $gorko-size-scale,
@@ -186,16 +196,16 @@ $gorko-config: (
     'output': 'standard',
     'property': 'font-weight'
   ),
-  'width': (
-    'items': (
-      'full': '100%',
-      'half': percentage(1/2),
-      'quarter': percentage(1/4),
-      'third': percentage(1/3)
-    ),
-    'output': 'responsive',
-    'property': 'width'
-  ),
+  // 'width': (
+  //   'items': (
+  //     'full': '100%',
+  //     'half': percentage(1/2),
+  //     'quarter': percentage(1/4),
+  //     'third': percentage(1/3)
+  //   ),
+  //   'output': 'responsive',
+  //   'property': 'width'
+  // ),
   'breakpoints': (
     // 'sm': '(min-width: 36em)',
     // 'md': '(min-width: 48em)',

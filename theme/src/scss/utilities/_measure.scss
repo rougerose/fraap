@@ -1,0 +1,18 @@
+// ========================================
+// u-measure (justification)
+// ========================================
+
+@use "../settings";
+@use "../tools";
+@use "sass-rem/rem";
+@use "sass:map";
+
+$measures: map.get(settings.$gorko-config, "measure");
+$items: map.get($measures, "items");
+$property: map.get($measures, "property");
+
+@each $item, $value in $items {
+  .u-measure-#{$item} {
+    #{$property}: #{$value};
+  }
+}
