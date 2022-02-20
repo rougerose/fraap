@@ -1,4 +1,5 @@
 <BOUCLE_fiche_pratique(ARTICLES){id_article}>
+  [(#SET{mots, #ARRAY})]
   <div class="o-wrapper">
     <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_article, id_mot=#ENV{id_mot}}/>
     <article class="c-post u-flow">
@@ -10,6 +11,7 @@
           <B_mots_article>
             <div class="o-cluster">
               <BOUCLE_mots_article(MOTS){id_article}{par titre}>
+                [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
                 <a href="#URL_MOT" class="c-pill">#TITRE</a>
               </BOUCLE_mots_article>
             </div>
@@ -23,12 +25,15 @@
         <div class="c-related text-500 measure-long">
           <h2 class="c-related_title">Sur le même sujet</h2>
           <ul class="c-fiches-liste">
-            <BOUCLE_prolonger(ARTICLES){id_mot=#ENV{id_mot}}{exclus}>
+            <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
               <li>
-                <article class="c-fiche-resume">
+                <article class="c-fiche-resume u-flow">
                   <h3 class="c-fiche-resume_title text-500"><a href="[(#URL_ARTICLE|parametre_url{id_mot, #ENV{id_mot}})]">#TITRE</a></h3>
+                  [<div class="c-fiche-resume_desc">
+                    (#DESCRIPTIF)
+                  </div>]
                   <p class="o-cluster c-fiche-resume_pills">
-                    <BOUCLE_mots_article_prolonger(MOTS){id_article}{par titre}>[<a class="c-pill" href="[(#URL_MOT{#ID_PARENT})]">(#INFO_TITRE{mot, #ID_PARENT})</a>]</BOUCLE_mots_article_prolonger>
+                    <BOUCLE_mots_article_prolonger(MOTS){id_article}{par titre}>[<a class="c-pill" href="[(#URL_MOT{#ID_MOT})]">(#TITRE)</a>]</BOUCLE_mots_article_prolonger>
                   </p>
                 </article>
               </li>

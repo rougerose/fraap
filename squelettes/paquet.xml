@@ -11,4 +11,7 @@
 	<licence>GPLv3</licence>
   <necessite nom="zcore" compatibilite="[3.0.0;[" />
   <necessite nom="compositions" compatibilite="[3.9.3;[" />
+  <necessite nom="critere_mots" compatibilite="[4.3.5;[" />
+  <necessite nom="motsar" compatibilite="[1.2.0;[" />
+  <necessite nom="selections_editoriales" compatibilite="[2.0.3;[" />
 </paquet>
