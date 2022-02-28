@@ -1,0 +1,47 @@
+<div class="c-filtres">
+  <h2 class="c-filtres_title">Thèmes</h2>
+  <ul class="c-filtres_list u-flow">
+    <BOUCLE_mots_parents_mediatheque(MOTS){id_groupe=#ENV{id_groupe}}{id_parent=0}{par titre}>
+      #SET{liens_nb, 0}
+      [(#REM) <!-- Compter les références liés à #ENV{mots} si présents -->]
+      <BOUCLE_parents_env_mots(CONDITION){si #ENV{mots}|>{0}}>
+        <BOUCLE_parents_fbiblios(FBIBLIOS){mots_liens.id_mot}>
+          <BOUCLE_parents_compteur_mots(FBIBLIOS){id_fbiblio}{mots_liens.id_mot IN #ENV{mots}}>
+            [(#SET{liens_nb, #GET{liens_nb}|plus{#COMPTEUR_BOUCLE}})]
+          </BOUCLE_parents_compteur_mots>
+        </BOUCLE_parents_fbiblios>
+      </BOUCLE_parents_env_mots>
+        [(#REM) <!-- Sinon compter les liens directs au mot-clé -->]
+        <BOUCLE_compteur_parents(FBIBLIOS){mots_liens.id_mot}>
+          [(#SET{liens_nb, #TOTAL_BOUCLE})]
+        </BOUCLE_compteur_parents>
+      <//B_parents_env_mots>
+      <li class="c-filtres_list-item"[(#GET{liens_nb}|=={0}|oui) data-state="disabled"]>
+        <INCLURE{fond=inclure/mediatheque/filtre_mot, liens_nb=#GET{liens_nb}, id_mot, mots=#ENV{mots}} />
+        <B_mots_enfants>
+          <ul class="c-filtres_list">
+            <BOUCLE_mots_enfants(MOTS){id_mot_racine=#ID_MOT}{id_parent!=0}{par titre}>
+              #SET{liens_nb, 0}
+              [(#REM) <!-- Idem @l6 -->]
+              <BOUCLE_enfants_env_mots(CONDITION){si #ENV{mots}|>{0}}>
+                <BOUCLE_enfants_fbiblios(FBIBLIOS){mots_liens.id_mot}>
+                  <BOUCLE_enfants_compteur_mots(FBIBLIOS){id_fbiblio}{mots_liens.id_mot IN #ENV{mots}}>
+                    [(#SET{liens_nb, #GET{liens_nb}|plus{#COMPTEUR_BOUCLE}})]
+                  </BOUCLE_enfants_compteur_mots>
+                </BOUCLE_enfants_fbiblios>
+              </BOUCLE_enfants_env_mots>
+                [(#REM) <!-- Idem @l14 -->]
+                <BOUCLE_compteur_enfants(FBIBLIOS){mots_liens.id_mot}>
+                  [(#SET{liens_nb, #TOTAL_BOUCLE})]
+                </BOUCLE_compteur_enfants>
+              <//B_enfants_env_mots>
+              <li class="c-filtres_list-item"[(#GET{liens_nb}|=={0}|oui) data-state="disabled"]>
+                <INCLURE{fond=inclure/mediatheque/filtre_mot, liens_nb=#GET{liens_nb}, id_mot, mots=#ENV{mots}} />
+              </li>
+            </BOUCLE_mots_enfants>
+          </ul>
+        </B_mots_enfants>
+      </li>
+    </BOUCLE_mots_parents_mediatheque>
+  </ul>
+</div>

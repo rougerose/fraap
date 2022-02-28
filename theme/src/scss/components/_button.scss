@@ -33,4 +33,15 @@
       color: map.get(settings.$gorko-colors, "light-glare");
     }
   }
+
+  &[data-variant="secondary"] {
+    background-color: transparent;
+    color: settings.$black;
+    border: rem.convert(2px) solid;
+
+    &:hover {
+      border-color: map.get(settings.$gorko-colors, "primary-light");
+      color: settings.$white;
+    }
+  }
 }

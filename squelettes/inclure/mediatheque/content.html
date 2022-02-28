@@ -1,0 +1,27 @@
+<div class="c-references">
+  <B_zitems>
+    #ANCRE_PAGINATION
+    <div class="c-references_header">
+      <p class="c-references_stats">#GRAND_TOTAL références</p>
+      <B_mots>
+        <div class="c-references_filters">
+          <p>Liste établie à partir des critères : </p>
+          <p class="o-cluster">
+            <BOUCLE_mots(MOTS){id_mot IN #ENV{mots}}>
+              [(#SET{mots_exclure, #ENV{mots}|critere_mots_enleve_mot_de_liste{#ID_MOT}})]
+              <a href="[(#SELF|parametre_url{mots, #GET{mots_exclure}})]">#TITRE <span>x</span></a>
+            </BOUCLE_mots>
+          </p>
+        </div>
+      </B_mots>
+    </div>
+    <ul class="c-references_list u-flow">
+      <BOUCLE_zitems(ZITEMS){id_zitem IN #ENV{zitems}}{pagination #ENV{pagination, 15} #ENV{nom_pagination}}>
+        <li class="c-references_list-item o-box">
+          <INCLURE{fond=inclure/mediatheque/zitem, id_zitem}/>
+        </li>
+      </BOUCLE_zitems>
+    </ul>
+    [<nav role="navigation" class="pagination">(#PAGINATION)</nav>]
+  </B_zitems>
+</div>

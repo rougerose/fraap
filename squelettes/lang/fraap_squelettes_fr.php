@@ -5,6 +5,8 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
+	// B
+	'bouton_valider' => 'Valider',
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',
 

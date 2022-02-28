@@ -1,0 +1,11 @@
+/// css des formulaires spip
+
+.formulaire_mediatheque_filtres {
+  & .boutons {
+    padding: 3rem 0;
+
+    & > input {
+      width: 100%;
+    }
+  }
+}

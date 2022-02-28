@@ -1,0 +1,19 @@
+<div class="formulaire_spip formulaire_#FORM">
+  [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	[(#ENV{editable})
+    <form method="post" action="#ENV{action}">
+      <div>
+        #ACTION_FORMULAIRE
+        <div class="c-filtres">
+          <INCLURE{fond=inclure/mediatheque/filtres_thematiques, id_groupe=#ENV{id_groupe}, mots=#ENV{mots}}/>
+        </div>
+        <div class="editer-groupe"></div>
+        [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+        <!--extra-->
+        <p class="boutons"><input type="submit" class="c-button submit" value="<:fraap_squelettes:bouton_valider|attribut_html:/>" data-variant="secondary" /></p>
+      </div>
+    </form>
+	]
+</div>
