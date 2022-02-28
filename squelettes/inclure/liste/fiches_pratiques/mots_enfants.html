@@ -2,10 +2,12 @@
   <B_mots_enfants>
     <ul class="c-fiches-liste">
       <BOUCLE_mots_enfants(MOTS){id_parent}{par titre}>
-        <li class="c-fiche-resume u-flow">
-          <h2 class="c-fiche_resume_title text-600"><a href="#URL_MOT">#TITRE</a></h2>
-          [<div class="c-fiche-resume_desc">(#DESCRIPTIF)</div>]
-        </li>
+        <BOUCLE_articles_lies(ARTICLES){id_mot}> </BOUCLE_articles_lies>
+          <li class="c-fiche-resume u-flow">
+            <h2 class="c-fiche_resume_title text-600"><a href="#URL_MOT">#TITRE</a></h2>
+            [<div class="c-fiche-resume_desc">(#DESCRIPTIF)</div>]
+          </li>
+        </B_articles_lies>
       </BOUCLE_mots_enfants>
     </ul>
 
