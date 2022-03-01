@@ -16,7 +16,7 @@
       </B_mots>
     </div>
     <ul class="c-references_list u-flow">
-      <BOUCLE_zitems(ZITEMS){id_zitem IN #ENV{zitems}}{pagination #ENV{pagination, 15} #ENV{nom_pagination}}>
+      <BOUCLE_zitems(ZITEMS){id_zitem IN #ENV{zitems}}{par titre}{pagination #ENV{pagination, 15} #ENV{nom_pagination}}>
         <li class="c-references_list-item o-box">
           <INCLURE{fond=inclure/mediatheque/zitem, id_zitem}/>
         </li>
