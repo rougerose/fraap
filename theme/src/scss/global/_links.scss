@@ -1,0 +1,7 @@
+// Links
+
+@use "../settings";
+
+a {
+  color: settings.$color-root-ink;
+}

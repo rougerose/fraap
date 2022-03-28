@@ -1,0 +1,17 @@
+// Interactive states
+
+@use "../settings";
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring, settings.$color-root-ink);
+  outline-offset: 4px;
+}
+
+:target {
+  scroll-margin-top: 2ex;
+}
+
+::selection {
+  color: var(--color-paper, settings.$color-root-paper);
+  background: var(--color-ink, settings.$color-root-ink);
+}

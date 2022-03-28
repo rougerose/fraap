@@ -1,0 +1,14 @@
+// Body
+@use "../settings";
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding-left: var(--space-xs-l);
+  background-color: settings.$color-root-paper;
+  color: settings.$color-root-ink;
+  font-family: settings.$font-base-serif;
+  font-size: var(--step-0);
+  line-height: 1.2;
+}

@@ -1,0 +1,75 @@
+// Site-header
+
+@use "../settings";
+
+// Styles communs à no-js ET js
+.site-header {
+  background-color: white;
+  padding: 0 var(--space-xs-l) 0;
+
+  &_inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gutter, settings.$global-gutter);
+    flex-direction: column;
+  }
+
+  // &_logo {}
+
+  // &_baseline {}
+
+  &_nav {
+    // display: none;
+  }
+
+  &_burger {
+    display: none;
+    padding: 0.5rem;
+    margin-right: -0.5rem;
+
+    & path {
+      transition: d 0.25s;
+    }
+
+    &[aria-expanded="true"] {
+      & path {
+        d: path("M8,8 24,24 M16,16 16,16 M24,8 8,24");
+      }
+    }
+  }
+}
+
+// tweakpoint
+@media (min-width: 30em) {
+  .site-header {
+    &_baseline {
+      left: 3rem;
+    }
+  }
+}
+
+// TODO: utiliser une valeur de breakpoint générique
+// @media (max-width: 60em) {
+//   .js {
+//     & .site-header_burger {
+//       display: block;
+//     }
+//   }
+// }
+
+.js {
+  & .site-header {
+    &_inner {
+      flex-direction: row;
+      position: relative;
+      bottom: -1.2rem;
+      padding-top: 0.5rem;
+    }
+
+    &_baseline {
+      position: absolute;
+      bottom: -1.2rem;
+    }
+  }
+}

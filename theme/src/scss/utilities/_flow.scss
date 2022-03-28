@@ -1,5 +1,6 @@
-.u-flow {
-  & > * + * {
-    margin-top: var(--flow-space, 1.5rem);
-  }
+// Flow utility
+// @link https://web.dev/design-system/css-utilities/#flow
+//
+.flow > * + * {
+  margin-top: var(--stack-space, 1em);
 }

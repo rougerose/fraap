@@ -1,0 +1,13 @@
+.logo {
+
+  & svg {
+    width: 100%;
+    max-width: 15rem;
+  }
+
+  &--baseline {
+    svg {
+      max-width: 40rem;
+    }
+  }
+}

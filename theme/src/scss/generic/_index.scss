@@ -1,2 +1,5 @@
-@forward "fonts";
-@forward "reset";
+// @forward "fonts";
+// @forward "reset";
+
+@use "css-reset/reset.css";
+@use "fonts";

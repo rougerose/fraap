@@ -3,24 +3,26 @@
 @use "settings";
 
 // 02 - tools
-@use "tools";
+// @use "tools";
 
 // 03 - generic
 @use "generic";
 
-// 04 - elements
-@use "elements";
+// 04 - global
+@use "global";
 
-// 05 - objects
-@use "objects";
+// 04 - compositions
+@use "compositions";
 
-// 06 - tiers
-@use "thirdparty";
+// 05 - blocks
+@use "blocks";
 
-// 07 - components
-@use "components";
+// 06 - components (?)
 
-// 08 - utilities
+// 07 - utilities
 @use "utilities";
 
-@include tools.generate-utility-classes();
+// 08 - pages
+// @use "utilities";
+
+// @include tools.generate-utility-classes();

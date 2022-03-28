@@ -1,0 +1,10 @@
+@use "../mixins/button-base-styles" as mixin;
+
+.button {
+  text-transform: uppercase;
+  letter-spacing: 0.03ch;
+  // border-radius: $global-radius-base;
+  padding: 1.4em 1em;
+  @include mixin.button-base-styles();
+  font-size: 1rem;
+}

@@ -2,21 +2,30 @@
 // Variables
 // ========================================
 
-@use "sass-rem/rem";
+// @use "sass-rem/rem";
 
-// Breakpoints
-$fraap-breakpoints: (
-  "standardPoints": (
-    "sm": 576, // 576px
-    "md": 768, // 768px
-    "lg": 1120, // 1088px
-  ),
-  "tweakPoints": (),
-);
+// // Breakpoints
+// $fraap-breakpoints: (
+//   "standardPoints": (
+//     "sm": 576, // 576px
+//     "md": 768, // 768px
+//     "lg": 1120, // 1088px
+//   ),
+//   "tweakPoints": (),
+// );
 
-// Wrapper
-$wrapper-width: rem.convert(1152px);
-$wrapper-padding: (
-  "sm": rem.convert(16px),
-  "lg": rem.convert(24px),
-);
+// // Wrapper
+// $wrapper-width: rem.convert(1152px);
+// $wrapper-padding: (
+//   "sm": rem.convert(16px),
+//   "lg": rem.convert(24px),
+// );
+
+// SPACES
+$global-gutter: 1rem;
+
+
+// FONTS
+$font-base-sans: "u001", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-base-serif: spectral, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+$font-base-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
