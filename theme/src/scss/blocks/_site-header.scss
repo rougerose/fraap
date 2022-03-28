@@ -1,53 +1,162 @@
 // Site-header
 
 @use "../settings";
+@use "../tools/mq" as mq;
 
-// Styles communs à no-js ET js
+
 .site-header {
-  background-color: white;
-  padding: 0 var(--space-xs-l) 0;
+  --site-header-logo: calc(((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-4xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
 
-  &_inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: var(--gutter, settings.$global-gutter);
-    flex-direction: column;
+  &_wrapper {
+    padding-left: var(--space-s-l);
+    padding-right: var(--space-s-l);
   }
 
-  // &_logo {}
+  &_logo {
+    display: inline-flex;
+    flex: 1;
+    height: var(--site-header-logo); // 56px -> 81px
 
-  // &_baseline {}
+    & svg {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &_baseline {
+    padding-bottom: 1rem;
+
+    & svg {
+      max-width: 25rem;
+    }
+  }
 
   &_nav {
-    // display: none;
+    display: flex;
+    gap: settings.$FRAAP-GLOBAL-GUTTER;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    font-size: 1rem;
   }
 
-  &_burger {
-    display: none;
-    padding: 0.5rem;
-    margin-right: -0.5rem;
+  &_btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    position: relative;
 
-    & path {
+    &::before {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      content: "";
+      width: 2.2em;
+      height: 2.2em;
+      border-radius: 100%;
+      background-color: red;
+      transition: transform 0.3s;
+      transform: translate(-50%, -50%);
+      transform-origin: left center;
+    }
+
+    &:hover {
+      &::before {
+        transform: translate(-50%, -50%) scale(1.75);
+      }
+    }
+
+    svg {
+      fill: none;
+      stroke: settings.$FRAAP-COLOR-INK;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &_btn-burger {
+    // svg {}
+
+    path {
       transition: d 0.25s;
     }
 
-    &[aria-expanded="true"] {
-      & path {
-        d: path("M8,8 24,24 M16,16 16,16 M24,8 8,24");
+    &:hover {
+      path {
+        d: path("M20,25 80,75M50,50 50,50M20,75 80,25");
       }
     }
   }
+
+  // &_btn-search {}
 }
 
-// tweakpoint
-@media (min-width: 30em) {
+@include mq.mq($from: l) {
   .site-header {
-    &_baseline {
-      left: 3rem;
+    &_nav {
+      align-items: center;
+    }
+
+    &_btn {
+      margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
     }
   }
+
+  .site-header_btn-burger {
+    display: none;
+  }
 }
+
+// Styles communs à no-js ET js
+// .site-header {
+//   background-color: white;
+//   padding: 0 var(--space-xs-l) 0;
+
+//   &_inner {
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//     gap: var(--gutter, settings.$global-gutter);
+//     flex-direction: column;
+//   }
+
+//   // &_logo {}
+
+//   // &_baseline {}
+
+//   // &_nav {}
+
+//   &_burger {
+//     display: none;
+//     padding: 0.5rem;
+//     margin-right: -0.5rem;
+
+//     & path {
+//       transition: d 0.25s;
+//     }
+
+//     &[aria-expanded="true"] {
+//       & path {
+//         d: path("M8,8 24,24 M16,16 16,16 M24,8 8,24");
+//       }
+//     }
+//   }
+// }
+
+// tweakpoint
+// @media (min-width: 30em) {
+//   .site-header {
+//     &_baseline {
+//       left: 3rem;
+//     }
+//   }
+// }
 
 // TODO: utiliser une valeur de breakpoint générique
 // @media (max-width: 60em) {
@@ -58,18 +167,20 @@
 //   }
 // }
 
-.js {
-  & .site-header {
-    &_inner {
-      flex-direction: row;
-      position: relative;
-      bottom: -1.2rem;
-      padding-top: 0.5rem;
-    }
+// .js {
+//   & .site-header {
+//     &_inner {
+//       flex-direction: row;
+//       position: relative;
+//       bottom: -1.2rem;
+//       padding-top: 0.5rem;
+//     }
 
-    &_baseline {
-      position: absolute;
-      bottom: -1.2rem;
-    }
-  }
-}
+//     &_baseline {
+//       position: absolute;
+//       bottom: -1.2rem;
+//     }
+
+//     // &_nav {}
+//   }
+// }

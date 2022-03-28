@@ -26,6 +26,6 @@
 
 <BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
 	#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}}
-	<li class="site-nav_list-item[ (#ENV{css})]"[ data-type-lien="(#GET{enfants}|=={oui}|?{dropdown,lien}|trim)"]>
-    <a class="site-nav_link" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>[(#GET{titre})]</a>
+	<li class="site-nav_item[ (#ENV{css})]"[ data-type-link="(#GET{enfants}|=={oui}|?{dropdown,link}|trim)"]>
+    <a class="site-nav_link" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"][ data-menu-show="sitenavSection-(#GET{id_objet})"]>[(#GET{titre})]</a>
 </BOUCLE_public>

@@ -1,83 +1,256 @@
 // FONT FACES
 
-// Univers
+// Frutiger
 @font-face {
-  font-family: "u001";
-  src: url("../fonts/u001-bol.woff2") format("woff2"),
-    url("../fonts/u001-bol.woff") format("woff");
-  font-weight: bold;
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-Light.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "u001";
-  src: url("../fonts/u001-bolita.woff2") format("woff2"),
-    url("../fonts/u001-bolita.woff") format("woff");
-  font-weight: bold;
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-LightItalic.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-LightItalic.woff") format("woff");
+  font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "u001";
-  src: url("../fonts/u001-ita.woff2") format("woff2"),
-    url("../fonts/u001-ita.woff") format("woff");
-  font-weight: normal;
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-Italic.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-Italic.woff") format("woff");
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "u001";
-  src: url("../fonts/u001-reg.woff2") format("woff2"),
-    url("../fonts/u001-reg.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "u001con";
-  src: url("../fonts/u001con-bol.woff2") format("woff2"),
-    url("../fonts/u001con-bol.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "u001con";
-  src: url("../fonts/u001con-bolita.woff2") format("woff2"),
-    url("../fonts/u001con-bolita.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "u001con";
-  src: url("../fonts/u001con-ita.woff2") format("woff2"),
-    url("../fonts/u001con-ita.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "u001con";
-  src: url("../fonts/u001con-reg.woff2") format("woff2"),
-    url("../fonts/u001con-reg.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-// Spectral
-@font-face {
-  font-family: "spectral";
-  src: local("Spectral-Regular"), local("Spectral Regular");
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-Roman.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-Roman.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-Bold.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-BoldItalic.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-Black.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-Black.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-BlackItalic.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-BlackItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Frutiger";
+  src: url("../fonts/frutiger/FrutigerLTStd-UltraBlack.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-UltraBlack.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/// Glypha
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-Thin.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-ThinOblique.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-ThinOblique.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-Light.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-LightOblique.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-LightOblique.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-Oblique.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-Oblique.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-Bold.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-Bold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-BoldOblique.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-BoldOblique.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-Black.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-Black.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Glypha";
+  src: url("../fonts/glypha/GlyphaLTStd-BlackOblique.woff2") format("woff2"),
+    url("../fonts/glypha/GlyphaLTStd-BlackOblique.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Univers
+// @font-face {
+//   font-family: "u001";
+//   src: url("../fonts/u001-bol.woff2") format("woff2"),
+//     url("../fonts/u001-bol.woff") format("woff");
+//   font-weight: bold;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001";
+//   src: url("../fonts/u001-bolita.woff2") format("woff2"),
+//     url("../fonts/u001-bolita.woff") format("woff");
+//   font-weight: bold;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001";
+//   src: url("../fonts/u001-ita.woff2") format("woff2"),
+//     url("../fonts/u001-ita.woff") format("woff");
+//   font-weight: normal;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001";
+//   src: url("../fonts/u001-reg.woff2") format("woff2"),
+//     url("../fonts/u001-reg.woff") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001con";
+//   src: url("../fonts/u001con-bol.woff2") format("woff2"),
+//     url("../fonts/u001con-bol.woff") format("woff");
+//   font-weight: bold;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001con";
+//   src: url("../fonts/u001con-bolita.woff2") format("woff2"),
+//     url("../fonts/u001con-bolita.woff") format("woff");
+//   font-weight: bold;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001con";
+//   src: url("../fonts/u001con-ita.woff2") format("woff2"),
+//     url("../fonts/u001con-ita.woff") format("woff");
+//   font-weight: normal;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: "u001con";
+//   src: url("../fonts/u001con-reg.woff2") format("woff2"),
+//     url("../fonts/u001con-reg.woff") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// Spectral
+// @font-face {
+//   font-family: "spectral";
+//   src: local("Spectral-Regular"), local("Spectral Regular");
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }

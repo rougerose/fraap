@@ -1,7 +1,7 @@
 <BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
   <B_racine_entrees>
-    <div id="nav-menu" class="c-nav_menu" data-js="false" data-status="closed">
-      <ul id="nav-list" class="c-nav_list"[ data-depth="(#ENV{depth,0})"]>
+    <nav class="site-nav-main" data-js="false" data-status="closed">
+      <ul role="list" class="site-nav_list"[ data-depth="(#ENV{depth,0})"]>
         <BOUCLE_racine_entrees(MENUS_ENTREES){id_menu}{par rang}>
           [(#REM)
             <!--
@@ -21,8 +21,9 @@
             [(#SET{url, #INFO_URL{#GET{objet}, #GET{id_objet}}})]
           ]
           <BOUCLE_sous_menu(MENUS){id_menus_entree}{si #GET{entree}}>
-            <div id="nav-section-#ID_MENUS_ENTREE" class="c-nav_section">
-              [<h2><a href="#GET{url}" data-link-type="link" class="c-nav_link">(#GET{titre}) #INCLURE{fond=images/icon-caret-right-100.svg, class=c-nav_icon-link}</a></h2>]
+            <div id="sitenavSection-#GET{id_objet}" class="site-nav_section">
+              <button>back</button>
+              [<h2><a href="#GET{url}" data-type-link="link" class="c-nav_link">(#GET{titre})</a></h2>]
               <INCLURE{fond=inclure/site-nav/site-nav_sous-menu, env, id_menu, identifiant, depth=#ENV{depth, 0}|plus{1}} />
             </div>
           </BOUCLE_sous_menu>
@@ -35,7 +36,7 @@
           </li>]
         </BOUCLE_racine_entrees>
       </ul>
-    </div>
-    <div class="c-nav_overlay" data-menu-overlay=""></div>
+    </nav>
+    <!-- <div class="c-nav_overlay" data-menu-overlay=""></div> -->
   </B_racine_entrees>
 </BOUCLE_sitenav_racine>

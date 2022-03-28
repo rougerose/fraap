@@ -3,6 +3,7 @@
 /// text labels in buttons/block-like links without
 /// using magic numbers
 /// More: https://ishadeed.com/article/button-label-alignment/
+
 @mixin vertically-align-label() {
   &::before {
     content: '';

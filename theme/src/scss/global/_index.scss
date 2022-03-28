@@ -2,11 +2,12 @@
 
 /// Utopia fluid responsive design
 /// for type...
-@use "utopia-type";
+  // @use "utopia-type";
 /// ...and space
-@use "utopia-space";
+  // @use "utopia-space";
 
 ///
 @use "body";
 @use "links";
-@use "interactive";
+@use "headings";
+// @use "interactive";

@@ -1,6 +1,6 @@
 <BOUCLE_sitenav_sousmenu(MENUS){id_menu?}{identifiant?}>
   <B_sousmenu_entrees>
-    <ul class="c-nav_list u-flow" [ data-depth="(#ENV{depth,0})"]>
+    <ul role="list" class="site-nav_list" [ data-depth="(#ENV{depth,0})"]>
       <BOUCLE_sousmenu_entrees(MENUS_ENTREES){id_menu}{par rang}>
         #SET{entree, ''}
         [(#MENUS_AFFICHER_ENTREE) #SET{entree, ' '}  ]

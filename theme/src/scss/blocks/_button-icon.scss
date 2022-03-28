@@ -1,26 +1,23 @@
 .button-icon {
-  display: inline-block;
+  // display: inline-block;
   background: transparent;
-  border: none;
-  color: currentColor;
+  // color: currentColor;
   padding: 0;
-  cursor: pointer;
-  font: inherit;
   appearance: none;
   -webkit-appearance: none;
 
-  svg {
-    display: block;
-    width: 1em;
-    height: 1em;
-    min-width: 2rem;
-    min-height: 2rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 4;
-  }
+  // svg {
+  //   display: block;
+  //   width: 1em;
+  //   height: 1em;
+  //   min-width: 2rem;
+  //   min-height: 2rem;
+  //   // fill: none;
+  //   // stroke: currentColor;
+  //   // stroke-width: 4;
+  // }
 
-  &:hover svg {
-    filter: invert(0.2);
-  }
+  // &:hover svg {
+  //   filter: invert(0.2);
+  // }
 }

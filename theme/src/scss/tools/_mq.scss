@@ -1,15 +1,8 @@
-// ========================================
-// sass-mq configuration
-// ========================================
+/// SASS-MQ Config
 
-@use "sass:map";
 @use "../settings";
 
-$mqbreakpoints: (
-  "sm": map.get(settings.$fraap-breakpoints, "standardPoints", "sm") * 1px,
-  "md": map.get(settings.$fraap-breakpoints, "standardPoints", "md") * 1px,
-  "lg": map.get(settings.$fraap-breakpoints, "standardPoints", "lg") * 1px,
+@use "sass-mq/mq" with (
+  $breakpoints: settings.$FRAAP-BREAKPOINTS
 );
-
-@use "sass-mq/mq" with ($mq-breakpoints: $mqbreakpoints);
 @forward "sass-mq/mq";

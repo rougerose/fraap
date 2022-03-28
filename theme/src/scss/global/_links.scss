@@ -2,6 +2,12 @@
 
 @use "../settings";
 
-a {
-  color: settings.$color-root-ink;
+// a {
+//   color: settings.$color-root-ink;
+// }
+
+a:not([class]),
+a.spip_in,
+a.spip_out {
+  color: currentColor;
 }

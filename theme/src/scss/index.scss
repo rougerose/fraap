@@ -3,7 +3,9 @@
 @use "settings";
 
 // 02 - tools
-// @use "tools";
+// @use "tools/mq" as mq;
+// @use "tools/gorko" as gorko;
+@use "tools";
 
 // 03 - generic
 @use "generic";
@@ -12,7 +14,7 @@
 @use "global";
 
 // 04 - compositions
-@use "compositions";
+// @use "compositions";
 
 // 05 - blocks
 @use "blocks";
@@ -25,4 +27,11 @@
 // 08 - pages
 // @use "utilities";
 
+// XX - Tiers : Spip
+@use "thirdparties";
+
 // @include tools.generate-utility-classes();
+
+// @include mq.mq($from: m) {
+//   .resp {color: red;}
+// }

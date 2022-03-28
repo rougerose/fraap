@@ -1,6 +1,11 @@
 .wrapper {
   margin: 0 auto;
-  padding-left: var(--space-xs-l);
-  padding-right: var(--space-xs-l);
-  max-width: 85rem;
+  padding: 0 2rem;
+  max-width: 80rem;
+}
+
+@media (min-width: 68em) {
+  .wrapper {
+    padding: 0 3rem;
+  }
 }

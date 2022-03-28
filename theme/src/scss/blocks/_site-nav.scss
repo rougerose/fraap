@@ -1,55 +1,109 @@
 // Site main nav
 
 @use "../settings";
+@use "../tools/mq" as mq;
 
+
+/// STYLES COMMUNS
 .site-nav {
-  --sidebar-target-width: 15rem;
-  margin: 2px;
-  margin-right: 0;
-  padding-left: var(--space-xs-l);
-  padding-right: var(--space-xs);
-  font-family: settings.$font-base-sans;
-  font-size: var(--step--2);
-  background-color: settings.$color-root-paper;
-  color: settings.$color-root-ink;
-
-  & a {
-    display: inline-block;
-    color: settings.$color-root-ink;
+  &_link {
     text-decoration: none;
-  }
-
-  &_list {
-    padding-left: 0;
-
-    & * + * {
-      margin-top: 0.25rem;
-    }
-
-    & ul {
-      padding-left: var(--space-s);
-      margin-bottom: 0.5rem;
-    }
+    color: currentColor;
   }
 }
 
-// no-js
-.no-js {
-  & .site-nav {
-    & h2 {
-      display: none;
-    }
-  }
-}
+/// VARIANTE TOP
+.site-nav-top {
 
-// js
-.js {
-  & .site-nav {
+  .site-nav_list {
+    display: none;
+      gap: settings.$FRAAP-GLOBAL-GUTTER;
+      padding-left: 0;
+      margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
+  }
+
+  .site-nav_item {
     position: relative;
 
-    &_section {
+    &::before {
+      display: block;
       position: absolute;
-      transform: translateX(50%);
+      top: 50%;
+      z-index: -1;
+      content: "";
+      width: 2.2em;
+      height: 2.2em;
+      border-radius: 100%;
+      background-color: red;
+      transition: transform 0.3s;
+      transform: translateY(-50%);
+      transform-origin: center left;
+    }
+
+    &:hover {
+      &::before {
+        transform: translateY(-50%) scale(1.75);
+      }
     }
   }
 }
+
+@include mq.mq($from: l) {
+  .site-nav-top {
+    & .site-nav_list {
+      display: flex;
+    }
+  }
+}
+
+// .site-nav {
+//   --sidebar-target-width: 15rem;
+//   margin: 2px;
+//   margin-right: 0;
+//   padding-left: var(--space-xs-l);
+//   padding-right: var(--space-xs);
+//   font-family: settings.$font-base-sans;
+//   font-size: var(--step--2);
+//   background-color: settings.$color-root-paper;
+//   color: settings.$color-root-ink;
+
+//   & a {
+//     display: inline-block;
+//     color: settings.$color-root-ink;
+//     text-decoration: none;
+//   }
+
+//   &_list {
+//     padding-left: 0;
+
+//     & * + * {
+//       margin-top: 0.25rem;
+//     }
+
+//     & ul {
+//       padding-left: var(--space-s);
+//       margin-bottom: 0.5rem;
+//     }
+//   }
+// }
+
+// // no-js
+// .no-js {
+//   & .site-nav {
+//     & h2 {
+//       display: none;
+//     }
+//   }
+// }
+
+// // js
+// .js {
+//   & .site-nav {
+//     position: relative;
+
+//     &_section {
+//       position: absolute;
+//       transform: translateX(50%);
+//     }
+//   }
+// }

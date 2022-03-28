@@ -1,31 +1,19 @@
-// ========================================
-// Variables
-// ========================================
+/// VARIABLES
 
-// @use "sass-rem/rem";
+/// BREAKPOINTS
+$FRAAP-BREAKPOINTS: (
+  "s": 320px,
+  "m": 740px,
+  "l": 1024px,
+  "xl": 1100px,
+);
 
-// // Breakpoints
-// $fraap-breakpoints: (
-//   "standardPoints": (
-//     "sm": 576, // 576px
-//     "md": 768, // 768px
-//     "lg": 1120, // 1088px
-//   ),
-//   "tweakPoints": (),
-// );
-
-// // Wrapper
-// $wrapper-width: rem.convert(1152px);
-// $wrapper-padding: (
-//   "sm": rem.convert(16px),
-//   "lg": rem.convert(24px),
-// );
-
-// SPACES
-$global-gutter: 1rem;
+/// SPACES
+$FRAAP-GLOBAL-GUTTER: var(--space-xs);
+$FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
 
 
-// FONTS
-$font-base-sans: "u001", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-base-serif: spectral, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-$font-base-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+/// FONTS
+$FRAAP-FONT-BASE-SANS: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+
+$FRAAP-FONT-BASE-MONO: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
