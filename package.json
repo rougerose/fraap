@@ -9,18 +9,25 @@
   "scripts": {
     "build": "NODE_ENV=production npm-run-all compile",
     "dev": "npm-run-all -s compile",
+
     "clean": "rimraf theme/dist/css theme/dist/js",
     "clean:tmp": "rimraf theme/dist/css/index.css",
-    "compile": "npm-run-all -s clean compile:01-scss compile:02-css",
-    "compile:01-scss": "sass --no-source-map --load-path=node_modules theme/src/scss/index.scss theme/dist/css/fraap.css",
-    "compile:02-css": "postcss theme/dist/css/fraap.css -o theme/dist/css/fraap.css",
-    "server": "npm-run-all -p server:init watch",
-    "server:init": "browser-sync start -p 'http://localhost:8888/fraap.exp.dev' -f 'theme/dist, squelettes/**/*.html'",
+
+    "compile": "npm-run-all -s clean compile:* clean:tmp",
+    "compile:js": "rollup -c",
+    "compile:scss": "sass --no-source-map --load-path=node_modules theme/src/scss/index.scss theme/dist/css/index.css",
+    "compile:postcss": "postcss theme/dist/css/index.css -o theme/dist/css/fraap.css",
+
+    "server": "npm-run-all -p server:init dev watch:scss watch:js",
+    "server:init": "browser-sync start -p 'http://localhost:8888/fraap.exp.dev' -f 'squelettes/**/*.html'",
+    "server:reload": "browser-sync reload",
+
     "watch": "npm-run-all -p dev watch:scss",
-    "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'npm run compile'"
+    "watch:js": "chokidar 'theme/src/js/**/*.js' -c 'npm run compile:js && npm run server:reload'",
+    "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'npm run compile:scss && npm run compile:postcss && npm run clean:tmp && npm run server:reload'"
   },
   "browserslist": [
-    "defaults"
+    ">0.25%"
   ],
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.1.3",
@@ -28,6 +35,7 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "browser-sync": "^2.27.9",
     "chokidar-cli": "^3.0.0",
+    "css-reset": "github:rougerose/css-reset",
     "gorko": "^0.9.1",
     "hamburgers": "^1.1.3",
     "npm-run-all": "^4.1.5",
