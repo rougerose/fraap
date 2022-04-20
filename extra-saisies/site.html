@@ -1,0 +1,20 @@
+
+#SET{valeur,#ENV{valeur_extra}}
+
+<li class="editer_[(#ENV{champ_extra})][ (#ENV{obligatoire_extra})][ (#ENV{erreur_extra}|oui)erreur]">
+	<label for="#ENV{champ_extra}">#ENV{label_extra}</label>
+		[<span class='erreur_message'>(#ENV**{erreur_extra})</span>]
+		[<p class="explication">(#ENV{precisions_extra})</p>]
+		<select name='#ENV{champ_extra}'[ lang='(#LANG)'][ class='(#ENV{class_extra})'] id='#ENV{champ_extra}'>
+			<option value="0"[
+				(#GET{valeur}|?{'','selected="selected"'})]>
+				- <:pas_site:> -
+			</option>
+			<BOUCLE_a(SITES){tout}{par nom_site}>
+			<option value="#ID_SYNDIC"[
+				(#ID_SYNDIC|=={#GET{valeur}}|?{selected='selected'})]>
+				#NOM_SITE
+			</option>
+			</BOUCLE_a>
+		</select>
+</li>

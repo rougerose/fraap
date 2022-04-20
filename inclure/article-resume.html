@@ -1,0 +1,40 @@
+[(#REM) définition de constantes
+	logo : la taille du logo. Facultatif
+]
+	#SET{logo,#ENV{logo,140}}
+<BOUCLE_resume(ARTICLES){id_article}>
+[(#REM)
+	si la composition est la page sommaire, alors on ajoute le titre de la rubrique,
+	si les compositions sont sommaire ou recherche, alors le niveau de titre de l'article passe de h2 à h3
+]
+[(#ENV{composition}|=={sommaire}|oui)
+	<div class="article-conteneur couleurID#ID_SECTEUR">
+		[<h2 class="intertitre"><a href="#URL_RUBRIQUE">(#INFO_TITRE{rubrique,#ID_RUBRIQUE}|unique)</a></h2>]
+]
+		<div id="article#ID_ARTICLE" class="hentry item[ (#ENV{alterner})] clearfix">
+			<p class="info-publi updated published"><span class="value-title" title="[(#DATE|affdate{c})]">[(#DATE|affdate{d/m/Y})]</span></p>
+			<div class="resume-conteneur">
+				<[h(#ENV{composition}|match{sommaire|recherche}|?{3,2})] class="entry-title">
+					<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
+				</[h(#ENV{composition}|match{sommaire|sommaire}|?{3,2})]>
+				[(#GET{logo}|oui)
+					<div class="media clearfix">
+						[<a href="#URL_ARTICLE" class="img media__img">(#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{#GET{logo},0})</a>]
+						<div class="media__body">
+							[<p class="entry-content intro">
+								(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a>
+							</p>]
+							[(#INCLURE{fond=inclure/article-resume-annuaire-mots,id_article,id_secteur,composition=#ENV{composition}})]
+						</div>
+					</div>
+				][(#GET{logo}|non)
+					[<p class="entry-content intro">
+						(#DESCRIPTIF|sinon{#INTRODUCTION}|PtoBR) <a href="#URL_ARTICLE" class="suite"><:fraap:suite:></a>
+					</p>]
+				]
+			</div><!-- .article-resume-conteneur -->
+		</div><!-- #article#ID_ARTICLE -->
+[(#ENV{composition}|=={sommaire}|oui)
+	</div>
+]
+</BOUCLE_resume>

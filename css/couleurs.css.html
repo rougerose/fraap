@@ -1,0 +1,243 @@
+#HTTP_HEADER{Content-Type: text/css; charset=utf-8}
+#HTTP_HEADER{Vary: Accept-Encoding}
+[(#REM) css des couleurs des rubriques définies via l'espace privé ]
+
+/* ======================================== */
+/*	Site : 		FRAAP						*/
+/*	URL : 		fraap.org					*/
+/*	Author : 	christophe le drean			*/
+/*				rouge-rose.net				*/
+/*	Date :		2011						*/
+/*	Version :	2.0							*/
+/* ======================================== */
+
+
+
+<BOUCLE_principale(RUBRIQUES){racine}{tout_voir}>
+	#SET{defaut,000}
+
+	[(#SET{couleur,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{defaut})]})]})]
+
+	[(#SET{couleur_lum01,[(#GET{couleur}|couleur_luminance{0.1})]})]
+	[(#SET{couleur_lum03,[(#GET{couleur}|couleur_luminance{0.3})]})]
+	[(#SET{couleur_lum07,[(#GET{couleur}|couleur_luminance{0.7})]})]
+	[(#SET{couleur_sat01,[(#GET{couleur}|couleur_saturation{0.1})]})]
+	[(#SET{couleur_sat03,[(#GET{couleur}|couleur_saturation{0.3})]})]
+
+
+	[(#REM) couleur de la rubrique Qui sommes-nous réutilisée plus bas ]
+	[(#ID_RUBRIQUE|=={14}|oui)
+		[(#SET{numeroQSN,#ID_RUBRIQUE})]
+		[(#SET{QSN,[(#ID_RUBRIQUE|couleur_rubrique|sinon{[(#GET{defaut})]})]})]
+	]
+
+	/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
+
+	.couleurID#ID_RUBRIQUE h2.intertitre,
+	.grille .couleurID#ID_RUBRIQUE .update dt,
+	.couleurID#ID_RUBRIQUE h1,
+	.couleurID#ID_RUBRIQUE #contenu .groupe, .couleurID#ID_RUBRIQUE .hfeed,
+	.couleurID#ID_RUBRIQUE .groupe .hentry /*rubriques*/,
+	.groupe .couleurID#ID_RUBRIQUE .hentry /*sommaire*/,
+	.couleurID#ID_RUBRIQUE .pagination, .couleurID#ID_RUBRIQUE .pagination strong, .couleurID#ID_RUBRIQUE .pagination a,
+	.couleurID#ID_RUBRIQUE #titre p.surtitre, .couleurID#ID_RUBRIQUE #info-publi-objet-conteneur p.info-publi,
+	.couleurID#ID_RUBRIQUE #rubriques,
+	.couleurID#ID_RUBRIQUE .tabs .ui-widget-header,
+	.couleurID#ID_RUBRIQUE .tabs.ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+	.couleurID#ID_RUBRIQUE .tabs.ui-tabs .ui-tabs-nav li.ui-state-hover,
+	.couleurID#ID_RUBRIQUE .textecourant h2.spip, .couleurID#ID_RUBRIQUE .textecourant h3.spip, .couleurID#ID_RUBRIQUE .textecourant h4.spip, .couleurID#ID_RUBRIQUE .textecourant h5.spip, .couleurID#ID_RUBRIQUE .textecourant h6.spip, .couleurID#ID_RUBRIQUE .socialtags__heading
+	{ border-color: ##GET{couleur}; }
+
+	.couleurID#ID_RUBRIQUE h2.intertitre a,
+	.couleurID#ID_RUBRIQUE .intertitre--rubrique,
+	.couleurID#ID_RUBRIQUE .textecourant a:hover,
+	.couleurID#ID_RUBRIQUE .contenu-secondaire a:hover,
+	.couleurID#ID_RUBRIQUE #fil strong, .couleurID#ID_RUBRIQUE #fil a:hover,
+	.couleurID#ID_RUBRIQUE .hfeed a:hover,
+	.groupe .couleurID#ID_RUBRIQUE .hentry a:hover,
+	.une.grille .couleurID#ID_RUBRIQUE a:hover,
+	.hfeed .couleurID#ID_RUBRIQUE div a:hover,
+	.couleurID#ID_RUBRIQUE #rubriques li a:hover, .couleurID#ID_RUBRIQUE #rubriques li.on > a,
+	.couleurID#ID_RUBRIQUE #sousrubriques li.on a:hover, .couleurID#ID_RUBRIQUE #sousrubriques li.on > h3 a,
+	.couleurID#ID_RUBRIQUE .update dt,
+	.couleurID#ID_RUBRIQUE #titre h1,
+	.couleurID#ID_RUBRIQUE #titre p.surtitre,
+	.couleurID#ID_RUBRIQUE .textecourant h2.spip, .couleurID#ID_RUBRIQUE .textecourant h3.spip, .couleurID#ID_RUBRIQUE .textecourant h4.spip, .couleurID#ID_RUBRIQUE .textecourant h5.spip, .couleurID#ID_RUBRIQUE .textecourant h6.spip, hr.spip,
+	.couleurID#ID_RUBRIQUE .info-resultats
+	{ color: ##GET{couleur}; }
+
+	.sousrubriques-fleche.couleurID#ID_RUBRIQUE {
+		[color: #(#GET{couleur}|couleur_saturation{0.5});]
+	}
+
+	#nav li:hover.couleurID#ID_RUBRIQUE,
+	.couleurID#ID_RUBRIQUE ul.dropdown li,
+	.couleurID#ID_RUBRIQUE a.bouton, .couleurID#ID_RUBRIQUE input.bouton,
+	.couleurID#ID_RUBRIQUE img.puce,
+	.couleurID#ID_RUBRIQUE .pagination strong.on,
+	.couleurID#ID_RUBRIQUE .onglets li:hover span.icon,
+	.couleurID#ID_RUBRIQUE .onglets li.ui-state-active span.icon,
+	.sousrubriques-item.couleurID#ID_RUBRIQUE a
+	{ background-color: ##GET{couleur}; }
+
+	.couleurID#ID_RUBRIQUE .textecourant hr.spip { border-color: ##GET{couleur}; background-color: ##GET{couleur}; color: ##GET{couleur}; }
+
+	.couleurID#ID_RUBRIQUE a.bouton:hover, .couleurID#ID_RUBRIQUE input.bouton:hover { background-color: ##GET{couleur_lum07}; }
+
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
+	#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover { border-color: ##GET{couleur}; color: ##GET{couleur}; }
+
+	#nav li.couleurID#ID_RUBRIQUE { border-bottom-color: ##GET{couleur}; }
+
+	[(#REM)	définitions supplémentaires et spécifiques à la rubrique 33/Ressources ]
+	[(#ID_RUBRIQUE|=={33}|oui)
+		#ressources .ui-state-default a { color: ##GET{couleur_lum03}; }
+		#ressources .ui-state-active a,
+		#ressources .ui-state-default a:hover,
+		#ressources h2 a:hover { color: ##GET{couleur}; }
+		#ressources dt.ui-state-active,
+		#ressources .ui-widget-content { border-color: ##GET{couleur}; }
+	]
+
+	[(#REM)
+		définitions spécifiques à la rubrique 10/Stages
+	]
+	[(#ID_SECTEUR|=={12}|oui)
+
+		/* #ID_RUBRIQUE/#TITRE/#GET{couleur} */
+
+		[(#SET{couleur_lum06,[(#GET{couleur}|couleur_luminance{0.6})]})]
+
+		#menu-identification {
+			background-color: ##GET{couleur};
+			border-color: ##GET{couleur_lum06} ##GET{couleur_lum06} ##GET{couleur_lum06} ##GET{couleur_sat01}; }
+
+		#menu-identification p span.icon { background-color: ##GET{couleur}; border-color: ##GET{couleur}; }
+
+		#raccourcis ul li.couleurID#ID_RUBRIQUE.on, #raccourcis ul li.couleurID#ID_RUBRIQUE:hover,
+		#stages-aiguillage li,
+		/* profil > #extra */
+		.page_profil .couleurID#ID_RUBRIQUE h2 { border-color: ##GET{couleur}; }
+
+		#raccourcis ul li.couleurID#ID_RUBRIQUE.on a, #raccourcis ul li.couleurID#ID_RUBRIQUE a:hover,
+		.couleurID#ID_RUBRIQUE #titre h1,
+		.couleurID#ID_RUBRIQUE #stages-identification p.bienvenue,
+		.page_profil .couleurID#ID_RUBRIQUE h2,
+		#navigation-messagerie li strong.on { color: ##GET{couleur}; }
+
+		.formulaire_spip .liste_items li.item.on,
+		.formulaire_spip .liste_items li.item.on:hover { background-color: ##GET{couleur_sat01};  }
+
+		#stages-table th { background-color: ##GET{couleur_lum03}; border-bottom-color: ##GET{couleur_lum03}; }
+			#stages-table th:first-child { border-left-color: ##GET{couleur_lum03}; }
+			#stages-table th:last-child { border-right-color: ##GET{couleur_lum03}; }
+		#stages-table tr:first-child th { background-color: ##GET{couleur}; }
+			#stages-table tr:first-child th:first-child { border-left-color: ##GET{couleur}; }
+			#stages-table tr:first-child th:last-child { border-right-color: ##GET{couleur}; }
+		#stages-table tr.pair td { background-color: ##GET{couleur_sat01}; }
+
+		.couleurID#ID_RUBRIQUE .icon, .couleurID#ID_RUBRIQUE .icon:hover { background-color: ##GET{couleur}; border-color: ##GET{couleur}; }
+
+		.couleurID#ID_RUBRIQUE a.bt:hover, .couleurID#ID_RUBRIQUE .actions #criteres-utilisateur dt { color: ##GET{couleur}; }
+
+		/* formulaires */
+		.actions #formulaire_tri_stages { border-color: ##GET{couleur}; }
+
+	]
+
+	[(#REM) définitions spécifiques à la rubrique 11/Réseau ]
+	[(#ID_SECTEUR|=={11}|oui)
+		.syndication > h3 { color: ##GET{couleur}; }
+
+	]
+
+	[(#REM) définition spécifique à la rubrique 3/Annuaire ]
+	[(#ID_SECTEUR|=={15}|oui)
+		#formulaire_annuaire_tri { background-color: ##GET{couleur}; }
+		.section-heading.couleurID#ID_RUBRIQUE,
+		.annuaire-nav__compteur.couleurID#ID_RUBRIQUE
+		 {
+			color: ##GET{couleur};
+			border-bottom-color: ##GET{couleur};
+		}
+
+		.annuaire-tri__mod,
+		.couleurID#ID_RUBRIQUE .ui-state-active,
+		.couleurID#ID_RUBRIQUE .ui-state-default {
+			[border-color: #(#GET{couleur});]
+		}
+
+		.categorie-label.couleurID#ID_RUBRIQUE {
+			color: ##GET{couleur};
+		}
+		.btn--outline-annuaire {
+			[border-color: #(#GET{couleur});]
+			[color: #(#GET{couleur}|couleur_luminance{0.7});]
+		}
+		.btn--outline-annuaire.is-active,
+		.btn--outline-annuaire:hover  {
+			[background: #(#GET{couleur});]
+			[color: #(#GET{couleur}|couleur_inverser|couleur_extreme);]
+		}
+	]
+
+</BOUCLE_principale>
+
+[(#REM) couleur squelette Mot ]
+	[(#SET{mot,#VAL{54c8d9}|couleur_hex2dec})]
+	/* /Mot /#54c8d9 - rgb:#GET{mot} */
+
+	.mot h2.info-resultats { border-color: rgb(#GET{mot}); color: rgb(#GET{mot}); }
+
+	.mot .groupe, .page_recherche .groupe .hentry, .mot .groupe .item,
+	.mot .grille dl.liste, .mot .grille ul.liste li,
+	.page_mot .pagination, .page_mot .pagination strong, .page_mot .pagination a { border-color: rgb(#GET{mot}); }
+
+	.mot .groupe a:hover, .page_mot #titre h1,
+	.page_mot #fil strong, .page_mot #fil a:hover { color: rgb(#GET{mot}); }
+
+	.page_mot .pagination strong.on { background-color: rgb(#GET{mot}); }
+
+
+[(#REM) couleur page Recherche ]
+
+	[(#SET{recherche,#VAL{730073}|couleur_hex2dec})]
+	/* /Recherche /#730073 - rgb:#GET{recherche} */
+
+	/* formulaire de recherche */
+	#raccourcis #formulaire_recherche { background-color: rgb(#GET{recherche}); }
+		#formulaire_recherche input[type=text]:focus { border-color: rgba(166,0,166,0.5); }
+		#formulaire_recherche .bouton { background-color: rgba(#GET{recherche},0.5); }
+		#formulaire_recherche .bouton:hover { background-color: rgb(89,0,89); }
+
+	/* menu #raccourcis > recherche */
+	#raccourcis ul li.recherche.on, #raccourcis ul li.recherche:hover { border-color: rgb(#GET{recherche}); }
+	#raccourcis ul li.recherche.on a, #raccourcis ul li.recherche:hover { color: rgb(#GET{recherche}); }
+
+	/* page resultats */
+	.page_recherche p.info-resultats { background-color: rgb(#GET{recherche}); color: #fff; }
+	.page_recherche h2.info-resultats { border-color: rgb(#GET{recherche}); color: rgb(#GET{recherche}); }
+
+	.page_recherche .groupe, .page_recherche .groupe .hentry, .page_recherche .groupe .item,
+	.page_recherche .grille dl.liste, .page_recherche .grille ul.liste li,
+	.page_recherche .pagination, .page_recherche .pagination strong, .page_recherche .pagination a { border-color: rgb(#GET{recherche}); }
+
+	.page_recherche .groupe a:hover, .page_recherche #titre h1,
+	.page_recherche #fil strong, .page_recherche #fil a:hover { color: rgb(#GET{recherche}); }
+
+	.page_recherche .pagination strong.on { background-color: rgb(#GET{recherche}); }
+
+[(#REM) couleur page liste diffusion Fraap-infos ]
+
+	/* /Liste de diffusion /#eb02b3 */
+	#raccourcis ul li.couleurListe.on, #raccourcis ul li.couleurListe:hover { border-color: #eb02b3; }
+	#raccourcis ul li.couleurListe.on a, #raccourcis ul li.couleurListe a:hover { color: #eb02b3; }
+
+
+[(#REM) couleur page contact : même couleur que la rubrique Qui Sommes-nous ]
+	/* /Page Contact /##GET{QSN} */
+	#raccourcis ul li.couleurContact.on, #raccourcis ul li.couleurContact:hover,
+	.couleur#GET{numeroQSN} .formulaire_spip fieldset.previsu { border-color: ##GET{QSN}; }
+	#raccourcis ul li.couleurContact.on a, #raccourcis ul li.couleurContact a:hover,
+	.page_contact #titre h1,
+	.page_contact #fil strong, .page_contact #fil a:hover { color: ##GET{QSN}; }

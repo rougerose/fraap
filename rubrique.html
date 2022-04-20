@@ -1,0 +1,6 @@
+<BOUCLE_principale_rubrique(RUBRIQUES){id_rubrique}>
+<INCLURE{fond=structure}{env}{id_secteur=#ID_SECTEUR}{type=rubrique}{composition=#COMPOSITION} />
+</BOUCLE_principale_rubrique>
+[(#ID_RUBRIQUE|accesrestreint_rubrique_restreinte|oui)<INCLURE{fond=identification}{id_rubrique}>]
+[(#ID_RUBRIQUE|accesrestreint_rubrique_restreinte|non)<INCLURE{fond=401}{id_rubrique}>]
+<//B_principale_rubrique>

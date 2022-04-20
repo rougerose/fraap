@@ -1,0 +1,78 @@
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+#SET{menu, ''}
+<div id="extra-objet-conteneur">
+  [<div id="logo-objet-conteneur">
+    (#LOGO_ARTICLE|inserer_attribut{class,logo-objet}|image_reduire{200,0})
+  </div><!-- #logo-objet-conteneur -->]
+
+  <div id="info-publi-objet-conteneur">
+    <p class="info-publi updated published">
+      <span class="value-title" title="[(#DATE|date_iso)]">
+        [<:fraap:publie_le:> (#DATE|affdate{'d'})][/(#DATE|mois)][/(#DATE|annee)]
+      </span>
+    </p>
+    [<p class="auteurs">
+      <:par_auteur:> (#MODELE{auteurs})
+    </p>]
+
+    [(#REM) Inclure le modele des liens de traductions ]
+    #MODELE{article_traductions}
+
+    [(#REM) on compte le nombre de rubriques. S'il n'y en a qu'une, pas de menu ]
+    <BOUCLE_sect(RUBRIQUES){id_secteur}> </BOUCLE_sect>[(#TOTAL_BOUCLE|>{1}|oui)#SET{menu,oui}]</B_sect>
+
+    [(#REM) menu rubriques ]
+    <BOUCLE_test_menu(CONDITION){si #GET{menu}}>
+      <INCLURE{fond=inclure/menu-rubriques, env}/>
+    </BOUCLE_test_menu>
+
+  </div><!-- #info-publi-objet-conteneur -->
+</div><!-- #extra-objet -->
+
+
+  [<div id="chapo-conteneur" class="introduction #EDIT{chapo}">
+    <div class="introduction-p">
+      (#CHAPO|image_reduire{220,0})
+    </div>
+  </div><!-- #chapo-conteneur .introduction -->]
+
+<div class="contenu clearfix">
+  <div class="contenu-principal contenu-principal--annuaire">
+    <h2 class="section-heading[ couleurID(#ID_SECTEUR)]">à propos</h2>
+    [<div class="#EDIT{texte} texte textecourant section-content">(#TEXTE|image_reduire{220,0})</div>]
+
+    <BOUCLE_groupe_annuaire(GROUPES_MOTS){id_groupe=11}>
+      <BOUCLE_sous_groupes(GROUPES_MOTS){id_parent}{par num titre, titre}>
+        <INCLURE{fond=inclure/annuaire-mots, id_article, id_groupe, id_secteur}/>
+      </BOUCLE_sous_groupes>
+    </BOUCLE_groupe_annuaire>
+
+    [(#REM) Test site web] #SET{site,''}
+    <BOUCLE_site(SITES){id_syndic=#SITE}{0,1}>[(#SET{site,#ARRAY{nom,#NOM_SITE,url,#URL_SITE}})]</BOUCLE_site>
+
+    [(#REM)
+      Contact.
+    ]
+    <h2 class="section-heading[ couleurID(#ENV{id_secteur})]"><:fraap:contact:></h2>
+    <div class="section-content">
+      <BOUCLE_contact(AUTEURS){tout}{id_auteur=#CONTACT}{0,1}>
+        <div id="contact" class="vcard vcard--annuaire clearfix">
+          [(#MODELE{auteur_vcard,id_auteur,site=#GET{site}})]
+        </div><!-- #contact -->
+      </BOUCLE_contact>
+      <BOUCLE_gis(GIS){id_article}{0,1}>
+        <INCLURE{fond=modeles/carte_gis, id_article=#ID_ARTICLE, zoom=#ZOOM, lat=#LAT, lon=#LON, hauteur=600px}/>
+      </BOUCLE_gis>
+    </div>
+
+    [<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+    [<div class="ps textecourant">
+      <h2 class="h2 spip"><:info_ps:></h2>
+      <div class="#EDIT{ps} surlignable">(#PS|image_reduire{220,0})</div>
+    </div>]
+
+    [<div class="notes surlignable textecourant"><h2 class="h2 spip pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+  </div><!-- .contenu-principal -->
+</div><!-- .contenu -->
+</BOUCLE_contenu_article>
