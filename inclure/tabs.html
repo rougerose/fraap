@@ -7,45 +7,38 @@
 
 	[(#REM) déterminer s'il existe : documents (article/breve ou rubrique), breves/articles/rubriques liées, des breves et des mots-clés ]
 		#SET{documents_article,''} #SET{documents_rubrique,''}
-		#SET{lire_articles,''} #SET{lire_breves,''} #SET{lire_rubriques,''}
-		#SET{mots,''} #SET{breves,''}
+		#SET{lire_articles,''} #SET{lire_rubriques,''}
+		#SET{mots,''}
 
 	[(#REM) pour la rubrique annuaire : mots-clés région ? et mots-clés activités ? ]
 		#SET{annuaire_region,''} #SET{annuaire_activites,''}
 
 	[(#REM) boucles de test]
-	<BOUCLE_documents_t(DOCUMENTS){id_rubrique?}{id_article?}{id_breve?}{vu=non}{0,1}>
+	<BOUCLE_documents_t(DOCUMENTS){id_rubrique?}{id_article?}{vu=non}{0,1}>
 	[(#ENV{type}|=={rubrique}|oui)#SET{documents_rubrique,oui}]
 	[(#ENV{type}|=={rubrique}|non)#SET{documents_article,oui}]</BOUCLE_documents_t>
 
-	<BOUCLE_breves_t(BREVES){id_rubrique}{0,1}>#SET{breves,oui}</BOUCLE_breves_t>
-
-	<BOUCLE_mots_t(MOTS){id_article?}{id_rubrique?}{id_breve?}{id_groupe !IN 1,2}{0,1}>
+	<BOUCLE_mots_t(MOTS){id_article?}{id_rubrique?}{id_groupe !IN 1,2}{0,1}>
 		#SET{mots,oui}
 		<BOUCLE_lire_articles_t(ARTICLES){id_mot}{exclus}{0,1}>#SET{lire_articles,oui}</BOUCLE_lire_articles_t>
-		<BOUCLE_lire_breves_t(BREVES){id_mot}{exclus}{0,1}>#SET{lire_breves,oui}</BOUCLE_lire_breves_t>
 		<BOUCLE_lire_rubriques_t(RUBRIQUES){id_mot}{exclus}{0,1}>#SET{lire_rubriques,oui}</BOUCLE_lire_rubriques_t>
 	</BOUCLE_mots_t>
 
 [(#REM) les documents d'un article/une breve sont affichés à part ]
 [(#GET{documents_article}|oui)
-	#INCLURE{fond=inclure/tabs-contenu,id_article, id_breve, format=#ENV{format},ordre=#ENV{ordre},documents_article=#GET{documents_article}}
+	#INCLURE{fond=inclure/tabs-contenu,id_article, format=#ENV{format},ordre=#ENV{ordre},documents_article=#GET{documents_article}}
 ]
 
 [(#REM) les autres contenus sont affichés ensemble ]
 [(#GET{documents_rubrique}
-	|ou{#GET{breves}}
 	|ou{#GET{mots}}
 	|ou{#GET{lire_articles}}
-	|ou{#GET{lire_breves}}
 	|ou{#GET{lire_rubriques}}
 	|oui)
-	#INCLURE{fond=inclure/tabs-contenu,id_article,id_rubrique,id_breve,format=#ENV{format},ordre=#ENV{ordre},
+	#INCLURE{fond=inclure/tabs-contenu,id_article,id_rubrique,format=#ENV{format},ordre=#ENV{ordre},
 		documents_rubrique=#GET{documents_rubrique},
-		breves=#GET{breves},
 		mots=#GET{mots},
 		lire_articles=#GET{lire_articles},
-		lire_breves=#GET{lire_breves},
 		lire_rubriques=#GET{lire_rubriques}
 	}
 ]
