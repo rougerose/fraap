@@ -15,46 +15,46 @@ $('html').addClass('js');
 	/*
 	* jquery UI Tabs
 	*/
-	$(".tabs, #annuaire-contact, #formulaire_tri_criteres").tabs();
+	// $(".tabs, #annuaire-contact, #formulaire_tri_criteres").tabs();
 
 
 	/*
 	* jquery UI accordeon
 	*/
 	// Page Annuaire
-	
+
 
 	/* page profil : liste des candidatures enregistrées */
-	$("#accordeon-candidatures").accordion({
-		autoHeight: false,
-		icons:false
-	});
+	// $("#accordeon-candidatures").accordion({
+	// 	autoHeight: false,
+	// 	icons:false
+	// });
 
 	// Rubrique Ressources
-	if ($("#ressources").length) {
+	// if ($("#ressources").length) {
 
-		$("#ressources").accordion({
-			header:'dt',
-			autoHeight: false,
-			icons:false,
-			navigation:true
-		});
-		// le hash s'ajoute dans l'url de la page, ce qui permet de pointer plus précisément
-		// http://michaeljacobdavis.com/tutorials/statesavingaccordion.html
-		$("#ressources a.theme").click(function(event){
-			window.location.hash=this.hash;
-		});
+	// 	$("#ressources").accordion({
+	// 		header:'dt',
+	// 		autoHeight: false,
+	// 		icons:false,
+	// 		navigation:true
+	// 	});
+	// 	// le hash s'ajoute dans l'url de la page, ce qui permet de pointer plus précisément
+	// 	// http://michaeljacobdavis.com/tutorials/statesavingaccordion.html
+	// 	$("#ressources a.theme").click(function(event){
+	// 		window.location.hash=this.hash;
+	// 	});
 
-		$('#ressources dt').bind('click',function(){
-			var self = this;
-      setTimeout(function() {
-				var off = $(self).offset();
-				console.log(off);
-        // $('body,html').animate({ scrollTop: offset.top - 100 });
-				$('body').animate({scrollTop: off.top});
-      }, 310);
-    });
-	}
+	// 	$('#ressources dt').bind('click',function(){
+	// 		var self = this;
+    //   setTimeout(function() {
+	// 			var off = $(self).offset();
+	// 			console.log(off);
+    //     // $('body,html').animate({ scrollTop: offset.top - 100 });
+	// 			$('body').animate({scrollTop: off.top});
+    //   }, 310);
+    // });
+	// }
 
 	/*
 	* Rubrique annuaire : formulaire de tri
