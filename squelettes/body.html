@@ -3,7 +3,8 @@
     <!-- <a class="c-skip-link c-button" href="#contenu-principal"><:fraap_squelettes:lien_aller_au_contenu:></a> -->
     <INCLURE{fond=header/#ENV{type-page}, env} />
   </header>
-  <main id="contenu-principal" class="site-content sidebar" tabindex="-1">
+  <INCLURE{fond=inclure/site-nav/site-nav-offcanvas} />
+  <main id="contenu-principal" class="site-content" tabindex="">
     <INCLURE{fond=content/#ENV{type-page},env}>
   </main>
 </body>

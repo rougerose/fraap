@@ -1,59 +1,19 @@
-// Site main nav
+/// SITE-NAV
+///
+/// Styles communs à toutes les variantes
+///
+/// Variantes disponibles:
+///   - blocks/site-nav-top
+///   - blocks/site-nav-offcanvas
 
-@use "../settings";
-@use "../tools/mq" as mq;
 
-
-/// STYLES COMMUNS
-.site-nav {
-  &_link {
-    text-decoration: none;
-    color: currentColor;
-  }
+.site-nav_list {
+  padding: 0;
 }
 
-/// VARIANTE TOP
-.site-nav-top {
-
-  .site-nav_list {
-    display: none;
-      gap: settings.$FRAAP-GLOBAL-GUTTER;
-      padding-left: 0;
-      margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
-  }
-
-  .site-nav_item {
-    position: relative;
-
-    &::before {
-      display: block;
-      position: absolute;
-      top: 50%;
-      z-index: -1;
-      content: "";
-      width: 2.2em;
-      height: 2.2em;
-      border-radius: 100%;
-      background-color: red;
-      transition: transform 0.3s;
-      transform: translateY(-50%);
-      transform-origin: center left;
-    }
-
-    &:hover {
-      &::before {
-        transform: translateY(-50%) scale(1.75);
-      }
-    }
-  }
-}
-
-@include mq.mq($from: l) {
-  .site-nav-top {
-    & .site-nav_list {
-      display: flex;
-    }
-  }
+.site-nav_link {
+  text-decoration: none;
+  color: currentColor;
 }
 
 // .site-nav {

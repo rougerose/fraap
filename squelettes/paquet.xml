@@ -13,5 +13,6 @@
   <necessite nom="compositions" compatibilite="[3.9.3;[" />
   <necessite nom="critere_mots" compatibilite="[4.3.5;[" />
   <necessite nom="selections_editoriales" compatibilite="[2.0.3;[" />
+  <necessite nom="menus" compatibilite="[2.0.4;[" />
   <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" />
 </paquet>

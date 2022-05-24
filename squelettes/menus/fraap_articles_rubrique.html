@@ -17,6 +17,7 @@
 [(#SET{tri_alpha_inverse,#GET{tri_alpha}|match{^!}|oui})]
 [(#SET{tri_num,#GET{tri_num}|ltrim{!}})]
 [(#SET{tri_alpha,#GET{tri_alpha}|ltrim{!}})]
+[(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, class-svg=icon-nav-link, class-path1=icon-nav-link_path1, class-path2=icon-nav-link_path2}})]
 
 
 [(#SET{type,''})]
@@ -33,7 +34,7 @@
 	<BOUCLE_cpt_articles(ARTICLES){id_rubrique=#GET{id_rubrique}}> </BOUCLE_cpt_articles>#SET{cpt,#TOTAL_BOUCLE}</B_cpt_articles>
 	<BOUCLE_articles(ARTICLES){id_rubrique=#GET{id_rubrique}}{par num #GET{tri_num}}{inverse #GET{tri_num_inverse}}{par #GET{tri_alpha}}{inverse #GET{tri_alpha_inverse}}{0,#GET{articles_max_affiches}}>
 		<li class="site-nav_item" data-type-lien="lien">
-      <a class="site-nav_link" href="#URL_ARTICLE"[ data-state="(#ID_ARTICLE|menus_exposer{article, #ENV*{env}, active})"]>#TITRE</a>
+      <a class="site-nav_link[ (#GET{icone}|oui)site-nav_link--icon]" href="#URL_ARTICLE"[ data-state="(#ID_ARTICLE|menus_exposer{article, #ENV*{env}, active})"]><span>#TITRE</span>[ (#GET{icone})]</a>
 		</li>
 	</BOUCLE_articles>
 	[(#GET{cpt}|>{#GET{articles_max_affiches}}|oui)

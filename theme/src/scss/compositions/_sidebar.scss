@@ -6,7 +6,7 @@
 .sidebar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gutter, settings.$global-gutter);
+  gap: var(--gutter, settings.$FRAAP-GLOBAL-GUTTER);
 }
 
 .sidebar:not([data-direction]) > :first-child {

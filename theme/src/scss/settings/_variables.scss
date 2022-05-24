@@ -1,19 +1,46 @@
 /// VARIABLES
 
-/// BREAKPOINTS
+@use "sass:map";
+@use "sass:math";
+
+/// BREAKPOINTS (en px)
 $FRAAP-BREAKPOINTS: (
-  "s": 320px,
-  "m": 740px,
-  "l": 1024px,
-  "xl": 1100px,
+  "s": 320,
+  "m": 740,
+  "l": 1024,
+  "xl": 1100,
+);
+$FRAAP-TWEAKPOINTS: (
+  "navOffcanvas": 460,
+  "navTop": 1080,
 );
 
-/// SPACES
-$FRAAP-GLOBAL-GUTTER: var(--space-xs);
-$FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
+// MQ Breakpoints
+// Ajouter l'unité px à chaque valeur.
+$TMP-MAP: map.merge($FRAAP-BREAKPOINTS, $FRAAP-TWEAKPOINTS);
+$MQ-BREAKPOINTS: ();
+@each $key, $value in $TMP-MAP {
+  $MQ-BREAKPOINTS: map.set($MQ-BREAKPOINTS, $key, $value * 1px);
+}
 
+// Gorko Breakpoints
+$GORKO-BREAKPOINTS: ();
+@each $key, $value in $FRAAP-BREAKPOINTS {
+  $val: "(min-width:" + math.div($value, 16) * 1rem + ")";
+  $GORKO-BREAKPOINTS: map.set($GORKO-BREAKPOINTS, $key, $val);
+}
+
+// FOCUS
+$FRAAP-FOCUS-OUTLINE-WIDTH: 0.125rem;
 
 /// FONTS
 $FRAAP-FONT-BASE-SANS: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 
 $FRAAP-FONT-BASE-MONO: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+/// MARGES
+$FRAAP-GLOBAL-GUTTER: var(--space-xs);
+
+// NAV
+$FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
+$FRAAP-NAV-DOTS-SIZE: 2.2rem;

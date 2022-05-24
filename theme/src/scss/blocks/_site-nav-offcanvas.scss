@@ -1,0 +1,204 @@
+/// SITE-NAV-OFFCANVAS
+///
+/// Variante OFFCANVAS, placée dans le menu offcanvas.
+
+@use "../settings";
+@use "sass:map";
+@use "sass:math";
+@use "../tools/mq" as mq;
+@use "../tools/gorko" as gorko;
+
+.site-nav-offcanvas {
+
+  &,
+  .site-nav_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  & {
+    display: flex;
+    z-index: gorko.get-utility-value('stack', '400');
+  }
+
+  .no-js &[aria-hidden="true"] {
+    display: none;
+  }
+
+  .js &[data-menu-status="closed"] {
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
+
+    & .site-nav_wrapper {
+      transform: translateX(-100%);
+    }
+
+    & .site-nav_overlay {
+      opacity: 0;
+    }
+  }
+
+  .js &[data-menu-status="closing"] {
+    display: flex;
+    visibility: visible;
+
+    & .site-nav_wrapper {
+      transform: translateX(-100%);
+    }
+
+    & .site-nav_overlay {
+      opacity: 0;
+    }
+  }
+
+  .site-nav_overlay {
+    background-color: rgba(43, 46, 56, 0.9);
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  .site-nav_wrapper {
+    background-color: settings.$FRAAP-COLOR-PAPER;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    padding: 0 var(--space-s);
+    position: relative;
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+    width: 100%;
+    z-index: gorko.get-utility-value('stack', '400');
+
+    & > * {
+      min-width: 0;
+    }
+  }
+
+  .site-nav_header {
+    align-items: center;
+    background-color: settings.$FRAAP-COLOR-PAPER;
+    display: flex;
+    gap: settings.$FRAAP-GLOBAL-GUTTER;
+    justify-content: space-between;
+    padding: var(--space-m) 1.125rem var(--space-m);
+    position: sticky;
+
+    h1 {
+      font-size: var(--step-3);
+      text-transform: uppercase;
+      align-self: flex-end;
+    }
+  }
+
+  .site-nav_body {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    & > * {
+      flex: 1 0 100%;
+      overflow: hidden auto;
+      padding: var(--space-l) 1rem var(--space-l);
+    }
+  }
+
+  .site-nav_list {
+    display: block;
+    font-size: var(--step-1);
+    line-height: 1.2;
+    height: 100%;
+    position: relative;
+    scroll-snap-align: start;
+
+    .no-js & ~ .site-nav_list:not(:target) {
+      display: none;
+    }
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    & ul {
+      font-size: var(--step-0);
+    }
+
+    & ul a span {
+      display: flex;
+
+      &::before {
+        content: "—";
+        align-self: baseline;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  ul {
+    & ul {
+      padding: 0.125rem;
+
+      & ul {
+        padding-left: 1.8rem;
+      }
+    }
+  }
+
+  .site-nav_item {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .site-nav_link {
+    display: flex;
+    align-items: center;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    &--back {
+      border-radius: 100%;
+      display: inline-block;
+      padding: 0;
+      position: absolute;
+      top: settings.$FRAAP-FOCUS-OUTLINE-WIDTH;
+    }
+
+    &--icon {
+      justify-content: space-between;
+    }
+  }
+}
+
+@include mq.mq($from: navOffcanvas) {
+  .site-nav-offcanvas {
+    .site-nav_wrapper {
+      max-width: math.div(map.get(settings.$FRAAP-TWEAKPOINTS, "navOffcanvas"), 16) * 1rem;
+    }
+
+    .site-nav_body {
+      & > * {
+        padding-left: 3.25rem;
+      }
+    }
+
+    .site-nav_header {
+      padding-left: calc(3.25rem + 0.125rem);
+    }
+
+    .site-nav_link {
+      &--back {
+        margin-top: 0.5rem;
+        top: auto;
+        left: 1rem;
+      }
+    }
+  }
+}

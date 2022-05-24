@@ -1,0 +1,103 @@
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.icon-nav-search,
+.icon-nav-burger,
+.icon-nav-close {
+  fill: none;
+  stroke: settings.$FRAAP-COLOR-INK;
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-nav-back {
+  stroke-width: 4px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.icon-nav-forward,
+.icon-nav-back,
+.icon-nav-link {
+  border-radius: 100%;
+  fill: none;
+  flex-shrink: 0;
+  height: 2rem;
+  padding: 0.5rem;
+  stroke: currentColor;
+  stroke-width: 3px;
+  width: 2rem;
+}
+
+.icon-nav-back {
+  background-color: gainsboro;
+  transition: transform 0.3s ease-out, stroke 0.1s;
+
+  &_path1,
+  &_path2 {
+    transform-origin: center;
+    transition: transform 150ms cubic-bezier(0.215,0.61,0.355,1);
+  }
+
+  a:hover & {
+    stroke: red;
+    transform: translateX(-1rem);
+
+    &_path1 {
+      transform: scale(1.2);
+    }
+
+    &_path2 {
+      transform: scale(0.8) translateX(0.5rem);
+    }
+  }
+}
+
+.icon-nav-forward {
+  transition: transform 0.3s ease-out, stroke 0.1s;
+
+  &_path1,
+  &_path2 {
+    transform-origin: center;
+    transition: transform 150ms cubic-bezier(0.215,0.61,0.355,1);
+  }
+
+  a:hover & {
+    stroke: red;
+    transform: translateX(1rem);
+
+    &_path1 {
+      transform: scale(1.2);
+    }
+
+    &_path2 {
+      transform: scale(0.8) translateX(-0.5rem);
+    }
+  }
+}
+
+
+.icon-nav-link {
+  --iconPathOpacity: 0;
+  --iconPathTransform: none;
+  --iconPathOffset: translateX(0.75rem);
+  --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+  transition: transform 0.3s ease-out;
+
+  a:hover & {
+    --iconPathOpacity: 1;
+    --iconPathTransform: var(--iconPathOffset);
+    transform: translateX(1rem);
+  }
+
+  &_path1 {
+    transition: opacity var(--hoverTransition);
+    opacity: var(--iconPathOpacity);
+  }
+
+  &_path2 {
+    transition: transform var(--hoverTransition);
+    transform: var(--iconPathTransform);
+  }
+}

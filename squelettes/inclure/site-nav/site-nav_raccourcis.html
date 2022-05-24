@@ -1,32 +1,36 @@
 <BOUCLE_sitenav_raccourcis(MENUS){id_menu?}{identifiant?}>
-  <B_raccourcis_entrees>
-    <ul id="nav-shortcuts" role="list" class="site-nav_list"[ data-depth="(#ENV{depth,0})"]>
-      <BOUCLE_raccourcis_entrees(MENUS_ENTREES){id_menu}{par rang}>
-        [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
-        [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
-        [(#SET{entree, ''})]
+  <div class="site-header_links">
+    <B_raccourcis_entrees>
+      <ul id="navShortcuts" role="list" class="site-nav_list"[ data-depth="(#ENV{depth,0})"]>
+        <BOUCLE_raccourcis_entrees(MENUS_ENTREES){id_menu}{par rang}>
+          [(#COMPTEUR_BOUCLE|setenv{rang})]
+          [(#ENV{contexte}|setenv{contexte})]
+          [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+          [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+          [(#SET{entree, ''})]
 
-        [(#REM)
-          Pas de sous-menu possible.
-        ]
+          [(#REM)
+            Pas de sous-menu possible.
+          ]
 
-        [(#MENUS_AFFICHER_ENTREE)
-          #SET{entree, ' '}
-        ]
-        [(#REM)
-          <!--
-            On ferme le li si le type d'entrée accepte des sous-menus
-            et si on a bien quelque chose dans le <li>
-          -->]
-        [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
-        </li>]
-      </BOUCLE_raccourcis_entrees>
-    </ul>
-    [<button class="site-header_btn site-header_btn-burger" aria-expanded="false" >
-      (#INCLURE{fond=images/icon-burger-100.svg})
-    </button>]
-    [<button class="site-header_btn site-header_btn-search">
-      (#INCLURE{fond=images/icon-search-100.svg})
-    </button>]
-  </B_raccourcis_entrees>
+          [(#MENUS_AFFICHER_ENTREE)
+            #SET{entree, ' '}
+          ]
+          [(#REM)
+            <!--
+              On ferme le li si le type d'entrée accepte des sous-menus
+              et si on a bien quelque chose dans le <li>
+            -->]
+          [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+          </li>]
+        </BOUCLE_raccourcis_entrees>
+      </ul>
+      [<button id="buttonNavBurger" type="button" class="site-header_button button-nav button-nav-burger" data-a11y-dialog-show="siteNavOffcanvas">
+        (#INCLURE{fond=images/icon-burger-100.svg, class-svg=icon-nav-burger})
+      </button>]
+      [<button type="button" class="site-header_button button-nav button-nav-search">
+        (#INCLURE{fond=images/icon-search-100.svg, class-svg=icon-nav-search})
+      </button>]
+    </B_raccourcis_entrees>
+  </div>
 </BOUCLE_sitenav_raccourcis>

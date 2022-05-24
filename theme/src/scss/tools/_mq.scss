@@ -3,6 +3,6 @@
 @use "../settings";
 
 @use "sass-mq/mq" with (
-  $breakpoints: settings.$FRAAP-BREAKPOINTS
+  $breakpoints: settings.$MQ-BREAKPOINTS
 );
 @forward "sass-mq/mq";

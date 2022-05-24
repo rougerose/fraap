@@ -12,10 +12,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// M
 	'menu_articles_rubrique_nom' => "Fraap : tous les articles d'une rubrique",
-	'menu_entree_afficher_icone_md' => "Afficher l'icone du menu déroulant (oui/non ; non est la valeur par défaut).",
-	'menu_entree_afficher_icone_lien' => 'Afficher l\'icone ">" (oui/non ; oui est la valeur par défaut).',
-	'menu_entree_descriptif' => "Une courte phrase de présentation de l'objet lorsqu'il s'agit d'un élément secteur",
-	'menu_objet_nom' => "Fraap : entrée d'un menu (objets : article ou rubrique)",
-	'menu_objet_description' => 'Ajouter une entrée du menu (entrée racine ou dans un menu déroulant).',
 	'menu_entree_enfants' => 'Cet objet possède-t-il des enfants ? (oui/non ; non est la valeur par défaut).',
+	'menu_branche_nom' => "Fraap : entrée d'un menu, niveaux secondaires (objets : article ou rubrique)",
+	'menu_branche_description' => 'Desc',
+	'menu_racine_nom' => "Fraap : entrée d'un menu, premier niveau (objets : article ou rubrique)",
+	'menu_racine_description' => 'Desc',
+
+	// N
+	'nav_bouton_fermer' => 'Fermer la navigation',
+	'nav_bouton_retour' => 'Retour',
 ];

@@ -1,25 +1,29 @@
 import { terser } from "rollup-plugin-terser";
-// import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 
-export default {
-  input: "theme/src/js/index.js",
-  output: [
-    {
-      file: "theme/dist/js/fraap.js",
-      format: "iife",
-      name: "fraap",
-      plugins: [
-        // nodeResolve(),
-        process.env.NODE_ENV === "production" && terser(),
-      ],
-    },
-    {
-      file: "theme/dist/js/fraap.mod.js",
-      format: "es",
-      plugins: [
-        // nodeResolve(),
-        process.env.NODE_ENV === "production" && terser(),
-      ],
-    },
-  ],
-};
+export default [
+  {
+    input: "theme/src/js/index.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap.js",
+        format: "iife",
+        name: "fraap",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
+  {
+    input: "focus-visible/src/focus-visible.js",
+    plugins: [nodeResolve()],
+    output: [
+      {
+        file: "theme/dist/js/polyfill/focus-visible.js",
+        format: "umd",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
+];

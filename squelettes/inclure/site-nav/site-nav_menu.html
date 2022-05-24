@@ -1,0 +1,38 @@
+<BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
+  <B_entrees_racine>
+    <ul id="menu-#ENV{index}" role="list" class="site-nav_list">
+      <BOUCLE_entrees_racine(MENUS_ENTREES){id_menu}{par rang}>
+        [(#ENV{contexte}|setenv{contexte})]
+        [(#COMPTEUR_BOUCLE|setenv{rang})]
+        [(#TYPE_ENTREE|=={fraap_racine}|?{
+          [(#SET{type_entree, ''})],
+          [(#SET{type_entree, ' '})]
+          <li class="site-nav_item" data-type-link="shortcut">
+            <a class="site-nav_link site-nav_link--back" href="#menu-0" data-menu-controls="menu-0" aria-label="<:fraap_squelettes:nav_bouton_retour:>">
+              [(#INCLURE{fond=images/icon-arrow-double-left-32.svg, class-svg=icon-nav-back, class-path1=icon-nav-back_path1, class-path2=icon-nav-back_path2})]
+            </a>
+          </li>
+        })]
+        [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+        [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+        [(#SET{entree, ''})]
+
+        [(#MENUS_AFFICHER_ENTREE)
+        #SET{entree, ' '}
+        [(#SET{titre, #PARAMETRES|table_valeur{titre}|sinon{#INFO_TITRE{#GET{objet}, #GET{id_objet}}}})]
+        [(#SET{url, #INFO_URL{#GET{objet}, #GET{id_objet}}})]
+        ]
+        <BOUCLE_sous_menu(MENUS){id_menus_entree}{si #GET{entree}|et{#GET{type_entree}}}>
+          <INCLURE{fond=inclure/site-nav/site-nav_sous-menu, env, id_menu, identifiant} />
+        </BOUCLE_sous_menu>
+        [(#REM)
+          <!--
+            On ferme le li si le type d'entrée accepte des sous-menus
+            et si on a bien quelque chose dans le <li>
+          -->]
+        [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+        </li>]
+      </BOUCLE_entrees_racine>
+    </ul>
+  </B_entrees_racine>
+</BOUCLE_sitenav_racine>

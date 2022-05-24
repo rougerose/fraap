@@ -1,0 +1,83 @@
+/// SITE-NAV-TOP
+///
+/// Variante TOP, placée dans le header du site.
+
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+
+// Version avec ET sans js
+.site-nav-top {
+  .site-nav_list {
+    display: flex;
+    margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
+    gap: settings.$FRAAP-GLOBAL-GUTTER;
+  }
+
+  .site-nav_link {
+    border-radius: 0.125rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.15rem;
+  }
+
+  button.site-nav_link {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.site-nav-top {
+  // Version sans js
+  .no-js & {
+    .site-nav_list {
+      flex-wrap: wrap;
+      margin: unset;
+      padding: 0;
+    }
+  }
+
+  // Version avec js
+  .js & {
+    .site-nav_list {
+      display: none;
+    }
+
+    .site-nav_item {
+      position: relative;
+
+      &::before {
+        display: block;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+        content: "";
+        width: settings.$FRAAP-NAV-DOTS-SIZE;
+        height: settings.$FRAAP-NAV-DOTS-SIZE;
+        border-radius: 100%;
+        background-color: red;
+        transition: transform 0.3s;
+        transform: translateY(-50%);
+        transform-origin: center left;
+      }
+
+      &:hover {
+        &::before {
+          transform: translateY(-50%) scale(1.75);
+        }
+      }
+    }
+  }
+}
+
+ @include mq.mq($from: navTop) {
+  .site-nav-top {
+    .js & {
+      .site-nav_list {
+        display: flex;
+      }
+    }
+  }
+}

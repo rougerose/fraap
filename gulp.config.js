@@ -21,9 +21,9 @@ module.exports = {
   },
   clean: ["theme/dist/css/*.css", "theme/dist/js/*.js", "!theme/dist/"],
   tasks: {
-    scss: true,
+    scss: false,
     js: true,
-    clean: true,
-    reload: true,
+    clean: false,
+    reload: false,
   },
 };

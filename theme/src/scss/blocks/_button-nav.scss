@@ -1,0 +1,61 @@
+/// BUTTON-NAV
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.button-nav {
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem;
+  position: relative;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    content: "";
+    width: settings.$FRAAP-NAV-DOTS-SIZE;
+    height: settings.$FRAAP-NAV-DOTS-SIZE;
+    border-radius: 100%;
+    background-color: red;
+    transition: transform 0.3s;
+    transform: translate(-50%, -50%);
+    transform-origin: left center;
+  }
+
+  &:hover {
+    &::before {
+      transform: translate(-50%, -50%) scale(1.75);
+    }
+  }
+}
+
+.button-nav-burger {
+  path {
+    transition: d 0.25s;
+  }
+}
+
+.button-nav-burger[aria-expanded="true"],
+.button-nav-close {
+  path {
+    d: path("M20,25 80,75M50,50 50,50M20,75 80,25");
+  }
+}
+
+@include mq.mq($from: navTop) {
+  .button-nav-burger,
+  .button-nav-search {
+    margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
+  }
+
+  .button-nav-burger {
+    display: none;
+  }
+}
