@@ -173,6 +173,10 @@
 
     &--icon {
       justify-content: space-between;
+
+      &:hover {
+        color: blue;
+      }
     }
   }
 }

@@ -27,12 +27,12 @@
   padding: 0.5rem;
   stroke: currentColor;
   stroke-width: 3px;
+  transition: transform 0.3s ease-out, stroke 0.1s;
   width: 2rem;
 }
 
 .icon-nav-back {
   background-color: gainsboro;
-  transition: transform 0.3s ease-out, stroke 0.1s;
 
   &_path1,
   &_path2 {
@@ -41,7 +41,7 @@
   }
 
   a:hover & {
-    stroke: red;
+    stroke: currentColor;
     transform: translateX(-1rem);
 
     &_path1 {
@@ -55,7 +55,6 @@
 }
 
 .icon-nav-forward {
-  transition: transform 0.3s ease-out, stroke 0.1s;
 
   &_path1,
   &_path2 {
@@ -64,7 +63,7 @@
   }
 
   a:hover & {
-    stroke: red;
+    stroke: currentColor;
     transform: translateX(1rem);
 
     &_path1 {
@@ -83,11 +82,11 @@
   --iconPathTransform: none;
   --iconPathOffset: translateX(0.75rem);
   --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
-  transition: transform 0.3s ease-out;
 
   a:hover & {
     --iconPathOpacity: 1;
     --iconPathTransform: var(--iconPathOffset);
+    stroke: currentColor;
     transform: translateX(1rem);
   }
 

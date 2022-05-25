@@ -14,7 +14,6 @@ const commonjs = require("@rollup/plugin-commonjs");
 const config = {
   server: {
     proxy: "http://localhost:8888/fraap.exp.dev",
-    notify: false,
   },
   scss: {
     src: "theme/src/scss",
@@ -105,16 +104,17 @@ const reloadBrowser = function (done) {
 const watchSource = function (done) {
   watch(config.scss.src + "/**/*.scss", series(scss, reloadBrowser));
   watch(config.js.src + "/**/*.js", series(js, reloadBrowser));
-  watch(config.html.src, series(scss, reloadBrowser));
+  watch(config.html.src, series(scss, js, reloadBrowser));
   done();
 };
 
 
 // Export tasks
+// exports.default = series(clean, parallel(scss), startServer, watchSource);
 exports.default = series(clean, parallel(scss, js));
+exports.dev = series(clean, parallel(scss, js));
+exports.build = series(clean, parallel(scss, js));
+exports.server = series(clean, parallel(scss, js), startServer, watchSource);
 exports.clean = clean;
 exports.js = js;
 exports.scss = series(clean, scss);
-exports.dev = series(clean, parallel(scss, js));
-exports.build = series(clean, parallel(scss, js));
-exports.server = series(clean, parallel(scss, js), startServer, watchSource)

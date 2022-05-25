@@ -36,16 +36,15 @@
   }
 }
 
-.button-nav-burger {
-  path {
-    transition: d 0.25s;
-  }
-}
-
-.button-nav-burger[aria-expanded="true"],
 .button-nav-close {
-  path {
-    d: path("M20,25 80,75M50,50 50,50M20,75 80,25");
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(180deg);
+    }
   }
 }
 
