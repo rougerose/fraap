@@ -1,6 +1,6 @@
-module.exports = ({ env }) => ({
-  plugins: [
-    require("autoprefixer"),
-    env === "production" ? require("postcss-csso")() : false,
-  ],
+module.exports = (ctx) => ({
+  plugins: {
+    "autoprefixer": {},
+    "postcss-csso": ctx.env === "production" ? {} : false,
+  },
 });
