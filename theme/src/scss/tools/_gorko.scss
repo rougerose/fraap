@@ -107,6 +107,8 @@ $gorko-colors: (
           "200": 20,
           "300": 30,
           "400": 40,
+          "500": 50,
+          "600": 60,
         ),
         "output": "standard",
         "property": "z-index",
@@ -136,5 +138,5 @@ $gorko-colors: (
     )
 );
 
-// Forward gorko so it ca be used elsewhere.
+// Forward gorko so it can be used elsewhere.
 @forward "gorko/gorko";

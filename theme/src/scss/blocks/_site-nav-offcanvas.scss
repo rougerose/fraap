@@ -8,43 +8,56 @@
 @use "../tools/mq" as mq;
 @use "../tools/gorko" as gorko;
 
-.site-nav-offcanvas {
+$zindex: gorko.get-utility-value('stack', '400');
 
+.site-nav-offcanvas {
+  --zindex: #{$zindex};
   &,
-  .site-nav_overlay {
+  & .site-nav_overlay {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: var(--zindex);
   }
 
-  & {
-    display: flex;
-    z-index: gorko.get-utility-value('stack', '400');
+  & .site-nav_overlay {
+    background-color: rgba(43, 46, 56, 0.9);
+    transition: opacity 0.4s ease;
+    opacity: 0;
   }
 
-  .no-js &[aria-hidden="true"] {
+  & .site-nav_wrapper {
+    transition: transform 0.5s ease;
+    transform: translateX(-100%);
+  }
+
+
+  &[aria-hidden="true"] {
     display: none;
   }
 
-  .js &[data-menu-status="closed"] {
+  &[data-menu-status="closed"] {
     display: flex;
     visibility: hidden;
-    pointer-events: none;
-
-    & .site-nav_wrapper {
-      transform: translateX(-100%);
-    }
-
-    & .site-nav_overlay {
-      opacity: 0;
-    }
+    // pointer-events: none;
   }
 
-  .js &[data-menu-status="closing"] {
+  &[data-menu-status="open"] {
     display: flex;
-    visibility: visible;
+
+    & .site-nav_overlay {
+      opacity: 1;
+    }
+
+    & .site-nav_wrapper {
+      transform: translateX(0);
+    }
+  }
+
+  &[data-menu-status="closing"] {
+    display: flex;
 
     & .site-nav_wrapper {
       transform: translateX(-100%);
@@ -53,12 +66,6 @@
     & .site-nav_overlay {
       opacity: 0;
     }
-  }
-
-  .site-nav_overlay {
-    background-color: rgba(43, 46, 56, 0.9);
-    opacity: 1;
-    transition: opacity 0.4s ease;
   }
 
   .site-nav_wrapper {
@@ -68,10 +75,9 @@
     margin-right: auto;
     padding: 0 var(--space-s);
     position: relative;
-    transform: translateX(0);
-    transition: transform 0.5s ease;
+
     width: 100%;
-    z-index: gorko.get-utility-value('stack', '400');
+    z-index: calc(var(--zindex) + 1);
 
     & > * {
       min-width: 0;
@@ -111,6 +117,16 @@
     }
   }
 
+  ul {
+    & ul {
+      padding: 0.125rem;
+
+      & ul {
+        padding-left: 1.8rem;
+      }
+    }
+  }
+
   .site-nav_list {
     display: block;
     font-size: var(--step-1);
@@ -138,16 +154,6 @@
         content: "—";
         align-self: baseline;
         margin-right: 0.5rem;
-      }
-    }
-  }
-
-  ul {
-    & ul {
-      padding: 0.125rem;
-
-      & ul {
-        padding-left: 1.8rem;
       }
     }
   }
@@ -180,6 +186,7 @@
     }
   }
 }
+
 
 @include mq.mq($from: navOffcanvas) {
   .site-nav-offcanvas {
