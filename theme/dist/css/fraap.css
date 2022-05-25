@@ -467,13 +467,11 @@ h5 {
   transform: translate(-50%, -50%) scale(1.75);
 }
 
-.button-nav-burger path {
-  transition: d 0.25s;
+.button-nav-close svg {
+  transition: transform 0.3s;
 }
-
-.button-nav-burger[aria-expanded=true] path,
-.button-nav-close path {
-  d: path("M20,25 80,75M50,50 50,50M20,75 80,25");
+.button-nav-close:hover svg {
+  transform: rotate(180deg);
 }
 
 @media (min-width: 67.5em) {
@@ -511,19 +509,19 @@ h5 {
   padding: 0.5rem;
   stroke: currentColor;
   stroke-width: 3px;
+  transition: transform 0.3s ease-out, stroke 0.1s;
   width: 2rem;
 }
 
 .icon-nav-back {
   background-color: gainsboro;
-  transition: transform 0.3s ease-out, stroke 0.1s;
 }
 .icon-nav-back_path1, .icon-nav-back_path2 {
   transform-origin: center;
   transition: transform 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 a:hover .icon-nav-back {
-  stroke: red;
+  stroke: currentColor;
   transform: translateX(-1rem);
 }
 a:hover .icon-nav-back_path1 {
@@ -533,15 +531,12 @@ a:hover .icon-nav-back_path2 {
   transform: scale(0.8) translateX(0.5rem);
 }
 
-.icon-nav-forward {
-  transition: transform 0.3s ease-out, stroke 0.1s;
-}
 .icon-nav-forward_path1, .icon-nav-forward_path2 {
   transform-origin: center;
   transition: transform 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 a:hover .icon-nav-forward {
-  stroke: red;
+  stroke: currentColor;
   transform: translateX(1rem);
 }
 a:hover .icon-nav-forward_path1 {
@@ -556,11 +551,11 @@ a:hover .icon-nav-forward_path2 {
   --iconPathTransform: none;
   --iconPathOffset: translateX(0.75rem);
   --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
-  transition: transform 0.3s ease-out;
 }
 a:hover .icon-nav-link {
   --iconPathOpacity: 1;
   --iconPathTransform: var(--iconPathOffset);
+  stroke: currentColor;
   transform: translateX(1rem);
 }
 .icon-nav-link_path1 {
@@ -830,6 +825,9 @@ a:hover .icon-nav-link {
 }
 .site-nav-offcanvas .site-nav_link--icon {
   justify-content: space-between;
+}
+.site-nav-offcanvas .site-nav_link--icon:hover {
+  color: blue;
 }
 
 @media (min-width: 28.75em) {
