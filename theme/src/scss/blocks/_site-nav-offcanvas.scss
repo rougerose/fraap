@@ -6,27 +6,23 @@
 @use "sass:map";
 @use "sass:math";
 @use "../tools/mq" as mq;
-@use "../tools/gorko" as gorko;
-
-$zindex: gorko.get-utility-value('stack', '400');
 
 .site-nav-offcanvas {
-  --zindex: #{$zindex};
-  &,
-  & .site-nav_overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: var(--zindex);
-  }
+  // &,
+  // & .site-nav_overlay {
+  //   // position: fixed;
+  //   // top: 0;
+  //   // right: 0;
+  //   // bottom: 0;
+  //   // left: 0;
+  //   // z-index: var(--zindex);
+  // }
 
-  & .site-nav_overlay {
-    background-color: rgba(43, 46, 56, 0.9);
-    transition: opacity 0.4s ease;
-    opacity: 0;
-  }
+  // & .site-nav_overlay {
+  //   // background-color: rgba(43, 46, 56, 0.9);
+  //   // transition: opacity 0.4s ease;
+  //   // opacity: 0;
+  // }
 
   & .site-nav_wrapper {
     transition: transform 0.5s ease;
@@ -34,38 +30,38 @@ $zindex: gorko.get-utility-value('stack', '400');
   }
 
 
-  &[aria-hidden="true"] {
-    display: none;
-  }
+  // &[aria-hidden="true"] {
+  //   display: none;
+  // }
 
-  &[data-menu-status="closed"] {
-    display: flex;
-    visibility: hidden;
-    // pointer-events: none;
-  }
+  // &[data-menu-status="closed"] {
+  //   display: flex;
+  //   visibility: hidden;
+  //   pointer-events: none;
+  // }
 
-  &[data-menu-status="open"] {
-    display: flex;
+  &[data-dialog-status="open"] {
+    // display: flex;
 
-    & .site-nav_overlay {
-      opacity: 1;
-    }
+    // & .site-nav_overlay {
+    //   opacity: 1;
+    // }
 
     & .site-nav_wrapper {
       transform: translateX(0);
     }
   }
 
-  &[data-menu-status="closing"] {
-    display: flex;
+  &[data-dialog-status="closing"] {
+    // display: flex;
 
     & .site-nav_wrapper {
       transform: translateX(-100%);
     }
 
-    & .site-nav_overlay {
-      opacity: 0;
-    }
+    // & .site-nav_overlay {
+    //   opacity: 0;
+    // }
   }
 
   .site-nav_wrapper {
@@ -77,7 +73,7 @@ $zindex: gorko.get-utility-value('stack', '400');
     position: relative;
 
     width: 100%;
-    z-index: calc(var(--zindex) + 1);
+    z-index: calc(var(--dialog-zindex) + 1);
 
     & > * {
       min-width: 0;

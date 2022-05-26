@@ -1,0 +1,59 @@
+/// DIALOG
+
+
+.dialog {
+  &,
+  .dialog_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: var(--dialog-zindex);
+  }
+
+  &[aria-hidden="true"],
+  &[aria-hidden="true"][data-dialog-status="closed"] {
+    display: none;
+  }
+
+  &[data-dialog-status="closed"] {
+    display: flex;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &[data-dialog-status="open"] {
+    display: flex;
+
+    & .dialog_overlay {
+      opacity: 1;
+    }
+  }
+
+  &[data-dialog-status="closing"] {
+    display: flex;
+
+    & .dialog_overlay {
+      opacity: 0;
+    }
+  }
+}
+
+.dialog_overlay {
+  background-color: rgba(43, 46, 56, 0.9);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.dialog_close {
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}

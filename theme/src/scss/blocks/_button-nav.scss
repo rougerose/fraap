@@ -4,13 +4,6 @@
 @use "../tools/mq" as mq;
 
 .button-nav {
-  background-color: transparent;
-  border: none;
-  border-radius: 100%;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.15rem;
   position: relative;
 
   &::before {
@@ -32,18 +25,6 @@
   &:hover {
     &::before {
       transform: translate(-50%, -50%) scale(1.75);
-    }
-  }
-}
-
-.button-nav-close {
-  svg {
-    transition: transform 0.3s;
-  }
-
-  &:hover {
-    svg {
-      transform: rotate(180deg);
     }
   }
 }

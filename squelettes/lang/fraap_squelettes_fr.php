@@ -7,6 +7,10 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 $GLOBALS[$GLOBALS['idx_lang']] = [
 	// B
 	'bouton_valider' => 'Valider',
+
+	// D
+	'dialog_bouton_fermer' => 'Fermer la fenêtre',
+
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',
 

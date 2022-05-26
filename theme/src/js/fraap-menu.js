@@ -1,10 +1,10 @@
+import toggleState from "./util-toggle-state";
+import * as smoothscroll from "smoothscroll-polyfill";
 import A11yDialog from "a11y-dialog";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import * as smoothscroll from "smoothscroll-polyfill";
 
 const menu = {};
 const menuOffcanvasId = "siteNavOffcanvas";
-const menuOffcanvasOpenerId = "buttonNavBurger";
 const menuShortcutsId = "navShortcuts";
 
 /**
@@ -25,7 +25,6 @@ const menuOffCanvasInit = () => {
 
   if (container) {
     let content = container.querySelector('div[role="document"]'),
-      openBtn = document.querySelector("#" + menuOffcanvasOpenerId),
       dialog = new A11yDialog(container),
       shortcuts = content.querySelectorAll(
         'li[data-type-link="shortcut"] [href][data-menu-controls]'
@@ -45,7 +44,6 @@ const menuOffCanvasInit = () => {
     return {
       container,
       content,
-      openBtn,
       dialog,
     };
   } else {
@@ -55,60 +53,46 @@ const menuOffCanvasInit = () => {
 
 // Proxy pour enregistrer l'état du menu.
 // 3 états possibles: open / closing / closed
-const state = new Proxy(
+const menuState = new Proxy(
   {
-    status: "open",
-    enabled: false,
+    status: "open"
   },
   {
     set(state, key, value) {
       const oldValue = state[key];
       state[key] = value;
       if (oldValue !== value) {
-        processState();
+        processMenuState();
       }
       return state;
     },
   }
 );
 
-const toggleState = (newStatus) => {
-  if (newStatus) {
-    if (state.status === newStatus) {
-      return;
-    }
-    state.status = newStatus;
-  } else {
-    state.status = state.status === "closed" ? "open" : "closed";
-  }
-};
-
-const processState = () => {
-  let offcanvas = menu.offcanvas.container,
-    openBtn = menu.offcanvas.openBtn;
-
+const processMenuState = () => {
+  let offcanvas = menu.offcanvas.container;
   // Statut du menu par défaut
-  offcanvas.setAttribute("data-menu-status", state.status);
+  offcanvas.setAttribute("data-dialog-status", menuState.status);
 
   // Statut de bouton d'ouverture
-  switch (state.status) {
-    case "closed":
-      openBtn.setAttribute("aria-expanded", "false");
-      break;
-    case "open":
-      openBtn.setAttribute("aria-expanded", "true");
-      break;
-    case "closing":
-      openBtn.setAttribute("aria-expanded", "false");
-      break;
-  }
+  // switch (menuState.status) {
+  //   case "closed":
+  //     openBtn.setAttribute("aria-expanded", "false");
+  //     break;
+  //   case "open":
+  //     openBtn.setAttribute("aria-expanded", "true");
+  //     break;
+  //   case "closing":
+  //     openBtn.setAttribute("aria-expanded", "false");
+  //     break;
+  // }
 };
 
-const dialogTransitionEnd = (event) => {
+const menuDialogTransitionEnd = (event) => {
   // Considérer uniquement le div[role="document"] et non le bouton de fermeture
   if (event.target.hasAttribute("role")) {
-    toggleState("closed");
-    event.target.removeEventListener("transitionend", dialogTransitionEnd);
+    toggleState(menuState, "closed");
+    event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
     let body = event.target.querySelector(".site-nav_body");
     resetMenu(body);
     // Rétablir le scroll
@@ -220,19 +204,19 @@ const fraapMenuInit = () => {
   menu.offcanvas = menuOffCanvasInit();
 
   if (menu.offcanvas) {
-    toggleState();
+    toggleState(menuState);
 
     menu.offcanvas.dialog.on("show", (dialogEl, dialogEvent) => {
-      toggleState();
+      toggleState(menuState, "open");
       // Désactiver le scroll en dehors du menu
       disableBodyScroll(menu.offcanvas.content);
     });
 
     menu.offcanvas.dialog.on("hide", (dialogEl, dialogEvent) => {
-      toggleState("closing");
+      toggleState(menuState, "closing");
       menu.offcanvas.content.addEventListener(
         "transitionend",
-        dialogTransitionEnd
+        menuDialogTransitionEnd
       );
     });
   }

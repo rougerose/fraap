@@ -1,0 +1,36 @@
+/// DIALOG-RECHERCHE
+
+
+// .dialog-recherche {}
+
+.dialog-recherche_content {
+  border-radius: 4px;
+  box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.10);
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+  margin: auto;
+  max-width: 80%;
+  padding: 3rem;
+  width: 48rem;
+  transition-property: transform, opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(.25,.46,.45,.94);
+  z-index: var(--dialog-zindex);
+
+  .dialog[data-dialog-status="closed"] &,
+  .dialog[data-dialog-status="closing"] & {
+    opacity: 0;
+    transform: translateY(35%);
+  }
+
+  .dialog[data-dialog-status="open"] & {
+    transform: translateY(0);
+  }
+}
+
+.dialog-recherche_formulaire {
+  width: 100%;
+}

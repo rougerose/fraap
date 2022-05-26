@@ -1,0 +1,7 @@
+@use "../settings";
+@use "../tools/gorko" as gorko;
+// $zindex: gorko.get-utility-value('stack', '400');
+
+:root {
+  --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
+}
