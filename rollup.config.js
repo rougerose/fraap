@@ -14,4 +14,15 @@ export default [
       },
     ],
   },
+  {
+    input: "theme/src/js/index.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap.js",
+        format: "iife",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
 ];
