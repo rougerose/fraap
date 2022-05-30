@@ -13,7 +13,7 @@ const commonjs = require("@rollup/plugin-commonjs");
 // CONFIG
 const config = {
   server: {
-    proxy: "http://localhost:8888/fraap.exp.dev/",
+    proxy: "http://localhost:8888/fraap.nursit.dev/",
   },
   scss: {
     src: "theme/src/scss/",
@@ -42,15 +42,11 @@ const config = {
     ],
   },
   copy: {
-    src: ["node_modules/focus-visible/dist/focus-visible.min.js"],
+    src: ["node_modules/focus-visible/dist/focus-visible.js"],
     dest: "theme/dist/js/polyfill/",
   },
   html: { src: "squelettes/**/*.html" },
-  clean: [
-    "theme/dist/css/*.css",
-    "theme/dist/js/*.js",
-    "!theme/dist/",
-  ],
+  clean: ["theme/dist/css/*.css", "theme/dist/js/*.js", "!theme/dist/"],
   tasks: {
     scss: true,
     js: true,
@@ -89,7 +85,7 @@ const scss = function (done) {
 const js = function (done) {
   if (!config.tasks.js) return done();
   return rollup.rollup({
-    input: config.js.src + "/index.js",
+    input: config.js.src + "index.js",
     plugins: [nodeResolve(), commonjs()],
   }).then(bundle => {
     return bundle.write({
@@ -98,13 +94,6 @@ const js = function (done) {
       plugins: [process.env.NODE_ENV === "production" && terser()]
     });
   });
-}
-
-// Copy task
-const copy = (done) => {
-  if (!config.tasks.copy) return done();
-  return src(config.copy.src)
-    .pipe(dest(config.copy.dest));
 }
 
 // Server task
@@ -126,7 +115,7 @@ const reloadBrowser = function (done) {
 
 // Watch
 const watchSource = function (done) {
-  watch(config.scss.src + "**/*.scss", series(scss));
+  watch(config.scss.src + "**/*.scss", series(scss, reloadBrowser));
   watch(config.js.src + "**/*.js", series(js, reloadBrowser));
   watch(config.html.src, series(reloadBrowser));
   done();
@@ -138,5 +127,5 @@ exports.build = series(clean, parallel(scss, js));
 exports.server = series(clean, parallel(scss, js), startServer, watchSource);
 exports.clean = clean;
 exports.js = js;
-exports.copy = copy;
+// exports.copy = copy;
 exports.scss = series(clean, scss);

@@ -7,9 +7,10 @@
   "license": "GPLv3",
   "private": true,
   "scripts": {
-    "build": "NODE_ENV=production gulp build",
-    "dev": "NODE_ENV=development gulp dev",
-    "server": "NODE_ENV=development gulp server"
+    "build": "NODE_ENV=production gulp build && NODE_ENV=production rollup -c",
+    "dev": "NODE_ENV=development gulp dev && NODE_ENV=development rollup -c",
+    "server": "NODE_ENV=development gulp server",
+    "copy:polyfill": "rollup -c"
   },
   "browserslist": [
     "defaults, not ie 11"
