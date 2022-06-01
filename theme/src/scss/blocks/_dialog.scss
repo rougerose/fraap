@@ -12,10 +12,13 @@
     z-index: var(--dialog-zindex);
   }
 
-  &[aria-hidden="true"],
-  &[aria-hidden="true"][data-dialog-status="closed"] {
-    display: none;
-  }
+  // &[aria-hidden="true"],
+  // &[aria-hidden="true"][data-dialog-status="closed"] {
+  //   display: none;
+  // }
+  &[aria-hidden="true"] {
+    display: none
+  };
 
   &[data-dialog-status="closed"] {
     display: flex;

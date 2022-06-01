@@ -1,13 +1,77 @@
-<BOUCLE_demo(ARTICLES){id_article=705}>
-  <div class="wrapper">
-    <button class="" data-a11y-dialog-show="siteNavOffcanvas">
-      ouvrir menu
-    </button>
-    <article class="prose flow">
-      <h1>#TITRE</h1>
-      [<p>(#SOUSTITRE)</p>]
-      <div class="chapo flow">#CHAPO</div>
-      <div class="texte flow">#TEXTE</div>
-    </article>
+<div class="page-sommaire">
+  <BOUCLE_accueil_actualites(SELECTIONS){identifiant=accueil-actualites}>
+    <B_contenus_actualites>
+      <div class="page-sommaire_section section section--angleBottom">
+        <div class="wrapper">
+          <div class="page-sommaire_news section_container">
+            <h2 class="page-sommaire_headline">À la une</h2>
+            <ul class="auto-grid" role="list">
+              <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
+                <li class="card">
+                  <div class="card_content flow">
+                    <h3 class="card_heading"><a href="#URL">#TITRE</a></h3>
+                    [<div class="card_desc flow">(#DESCRIPTIF)</div>]
+                    [<div class="card_image">
+                      <a href="#URL">
+                        <img src="(#LOGO_SELECTIONS_CONTENU|image_passe_partout{500,375}|image_reduire{500,0}|image_recadre{500,375,center, '#ffffff'}|extraire_attribut{src})" alt="">
+                      </a>
+                    </div>]
+                  </div>
+                </li>
+              </BOUCLE_contenus_actualites>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </B_contenus_actualites>
+  </BOUCLE_accueil_actualites>
+
+  <BOUCLE_accueil_apropos(SELECTIONS){identifiant=accueil-apropos}>
+    <B_contenus_apropos>
+      <div class="page-sommaire_section section section--bandeau">
+        <div class="section_masked">
+          <div class="section_bgmask">
+            <div class="section_background"></div>
+          </div>
+        </div>
+        <div class="section_container">
+          <div class="wrapper">
+            <h2 class="page-sommaire_headline">À propos de la Fraap</h2>
+          </div>
+          <div class="carousel">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <BOUCLE_contenus_apropos(SELECTIONS_CONTENUS){id_selection}{par rang}>
+                  <div class="swiper-slide">
+                    <div class="card-carousel card-carousel--flat flow">
+                      [(#SET{iconID, ''})]
+                      [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
+                      <h3 class="card-carousel_heading card-carousel_heading--flat with-icon">
+                        <a href="#URL">
+                          [(#GET{iconID}|oui)
+                            [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
+                            [(#INCLURE{fond=#GET{iconURL}, svg=icon-#GET{iconID}})]
+                          ]
+                          #TITRE
+                        </a>
+                      </h3>
+                      [<div class="card-carousel_desc flow">(#DESCRIPTIF)</div>]
+                    </div>
+                  </div>
+                </BOUCLE_contenus_apropos>
+              </div>
+              <div class="carousel_navigation">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div class="carousel_pagination swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </B_contenus_apropos>
+  </BOUCLE_accueil_apropos>
+  <div>
+    <br><br><br><br><br>
   </div>
-</BOUCLE_demo>
+</div>

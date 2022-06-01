@@ -1,7 +1,13 @@
 @use "../settings";
 @use "../tools/gorko" as gorko;
-// $zindex: gorko.get-utility-value('stack', '400');
 
 :root {
+  --auto-grid-placement: auto-fit;
+  --auto-grid-gutter: var(--space-m-xl);
+  --auto-grid-gutter-column: var(--space-m-xl);
+  --auto-grid-gutter-row: var(--space-xl);
+  --auto-grid-min-item-size: 250px;
+  --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
+  --card-flow-space: 1.75rem;
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
 }

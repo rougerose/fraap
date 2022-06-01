@@ -1191,7 +1191,7 @@
     clearTimeout(onScrollTimeout);
     onScrollTimeout = setTimeout(() => {
       event.target.removeEventListener("scroll", onScroll, { passive: true });
-      onScrollEnd.map((fn) => fn());
+      onScrollEnd.map((fn) => {fn();});
       onScrollEnd = [];
     }, 50);
   };
@@ -1373,5 +1373,6 @@
 
   fraapMenu.init();
   fraapDialogRecherche.init();
+  //
 
 })();

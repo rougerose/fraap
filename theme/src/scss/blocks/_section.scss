@@ -1,0 +1,41 @@
+.section {
+  --section-paddingTop: 56px;
+  --section-paddingBottom: 56px;
+  position: relative;
+}
+
+.section--bandeau {
+ --section-paddingTop: calc((100vw * 0.052) * 2);
+ --section-paddingBottom: calc((100vw * 0.052));
+}
+
+.section--angleBottom {
+  --section-paddingBottom: calc((100vw * 0.052) + 96px);
+}
+
+// .section_masked {}
+
+.section_bgmask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.section_background {
+  position: relative;
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  transform: skewY(-3deg);
+  transform-origin: center;
+}
+
+.section_container {
+  position: relative;
+  padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
+}
+
+.section_layout {
+  // --section-paddingTop: 0;
+  // --section-paddingBottom: 0;
+}

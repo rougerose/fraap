@@ -106,7 +106,7 @@ const onScroll = (event) => {
   clearTimeout(onScrollTimeout);
   onScrollTimeout = setTimeout(() => {
     event.target.removeEventListener("scroll", onScroll, { passive: true });
-    onScrollEnd.map((fn) => fn());
+    onScrollEnd.map((fn) => {fn()});
     onScrollEnd = [];
     isScroll = false;
   }, 50);

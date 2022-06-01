@@ -1,11 +1,11 @@
 .wrapper {
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--space-m-l);
   max-width: 80rem;
 }
 
-@media (min-width: 68em) {
-  .wrapper {
-    padding: 0 3rem;
-  }
-}
+// @media (min-width: 68em) {
+//   .wrapper {
+//     padding: 0 3rem;
+//   }
+// }

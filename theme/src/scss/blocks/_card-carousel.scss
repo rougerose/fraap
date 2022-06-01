@@ -1,0 +1,48 @@
+/// CARD-CAROUSEL
+
+.card-carousel {
+
+  &.flow {
+    --flow-space: var(--card-flow-space);
+  }
+
+  a:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.card-carousel_heading {
+
+  &--flat {
+    &::after {
+      background-color: black;
+      content: "";
+      display: block;
+      height: 1px;
+      margin-top: 0.25em;
+      width: 100%;
+    }
+  }
+
+  &.with-icon {
+    font-size: var(--step-6);
+
+    & a {
+      display: flex;
+    }
+
+    & svg {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+
+.card-carousel_desc {
+  max-width: 60ch;
+  font-size: var(--step-1);
+
+  & a {
+    color: white;
+  }
+}

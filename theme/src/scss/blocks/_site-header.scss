@@ -16,16 +16,14 @@
   padding-bottom: var(--space-s);
 
   &_wrapper {
-    padding-left: var(--space-s-l);
-    padding-right: var(--space-s-l);
+    padding-left: var(--space-m-l);
+    padding-right: var(--space-m-l);
   }
 
   &_logo {
     border-radius: 0.125rem;
     display: inline-flex;
-    // flex: 1;
-    // height: var(--site-header-logo); // 56px -> 81px
-    height: 60px;
+    height: 3.5rem; // 56px
 
     & svg {
     height: 100%;
@@ -44,7 +42,7 @@
   &_nav {
     display: flex;
     justify-content: space-between;
-    gap: settings.$FRAAP-GLOBAL-GUTTER;
+    gap: var(--space-2xs);
     align-items: flex-start;
     flex-wrap: wrap;
     font-size: 1rem;
@@ -52,7 +50,7 @@
 
   &_links {
     display: flex;
-    gap: settings.$FRAAP-GLOBAL-GUTTER;
+    gap: var(--space-2xs);
     align-items: center;
   }
 }
@@ -65,74 +63,10 @@
   }
 }
 
-// Styles communs à no-js ET js
-// .site-header {
-//   background-color: white;
-//   padding: 0 var(--space-xs-l) 0;
-
-//   &_inner {
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: space-between;
-//     gap: var(--gutter, settings.$global-gutter);
-//     flex-direction: column;
-//   }
-
-//   // &_logo {}
-
-//   // &_baseline {}
-
-//   // &_nav {}
-
-//   &_burger {
-//     display: none;
-//     padding: 0.5rem;
-//     margin-right: -0.5rem;
-
-//     & path {
-//       transition: d 0.25s;
-//     }
-
-//     &[aria-expanded="true"] {
-//       & path {
-//         d: path("M8,8 24,24 M16,16 16,16 M24,8 8,24");
-//       }
-//     }
-//   }
-// }
-
-// tweakpoint
-// @media (min-width: 30em) {
-//   .site-header {
-//     &_baseline {
-//       left: 3rem;
-//     }
-//   }
-// }
-
-// TODO: utiliser une valeur de breakpoint générique
-// @media (max-width: 60em) {
-//   .js {
-//     & .site-header_burger {
-//       display: block;
-//     }
-//   }
-// }
-
-// .js {
-//   & .site-header {
-//     &_inner {
-//       flex-direction: row;
-//       position: relative;
-//       bottom: -1.2rem;
-//       padding-top: 0.5rem;
-//     }
-
-//     &_baseline {
-//       position: absolute;
-//       bottom: -1.2rem;
-//     }
-
-//     // &_nav {}
-//   }
-// }
+@include mq.mq($from: 22em) {
+  .site-header {
+    &_logo {
+      height: 4rem; // 68px
+    }
+  }
+}

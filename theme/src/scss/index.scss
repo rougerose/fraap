@@ -1,4 +1,3 @@
-
 // 01 - settings
 @use "settings";
 
@@ -12,7 +11,7 @@
 @use "global";
 
 // 04 - compositions
-// @use "compositions";
+@use "compositions";
 
 // 05 - blocks
 @use "blocks";
@@ -23,7 +22,7 @@
 @use "utilities";
 
 // 08 - pages
-// @use "utilities";
+@use "pages";
 
 // XX - Tiers : Spip
 @use "thirdparties";

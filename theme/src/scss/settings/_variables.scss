@@ -31,7 +31,7 @@ $GORKO-BREAKPOINTS: ();
 }
 
 // FOCUS
-$FRAAP-FOCUS-OUTLINE-WIDTH: 0.125rem;
+$FRAAP-FOCUS-OUTLINE-WIDTH: 2px;
 
 /// FONTS
 $FRAAP-FONT-BASE-SANS: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
@@ -43,4 +43,4 @@ $FRAAP-GLOBAL-GUTTER: var(--space-xs);
 
 // NAV
 $FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
-$FRAAP-NAV-DOTS-SIZE: 2.2rem;
+$FRAAP-NAV-DOTS-SIZE: 35px;

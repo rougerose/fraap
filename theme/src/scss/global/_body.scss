@@ -5,10 +5,9 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  // padding-left: var(--space-xs-l);
   background-color: settings.$FRAAP-COLOR-PAPER;
   color: settings.$FRAAP-COLOR-INK;
   font-family: settings.$FRAAP-FONT-BASE-SANS;
-  // font-size: var(--step-0);
-  // line-height: 1.2;
+  font-size: var(--step-0);
+  line-height: 1.35;
 }

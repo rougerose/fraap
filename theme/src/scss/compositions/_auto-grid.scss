@@ -1,0 +1,14 @@
+/// AUTO-GRID
+/// Source : https://every-layout.dev/layouts/grid/
+
+@use "../settings";
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--auto-grid-placement, auto-fill),
+    minmax(var(--auto-grid-min-item-size, 16rem), 1fr)
+  );
+  column-gap: var(--auto-grid-gutter-column, #{settings.$FRAAP-GLOBAL-GUTTER});
+  row-gap: var(--auto-grid-gutter-row, #{settings.$FRAAP-GLOBAL-GUTTER});
+}
