@@ -1,7 +1,11 @@
 @use "../settings";
+@use "sass:math";
 @use "../tools/gorko" as gorko;
 
+$layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
+
 :root {
+  --angle-sin: 0.052;
   --auto-grid-placement: auto-fit;
   --auto-grid-gutter: var(--space-m-xl);
   --auto-grid-gutter-column: var(--space-m-xl);
@@ -10,4 +14,5 @@
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
   --card-flow-space: 1.75rem;
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
+  --layout-width-max: #{$layout-width-max};
 }

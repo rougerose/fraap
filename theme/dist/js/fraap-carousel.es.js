@@ -5535,6 +5535,7 @@ const fraapCarouselInit = (el) => {
   new Swiper(el, {
     modules: [Pagination, Navigation],
     slidesPerView: "auto",
+    grabCursor: true,
     pagination: {
       el: ".swiper-pagination",
       clickable: true,

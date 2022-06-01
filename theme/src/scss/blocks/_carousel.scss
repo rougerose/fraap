@@ -1,17 +1,16 @@
 /// CAROUSEL
 /// Règles spécifiques et surcharge des règles de swipers.js
 
-// @use "../settings";
-// @use "../tools/mq" as mq;
+@use "../settings";
+@use "../tools/mq" as mq;
 
 .carousel {
   overflow: hidden;
 
   .swiper {
     overflow: visible;
-    // padding: 0 var(--space-m-l) var(--space-2xl);
-    padding: 0 var(--space-l) var(--space-2xl) var(--space-xl);
-    max-width: 80rem;
+    padding: 0 var(--space-m-l) var(--space-xl);
+    max-width: var(--layout-width-max);
     z-index: var(--carousel-zindex);
   }
 
@@ -22,7 +21,7 @@
   .swiper-slide {
     padding-right: var(--space-m-xl);
     max-width: 100%;
-    width: 40rem;
+    width: 35rem;
   }
 }
 
@@ -37,8 +36,7 @@
     border-radius: 100%;
     box-shadow: 0 4px 4px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
     bottom: 4px;
-    // top: auto;
-    top: calc(50% - var(--space-2xl));
+    top: auto;
     width: var(--swiper-navigation-size);
     z-index: calc(var(--carousel-zindex) + 2);
 
@@ -47,13 +45,13 @@
     }
   }
 
-  // & .swiper-button-prev {
-  //   left: var(--space-m-l);
-  // }
+  & .swiper-button-prev {
+    left: var(--space-m-l);
+  }
 
-  // & .swiper-button-next {
-  //   right: var(--space-m-l);
-  // }
+  & .swiper-button-next {
+    right: var(--space-m-l);
+  }
 }
 
 .carousel_pagination {
@@ -64,5 +62,25 @@
   &.swiper-pagination-bullets.swiper-pagination-horizontal {
     bottom: 4px;
     z-index: calc(var(--carousel-zindex) + 1);
+  }
+}
+
+
+@include mq.mq($from: xl) {
+  .carousel {
+    .swiper-slide {
+      width: 50%;
+    }
+  }
+  .carousel_navigation {
+    & .swiper-button-prev {
+      top: 50%;
+      left: calc(var(--space-xs) * -1);
+    }
+
+    & .swiper-button-next {
+      top: 50%;
+      right: calc(var(--space-xs) * -1);
+    }
   }
 }

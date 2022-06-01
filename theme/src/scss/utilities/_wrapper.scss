@@ -1,11 +1,8 @@
+@use "../settings";
+@use "sass:math";
+
 .wrapper {
   margin: 0 auto;
   padding: 0 var(--space-m-l);
-  max-width: 80rem;
+  max-width: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
 }
-
-// @media (min-width: 68em) {
-//   .wrapper {
-//     padding: 0 3rem;
-//   }
-// }

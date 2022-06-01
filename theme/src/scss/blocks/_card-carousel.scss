@@ -25,14 +25,17 @@
   }
 
   &.with-icon {
-    font-size: var(--step-6);
+    font-size: var(--step-5);
 
     & a {
       display: flex;
+      align-items: flex-end;
     }
 
     & svg {
       margin-right: 0.5em;
+      height: 1.2em;
+      width: 1.2em;
     }
   }
 }
@@ -40,7 +43,6 @@
 
 .card-carousel_desc {
   max-width: 60ch;
-  font-size: var(--step-1);
 
   & a {
     color: white;

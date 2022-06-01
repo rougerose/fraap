@@ -1,16 +1,26 @@
+/// SECTION
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+
 .section {
-  --section-paddingTop: 56px;
-  --section-paddingBottom: 56px;
+  --section-paddingTop: var(--space-xl);
+  --section-paddingBottom: var(--space-xl);
   position: relative;
 }
 
 .section--bandeau {
- --section-paddingTop: calc((100vw * 0.052) * 2);
- --section-paddingBottom: calc((100vw * 0.052));
+ --section-paddingTop: calc((100vw * #{var(--angle-sin)}) * 1.5);
+ --section-paddingBottom: calc((100vw * #{var(--angle-sin)}) * 1.5);
+
+ @include mq.mq($from: xl) {
+   --section-paddingBottom: calc((100vw * #{var(--angle-sin)})); // Rééquilibrer le bloc
+ }
 }
 
 .section--angleBottom {
-  --section-paddingBottom: calc((100vw * 0.052) + 96px);
+  --section-paddingBottom: calc((100vw * #{var(--angle-sin)}) * 1.5);
 }
 
 // .section_masked {}
@@ -35,7 +45,7 @@
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
 
-.section_layout {
-  // --section-paddingTop: 0;
-  // --section-paddingBottom: 0;
-}
+// .section_layout {
+//   // --section-paddingTop: 0;
+//   // --section-paddingBottom: 0;
+// }
