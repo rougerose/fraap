@@ -17,7 +17,7 @@
     "server:init": "browser-sync start -p 'http://localhost:8888/fraap.nursit.dev/'",
     "server:reload": "browser-sync reload",
     "watch": "npm run compile && npm run watch:files",
-    "watch:files": "npm run watch:scss & npm run watch:js",
+    "watch:files": "npm run watch:scss & npm run watch:js & npm run watch:html",
     "watch:html": "chokidar 'squelettes/**/*.html' -c 'npm run server:reload'",
     "watch:js": "chokidar 'theme/src/js/**/*.js' -c 'npm run compile:js && npm run server:reload'",
     "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'npm run compile:scss && npm run compile:postcss && npm run server:reload'"
@@ -43,6 +43,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.35.1",
     "sass-mq": "^6.0.0",
-    "smoothscroll-polyfill": "^0.4.4"
+    "smoothscroll-polyfill": "^0.4.4",
+    "swiper": "^8.1.6"
   }
 }

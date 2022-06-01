@@ -23,6 +23,27 @@ export default [
         format: "iife",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
+      {
+        file: "theme/dist/js/fraap.es.js",
+        format: "es",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
+  {
+    input: "theme/src/js/fraap-carousel.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-carousel.js",
+        format: "iife",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+      {
+        file: "theme/dist/js/fraap-carousel.es.js",
+        format: "es",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
     ],
   },
 ];
