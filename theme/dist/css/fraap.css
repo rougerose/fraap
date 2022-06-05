@@ -1218,6 +1218,13 @@ a:hover .icon-nav-link {
   z-index: -1;
 }
 
+.teaser-network_map-svg #mapGroup1 {
+  fill: black;
+}
+.teaser-network_map-svg #mapGroup2 {
+  fill: none;
+}
+
 .teaser-network_map-dot {
   fill: red;
 }

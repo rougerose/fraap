@@ -1414,8 +1414,6 @@
 
   /**
    * Mettre à zéro le compteur des associations
-   * @param {*} element
-   * @param {*} attr
    */
   const resetCompteur = (element, attr) => {
     let compteurTexte = element.querySelector("[data-network-counter-text]"),
@@ -1458,7 +1456,9 @@
    * via une classe.
    */
   const animerCarte = (element, attr) => {
-    let pointsNode = element.querySelectorAll("circle"),
+    let pointsNode = element
+        .querySelector("#mapGroup2")
+        .querySelectorAll("circle"),
       total = attr.fin,
       pointsListe = [].slice.call(pointsNode),
       points = [],
