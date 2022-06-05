@@ -374,7 +374,7 @@ ol[role=list] {
 
 @media (min-width: 46.25em) {
   :root {
-    --section-angle-padding-bottom-base-min: 64;
+    --section-angle-padding-bottom-base-min: 16;
     --section-angle-padding-bottom-base-max: 128;
     --section-angle-padding-top-base-min: 48;
     --section-angle-padding-top-base-max: 128;
@@ -887,23 +887,30 @@ a:hover .icon-nav-link {
 }
 
 .section {
-  --section-paddingTop: var(--space-xl);
-  --section-paddingBottom: var(--space-xl);
+  --section-marginBottom: calc(var(--section-angle-height) * -1);
   position: relative;
 }
 .section--angleTop {
   --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
 .section--angleBottom {
-  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--angleTopBottom {
-  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --section-paddingTop: 0;
   --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
-.section--angleTopBottomMax {
+.section--angleTopBottom {
   --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
   --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.section--bandeau {
+  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.section--overlap {
+  margin-bottom: var(--section-marginBottom);
+}
+
+.section_masked {
+  overflow: hidden;
 }
 
 .section_bgmask {
@@ -918,11 +925,14 @@ a:hover .icon-nav-link {
   height: 100%;
   width: 100%;
   transform: skewY(-3deg);
-  transform-origin: 0 0;
+  transform-origin: 100% 0;
 }
 
 .section_container {
   position: relative;
+}
+
+.section_content {
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
 

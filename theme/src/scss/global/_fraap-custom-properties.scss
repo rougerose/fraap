@@ -27,7 +27,7 @@ $layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
 
 @include mq.mq($from: m) {
   :root {
-    --section-angle-padding-bottom-base-min: 64;
+    --section-angle-padding-bottom-base-min: 16;
     --section-angle-padding-bottom-base-max: 128;
     --section-angle-padding-top-base-min: 48;
     --section-angle-padding-top-base-max: 128;

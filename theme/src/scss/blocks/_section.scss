@@ -6,33 +6,37 @@
 
 
 .section {
-  --section-paddingTop: var(--space-xl);
-  --section-paddingBottom: var(--space-xl);
-  // --section-marginBottom: 0;
+  --section-marginBottom: calc(var(--section-angle-height) * -1);
   position: relative;
-  // margin-bottom: var(--section-marginBottom);
 
   &--angleTop {
     --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
   }
 
   &--angleBottom {
-    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-  }
-
-  &--angleTopBottom {
-    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingTop: 0;
     --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
   }
 
-  &--angleTopBottomMax {
+  &--angleTopBottom {
     --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
     --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--bandeau {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--overlap {
+    margin-bottom: var(--section-marginBottom);
   }
 }
 
 
-// .section_masked {}
+.section_masked {
+  overflow: hidden;
+}
 
 .section_bgmask {
   position: absolute;
@@ -46,10 +50,13 @@
   height: 100%;
   width: 100%;
   transform: skewY(-3deg);
-  transform-origin: 0 0;
+  transform-origin: 100% 0;
 }
 
 .section_container {
   position: relative;
+}
+
+.section_content {
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
