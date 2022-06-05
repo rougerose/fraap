@@ -1,5 +1,4 @@
 import Swiper, { Navigation, Pagination } from "swiper";
-// import Swiper from "swiper";
 
 const fraapCarouselInit = (el) => {
   let carousel = new Swiper(el, {

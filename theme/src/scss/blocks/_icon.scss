@@ -20,15 +20,15 @@
 .icon-nav-forward,
 .icon-nav-back,
 .icon-nav-link {
-  border-radius: 100%;
+  border-radius: var(--icon-nav-border-radius, 100%);
   fill: none;
   flex-shrink: 0;
-  height: 32px;
-  padding: 8px;
+  height: var(--icon-nav-height, 32px);
+  padding: var(--icon-nav-padding, 8px);
   stroke: currentColor;
-  stroke-width: 3px;
+  stroke-width: var(--icon-nav-stroke-width, 3px);
   transition: transform 0.3s ease-out, stroke 0.1s;
-  width: 32px;
+  width: var(--icon-nav-width, 32px);
 }
 
 .icon-nav-back {
@@ -87,7 +87,7 @@
     --iconPathOpacity: 1;
     --iconPathTransform: var(--iconPathOffset);
     stroke: currentColor;
-    transform: translateX(12px);
+    transform: var(--iconPathOffset);
   }
 
   &_path1 {

@@ -25,4 +25,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// N
 	'nav_bouton_fermer' => 'Fermer la navigation',
 	'nav_bouton_retour' => 'Retour',
+
+	// T
+	'teaser_reseau_total_associations' => 'Un réseau de @total@ associations & collectifs',
 ];

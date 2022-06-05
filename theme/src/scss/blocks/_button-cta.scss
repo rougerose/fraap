@@ -1,0 +1,41 @@
+/// BUTTON CALL TO ACTION
+
+.button-cta {
+  // --buttonCta-fontsize: var(--step-1);
+  color: currentColor;
+  text-decoration: none;
+  font-size: var(--buttonCta-fontsize);
+  white-space: nowrap;
+
+  &.with-icon {
+    --icon-nav-border-radius: 0;
+    --icon-nav-height: 0.75em;
+    --icon-nav-width: 0.75em;
+    --icon-nav-padding: 0;
+    --icon-nav-stroke-width: 4px;
+    display: flex;
+    align-items: center;
+
+    svg.icon-nav-link {
+      fill: currentColor;
+      margin-left: 0.5em;
+
+      .icon-nav-link_path1 {
+        transform: translateX(-6px);
+      }
+    }
+
+    &:hover {
+      .icon-nav-link {
+        --iconPathOffset: translateX(6px);
+      }
+    }
+  }
+
+  &.variant-button {
+    padding: 8px 8px;
+    background-color: red;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+}

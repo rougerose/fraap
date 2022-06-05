@@ -5532,8 +5532,6 @@
       });
     }
 
-    // import Swiper from "swiper";
-
     const fraapCarouselInit = (el) => {
       new Swiper(el, {
         modules: [Pagination, Navigation],

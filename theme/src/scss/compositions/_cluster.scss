@@ -6,7 +6,7 @@
 .cluster {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gutter, settings.$global-gutter);
+  gap: var(--gutter, settings.$FRAAP-GLOBAL-GUTTER);
   justify-content: var(--cluster-horizontal-alignment, flex-start);
   align-items: var(--cluster-vertical-alignment, center);
 }

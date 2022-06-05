@@ -1,0 +1,99 @@
+
+// @use "../settings";
+@use "../tools/mq" as mq;
+@use "sass:math";
+
+
+.teaser-network {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    flex-grow: 1;
+    flex-basis: calc((35rem - 100%) * 999);
+  }
+}
+
+.teaser-network_content {
+  --flow-space: var(--space-s-l);
+}
+
+.teaser-network_headline {
+  display: flex;
+  justify-content: center;
+}
+
+.teaser-network_heading {
+  &-text {
+    font-size: var(--step-4);
+  }
+
+  &-svg {
+    font-family: Glypha;
+    font-weight: 300;
+  }
+
+  &-text {
+    font-size: 40px;
+    transition: transform 0.8s ease-in, opacity 0.5s;
+
+    &.segment-3 {
+      transition-delay: 0.1s;
+    }
+  }
+
+  &-total {
+    font-size: 150px;
+    font-weight: 600;
+  }
+}
+
+.teaser-network_action {
+  --cluster-horizontal-alignment: space-between;
+}
+
+.teaser-network_image {
+  position: relative;
+  height: 50vw;
+}
+
+.teaser-network_map {
+  top: var(--space-l);
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.teaser-network_map-dot {
+  fill: red;
+}
+
+.teaser-network {
+  .js &,
+  &[data-network-animation="wait"] {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+
+  &[data-network-animation="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@include mq.mq($from: (math.div(614, 16) * 1em)) {
+  .teaser-network_headline {
+    justify-content: flex-start;
+  }
+
+  .teaser-network_image {
+    height: auto;
+  }
+
+  .teaser-network_map {
+    width: 150%;
+    transform: translateY(-20%);
+  }
+}

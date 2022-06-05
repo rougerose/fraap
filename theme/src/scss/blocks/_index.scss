@@ -1,4 +1,5 @@
 @use "button";
+@use "button-cta";
 @use "button-icon";
 @use "button-nav";
 @use "card";
@@ -10,10 +11,11 @@
 @use "dialog-recherche";
 
 // @use "logo";
-@use "prose";
+// @use "prose";
 @use "section";
 @use "site-header";
 @use "site-content";
 @use "site-nav";
 @use "site-nav-top";
 @use "site-nav-offcanvas";
+@use "teaser";

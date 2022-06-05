@@ -4,24 +4,33 @@
 @use "../tools/mq" as mq;
 
 
+
 .section {
   --section-paddingTop: var(--space-xl);
   --section-paddingBottom: var(--space-xl);
+  // --section-marginBottom: 0;
   position: relative;
+  // margin-bottom: var(--section-marginBottom);
+
+  &--angleTop {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleBottom {
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleTopBottom {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleTopBottomMax {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
 }
 
-.section--bandeau {
- --section-paddingTop: calc((100vw * #{var(--angle-sin)}) * 1.5);
- --section-paddingBottom: calc((100vw * #{var(--angle-sin)}) * 1.5);
-
- @include mq.mq($from: xl) {
-   --section-paddingBottom: calc((100vw * #{var(--angle-sin)})); // Rééquilibrer le bloc
- }
-}
-
-.section--angleBottom {
-  --section-paddingBottom: calc((100vw * #{var(--angle-sin)}) * 1.5);
-}
 
 // .section_masked {}
 
@@ -37,15 +46,10 @@
   height: 100%;
   width: 100%;
   transform: skewY(-3deg);
-  transform-origin: center;
+  transform-origin: 0 0;
 }
 
 .section_container {
   position: relative;
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
-
-// .section_layout {
-//   // --section-paddingTop: 0;
-//   // --section-paddingBottom: 0;
-// }

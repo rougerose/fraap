@@ -28,7 +28,7 @@
 
   <BOUCLE_accueil_apropos(SELECTIONS){identifiant=accueil-apropos}>
     <B_contenus_apropos>
-      <div class="page-sommaire_section section section--bandeau">
+      <div class="page-sommaire_section section section--angleTopBottom">
         <div class="section_masked">
           <div class="section_bgmask">
             <div class="section_background"></div>
@@ -71,7 +71,43 @@
       </div>
     </B_contenus_apropos>
   </BOUCLE_accueil_apropos>
-  <div>
-    <br><br><br><br><br>
+  <div class="page-sommaire_section section section--angleTopBottom">
+    <div class="section_container">
+      <div class="wrapper">
+        <BOUCLE_compteur_associations(ARTICLES){id_rubrique=3}> </BOUCLE_compteur_associations>
+          #SET{total, #TOTAL_BOUCLE}
+        </B_compteur_associations>
+        <div class="teaser-network" data-network data-network-total="#GET{total}" data-network-duree="2000" data-network-delai="0" data-network-animation="false">
+          <div class="teaser-network_content flow">
+            <div class="teaser-network_headline">
+              <h2 class="teaser-network_heading-text visually-hidden"><:fraap_squelettes:teaser_reseau_total_associations{total=#GET{total}}:></h2>
+              [(#INCLURE{fond=images/teaser-network-heading.svg, svg=teaser-network_heading-svg, total=#GET{total}})]
+            </div>
+            <div class="teaser-network_action cluster">
+              <a href="#" class="button-cta variant-button with-icon">Adhérer à la fédération [(#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+              <a href="#" class="button-cta variant-link with-icon">Consulter l'annuaire des associations [(#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+            </div>
+          </div>
+          <div class="teaser-network_image">
+            <div class="teaser-network_map">
+              [(#INCLURE{fond=images/map-dots-4-330.svg, svg=map})]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- outils -->
+  <div class="page-sommaire_section section section--angleTopBottom">
+    <div class="section_masked">
+      <div class="section_bgmask">
+        <div class="section_background"></div>
+      </div>
+      <div class="section_container">
+        <div class="wrapper">
+            <h2 class="page-sommaire_headline">À propos de la Fraap</h2>
+          </div>
+      </div>
+    </div>
   </div>
 </div>

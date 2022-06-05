@@ -1,6 +1,7 @@
 @use "../settings";
 @use "sass:math";
 @use "../tools/gorko" as gorko;
+@use "../tools/mq" as mq;
 
 $layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
 
@@ -11,8 +12,24 @@ $layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
   --auto-grid-gutter-column: var(--space-m-xl);
   --auto-grid-gutter-row: var(--space-xl);
   --auto-grid-min-item-size: 250px;
+  --buttonCta-fontsize: var(--step-0);
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
   --card-flow-space: 1.75rem;
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
   --layout-width-max: #{$layout-width-max};
+  --section-marginBottom: 0;
+  --section-angle-height: calc(100vw * var(--angle-sin));
+  --section-angle-padding-bottom-base-min: 48;
+  --section-angle-padding-bottom-base-max: 64;
+  --section-angle-padding-top-base-min: 32;
+  --section-angle-padding-top-base-max: 64;
+}
+
+@include mq.mq($from: m) {
+  :root {
+    --section-angle-padding-bottom-base-min: 64;
+    --section-angle-padding-bottom-base-max: 128;
+    --section-angle-padding-top-base-min: 48;
+    --section-angle-padding-top-base-max: 128;
+  }
 }

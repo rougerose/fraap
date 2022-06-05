@@ -5529,8 +5529,6 @@ function Pagination(_ref) {
   });
 }
 
-// import Swiper from "swiper";
-
 const fraapCarouselInit = (el) => {
   new Swiper(el, {
     modules: [Pagination, Navigation],
