@@ -1,0 +1,30 @@
+<div class="page-sommaire_section section section--angleTopBottom section--overlap">
+  <div class="section_masked">
+    <div class="wrapper">
+      <div class="section_container">
+        <div class="section_content">
+          <BOUCLE_compteur_associations(ARTICLES){id_rubrique}> </BOUCLE_compteur_associations>
+            #SET{total, #TOTAL_BOUCLE}
+          </B_compteur_associations>
+          <div class="teaser-network" data-network data-network-total="#GET{total}" data-network-duree="2000" data-network-delai="0" data-network-animation="false">
+            <div class="teaser-network_content flow">
+              <div class="teaser-network_headline">
+                <h2 class="teaser-network_headline-text visually-hidden"><:fraap_squelettes:reseau_teaser_headline{total=#GET{total}}:></h2>
+                [(#INCLURE{fond=images/teaser-network-headline.svg, svg=teaser-network_headline-svg, total=#GET{total}})]
+              </div>
+              <div class="teaser-network_action cluster">
+                <a href="#" class="button-cta variant-button with-icon"><:fraap_squelettes:federation_adherer_cta:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+                <a href="#" class="button-cta variant-link with-icon"><:fraap_squelettes:reseau_annuaire_consulter_cta:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+              </div>
+            </div>
+            <div class="teaser-network_image">
+              <div class="teaser-network_map">
+                [(#INCLURE{fond=images/map-dots-4-330.svg, svg=teaser-network_map-svg})]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

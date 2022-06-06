@@ -1,155 +1,17 @@
 <div class="page-sommaire">
   <BOUCLE_accueil_actualites(SELECTIONS){identifiant=accueil-actualites}>
-    <B_contenus_actualites>
-      <div class="page-sommaire_section section section--angleBottom">
-        <div class="section_masked">
-          <div class="wrapper">
-            <div class="page-sommaire_news section_container">
-              <div class="section_content">
-                <h2 class="page-sommaire_headline">À la une</h2>
-                <ul class="auto-grid" role="list">
-                  <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                    <li class="card">
-                      <div class="card_content flow">
-                        <h3 class="card_heading"><a href="#URL">#TITRE</a></h3>
-                        [<div class="card_desc flow">(#DESCRIPTIF)</div>]
-                        [<div class="card_image">
-                          <a href="#URL">
-                            <img src="(#LOGO_SELECTIONS_CONTENU|image_passe_partout{500,375}|image_reduire{500,0}|image_recadre{500,375,center, '#ffffff'}|extraire_attribut{src})" alt="">
-                          </a>
-                        </div>]
-                      </div>
-                    </li>
-                  </BOUCLE_contenus_actualites>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </B_contenus_actualites>
+    <INCLURE{fond=inclure/selections/accueil-actualites, id_selection}/>
   </BOUCLE_accueil_actualites>
 
   <BOUCLE_accueil_apropos(SELECTIONS){identifiant=accueil-apropos}>
-    <B_contenus_apropos>
-      <div class="page-sommaire_section section section--bandeau">
-        <div class="section_masked">
-          <div class="section_bgmask">
-            <div class="section_background"></div>
-          </div>
-          <div class="section_container">
-            <div class="section_content">
-              <div class="wrapper">
-                <h2 class="page-sommaire_headline">À propos de la Fraap</h2>
-              </div>
-              <div class="carousel">
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <BOUCLE_contenus_apropos(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                      <div class="swiper-slide">
-                        <div class="card-carousel card-carousel--flat flow">
-                          [(#SET{iconID, ''})]
-                          [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
-                          [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
-                          <h3 class="card-carousel_heading card-carousel_heading--flat[(#CHEMIN{#GET{iconURL}|concat{.html}}|oui) with-icon]">
-                            <a href="#URL">
-                              [(#CHEMIN{#GET{iconURL}|concat{.html}}|oui)
-                                [(#INCLURE{fond=#GET{iconURL}, svg=card-carsousel card-carousel--flat icon-#GET{iconID}})]
-                              ]
-                              #TITRE
-                            </a>
-                          </h3>
-                          [<div class="card-carousel_desc flow">(#DESCRIPTIF)</div>]
-                        </div>
-                      </div>
-                    </BOUCLE_contenus_apropos>
-                  </div>
-                  <div class="carousel_navigation">
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                  </div>
-                  <div class="carousel_pagination swiper-pagination"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </B_contenus_apropos>
+    <INCLURE{fond=inclure/selections/accueil-apropos, id_selection}/>
   </BOUCLE_accueil_apropos>
 
-  <div class="page-sommaire_section section section--angleTopBottom section--overlap">
-    <div class="section_masked">
-      <div class="wrapper">
-        <div class="section_container">
-          <div class="section_content">
-            <BOUCLE_compteur_associations(ARTICLES){id_rubrique=3}> </BOUCLE_compteur_associations>
-              #SET{total, #TOTAL_BOUCLE}
-            </B_compteur_associations>
-            <div class="teaser-network" data-network data-network-total="#GET{total}" data-network-duree="2000" data-network-delai="0" data-network-animation="false">
-              <div class="teaser-network_content flow">
-                <div class="teaser-network_headline">
-                  <h2 class="teaser-network_heading-text visually-hidden"><:fraap_squelettes:teaser_reseau_total_associations{total=#GET{total}}:></h2>
-                  [(#INCLURE{fond=images/teaser-network-heading.svg, svg=teaser-network_heading-svg, total=#GET{total}})]
-                </div>
-                <div class="teaser-network_action cluster">
-                  <a href="#" class="button-cta variant-button with-icon">Adhérer à la fédération [(#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
-                  <a href="#" class="button-cta variant-link with-icon">Consulter l'annuaire des associations [(#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
-                </div>
-              </div>
-              <div class="teaser-network_image">
-                <div class="teaser-network_map">
-                  [(#INCLURE{fond=images/map-dots-4-330.svg, svg=teaser-network_map-svg})]
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- outils -->
-  <BOUCLE_outils(SELECTIONS){identifiant=accueil-outils}>
-    <div class="page-sommaire_section section section--bandeau">
-      <div class="section_masked">
-        <div class="section_bgmask">
-          <div class="section_background"></div>
-        </div>
-        <div class="section_container">
-          <div class="section_content">
-            <div class="wrapper">
-                <h2 class="page-sommaire_headline">Les outils de la Fraap</h2>
-            </div>
-            <div class="carousel">
-              <div class="swiper">
-                <div class="swiper-wrapper">
-                  <BOUCLE_contenus_outils(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                    <div class="swiper-slide swiper-slide--box">
-                      <div class="card-carousel card-carousel--box">
-                        [(#SET{iconID, ''})]
-                        [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
-                        [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
-                        [<a href="#URL">
-                          (#INCLURE{fond=#GET{iconURL}, svg=card-carousel_icon card-carousel_icon--box icon-#GET{iconID}})
-                        </a>]
-                        <div class="card-carousel_content card-carousel_content--box flow">
-                          <h3 class="card-carousel_heading card-carousel_heading--box"><a href="#URL">#TITRE</a></h3>
-                          [<div class="card-box_desc flow">(#DESCRIPTIF)</div>]
-                        </div>
-                      </div>
-                    </div>
-                  </BOUCLE_contenus_outils>
-                </div>
-                <div class="carousel_navigation">
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-                <div class="carousel_pagination swiper-pagination"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </BOUCLE_outils>
+  <BOUCLE_accueil_teaser_network(ARTICLES){id_rubrique=3}{0,1}>
+    <INCLURE{fond=inclure/teasers/reseau, id_rubrique}/>
+  </BOUCLE_accueil_teaser_network>
+
+  <BOUCLE_accueil_outils(SELECTIONS){identifiant=accueil-outils}>
+    <INCLURE{fond=inclure/selections/accueil-outils, id_selection}/>
+  </BOUCLE_accueil_outils>
 </div>

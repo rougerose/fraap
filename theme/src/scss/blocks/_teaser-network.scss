@@ -21,9 +21,7 @@
 .teaser-network_headline {
   display: flex;
   justify-content: center;
-}
 
-.teaser-network_heading {
   &-text {
     font-size: var(--step-4);
   }
@@ -33,7 +31,7 @@
     font-weight: 300;
   }
 
-  &-text {
+  &-svgText {
     font-size: 40px;
     transition: transform 0.8s ease-in, opacity 0.5s;
 
@@ -42,14 +40,16 @@
     }
   }
 
-  &-total {
+  &-svgTotal {
     font-size: 150px;
     font-weight: 600;
   }
 }
 
 .teaser-network_action {
-  --cluster-horizontal-alignment: space-between;
+  &.cluster {
+    --gutter: var(--space-m);
+  }
 }
 
 .teaser-network_image {
@@ -62,7 +62,6 @@
   position: absolute;
   width: 100%;
   z-index: -1;
-  // display: none;
 }
 
 .teaser-network_map-svg {
@@ -93,7 +92,8 @@
   }
 }
 
-
+/// Le seuil est calculé sur la base du seuil appliqué
+/// au parent .teaser-network (35rem soit ~ 614px)
 @include mq.mq($from: (math.div(614, 16) * 1em)) {
   .teaser-network_headline {
     justify-content: flex-start;

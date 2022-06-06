@@ -5,11 +5,19 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 $GLOBALS[$GLOBALS['idx_lang']] = [
+
+	// A
+	'actualites_headline' => 'À la une',
+	'a_propos_headline' => 'À propos de la Fraap',
+
 	// B
 	'bouton_valider' => 'Valider',
 
 	// D
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
+
+	// F
+	'federation_adherer_cta' => 'Adhérer à la Fédération',
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',
@@ -26,6 +34,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'nav_bouton_fermer' => 'Fermer la navigation',
 	'nav_bouton_retour' => 'Retour',
 
-	// T
-	'teaser_reseau_total_associations' => 'Un réseau de @total@ associations & collectifs',
+	// O
+	'outils_headline' => 'Les outils de la Fraap',
+
+	// R
+	'reseau_annuaire_consulter_cta' => 'Découvrir le réseau',
+	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
 ];

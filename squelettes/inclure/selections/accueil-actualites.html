@@ -1,0 +1,28 @@
+<B_contenus_actualites>
+  <div class="page-sommaire_section section section--angleBottom">
+    <div class="section_masked">
+      <div class="wrapper">
+        <div class="section_container">
+          <div class="section_content">
+            <h2 class="section_headline"><:fraap_squelettes:actualites_headline:></h2>
+            <ul class="auto-grid" role="list">
+              <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
+                <li class="card">
+                  <div class="card_content flow">
+                    <h3 class="card_heading"><a href="#URL">#TITRE</a></h3>
+                    [<div class="card_desc flow">(#DESCRIPTIF)</div>]
+                    [<div class="card_image">
+                      <a href="#URL">
+                        <img src="(#LOGO_SELECTIONS_CONTENU|image_passe_partout{500,375}|image_reduire{500,0}|image_recadre{500,375,center, '#ffffff'}|extraire_attribut{src})" alt="">
+                      </a>
+                    </div>]
+                  </div>
+                </li>
+              </BOUCLE_contenus_actualites>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</B_contenus_actualites>
