@@ -361,6 +361,7 @@ ol[role=list] {
   --auto-grid-min-item-size: 250px;
   --buttonCta-fontsize: var(--step-0);
   --carousel-zindex: 10;
+  --card-icon-size: 1.2em;
   --card-flow-space: 1.75rem;
   --dialog-zindex: 40;
   --layout-width-max: 75rem;
@@ -633,10 +634,20 @@ h5 {
 .card-carousel.flow {
   --flow-space: var(--card-flow-space);
 }
+.card-carousel--box {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(242, 13, 13, 0.1);
+  display: flex;
+  gap: var(--space-m);
+  height: 100%;
+  padding: var(--space-m);
+}
 .card-carousel a:not(:hover) {
   text-decoration: none;
 }
 
+.card-carousel_heading--flat {
+  font-size: var(--step-5);
+}
 .card-carousel_heading--flat::after {
   background-color: black;
   content: "";
@@ -645,8 +656,9 @@ h5 {
   margin-top: 0.25em;
   width: 100%;
 }
-.card-carousel_heading.with-icon {
-  font-size: var(--step-5);
+.card-carousel_heading--box {
+  font-size: var(--step-3);
+  font-weight: 500;
 }
 .card-carousel_heading.with-icon a {
   display: flex;
@@ -656,6 +668,21 @@ h5 {
   margin-right: 0.5em;
   height: 1.2em;
   width: 1.2em;
+}
+
+.card-carousel_icon {
+  height: var(--card-icon-size);
+  width: var(--card-icon-size);
+}
+.card-carousel_icon--flat {
+  margin-right: 0.5em;
+}
+.card-carousel_icon--box {
+  font-size: var(--step-6);
+}
+
+.card-carousel_content--box {
+  flex: 1;
 }
 
 .card-carousel_desc {
@@ -670,7 +697,7 @@ h5 {
 }
 .carousel .swiper {
   overflow: visible;
-  padding: 0 var(--space-m-l) var(--space-xl);
+  padding: var(--space-xs) var(--space-m-l) var(--space-xl);
   max-width: var(--layout-width-max);
   z-index: var(--carousel-zindex);
 }
@@ -681,6 +708,10 @@ h5 {
   padding-right: var(--space-m-xl);
   max-width: 100%;
   width: 35rem;
+  height: auto;
+}
+.carousel .swiper-slide--box {
+  padding-right: var(--space-m);
 }
 
 .carousel_navigation {

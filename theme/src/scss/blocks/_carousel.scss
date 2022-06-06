@@ -9,7 +9,7 @@
 
   .swiper {
     overflow: visible;
-    padding: 0 var(--space-m-l) var(--space-xl);
+    padding: var(--space-xs) var(--space-m-l) var(--space-xl);
     max-width: var(--layout-width-max);
     z-index: var(--carousel-zindex);
   }
@@ -22,6 +22,11 @@
     padding-right: var(--space-m-xl);
     max-width: 100%;
     width: 35rem;
+    height: auto;
+
+    &--box {
+      padding-right: var(--space-m);
+    }
   }
 }
 

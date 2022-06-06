@@ -14,6 +14,7 @@ $layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
   --auto-grid-min-item-size: 250px;
   --buttonCta-fontsize: var(--step-0);
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
+  --card-icon-size: 1.2em;
   --card-flow-space: 1.75rem;
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
   --layout-width-max: #{$layout-width-max};
