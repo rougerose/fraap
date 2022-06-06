@@ -25,10 +25,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// M
 	'menu_articles_rubrique_nom' => "Fraap : tous les articles d'une rubrique",
 	'menu_entree_enfants' => 'Cet objet possède-t-il des enfants ? (oui/non ; non est la valeur par défaut).',
+	'menu_entree_icone' => "Afficher l'icone \"-->\" après le titre ? (oui/non ; non est la valeur par défaut).",
 	'menu_branche_nom' => "Fraap : entrée d'un menu, niveaux secondaires (objets : article ou rubrique)",
 	'menu_branche_description' => 'Desc',
 	'menu_racine_nom' => "Fraap : entrée d'un menu, premier niveau (objets : article ou rubrique)",
 	'menu_racine_description' => 'Desc',
+	'menu_footer_objet_nom' => 'Fraap (pied de page) : article ou rubrique',
+	'menu_footer_objet_description' => 'Desc',
 
 	// N
 	'nav_bouton_fermer' => 'Fermer la navigation',

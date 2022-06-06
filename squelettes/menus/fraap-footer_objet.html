@@ -1,0 +1,16 @@
+#SET{id_objet, #ENV{id_objet}}
+[(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
+
+#SET{visible, oui}
+[(#ENV{type_objet}|objet_test_si_publie{#GET{id_objet}}|non) #SET{visible, non}]
+[(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos">#ENV{type_objet}-#GET{id_objet}</div>
+]
+
+<BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
+	<li class="site-nav_item[ (#ENV{css})]">
+    <a class="site-nav_link" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>[(#GET{titre})]</a>
+</BOUCLE_public>

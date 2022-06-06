@@ -5,6 +5,7 @@
 	<icone>images/menus_articles_rubrique.png</icone>
 	<parametre nom="id_rubrique" label="menus:entree_id_rubrique" />
 	<parametre nom="tri" label="menus:entree_tri_articles" />
+  <parametre nom="icone" label="fraap_squelettes:menu_entree_icone" />
 	<parametre nom="articles_max_affiches" label="menus:entree_articles_max_affiches" />
 	<refuser_sous_menu/>
 </entree>
