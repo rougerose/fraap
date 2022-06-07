@@ -12,5 +12,5 @@
 
 <BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
 	<li class="site-nav_item[ (#ENV{css})]">
-    <a class="site-nav_link" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>[(#GET{titre})]</a>
+    <a class="site-nav_link" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>[<span>(#GET{titre})</span>]</a>
 </BOUCLE_public>

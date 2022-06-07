@@ -1,11 +1,14 @@
 <body>
   <header class="site-header" role="banner">
     <!-- <a class="c-skip-link c-button" href="#contenu-principal"><:fraap_squelettes:lien_aller_au_contenu:></a> -->
-    <INCLURE{fond=header/#ENV{type-page}, env} />
+    <INCLURE{fond=header/#ENV{type-page}, env}/>
   </header>
-  <INCLURE{fond=inclure/site-nav/site-nav-offcanvas} />
+  <INCLURE{fond=inclure/site-nav/site-nav-offcanvas}/>
   <main id="contenu-principal" class="site-content">
-    <INCLURE{fond=content/#ENV{type-page},env}>
+    <INCLURE{fond=content/#ENV{type-page}, env}/>
   </main>
-  <INCLURE{fond=inclure/dialog/dialog_recherche} />
+  <footer class="site-footer">
+    <INCLURE{fond=footer/#ENV{type-page}, env}/>
+  </footer>
+  <INCLURE{fond=inclure/dialog/dialog_recherche}/>
 </body>

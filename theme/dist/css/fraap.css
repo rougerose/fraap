@@ -1031,6 +1031,37 @@ a:hover .icon-nav-link {
   margin-top: var(--space-m-l);
 }
 
+.site-footer {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-5xl);
+  background-color: black;
+  color: white;
+}
+
+.site-footer_wrapper {
+  padding-left: var(--space-m-xl);
+  padding-right: var(--space-m-xl);
+}
+
+.site-footer_nav {
+  --auto-grid-placement: auto-fit;
+  --auto-grid-min-item-size: 200px;
+}
+.site-footer_nav .site-footer_layout-secondary {
+  --auto-grid-placement: auto-fill;
+  --auto-grid-min-item-size: 220px;
+  margin-top: var(--space-m-xl);
+}
+
+.site-footer_logo {
+  max-width: 250px;
+}
+.site-footer_logo svg {
+  height: 100%;
+  width: auto;
+  fill: white;
+}
+
 .site-nav_list {
   padding: 0;
 }
@@ -1040,57 +1071,43 @@ a:hover .icon-nav-link {
   color: currentColor;
 }
 
-.site-nav-top .site-nav_list {
+.site-nav-footer .site-nav_list[data-depth] {
+  font-weight: 500;
+  font-size: var(--step--1);
+  letter-spacing: 0.3px;
+}
+.site-nav-footer .site-nav_list[data-depth] ul {
+  padding: 0.125rem;
+  padding-left: 0;
+}
+.site-nav-footer .site-nav_list[data-depth] ul ul a span {
   display: flex;
-  margin-top: -0.8em;
-  gap: var(--space-xs);
 }
-.site-nav-top .site-nav_link {
-  border-radius: 0.125rem;
-  display: flex;
-  align-items: center;
-  padding: 0 0.15rem;
+.site-nav-footer .site-nav_list[data-depth] ul ul a span::before {
+  content: "—";
+  align-self: baseline;
+  margin-right: 0.5rem;
 }
-.site-nav-top button.site-nav_link {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.site-nav-footer .site-nav_list[data-depth="0"] {
+  font-size: var(--step-0);
+  font-weight: 600;
 }
-
-.no-js .site-nav-top .site-nav_list {
-  flex-wrap: wrap;
-  margin: unset;
-  padding: 0;
-}
-.js .site-nav-top .site-nav_list {
-  display: none;
-}
-.js .site-nav-top .site-nav_item {
-  position: relative;
-}
-.js .site-nav-top .site-nav_item::before {
-  display: block;
-  position: absolute;
-  top: 50%;
-  z-index: -1;
-  content: "";
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
+.site-nav-footer .site-nav_list[data-depth="0"] > li::before {
   background-color: red;
-  transition: transform 0.3s;
-  transform: translateY(-50%);
-  transform-origin: center left;
+  content: "";
+  display: block;
+  height: 1px;
+  width: 32px;
+  margin-bottom: 1em;
 }
-.js .site-nav-top .site-nav_item:hover::before {
-  transform: translateY(-50%) scale(1.75);
+.site-nav-footer .site-nav_list[data-depth="0"] > li + li {
+  margin-top: var(--space-m);
+}
+.site-nav-footer .site-nav_item {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
-@media (min-width: 67.5em) {
-  .js .site-nav-top .site-nav_list {
-    display: flex;
-  }
-}
 .site-nav-offcanvas .site-nav_wrapper {
   transition: transform 0.5s ease;
   transform: translateX(-100%);
@@ -1215,6 +1232,57 @@ a:hover .icon-nav-link {
     left: 1rem;
   }
 }
+.site-nav-top .site-nav_list {
+  display: flex;
+  margin-top: -0.8em;
+  gap: var(--space-xs);
+}
+.site-nav-top .site-nav_link {
+  border-radius: 0.125rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.15rem;
+}
+.site-nav-top button.site-nav_link {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.no-js .site-nav-top .site-nav_list {
+  flex-wrap: wrap;
+  margin: unset;
+  padding: 0;
+}
+.js .site-nav-top .site-nav_list {
+  display: none;
+}
+.js .site-nav-top .site-nav_item {
+  position: relative;
+}
+.js .site-nav-top .site-nav_item::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+  content: "";
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: red;
+  transition: transform 0.3s;
+  transform: translateY(-50%);
+  transform-origin: center left;
+}
+.js .site-nav-top .site-nav_item:hover::before {
+  transform: translateY(-50%) scale(1.75);
+}
+
+@media (min-width: 67.5em) {
+  .js .site-nav-top .site-nav_list {
+    display: flex;
+  }
+}
 .teaser-network {
   display: flex;
   flex-wrap: wrap;
@@ -1324,6 +1392,10 @@ a:hover .icon-nav-link {
   margin: 0 auto;
   padding: 0 var(--space-m-l);
   max-width: 75rem;
+}
+
+.page-sommaire {
+  margin-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
 
 .spip-admin-float {

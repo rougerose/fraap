@@ -1,0 +1,4 @@
+
+.page-sommaire {
+  margin-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}

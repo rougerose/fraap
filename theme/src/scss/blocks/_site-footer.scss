@@ -1,0 +1,36 @@
+/// SITE-FOOTER
+
+.site-footer {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-5xl);
+  background-color: black;
+  color: white;
+}
+
+.site-footer_wrapper {
+  padding-left: var(--space-m-xl);
+  padding-right: var(--space-m-xl);
+}
+
+.site-footer_nav {
+  --auto-grid-placement: auto-fit;
+  --auto-grid-min-item-size: 200px;
+  // --auto-grid-gutter-row: var(--space-l);
+
+  .site-footer_layout-secondary {
+    --auto-grid-placement: auto-fill;
+    --auto-grid-min-item-size: 220px;
+    margin-top: var(--space-m-xl);
+  }
+}
+
+
+.site-footer_logo {
+  max-width: 250px;
+
+  & svg {
+    height: 100%;
+    width: auto;
+    fill: white;
+  }
+}
