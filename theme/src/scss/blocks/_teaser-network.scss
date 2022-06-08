@@ -43,6 +43,7 @@
   &-svgTotal {
     font-size: 150px;
     font-weight: 600;
+    fill: var(--color-primary);
   }
 }
 
@@ -75,7 +76,7 @@
 }
 
 .teaser-network_map-dot {
-  fill: red;
+  fill: var(--color-primary);
 }
 
 .teaser-network {

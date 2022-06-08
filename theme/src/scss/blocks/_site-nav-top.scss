@@ -57,13 +57,15 @@
         width: settings.$FRAAP-NAV-DOTS-SIZE;
         height: settings.$FRAAP-NAV-DOTS-SIZE;
         border-radius: 100%;
-        background-color: red;
+        background-color: var(--color-primary);
         transition: transform 0.3s;
         transform: translateY(-50%);
         transform-origin: center left;
       }
 
       &:hover {
+        color: var(--color-link);
+
         &::before {
           transform: translateY(-50%) scale(1.75);
         }

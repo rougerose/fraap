@@ -1,17 +1,22 @@
-<div class="site-footer_wrapper">
-  <nav class="site-footer_nav">
-    <div class="auto-grid site-footer_layout-primary">
+<nav class="site-footer_nav">
+  <div class="site-footer_wrapper">
+    <div class="auto-grid site-footer_layout">
       [<a href="#URL_SITE_SPIP" class="site-footer_logo">
         (#INCLURE{fond=images/fraap-logo.svg})
       </a>]
       <div class="social">social</div>
     </div>
-    <div class="auto-grid site-footer_layout-secondary">
+    <div class="auto-grid site-footer_layout">
       <BOUCLE_menus_footer(MENUS){identifiant LIKE site-nav-footer%}{par identifiant}>
         <div class="site-nav-footer">
           <INCLURE{fond=inclure/site-nav/site-nav-footer, identifiant=#IDENTIFIANT}/>
         </div>
       </BOUCLE_menus_footer>
     </div>
-  </nav>
-</div>
+    [<div class="auto-grid site-footer_layout --variant-baseline">
+      <div class="site-footer_baseline">
+        (#INCLURE{fond=images/fraap-baseline.svg})
+      </div>
+    </div>]
+  </div>
+</nav>

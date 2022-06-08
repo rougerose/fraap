@@ -51,6 +51,7 @@
 
 .dialog_close {
   svg {
+    stroke: var(--color-dialog-close, var(--color-ink));
     transition: transform 0.3s;
   }
 

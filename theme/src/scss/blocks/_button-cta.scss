@@ -1,9 +1,7 @@
 /// BUTTON CALL TO ACTION
 
 .button-cta {
-  // --buttonCta-fontsize: var(--step-1);
   color: currentColor;
-  text-decoration: none;
   font-size: var(--buttonCta-fontsize);
   white-space: nowrap;
 
@@ -14,7 +12,7 @@
     --icon-nav-padding: 0;
     --icon-nav-stroke-width: 4px;
     display: flex;
-    align-items: center;
+    align-items: baseline;
 
     svg.icon-nav-link {
       fill: currentColor;
@@ -33,9 +31,15 @@
   }
 
   &.variant-button {
-    padding: 8px 8px;
-    background-color: red;
-    white-space: nowrap;
+    background-color: var(--color-contrast);
     border-radius: 8px;
+    color: var(--color-link-invert);
+    padding: 8px 8px 4px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  &.variant-link {
+    color: var(--color-link);
   }
 }

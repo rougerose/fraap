@@ -9,7 +9,7 @@
   }
 
   &--box {
-    box-shadow: 0 5px 15px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.2), 0 1px 2px rgba(var(--color-primary-boxShadow), 0.2);
     display: flex;
     gap: var(--space-m);
     height: 100%;
@@ -80,6 +80,6 @@
   max-width: 60ch;
 
   & a {
-    color: white;
+    color: var(--color-contrast);
   }
 }

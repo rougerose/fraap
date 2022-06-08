@@ -28,7 +28,7 @@
     & > li {
 
       &::before {
-        background-color: red;
+        background-color: var(--color-link-invert);
         content: "";
         display: block;
         height: 1px;
@@ -47,5 +47,10 @@
     padding-bottom: 0.25rem;
   }
 
-  // .site-nav_link {}
+  .site-nav_link {
+    &:hover {
+      color: var(--color-link-invert);
+      text-decoration: underline;
+    }
+  }
 }

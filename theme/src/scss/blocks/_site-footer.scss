@@ -2,9 +2,9 @@
 
 .site-footer {
   padding-top: var(--space-5xl);
-  padding-bottom: var(--space-5xl);
-  background-color: black;
-  color: white;
+  padding-bottom: var(--space-xl);
+  background-color: var(--color-contrast);
+  color: var(--color-primary);
 }
 
 .site-footer_wrapper {
@@ -12,25 +12,46 @@
   padding-right: var(--space-m-xl);
 }
 
-.site-footer_nav {
-  --auto-grid-placement: auto-fit;
-  --auto-grid-min-item-size: 200px;
-  // --auto-grid-gutter-row: var(--space-l);
+// .site-footer_nav {}
 
-  .site-footer_layout-secondary {
+.site-footer_layout {
+  --auto-grid-placement: auto-fit;
+  --auto-grid-min-item-size: 220px;
+
+  & + & {
     --auto-grid-placement: auto-fill;
-    --auto-grid-min-item-size: 220px;
     margin-top: var(--space-m-xl);
+  }
+
+  &.--variant-baseline {
+    --auto-grid-placement: auto-fit;
+    padding-top: var(--space-m);
   }
 }
 
 
 .site-footer_logo {
-  max-width: 250px;
+  max-width: 220px;
 
   & svg {
     height: 100%;
     width: auto;
-    fill: white;
+    fill: var(--color-primary);
+    transition: fill 0.15s ease-in;
+  }
+
+  &:hover {
+    svg {
+      fill: var(--color-link-invert);
+    }
+  }
+}
+
+.site-footer_baseline {
+  max-width: 600px;
+  & svg {
+    height: 100%;
+    width: auto;
+    fill: var(--color-primary);
   }
 }

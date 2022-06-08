@@ -36,6 +36,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// N
 	'nav_bouton_fermer' => 'Fermer la navigation',
 	'nav_bouton_retour' => 'Retour',
+	'nav_offcanvas_titre' => 'Menu',
 
 	// O
 	'outils_headline' => 'Les outils de la Fraap',

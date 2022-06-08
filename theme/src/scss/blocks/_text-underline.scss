@@ -1,0 +1,17 @@
+/// TEXT-UNDERLINE
+///
+/// Soulignement en arrière-plan des titres et intertitres
+
+
+// [1] Raccourci pour définir une seule couleur :
+// Cf. https://css-tricks.com/cool-hover-effects-using-background-properties/
+.text-underline {
+  --offset: 0.2em;
+  background-image: linear-gradient(var(--color-primary) 0 0); // [1]
+  background-size: 100% 45%;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding-left: var(--offset);
+  padding-right: calc(var(--offset) * 2);
+  margin-left: calc(var(--offset) * -1);
+}

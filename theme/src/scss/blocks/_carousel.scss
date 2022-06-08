@@ -37,9 +37,10 @@
 
   & .swiper-button-prev,
   & .swiper-button-next {
-    background-color: black;
+    background-color: var(--color-contrast);
     border-radius: 100%;
-    box-shadow: 0 4px 4px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
+    // box-shadow: 0 4px 4px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.2), 0 1px 2px rgba(var(--color-primary-boxShadow), 0.2);
     bottom: 4px;
     top: auto;
     width: var(--swiper-navigation-size);
@@ -60,7 +61,7 @@
 }
 
 .carousel_pagination {
-  --swiper-pagination-color: black;
+  --swiper-pagination-color: var(--color-contrast);
   --swiper-pagination-bullet-width: 12px;
   --swiper-pagination-bullet-height: 12px;
 
