@@ -137,6 +137,7 @@
 .icon-rubrique13 {
   path:nth-child(1) {
     fill: var(--color-primary-800);
+    fill-opacity: 1;
   }
   path:nth-child(2) {
     fill: var(--color-primary-700);
@@ -187,7 +188,9 @@
   path:nth-child(2) {
     fill: var(--color-contrast);
   }
-  circle,
+  circle {
+    fill: var(--color-primary-800);
+  }
   path:nth-child(3) {
     fill: var(--color-primary-700);
   }
@@ -199,7 +202,7 @@
     fill: var(--color-contrast);
   }
   path:nth-child(2) {
-    fill: var(--color-primary-700);
+    fill: var(--color-primary-800);
   }
   path:nth-child(3) {
     fill: var(--color-primary-400);
@@ -220,7 +223,7 @@
 // icon Mediathèque
 .icon-rubrique47 {
   path:nth-child(odd) {
-    fill: var(--color-primary-700);
+    fill: var(--color-primary-800);
   }
   path:nth-child(2) {
     fill: var(--color-contrast);
