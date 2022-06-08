@@ -1,14 +1,24 @@
+/// ICON
+///
+/// 01 - icon-nav-
+/// 02 - icon-social-
+/// 03 - icon rubrique/article
+
 
 @use "../settings";
 @use "../tools/mq" as mq;
+
+
+// 01 .icon-nav
+// ========================================
 
 .icon-nav-search,
 .icon-nav-burger,
 .icon-nav-close {
   fill: none;
   stroke: settings.$FRAAP-COLOR-INK;
-  width: 32px;
-  height: 32px;
+  width: var(--icon-nav-size);
+  height: var(--icon-nav-size);
 }
 
 .icon-nav-back {
@@ -20,15 +30,15 @@
 .icon-nav-forward,
 .icon-nav-back,
 .icon-nav-link {
-  border-radius: var(--icon-nav-border-radius, 100%);
-  fill: var(--icon-nav-fill);
+  border-radius: var(--icon-nav-border-radius);
+  fill: var(--color-icon-nav-fill);
   flex-shrink: 0;
-  height: var(--icon-nav-height, 32px);
-  padding: var(--icon-nav-padding, 8px);
+  height: var(--icon-nav-size);
+  padding: var(--icon-nav-padding);
   stroke: currentColor;
   stroke-width: var(--icon-nav-stroke-width, 3px);
   transition: transform 0.3s ease-out, stroke 0.1s;
-  width: var(--icon-nav-width, 32px);
+  width: var(--icon-nav-size);
 }
 
 .icon-nav-back {
@@ -36,7 +46,7 @@
 
   &_path1,
   &_path2 {
-    stroke: var(--icon-nav-back-stroke);
+    stroke: var(--color-icon-nav-back-stroke);
     transform-origin: center;
     transition: transform 150ms cubic-bezier(0.215,0.61,0.355,1);
   }
@@ -101,6 +111,17 @@
     transform: var(--iconPathTransform);
   }
 }
+
+// 02 icon-social
+// ========================================
+
+.icon-social {
+  fill: var(--color-primary);
+  transition: fill 0.15s ease-in;
+}
+
+// 03 icon rubrique/article
+// ========================================
 
 // icon Fédérer
 .icon-rubrique15 {

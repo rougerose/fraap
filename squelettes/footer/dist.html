@@ -1,10 +1,19 @@
 <nav class="site-footer_nav">
   <div class="site-footer_wrapper">
-    <div class="auto-grid site-footer_layout">
+    <div class="xxauto-grid cluster site-footer_layout">
       [<a href="#URL_SITE_SPIP" class="site-footer_logo">
         (#INCLURE{fond=images/fraap-logo.svg})
       </a>]
-      <div class="social">social</div>
+      <div class="site-footer_social">
+        <ul role="list">
+          [<li><a href="#">(#INCLURE{fond=images/icon-social-email-32.svg, svg=icon-social, label=Contacter la Fraap email})</a></li>]
+          [<li><a href="#URL_PAGE{backend}">(#INCLURE{fond=images/icon-social-rss-32.svg, svg=icon-social, label=Fil RSS})</a></li>]
+          [<li><a href="#">(#INCLURE{fond=images/icon-social-facebook-32.svg, svg=icon-social, label=La Fraap sur Facebook})</a></li>]
+          [<li><a href="#">(#INCLURE{fond=images/icon-social-twitter-32.svg, svg=icon-social, label=La Fraap sur Twitter})</a></li>]
+          [<li><a href="#">(#INCLURE{fond=images/icon-social-instagram-32.svg, svg=icon-social, label=La Fraap sur Instagram})</a></li>]
+          [<li><a href="#">(#INCLURE{fond=images/icon-social-linkedin-32.svg, svg=icon-social, label=La Fraap sur LinkedIn})</a></li>]
+        </ul>
+      </div>
     </div>
     <div class="auto-grid site-footer_layout">
       <BOUCLE_menus_footer(MENUS){identifiant LIKE site-nav-footer%}{par identifiant}>

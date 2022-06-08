@@ -39,8 +39,8 @@ $card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3
   // card
   --card-backgroundImage: #{$card-backgroundImage};
   // icon
-  --icon-nav-fill: none;
-  --icon-nav-back-stroke: var(--color-link-invert);
+  --color-icon-nav-fill: none;
+  --color-icon-nav-back-stroke: var(--color-link-invert);
 }
 
 // 2 => vert

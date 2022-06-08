@@ -17,6 +17,8 @@
 .site-footer_layout {
   --auto-grid-placement: auto-fit;
   --auto-grid-min-item-size: 220px;
+  --cluster-horizontal-alignment: space-between;
+  --cluster-vertical-alignment: flex-start;
 
   & + & {
     --auto-grid-placement: auto-fill;
@@ -36,13 +38,13 @@
   & svg {
     height: 100%;
     width: auto;
-    fill: var(--color-primary);
+    fill: var(--color-link-invert);
     transition: fill 0.15s ease-in;
   }
 
   &:hover {
     svg {
-      fill: var(--color-link-invert);
+      fill: var(--color-primary);
     }
   }
 }
@@ -52,6 +54,37 @@
   & svg {
     height: 100%;
     width: auto;
-    fill: var(--color-primary);
+    fill: var(--color-link-invert);
+  }
+}
+
+.site-footer_social {
+  display: flex;
+
+  & ul[role="list"] {
+    display: flex;
+    font-size: var(--step-4);
+    padding-left: 0;
+  }
+
+  & li {
+    &:first-child {
+      margin-left: -0.5rem;
+    }
+
+    &:last-child {
+      margin-right: -0.5rem;
+    }
+  }
+
+  & a {
+    display: flex;
+    padding: 0.5rem;
+
+    &:hover {
+      .icon-social {
+        fill: var(--color-link-invert);
+      }
+    }
   }
 }
