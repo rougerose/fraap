@@ -13,9 +13,7 @@
 }
 
 // 0 => base
-[data-theme-colors="0"] {
-
-}
+// [data-theme-colors="0"] {}
 
 
 
@@ -43,7 +41,7 @@ $card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3
   --color-icon-nav-back-stroke: var(--color-link-invert);
 }
 
-// 2 => yellow
+// 2 => yellow/disco
 $yellow-500: map.get(settings.$yellow, "500");
 $yellow-600: map.get(settings.$yellow, "600");
 $yellow-700: map.get(settings.$yellow, "700");
@@ -64,5 +62,104 @@ $card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3
   --card-backgroundImage: #{$card-backgroundImage};
   // icon
   --color-icon-nav-fill: none;
+  --color-icon-nav-back-stroke: var(--color-link-invert);
+}
+
+// 3 =>
+$mint-500: map.get(settings.$mint, "500");
+$mint-600: map.get(settings.$mint, "600");
+$mint-700: map.get(settings.$mint, "700");
+$card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $mint-600 + '"/></svg>');
+
+[data-theme-colors="3"] {
+  // colors
+  --color-primary: #{$mint-500};
+  --color-contrast: #{map.get(settings.$eggplant, "500")};
+  --color-primary-400: #{map.get(settings.$mint, "400")};
+  --color-primary-600: #{map.get(settings.$mint, "600")};
+  --color-primary-700: #{map.get(settings.$mint, "700")};
+  --color-primary-800: #{map.get(settings.$mint, "800")};
+  --color-primary-boxShadow: #{color.red($mint-500)}, #{color.green($mint-500)}, #{color.blue($mint-500)};
+  --color-link: var(--color-contrast);
+  --color-link-invert: hsl(0, 0%, 100%);
+  // card
+  --card-backgroundImage: #{$card-backgroundImage};
+  // icon
+  // --color-icon-nav-fill: none;
+  --color-icon-nav-back-stroke: var(--color-link-invert);
+}
+
+
+// 4 =>
+$palmas-500: map.get(settings.$palmas, "500");
+$palmas-600: map.get(settings.$palmas, "600");
+$palmas-700: map.get(settings.$palmas, "700");
+$card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $palmas-600 + '"/></svg>');
+
+[data-theme-colors="4"] {
+  // colors
+  --color-primary: #{$palmas-500};
+  --color-contrast: #{map.get(settings.$blue, "500")};
+  --color-primary-400: #{map.get(settings.$palmas, "400")};
+  --color-primary-600: #{map.get(settings.$palmas, "600")};
+  --color-primary-700: #{map.get(settings.$palmas, "700")};
+  --color-primary-800: #{map.get(settings.$palmas, "800")};
+  --color-primary-boxShadow: #{color.red($palmas-500)}, #{color.green($palmas-500)}, #{color.blue($palmas-500)};
+  --color-link: var(--color-contrast);
+  --color-link-invert: hsl(0, 0%, 100%);
+  // card
+  --card-backgroundImage: #{$card-backgroundImage};
+  // icon
+  // --color-icon-nav-fill: none;
+  --color-icon-nav-back-stroke: var(--color-link-invert);
+}
+
+
+// 5 =>
+$heliotrope-500: map.get(settings.$heliotrope, "500");
+$heliotrope-600: map.get(settings.$heliotrope, "600");
+$heliotrope-700: map.get(settings.$heliotrope, "700");
+$card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $heliotrope-600 + '"/></svg>');
+
+[data-theme-colors="5"] {
+  // colors
+  --color-primary: #{$heliotrope-500};
+  --color-contrast: #{map.get(settings.$minsk, "500")};
+  --color-primary-400: #{map.get(settings.$heliotrope, "400")};
+  --color-primary-600: #{map.get(settings.$heliotrope, "600")};
+  --color-primary-700: #{map.get(settings.$heliotrope, "700")};
+  --color-primary-800: #{map.get(settings.$heliotrope, "800")};
+  --color-primary-boxShadow: #{color.red($heliotrope-500)}, #{color.green($heliotrope-500)}, #{color.blue($heliotrope-500)};
+  --color-link: var(--color-contrast);
+  --color-link-invert: hsl(0, 0%, 100%);
+  // card
+  --card-backgroundImage: #{$card-backgroundImage};
+  // icon
+  // --color-icon-nav-fill: none;
+  --color-icon-nav-back-stroke: var(--color-link-invert);
+}
+
+
+// 6 =>
+$dodger-blue-500: map.get(settings.$dodger-blue, "500");
+$dodger-blue-600: map.get(settings.$dodger-blue, "600");
+$dodger-blue-700: map.get(settings.$dodger-blue, "700");
+$card-backgroundImage: func.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $dodger-blue-600 + '"/></svg>');
+
+[data-theme-colors="6"] {
+  // colors
+  --color-primary: #{$dodger-blue-500};
+  --color-contrast: #{map.get(settings.$bordeaux, "500")};
+  --color-primary-400: #{map.get(settings.$dodger-blue, "400")};
+  --color-primary-600: #{map.get(settings.$dodger-blue, "600")};
+  --color-primary-700: #{map.get(settings.$dodger-blue, "700")};
+  --color-primary-800: #{map.get(settings.$dodger-blue, "800")};
+  --color-primary-boxShadow: #{color.red($dodger-blue-500)}, #{color.green($dodger-blue-500)}, #{color.blue($dodger-blue-500)};
+  --color-link: var(--color-contrast);
+  --color-link-invert: hsl(0, 0%, 100%);
+  // card
+  --card-backgroundImage: #{$card-backgroundImage};
+  // icon
+  // --color-icon-nav-fill: none;
   --color-icon-nav-back-stroke: var(--color-link-invert);
 }

@@ -31,7 +31,6 @@
 .icon-nav-back,
 .icon-nav-link {
   border-radius: var(--icon-nav-border-radius);
-  fill: var(--color-icon-nav-fill);
   flex-shrink: 0;
   height: var(--icon-nav-size);
   padding: var(--icon-nav-padding);
@@ -187,6 +186,7 @@
 .icon-article512 {
   path:nth-child(2) {
     fill: var(--color-contrast);
+    fill-opacity: 1;
   }
   circle {
     fill: var(--color-primary-800);

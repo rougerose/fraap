@@ -1,5 +1,5 @@
 [(#REM)<!-- Choisir une couleur, soit aléatoirement, soit via le parametre theme -->]
-[(#SET{couleurs, #LISTE{0,1,2}})]
+[(#SET{couleurs, #LISTE{0, 1, 2, 3, 4, 5, 6}})]
 [(#SET{alea, #ENV{theme, #GET{couleurs}|array_rand{1}}})]
 <body data-theme-colors="[(#GET{couleurs}|table_valeur{#GET{alea}})]">
   <header class="site-header" role="banner">
