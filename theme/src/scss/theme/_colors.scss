@@ -12,11 +12,6 @@
   --color-contrast: hsl(210, 100%, 12%);
 }
 
-// 0 => base
-// [data-theme-colors="0"] {}
-
-
-
 // 1 => lime/royal-blue
 $lime-500: map.get(settings.$lime, "500");
 $lime-600: map.get(settings.$lime, "600");
