@@ -1241,20 +1241,8 @@ const menuShortcutsInit = () => {
     let shortcuts = container.querySelectorAll("li[data-type-link='shortcut'");
 
     shortcuts.forEach((shortcut) => {
-      let link = shortcut.getElementsByTagName("a")[0],
-        button = convertLinkToButton(shortcut, link),
-        // ID du sous-menu à ouvrir
-        menuId = link.getAttribute("data-menu-controls"),
-        // Récupérer l'élément qui ouvre ce sous-menu dans le menu offcanvas
-        offcanvasShortcut = menuOffcanvas.querySelector(
-          "a[data-menu-controls=" + menuId + "]"
-        ),
-        // Déterminer les points de départ et d'arrivée
-        subMenuPath = subMenuFromTo(offcanvasShortcut, menuOffcanvas);
-
-      button.addEventListener("click", (event) => {
-        displaySubMenu(offcanvasShortcut, subMenuPath.from, subMenuPath.to);
-      });
+      let link = shortcut.getElementsByTagName("a")[0];
+      convertLinkToButton(shortcut, link);
     });
   }
 };
@@ -1291,6 +1279,12 @@ const fraapMenuInit = () => {
       toggleState(menuState, "open");
       // Désactiver le scroll en dehors du menu
       disableBodyScroll(menu.offcanvas.content);
+
+      let menuId = dialogEvent.target.getAttribute("data-menu-controls"),
+        shortcut = menu.offcanvas.content.querySelector("a[data-menu-controls=" + menuId + "]"),
+        submenuPath = subMenuFromTo(shortcut, menu.offcanvas.container);
+
+      displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
     });
 
     menu.offcanvas.dialog.on("hide", (dialogEl, dialogEvent) => {
