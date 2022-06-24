@@ -1138,7 +1138,7 @@ const menuOffCanvasInit = () => {
 // 3 états possibles: open / closing / closed
 const menuState = new Proxy(
   {
-    status: "open"
+    status: "open",
   },
   {
     set(state, key, value) {
@@ -1188,7 +1188,9 @@ const onScroll = (event) => {
   clearTimeout(onScrollTimeout);
   onScrollTimeout = setTimeout(() => {
     event.target.removeEventListener("scroll", onScroll, { passive: true });
-    onScrollEnd.map((fn) => {fn();});
+    onScrollEnd.map((fn) => {
+      fn();
+    });
     onScrollEnd = [];
   }, 50);
 };
@@ -1280,11 +1282,16 @@ const fraapMenuInit = () => {
       // Désactiver le scroll en dehors du menu
       disableBodyScroll(menu.offcanvas.content);
 
-      let menuId = dialogEvent.target.getAttribute("data-menu-controls"),
-        shortcut = menu.offcanvas.content.querySelector("a[data-menu-controls=" + menuId + "]"),
-        submenuPath = subMenuFromTo(shortcut, menu.offcanvas.container);
+      let menuId = dialogEvent.currentTarget.getAttribute("data-menu-controls");
 
-      displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
+      if (menuId !== "menu-0") {
+        let shortcut = menu.offcanvas.content.querySelector(
+            "a[data-menu-controls=" + menuId + "]"
+          ),
+          submenuPath = subMenuFromTo(shortcut, menu.offcanvas.container);
+
+        displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
+      }
     });
 
     menu.offcanvas.dialog.on("hide", (dialogEl, dialogEvent) => {
