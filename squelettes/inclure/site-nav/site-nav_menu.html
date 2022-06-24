@@ -1,13 +1,13 @@
 <BOUCLE_sitenav_racine(MENUS){id_menu?}{identifiant?}>
   <B_entrees_racine>
-    <ul id="menu-#ENV{index}" role="list" class="site-nav_list">
+    <ul id="menu-#ENV{index}" role="list" class="site-nav_list[ -variant-(#ENV{contexte})]">
       <BOUCLE_entrees_racine(MENUS_ENTREES){id_menu}{par rang}>
         [(#ENV{contexte}|setenv{contexte})]
         [(#COMPTEUR_BOUCLE|setenv{rang})]
         [(#TYPE_ENTREE|=={fraap_racine}|?{
           [(#SET{type_entree, ''})],
           [(#SET{type_entree, ' '})]
-          <li class="site-nav_item" data-type-link="shortcut">
+          <li class="site-nav_item site-nav_item--back" data-type-link="shortcut">
             <a class="site-nav_link site-nav_link--back" href="#menu-0" data-menu-controls="menu-0" aria-label="<:fraap_squelettes:nav_bouton_retour:>">
               [(#INCLURE{fond=images/icon-arrow-double-left-32.svg, svg=icon-nav-back, path1=icon-nav-back_path1, path2=icon-nav-back_path2})]
             </a>

@@ -44,4 +44,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// R
 	'reseau_annuaire_consulter_cta' => 'Découvrir le réseau',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
+
+	// S
+	'search_placeholder' => 'Écrivez ici…',
+	'search_submit' => 'Rechercher',
 ];

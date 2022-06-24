@@ -7,96 +7,70 @@
 @use "sass:math";
 @use "../tools/mq" as mq;
 
-.site-nav-offcanvas {
-  & .site-nav_wrapper {
-    transition: transform 0.5s ease;
-    transform: translateX(-100%);
-  }
 
-  &[data-dialog-status="open"] {
+// .site-nav-offcanvas {}
 
-    & .site-nav_wrapper {
-      transform: translateX(0);
-    }
-  }
-
-  &[data-dialog-status="closing"] {
-
-    & .site-nav_wrapper {
-      transform: translateX(-100%);
-    }
-  }
-
-  .site-nav_wrapper {
-    background-color: settings.$FRAAP-COLOR-PAPER;
+.site-nav_wrapper {
+  &.-variant-offcanvas {
     display: flex;
     flex-direction: column;
     margin-right: auto;
     padding: 0 var(--space-s);
     position: relative;
-
+    transform: translateX(-100%);
+    transition: transform 0.5s;
     width: 100%;
-    z-index: calc(var(--dialog-zindex) + 1);
 
-    & > * {
-      min-width: 0;
+    .dialog[data-dialog-status="open"] & {
+      transform: translateX(0);
+    }
+
+    .dialog[data-dialog-status="closing"] & {
+      transform: translateX(-100%);
     }
   }
+}
 
-  .site-nav_header {
-    align-items: center;
-    background-color: settings.$FRAAP-COLOR-PAPER;
-    display: flex;
-    gap: settings.$FRAAP-GLOBAL-GUTTER;
-    justify-content: space-between;
-    padding: var(--space-m) 1.125rem var(--space-m);
-    position: sticky;
+.site-nav_header {
+  align-items: flex-start;
+  background-color: var(--color-paper);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-m) 1.125rem var(--space-m);
+  position: sticky;
 
-    h1 {
-      font-size: var(--step-3);
-      text-transform: uppercase;
-      align-self: flex-end;
-    }
+  h1 {
+    font-size: var(--step-3);
+    text-transform: uppercase;
+    align-self: flex-end;
   }
+}
 
-  .site-nav_body {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 1;
-    overflow: hidden;
-    position: relative;
-    scroll-behavior: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+.site-nav_body {
+  display: flex;
+  align-items: flex-start;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 
-    & > * {
-      flex: 1 0 100%;
-      overflow: hidden auto;
-      padding: var(--space-l) 1rem var(--space-l);
-    }
+  & > * {
+    flex: 1 0 100%;
+    overflow: hidden auto;
+    padding: var(--space-l) 1rem var(--space-l);
   }
+}
 
-  ul {
-    & ul {
-      padding: 0.125rem;
-
-      & ul {
-        padding-left: 1.8rem;
-      }
-    }
-  }
-
-  .site-nav_list {
+.site-nav_list {
+  &.-variant-offcanvas {
     display: block;
     font-size: var(--step-1);
     line-height: 1.2;
     height: 100%;
     position: relative;
     scroll-snap-align: start;
-
-    .no-js & ~ .site-nav_list:not(:target) {
-      display: none;
-    }
 
     &[aria-hidden="true"] {
       display: none;
@@ -115,60 +89,63 @@
         margin-right: 0.5rem;
       }
     }
-  }
 
-  .site-nav_item {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
+    .site-nav_item {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
 
-  .site-nav_link {
-    display: flex;
-    align-items: center;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-
-    &--back {
-      border-radius: 100%;
-      display: inline-block;
-      padding: 0;
-      position: absolute;
-      top: settings.$FRAAP-FOCUS-OUTLINE-WIDTH;
+      &--back {
+        padding: 0;
+      }
     }
 
-    &--icon {
-      justify-content: space-between;
+    .site-nav_link {
+      display: flex;
+      align-items: center;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
 
-      &:hover {
-        color: var(--color-link);
+      &--back {
+        border-radius: 100%;
+        display: inline-block;
+        padding: 0;
+        position: absolute;
+        top: settings.$FRAAP-FOCUS-OUTLINE-WIDTH;
+      }
+
+      &--icon {
+        justify-content: space-between;
+
+        &:hover {
+          color: var(--color-link);
+        }
       }
     }
   }
 }
 
-
 @include mq.mq($from: navOffcanvas) {
-  .site-nav-offcanvas {
-    .site-nav_wrapper {
+
+  .site-nav_wrapper {
+    &.-variant-offcanvas {
       max-width: math.div(map.get(settings.$FRAAP-TWEAKPOINTS, "navOffcanvas"), 16) * 1rem;
     }
+  }
 
-    .site-nav_body {
-      & > * {
-        padding-left: 3.25rem;
-      }
+  .site-nav_header.-variant-offcanvas {
+    padding-left: calc(3.25rem + 0.125rem);
+  }
+
+  .site-nav_body.-variant-offcanvas {
+    & > * {
+      padding-left: 3.25rem;
     }
+  }
 
-    .site-nav_header {
-      padding-left: calc(3.25rem + 0.125rem);
-    }
-
-    .site-nav_link {
-      &--back {
-        margin-top: 0.5rem;
-        top: auto;
-        left: 1rem;
-      }
+  .site-nav_list.-variant-offcanvas {
+    & .site-nav_link--back {
+      top: auto;
+      left: 1rem;
     }
   }
 }

@@ -1,8 +1,9 @@
 /// ICON
 ///
-/// 01 - icon-nav-
-/// 02 - icon-social-
+/// 01 - icon-nav-xx
+/// 02 - icon-social
 /// 03 - icon rubrique/article
+/// 04 - icon-arrow-right
 
 
 @use "../settings";
@@ -227,5 +228,19 @@
   }
   path:nth-child(2) {
     fill: var(--color-contrast);
+  }
+}
+
+
+// 04 - icon-arrow-right
+// ========================================
+
+.icon-arrow-right {
+  padding: 0;
+  stroke: currentColor;
+  stroke-width: 4px;
+
+  & path:first-child {
+    stroke-width: 0;
   }
 }

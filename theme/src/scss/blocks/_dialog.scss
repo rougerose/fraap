@@ -1,57 +1,60 @@
 /// DIALOG
 
+.dialog,
+.dialog_close {
+  html:not(.js) & {
+    display: none;
+  }
+}
 
 .dialog {
-  &,
-  .dialog_overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: var(--dialog-zindex);
+  display: flex;
+  z-index: var(--dialog-zindex);
+
+  &[aria-modal="true"] {
+    &,
+    & .dialog_overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
   }
 
-  // &[aria-hidden="true"],
-  // &[aria-hidden="true"][data-dialog-status="closed"] {
-  //   display: none;
-  // }
   &[aria-hidden="true"] {
-    display: none
-  };
+    display: none;
+  }
 
   &[data-dialog-status="closed"] {
-    display: flex;
     visibility: hidden;
-    pointer-events: none;
   }
 
-  &[data-dialog-status="open"] {
-    display: flex;
-
-    & .dialog_overlay {
-      opacity: 1;
-    }
-  }
-
+  &[data-dialog-status="open"],
   &[data-dialog-status="closing"] {
     display: flex;
+    visibility: visible;
+  }
+}
 
-    & .dialog_overlay {
-      opacity: 0;
-    }
+.dialog_content {
+  .dialog[data-dialog-status] & {
+    background-color: var(--color-paper);
+    z-index: calc(var(--dialog-zindex) + 1);
   }
 }
 
 .dialog_overlay {
-  background-color: rgba(43, 46, 56, 0.9);
-  transition: opacity 0.4s ease;
-  opacity: 0;
+
+  .dialog[data-dialog-status] & {
+    background-color: var(--dialog-overlay-background);
+    animation: 200ms both fade-in;
+  }
 }
 
 .dialog_close {
   svg {
-    stroke: var(--color-dialog-close, var(--color-ink));
+    stroke: var(--color-link-invert);
     transition: transform 0.3s;
   }
 
@@ -59,5 +62,12 @@
     svg {
       transform: rotate(180deg);
     }
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }

@@ -8,13 +8,23 @@
 @mixin button-base-styles() {
   display: inline-flex;
   align-items: center;
-  border: none;
-  text-decoration: none;
+  border: 0;
+  border-radius: var(--border-radius-base);
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
+  // Inutile, cf. _reset.scss
+  // font-family: inherit; /* For all browsers */
+  // font-size: 100%; /* For all browsers */
+  // line-height: 1.15; /* For all browsers */
   line-height: 1 !important;
-  @include mixin.vertically-align-label();
+  margin: 0; // Firefox and Safari have margin
+  overflow: visible; // Edge hides overflow
+  position: relative;
+  text-transform: none; // Firefox inherits text-transform
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-appearance: button; // Safari otherwise prevents some styles
+  appearance: none;
+  // @include mixin.vertically-align-label();
 
   & svg {
     width: 1.3em;

@@ -3,8 +3,6 @@
 @use "../tools/gorko" as gorko;
 @use "../tools/mq" as mq;
 
-$layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
-
 :root {
   --angle-sin: 0.052;
   --auto-grid-placement: auto-fit;
@@ -12,21 +10,35 @@ $layout-width-max: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
   --auto-grid-gutter-column: var(--space-m-xl);
   --auto-grid-gutter-row: var(--space-xl);
   --auto-grid-min-item-size: 250px;
+
+  --border-radius-base: #{settings.$FRAAP-BORDER-RADIUS-BASE};
+  --boxShadow-elevation-middle: 0 10px 20px rgb(0 0 0 / 15%), 0 3px 6px rgb(0 0 0 / 10%);
   --buttonCta-fontsize: var(--step-0);
+
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
   --card-icon-size: 1.2em;
   --card-flow-space: 1.75rem;
+  --column-padding: var(--space-m-l);
+
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
+
+  --font-family-sans: #{settings.$FRAAP-FONT-BASE-SANS};
+  --font-family-headings: #{settings.$FRAAP-FONT-HEADINGS};
+  --form-fields-width: 100%;
+  --form-fields-input-padding: 14px;
   --icon-nav-border-radius: 100%;
+
   --icon-nav-padding: 8px;
   --icon-nav-size: 32px;
-  --layout-width-max: #{$layout-width-max};
+
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));
   --section-angle-padding-bottom-base-min: 48;
   --section-angle-padding-bottom-base-max: 64;
   --section-angle-padding-top-base-min: 32;
   --section-angle-padding-top-base-max: 64;
+
+  --viewport-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
 }
 
 @include mq.mq($from: m) {

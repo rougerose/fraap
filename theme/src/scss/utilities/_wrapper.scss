@@ -3,6 +3,6 @@
 
 .wrapper {
   margin: 0 auto;
-  padding: 0 var(--space-m-l);
-  max-width: math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem;
+  padding: 0 var(--column-padding);
+  max-width: var(--viewport-max-width);
 }

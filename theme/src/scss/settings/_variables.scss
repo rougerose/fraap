@@ -3,47 +3,61 @@
 @use "sass:map";
 @use "sass:math";
 
-/// BREAKPOINTS (en px)
-$FRAAP-BREAKPOINTS: (
-  "s": 320,
-  "m": 740,
-  "l": 1024,
-  "xl": 1200,
-);
-$FRAAP-TWEAKPOINTS: (
-  "navOffcanvas": 460,
-  "navTop": 1080,
-);
+// ========================================
+// BREAKPOINTS
+// ========================================
+
+/// Breakpoints en px
+  $FRAAP-BREAKPOINTS: (
+    "s": 320,
+    "m": 740,
+    "l": 1024,
+    "xl": 1200,
+  );
+  $FRAAP-TWEAKPOINTS: (
+    "navOffcanvas": 460,
+    "navTop": 1080,
+  );
 
 // MQ Breakpoints
 // Ajouter l'unité px à chaque valeur.
-$TMP-MAP: map.merge($FRAAP-BREAKPOINTS, $FRAAP-TWEAKPOINTS);
-$MQ-BREAKPOINTS: ();
-@each $key, $value in $TMP-MAP {
-  $MQ-BREAKPOINTS: map.set($MQ-BREAKPOINTS, $key, $value * 1px);
-}
+  $TMP-MAP: map.merge($FRAAP-BREAKPOINTS, $FRAAP-TWEAKPOINTS);
+  $MQ-BREAKPOINTS: ();
+  @each $key, $value in $TMP-MAP {
+    $MQ-BREAKPOINTS: map.set($MQ-BREAKPOINTS, $key, $value * 1px);
+  }
 
 // Gorko Breakpoints
-$GORKO-BREAKPOINTS: ();
-@each $key, $value in $FRAAP-BREAKPOINTS {
-  $val: "(min-width:" + math.div($value, 16) * 1em + ")";
-  $GORKO-BREAKPOINTS: map.set($GORKO-BREAKPOINTS, $key, $val);
-}
+  $GORKO-BREAKPOINTS: ();
+  @each $key, $value in $FRAAP-BREAKPOINTS {
+    $val: "(min-width:" + math.div($value, 16) * 1em + ")";
+    $GORKO-BREAKPOINTS: map.set($GORKO-BREAKPOINTS, $key, $val);
+  }
 
-// FOCUS
-$FRAAP-FOCUS-OUTLINE-WIDTH: 2px;
+// ========================================
+// Variables de design
+// ========================================
+
+/// BORDER-RADIUS
+  $FRAAP-BORDER-RADIUS-BASE: 4px;
+
+/// FOCUS
+  $FRAAP-FOCUS-OUTLINE-WIDTH: 2px;
+  $FRAAP-FOCUS-OUTLINE-OFFSET: 2px;
 
 /// FONTS
-$FRAAP-FONT-BASE-SANS: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  $FRAAP-FONT-BASE-SANS: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
 
-$FRAAP-FONT-BASE-MONO: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  $FRAAP-FONT-BASE-MONO: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  $FRAAP-FONT-HEADINGS: Glypha, $FRAAP-FONT-BASE-SANS;
 
 /// LAYOUT
-$FRAAP-LAYOUT-WIDTH-MAX: 1200; // px
+  $FRAAP-LAYOUT-WIDTH-MAX: 1200; // px
 
-/// MARGES
-$FRAAP-GLOBAL-GUTTER: var(--space-xs);
+/// MARGES ET GOUTTIÈRES
+  $FRAAP-GLOBAL-GUTTER: var(--space-xs);
 
 // NAV
-$FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
-$FRAAP-NAV-DOTS-SIZE: 35px;
+  $FRAAP-NAV-VERTICAL-ALIGNMENT: -0.8em;
+  $FRAAP-NAV-DOTS-SIZE: 35px; // TODO: à supprimer

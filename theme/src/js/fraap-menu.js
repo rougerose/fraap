@@ -1,4 +1,4 @@
-import toggleState from "./util-toggle-state";
+import toggleState from "./util-toggleState";
 import * as smoothscroll from "smoothscroll-polyfill";
 import A11yDialog from "a11y-dialog";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
@@ -153,11 +153,11 @@ const resetMenu = (menu) => {
  */
 
 const menuShortcutsInit = () => {
-  let container = document.querySelector("#" + menuShortcutsId);
+  let container = document.querySelector("#" + menuShortcutsId),
+    menuOffcanvas = document.querySelector("#" + menuOffcanvasId);
 
-  if (container) {
-    let shortcuts = container.querySelectorAll("li[data-type-link='shortcut'"),
-      menuOffcanvas = document.querySelector("#" + menuOffcanvasId);
+  if (container && menuOffcanvas) {
+    let shortcuts = container.querySelectorAll("li[data-type-link='shortcut'");
 
     shortcuts.forEach((shortcut) => {
       let link = shortcut.getElementsByTagName("a")[0],

@@ -1,32 +1,45 @@
 /// DIALOG-RECHERCHE
 
-
 // .dialog-recherche {}
 
+.dialog-recherche {
+  html:not(.js) & {
+    display: block;
+  }
+}
+
 .dialog-recherche_content {
-  border-radius: 4px;
-  box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.15), 0 3px 6px hsla(0, 0%, 0%, 0.10);
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  background-color: white;
-  position: relative;
-  margin: auto;
-  max-width: 80%;
-  padding: 48px;
-  width: 768px;
-  transition-property: transform, opacity;
-  transition-duration: 0.3s;
-  transition-timing-function: cubic-bezier(.25,.46,.45,.94);
-  z-index: var(--dialog-zindex);
+  // no-js : le conteneur agit comme un wrapper
+  margin: 0 auto;
+  max-width: var(--viewport-max-width);
+  padding: var(--space-3xl) var(--column-padding);
+  width: 100%;
+
+  // js disponible
+  .dialog[data-dialog-status] & {
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--boxShadow-elevation-middle);
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    max-width: 80%;
+    padding: var(--space-s-l);
+    width: 768px;
+    transition-property: transform, opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(.25,.46,.45,.94);
+  }
 
   .dialog[data-dialog-status="closed"] &,
   .dialog[data-dialog-status="closing"] & {
     opacity: 0;
-    transform: translateY(35%);
+    transform: translateY(45%);
   }
 
   .dialog[data-dialog-status="open"] & {
+    opacity: 1;
     transform: translateY(0);
   }
 }
