@@ -1,5 +1,3 @@
-[(#REM)]
-
 #SET{id_objet, #ENV{id_objet}}
 [(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
 
@@ -9,7 +7,7 @@
 [(#SET{enfants, #ENV*{enfants, non}})]
 [(#GET{enfants}|!=={oui}|oui) #SET{enfants, non} ]
 [(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
-[(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}})]
+[(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, aria-hidden=true, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}})]
 
 [(#ENV{appel_formulaire}|oui)
 	<div class="titre">#GET{titre}</div>

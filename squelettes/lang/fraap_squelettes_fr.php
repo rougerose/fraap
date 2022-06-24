@@ -34,8 +34,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'menu_footer_objet_description' => 'Desc',
 
 	// N
-	'nav_bouton_fermer' => 'Fermer la navigation',
+	'nav_bouton_burger' => 'Ouvrir le menu',
+	'nav_bouton_fermer' => 'Fermer le menu',
 	'nav_bouton_retour' => 'Retour',
+	'nav_bouton_search' => 'Recherche',
 	'nav_offcanvas_titre' => 'Menu',
 
 	// O
