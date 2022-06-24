@@ -23,11 +23,11 @@ export default [
         format: "iife",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
-      {
-        file: "theme/dist/js/fraap.es.js",
-        format: "es",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
-      },
+      // {
+      //   file: "theme/dist/js/fraap.es.js",
+      //   format: "es",
+      //   plugins: [process.env.NODE_ENV === "production" && terser()],
+      // },
     ],
   },
   {
@@ -39,11 +39,11 @@ export default [
         format: "iife",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
-      {
-        file: "theme/dist/js/fraap-carousel.es.js",
-        format: "es",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
-      },
+      // {
+      //   file: "theme/dist/js/fraap-carousel.es.js",
+      //   format: "es",
+      //   plugins: [process.env.NODE_ENV === "production" && terser()],
+      // },
     ],
   },
 ];
