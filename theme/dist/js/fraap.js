@@ -1111,6 +1111,7 @@
 
     if (container) {
       let content = container.querySelector('div[role="document"]'),
+        body = container.querySelector(".site-nav_body"),
         dialog = new A11yDialog(container),
         shortcuts = content.querySelectorAll(
           'li[data-type-link="shortcut"] [href][data-menu-controls]'
@@ -1130,6 +1131,7 @@
       return {
         container,
         content,
+        body,
         dialog,
       };
     } else {
@@ -1175,15 +1177,11 @@
   };
 
   const menuDialogTransitionEnd = (event) => {
-    // Considérer uniquement le div[role="document"] et non le bouton de fermeture
-    if (event.target.hasAttribute("role")) {
-      toggleState(menuState, "closed");
-      event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
-      let body = event.target.querySelector(".site-nav_body");
-      resetMenu(body);
-      // Rétablir le scroll
-      enableBodyScroll(event.target);
-    }
+    let body = event.target.querySelector(".site-nav_body");
+    toggleState(menuState, "closed");
+    event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
+    resetMenu(body);
+    enableBodyScroll(body);
   };
 
   // Défilement des sous-menus
@@ -1283,7 +1281,7 @@
       menu.offcanvas.dialog.on("show", (dialogEl, dialogEvent) => {
         toggleState(menuState, "open");
         // Désactiver le scroll en dehors du menu
-        disableBodyScroll(menu.offcanvas.content);
+        disableBodyScroll(menu.offcanvas.body);
 
         let menuId = dialogEvent.currentTarget.getAttribute("data-menu-controls");
 
