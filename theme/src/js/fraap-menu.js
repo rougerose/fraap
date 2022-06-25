@@ -91,11 +91,15 @@ const processMenuState = () => {
 };
 
 const menuDialogTransitionEnd = (event) => {
-  let body = event.target.querySelector(".site-nav_body");
-  toggleState(menuState, "closed");
-  event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
-  resetMenu(body);
-  enableBodyScroll(body);
+  // Considérer uniquement le div[role="document"] et non le bouton de fermeture
+  if (event.target.hasAttribute("role")) {
+    toggleState(menuState, "closed");
+    event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
+    let body = event.target.querySelector(".site-nav_body");
+    resetMenu(event.target);
+    // Rétablir le scroll
+    enableBodyScroll(body, { allowTouchMove: () => true });
+  }
 };
 
 // Défilement des sous-menus
@@ -197,7 +201,7 @@ const fraapMenuInit = () => {
     menu.offcanvas.dialog.on("show", (dialogEl, dialogEvent) => {
       toggleState(menuState, "open");
       // Désactiver le scroll en dehors du menu
-      disableBodyScroll(menu.offcanvas.body);
+      disableBodyScroll(menu.offcanvas.body, { allowTouchMove: () => true });
 
       let menuId = dialogEvent.currentTarget.getAttribute("data-menu-controls");
 
