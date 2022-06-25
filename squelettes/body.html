@@ -1,10 +1,4 @@
-[(#REM)<!--
-  Choisir une couleur :
-    - soit aléatoirement
-    - soit en forçant par le paramètre theme=X -->]
-[(#SET{couleurs, #LISTE{1, 2, 3, 4, 5, 6}})]
-[(#SET{alea, #ENV{theme, #GET{couleurs}|array_rand{1}}})]
-<body data-theme-colors="[(#GET{couleurs}|table_valeur{#GET{alea}})]">
+<body data-theme-colors="[(#CONFIG{fraap_theme/nuancier, 1})]">
   <header class="site-header" role="banner">
     <!-- <a class="c-skip-link c-button" href="#contenu-principal"><:fraap_squelettes:lien_aller_au_contenu:></a> -->
     <INCLURE{fond=header/#ENV{type-page}, env}/>
