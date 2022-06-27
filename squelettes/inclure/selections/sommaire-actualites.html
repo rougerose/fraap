@@ -1,0 +1,18 @@
+<B_contenus_actualites>
+  <div class="section section--angleBottom">
+    <div class="section_masked">
+      <div class="wrapper">
+        <div class="section_container">
+          <div class="section_content">
+            <h2 class="section_headline"><span class="text-underline"><:fraap_squelettes:actualites_headline:></span></h2>
+            <ul class="auto-grid gap-top-5" role="list">
+              <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
+                <INCLURE{fond=inclure/selections/contenus/actualite, id_selections_contenu} />
+              </BOUCLE_contenus_actualites>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</B_contenus_actualites>

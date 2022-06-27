@@ -1,0 +1,28 @@
+<BOUCLE_reseau_contenu(RUBRIQUES){id_rubrique}>
+  <BOUCLE_compteur_associations(ARTICLES){id_rubrique}> </BOUCLE_compteur_associations>
+    #SET{total, #TOTAL_BOUCLE}
+  </B_compteur_associations>
+  <div class="teaser-network" data-network data-network-total="#GET{total}" data-network-duree="2000" data-network-delai="0" data-network-animation="false">
+    <div class="teaser-network_content flow">
+      <div class="teaser-network_headline">
+        [(#ENV{contexte}|=={sommaire}|?{#SET{hx, h2}, #SET{hx, h3}})]
+        <[(#GET{hx}) ]class="teaser-network_headline-text visually-hidden"><:fraap_squelettes:reseau_teaser_headline{total=#GET{total}}:></[(#GET{hx})]>
+        [(#INCLURE{fond=images/teaser-network-headline.svg, svg=teaser-network_headline-svg, total=#GET{total}})]
+      </div>
+      <div class="teaser-network_action cluster">
+        [(#ENV{contexte}|=={sommaire}|oui)
+          <a href="#URL_ARTICLE{1}" class="button-cta variant-button with-icon"><:fraap_squelettes:cta_federation_adherer:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+          <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_reseau_annuaire_decouvrir:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+        ][(#ENV{contexte}|=={rubrique}|oui)
+          <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon"><:fraap_squelettes:cta_reseau_annuaire_consulter:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+          <a href="#URL_ARTICLE{1}" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_federation_adherer:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+        ]
+      </div>
+    </div>
+    <div class="teaser-network_image">
+      <div class="teaser-network_map">
+        [(#INCLURE{fond=images/map-dots-4-330.svg, svg=teaser-network_map-svg})]
+      </div>
+    </div>
+  </div>
+</BOUCLE_reseau_contenu>

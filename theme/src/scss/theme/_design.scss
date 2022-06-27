@@ -6,7 +6,7 @@
 :root {
   --angle-sin: 0.052;
   --auto-grid-placement: auto-fit;
-  --auto-grid-gutter: var(--space-m-xl);
+  // --auto-grid-gutter: var(--space-m-xl);
   --auto-grid-gutter-column: var(--space-m-xl);
   --auto-grid-gutter-row: var(--space-xl);
   --auto-grid-min-item-size: 250px;
@@ -16,7 +16,11 @@
   --buttonCta-fontsize: var(--step-0);
 
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
+
+  --card-flow-space: var(--space-m);
   --card-icon-size: 1.2em;
+  --card-maxWidth: 31rem;
+
   --column-padding: var(--space-m-l);
 
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
@@ -31,14 +35,20 @@
   --icon-stroke-width: 4px;
   // --icon-nav-size: 32px;
 
+  --gutter-width: var(--column-padding);
+
+  --layout-width: calc(100vw - var(--gutter-width));
+  --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
+
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));
   --section-angle-padding-bottom-base-min: 48;
   --section-angle-padding-bottom-base-max: 64;
   --section-angle-padding-top-base-min: 32;
   --section-angle-padding-top-base-max: 64;
+  --section-angle-marginBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
 
-  --viewport-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
+  --underline-offset: 0.3em;
 }
 
 @include mq.mq($from: m) {
@@ -47,5 +57,12 @@
     --section-angle-padding-bottom-base-max: 128;
     --section-angle-padding-top-base-min: 48;
     --section-angle-padding-top-base-max: 128;
+  }
+}
+
+@include mq.mq($from: xl) {
+  :root {
+    --layout-width: var(--layout-max-width);
+    --gutter-width: calc((100vw / 2) - (var(--layout-width) / 2 ));
   }
 }

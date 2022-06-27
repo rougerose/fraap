@@ -8,16 +8,21 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// A
 	'actualites_headline' => 'À la une',
+	'actualites_federation_headline' => 'À la une de la fédération',
 	'a_propos_headline' => 'À propos de la Fraap',
 
 	// B
 	'bouton_valider' => 'Valider',
 
+	// C
+	'cta_federation_adherer' => 'Adhérer à la fédération',
+	'cta_suite' => 'La suite',
+	'cta_reseau_annuaire_decouvrir' => 'Découvrir le réseau',
+	'cta_reseau_annuaire_consulter' => "Consulter l'annuaire",
+	'cta_federation_rencontres_suite' => 'En savoir plus sur les rencontres',
+
 	// D
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
-
-	// F
-	'federation_adherer_cta' => 'Adhérer à la Fédération',
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',
@@ -43,8 +48,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// O
 	'outils_headline' => 'Les outils de la Fraap',
 
+	// Q
+	'qui_sommes_nous_federation_headline' => 'Qui-sommes-nous&#8239;?',
+
 	// R
-	'reseau_annuaire_consulter_cta' => 'Découvrir le réseau',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
 
 	// S

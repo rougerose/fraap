@@ -9,6 +9,5 @@
     var(--auto-grid-placement, auto-fill),
     minmax(var(--auto-grid-min-item-size, 16rem), 1fr)
   );
-  column-gap: var(--auto-grid-gutter-column, #{settings.$FRAAP-GLOBAL-GUTTER});
-  row-gap: var(--auto-grid-gutter-row, #{settings.$FRAAP-GLOBAL-GUTTER});
+  grid-gap: var(--auto-grid-gutter-row, #{settings.$FRAAP-GLOBAL-GUTTER}) var(--auto-grid-gutter-column, #{settings.$FRAAP-GLOBAL-GUTTER});
 }

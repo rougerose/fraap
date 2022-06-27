@@ -1,0 +1,18 @@
+<BOUCLE_contenu-federation-rencontres(SELECTIONS_CONTENUS){id_selection}{par rang}{0,1}>
+  <div>
+    <div class="teaser-rencontres_news card -variant-box flow">
+      <div class="flow-small">
+        <BOUCLE_article(CONDITION){si #OBJET|=={article}}>
+          <BOUCLE_chrono(MOTS){id_article=#ID_OBJET}{id_groupe=15}>
+            <p class="card_subhead">#TITRE</p>
+          </BOUCLE_chrono>
+        </BOUCLE_article>
+        <h3 class="card_heading"><a href="#URL">#TITRE</a></h3>
+      </div>
+      <div class="card_content flow">
+        [(#DESCRIPTIF)]
+        <p><a href="#URL" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+      </div>
+    </div>
+  </div>
+</BOUCLE_contenu-federation-rencontres>

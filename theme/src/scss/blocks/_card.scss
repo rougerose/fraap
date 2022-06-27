@@ -1,86 +1,43 @@
-@use "../mixins/background-svg" as mixin;
+/// CARD
 
 .card {
-  // Styles de base
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 37rem;
-  position: relative;
+  --flow-space: var(--card-flow-space);
+  max-width: var(--card-maxWidth);
   text-decoration: none;
+
+  &.-variant-box {
+    background-color: var(--color-primary);
+    box-shadow: var(--card-box-boxShadow);
+    padding: var(--space-m);
+  }
 }
 
-.card_content {
-  --flow-space: var(--card-flow-space);
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-s);
-  margin-left: calc(var(--space-s) * -1);
-  position: relative;
+// .card_content {}
 
-  a:not(:hover) {
-    text-decoration: none;
-  }
-
-  &::before,
-  &::after {
-    background-color: var(--color-primary);
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  &::before {
-    width: 20%;
-    height: 2px;
-    transition: width 0.25s 0.25s
-  }
-
-  &::after {
-    width: 2px;
-    height: 80px;
-    transition: height 0.25s 0.25s
-  }
-
-  &:hover {
-    &::before {
-      width: 100%;
-    }
-
-    &::after {
-      height: 100%;
-    }
-  }
+.card_subhead {
+  font-size: var(--step-0);
+  font-family: var(--font-family-headings);
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .card_heading {
   font-size: var(--step-1);
   font-weight: 600;
-}
 
-.card_image {
-  a {
-    background-image: var(--card-backgroundImage);
-    background-size: 8px;
-    display: block;
-    margin-right: 18px;
-    margin-top: 18px;
+  &.-variant-underscore {
+    display: flex;
+    align-items: baseline;
 
-    &:hover {
-      img {
-        transform: translate(0);
-      }
+    &::before {
+      --card-heading-offset: calc(var(--auto-grid-gutter-column) / 2);
+      content: "";
+      display: block;
+      height: 2px;
+      width: var(--card-heading-offset);
+      background-color: var(--color-primary);
+      margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
+      margin-right: var(--space-2xs);
     }
-  }
-
-  img {
-    aspect-ratio: 4/3;
-    box-shadow: 0 4px 4px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
-    object-fit: cover;
-    transform: translate(18px, -18px);
-    transition: transform 0.25s 0.25s;
-    width: 100%;
   }
 }

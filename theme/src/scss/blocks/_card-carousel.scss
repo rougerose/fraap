@@ -5,7 +5,8 @@
 .card-carousel {
 
   &--box {
-    box-shadow: var(--card-box-shadow);
+    background-color: var(--color-primary);
+    box-shadow: var(--card-box-boxShadow);
     display: flex;
     gap: var(--space-m);
     height: 100%;

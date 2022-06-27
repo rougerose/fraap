@@ -10,7 +10,7 @@
   .swiper {
     overflow: visible;
     padding: var(--space-xs) var(--column-padding) var(--space-xl);
-    max-width: var(--viewport-max-width);
+    max-width: var(--layout-max-width);
     z-index: var(--carousel-zindex);
   }
 

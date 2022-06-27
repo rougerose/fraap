@@ -1,8 +1,9 @@
 /// SECTION
 
-
 .section {
-  --section-marginBottom: calc(var(--section-angle-height) * -1);
+  --section-paddingTop: var(--space-l-xl);
+  --section-paddingBottom: var(--space-xl-2xl);
+
   position: relative;
   color: var(--color-section-ink, var(--color-ink));
 
@@ -11,8 +12,11 @@
   }
 
   &--angleBottom {
-    --section-paddingTop: 0;
     --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleBottom-max {
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
   }
 
   &--angleTopBottom {
@@ -26,7 +30,7 @@
   }
 
   &--overlap {
-    margin-bottom: var(--section-marginBottom);
+    margin-bottom: calc(var(--section-angle-height) * -1);
   }
 }
 
@@ -45,6 +49,7 @@
   background-color: var(--color-primary);
   height: 100%;
   width: 100%;
+  overflow: hidden;
   transform: skewY(-3deg);
   transform-origin: 100% 0;
 }
@@ -57,12 +62,16 @@
 //      (le bloc parent ayant un overflow hidden)
 .section_headline {
   font-size: var(--step-4);
-  margin-bottom: var(--space-m);
   margin-top: 0.1em; // [1]
 }
 
 .section_content {
+  --flow-space: var(--space-m);
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
+
+  &.-icon-offset {
+    padding-left: var(--space-l-2xl);
+  }
 
   ul[role="list"] {
     padding-left: 0;
