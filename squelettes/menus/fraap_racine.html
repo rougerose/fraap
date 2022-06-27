@@ -24,9 +24,9 @@
   [(#SET{circleHover, ' '})]
   [(#GET{enfants}|=={oui}|?{
     [(#SET{url, [#(#GET{ancre})]})]
-    [(#SET{icone, #INCLURE{fond=images/icon-arrow-double-right-32.svg, aria-hidden=true, svg=icon-nav-forward, path1=icon-nav-forward_path1, path2=icon-nav-forward_path2}})],
+    [(#SET{icone, #INCLURE{fond=images/icon-arrow-double-right-32.svg, aria-hidden=true, svg=icon icon-nav-forward, path1=icon-nav-forward_path1, path2=icon-nav-forward_path2}})],
     [(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
-    [(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, aria-hidden=true, svg=icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}})]
+    [(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, aria-hidden=true, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}})]
   })]
 ]
 

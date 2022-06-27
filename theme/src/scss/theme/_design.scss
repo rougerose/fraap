@@ -17,7 +17,6 @@
 
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
   --card-icon-size: 1.2em;
-  --card-flow-space: 1.75rem;
   --column-padding: var(--space-m-l);
 
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
@@ -26,10 +25,11 @@
   --font-family-headings: #{settings.$FRAAP-FONT-HEADINGS};
   --form-fields-width: 100%;
   --form-fields-input-padding: 14px;
-  --icon-nav-border-radius: 100%;
 
-  --icon-nav-padding: 8px;
-  --icon-nav-size: 32px;
+  --icon-border-radius: 100%;
+  --icon-padding: 8px;
+  --icon-stroke-width: 4px;
+  // --icon-nav-size: 32px;
 
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));

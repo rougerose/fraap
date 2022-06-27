@@ -6,14 +6,13 @@
   white-space: nowrap;
 
   &.with-icon {
-    --icon-nav-border-radius: 0;
-    --icon-nav-size: 0.75em;
-    --icon-nav-padding: 0;
-    --icon-nav-stroke-width: 4px;
     display: flex;
     align-items: baseline;
 
-    svg.icon-nav-link {
+    svg.icon.icon-nav-link {
+      --icon-border-radius: 0;
+      --icon-size: 0.75em;
+      --icon-padding: 0;
       fill: currentColor;
       margin-left: 0.5em;
 

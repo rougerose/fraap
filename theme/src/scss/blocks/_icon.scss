@@ -9,6 +9,10 @@
 @use "../settings";
 @use "../tools/mq" as mq;
 
+.icon {
+  height: var(--icon-size);
+  width: var(--icon-size);
+}
 
 // 01 .icon-nav
 // ========================================
@@ -16,14 +20,14 @@
 .icon-nav-search,
 .icon-nav-burger,
 .icon-nav-close {
+  --icon-size: 32px;
   fill: none;
   stroke: settings.$FRAAP-COLOR-INK;
-  width: var(--icon-nav-size);
-  height: var(--icon-nav-size);
+  height: var(--icon-size);
+  width: var(--icon-size);
 }
 
 .icon-nav-back {
-  stroke-width: 4px;
   fill: none;
   stroke: currentColor;
 }
@@ -31,14 +35,17 @@
 .icon-nav-forward,
 .icon-nav-back,
 .icon-nav-link {
-  border-radius: var(--icon-nav-border-radius);
+  --icon-size: 32px;
+  --iconPathOffset: translateX(12px);
+  --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+  border-radius: var(--icon-border-radius);
   flex-shrink: 0;
-  height: var(--icon-nav-size);
-  padding: var(--icon-nav-padding);
+  height: var(--icon-size);
+  padding: var(--icon-padding);
   stroke: currentColor;
-  stroke-width: var(--icon-nav-stroke-width, 3px);
+  stroke-width: var(--icon-stroke-width);
   transition: transform 0.3s ease-out, stroke 0.1s;
-  width: var(--icon-nav-size);
+  width: var(--icon-size);
 }
 
 .icon-nav-back {
@@ -48,7 +55,7 @@
   &_path2 {
     stroke: var(--color-icon-nav-back-stroke);
     transform-origin: center;
-    transition: transform 150ms cubic-bezier(0.215,0.61,0.355,1);
+    transition: transform var(--hoverTransition); //150ms cubic-bezier(0.215,0.61,0.355,1);
   }
 
   a:hover & {
@@ -70,12 +77,12 @@
   &_path1,
   &_path2 {
     transform-origin: center;
-    transition: transform 150ms cubic-bezier(0.215,0.61,0.355,1);
+    transition: transform var(--hoverTransition); //150ms cubic-bezier(0.215,0.61,0.355,1);
   }
 
   a:hover & {
     stroke: currentColor;
-    transform: translateX(12px);
+    transform: var(--iconPathOffset);
 
     &_path1 {
       transform: scale(1.2);
@@ -92,7 +99,7 @@
   --iconPathOpacity: 0;
   --iconPathTransform: none;
   --iconPathOffset: translateX(12px);
-  --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+  // --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
 
   a:hover & {
     --iconPathOpacity: 1;
@@ -125,11 +132,19 @@
 
 // icon Fédérer
 .icon-rubrique15 {
+  --color-circle: var(--color-primary-800);
+  --color-path: var(--color-contrast);
+
+  &.-contrast-light {
+    --color-circle: var(--color-primary-600);
+  }
+
   circle {
-    fill: var(--color-primary-800);
+    fill: var(--color-circle);
   }
   path {
-    fill: var(--color-contrast);
+    fill: var(--color-path);
+    fill-opacity: 0.85;
   }
 }
 
@@ -238,7 +253,7 @@
 .icon-arrow-right {
   padding: 0;
   stroke: currentColor;
-  stroke-width: 4px;
+  stroke-width: var(--icon-stroke-width);
 
   & path:first-child {
     stroke-width: 0;
