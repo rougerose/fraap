@@ -5,7 +5,7 @@
         <div class="section_background-banner"></div>
       </div>
       <div class="section_container">
-        <div class="section_content">
+        <div class="section_content flow">
           <div class="wrapper">
             <h2 class="section_headline"><:fraap_squelettes:a_propos_headline:></h2>
           </div>
@@ -21,7 +21,7 @@
                       <h3 class="card-carousel_heading card-carousel_heading--flat[(#CHEMIN{#GET{iconURL}|concat{.html}}|oui) with-icon]">
                         <a href="#URL">
                           [(#CHEMIN{#GET{iconURL}|concat{.html}}|oui)
-                            [(#INCLURE{fond=#GET{iconURL}, svg=card-carsousel card-carousel--flat icon-#GET{iconID}})]
+                            [(#INCLURE{fond=#GET{iconURL}, svg=card-carousel card-carousel--flat icon-#GET{iconID}})]
                           ]
                           #TITRE
                         </a>

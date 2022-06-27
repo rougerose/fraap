@@ -4,10 +4,6 @@
 
 .card-carousel {
 
-  &.flow {
-    --flow-space: var(--card-flow-space);
-  }
-
   &--box {
     box-shadow: var(--card-box-shadow);
     display: flex;
@@ -27,7 +23,7 @@
     font-size: var(--step-5);
 
     &::after {
-      background-color: black;
+      background-color: var(--color-ink);
       content: "";
       display: block;
       height: 1px;
@@ -65,7 +61,7 @@
   }
 
   &--box {
-    font-size: var(--step-6);
+    --card-icon-size: 3.5em;
   }
 }
 
