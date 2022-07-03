@@ -11,10 +11,10 @@
       </div>
       <div class="teaser-network_action cluster">
         [(#ENV{contexte}|=={sommaire}|oui)
-          <a href="#URL_ARTICLE{1}" class="button-cta variant-button with-icon"><:fraap_squelettes:cta_federation_adherer:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+          <a href="#URL_ARTICLE{1}" class="button-cta variant-button with-icon button-ripple"><:fraap_squelettes:cta_federation_adherer:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
           <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_reseau_annuaire_decouvrir:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
         ][(#ENV{contexte}|=={rubrique}|oui)
-          <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon"><:fraap_squelettes:cta_reseau_annuaire_consulter:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+          <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon button-ripple"><:fraap_squelettes:cta_reseau_annuaire_consulter:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
           <a href="#URL_ARTICLE{1}" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_federation_adherer:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
         ]
       </div>

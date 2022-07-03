@@ -9,6 +9,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// A
 	'actualites_headline' => 'À la une',
 	'actualites_federation_headline' => 'À la une de la fédération',
+	'actualites_orga_pro_headline' => "À la une de l'organisation professionnelle",
 	'a_propos_headline' => 'À propos de la Fraap',
 
 	// B
@@ -20,9 +21,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'cta_reseau_annuaire_decouvrir' => 'Découvrir le réseau',
 	'cta_reseau_annuaire_consulter' => "Consulter l'annuaire",
 	'cta_federation_rencontres_suite' => 'En savoir plus sur les rencontres',
+	'cta_rubrique_publications_toutes' => '@rubrique@ toutes les publications',
 
 	// D
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
+
+	// H
+	'headline_dernieres_publications' => 'Dernières publications',
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',

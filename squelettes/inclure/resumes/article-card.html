@@ -1,0 +1,11 @@
+<BOUCLE_card(ARTICLES){id_article}>
+  <article class="card">
+    <div class="card_content flow">
+      <h3 class="card_heading[ (#ENV{variant})]"><a href="#URL_ARTICLE">#TITRE</a></h3>
+      <div class="card_desc flow">
+        [(#INTRODUCTION)]
+        <p><a href="#URL_ARTICLE" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+      </div>
+    </div>
+  </article>
+</BOUCLE_card>

@@ -40,6 +40,8 @@
   --layout-width: calc(100vw - var(--gutter-width));
   --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
 
+  --measure: 60ch;
+
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));
   --section-angle-padding-bottom-base-min: 48;

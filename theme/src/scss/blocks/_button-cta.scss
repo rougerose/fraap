@@ -6,8 +6,9 @@
   white-space: nowrap;
 
   &.with-icon {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
+    padding: 8px 8px 6px;
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;
@@ -34,7 +35,6 @@
     background-color: var(--color-contrast);
     border-radius: 8px;
     color: var(--color-link-invert);
-    padding: 8px 8px 4px;
     text-decoration: none;
     white-space: nowrap;
   }

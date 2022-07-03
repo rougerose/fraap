@@ -1,0 +1,40 @@
+[(#REM)
+  <!--
+    #ENV{tri_articles} = 0, afficher tous les articles.
+    #ENV{tri_articles} = 1, afficher les X derniers articles.
+  -->
+]<BOUCLE_sous_rubrique(RUBRIQUES){id_rubrique}>
+  <section class="section">
+    <div class="section_masked">
+      <div class="wrapper">
+        <div class="section_container">
+          <div class="section_content -icon-offset flow">
+            <h2 id="rubrique#ID_RUBRIQUE" class="section_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
+            [<div class="section_desc measure">(#DESCRIPTIF)</div>]
+            <BOUCLE_affichage_articles_tous(CONDITION){si #ENV{tri_articles}|=={0}}>
+              <div class="auto-grid gap-top-5">
+                <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
+                  <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
+                </BOUCLE_tous_articles_card>
+              </div>
+            </BOUCLE_affichage_articles_tous>
+
+            <BOUCLE_affichage_articles_derniers(CONDITION){si #ENV{tri_articles}|=={1}}>
+              <section>
+                <h2 class="section_headline -underlined"><span><:fraap_squelettes:headline_dernieres_publications:></span></h2>
+                <div class="auto-grid gap-top-5">
+                  <BOUCLE_derniers_articles_card(ARTICLES){branche}{!par date}{par num titre}{0,6}>
+                    <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
+                  </BOUCLE_derniers_articles_card>
+                </div>
+                <div class="section_action gap-top-5">
+                  <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon button-ripple"><:fraap_squelettes:cta_rubrique_publications_toutes{rubrique=#TITRE&nbsp;:}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+                </div>
+              </section>
+            </BOUCLE_affichage_articles_derniers>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BOUCLE_sous_rubrique>

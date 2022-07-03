@@ -1,16 +1,16 @@
 <BOUCLE_header_rubrique(RUBRIQUES){id_rubrique}>
   #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
-  #SET{class-icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
+  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
   <header class="section">
     <div class="section_masked">
       <div class="section_container">
         <div class="wrapper">
           <div class="section_content -icon-offset headline flow">
             <h1 class="headline_title -icon-offset">
-              <INCLURE{fond=#GET{icon}, svg=#GET{class-icon}, aria-hidden=true} />
+              <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
               <span>#TITRE</span>
             </h1>
-            [<div class="headline_desc">(#DESCRIPTIF)</div>]
+            [<div class="headline_desc measure">(#DESCRIPTIF)</div>]
           </div>
         </div>
       </div>

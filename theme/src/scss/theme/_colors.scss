@@ -10,7 +10,7 @@
 $lime-600: map.get(var.$lime, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $lime-600 + '"/></svg>');
 
-:root, [data-theme-colors="1"] {
+:root, [data-theme-color="1"] {
   --color-ink: #{var.$black};
   --color-paper: #{var.$white};
   --color-primary: #{map.get(var.$lime, "500")};
@@ -44,7 +44,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 $yellow-600: map.get(var.$yellow, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $yellow-600 + '"/></svg>');
 
-[data-theme-colors="2"] {
+[data-theme-color="2"] {
   --color-primary: #{map.get(var.$yellow, "500")};
   --color-contrast: #{map.get(var.$disco, "500")};
   --color-contrast-200: #{map.get(var.$disco, "200")};
@@ -65,7 +65,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 $mint-600: map.get(var.$mint, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $mint-600 + '"/></svg>');
 
-[data-theme-colors="3"] {
+[data-theme-color="3"] {
   --color-primary: #{map.get(var.$mint, "500")};
   --color-contrast: #{map.get(var.$eggplant, "500")};
   --color-contrast-200: #{map.get(var.$eggplant, "200")};
@@ -87,7 +87,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 $palmas-600: map.get(var.$palmas, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $palmas-600 + '"/></svg>');
 
-[data-theme-colors="4"] {
+[data-theme-color="4"] {
   --color-primary: #{map.get(var.$palmas, "500")};
   --color-contrast: #{map.get(var.$blue, "500")};
   --color-contrast-200: #{map.get(var.$blue, "200")};
@@ -109,7 +109,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 $heliotrope-600: map.get(var.$heliotrope, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $heliotrope-600 + '"/></svg>');
 
-[data-theme-colors="5"] {
+[data-theme-color="5"] {
   --color-primary: #{map.get(var.$heliotrope, "500")};
   --color-contrast: #{map.get(var.$minsk, "500")};
   --color-contrast-200: #{map.get(var.$minsk, "200")};
@@ -131,7 +131,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 $dodger-blue-600: map.get(var.$dodger-blue, "600");
 $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $dodger-blue-600 + '"/></svg>');
 
-[data-theme-colors="6"] {
+[data-theme-color="6"] {
   --color-primary: #{map.get(var.$dodger-blue, "500")};
   --color-contrast: #{map.get(var.$bordeaux, "500")};
   --color-contrast-200: #{map.get(var.$bordeaux, "200")};

@@ -1,3 +1,7 @@
 .page-rubrique {
-  margin-bottom: var(--section-angle-marginBottom);
+  margin-bottom: var(--space-xl-2xl);
+
+  &.-angleMarginBottom {
+    margin-bottom: var(--section-angle-marginBottom);
+  }
 }

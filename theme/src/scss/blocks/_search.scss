@@ -32,12 +32,6 @@
   padding: var(--form-fields-input-padding);
   margin: 0 auto;
 
-  &.button-ripple {
-    &:hover {
-      box-shadow: var(--boxShadow-elevation-middle);
-    }
-  }
-
   & svg {
     margin-left: 8px;
     height: 0.75em;

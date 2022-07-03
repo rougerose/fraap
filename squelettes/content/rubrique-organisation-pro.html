@@ -1,0 +1,22 @@
+<BOUCLE_organisation_professionnelle(RUBRIQUES){id_rubrique}>
+  <div class="page-rubrique">
+    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, id_rubrique} />
+
+    <BOUCLE_actualites(SELECTIONS){identifiant=rubrique-organisation-pro-actualites}>
+      <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, section_titre=<:fraap_squelettes:actualites_orga_pro_headline:>} />
+    </BOUCLE_actualites>
+
+    [(#REM)
+    <!--
+      Les sous-rubriques Organisation nationale (#49) et Organisation territoriale (#50) affichent la totalité des articles qu'elles contiennent.
+      La sous-rubrique Plaidoyer (#51) uniquement les derniers articles.
+    -->]
+    <BOUCLE_organisation_sousrubriques(RUBRIQUES){id_parent}{par num titre}>
+      #SET{tri_articles, 0}
+      [(#ID_RUBRIQUE|=={51}|oui)
+        #SET{tri_articles, 1}
+      ]
+      <INCLURE{fond=inclure/sections/rubrique-sousrubrique, id_rubrique, tri_articles=#GET{tri_articles}} />
+    </BOUCLE_organisation_sousrubriques>
+  </div>
+</BOUCLE_organisation_professionnelle>
