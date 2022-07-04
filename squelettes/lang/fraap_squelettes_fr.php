@@ -16,6 +16,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'bouton_valider' => 'Valider',
 
 	// C
+	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
 	'cta_suite' => 'La suite',
 	'cta_reseau_annuaire_decouvrir' => 'Découvrir le réseau',
@@ -28,6 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// H
 	'headline_dernieres_publications' => 'Dernières publications',
+	'headline_fraap_organisation_pro_aussi' => "La Fraap, c'est aussi",
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',

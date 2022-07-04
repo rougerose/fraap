@@ -1,5 +1,5 @@
 <BOUCLE_organisation_professionnelle(RUBRIQUES){id_rubrique}>
-  <div class="page-rubrique">
+  <div class="page-rubrique -angleMarginBottom">
     <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, breadcrumb=1, id_rubrique} />
     <div class="section">
       <div class="section_masked">
@@ -16,5 +16,10 @@
         </div>
       </div>
     </div>
+    [(#REM)
+      <!-- La Fraap, c'est aussi... -->
+    ]<BOUCLE_teaser_orga_pro(SELECTIONS){identifiant=rubrique-organisation-pro-aussi}>
+      <INCLURE{fond=inclure/teasers/organisation-pro-aussi, id_parent, id_rubrique, id_selection}/>
+    </BOUCLE_teaser_orga_pro>
   </div>
 </BOUCLE_organisation_professionnelle>
