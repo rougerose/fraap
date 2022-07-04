@@ -1,5 +1,8 @@
 /// BUTTON CALL TO ACTION
 
+$button-padding: 8px;
+$button-paddingBottom: 6px;
+
 .button-cta {
   color: currentColor;
   font-size: var(--buttonCta-fontsize);
@@ -8,7 +11,7 @@
   &.with-icon {
     display: inline-flex;
     align-items: baseline;
-    padding: 8px 8px 6px;
+    padding: $button-padding $button-padding $button-paddingBottom;
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;
@@ -41,5 +44,6 @@
 
   &.variant-link {
     color: var(--color-link);
+    margin-left: $button-padding * -1;
   }
 }
