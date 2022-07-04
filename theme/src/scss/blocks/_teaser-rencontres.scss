@@ -2,19 +2,8 @@
 
 @use "../tools/mq" as mq;
 
-// .teaser-rencontres {}
-
-.teaser-rencontres_columns {
-  --switcher-target-container-width: 50rem;
-  --switcher-gutter-row: var(--auto-grid-gutter-row);
-  --switcher-gutter-column: var(--auto-grid-gutter-column);
+.teaser-rencontres {
   --switcher-vertical-alignment: center;
-}
-
-// .teaser-rencontres_news {}
-
-.teaser-rencontres_desc {
-  max-width: var(--card-maxWidth);
 }
 
 .teaser-rencontres_background {
