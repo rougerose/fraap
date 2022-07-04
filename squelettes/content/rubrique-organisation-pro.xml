@@ -2,5 +2,5 @@
   <nom>Organisation professionnelle</nom>
   <description>Composition pour la rubrique Organisation professionnelle</description>
   <icon>images/objet-liste-contenus.png</icon>
-  <!-- <branche type="article" composition="fiches-pratiques" /> -->
+  <branche type="rubrique" composition="organisation-pro-rubriques" />
 </composition>
