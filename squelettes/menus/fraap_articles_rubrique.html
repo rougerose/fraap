@@ -38,8 +38,8 @@
 	#SET{cpt,0}
 	<BOUCLE_cpt_articles(ARTICLES){id_rubrique=#GET{id_rubrique}}> </BOUCLE_cpt_articles>#SET{cpt,#TOTAL_BOUCLE}</B_cpt_articles>
 	<BOUCLE_articles(ARTICLES){id_rubrique=#GET{id_rubrique}}{par num #GET{tri_num}}{inverse #GET{tri_num_inverse}}{par #GET{tri_alpha}}{inverse #GET{tri_alpha_inverse}}{0,#GET{articles_max_affiches}}>
-		<li class="site-nav_item" data-type-lien="lien">
-      <a class="site-nav_link[ (#GET{icone}|=={oui}|oui)site-nav_link--icon]" href="#URL_ARTICLE"[ data-state="(#ID_ARTICLE|menus_exposer{article, #ENV*{env}, active})"]><span>#TITRE</span>[ (#GET{icone_f})]</a>
+		<li class="site-nav_item" data-type-lien="lien"[ data-state="(#ID_ARTICLE|menus_exposer{article, #ENV*{env}, active})"]>
+      <a class="site-nav_link[ (#GET{icone}|=={oui}|oui)site-nav_link--icon]" href="#URL_ARTICLE"><span>#TITRE</span>[ (#GET{icone_f})]</a>
 		</li>
 	</BOUCLE_articles>
 	[(#GET{cpt}|>{#GET{articles_max_affiches}}|oui)

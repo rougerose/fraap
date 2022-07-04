@@ -10,7 +10,7 @@
     <div class="site-nav_body -variant-offcanvas">
       <BOUCLE_menus_offcanvas(MENUS){identifiant LIKE site-nav-offcanvas%}{par identifiant}>
         [(#SET{index, #COMPTEUR_BOUCLE|moins{1}})]
-        <INCLURE{fond=inclure/site-nav/site-nav_menu, identifiant=#IDENTIFIANT, index=#GET{index}, contexte=offcanvas}/>
+        <INCLURE{fond=inclure/site-nav/site-nav_menu, identifiant=#IDENTIFIANT, index=#GET{index}, contexte=offcanvas, env}/>
       </BOUCLE_menus_offcanvas>
     </div>
   </div>

@@ -25,10 +25,11 @@
 
     &:hover {
       color: var(--color-link);
+    }
 
-      &::before {
-        transform: translateY(-50%) scale(1.5);
-      }
+    &[data-state="active"]::before,
+    &:hover::before {
+      transform: translateY(-50%) scale(1.5);
     }
   }
 

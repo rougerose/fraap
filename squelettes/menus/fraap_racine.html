@@ -36,6 +36,6 @@
 ]
 
 <BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
-	<li class="racine site-nav_item[ --variant-(#ENV{contexte})][(#GET{circleHover}|non) circle-hover][ (#ENV{css})]"[ data-type-link="(#GET{enfants}|=={oui}|?{shortcut,link}|trim)"]>
-    <a class="site-nav_link[ (#GET{icone}|oui)site-nav_link--icon]" href="#GET{url}"[ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"][ (#GET{ancre}|!=={''}|oui)data-menu-controls=["(#GET{ancre})"]]>[(#GET{titre})][(#GET{icone})]</a>
+	<li class="racine site-nav_item[ --variant-(#ENV{contexte})][(#GET{circleHover}|non) circle-hover][ (#ENV{css})]"[ data-type-link="(#GET{enfants}|=={oui}|?{shortcut,link}|trim)"][ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
+    <a class="site-nav_link[ (#GET{icone}|oui)site-nav_link--icon]" href="#GET{url}"[ (#GET{ancre}|!=={''}|oui)data-menu-controls=["(#GET{ancre})"]]>[(#GET{titre})][(#GET{icone})]</a>
 </BOUCLE_public>
