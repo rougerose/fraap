@@ -1464,10 +1464,6 @@ a:hover .icon-nav-link {
   padding-top: var(--space-s);
   padding-bottom: var(--space-s);
 }
-.site-header_wrapper {
-  padding-left: var(--column-padding);
-  padding-right: var(--column-padding);
-}
 .site-header_logo {
   border-radius: 0.125rem;
   display: inline-flex;
@@ -1516,11 +1512,6 @@ a:hover .icon-nav-link {
   padding-bottom: var(--space-xl);
   background-color: var(--color-contrast);
   color: var(--color-primary);
-}
-
-.site-footer_wrapper {
-  padding-left: var(--column-padding);
-  padding-right: var(--column-padding);
 }
 
 .site-footer_layout {
@@ -1964,7 +1955,7 @@ a:hover .icon-nav-link {
   white-space: nowrap !important;
 }
 
-.wrapper {
+.wrapper-content {
   margin: 0 auto;
   padding: 0 var(--column-padding);
   max-width: var(--layout-max-width);
