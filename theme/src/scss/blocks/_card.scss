@@ -30,7 +30,7 @@
     align-items: baseline;
 
     &::before {
-      --card-heading-offset: calc(var(--auto-grid-gutter-column) / 2);
+      --card-heading-offset: calc(var(--auto-grid-gutter-column) * 0.4);
       background-color: var(--color-primary);
       content: "";
       display: block;
@@ -40,16 +40,5 @@
       margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
       margin-right: var(--space-2xs);
     }
-
-    // &::before {
-    //   --card-heading-offset: calc(var(--auto-grid-gutter-column) / 2);
-    //   content: "";
-    //   display: block;
-    //   height: 2px;
-    //   width: var(--card-heading-offset);
-    //   background-color: var(--color-primary);
-    //   margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
-    //   margin-right: var(--space-2xs);
-    // }
   }
 }

@@ -19,17 +19,12 @@
   // l'icone est aligné en retrait négatif à gauche.
   &.-icon-offset {
     margin-left: calc(var(--space-l-2xl) * -1);
-
-
-    // & svg {
-    //   width: calc(var(--space-l-2xl) - var(--space-2xs-xs));
-    //   height: calc(var(--space-l-2xl) - var(--space-2xs-xs));
-    // }
   }
 }
 
 .headline_icon {
   --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
+  margin-top: -0.15em;
 }
 
 .headline_desc {

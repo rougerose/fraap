@@ -1,13 +1,10 @@
 <BOUCLE_rubrique_standard(RUBRIQUES){id_rubrique}>
-  <div class="o-wrapper">
-    <article class="c-post u-flow">
-      <h1>FRAAP.org</h1>
-      <h3>travail en cours</h3>
-      <div class="c-post_body u-flow">
-        <ul>
-          <li><a href="[(#URL_PAGE{navigation}|parametre_url{id_article, 993})]">Navigation principale</a></li>
-        </ul>
-      </div>
-    </article>
+  <div class="page-rubrique">
+    #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
+    #SET{icon-svg, #GET{icon}|concat{-64.svg}}
+    <INCLURE{fond=inclure/sections/rubrique-header, icon=#GET{icon-svg}, class_icon=#GET{icon}, breadcrumb=1, id_rubrique} />
+    <BOUCLE_si_article(ARTICLES){id_rubrique}{0,1}>
+      <INCLURE{fond=inclure/liste/articles-card, id_rubrique, pagination=12, env, ajax} />
+    </BOUCLE_si_article>
   </div>
 </BOUCLE_rubrique_standard>

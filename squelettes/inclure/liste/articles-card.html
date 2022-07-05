@@ -1,0 +1,18 @@
+<B_articles>
+  <div class="section">
+    #ANCRE_PAGINATION
+    <div class="section_masked">
+      <div class="wrapper-content">
+        <div class="section_container">
+          <div class="section_content -icon-offset flow">
+            <div class="auto-grid">
+              <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12} _articles}>
+                <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
+              </BOUCLE_articles>
+            </div>
+            [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{page_precedent_suivant, label_precedent=Page précédente, label_suivant=Page suivante})</nav>]
+        </div>
+      </div>
+    </div>
+  </div>
+</B_articles>
