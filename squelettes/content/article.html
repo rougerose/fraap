@@ -1,13 +1,26 @@
 <BOUCLE_article_standard(ARTICLES){id_article}>
-  <div class="o-wrapper">
-    <article class="c-post u-flow">
-      <h1>FRAAP.org</h1>
-      <h3>travail en cours</h3>
-      <div class="c-post_body u-flow">
-        <ul>
-          <li><a href="[(#URL_PAGE{navigation}|parametre_url{id_article, 993})]">Navigation principale</a></li>
-        </ul>
+  <div class="page-article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
+      <!-- logo ou document avec role -->
+      <div class="region">
+        <div class="logo-fake"></div>
       </div>
-    </article>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <div class="region">
+        <article class="article prose">
+          <header class="article_header headline flow">
+            <h1 class="article_title headline_title">#TITRE</h1>
+            [<p>(#SOUSTITRE)</p>]
+            [<div class="article_intro headline_desc">(#CHAPO)</div>]
+            <p>[Publié le (#DATE|affdate)]</p>
+          </header>
+          [<div class="article_body flow">
+            (#TEXTE)
+          </div>]
+        </article>
+      </div>
+    </div>
   </div>
 </BOUCLE_article_standard>

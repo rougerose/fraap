@@ -1,18 +1,28 @@
-/// Prose
+/// PROSE
 /// https://github.com/GoogleChrome/web.dev/blob/main/src/scss/blocks/_prose.scss
 
+@use "../utilities/wrapper-content";
+@use "../settings";
+@use "sass:math";
+
 .prose {
-  margin: 0 auto;
-  max-width: 50rem;
-
-  font-size: var(--step-0);
-  line-height: 1.4;
+  @extend .wrapper-content;
+  max-width: #{math.div(settings.$FRAAP-PROSE-MAX-WIDTH, 16) * 1rem};
 }
 
-@media (min-width: 48em) {
-  .prose {
-    p {
-      max-width: 70ch;
-    }
-  }
-}
+
+// .prose {
+//   margin: 0 auto;
+//   max-width: 50rem;
+
+//   font-size: var(--step-0);
+//   line-height: 1.4;
+// }
+
+// @media (min-width: 48em) {
+//   .prose {
+//     p {
+//       max-width: 70ch;
+//     }
+//   }
+// }

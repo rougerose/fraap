@@ -784,7 +784,7 @@ html:not(.js) .button-nav {
   align-items: baseline;
 }
 .card_heading.-variant-underscore::before {
-  --card-heading-offset: calc(var(--auto-grid-gutter-column) / 2);
+  --card-heading-offset: calc(var(--auto-grid-gutter-column) * 0.4);
   background-color: var(--color-primary);
   content: "";
   display: block;
@@ -1314,6 +1314,7 @@ a:hover .icon-nav-link {
 
 .headline_icon {
   --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
+  margin-top: -0.15em;
 }
 
 .headline_desc {
@@ -1335,6 +1336,37 @@ a:hover .icon-nav-link {
 
 .media-box_content {
   flex: 1;
+}
+
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-xs);
+  justify-content: center;
+  list-style: none;
+  margin: 0 -1em;
+  padding: 1em;
+}
+
+.pagination-item.prev {
+  margin-right: auto;
+}
+.pagination-item.next {
+  margin-left: auto;
+}
+
+.wrapper-content, .prose {
+  margin: 0 auto;
+  padding: 0 var(--column-padding);
+  max-width: var(--layout-max-width);
+}
+
+.wrapper-content[data-flush], [data-flush].prose {
+  padding: 0;
+}
+
+.prose {
+  max-width: 50rem;
 }
 
 .search_group {
@@ -1371,7 +1403,7 @@ a:hover .icon-nav-link {
 
 .section {
   --section-paddingTop: var(--space-l-xl);
-  --section-paddingBottom: var(--space-xl-2xl);
+  --section-paddingBottom: var(--space-l-xl);
   position: relative;
   color: var(--color-section-ink, var(--color-ink));
 }
@@ -1941,6 +1973,11 @@ a:hover .icon-nav-link {
   max-width: var(--measure);
 }
 
+.region {
+  padding-top: var(--region-space, var(--space-l-xl));
+  padding-bottom: var(--region-space, var(--space-l-xl));
+}
+
 .visually-hidden {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -1955,15 +1992,25 @@ a:hover .icon-nav-link {
   white-space: nowrap !important;
 }
 
-.wrapper-content {
-  margin: 0 auto;
-  padding: 0 var(--column-padding);
-  max-width: var(--layout-max-width);
-}
-
 .wrapper-structure {
   padding-left: var(--column-padding);
   padding-right: var(--column-padding);
+}
+
+.logo-fake {
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: var(--color-primary);
+  width: 100%;
+  max-width: 100rem;
+  margin-left: auto;
+  margin-right: auto;
+  aspect-ratio: 3/1;
+}
+
+.article_body {
+  margin-top: var(--space-l);
+  max-width: 70ch;
 }
 
 .page-rubrique {
