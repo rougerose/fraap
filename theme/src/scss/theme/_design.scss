@@ -55,10 +55,10 @@
 
 @include mq.mq($from: m) {
   :root {
-    --section-angle-padding-bottom-base-min: 16;
-    --section-angle-padding-bottom-base-max: 128;
+    --section-angle-padding-bottom-base-min: 48;
+    --section-angle-padding-bottom-base-max: 96;
     --section-angle-padding-top-base-min: 48;
-    --section-angle-padding-top-base-max: 128;
+    --section-angle-padding-top-base-max: 96;
   }
 }
 

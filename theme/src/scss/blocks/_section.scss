@@ -1,5 +1,7 @@
 /// SECTION
 
+@use "../tools/mq" as mq;
+
 .section {
   --section-paddingTop: var(--space-l-xl);
   --section-paddingBottom: var(--space-l-xl);
@@ -25,12 +27,13 @@
   }
 
   &--banner {
-    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
     --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
   }
 
   &--overlap {
-    margin-bottom: calc(var(--section-angle-height) * -1);
+    // margin-bottom: calc(var(--section-angle-height) * -1);
+    margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
   }
 }
 
@@ -51,7 +54,8 @@
   width: 100%;
   overflow: hidden;
   transform: skewY(-3deg);
-  transform-origin: 100% 0;
+  // transform-origin: 100% 0;
+  transform-origin: center;
 }
 
 .section_container {
@@ -101,4 +105,12 @@
 
 .section_action {
   text-align:center;
+}
+
+@include mq.mq($from: m) {
+  .section {
+    &--overlap {
+      margin-bottom: unset;
+    }
+  }
 }

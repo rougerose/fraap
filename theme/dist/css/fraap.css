@@ -174,10 +174,10 @@
 
 @media (min-width: 46.25em) {
   :root {
-    --section-angle-padding-bottom-base-min: 16;
-    --section-angle-padding-bottom-base-max: 128;
+    --section-angle-padding-bottom-base-min: 48;
+    --section-angle-padding-bottom-base-max: 96;
     --section-angle-padding-top-base-min: 48;
-    --section-angle-padding-top-base-max: 128;
+    --section-angle-padding-top-base-max: 96;
   }
 }
 @media (min-width: 75em) {
@@ -1421,11 +1421,11 @@ a:hover .icon-nav-link {
   --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
 .section--banner {
-  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
   --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
 .section--overlap {
-  margin-bottom: calc(var(--section-angle-height) * -1);
+  margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
 }
 
 .section_masked {
@@ -1445,7 +1445,7 @@ a:hover .icon-nav-link {
   width: 100%;
   overflow: hidden;
   transform: skewY(-3deg);
-  transform-origin: 100% 0;
+  transform-origin: center;
 }
 
 .section_container {
@@ -1489,6 +1489,11 @@ a:hover .icon-nav-link {
   text-align: center;
 }
 
+@media (min-width: 46.25em) {
+  .section--overlap {
+    margin-bottom: unset;
+  }
+}
 .no-js .site-header_btn-burger {
   display: none;
 }
@@ -1863,7 +1868,6 @@ a:hover .icon-nav-link {
 }
 
 .teaser-network_map {
-  top: var(--space-l);
   position: absolute;
   width: 100%;
   z-index: -1;
@@ -1901,7 +1905,11 @@ a:hover .icon-nav-link {
 
   .teaser-network_map {
     width: 150%;
-    transform: translateY(-20%);
+  }
+}
+@media (min-width: 56.25em) {
+  .teaser-network_map {
+    transform: translateY(-10%);
   }
 }
 .teaser-rencontres {
