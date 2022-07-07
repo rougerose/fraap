@@ -789,7 +789,7 @@ html:not(.js) .button-nav {
   content: "";
   display: block;
   flex: 0 0 auto;
-  height: 2px;
+  height: 4px;
   width: var(--card-heading-offset);
   margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
   margin-right: var(--space-2xs);
