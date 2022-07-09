@@ -191,8 +191,9 @@
   --color-paper: white;
   --color-primary: #5ceb24;
   --color-contrast: #3f2ced;
-  --color-contrast-200: #9d93f6;
   --color-contrast-400: #5d4def;
+  --color-primary-200: #bdf7a6;
+  --color-primary-300: #9af278;
   --color-primary-400: #78ee49;
   --color-primary-600: #48cd13;
   --color-primary-700: #39a30f;
@@ -210,13 +211,14 @@
 
 [data-theme-color="2"] {
   --color-primary: #f6d00e;
-  --color-contrast: #85144b;
-  --color-contrast-200: #e864a4;
-  --color-contrast-400: #ba1c68;
-  --color-primary-400: #f8d735;
+  --color-primary-200: #fceda1;
+  --color-primary-300: #fae370;
+  --color-primary-400: #f8d93f;
   --color-primary-600: #fbc02d;
   --color-primary-700: #ea9206;
   --color-primary-800: #dc7609;
+  --color-contrast: #85144b;
+  --color-contrast-400: #ba1c68;
   --color-link: var(--color-contrast);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23fbc02d'/%3E%3C/svg%3E");
   --card-box-boxShadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(246, 208, 14, 0.5);
@@ -225,13 +227,14 @@
 
 [data-theme-color="3"] {
   --color-primary: #38f04d;
-  --color-contrast: #961386;
-  --color-contrast-200: #ec65dc;
-  --color-contrast-400: #c819b3;
+  --color-primary-200: #cbfbd0;
+  --color-primary-300: #9bf8a6;
   --color-primary-400: #6cf47c;
   --color-primary-600: #1fd134;
   --color-primary-700: #19a92a;
   --color-primary-800: #137c1f;
+  --color-contrast: #961386;
+  --color-contrast-400: #c819b3;
   --color-link: var(--color-contrast);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%231fd134'/%3E%3C/svg%3E");
   --card-box-boxShadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(56, 240, 77, 0.5);
@@ -240,13 +243,14 @@
 
 [data-theme-color="4"] {
   --color-primary: #d7f320;
-  --color-contrast: #3111e4;
-  --color-contrast-200: #9584f6;
-  --color-contrast-400: #4f33f0;
+  --color-primary-200: #f4fcc0;
+  --color-primary-300: #ebf990;
   --color-primary-400: #e2f75f;
   --color-primary-600: #beda0b;
   --color-primary-700: #98ae09;
   --color-primary-800: #728307;
+  --color-contrast: #3111e4;
+  --color-contrast-400: #4f33f0;
   --color-link: var(--color-contrast);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23beda0b'/%3E%3C/svg%3E");
   --card-box-boxShadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(215, 243, 32, 0.5);
@@ -255,13 +259,14 @@
 
 [data-theme-color="5"] {
   --color-primary: #f752fa;
-  --color-contrast: #093062;
-  --color-contrast-200: #4991ee;
-  --color-contrast-400: #0f4d9f;
+  --color-primary-200: #fdcefd;
+  --color-primary-300: #fbabfc;
   --color-primary-400: #f983fb;
   --color-primary-600: #f41bf8;
   --color-primary-700: #d107d5;
   --color-primary-800: #9c059e;
+  --color-contrast: #093062;
+  --color-contrast-400: #0f4d9f;
   --color-link: var(--color-contrast);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23f41bf8'/%3E%3C/svg%3E");
   --card-box-boxShadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(247, 82, 250, 0.5);
@@ -270,13 +275,14 @@
 
 [data-theme-color="6"] {
   --color-primary: #0dc1fd;
-  --color-contrast: maroon;
-  --color-contrast-200: #ff4242;
-  --color-contrast-400: #c20000;
+  --color-primary-200: #a9e9fe;
+  --color-primary-300: #77dcfe;
   --color-primary-400: #44cffd;
   --color-primary-600: #02a3d9;
   --color-primary-700: #0285b1;
   --color-primary-800: #016383;
+  --color-contrast: maroon;
+  --color-contrast-400: #c20000;
   --color-link: var(--color-contrast);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2302a3d9'/%3E%3C/svg%3E");
   --card-box-boxShadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(13, 193, 253, 0.5);
@@ -771,14 +777,9 @@ html:not(.js) .button-nav {
 .card_subhead {
   font-size: var(--step-0);
   font-family: var(--font-family-headings);
-  font-weight: 300;
   text-transform: uppercase;
 }
 
-.card_heading {
-  font-size: var(--step-1);
-  font-weight: 600;
-}
 .card_heading.-variant-underscore {
   display: flex;
   align-items: baseline;
@@ -820,7 +821,6 @@ html:not(.js) .button-nav {
 }
 .card-carousel_heading--box {
   font-size: var(--step-3);
-  font-weight: 500;
 }
 .card-carousel_heading.with-icon a {
   display: flex;
@@ -848,7 +848,7 @@ html:not(.js) .button-nav {
 }
 
 .card-carousel_desc {
-  max-width: 60ch;
+  max-width: var(--measure);
 }
 .card-carousel_desc a {
   color: var(--color-contrast);
@@ -894,7 +894,6 @@ html:not(.js) .button-nav {
 
 .card-news_heading {
   font-size: var(--step-1);
-  font-weight: 600;
 }
 
 .card-news_image a {
@@ -915,6 +914,37 @@ html:not(.js) .button-nav {
   transform: translate(18px, -18px);
   transition: transform 0.25s 0.25s;
   width: 100%;
+}
+
+.card-stack {
+  background-color: var(--color-primary);
+  padding: var(--space-m);
+  position: relative;
+  transform-style: preserve-3d;
+}
+.card-stack::before, .card-stack::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+.card-stack::before {
+  background-color: var(--color-primary-300);
+  transform: translate3d(4px, -4px, -1px);
+}
+.card-stack::after {
+  background-color: var(--color-primary-200);
+  transform: translate3d(8px, -8px, -2px);
+}
+.card-stack:hover::before {
+  transform: translate3d(9px, -9px, -1px);
+}
+.card-stack:hover::after {
+  transform: translate3d(18px, -18px, -2px);
 }
 
 .carousel {
@@ -1303,7 +1333,6 @@ a:hover .icon-nav-link {
   display: flex;
   gap: var(--space-2xs-xs);
   font-size: var(--step-5);
-  font-weight: 600;
 }
 .headline_title span {
   flex: 1;
@@ -1319,7 +1348,6 @@ a:hover .icon-nav-link {
 
 .headline_desc {
   font-size: var(--step-3);
-  font-weight: 300;
   line-height: 1.2;
 }
 
@@ -1456,22 +1484,9 @@ a:hover .icon-nav-link {
   font-size: var(--step-4);
   margin-top: 0.1em;
 }
-.section_headline.-underlined {
-  font-family: var(--font-family-sans);
-  font-size: var(--step-0);
-  font-weight: 700;
-  text-align: center;
-  border-bottom: 1px solid var(--color-primary);
-}
-.section_headline.-underlined > span {
-  border-bottom: 3px solid var(--color-primary);
-  display: inline-block;
-  padding: 0 0.5rem;
-}
 
 .section_desc {
   font-size: var(--step-2);
-  font-weight: 300;
 }
 
 .section_content {
@@ -1998,6 +2013,16 @@ a:hover .icon-nav-link {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
+}
+
+.weight-300 {
+  font-weight: 300;
+}
+.weight-500 {
+  font-weight: 500;
+}
+.weight-600 {
+  font-weight: 600;
 }
 
 .wrapper-structure {
