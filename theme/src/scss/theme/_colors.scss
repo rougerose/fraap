@@ -15,8 +15,9 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-paper: #{var.$white};
   --color-primary: #{map.get(var.$lime, "500")};
   --color-contrast: #{map.get(var.$royal-blue, "500")};
-  --color-contrast-200: #{map.get(var.$royal-blue, "200")};
   --color-contrast-400: #{map.get(var.$royal-blue, "400")};
+  --color-primary-200: #{map.get(var.$lime, "200")};
+  --color-primary-300: #{map.get(var.$lime, "300")};
   --color-primary-400: #{map.get(var.$lime, "400")};
   --color-primary-600: #{$lime-600};
   --color-primary-700: #{map.get(var.$lime, "700")};
@@ -46,13 +47,14 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="2"] {
   --color-primary: #{map.get(var.$yellow, "500")};
-  --color-contrast: #{map.get(var.$disco, "500")};
-  --color-contrast-200: #{map.get(var.$disco, "200")};
-  --color-contrast-400: #{map.get(var.$disco, "400")};
+  --color-primary-200: #{map.get(var.$yellow, "200")};
+  --color-primary-300: #{map.get(var.$yellow, "300")};
   --color-primary-400: #{map.get(var.$yellow, "400")};
   --color-primary-600: #{$yellow-600};
   --color-primary-700: #{map.get(var.$yellow, "700")};
   --color-primary-800: #{map.get(var.$yellow, "800")};
+  --color-contrast: #{map.get(var.$disco, "500")};
+  --color-contrast-400: #{map.get(var.$disco, "400")};
   --color-link: var(--color-contrast);
 
   // card
@@ -67,13 +69,14 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="3"] {
   --color-primary: #{map.get(var.$mint, "500")};
-  --color-contrast: #{map.get(var.$eggplant, "500")};
-  --color-contrast-200: #{map.get(var.$eggplant, "200")};
-  --color-contrast-400: #{map.get(var.$eggplant, "400")};
+  --color-primary-200: #{map.get(var.$mint, "200")};
+  --color-primary-300: #{map.get(var.$mint, "300")};
   --color-primary-400: #{map.get(var.$mint, "400")};
   --color-primary-600: #{$mint-600};
   --color-primary-700: #{map.get(var.$mint, "700")};
   --color-primary-800: #{map.get(var.$mint, "800")};
+  --color-contrast: #{map.get(var.$eggplant, "500")};
+  --color-contrast-400: #{map.get(var.$eggplant, "400")};
   --color-link: var(--color-contrast);
 
   // card
@@ -89,13 +92,14 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="4"] {
   --color-primary: #{map.get(var.$palmas, "500")};
-  --color-contrast: #{map.get(var.$blue, "500")};
-  --color-contrast-200: #{map.get(var.$blue, "200")};
-  --color-contrast-400: #{map.get(var.$blue, "400")};
+  --color-primary-200: #{map.get(var.$palmas, "200")};
+  --color-primary-300: #{map.get(var.$palmas, "300")};
   --color-primary-400: #{map.get(var.$palmas, "400")};
   --color-primary-600: #{$palmas-600};
   --color-primary-700: #{map.get(var.$palmas, "700")};
   --color-primary-800: #{map.get(var.$palmas, "800")};
+  --color-contrast: #{map.get(var.$blue, "500")};
+  --color-contrast-400: #{map.get(var.$blue, "400")};
   --color-link: var(--color-contrast);
 
   // card
@@ -111,13 +115,14 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="5"] {
   --color-primary: #{map.get(var.$heliotrope, "500")};
-  --color-contrast: #{map.get(var.$minsk, "500")};
-  --color-contrast-200: #{map.get(var.$minsk, "200")};
-  --color-contrast-400: #{map.get(var.$minsk, "400")};
+  --color-primary-200: #{map.get(var.$heliotrope, "200")};
+  --color-primary-300: #{map.get(var.$heliotrope, "300")};
   --color-primary-400: #{map.get(var.$heliotrope, "400")};
   --color-primary-600: #{$heliotrope-600};
   --color-primary-700: #{map.get(var.$heliotrope, "700")};
   --color-primary-800: #{map.get(var.$heliotrope, "800")};
+  --color-contrast: #{map.get(var.$minsk, "500")};
+  --color-contrast-400: #{map.get(var.$minsk, "400")};
   --color-link: var(--color-contrast);
 
   // card
@@ -133,13 +138,14 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="6"] {
   --color-primary: #{map.get(var.$dodger-blue, "500")};
-  --color-contrast: #{map.get(var.$bordeaux, "500")};
-  --color-contrast-200: #{map.get(var.$bordeaux, "200")};
-  --color-contrast-400: #{map.get(var.$bordeaux, "400")};
+  --color-primary-200: #{map.get(var.$dodger-blue, "200")};
+  --color-primary-300: #{map.get(var.$dodger-blue, "300")};
   --color-primary-400: #{map.get(var.$dodger-blue, "400")};
   --color-primary-600: #{$dodger-blue-600};
   --color-primary-700: #{map.get(var.$dodger-blue, "700")};
   --color-primary-800: #{map.get(var.$dodger-blue, "800")};
+  --color-contrast: #{map.get(var.$bordeaux, "500")};
+  --color-contrast-400: #{map.get(var.$bordeaux, "400")};
   --color-link: var(--color-contrast);
 
   // card

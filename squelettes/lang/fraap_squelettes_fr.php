@@ -11,6 +11,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'actualites_federation_headline' => 'À la une de la fédération',
 	'actualites_orga_pro_headline' => "À la une de l'organisation professionnelle",
 	'a_propos_headline' => 'À propos de la Fraap',
+	'article' => '1 article',
+	'articles' => '@nb@ articles',
 
 	// B
 	'bouton_valider' => 'Valider',
