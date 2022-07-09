@@ -1,15 +1,25 @@
 <BOUCLE_organisation_professionnelle(RUBRIQUES){id_rubrique}>
-  <div class="page-rubrique -angleMarginBottom">
+  [(#REM)
+    <!-- Ajouter des valeurs de marges supplémentaires si le teaser "la Fraap, c'est aussi" est présent -->
+  ][(#SET{selection_teaser_orga_pro, ''})]
+  [(#ID_RUBRIQUE|in_any{#LISTE{49,50,51}}|oui) #SET{selection_teaser_orga_pro, ' '} ]
+  <div class="page-rubrique[(#GET{selection_teaser_orga_pro}|oui) -angleMarginBottom]">
     <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, breadcrumb=1, id_rubrique} />
-    <div class="section section--angleBottom-max">
+    <div class="section[(#GET{selection_teaser_orga_pro}|oui) section--angleBottom]">
       <div class="section_masked">
         <div class="wrapper-content">
           <div class="section_container">
             <div class="section_content -icon-offset flow">
               <div class="auto-grid">
-                <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
-                  <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
-                </BOUCLE_tous_articles_card>
+                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={51}}>
+                  <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
+                    <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
+                  </BOUCLE_sousrubriques_plaidoyer>
+                </BOUCLE_rubrique_plaidoyer>
+                  <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
+                    <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
+                  </BOUCLE_tous_articles_card>
+                <//B_rubrique_plaidoyer>
               </div>
             </div>
           </div>

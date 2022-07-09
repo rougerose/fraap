@@ -35,6 +35,11 @@
     // margin-bottom: calc(var(--section-angle-height) * -1);
     margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
   }
+
+  &.-header {
+    --section-paddingTop: var(--space-xl-2xl);
+    --section-paddingBottom: var(--space-m-l);
+  }
 }
 
 .section_masked {
@@ -87,7 +92,7 @@
 }
 
 .section_action {
-  text-align:center;
+  text-align: center;
 }
 
 @include mq.mq($from: m) {

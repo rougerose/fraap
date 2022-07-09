@@ -1329,24 +1329,24 @@ a:hover .icon-nav-link {
   stroke-width: 0;
 }
 
-.headline_title {
+.header_title {
   display: flex;
   gap: var(--space-2xs-xs);
   font-size: var(--step-5);
 }
-.headline_title span {
+.header_title span {
   flex: 1;
 }
-.headline_title.-icon-offset {
+.header_title.-icon-offset {
   margin-left: calc(var(--space-l-2xl) * -1);
 }
 
-.headline_icon {
+.header_icon {
   --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
   margin-top: -0.15em;
 }
 
-.headline_desc {
+.header_desc {
   font-size: var(--step-3);
   line-height: 1.2;
 }
@@ -1454,6 +1454,10 @@ a:hover .icon-nav-link {
 }
 .section--overlap {
   margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
+}
+.section.-header {
+  --section-paddingTop: var(--space-xl-2xl);
+  --section-paddingBottom: var(--space-m-l);
 }
 
 .section_masked {
