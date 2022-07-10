@@ -17,7 +17,7 @@
       <div class="section_container">
         <div class="wrapper-content">
           <div class="section_content -icon-offset">
-            <h2 class="section_headline"><:fraap_squelettes:headline_fraap_organisation_pro_aussi:></h2>
+            <h2 class="section_headline">[(#ENV{selection_titre, <:fraap_squelettes:headline_fraap_organisation_pro_aussi:>})]</h2>
             <div class="switcher gap-top-3">
               <BOUCLE_fraap_orga_aussi(SELECTIONS_CONTENUS){id_selection}{objet=rubrique}{id_objet IN #GET{fraap_rubriques_orga}}>
                 <div class="card -variant-box flow">

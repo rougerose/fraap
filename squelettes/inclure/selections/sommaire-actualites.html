@@ -4,7 +4,7 @@
       <div class="wrapper-content">
         <div class="section_container">
           <div class="section_content">
-            <h2 class="section_headline"><span class="text-underline"><:fraap_squelettes:actualites_headline:></span></h2>
+            <h2 class="section_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:actualites_headline:>})]</span></h2>
             <ul class="auto-grid gap-top-5" role="list">
               <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
                 <INCLURE{fond=inclure/resumes/selection-card-news, id_selections_contenu} />

@@ -3,11 +3,11 @@
     <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique15-64.svg', class_icon=icon-rubrique15, breadcrumb=1, id_rubrique} />
 
     <BOUCLE_actualites(SELECTIONS){identifiant=rubrique-federation-actualites}>
-      <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, section_titre=<:fraap_squelettes:actualites_federation_headline:>} />
+      <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, selection_titre=#TITRE} />
     </BOUCLE_actualites>
 
     <BOUCLE_qui-sommes-nous_articles(SELECTIONS){identifiant=rubrique-federation-qsn}>
-      <INCLURE{fond=inclure/selections/rubrique-federation-qsn, id_selection} />
+      <INCLURE{fond=inclure/selections/rubrique-federation-qsn, id_selection, selection_titre=#TITRE} />
     </BOUCLE_qui-sommes-nous_articles>
 
     <BOUCLE_teaser_network(ARTICLES){id_rubrique=3}{0,1}>

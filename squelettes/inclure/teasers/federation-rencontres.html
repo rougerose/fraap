@@ -20,11 +20,7 @@
                 <BOUCLE_contenu-federation-rencontres(SELECTIONS_CONTENUS){id_selection}{par rang}{0,1}>
                   <div class="card -variant-box flow">
                     <div class="flow-small">
-                      <BOUCLE_article(CONDITION){si #OBJET|=={article}}>
-                        <BOUCLE_chrono(MOTS){id_article=#ID_OBJET}{id_groupe=15}>
-                          <p class="card_subhead weight-300">#TITRE</p>
-                        </BOUCLE_chrono>
-                      </BOUCLE_article>
+                      [<p class="card_subhead weight-300">(#_selection-federation-rencontres:TITRE)</p>]
                       <h3 class="card_heading weight-600"><a href="#URL">#TITRE</a></h3>
                     </div>
                     <div class="card_desc flow-small">
