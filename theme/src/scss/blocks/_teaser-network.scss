@@ -1,8 +1,5 @@
 
-// @use "../settings";
 @use "../tools/mq" as mq;
-// @use "sass:math";
-
 
 .teaser-network {
   display: flex;
@@ -50,6 +47,8 @@
 .teaser-network_action {
   &.cluster {
     --gutter: var(--space-m);
+    --buttonCta-padding: 8px 8px 6px;
+    --buttonCta-marginLeft: -8px;
   }
 }
 
@@ -59,7 +58,6 @@
 }
 
 .teaser-network_map {
-  // top: var(--space-l);
   position: absolute;
   width: 100%;
   z-index: -1;
@@ -67,7 +65,7 @@
 
 .teaser-network_map-svg {
   & #mapGroup1 {
-    fill: black;
+    fill: var(--color-ink);
   }
 
   & #mapGroup2 {

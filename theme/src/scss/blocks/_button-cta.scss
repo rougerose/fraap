@@ -1,8 +1,5 @@
 /// BUTTON CALL TO ACTION
 
-$button-padding: 8px;
-$button-paddingBottom: 6px;
-
 .button-cta {
   color: currentColor;
   font-size: var(--buttonCta-fontsize);
@@ -11,7 +8,7 @@ $button-paddingBottom: 6px;
   &.with-icon {
     display: inline-flex;
     align-items: baseline;
-    padding: $button-padding $button-padding $button-paddingBottom;
+    padding: var(--buttonCta-padding, 0);
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;
@@ -44,6 +41,6 @@ $button-paddingBottom: 6px;
 
   &.variant-link {
     color: var(--color-link);
-    margin-left: $button-padding * -1;
+    margin-left: var(--buttonCta-marginLeft, 0);
   }
 }
