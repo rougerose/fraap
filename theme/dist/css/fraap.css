@@ -146,7 +146,6 @@
   --boxShadow-elevation-middle: 0 10px 20px rgb(0 0 0 / 15%), 0 3px 6px rgb(0 0 0 / 10%);
   --buttonCta-fontsize: var(--step-0);
   --carousel-zindex: 10;
-  --card-flow-space: var(--space-m);
   --card-icon-size: 1.2em;
   --card-maxWidth: 31rem;
   --column-padding: var(--space-m-l);
@@ -700,7 +699,7 @@ h5 {
 .button-cta.with-icon {
   display: inline-flex;
   align-items: baseline;
-  padding: 8px 8px 6px;
+  padding: var(--buttonCta-padding, 0);
 }
 .button-cta.with-icon svg.icon.icon-nav-link {
   --icon-border-radius: 0;
@@ -726,7 +725,7 @@ h5 {
 }
 .button-cta.variant-link {
   color: var(--color-link);
-  margin-left: -8px;
+  margin-left: var(--buttonCta-marginLeft, 0);
 }
 
 .button-icon {
@@ -764,7 +763,6 @@ html:not(.js) .button-nav {
 }
 
 .card {
-  --flow-space: var(--card-flow-space);
   max-width: var(--card-maxWidth);
   text-decoration: none;
 }
@@ -816,7 +814,7 @@ html:not(.js) .button-nav {
   content: "";
   display: block;
   height: 1px;
-  margin-top: 0.25em;
+  margin-top: 0.5em;
   width: 100%;
 }
 .card-carousel_heading--box {
@@ -860,7 +858,6 @@ html:not(.js) .button-nav {
 }
 
 .card-news_content {
-  --flow-space: var(--card-flow-space);
   display: flex;
   flex-direction: column;
   padding: var(--space-s);
@@ -1494,7 +1491,6 @@ a:hover .icon-nav-link {
 }
 
 .section_content {
-  --flow-space: var(--space-m);
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
 .section_content.-icon-offset {
@@ -1879,6 +1875,8 @@ a:hover .icon-nav-link {
 
 .teaser-network_action.cluster {
   --gutter: var(--space-m);
+  --buttonCta-padding: 8px 8px 6px;
+  --buttonCta-marginLeft: -8px;
 }
 
 .teaser-network_image {
@@ -1893,7 +1891,7 @@ a:hover .icon-nav-link {
 }
 
 .teaser-network_map-svg #mapGroup1 {
-  fill: black;
+  fill: var(--color-ink);
 }
 .teaser-network_map-svg #mapGroup2 {
   fill: none;
@@ -1981,11 +1979,11 @@ a:hover .icon-nav-link {
 }
 
 .flow > * + * {
-  margin-top: var(--flow-space, 1em);
+  margin-top: var(--flow-space, var(--space-m));
 }
 
 .flow-small > * + * {
-  margin-top: var(--flow-space-small, 0.5em);
+  margin-top: var(--flow-space-small, var(--space-xs));
 }
 
 .gap-top-3 {

@@ -6,7 +6,6 @@
 }
 
 .card-news_content {
-  --flow-space: var(--card-flow-space);
   display: flex;
   flex-direction: column;
   padding: var(--space-s);
@@ -49,6 +48,8 @@
 .card-news_heading {
   font-size: var(--step-1);
 }
+
+// .card-news_desc {}
 
 .card-news_image {
   a {
