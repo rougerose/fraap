@@ -1326,24 +1326,24 @@ a:hover .icon-nav-link {
   stroke-width: 0;
 }
 
-.header_title {
+.headline_title {
   display: flex;
   gap: var(--space-2xs-xs);
   font-size: var(--step-5);
 }
-.header_title span {
+.headline_title span {
   flex: 1;
 }
-.header_title.-icon-offset {
+.headline_title.-icon-offset {
   margin-left: calc(var(--space-l-2xl) * -1);
 }
 
-.header_icon {
+.headline_icon {
   --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
   margin-top: -0.15em;
 }
 
-.header_desc {
+.headline_desc {
   font-size: var(--step-3);
   line-height: 1.2;
 }
@@ -1452,7 +1452,7 @@ a:hover .icon-nav-link {
 .section--overlap {
   margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
 }
-.section.-header {
+.section.-headline {
   --section-paddingTop: var(--space-xl-2xl);
   --section-paddingBottom: var(--space-m-l);
 }

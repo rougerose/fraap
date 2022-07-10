@@ -1,18 +1,20 @@
 <BOUCLE_header_rubrique(RUBRIQUES){id_rubrique}>
   #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
-  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light header_icon}}
+  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
   #SET{breadcrumb, #ENV{breadcrumb, 0}}
-  <header class="section -header">
+  <header class="section -headline">
     <BOUCLE_si_breadcrumb(CONDITION){si #GET{breadcrumb}|=={1}}>
       <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
     </BOUCLE_si_breadcrumb>
     <div class="wrapper-content">
-      <div class="section_content -icon-offset flow">
-        <h1 class="header_title -icon-offset weight-600">
-          <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
-          <span>#TITRE</span>
-        </h1>
-        [<div class="header_desc weight-300 measure">(#DESCRIPTIF)</div>]
+      <div class="section_content -icon-offset">
+        <div class="headline flow">
+          <h1 class="headline_title -icon-offset weight-600">
+            <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
+            <span>#TITRE</span>
+          </h1>
+          [<div class="headline_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
+        </div>
       </div>
     </div>
   </header>
