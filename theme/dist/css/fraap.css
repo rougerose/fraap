@@ -653,13 +653,13 @@ h5 {
 .switcher {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--switcher-gutter-row, var(--space-xs)) var(--switcher-gutter-column, var(--space-xs));
+  gap: var(--switcher-gutter-row, var(--auto-grid-gutter-row)) var(--switcher-gutter-column, var(--auto-grid-gutter-column));
   align-items: var(--switcher-vertical-alignment, flex-start);
 }
 
 .switcher > * {
   flex-grow: 1;
-  flex-basis: calc((var(--switcher-target-container-width, 30rem) - 100%) * 999);
+  flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
 }
 
 .breadcrumb {
@@ -915,6 +915,7 @@ html:not(.js) .button-nav {
 
 .card-stack {
   background-color: var(--color-primary);
+  max-width: var(--card-maxWidth);
   padding: var(--space-m);
   position: relative;
   transform-style: preserve-3d;
@@ -1674,7 +1675,6 @@ a:hover .icon-nav-link {
 }
 .site-nav-footer .site-nav_link:hover {
   color: var(--color-link-invert);
-  text-decoration: underline;
 }
 
 .site-nav_wrapper.-variant-offcanvas {
@@ -1830,12 +1830,6 @@ a:hover .icon-nav-link {
     display: flex;
   }
 }
-.teaser {
-  --switcher-target-container-width: 50rem;
-  --switcher-gutter-row: var(--auto-grid-gutter-row);
-  --switcher-gutter-column: var(--auto-grid-gutter-column);
-}
-
 .teaser-network {
   display: flex;
   flex-wrap: wrap;

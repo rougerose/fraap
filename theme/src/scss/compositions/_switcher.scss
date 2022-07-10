@@ -2,8 +2,32 @@
 /// https://every-layout.dev/layouts/switcher/
 /// et https://www.aleksandrhovhannisyan.com/blog/flexbox-holy-albatross-with-variable-width-columns/
 
-@use "../settings";
-@use "../tools/mq" as mq;
+// @use "../settings";
+// @use "../tools/mq" as mq;
+
+
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--switcher-gutter-row, var(--auto-grid-gutter-row)) var(--switcher-gutter-column, var(--auto-grid-gutter-column));
+  align-items: var(--switcher-vertical-alignment, flex-start);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
+}
+
+// .switcher > :nth-last-child(n + 3),
+// .switcher > :nth-last-child(n + 3) ~ * {
+//   flex-basis: 100%;
+//   background-color: red;
+// }
+
+
+/// Variante
+/// https://www.aleksandrhovhannisyan.com/blog/flexbox-holy-albatross-with-variable-width-columns/
 
 // .switcher {
 //   --gap: 1rem;
@@ -19,22 +43,4 @@
 //   flex-grow: 1;
 //   flex-basis: calc((var(--switcher-target-container-width, 30rem) - 100%) * 999);
 //   max-width: 100% !important;
-// }
-
-.switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--switcher-gutter-row, settings.$FRAAP-GLOBAL-GUTTER) var(--switcher-gutter-column, settings.$FRAAP-GLOBAL-GUTTER);
-  align-items: var(--switcher-vertical-alignment, flex-start);
-}
-
-.switcher > * {
-  flex-grow: 1;
-  flex-basis: calc((var(--switcher-target-container-width, 30rem) - 100%) * 999);
-}
-
-// .switcher > :nth-last-child(n + 3),
-// .switcher > :nth-last-child(n + 3) ~ * {
-//   flex-basis: 100%;
-//   background-color: red;
 // }
