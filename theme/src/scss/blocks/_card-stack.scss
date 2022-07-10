@@ -2,6 +2,7 @@
 
 .card-stack {
   background-color: var(--color-primary);
+  max-width: var(--card-maxWidth);
   padding: var(--space-m);
   position: relative;
   transform-style: preserve-3d;
