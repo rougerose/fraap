@@ -140,7 +140,7 @@
   --angle-sin: 0.052;
   --auto-grid-placement: auto-fit;
   --auto-grid-gutter-column: var(--space-m-xl);
-  --auto-grid-gutter-row: var(--space-xl);
+  --auto-grid-gutter-row: var(--space-2xl-3xl);
   --auto-grid-min-item-size: 250px;
   --border-radius-base: 4px;
   --boxShadow-elevation-middle: 0 10px 20px rgb(0 0 0 / 15%), 0 3px 6px rgb(0 0 0 / 10%);
@@ -792,6 +792,24 @@ html:not(.js) .button-nav {
   width: var(--card-heading-offset);
   margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
   margin-right: var(--space-2xs);
+}
+
+.card_desc {
+  margin-top: var(--space-m);
+}
+.card_desc time {
+  align-items: baseline;
+  display: inline-flex;
+  font-size: var(--step--1);
+  font-weight: 300;
+}
+.card_desc time::after {
+  content: "";
+  width: 1em;
+  height: 2px;
+  display: inline-block;
+  background-color: var(--color-primary);
+  margin: 0 6px;
 }
 
 .card-carousel--box {
