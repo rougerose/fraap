@@ -1,6 +1,8 @@
 <BOUCLE_federation(RUBRIQUES){id_rubrique}>
   <div class="page-rubrique -angleMarginBottom">
-    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique15-64.svg', class_icon=icon-rubrique15, breadcrumb=1, id_rubrique} />
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique15-64.svg', class_icon=icon-rubrique15, id_rubrique} />
 
     <BOUCLE_actualites(SELECTIONS){identifiant=rubrique-federation-actualites}>
       <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, selection_titre=#TITRE} />

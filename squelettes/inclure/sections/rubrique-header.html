@@ -1,11 +1,7 @@
 <BOUCLE_header_rubrique(RUBRIQUES){id_rubrique}>
   #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
   #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
-  #SET{breadcrumb, #ENV{breadcrumb, 0}}
   <header class="section -headline">
-    <BOUCLE_si_breadcrumb(CONDITION){si #GET{breadcrumb}|=={1}}>
-      <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
-    </BOUCLE_si_breadcrumb>
     <div class="wrapper-content">
       <div class="section_content -icon-offset">
         <div class="headline flow">
