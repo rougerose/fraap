@@ -1,35 +1,14 @@
 <BOUCLE_sousrubriques_orga_pro(RUBRIQUES){id_rubrique}>
   [(#REM)
-    <!-- Ajouter des valeurs de marges supplémentaires si le teaser "la Fraap, c'est aussi" est présent -->
-  ][(#SET{teaser, ''})]
-  [(#ID_RUBRIQUE|in_any{#LISTE{49, 50, 51}}|oui) #SET{teaser, ' '} ]
-  <div class="page-rubrique[(#GET{teaser}|oui) -angleMarginBottom]">
-    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, breadcrumb=1, id_rubrique} />
-    <div class="section[(#GET{teaser}|oui) section--angleBottom]">
-      <div class="section_masked">
-        <div class="wrapper-content">
-          <div class="section_container">
-            <div class="section_content -icon-offset">
-              <div class="auto-grid">
-                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={51}}>
-                  <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
-                    <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
-                  </BOUCLE_sousrubriques_plaidoyer>
-                </BOUCLE_rubrique_plaidoyer>
-                  <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
-                    <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore, afficher_date=1} />
-                  </BOUCLE_tous_articles_card>
-                <//B_rubrique_plaidoyer>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    [(#REM)
-      <!-- La Fraap, c'est aussi... -->
-    ]<BOUCLE_teaser_orga_pro(SELECTIONS){identifiant=rubrique-organisation-pro-aussi}>
-      <INCLURE{fond=inclure/teasers/organisation-pro-aussi, id_parent, id_rubrique, id_selection, selection_titre=#TITRE}/>
-    </BOUCLE_teaser_orga_pro>
-  </div>
+    <!--
+      Cette composition est utilisée par défaut pour toutes les sous-rubriques de la branche Organisation professionnelle.
+      Mais, le contenu est différent selon que la rubrique consultée appartient
+      au niveau 2 (id_parent = 13, enfant de la rubrique Organisation pro.) ou au niveau 3 (id_parent = 51, enfants de la rubrique Plaidoyer).
+    -->
+  ]
+  <BOUCLE_si_niveau_deux(CONDITION){si #ID_PARENT|=={13}}>
+    <INCLURE{fond=inclure/compositions/rubrique-organisation-pro-niveau2, id_rubrique}/>
+  </BOUCLE_si_niveau_deux>
+    <INCLURE{fond=inclure/compositions/rubrique-organisation-pro-niveau3, env, ajax}/>
+  <//B_si_niveau_deux>
 </BOUCLE_sousrubriques_orga_pro>

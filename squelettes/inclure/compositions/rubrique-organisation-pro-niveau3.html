@@ -1,0 +1,25 @@
+<BOUCLE_niveau_3_organisation_pro(RUBRIQUES){id_rubrique}>
+  <div class="page-rubrique">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+    <B_articles>
+      #ANCRE_PAGINATION
+      <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, id_rubrique} />
+      <div class="section">
+        <div class="section_masked">
+          <div class="wrapper-content">
+            <div class="section_container">
+              <div class="section_content -icon-offset">
+                <div class="auto-grid">
+                  <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 4}}>
+                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore, afficher_date=1} />
+                  </BOUCLE_articles>
+                </div>
+                [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{page_precedent_suivant, label_precedent=Page précédente, label_suivant=Page suivante})</nav>]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </B_articles>
+  </div>
+</BOUCLE_niveau_3_organisation_pro>
