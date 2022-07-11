@@ -7,7 +7,7 @@
           <div class="section_content -icon-offset flow">
             <div class="auto-grid">
               <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12} _articles}>
-                <INCLURE{fond=inclure/resumes/article-card, id_article, variant=-variant-underscore} />
+                <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore} />
               </BOUCLE_articles>
             </div>
             [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{page_precedent_suivant, label_precedent=Page précédente, label_suivant=Page suivante})</nav>]
