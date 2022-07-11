@@ -98,7 +98,7 @@
 .icon-nav-link {
   --iconPathOpacity: 0;
   --iconPathTransform: none;
-  --iconPathOffset: translateX(12px);
+  --iconPathOffset: translateX(6px);
   // --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
 
   a:hover & {
@@ -108,12 +108,12 @@
     transform: var(--iconPathOffset);
   }
 
-  &_path1 {
+  path:nth-of-type(1) {
     transition: opacity var(--hoverTransition);
     opacity: var(--iconPathOpacity);
   }
 
-  &_path2 {
+  path:nth-of-type(2) {
     transition: transform var(--hoverTransition);
     transform: var(--iconPathTransform);
   }
@@ -150,39 +150,39 @@
 
 // icon Représenter
 .icon-rubrique13 {
-  path:nth-child(1) {
+  path:nth-of-type(1) {
     fill: var(--color-primary-800);
     fill-opacity: 1;
   }
-  path:nth-child(2) {
+  path:nth-of-type(2) {
     fill: var(--color-primary-700);
   }
-  path:nth-child(3) {
+  path:nth-of-type(3) {
     fill: var(--color-contrast);
   }
 }
 
 // icon Informer
 .icon-rubrique1 {
-  circle:nth-child(1),
-  path:nth-child(2) {
+  circle:nth-of-type(1),
+  path:nth-of-type(2) {
     fill: var(--color-contrast);
   }
-  circle:nth-child(3),
-  path:nth-child(4)  {
+  circle:nth-of-type(3),
+  path:nth-of-type(4)  {
     fill: var(--color-primary-700);
   }
 }
 
 // icon Observer
 .icon-rubrique6 {
-  path:nth-child(1) {
+  path:nth-of-type(1) {
     fill: var(--color-contrast);
   }
-  path:nth-child(2) {
+  path:nth-of-type(2) {
     fill: var(--color-primary-700);
   }
-  path:nth-child(3) {
+  path:nth-of-type(3) {
     fill: var(--color-primary);
   }
 }

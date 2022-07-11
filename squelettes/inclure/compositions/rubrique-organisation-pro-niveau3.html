@@ -10,11 +10,11 @@
             <div class="section_container">
               <div class="section_content -icon-offset">
                 <div class="auto-grid">
-                  <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 4}}>
+                  <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12}}>
                     <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore, afficher_date=1} />
                   </BOUCLE_articles>
                 </div>
-                [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{page_precedent_suivant, label_precedent=Page précédente, label_suivant=Page suivante})</nav>]
+                [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
               </div>
             </div>
           </div>
