@@ -37,4 +37,22 @@
   }
 }
 
-// .card_desc {}
+.card_desc {
+  margin-top: var(--space-m);
+
+  time {
+    align-items: baseline;
+    display: inline-flex;
+    font-size: var(--step--1);
+    font-weight: 300;
+
+    &::after {
+      content: "";
+      width: 1em;
+      height: 2px;
+      display: inline-block;
+      background-color: var(--color-primary);
+      margin: 0 6px;
+    }
+  }
+}
