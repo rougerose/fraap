@@ -1,14 +1,14 @@
 <BOUCLE_niveau_2_organisation_pro(RUBRIQUES){id_rubrique}>
   <div class="page-rubrique -angleMarginBottom">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
-    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, id_rubrique} />
+    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique49-64.svg', class_icon=icon-rubrique49, id_rubrique} />
     <div class="section section--angleBottom-max">
       <div class="section_masked">
         <div class="wrapper-content">
           <div class="section_container">
             <div class="section_content -icon-offset">
               <div class="auto-grid">
-                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={51}}>
+                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
                   <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
                     <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
                   </BOUCLE_sousrubriques_plaidoyer>
