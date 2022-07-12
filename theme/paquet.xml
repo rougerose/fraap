@@ -11,7 +11,7 @@
 	<auteur lien="http://rouge-rose.net">christophe le drean</auteur>
 	<licence>GPLv3</licence>
 	<necessite nom="fraap_squelettes" />
-  <genie nom="renouveler_nuancier" periode="86400" />
+  <genie nom="renouveler_nuance" periode="86400" />
 	<chemin path="" />
   <spip compatibilite="[4.0.0;4.99.*]">
 		<style type="public" source="dist/css/fraap.css" />

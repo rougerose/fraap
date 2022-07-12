@@ -18,12 +18,12 @@ function fraap_theme_upgrade($nom_meta_base_version, $version_cible) {
 			|| (($current_version = $GLOBALS['meta'][$nom_meta_base_version]) != $version_cible)
 	) {
 			ecrire_meta($nom_meta_base_version, $current_version = '1.0.0', 'non');
-			$nuance = strval(fraap_theme_renouveler_nuancier());
-			ecrire_meta('fraap_theme_nuancier', $nuance);
+			$nuance = strval(fraap_theme_renouveler_nuance());
+			ecrire_meta('fraap_theme_nuance', $nuance);
 	}
 }
 
 function fraap_theme_vider_tables($nom_meta_base_version) {
 	effacer_meta($nom_meta_base_version);
-	effacer_meta('fraap_theme_nuancier');
+	effacer_meta('fraap_theme_nuance');
 }
