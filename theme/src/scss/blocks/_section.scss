@@ -1,0 +1,103 @@
+/// SECTION
+
+@use "../tools/mq" as mq;
+
+.section {
+  --section-paddingTop: var(--space-l-xl);
+  --section-paddingBottom: var(--space-l-xl);
+
+  position: relative;
+  color: var(--color-section-ink, var(--color-ink));
+
+  &--angleTop {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleBottom {
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleBottom-max {
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--angleTopBottom {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--banner {
+    --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &--overlap {
+    // margin-bottom: calc(var(--section-angle-height) * -1);
+    margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
+  }
+
+  &.-headline {
+    --section-paddingTop: var(--space-xl-2xl);
+    --section-paddingBottom: var(--space-m-l);
+  }
+}
+
+.section_masked {
+  overflow: hidden;
+}
+
+.section_bgmask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.section_background-banner {
+  position: relative;
+  background-color: var(--color-primary);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transform: skewY(-3deg);
+  // transform-origin: 100% 0;
+  transform-origin: center;
+}
+
+.section_container {
+  position: relative;
+}
+
+// [1]  Décaler vers le bas, afin de ne pas cacher les accents
+//      (le bloc parent ayant un overflow hidden)
+.section_headline {
+  font-size: var(--step-4);
+  margin-top: 0.1em; // [1]
+}
+
+.section_desc {
+  font-size: var(--step-2);
+}
+
+.section_content {
+  padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
+
+  &.-icon-offset {
+    padding-left: var(--space-l-2xl);
+  }
+
+  ul[role="list"] {
+    padding-left: 0;
+  }
+}
+
+.section_action {
+  text-align: center;
+}
+
+@include mq.mq($from: m) {
+  .section {
+    &--overlap {
+      margin-bottom: unset;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<BOUCLE_fiches(RUBRIQUES){id_rubrique}>
+  <div class="o-wrapper">
+    <article class="c-post u-flow">
+      <h1 class="c-post_title">#TITRE</h1>
+      [<div class="c-post_body">
+        (#TEXTE)
+      </div>]
+      <div class="c-post_demo">
+        <BOUCLE_selections_categories(SELECTIONS){identifiant=fiches-pratiques}>
+          <div class="o-grid">
+            <BOUCLE_categorie(SELECTIONS_CONTENUS){id_selection}{par rang}>
+              <div class="o-box">
+                <div class="u-flow">
+                  <h2><a href="#URL">#TITRE</a></h2>
+                  [(#DESCRIPTIF|sinon{<div></div>})]
+                </div>
+              </div>
+            </BOUCLE_categorie>
+          </div>
+        </BOUCLE_selections_categories>
+      </div>
+    </article>
+  </div>
+</BOUCLE_fiches>

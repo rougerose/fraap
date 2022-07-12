@@ -1,0 +1,81 @@
+/// CARD-CAROUSEL
+
+/// 2 variantes --flat et --box
+
+.card-carousel {
+
+  &--box {
+    background-color: var(--color-primary);
+    box-shadow: var(--card-box-boxShadow);
+    display: flex;
+    gap: var(--space-m);
+    height: 100%;
+    padding: var(--space-m);
+  }
+
+  a:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.card-carousel_heading {
+
+  &--flat {
+    font-size: var(--step-5);
+
+    &::after {
+      background-color: var(--color-ink);
+      content: "";
+      display: block;
+      height: 1px;
+      margin-top: 0.5em;
+      width: 100%;
+    }
+  }
+
+  &--box {
+    font-size: var(--step-3);
+  }
+
+  &.with-icon {
+
+    & a {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    & svg {
+      margin-right: 0.5em;
+      height: 1.2em;
+      width: 1.2em;
+    }
+  }
+}
+
+.card-carousel_icon {
+  height: var(--card-icon-size);
+  width: var(--card-icon-size);
+
+  &--flat {
+    margin-right: 0.5em;
+  }
+
+  &--box {
+    --card-icon-size: 3.5em;
+  }
+}
+
+.card-carousel_content {
+  &--box {
+    flex: 1;
+  }
+}
+
+
+.card-carousel_desc {
+  max-width: var(--measure);
+
+  & a {
+    color: var(--color-contrast);
+  }
+}

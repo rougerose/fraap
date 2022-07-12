@@ -1,0 +1,92 @@
+/// CAROUSEL
+/// Règles spécifiques et surcharge des règles de swipers.js
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.carousel {
+  overflow: hidden;
+
+  .swiper {
+    overflow: visible;
+    padding: var(--space-xs) var(--column-padding) var(--space-xl);
+    max-width: var(--layout-max-width);
+    z-index: var(--carousel-zindex);
+  }
+
+  .swiper-wrapper {
+    z-index: calc(var(--carousel-zindex) + 1);
+  }
+
+  .swiper-slide {
+    padding-right: var(--space-m-xl);
+    max-width: 100%;
+    width: 35rem;
+    height: auto;
+
+    &--box {
+      padding-right: var(--space-m);
+    }
+  }
+}
+
+.carousel_navigation {
+  --swiper-navigation-size: 32px;
+  --swiper-navigation-icon-size: 16px;
+  --swiper-navigation-color: white;
+
+  & .swiper-button-prev,
+  & .swiper-button-next {
+    background-color: var(--color-contrast);
+    border-radius: 100%;
+    // box-shadow: 0 4px 4px rgba(0,0,0, 0.2), 0 1px 2px rgba(#f20d0d, 0.1);
+    box-shadow: 0 5px 15px rgba(0,0,0, 0.2), 0 1px 2px rgba(var(--color-primary-boxShadow), 0.2);
+    bottom: 4px;
+    top: auto;
+    width: var(--swiper-navigation-size);
+    z-index: calc(var(--carousel-zindex) + 2);
+
+    &::after {
+      font-size: var(--swiper-navigation-icon-size);
+    }
+  }
+
+  & .swiper-button-prev {
+    left: var(--space-m-l);
+  }
+
+  & .swiper-button-next {
+    right: var(--space-m-l);
+  }
+}
+
+.carousel_pagination {
+  --swiper-pagination-color: var(--color-contrast);
+  --swiper-pagination-bullet-width: 12px;
+  --swiper-pagination-bullet-height: 12px;
+
+  &.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 4px;
+    z-index: calc(var(--carousel-zindex) + 1);
+  }
+}
+
+
+@include mq.mq($from: xl) {
+  .carousel {
+    .swiper-slide {
+      width: 50%;
+    }
+  }
+  .carousel_navigation {
+    & .swiper-button-prev {
+      top: 50%;
+      left: calc(var(--space-xs) * -1);
+    }
+
+    & .swiper-button-next {
+      top: 50%;
+      right: calc(var(--space-xs) * -1);
+    }
+  }
+}

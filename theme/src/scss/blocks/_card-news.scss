@@ -1,0 +1,77 @@
+@use "../mixins/background-svg" as mixin;
+
+.card-news {
+  max-width: var(--card-maxWidth);
+  text-decoration: none;
+}
+
+.card-news_content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s);
+  margin-left: calc(var(--space-s) * -1);
+  position: relative;
+
+  &::before,
+  &::after {
+    background-color: var(--color-primary);
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &::before {
+    width: 20%;
+    height: 2px;
+    transition: width 0.25s 0.25s
+  }
+
+  &::after {
+    width: 2px;
+    height: 80px;
+    transition: height 0.25s 0.25s
+  }
+
+  &:hover {
+    &::before {
+      width: 50%;
+    }
+
+    &::after {
+      height: 50%;
+    }
+  }
+}
+
+.card-news_heading {
+  font-size: var(--step-1);
+}
+
+// .card-news_desc {}
+
+.card-news_image {
+  a {
+    background-image: var(--card-backgroundImage);
+    background-size: 8px;
+    display: block;
+    margin-right: 18px;
+    margin-top: 18px;
+
+    &:hover {
+      img {
+        transform: translate(0);
+      }
+    }
+  }
+
+  img {
+    aspect-ratio: 4/3;
+    box-shadow: var(--card-img-boxShadow);
+    object-fit: cover;
+    transform: translate(18px, -18px);
+    transition: transform 0.25s 0.25s;
+    width: 100%;
+  }
+}

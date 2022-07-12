@@ -1,0 +1,46 @@
+/// SWITCHER
+/// https://every-layout.dev/layouts/switcher/
+/// et https://www.aleksandrhovhannisyan.com/blog/flexbox-holy-albatross-with-variable-width-columns/
+
+// @use "../settings";
+// @use "../tools/mq" as mq;
+
+
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--switcher-gutter-row, var(--auto-grid-gutter-row)) var(--switcher-gutter-column, var(--auto-grid-gutter-column));
+  align-items: var(--switcher-vertical-alignment, flex-start);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
+}
+
+// .switcher > :nth-last-child(n + 3),
+// .switcher > :nth-last-child(n + 3) ~ * {
+//   flex-basis: 100%;
+//   background-color: red;
+// }
+
+
+/// Variante
+/// https://www.aleksandrhovhannisyan.com/blog/flexbox-holy-albatross-with-variable-width-columns/
+
+// .switcher {
+//   --gap: 1rem;
+//   --columns: 2;
+//   // --switcher-target-container-width: 48%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: var(--gap);
+// }
+// .switcher > * {
+//   --num-gaps: calc(var(--columns, 3) - 1);
+//   min-width: calc(calc(100% / var(--columns, 3)) - var(--num-gaps) * var(--gap));
+//   flex-grow: 1;
+//   flex-basis: calc((var(--switcher-target-container-width, 30rem) - 100%) * 999);
+//   max-width: 100% !important;
+// }

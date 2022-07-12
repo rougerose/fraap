@@ -1,0 +1,114 @@
+
+@use "../tools/mq" as mq;
+
+.teaser-network {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    flex-grow: 1;
+    flex-basis: calc((35rem - 100%) * 999);
+  }
+}
+
+.teaser-network_content {
+  --flow-space: var(--space-s-l);
+}
+
+.teaser-network_headline {
+  display: flex;
+  justify-content: center;
+
+  &-text {
+    font-size: var(--step-4);
+  }
+
+  &-svg {
+    font-family: Glypha;
+    font-weight: 300;
+  }
+
+  &-svgText {
+    font-size: 40px;
+    transition: transform 0.8s ease-in, opacity 0.5s;
+
+    &.segment-3 {
+      transition-delay: 0.1s;
+    }
+  }
+
+  &-svgTotal {
+    font-size: 150px;
+    font-weight: 600;
+    fill: var(--color-primary);
+  }
+}
+
+.teaser-network_action {
+  &.cluster {
+    --gutter: var(--space-m);
+    --buttonCta-padding: 8px 8px 6px;
+    --buttonCta-marginLeft: -8px;
+  }
+}
+
+.teaser-network_image {
+  position: relative;
+  height: 50vw;
+}
+
+.teaser-network_map {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.teaser-network_map-svg {
+  & #mapGroup1 {
+    fill: var(--color-ink);
+  }
+
+  & #mapGroup2 {
+    fill: none;
+  }
+}
+
+.teaser-network_map-dot {
+  fill: var(--color-primary);
+}
+
+.teaser-network {
+  .js &,
+  &[data-network-animation="wait"] {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+
+  &[data-network-animation="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/// Le seuil est calculé sur la base du seuil appliqué
+/// au parent .teaser-network (soit ~ 614px/38em)
+@include mq.mq($from: 614px) {
+  .teaser-network_headline {
+    justify-content: flex-start;
+  }
+
+  .teaser-network_image {
+    height: auto;
+  }
+
+  .teaser-network_map {
+    width: 150%;
+  }
+}
+
+@include mq.mq($from: 900px) {
+  .teaser-network_map {
+    transform: translateY(-10%);
+  }
+}

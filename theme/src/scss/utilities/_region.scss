@@ -1,0 +1,7 @@
+/// Region utility
+/// A container that provides consistent vertical spacing for chunks/sections/regions of content.
+
+.region {
+  padding-top: var(--region-space, var(--space-l-xl));
+  padding-bottom: var(--region-space, var(--space-l-xl));
+}

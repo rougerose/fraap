@@ -1,0 +1,67 @@
+// Site-header
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.no-js {
+  .site-header {
+    &_btn-burger {
+      display: none;
+    }
+  }
+}
+
+.site-header {
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
+
+  &_logo {
+    border-radius: 0.125rem;
+    display: inline-flex;
+    height: 3.5rem; // 56px
+
+    & svg {
+    height: 100%;
+      width: auto;
+    }
+  }
+
+  &_baseline {
+    padding-bottom: 1rem;
+
+    & svg {
+      max-width: 25rem;
+    }
+  }
+
+  &_nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2xs);
+    align-items: flex-start;
+    flex-wrap: wrap;
+    font-size: 1rem;
+  }
+
+  &_links {
+    display: flex;
+    gap: var(--space-2xs);
+    align-items: center;
+  }
+}
+
+@include mq.mq($from: navTop) {
+  .site-header {
+    &_nav {
+      align-items: center;
+    }
+  }
+}
+
+@include mq.mq($from: 22em) {
+  .site-header {
+    &_logo {
+      height: 4rem; // 68px
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// 01 - settings
+@use "settings";
+
+// 02 - tools
+@use "tools";
+
+// 0X - theme
+@use "theme";
+
+// 03 - generic
+@use "generic";
+
+// 04 - global
+@use "global";
+
+// 04 - compositions
+@use "compositions";
+
+// 05 - blocks
+@use "blocks";
+
+// 06 - components (?)
+
+// 07 - utilities
+@use "utilities";
+
+// 08 - pages
+@use "pages";
+
+// XX - Tiers : Spip
+@use "thirdparties";
+
+// @include tools.generate-utility-classes();

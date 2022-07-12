@@ -1,0 +1,47 @@
+// ========================================
+// c-button
+// ========================================
+
+@use "../tools";
+@use "../settings";
+@use "sass:map";
+@use "sass-rem/rem";
+
+.c-button {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: map.get(settings.$gorko-colors, "primary");
+  color: map.get(settings.$gorko-colors, "light-glare");
+  text-decoration: none;
+  text-align: center;
+  transition-property: color, background, border;
+  transition-duration: 0.3s;
+
+  &:hover {
+    background-color: map.get(settings.$gorko-colors, "primary-light") !important;
+  }
+
+  &[data-variant="ghost"] {
+    background-color: transparent;
+    color: map.get(settings.$gorko-colors, "primary");
+    border: rem.convert(2px) solid;
+
+    &:hover {
+      border-color: map.get(settings.$gorko-colors, "primary");
+      color: map.get(settings.$gorko-colors, "light-glare");
+    }
+  }
+
+  &[data-variant="secondary"] {
+    background-color: transparent;
+    color: settings.$black;
+    border: rem.convert(2px) solid;
+
+    &:hover {
+      border-color: map.get(settings.$gorko-colors, "primary-light");
+      color: settings.$white;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+/// WEIGHT
+/// Font weight utility
+
+.weight {
+  &-300 {
+    font-weight: 300;
+  }
+
+  &-500 {
+    font-weight: 500;
+  }
+
+  &-600 {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,32 @@
+<BOUCLE_niveau_2_organisation_pro(RUBRIQUES){id_rubrique}>
+  <div class="page-rubrique -angleMarginBottom">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique13-64.svg', class_icon=icon-rubrique13, id_rubrique} />
+    <div class="section section--angleBottom-max">
+      <div class="section_masked">
+        <div class="wrapper-content">
+          <div class="section_container">
+            <div class="section_content -icon-offset">
+              <div class="auto-grid">
+                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={51}}>
+                  <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
+                    <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
+                  </BOUCLE_sousrubriques_plaidoyer>
+                </BOUCLE_rubrique_plaidoyer>
+                  <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
+                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore, afficher_date=0} />
+                  </BOUCLE_tous_articles_card>
+                <//B_rubrique_plaidoyer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    [(#REM)
+      <!-- La Fraap, c'est aussi... -->
+    ]<BOUCLE_teaser_orga_pro(SELECTIONS){identifiant=rubrique-organisation-pro-aussi}>
+      <INCLURE{fond=inclure/teasers/organisation-pro-aussi, id_parent, id_rubrique, id_selection, selection_titre=#TITRE}/>
+    </BOUCLE_teaser_orga_pro>
+  </div>
+</BOUCLE_niveau_2_organisation_pro>

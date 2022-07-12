@@ -1,0 +1,45 @@
+#ENV*{bloc_ancre}
+#SET{bornes,#ENV{page_courante}|bornes_pagination{#ENV{nombre_pages},#ENV{nombre_liens_max,#CONST{_PAGINATION_NOMBRE_LIENS_MAX}}|max{3}}}
+#SET{premiere, #GET{bornes}|reset}
+#SET{derniere, #GET{bornes}|end}
+#SET{pages,#GET{premiere}|range{#GET{derniere}}}
+#SET{type,#ENV{type_pagination,page}}
+<B_pages>
+  [(#ENV{afficher_lien_precedent,0}|ou{#GET{type}|=={page_precedent_suivant}})
+    [(#SET{item, #ENV{page_courante}|moins{2}|mult{#ENV{pas}} })]
+    <div class="pagination_prev-next">
+        [(#ENV{page_courante}|>{1}|oui)
+          [<a href="(#ENV{url_precedent,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon" rel="prev nofollow" arial-label="<:lien_aller_a_la_page_precedente:>">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Page précédente</a>]
+        ]
+      </div>
+  ]
+	<ul class="pagination_list pagination_#GET{type}" role="list">
+		[<li class="pagination_item"><a
+	      href="[(#ENV{url}|parametre_url{#ENV{debut},''}|ancre_url{#ENV{ancre}})]" class="pagination_label lien_pagination" aria-label="<:lien_aller_a_la_premiere_page|attribut_html:>" rel="nofollow">(#GET{premiere}|>{1}|?{#GET{type}|pagination_affiche_texte_lien_page{1,0}})</a></li>[(#GET{premiere}|>{2}|oui)<li class="pagination_item tbc disabled"><span class="pagination_label">…</span></li>]]
+
+		<BOUCLE_pages(DATA){source table, #GET{pages}}>[
+		(#SET{item, #VALEUR|moins{1}|mult{#ENV{pas}} })
+		][<li class="pagination_item[(#VALEUR|=={#ENV{page_courante}}|oui) on active]">(#ENV{url}
+		|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}
+		|ancre_url{#ENV{ancre}}
+		|lien_ou_expose{#GET{type}|pagination_affiche_texte_lien_page{#VALEUR,#GET{item}},#VALEUR|=={#ENV{page_courante}}|?{span.pagination_label},pagination_label lien_pagination,'',nofollow}
+		|inserer_attribut{aria-label,[(#VAL{lien_aller_a_la_page_nb}|_T{#ARRAY{nb,#VALEUR}}|concat{[ \((#VALEUR|=={#ENV{page_courante}}|?{<:info_page_actuelle:>})\)]})]}
+			)</li>]
+		</BOUCLE_pages>
+
+		[[(#GET{derniere}|<{#ENV{nombre_pages}|moins{1}}|oui)<li class="pagination_item tbc disabled"><span class="pagination_label">…</span></li>]
+		#SET{item, #ENV{nombre_pages}|moins{1}|mult{#ENV{pas}}}
+		<li class="pagination_item"><a
+		  href="[(#ENV{url}|parametre_url{#ENV{debut},#GET{item}}|ancre_url{#ENV{ancre}})]"
+		  class="pagination_label lien_pagination" aria-label="<:lien_aller_a_la_derniere_page|attribut_html:>"
+		  rel="nofollow">(#GET{derniere}|<{#ENV{nombre_pages}}|?{#GET{type}|pagination_affiche_texte_lien_page{#ENV{nombre_pages},#GET{item}}})</a></li>]
+	</ul>
+  [(#ENV{afficher_lien_suivant,0}|ou{#GET{type}|=={page_precedent_suivant}})
+		[(#SET{item, #ENV{page_courante}|mult{#ENV{pas}} })]
+    <div class="pagination_prev-next">
+        [(#ENV{page_courante}|<{#ENV{nombre_pages}}|oui)
+          [<a href="(#ENV{url_suivant,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon" rel="next nofollow" aria-label="<:lien_aller_a_la_page_suivante:>">Page suivante [ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>]
+        ]
+      </div>
+	]
+</B_pages>

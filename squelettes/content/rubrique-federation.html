@@ -1,0 +1,23 @@
+<BOUCLE_federation(RUBRIQUES){id_rubrique}>
+  <div class="page-rubrique -angleMarginBottom">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique15-64.svg', class_icon=icon-rubrique15, id_rubrique} />
+
+    <BOUCLE_actualites(SELECTIONS){identifiant=rubrique-federation-actualites}>
+      <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, selection_titre=#TITRE} />
+    </BOUCLE_actualites>
+
+    <BOUCLE_qui-sommes-nous_articles(SELECTIONS){identifiant=rubrique-federation-qsn}>
+      <INCLURE{fond=inclure/selections/rubrique-federation-qsn, id_selection, selection_titre=#TITRE} />
+    </BOUCLE_qui-sommes-nous_articles>
+
+    <BOUCLE_teaser_network(ARTICLES){id_rubrique=3}{0,1}>
+      <INCLURE{fond=inclure/teasers/federation-reseau, id_rubrique, contexte=rubrique} />
+    </BOUCLE_teaser_network>
+
+    <BOUCLE_rencontres(RUBRIQUES){id_rubrique=16}>
+      <INCLURE{fond=inclure/teasers/federation-rencontres, id_rubrique} />
+    </BOUCLE_rencontres>
+  </div>
+</BOUCLE_federation>

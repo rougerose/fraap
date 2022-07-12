@@ -1,0 +1,50 @@
+
+@use "../settings";
+@use "../tools";
+@use "sass-rem/rem";
+@use "sass:map";
+
+.c-fiche-resume {
+  --flow-space: 1rem;
+  --cluster-gap: 0.5rem;
+
+  // &_title {
+  //   font-size: tools.get-size("500");
+  // }
+
+  &_desc {
+    font-size: tools.get-size("500");
+    @include tools.apply-utility("leading", "tight");
+  }
+
+  &_pills {
+    margin-top: 0.5rem;
+  }
+}
+
+// .c-fiche-mot-resume {
+//   > ul {
+//     display: flex;
+//     flex-wrap: wrap;
+//     list-style: none;
+//     padding: 0;
+//   }
+// }
+
+// .c-fiche-mot-articles {
+//   margin-top: calc(var(--flow-space) * 2);
+//   & > article + article {
+//     margin-top: 3rem;
+//   }
+// }
+
+// .c-fiche-mot-article {
+//   & h2 {
+//     font-size: tools.get-utility-value("text", "600");
+//     margin-bottom: 0.5rem;
+//   }
+// }
+
+// .c-fiche-mot-article_tag {
+//   font-size: tools.get-utility-value("text", "400");
+// }

@@ -1,0 +1,37 @@
+/// BREADCRUMB
+
+@use "../settings";
+
+.breadcrumb {
+  font-size: var(--step--1);
+
+  a {
+    color: var(--color-link);
+  }
+
+  a[aria-current="page"] {
+    color: var(--color-ink);
+  }
+}
+
+.breadcrumb_list {
+  margin: 0 -1em;
+  padding: 1em;
+
+  &,
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 settings.$FRAAP-GLOBAL-GUTTER;
+  }
+
+  li + li {
+    flex-wrap: nowrap;
+
+    &::before {
+      content: ">";
+      color: var(--color-primary);
+    }
+  }
+}

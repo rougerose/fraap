@@ -1,0 +1,13 @@
+// ========================================
+// Selection
+//
+// Augmenter le contraste du texte surligné
+// ========================================
+
+@use "../settings";
+@use "sass:map";
+
+::selection {
+  color: map.get(settings.$gorko-colors, "light");
+  background-color: rgba(map.get(settings.$gorko-colors, "dark"), 0.99);
+}

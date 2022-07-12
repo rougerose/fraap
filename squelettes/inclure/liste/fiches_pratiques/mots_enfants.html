@@ -1,0 +1,32 @@
+<BOUCLE_mot(MOTS){id_mot}>
+  <B_mots_enfants>
+    <ul class="c-fiches-liste">
+      <BOUCLE_mots_enfants(MOTS){id_parent}{par titre}>
+        <BOUCLE_articles_lies(ARTICLES){id_mot}> </BOUCLE_articles_lies>
+          <li class="c-fiche-resume u-flow">
+            <h2 class="c-fiche_resume_title text-600"><a href="#URL_MOT">#TITRE</a></h2>
+            [<div class="c-fiche-resume_desc">(#DESCRIPTIF)</div>]
+          </li>
+        </B_articles_lies>
+      </BOUCLE_mots_enfants>
+    </ul>
+
+    #SET{mots_voir_aussi, #ARRAY}
+    <BOUCLE_branche(MOTS){branche_mot #ID_MOT_RACINE}>
+      <BOUCLE_articles(ARTICLES){id_mot}>
+        <BOUCLE_articles_mots(MOTS){id_article}>
+          [(#ID_MOT_RACINE|!=={#_mot:ID_MOT}|oui)
+            [(#ID_MOT|unique|oui)
+              [(#SET{mots_voir_aussi, #GET{mots_voir_aussi}|push{#ID_MOT}})]
+            ]
+          ]
+        </BOUCLE_articles_mots>
+      </BOUCLE_articles>
+    </BOUCLE_branche>
+
+    <BOUCLE_voir_aussi(CONDITION){si #GET{mots_voir_aussi}|count|>{0}}>
+      <INCLURE{fond=inclure/liste/fiches_pratiques/voir_aussi, mots=#GET{mots_voir_aussi}} />
+    </BOUCLE_voir_aussi>
+
+  </B_mots_enfants>
+</BOUCLE_mot>

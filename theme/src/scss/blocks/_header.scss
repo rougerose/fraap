@@ -1,0 +1,32 @@
+/// HEADLINE
+///
+/// Têtière de page (rubrique, article, etc.)
+
+
+// .headline {}
+
+.headline_title {
+  display: flex;
+  gap: var(--space-2xs-xs);
+  font-size: var(--step-5);
+
+  & span {
+    flex: 1;
+  }
+
+  // Titre de rubrique accompagné d'une icone :
+  // l'icone est aligné en retrait négatif à gauche.
+  &.-icon-offset {
+    margin-left: calc(var(--space-l-2xl) * -1);
+  }
+}
+
+.headline_icon {
+  --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
+  margin-top: -0.15em;
+}
+
+.headline_desc {
+  font-size: var(--step-3);
+  line-height: 1.2;
+}

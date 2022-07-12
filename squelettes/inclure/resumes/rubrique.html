@@ -1,0 +1,8 @@
+<BOUCLE_resume_rubrique(RUBRIQUES){id_rubrique}>
+  <article class="card-stack flow">
+    <h3 class="weight-600"><a href="#URL_RUBRIQUE">#TITRE</a></h3>
+    <BOUCLE_compteur_articles(ARTICLES){id_rubrique}> </BOUCLE_compteur_articles>
+      <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon">[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:article, fraap_squelettes:articles})][ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+    </B_compteur_articles>
+  </article>
+</BOUCLE_resume_rubrique>

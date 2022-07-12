@@ -1,0 +1,73 @@
+/// DIALOG
+
+.dialog,
+.dialog_close {
+  html:not(.js) & {
+    display: none;
+  }
+}
+
+.dialog {
+  display: flex;
+  z-index: var(--dialog-zindex);
+
+  &[aria-modal="true"] {
+    &,
+    & .dialog_overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+
+  &[data-dialog-status="closed"] {
+    visibility: hidden;
+  }
+
+  &[data-dialog-status="open"],
+  &[data-dialog-status="closing"] {
+    display: flex;
+    visibility: visible;
+  }
+}
+
+.dialog_content {
+  .dialog[data-dialog-status] & {
+    background-color: var(--color-paper);
+    z-index: calc(var(--dialog-zindex) + 1);
+  }
+}
+
+.dialog_overlay {
+
+  .dialog[data-dialog-status] & {
+    background-color: var(--dialog-overlay-background);
+    animation: 200ms both fade-in;
+  }
+}
+
+.dialog_close {
+  svg {
+    stroke: var(--color-link-invert);
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

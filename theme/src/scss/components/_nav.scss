@@ -1,0 +1,367 @@
+// ========================================
+// c-nav
+// ========================================
+
+@use "../settings";
+@use "../tools";
+@use "sass-rem/rem";
+@use "sass:map";
+
+$nav-wrapper-padding-sm: map.get(settings.$wrapper-padding, "sm");
+$nav-wrapper-padding-lg: map.get(settings.$wrapper-padding, "lg");
+$total-padding: $nav-wrapper-padding-lg * 2;
+
+$nav-overlay-zindex: tools.get-utility-value("stack", "500");
+$nav-overlay-zindex: tools.to-number($nav-overlay-zindex);
+
+// Règles communes
+// ========================================
+
+.c-nav {
+  line-height: 1.1;
+}
+
+.c-nav_toggle {
+
+  // si JS inactif
+  &[data-enabled="false"] {
+    display: none;
+  }
+
+  // si JS actif
+  &[data-enabled="true"] {
+    position: relative;
+    z-index: ($nav-overlay-zindex + 2);
+    display: flex;
+    align-self: flex-start;
+    margin-right: calc(#{$nav-wrapper-padding-sm} / 2);
+
+    > span {
+      background-color: map.get(settings.$gorko-colors, "light");
+    }
+
+    // Si mq >= lg, masquer le bouton.
+    @include tools.media-query("lg") {
+      display: none;
+    }
+  }
+}
+
+.c-nav_menu {
+  z-index: ($nav-overlay-zindex + 1);
+
+  @include tools.media-query("lg") {
+    padding-left: $nav-wrapper-padding-lg;
+    padding-right: $nav-wrapper-padding-lg;
+  }
+}
+
+.c-nav_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: $nav-overlay-zindex;
+  display: block;
+  background-color: rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+
+  .c-nav_menu[data-status="open"] + & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.c-nav_list {
+  --flow-space: 0.5rem;
+  margin-top: var(--flow-space);
+  padding: 0;
+  list-style: none;
+  max-width: none;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  & a {
+    color: map.get(settings.$gorko-colors, "dark");
+    text-decoration: none;
+  }
+
+  &[data-depth="0"] {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > li:nth-child(n+2) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.c-nav_link {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-align: left;
+  transition: color 0.3s;
+
+  & svg {
+    flex-shrink: 0;
+  }
+
+  &[data-link-type="link"] {
+    align-items: center;
+    width: 100%;
+  }
+
+  &:hover,
+  &[aria-expanded="true"] {
+    color: map.get(settings.$gorko-colors, "primary-light");
+  }
+}
+
+.c-nav_icon {
+  margin-inline-start: 0.5rem;
+}
+
+
+// Variante sans JS
+// ========================================
+
+// La navigation s'affiche dans un conteneur flexible,
+// et les sous-menus sont des menus déroulants
+// disponibles via un hover ou un focus.
+
+.c-nav_menu[data-js="false"] {
+
+  & ul[data-depth="0"] {
+
+    & > li {
+      position: relative;
+
+      & .c-nav_section {
+        visibility: hidden;
+      }
+
+      &:hover .c-nav_section {
+        visibility: visible;
+      }
+
+      &:focus-within .c-nav_section {
+        visibility: visible;
+      }
+    }
+  }
+
+  & ul[data-depth="1"] {
+    border-top: 1px solid #ddd;
+    padding-top: var(--flow-space);
+    margin-top: 1rem;
+
+    & ul {
+      border-left: 1px solid #ddd;
+      padding-left: 0.5rem;
+      margin-left: 0.25rem;
+    }
+  }
+
+  a[data-action-type="dropdown"] {
+    padding-bottom: 0.5rem;
+  }
+
+  .c-nav_section {
+    position: absolute;
+    top: 100%;
+    left: -0.5rem;
+    z-index: tools.get-utility-value("stack", "300");
+    min-width: rem.convert(200px);
+    width: 100%;
+    padding: 1rem 0.5rem;
+    @include tools.apply-utility("box-shadow", "medium");
+    background-color: map.get(settings.$gorko-colors, "light");
+
+    h2 {
+      @include tools.apply-utility("text", "400");
+    }
+  }
+}
+
+// Variante avec Js
+// ========================================
+
+.c-nav_menu[data-js="true"] {
+  // Avec clicky-menus.js : un lien de premier niveau
+  // est maintenant un bouton
+  button.c-nav_link {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  // 2 variantes possibles selon les mediaqueries
+  // ========================================
+
+  // Mediaqueries < à lg, le menu est :
+  //  - en off-canvas,
+  //  - activable avec le bouton "burger"
+  //  - menu et sous-menus s'affichent en accordéon
+  @include tools.mq($until: lg) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    background-color: map.get(settings.$gorko-colors, "light");
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.3s;
+
+    &[aria-hidden="false"] {
+      visibility: visible;
+      opacity: 1;
+
+      & ul[data-depth="0"] {
+        transform: translateX(0);
+      }
+    }
+
+    & ul[data-depth="0"] {
+      display: block;
+      border-bottom: 2px solid;
+      margin: 8rem 1rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.5s;
+
+      > li {
+        border-top: 2px solid;
+        margin-left: 0;
+      }
+
+      & > li > .c-nav_link {
+        font-size: rem.convert(20px);
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        width: 100%;
+
+        &:focus {
+          outline-offset: 0;
+        }
+      }
+    }
+
+    & ul[data-depth="1"] {
+      & li {
+        font-size: rem.convert(18px);
+      }
+    }
+
+    & ul[data-depth="2"] {
+      margin-left: 0.5rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+    }
+
+    h2 {
+      margin-top: 0.5rem;
+    }
+
+    .c-nav_section {
+      margin-left: 1rem;
+
+      &[aria-hidden="true"] {
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      > ul {
+        margin-bottom: 1.5rem;
+      }
+
+      & svg {
+        display: none;
+      }
+    }
+  }
+}
+
+@include tools.mq($from: lg) {
+  .c-nav_menu[data-js="true"] {
+    position: relative;
+
+    &::before {
+      content: "";
+      background-color: map.get(settings.$gorko-colors, "light");
+      display: block;
+      position: fixed;
+      z-index: -1;
+      width: var(--menuWidth, 855px);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      @include tools.apply-utility("box-shadow", "high");
+      transform: translateX(100%);
+      transition: transform 0.3s;
+    }
+
+    &[data-status="open"] {
+
+      &::before {
+        transform: translateX(0);
+      }
+    }
+
+    & .c-nav_section {
+      position: absolute;
+      left: $nav-wrapper-padding-lg;
+      width: calc(var(--menuWidth, 855px) - #{$total-padding});
+      padding-right: 3rem;
+      padding-top: 3rem;
+      overflow-y: auto;
+      visibility: hidden;
+      transition: visibility 0.3s 0;
+    }
+
+    & .c-nav_section[aria-hidden="false"] {
+      visibility: visible;
+      transition-delay: 0.3s;
+    }
+
+    & h2 {
+      font-size: tools.get-utility-value("text", "800");
+      font-weight: normal;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+    }
+
+    & ul[data-depth="0"] > li > .c-nav_link {
+      font-size: rem.convert(18px);
+    }
+
+    & ul[data-depth="1"] {
+      margin-top: 1rem;
+      --flow-space: 1.5rem;
+
+      & li {
+        font-size: tools.get-utility-value("text", "600");
+      }
+    }
+
+    & ul[data-depth="2"] {
+      & li {
+        display: flex;
+
+        &::before {
+          content: "—";
+          margin-right: 0.5rem;
+          color: rgba(map.get(settings.$gorko-colors, "shadow"), 0.4);
+        }
+      }
+    }
+  }
+}

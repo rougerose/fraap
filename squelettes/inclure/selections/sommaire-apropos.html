@@ -1,0 +1,45 @@
+<B_contenus_apropos>
+  <div class="section section--banner">
+    <div class="section_masked">
+      <div class="section_bgmask">
+        <div class="section_background-banner"></div>
+      </div>
+      <div class="section_container">
+        <div class="section_content">
+          <div class="wrapper-content">
+            <h2 class="section_headline">[(#ENV{selection_titre, <:fraap_squelettes:a_propos_headline:>})]</h2>
+          </div>
+          <div class="carousel gap-top-3">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <BOUCLE_contenus_apropos(SELECTIONS_CONTENUS){id_selection}{par rang}>
+                  <div class="swiper-slide">
+                    <div class="card-carousel card-carousel--flat flow">
+                      [(#SET{iconID, ''})]
+                      [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
+                      [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
+                      <h3 class="card-carousel_heading card-carousel_heading--flat[(#CHEMIN{#GET{iconURL}|concat{.html}}|oui) with-icon]">
+                        <a href="#URL">
+                          [(#CHEMIN{#GET{iconURL}|concat{.html}}|oui)
+                            [(#INCLURE{fond=#GET{iconURL}, svg=card-carousel card-carousel--flat icon-#GET{iconID}})]
+                          ]
+                          #TITRE
+                        </a>
+                      </h3>
+                      [<div class="card-carousel_desc flow-small">(#DESCRIPTIF)</div>]
+                    </div>
+                  </div>
+                </BOUCLE_contenus_apropos>
+              </div>
+              <div class="carousel_navigation">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+              <div class="carousel_pagination swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</B_contenus_apropos>

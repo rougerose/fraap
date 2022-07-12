@@ -1,0 +1,19 @@
+<div class="o-wrapper u-flow">
+  <h1>Recherche standard</h1>
+  <div style="margin-bottom: 3rem;">
+    [(#FORMULAIRE_RECHERCHE{#SELF})]<br><br>
+
+    <B_recherche>
+      <div class="u-flow">
+        <h2>#GRAND_TOTAL articles trouvés (#TOTAL_BOUCLE affichés)</h2>
+        <BOUCLE_recherche(ARTICLES){recherche}{!par points}{pagination 20}>
+          <article class="u-flow">
+            <h2><a href="#URL_ARTICLE">#TITRE</a></h2>
+            <div class="surlignable">#INTRODUCTION</div>
+          </article>
+        </BOUCLE_recherche>
+      </div>
+      [<nav class="c-pagination">(#PAGINATION)</nav>]
+    </B_recherche>
+  </div>
+</div>

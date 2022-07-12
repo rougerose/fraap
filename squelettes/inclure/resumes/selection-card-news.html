@@ -1,0 +1,16 @@
+<BOUCLE_actualite(SELECTIONS_CONTENUS){id_selections_contenu}>
+  <li class="card-news">
+    <div class="card-news_content flow">
+      <h3 class="card-news_heading weight-600"><a href="#URL">#TITRE</a></h3>
+      <div class="card-news_desc flow-small">
+        [(#DESCRIPTIF)]
+        <p class="gap-top-1"><a href="#URL" class="button-cta variant-link with-icon"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+      </div>
+      [<div class="card-news_image">
+        <a href="#URL">
+          <img src="(#LOGO_SELECTIONS_CONTENU|image_passe_partout{500,375}|image_reduire{500,0}|image_recadre{500,375,center, '#ffffff'}|extraire_attribut{src})" alt="">
+        </a>
+      </div>]
+    </div>
+  </li>
+</BOUCLE_actualite>

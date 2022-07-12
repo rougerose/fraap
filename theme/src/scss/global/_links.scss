@@ -1,0 +1,17 @@
+// Links
+
+// @use "../settings";
+
+a:not([class]) {
+  color: currentColor;
+}
+
+a.spip_in,
+a.spip_out,
+a.spip_ancre {
+  color: var(--color-link);
+}
+
+a:not(:hover) {
+  text-decoration: none;
+}

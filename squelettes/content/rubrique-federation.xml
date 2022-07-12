@@ -1,0 +1,6 @@
+<composition>
+  <nom>Fédération</nom>
+  <description>Composition pour la rubrique Fédération</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <!-- <branche type="article" composition="fiches-pratiques" /> -->
+</composition>

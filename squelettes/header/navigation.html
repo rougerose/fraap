@@ -1,0 +1,17 @@
+<nav id="nav" class="c-site-head_nav | c-nav">
+  <div class="c-site-head_name">
+    <a href="#URL_SITE_SPIP" class="c-site-head_logo">
+      <INCLURE{fond=images/fraap-logo.svg, class=c-logo_fraap, largeur=250, hauteur=83} />
+      <div class="u-visually-hidden">#NOM_SITE_SPIP[ : (#SLOGAN_SITE_SPIP)]</div>
+    </a>
+    <div class="c-site-head_baseline">
+      <INCLURE{fond=images/fraap-baseline.svg, class=c-logo_baseline, largeur=360, hauteur=16} />
+    </div>
+  </div>
+  <button id="nav-toggle" class="c-nav_toggle | hamburger hamburger--squeeze" type="button" aria-controls="nav-menu" aria-label="Menu principal" aria-expanded="false" data-enabled="false">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+  <INCLURE{fond=inclure/site-nav/site-nav_racine, identifiant=site-nav} />
+</nav>

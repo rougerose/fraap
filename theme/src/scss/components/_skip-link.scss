@@ -1,0 +1,17 @@
+// ========================================
+// c-skip-link
+// ========================================
+
+@use "../tools";
+@use "../utilities";
+
+.c-skip-link {
+  position: absolute;
+  top: tools.get-size("100");
+  left: tools.get-size("500");
+  z-index: 99;
+
+  &:not(:focus) {
+    @extend .u-visually-hidden;
+  }
+}

@@ -1,0 +1,24 @@
+/// FOCUS
+/// Gestion et apparence du focus.
+/// La classe .js-focus-visible est ajoutée par le polyfill focus-visible
+/// https://github.com/WICG/focus-visible
+
+@use "../settings";
+
+*:focus {
+  // outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid blue;
+  outline: none;
+}
+
+// Désactiver le focus lorsque la sélection est faite avec la souris
+*,
+.js-focus-visible {
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+*:focus-visible {
+  outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid var(--color-contrast);
+  outline-offset: settings.$FRAAP-FOCUS-OUTLINE-OFFSET;
+}

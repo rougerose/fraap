@@ -1,0 +1,23 @@
+/// MEDIA-BOX
+///
+/// Media object
+///
+///! Attention :
+///! la classe mediabox (sans tiret) est utilisée
+///! par la mediabox de Spip.
+
+
+.media-box {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--media-box-gutter, 1rem);
+}
+
+.media-box_img {
+  width: var(--media-box-img-size);
+  height: var(--media-box-img-size);
+}
+
+.media-box_content {
+  flex: 1;
+}

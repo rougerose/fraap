@@ -1,0 +1,142 @@
+/// GORKO CONFIG
+
+@use "../settings";
+
+
+// @use "../settings" as config;
+// @forward "gorko/gorko" with (
+//   $generate-css-vars: true,
+//   $generate-utility-classes: false,
+//   $gorko-base-size: config.$gorko-base-size,
+//   $gorko-size-scale: config.$gorko-size-scale,
+//   $gorko-config: config.$gorko-config
+// );
+
+$gorko-base-size: 1rem;
+
+$gorko-size-scale: (
+  "300": $gorko-base-size * 0.8,
+  "400": $gorko-base-size,
+  "500": $gorko-base-size * 1.25,
+  "600": $gorko-base-size * 1.6,
+  "700": $gorko-base-size * 2,
+  "900": $gorko-base-size * 3,
+);
+
+$gorko-colors: (
+  "dark": #1a1a1a,
+  "light": #f3f3f3,
+);
+
+@use "gorko/gorko" with (
+  $generate-utility-classes: false,
+  // Use $gorko-config in the `with` map to configure gorko.
+  $gorko-config:
+    (
+      // "bg": (
+      //   "items": $gorko-colors,
+      //   "output": "standard",
+      //   "property": "background",
+      // ),
+      // "color": (
+      //   "items": $gorko-colors,
+      //   "output": "standard",
+      //   "property": "color",
+      // ),
+      // "box": (
+      //   "items": (
+      //     "block": "block",
+      //     "flex": "flex",
+      //     "hide": "none",
+      //     "show": "inherit",
+      //   ),
+      //   "output": "responsive",
+      //   "property": "display",
+      // ),
+      // "font": (
+      //   "items": (
+      //     "base": "Helvetica, Arial, sans-serif",
+      //   ),
+      //   "output": "standard",
+      //   "property": "font-family",
+      // ),
+      // "gap-top": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "margin-top",
+      // ),
+      // "gap-right": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "margin-right",
+      // ),
+      // "gap-bottom": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "margin-bottom",
+      // ),
+      // "gap-left": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "margin-left",
+      // ),
+      // "pad-top": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "padding-top",
+      // ),
+      // "pad-right": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "padding-right",
+      // ),
+      // "pad-bottom": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "padding-bottom",
+      // ),
+      // "pad-left": (
+      //   "items": $gorko-size-scale,
+      //   "output": "standard",
+      //   "property": "padding-left",
+      // ),
+      "stack": (
+        "items": (
+          "0": 0,
+          "100": 10,
+          "200": 20,
+          "300": 30,
+          "400": 40,
+          "500": 50,
+          "600": 60,
+        ),
+        "output": "standard",
+        "property": "z-index",
+      ),
+      // "text": (
+      //   "items": $gorko-size-scale,
+      //   "output": "responsive",
+      //   "property": "font-size",
+      // ),
+      // "weight": (
+      //   "items": (
+      //     "light": "300",
+      //     "regular": "400",
+      //     "bold": "700",
+      //   ),
+      //   "output": "standard",
+      //   "property": "font-weight",
+      // ),
+      // "width": (
+      //   "items": (
+      //     "full": "100%",
+      //   ),
+      //   "output": "responsive",
+      //   "property": "width",
+      // ),
+      "breakpoints": settings.$GORKO-BREAKPOINTS,
+    )
+);
+
+// Forward gorko so it can be used elsewhere.
+@forward "gorko/gorko";

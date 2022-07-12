@@ -1,0 +1,10 @@
+// @use "../settings";
+@use "../tools";
+// @use "sass-rem/rem";
+// @use "sass:map";
+
+.o-box {
+  display: block;
+  padding: 1.5rem;
+  border: (tools.get-size("100") / 2) solid;
+}

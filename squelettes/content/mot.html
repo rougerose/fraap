@@ -1,0 +1,19 @@
+<BOUCLE_mot(MOTS){id_mot}>
+  [(#SET{mots_exclus, #ARRAY{0, #ID_MOT}})]
+  <div class="o-wrapper">
+    <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_mot}/>
+    <article class="c-post u-flow">
+      <h1 class="c-post_title">#TITRE</h1>
+      <div class="c-post_body">
+        [(#DESCRIPTIF)]
+      </div>
+      <div class="measure-long text-500">
+        <BOUCLE_condition_mot_niveau_1(CONDITION){si #ID_PARENT|=={0}}>
+          <INCLURE{fond=inclure/liste/fiches_pratiques/mots_enfants, id_mot}/>
+        </BOUCLE_condition_mot_niveau_1>
+          <INCLURE{fond=inclure/liste/fiches_pratiques/resume, id_mot}/>
+        <//B_condition_mot_niveau_1>
+      </div>
+    </article>
+  </div>
+</BOUCLE_mot>

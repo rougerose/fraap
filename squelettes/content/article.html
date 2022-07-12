@@ -1,0 +1,26 @@
+<BOUCLE_article_standard(ARTICLES){id_article}>
+  <div class="page-article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
+      <!-- logo ou document avec role -->
+      <div class="region">
+        <div class="logo-fake"></div>
+      </div>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <div class="region">
+        <article class="article prose">
+          <header class="article_header flow">
+            <h1 class="article_title header_title">#TITRE</h1>
+            [<p>(#SOUSTITRE)</p>]
+            [<div class="article_intro header_desc weight-300">(#CHAPO)</div>]
+            <p>[Publié le (#DATE|affdate)]</p>
+          </header>
+          [<div class="article_body flow">
+            (#TEXTE)
+          </div>]
+        </article>
+      </div>
+    </div>
+  </div>
+</BOUCLE_article_standard>

@@ -1,0 +1,11 @@
+<entree>
+	<nom><:fraap_squelettes:menu_racine_nom:></nom>
+	<rang>01</rang>
+	<description><:fraap_squelettes:menu_racine_description:></description>
+	<icone>images/menus/menu_fraap_racine.png</icone>
+	<parametre nom="type_objet" label="menus:entree_type_objet" obligatoire="oui" />
+	<parametre nom="id_objet" label="menus:entree_id_objet" obligatoire="oui" />
+	<parametre nom="titre" class="multilang" label="menus:entree_titre" />
+	<parametre nom="css" label="menus:entree_css" />
+  <parametre nom="enfants" label="fraap_squelettes:menu_entree_enfants" />
+</entree>
