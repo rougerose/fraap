@@ -5,7 +5,6 @@
 /// 03 - icon rubrique/article
 /// 04 - icon-arrow-right
 
-
 @use "../settings";
 @use "../tools/mq" as mq;
 
@@ -37,7 +36,7 @@
 .icon-nav-link {
   --icon-size: 32px;
   --iconPathOffset: translateX(12px);
-  --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
+  --hoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
   border-radius: var(--icon-border-radius);
   flex-shrink: 0;
   height: var(--icon-size);
@@ -73,7 +72,6 @@
 }
 
 .icon-nav-forward {
-
   &_path1,
   &_path2 {
     transform-origin: center;
@@ -93,7 +91,6 @@
     }
   }
 }
-
 
 .icon-nav-link {
   --iconPathOpacity: 0;
@@ -135,7 +132,7 @@
   --color-circle: var(--color-primary-800);
   --color-path: var(--color-contrast);
 
-  &.-contrast-light {
+  &.headline_icon {
     --color-circle: var(--color-primary-600);
   }
 
@@ -169,7 +166,7 @@
     fill: var(--color-contrast);
   }
   circle:nth-of-type(2),
-  path:nth-child(4)  {
+  path:nth-child(4) {
     fill: var(--color-primary-700);
   }
 }
@@ -227,12 +224,19 @@
 
 // icon Annuaire
 .icon-rubrique3 {
+  --color-path: var(--color-primary);
+  --color-circle: var(--color-contrast);
+
   path {
-    stroke: var(--color-primary);
+    stroke: var(--color-path);
   }
   circle {
-    fill: var(--color-contrast);
+    fill: var(--color-circle);
     fill-opacity: 1;
+  }
+
+  &.headline_icon {
+    --color-path: var(--color-paper);
   }
 }
 
@@ -245,7 +249,6 @@
     fill: var(--color-contrast);
   }
 }
-
 
 // 04 - icon-arrow-right
 // ========================================
