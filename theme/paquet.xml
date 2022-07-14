@@ -1,9 +1,9 @@
 <paquet
 	prefix="fraap_theme"
 	categorie="theme"
-	version="1.0.0"
+	version="4.0.0-alpha"
 	etat="dev"
-	compatibilite="[4.0.0;4.99.*]"
+	compatibilite="[4.0.0;4.1.*]"
 	logo="prive/themes/spip/images/fraap_theme-128.png"
   schema="1.0.0"
 >
@@ -13,7 +13,7 @@
 	<necessite nom="fraap_squelettes" />
   <genie nom="renouveler_nuance" periode="86400" />
 	<chemin path="" />
-  <spip compatibilite="[4.0.0;4.99.*]">
+  <spip compatibilite="[4.0.0;4.1.*]">
 		<style type="public" source="dist/css/fraap.css" />
 	</spip>
 </paquet>
