@@ -1,10 +1,11 @@
 /// SITE-FOOTER
 
 .site-footer {
-  padding-top: var(--space-5xl);
-  padding-bottom: var(--space-xl);
   background-color: var(--color-contrast);
   color: var(--color-primary);
+  margin-top: auto;
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-xl);
 }
 
 // .site-footer_nav {}
@@ -25,7 +26,6 @@
     padding-top: var(--space-m);
   }
 }
-
 
 .site-footer_logo {
   max-width: 220px;
