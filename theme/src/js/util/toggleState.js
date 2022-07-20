@@ -5,8 +5,7 @@ const toggleState = (state, newStatus) => {
     }
     state.status = newStatus;
   } else {
-    state.status =
-      state.status === "closed" ? "open" : "closed";
+    state.status = state.status === "closed" ? "open" : "closed";
   }
 };
 
