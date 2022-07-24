@@ -23,11 +23,6 @@ export default [
         format: "iife",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
-      // {
-      //   file: "theme/dist/js/fraap.es.js",
-      //   format: "es",
-      //   plugins: [process.env.NODE_ENV === "production" && terser()],
-      // },
     ],
   },
   {
@@ -39,11 +34,32 @@ export default [
         format: "iife",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
-      // {
-      //   file: "theme/dist/js/fraap-carousel.es.js",
-      //   format: "es",
-      //   plugins: [process.env.NODE_ENV === "production" && terser()],
-      // },
+    ],
+  },
+  {
+    input: "theme/src/js/fraap-members.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-members.js",
+        format: "umd",
+        name: "FraapMembers",
+        exports: "default",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
+  {
+    input: "theme/src/js/fraap-collapsible.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-collapsible.js",
+        format: "umd",
+        name: "fraapCollapsible",
+        exports: "default",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
     ],
   },
 ];
