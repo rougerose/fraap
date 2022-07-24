@@ -18,6 +18,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'bouton_valider' => 'Valider',
 
 	// C
+	'cartographie_localiser' => 'Afficher sur la carte',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
 	'cta_suite' => 'La suite',
@@ -28,6 +29,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// D
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
+
+	// F
+	'filtrer' => 'Filtrer',
 
 	// H
 	'headline_dernieres_publications' => 'Dernières publications',

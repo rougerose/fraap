@@ -1,0 +1,45 @@
+/// DIALOG-MEMBERS
+
+
+// .dialog-members {}
+
+.dialog-members_document {
+  --dialog-offcanvas-padding: var(--space-m);
+  // height: 100%;
+}
+
+.dialog-members_wrapper {
+  // display: grid;
+  // grid-template-rows: auto 1fr;
+  // min-height: 100%;
+}
+
+.dialog-members_header {
+  background-color: var(--color-paper);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-m) 1.125rem var(--space-m);
+  position: sticky;
+
+  h1 {
+    font-size: var(--step-3);
+    align-self: flex-end;
+  }
+}
+
+// .dialog-members_body {
+//   form {
+//     display: flex;
+//     flex-direction: column;
+//     // display: grid;
+//     // grid-template-rows: 1fr auto;
+//     > div {
+//       height: 100%;
+//       overflow: hidden;
+//     }
+
+//     .boutons {
+//       margin-top: auto;
+//     }
+//   }
+// }

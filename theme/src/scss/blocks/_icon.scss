@@ -4,6 +4,7 @@
 /// 02 - icon-social
 /// 03 - icon rubrique/article
 /// 04 - icon-arrow-right
+/// 05 - icon-locate
 
 @use "../settings";
 @use "../tools/mq" as mq;
@@ -102,7 +103,7 @@
     --iconPathOpacity: 1;
     --iconPathTransform: var(--iconPathOffset);
     stroke: currentColor;
-    transform: var(--iconPathOffset);
+    transform: translateX(4px);
   }
 
   path:nth-of-type(1) {
@@ -261,4 +262,21 @@
   & path:first-child {
     stroke-width: 0;
   }
+}
+
+
+// 05 - icon-locate
+// ========================================
+
+.icon-locate {
+  align-self: center;
+}
+
+
+// 06 - icon-plus
+// ========================================
+
+.icon-plus {
+  stroke: currentColor;
+  stroke-width: 2;
 }

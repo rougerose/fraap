@@ -1,0 +1,78 @@
+<div id="annuaire" class="formulaire_spip formulaire_#FORM">
+  <div>
+    <BOUCLE_mots_utilisateur(DATA){source tableau, #ENV{mots}}>
+      <p>[(#INFO_TITRE{mot, #VALEUR})]</p>
+    </BOUCLE_mots_utilisateur>
+  </div>
+  [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+    <form method="post" action="#ENV{action}">
+      <div>
+        #ACTION_FORMULAIRE
+        <div class="">
+          <h2>Activités</h2>
+          <div class="collapsible">
+            <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,8,9}{par num titre}>
+              <B_mots_activites>
+                #SET{openA, 0}
+                [(#SET{openA, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+                <h3 class="collapsible_heading xcard-member_tags-label">
+                  <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{openA}|=={1}|?{true,false})"]>
+                    <span>#TITRE</span>
+                    [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                  </button>
+                  <input type="hidden" name="btnOpen[]"[ value="(#GET{openA}|=={1}|?{ch_#ID_GROUPE,''})"]>
+                </h3>
+                <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{openA}|=={1}|?{'',hidden})]>
+                  <BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #ENV{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                    <div class="choix">
+                      <INCLURE{fond=inclure/formulaires/annuaire-checkbox, id_mot, mots} />
+                    </div>
+                  </BOUCLE_mots_activites>
+                </div>
+              </B_mots_activites>
+            </BOUCLE_groupes_activites>
+          </div>
+          <h2>Localisation</h2>
+          <div class="collapsible">
+            <BOUCLE_groupes_localisation(GROUPES_MOTS){id_groupe IN 1,10}{par num titre}>
+              <B_mots_localisation>
+                #SET{openL, 0}
+                [(#SET{openL, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+                <h3 class="collapsible_heading xcard-member_tags-label">
+                  <button type="button" id="ch_#ID_GROUPE" aria-expanded="[(#GET{openL}|=={1}|?{true,false})]">
+                    <span>#TITRE</span>
+                    [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                  </button>
+                  <input type="hidden" name="btnOpen[]"[ value="(#GET{openL}|=={1}|?{ch_#ID_GROUPE,''})"]>
+                </h3>
+                <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{openL}|=={1}|?{'',hidden})]>
+                  <BOUCLE_mots_localisation(MOTS spip_mots_liens){id_objet IN #ENV{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                    <div class="choix">
+                      <INCLURE{fond=inclure/formulaires/annuaire-checkbox, id_mot, mots} />
+                    </div>
+                  </BOUCLE_mots_localisation>
+                </div>
+              </B_mots_localisation>
+            </BOUCLE_groupes_localisation>
+          </div>
+        </div>
+        [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+        <!--extra-->
+      </div>
+      <p class="boutons"><input type="submit" name="filtrer" class="submit" value="<:fraap_squelettes:bouton_valider|attribut_html:/>" data-variant="secondary" /></p>
+    </form>
+	]
+  <script>
+    jQuery(function($){
+      let form_filtres = document.querySelector("div.formulaire_#FORM form");
+      if (form_filtres && form_filtres.querySelector(".collapsible")) {
+        fraapCollapsible.init(form_filtres, true);
+        $(form_filtres).on("change", "input[type='checkbox']", function(){
+          $(this).parents("form").submit();
+        });
+      }
+		});
+  </script>
+</div>

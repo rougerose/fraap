@@ -1,7 +1,7 @@
 /// Tiers : Spip
 /// Boutons d'administration
 
-@use "../settings";
+// @use "../settings";
 
 // Conteneur
 .spip-admin-float {
@@ -17,7 +17,7 @@
 // Boutons
 .spip-admin-float .spip-admin-boutons {
   margin: 0 0.25rem 0 0;
-  font: normal 9px settings.$FRAAP-FONT-BASE-MONO;
+  font: normal 9px var(--font-family-mono);
   border-radius: 4px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   letter-spacing: 0.05em;

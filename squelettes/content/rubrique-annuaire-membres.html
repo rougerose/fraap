@@ -1,0 +1,15 @@
+<BOUCLE_rubrique_annuaire(RUBRIQUES){id_rubrique}>
+	<div class="page-rubrique">
+		<INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+		<INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique3-64.svg', class_icon=icon-rubrique3, id_rubrique} />
+    <div class="wrapper-structure">
+      #SET{articles, #ARRAY}
+      <BOUCLE_articles(ARTICLES){id_rubrique}{mots?}>
+        [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+      </BOUCLE_articles>
+      <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, articles=#GET{articles}, ajax, env} />
+      <INCLURE{fond=inclure/dialog/annuaire-membres-filtres, articles=#GET{articles}}/>
+    </div>
+	</div>
+</BOUCLE_rubrique_annuaire>

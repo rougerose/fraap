@@ -1,0 +1,35 @@
+/// CARD-MEMBER
+/// Résumé d'une fiche membre
+
+
+.card-member {
+  --card-member-fontsize: var(--step--1);
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  padding: var(--space-s) var(--space-xs);
+  font-size: var(--card-member-fontsize);
+}
+
+.card-member_heading {
+  font-size: var(--step-1);
+  font-weight: 500;
+}
+
+// .card-member_desc {}
+
+.card-member_action {
+  --buttonCta-fontsize: var(--card-member-fontsize);
+  font-weight: 300;
+}
+
+.card-member_tags {
+  --gutter: var(--space-2xs);
+}
+
+.card-member_tags-label {
+  font: normal var(--card-member-fontsize) var(--font-family-sans);
+
+  .indicator {
+    margin-left: 0.25em;
+  }
+}

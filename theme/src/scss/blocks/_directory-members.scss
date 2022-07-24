@@ -1,0 +1,55 @@
+/// DIRECTORY-MEMBERS
+/// Annuaire des membres
+
+@use "../tools/mq" as mq;
+
+.directory-members_nav {
+  position: sticky;
+  top: 20px;
+  background-color: white;
+  z-index: var(--carousel-zindex);
+}
+
+.directory-members_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-rows: minmax(0, 1fr); // https://pustelto.com/blog/what_you_might_not_know_about_sizing_in_css/
+  grid-gap: var(--space-xs-s);
+  gap: var(--space-xs-s);
+  height: calc(100vh - var(--space-m-l) * 2);
+  padding: var(--space-m-l) 0;
+}
+
+.directory-members_container-list {
+  height: 100%;
+  margin: auto;
+}
+
+.directory-members_list {
+  --flow-space: var(--space-xs);
+  height: 100%;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.directory-members_container-map {
+  height: 100%;
+  width: 100%;
+
+  & > .carte_gis {
+    height: calc((100vh - var(--space-m-l) * 2) / 2);
+    width: 100%;
+    z-index: calc(var(--carousel-zindex) - 1);
+  }
+}
+
+
+@include mq.mq($from: 540px) {
+  .directory-members_container {
+    grid-template-columns: minmax(15rem, 30%) 1fr;
+  }
+
+  .directory-members_container-map > .carte_gis {
+    height: 100%;
+  }
+}

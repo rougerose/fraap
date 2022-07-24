@@ -1,0 +1,53 @@
+/// COLLAPSIBLE (accordion)
+/// https://inclusive-components.design/collapsible-sections/
+
+.collapsible {
+  border-width: 1px 0;
+  border-style: solid;
+}
+
+.collapsible_heading {
+  button {
+    background-color: transparent;
+    border: 0;
+    border-radius: unset;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-xs) 0;
+
+    .icon-plus {
+      transition: transform 0.3s;
+    }
+
+    &[aria-expanded="true"] {
+      .vertical {
+        display: none;
+      }
+    }
+
+    &:hover {
+      color: var(--color-contrast);
+
+      &[aria-expanded="false"] {
+        .icon-plus {
+          transform: rotate(180deg);
+        }
+      }
+
+      &[aria-expanded="true"] {
+        .icon-plus {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+}
+
+.collapsible_content {
+  padding-bottom: var(--space-s);
+
+  & + .collapsible_heading {
+    border-top: 1px solid;
+  }
+}

@@ -14,6 +14,8 @@
   --border-radius-base: #{settings.$FRAAP-BORDER-RADIUS-BASE};
   --boxShadow-elevation-middle: 0 10px 20px rgb(0 0 0 / 15%), 0 3px 6px rgb(0 0 0 / 10%);
   --buttonCta-fontsize: var(--step-0);
+  --buttonCta-marginLeft: -8px;
+  --buttonCta-padding: 8px 8px 6px;
 
   --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
 
@@ -24,8 +26,9 @@
 
   --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
 
-  --font-family-sans: #{settings.$FRAAP-FONT-BASE-SANS};
   --font-family-headings: #{settings.$FRAAP-FONT-HEADINGS};
+  --font-family-mono: #{settings.$FRAAP-FONT-BASE-MONO};
+  --font-family-sans: #{settings.$FRAAP-FONT-BASE-SANS};
   --form-fields-width: 100%;
   --form-fields-input-padding: 14px;
 
