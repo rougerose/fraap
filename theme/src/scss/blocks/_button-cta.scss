@@ -3,19 +3,19 @@
 .button-cta {
   color: currentColor;
   font-size: var(--buttonCta-fontsize);
+  line-height: 1;
+  padding: var(--buttonCta-padding, 0);
   white-space: nowrap;
 
   &.with-icon {
     display: inline-flex;
     align-items: baseline;
-    padding: var(--buttonCta-padding, 0);
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;
       --icon-size: 0.75em;
       --icon-padding: 0;
       fill: currentColor;
-      margin-left: 0.5em;
       position: relative;
       top: 0.1em;
     }
@@ -29,12 +29,24 @@
     }
   }
 
+  &.with-icon-right {
+    svg {
+      margin-left: 0.5em;
+    }
+  }
+
+  &.with-icon-left {
+    svg {
+      margin-right: 0.5em;
+    }
+  }
+
   &.variant-button {
     background-color: var(--color-contrast);
-    border-radius: 8px;
+    border-radius: 4px;
     color: var(--color-link-invert);
     text-decoration: none;
-    white-space: nowrap;
+    // white-space: nowrap;
   }
 
   &.variant-link {
