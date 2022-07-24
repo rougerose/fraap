@@ -45,7 +45,6 @@
 }
 
 .dialog_overlay {
-
   .dialog[data-dialog-status] & {
     background-color: var(--dialog-overlay-background);
     animation: 200ms both fade-in;

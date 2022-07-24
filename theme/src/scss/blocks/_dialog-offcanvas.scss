@@ -1,0 +1,51 @@
+/// DIALOG-OFFCANVAS
+
+@use "../settings";
+@use "sass:map";
+@use "sass:math";
+@use "../tools/mq" as mq;
+
+// .dialog-offcanvas {}
+
+.dialog-offcanvas_content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--dialog-offcanvas-padding, 0 var(--space-s));
+  position: relative;
+  transition: transform 0.5s;
+  width: 100%;
+
+  // Variante à gauche
+  .variant-left & {
+    margin-right: auto;
+    transform: translateX(-100%);
+  }
+
+  .variant-left[data-dialog-status="open"] & {
+    transform: translateX(0);
+  }
+
+  .variant-left[data-dialog-status="closing"] & {
+    transform: translateX(-100%);
+  }
+
+  // Variante à droite
+  .variant-right & {
+    margin-left: auto;
+    transform: translateX(100%);
+  }
+
+  .variant-right[data-dialog-status="open"] & {
+    transform: translateX(0);
+  }
+
+  .variant-right[data-dialog-status="closing"] & {
+    transform: translateX(100%);
+  }
+}
+
+@include mq.mq($from: navOffcanvas) {
+  .dialog-offcanvas_content {
+    max-width: math.div(map.get(settings.$FRAAP-TWEAKPOINTS, "navOffcanvas"), 16) * 1rem;
+  }
+}
