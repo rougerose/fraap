@@ -1,6 +1,6 @@
 <BOUCLE_popup_membre(ARTICLES){id_article}>
   [(#ENV{mots}|?{
-    [(#SET{url, #URL_ARTICLE|parametre_url{mots, #ENV{mots}}})],
+    [(#SET{url, #URL_ARTICLE|parametre_url{mots, #ENV{mots}|array_filter}})],
     [(#SET{url, #URL_ARTICLE})]
   })]
   <div class="card-member_popup flow">

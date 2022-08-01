@@ -14,12 +14,12 @@
       <BOUCLE_selections(DATA){source table, #ENV{mots}}{par cle}>
         [(#SET{delete, [(#ENV{mots}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
         <div>
-          [<a href="[(#SELF|parametre_url{mots, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
+          [<a href="[(#SELF|parametre_url{mots, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
         </div>
       </BOUCLE_selections>
       [(#ENV{mots}|array_filter|oui)
         <div>
-          [<a href="(#SELF|parametre_url{mots, ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]Effacer tout</a>]
+          [<a href="(#SELF|parametre_url{mots, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]Effacer tout</a>]
         </div>
       ]
     </B_selections>
