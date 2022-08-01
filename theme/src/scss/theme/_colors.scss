@@ -16,6 +16,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary: #{map.get(var.$lime, "500")};
   --color-contrast: #{map.get(var.$royal-blue, "500")};
   --color-contrast-400: #{map.get(var.$royal-blue, "400")};
+  --color-primary-100: #{map.get(var.$lime, "100")};
   --color-primary-200: #{map.get(var.$lime, "200")};
   --color-primary-300: #{map.get(var.$lime, "300")};
   --color-primary-400: #{map.get(var.$lime, "400")};
@@ -24,6 +25,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$lime, "800")};
   --color-link: var(--color-contrast);
   --color-link-invert: #{var.$white};
+  --color-disabled: #{map.get(var.$gray, "blue", "400")};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
@@ -31,7 +33,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$lime, "500"), 0.2)};
 
   // dialog
-  --dialog-overlay-background: rgba(72, 76, 88, 0.7);
+  --dialog-overlay-background: #{rgba(map.get(var.$gray, "blue", "300"), 0.6)};
 
   // icon
   --color-icon-nav-fill: none;
@@ -47,6 +49,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="2"] {
   --color-primary: #{map.get(var.$yellow, "500")};
+  --color-primary-100: #{map.get(var.$yellow, "100")};
   --color-primary-200: #{map.get(var.$yellow, "200")};
   --color-primary-300: #{map.get(var.$yellow, "300")};
   --color-primary-400: #{map.get(var.$yellow, "400")};
@@ -69,6 +72,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="3"] {
   --color-primary: #{map.get(var.$mint, "500")};
+  --color-primary-100: #{map.get(var.$mint, "100")};
   --color-primary-200: #{map.get(var.$mint, "200")};
   --color-primary-300: #{map.get(var.$mint, "300")};
   --color-primary-400: #{map.get(var.$mint, "400")};
@@ -92,6 +96,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="4"] {
   --color-primary: #{map.get(var.$palmas, "500")};
+  --color-primary-100: #{map.get(var.$palmas, "100")};
   --color-primary-200: #{map.get(var.$palmas, "200")};
   --color-primary-300: #{map.get(var.$palmas, "300")};
   --color-primary-400: #{map.get(var.$palmas, "400")};
@@ -115,6 +120,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="5"] {
   --color-primary: #{map.get(var.$heliotrope, "500")};
+  --color-primary-100: #{map.get(var.$heliotrope, "100")};
   --color-primary-200: #{map.get(var.$heliotrope, "200")};
   --color-primary-300: #{map.get(var.$heliotrope, "300")};
   --color-primary-400: #{map.get(var.$heliotrope, "400")};
@@ -138,6 +144,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 [data-theme-color="6"] {
   --color-primary: #{map.get(var.$dodger-blue, "500")};
+  --color-primary-100: #{map.get(var.$dodger-blue, "100")};
   --color-primary-200: #{map.get(var.$dodger-blue, "200")};
   --color-primary-300: #{map.get(var.$dodger-blue, "300")};
   --color-primary-400: #{map.get(var.$dodger-blue, "400")};

@@ -7,6 +7,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="search"],
+input[type="submit"],
 textarea {
   display: block;
   background-color: var(--color-paper);
@@ -19,6 +20,36 @@ textarea {
   padding: var(--form-fields-input-padding);
   width: var(--form-fields-width);
 }
+
+
+// Checkbox
+// Référence possible https://moderncss.dev/pure-css-custom-checkbox-style/
+// mais non suivie ici
+input[type="checkbox"] {
+  width: min(1.13em, 18px);
+  height: min(1.13em, 18px);
+
+  + label {
+    cursor: pointer;
+    margin-left: 0.25em;
+  }
+
+  &:disabled + label {
+    cursor: not-allowed;
+    color: var(--color-disabled);
+  }
+}
+
+// Formulaire : mise en forme
+form {
+  .choix {
+    display: flex;
+    padding: 0.12em 0;
+  }
+}
+
+
+
 
 // input:not([type]),
 // input[type="text"],

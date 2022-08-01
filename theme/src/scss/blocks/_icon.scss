@@ -1,17 +1,19 @@
 /// ICON
-///
-/// 01 - icon-nav-xx
+/// 01 - icon-nav-[search-burger-close]
 /// 02 - icon-social
 /// 03 - icon rubrique/article
 /// 04 - icon-arrow-right
 /// 05 - icon-locate
+/// 06 - icon-plus
+/// 07 - icon-filter
+/// 08 - icon-close
 
 @use "../settings";
 @use "../tools/mq" as mq;
 
 .icon {
-  height: var(--icon-size);
-  width: var(--icon-size);
+  height: var(--icon-size, 1em);
+  width: var(--icon-size, 1em);
 }
 
 // 01 .icon-nav
@@ -97,6 +99,7 @@
   --iconPathOpacity: 0;
   --iconPathTransform: none;
   --iconPathOffset: translateX(6px);
+  align-self: baseline;
   // --hoverTransition: 150ms cubic-bezier(0.215,0.61,0.355,1);
 
   a:hover & {
@@ -253,7 +256,6 @@
 
 // 04 - icon-arrow-right
 // ========================================
-
 .icon-arrow-right {
   padding: 0;
   stroke: currentColor;
@@ -267,16 +269,26 @@
 
 // 05 - icon-locate
 // ========================================
-
 .icon-locate {
-  align-self: center;
+  // align-self: center;
+  fill: currentColor;
 }
 
 
 // 06 - icon-plus
 // ========================================
-
 .icon-plus {
-  stroke: currentColor;
   stroke-width: 2;
+}
+
+
+// 07 - icon-filter
+// ========================================
+// .icon-filter {}
+
+
+// 08 - icon-close
+// ========================================
+.icon-close {
+  stroke: currentColor;
 }

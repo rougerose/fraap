@@ -16,6 +16,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// B
 	'bouton_valider' => 'Valider',
+	'bouton_voir_resultat' => 'Voir 1 résultat',
+	'bouton_voir_resultats' => 'Voir @nb@ résultats',
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
@@ -41,6 +43,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'lien_aller_au_contenu' => 'Aller au contenu',
 
 	// M
+	'membre' => '1 membre',
+	'membres' => '@nb@ membres',
 	'menu_articles_rubrique_nom' => "Fraap : tous les articles d'une rubrique",
 	'menu_entree_enfants' => 'Cet objet possède-t-il des enfants ? (oui/non ; non est la valeur par défaut).',
 	'menu_entree_icone' => "Afficher l'icone \"-->\" après le titre ? (oui/non ; non est la valeur par défaut).",
@@ -66,6 +70,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// R
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
+	'resultat_aucun' => 'Aucun résultat',
 
 	// S
 	'search_placeholder' => 'Écrivez ici…',

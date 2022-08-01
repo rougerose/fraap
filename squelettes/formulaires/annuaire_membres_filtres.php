@@ -21,17 +21,16 @@ function formulaires_annuaire_membres_filtres_traiter($articles = [], $redirect 
 	// refuser_traiter_formulaire_ajax();
 	$retour = [];
 	$mots = _request('mots');
-	$filtrer = _request('filtrer');
+	$voir_resultats = _request('voir_resultats');
 
-	if ($mots) {
-		$mots = array_unique($mots);
+	if ($voir_resultats) {
 		$redirect = parametre_url($redirect, 'mots', '');
-		$redirect = ancre_url(parametre_url($redirect, 'mots', $mots), 'liste');
-	}
-
-	if ($filtrer) {
+		if ($mots) {
+			$mots = array_unique($mots);
+			$redirect = parametre_url($redirect, 'mots', $mots);
+		}
+		$redirect = ancre_url($redirect, 'annuaire');
 		$retour['redirect'] = $redirect;
-		// $retour['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("annuaire");</script>';
 	}
 
 	$retour['editable'] = true;

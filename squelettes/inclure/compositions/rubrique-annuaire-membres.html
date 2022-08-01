@@ -1,77 +1,91 @@
-<nav class="directory-members_nav">
-  <p>X membres</p>
-  <button type="button" data-a11y-dialog-show="dialogMembers">Filtres</button>
-</nav>
+#SET{articles, #ARRAY}
+<BOUCLE_articles(ARTICLES){gis}{id_rubrique}{mots?}>
+  [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+</BOUCLE_articles>
+<div id="annuaire" class="directory-members_bar">
+  <INCLURE{fond=inclure/liste/annuaire-membres/bar_infos, env, articles=#GET{articles}}/>
+</div>
+
 <div class="directory-members_container">
   <div class="directory-members_container-list">
-    <ul class="directory-members_list flow" role="list">
-      <BOUCLE_membres(ARTICLES){id_article IN #ENV{articles}}{par titre}>
-        <li class="card-member flow">
-          <div class="card-member_id flow-small">
-            <h3 class="card-member_heading">#TITRE</h3>
-            [<div class="card-member_desc">(#DESCRIPTIF)</div>]
-          </div>
-          <div class="card-member_action cluster">
-            <BOUCLE_situer(GIS){id_article}>
-              <button class="button-cta variant-button with-icon with-icon-left button-ripple" type="button" data-fraapMember-id="#ID_GIS" data-fraapMember-lat="#LAT" data-fraapMember-lon="#LON">
-                [(#INCLURE{fond=images/icon-marker-32.svg, svg=icon icon-locate, aria-hidden=true, largeur=0.8em, hauteur=0.8em}) ]<:fraap_squelettes:cartographie_localiser:>
+    <B_membres>
+      <ul class="directory-members_list flow" role="list">
+        <BOUCLE_membres(ARTICLES){id_article IN #GET{articles}}{par titre}>
+          <BOUCLE_gis(GIS){id_article}>
+            #SET{gis, #ARRAY{id, #ID_GIS, lat, #LAT, lon, #LON}}
+          </BOUCLE_gis>
+          <li id="member-#GET{gis/id}" class="card-member flow">
+            <div class="card-member_id flow-small">
+              <h3 class="card-member_heading">#TITRE</h3>
+              [<div class="card-member_desc">(#DESCRIPTIF)</div>]
+            </div>
+            <div class="card-member_action cluster">
+              <button class="button-cta variant-button with-icon with-icon-left button-ripple" type="button" data-fraapMember-id="#GET{gis/id}" data-fraapMember-lat="#GET{gis/lat}" data-fraapMember-lon="#GET{gis/lon}">
+                [(#INCLURE{fond=images/icon-marker-32.svg, svg=icon icon-locate, aria-hidden=true, focusable=false, largeur=0.8em, hauteur=0.8em}) ]<:fraap_squelettes:cartographie_localiser:>
               </button>
-            </BOUCLE_situer>
-            <a href="#URL_ARTICLE" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
-          </div>
-          <div class="card-member_tags gap-top-1 flow">
-            <B_territoires>
-              <div class="cluster">
-                <h4 class="card-member_tags-label">Localisation</h4>
-                <p class="cluster">
-                  <BOUCLE_territoires(MOTS){id_article}{id_groupe IN 1, 10}{!par id_groupe}>
-                    <span class="pill">#TITRE</span>
-                  </BOUCLE_territoires>
-                </p>
-              </div>
-            </B_territoires>
-            [(#SET{activites, 0})]
-            <BOUCLE_nb_activites(MOTS){id_article}{id_groupe IN 2,7,9,8}> </BOUCLE_nb_activites>
-              [(#TOTAL_BOUCLE|oui) #SET{activites, 1}]
-            </B_nb_activites>
+              [(#ENV{mots}|?{
+                [(#SET{url, #URL_ARTICLE|parametre_url{mots, #ENV{mots}}})],
+                [(#SET{url, #URL_ARTICLE})]
+              })]
+              <a href="#GET{url}" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
+            </div>
+            <div class="card-member_tags gap-top-1 flow">
+              <B_territoires>
+                <div class="cluster">
+                  <h4 class="card-member_tags-label">Localisation</h4>
+                  <p class="cluster">
+                    <BOUCLE_territoires(MOTS){id_article}{id_groupe IN 1, 10}{!par id_groupe}>
+                      <span class="pill">#TITRE</span>
+                    </BOUCLE_territoires>
+                  </p>
+                </div>
+              </B_territoires>
+              [(#SET{activites, 0})]
+              <BOUCLE_nb_activites(MOTS){id_article}{id_groupe IN 2,7,9,8}> </BOUCLE_nb_activites>
+                [(#TOTAL_BOUCLE|oui) #SET{activites, 1}]
+              </B_nb_activites>
 
-            <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
-              <div class="collapsible">
-                <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,9,8}{par id_groupe}>
-                  <B_activites>
-                    <h4 class="collapsible_heading card-member_tags-label">
-                      <button type="button" id="ch_#ID_GROUPE" aria-expanded="false">
-                        <span>#_groupes_activites:TITRE[ <span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
-                        [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
-                      </button>
-                    </h4>
-                    <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE" hidden>
-                      <p class="cluster">
-                        <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
-                          <span class="pill">#TITRE</span>
-                        </BOUCLE_activites>
-                      </p>
-                    </div>
-                  </B_activites>
-                </BOUCLE_groupes_activites>
-              </div>
-            </BOUCLE_si_activites>
-          </div>
-        </li>
-      </BOUCLE_membres>
-    </ul>
+              <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
+                <div class="collapsible">
+                  <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,9,8}{par id_groupe}>
+                    <B_activites>
+                      <h4 class="collapsible_heading card-member_tags-label">
+                        <button type="button" id="ch_#ID_GROUPE" aria-expanded="false">
+                          <span>#_groupes_activites:TITRE[<span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
+                          [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                        </button>
+                      </h4>
+                      <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE" hidden>
+                        <p class="cluster">
+                          <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                            <span class="pill">#TITRE</span>
+                          </BOUCLE_activites>
+                        </p>
+                      </div>
+                    </B_activites>
+                  </BOUCLE_groupes_activites>
+                </div>
+              </BOUCLE_si_activites>
+            </div>
+          </li>
+        </BOUCLE_membres>
+      </ul>
+    </B_membres>
+      <p><:fraap_squelettes:resultat_aucun:></p>
+    <//B_membres>
   </div>
   <div class="directory-members_container-map">
     #SET{mapId, _members} #SET{id_gis, #ENV{id_gis, false}}
     [(#INCLURE{fond=modeles/carte_gis,
-      objets=articles,
+      objets=membres,
       id_rubrique=#ID_RUBRIQUE,
+      mots=#ENV{mots},
       id_map=#GET{mapId},
       id_a_ouvrir=#GET{id_gis},
       style=non,
       lon=2.890619,
       lat=46.949328,
-      zoom=5})]
+      zoom=6})]
     <script>
       jQuery(function($){
         // Initialiser les accordéons
@@ -80,8 +94,12 @@
           fraapCollapsible.init(container_collapsible, false);
         }
         // Callback de la carte GIS
-        const callback_map_members = (map) => {new FraapMembers(map)};
+        callback_map_members = function(map) {
+          new FraapMembers(map);
+        };
       });
     </script>
   </div>
 </div>
+<INCLURE{fond=inclure/dialog/annuaire-membres-filtres, env}/>
+#FILTRE{trim}

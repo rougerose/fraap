@@ -13,6 +13,7 @@
     border-radius: unset;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
     width: 100%;
     padding: var(--space-xs) 0;
 
@@ -43,6 +44,21 @@
     }
   }
 }
+
+.collapsible_title {
+  text-align: left;
+  white-space: normal;
+
+  span:first-child {
+    display: block;
+  }
+}
+
+.collapsible_user-choice {
+  font-family: var(--font-family-sans);
+  font-size: var(--step--1);
+}
+
 
 .collapsible_content {
   padding-bottom: var(--space-s);

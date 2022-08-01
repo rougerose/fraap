@@ -21,6 +21,8 @@ export default [
       {
         file: "theme/dist/js/fraap.js",
         format: "iife",
+        name: "fraapDialogMembers",
+        exports: "default",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
     ],
@@ -38,13 +40,15 @@ export default [
   },
   {
     input: "theme/src/js/fraap-members.js",
+    external: ["jQuery"],
     plugins: [nodeResolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-members.js",
-        format: "umd",
+        format: "iife",
         name: "FraapMembers",
         exports: "default",
+        globals: { jQuery: "$" },
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
     ],

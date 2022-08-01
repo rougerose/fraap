@@ -1,16 +1,8 @@
 <div id="dialogMembers" class="dialog dialog-offcanvas variant-right dialog-members" aria-labelledby="dialogTitle" aria-hidden="true">
   <div class="dialog_overlay" data-a11y-dialog-hide></div>
   <div class="dialog_content dialog-offcanvas_content dialog-members_document" role="document">
-    <div class="dialog-members_wrapper">
-      <header class="dialog-members_header">
-        <h1 id="dialogTitle"><span class="text-underline"><:fraap_squelettes:filtrer:></span></h1>
-        [<button type="button" class="dialog_close button-icon circle-hover" data-a11y-dialog-hide aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
-          (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
-        </button>]
-      </header>
-      <div class="dialog-members_body">
-        #FORMULAIRE_ANNUAIRE_MEMBRES_FILTRES{#ENV{articles}}
-      </div>
+    <div class="dialog-members_wrapper ajax">
+      #FORMULAIRE_ANNUAIRE_MEMBRES_FILTRES{#ENV{articles}, #SELF}
     </div>
   </div>
 </div>

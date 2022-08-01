@@ -8,6 +8,10 @@
   border-radius: 4px;
   padding: var(--space-s) var(--space-xs);
   font-size: var(--card-member-fontsize);
+
+  &.is-active {
+    background-color: var(--color-primary-100);
+  }
 }
 
 .card-member_heading {
@@ -28,8 +32,27 @@
 
 .card-member_tags-label {
   font: normal var(--card-member-fontsize) var(--font-family-sans);
+}
 
-  .indicator {
-    margin-left: 0.25em;
+// Leaflet popup
+.card-member_popup {
+  --avatar-width: 3rem;
+  --avatar-height: 100%;
+
+  &-header {
+    &.with-avatar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+  }
+
+  h2 {
+    flex: 1;
+    font-size: var(--step-0);
+  }
+
+  .leaflet-popup-content & p {
+    margin: var(--space-2xs) 0 0;
   }
 }

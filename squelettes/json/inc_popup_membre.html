@@ -1,0 +1,13 @@
+<BOUCLE_popup_membre(ARTICLES){id_article}>
+  [(#ENV{mots}|?{
+    [(#SET{url, #URL_ARTICLE|parametre_url{mots, #ENV{mots}}})],
+    [(#SET{url, #URL_ARTICLE})]
+  })]
+  <div class="card-member_popup flow">
+    <div class="card-member_popup-header[ (#LOGO_ARTICLE|oui)with-avatar]">
+      [<a class="avatar" href="#GET{url}">(#LOGO_ARTICLE|image_passe_partout{48}|image_reduire{48}|inserer_attribut{alt, #TITRE|attribut_html})</a>]
+      <h2><a href="#GET{url}">#TITRE</a></h2>
+    </div>
+    [<p>(#DESCRIPTIF|couper{200}|PtoBR) <a href="#GET{url}"><:fraap_squelettes:cta_en_savoir_plus:></a></p>]
+  </div>
+</BOUCLE_popup_membre>

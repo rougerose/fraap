@@ -1,0 +1,51 @@
+/// LEAFLET-TOGGLESLEEPMAP
+/// Styles du plugin leaflet-toggleSleepMap
+
+
+.leaflet-toggleSleepMap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1100;
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+.leaflet-toggleSleepMap_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dialog-overlay-background);
+}
+
+// btns
+.leaflet-toggleSleepMap_btn {
+  border: 2px solid;
+
+  &:hover {
+    color: var(--color-link-invert);
+    border-color: var(--color-contrast);
+  }
+
+  &.variant-enable {
+    --buttonCta-background: transparent;
+    --buttonCta-color: var(--color-contrast);
+    --buttonCta-fontsize: var(--step-1);
+    --buttonCta-padding: 6px 6px 8px;
+  }
+
+  &.variant-disable {
+    --buttonCta-fontsize: var(--step--1);
+    --buttonCta-padding: 4px 4px 6px;
+    border-color: var(--color-contrast);
+  }
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}

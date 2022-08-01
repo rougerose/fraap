@@ -3,22 +3,50 @@
 
 // .dialog-members {}
 
+// S'assurer que tous les blocs parents du formulaire occupent
+// toute la hauteur de la fenêtre.
 .dialog-members_document {
-  --dialog-offcanvas-padding: var(--space-m);
-  // height: 100%;
+  --dialog-offcanvas-padding: 0;
+  > div.ajax-form-container,
+  > div > div.ajax,
+  .dialog-members_wrapper,
+  .dialog-members_formulaire-spip {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .ajax-form-container {
+  //   transition: opacity 0.2s ease;
+  //   &[aria-busy="false"] {
+  //     opacity: 1;
+  //     transition-delay: 0.2s;
+  //   }
+  //   &[aria-busy="true"] {
+  //     opacity: 0;
+  //     transition-duration: 0.1s;
+  //   }
+  // }
 }
 
-.dialog-members_wrapper {
+// .dialog-members_wrapper {}
+
+// .dialog-members_formulaire-spip {}
+
+.dialog-members_form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   // display: grid;
-  // grid-template-rows: auto 1fr;
-  // min-height: 100%;
+  // grid-template-rows: auto 1fr auto;
+  max-height: 100vh;
 }
 
 .dialog-members_header {
   background-color: var(--color-paper);
   display: flex;
   justify-content: space-between;
-  padding: var(--space-m) 1.125rem var(--space-m);
+  padding: var(--space-s) var(--space-l);
   position: sticky;
 
   h1 {
@@ -27,19 +55,39 @@
   }
 }
 
-// .dialog-members_body {
-//   form {
-//     display: flex;
-//     flex-direction: column;
-//     // display: grid;
-//     // grid-template-rows: 1fr auto;
-//     > div {
-//       height: 100%;
-//       overflow: hidden;
-//     }
+.dialog-members_body {
+  padding-bottom: var(--space-3xl);
+  overflow-y: scroll;
+}
 
-//     .boutons {
-//       margin-top: auto;
-//     }
-//   }
-// }
+.dialog-members_content {
+  padding: var(--space-s) var(--space-l);
+}
+
+.dialog-members_heading {
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-2xs);
+  font-size: var(--step-0);
+  font-family: var(--font-family-sans);
+  font-weight: 300;
+  color: var(--color-primary-800);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.dialog-members_footer {
+  background-color: var(--color-paper);
+  padding: var(--space-s) var(--space-l);
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  .submit {
+    border: none;
+    font-size: var(--step-0);
+  }
+}

@@ -1,0 +1,16 @@
+/// AVATAR
+
+
+.avatar,
+.avatar > img {
+  width: var(--avatar-width, 65px);
+  height: var(--avatar-height, 65px);
+  object-fit: cover;
+  flex: none;
+  // border-radius: 50%;
+}
+
+// .avatar[data-size='large'],
+// .avatar[data-size='large'] > img {
+//   --avatar-size: 192px;
+// }

@@ -4,12 +4,31 @@
 
 		<INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique3-64.svg', class_icon=icon-rubrique3, id_rubrique} />
     <div class="wrapper-structure">
-      #SET{articles, #ARRAY}
-      <BOUCLE_articles(ARTICLES){id_rubrique}{mots?}>
-        [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
-      </BOUCLE_articles>
-      <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, articles=#GET{articles}, ajax, env} />
-      <INCLURE{fond=inclure/dialog/annuaire-membres-filtres, articles=#GET{articles}}/>
+      <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, env, ajax}/>
     </div>
 	</div>
+  <script>
+    jQuery(function($){
+      // Initialiser la modale de gestion des filtres des membres
+      let fDM = fraapDialogMembers.init();
+      // Lors du chargement via ajax
+      onAjaxLoad(reload_fDM);
+
+      function reload_fDM() {
+        // Si la modale est ouverte,
+        if (fDM.shown) {
+          // le fragment est rechargé à chaque clic sur un checkbox.
+          // Utiliser la méthode create() car le bouton de fermeture a
+          // perdu le gestionnaire d'événement.
+          fDM.create();
+        } else {
+          // La modale est fermée, la totalité de la page est rechargée
+          // et tous les boutons ont perdu les gestionnaires.
+          // Recréer l'instance.
+          fDM.destroy();
+          fDM = fraapDialogMembers.init();
+        }
+      }
+		});
+  </script>
 </BOUCLE_rubrique_annuaire>

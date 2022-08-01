@@ -8,6 +8,10 @@
 - ~~le header s'agrandit à l'ouverture de la fenêtre offcanvas~~
 - le focus est visible et les styles sont à corriger
 
+# A vérifier
+- usage de scroll-behavior dans la carte
+- modale ouverte : ESC ne referme pas la modale
+
 
 # accessibilité
 - label sur les logos rubriques et articles

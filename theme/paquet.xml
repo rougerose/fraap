@@ -12,6 +12,7 @@
 	<licence>GPLv3</licence>
 	<necessite nom="fraap_squelettes" />
   <genie nom="renouveler_nuance" periode="86400" />
+  <pipeline nom="recuperer_fond" inclure="fraap_theme_pipelines.php" />
 	<chemin path="" />
   <spip compatibilite="[4.0.0;4.1.*]">
 		<style type="public" source="dist/css/fraap.css" />

@@ -2,7 +2,7 @@
 
 .button-cta {
   color: currentColor;
-  font-size: var(--buttonCta-fontsize);
+  font-size: var(--buttonCta-fontsize, var(--step-0));
   line-height: 1;
   padding: var(--buttonCta-padding, 0);
   white-space: nowrap;
@@ -10,6 +10,7 @@
   &.with-icon {
     display: inline-flex;
     align-items: baseline;
+    align-items: center;
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;
@@ -42,9 +43,9 @@
   }
 
   &.variant-button {
-    background-color: var(--color-contrast);
+    background-color: var(--buttonCta-background, var(--color-contrast));
     border-radius: 4px;
-    color: var(--color-link-invert);
+    color: var(--buttonCta-color, var(--color-link-invert));
     text-decoration: none;
     // white-space: nowrap;
   }
@@ -52,5 +53,18 @@
   &.variant-link {
     color: var(--color-link);
     margin-left: var(--buttonCta-marginLeft, 0);
+  }
+
+  &.variant-pill {
+    background-color: var(--color-paper);
+    border-radius: 2em;
+    border: 1px solid var(--color-contrast);
+    transition: background 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: var(--color-contrast);
+      color: var(--color-link-invert);
+      text-decoration: none;
+    }
   }
 }
