@@ -1,0 +1,6 @@
+<composition>
+  <nom>Annuaire des membres</nom>
+  <description>Composition pour les articles de l'annuaire des membres</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <!-- <branche type="article" composition="fiches-pratiques" /> -->
+</composition>

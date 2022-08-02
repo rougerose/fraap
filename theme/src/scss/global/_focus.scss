@@ -19,6 +19,6 @@
 }
 
 *:focus-visible {
-  outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid var(--color-contrast);
+  outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid var(--color-link);
   outline-offset: settings.$FRAAP-FOCUS-OUTLINE-OFFSET;
 }

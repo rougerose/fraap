@@ -8,6 +8,22 @@
 .prose {
   @extend .wrapper-content;
   max-width: #{math.div(settings.$FRAAP-PROSE-MAX-WIDTH, 16) * 1rem};
+
+  figure,
+  figure + *,
+  h2,
+  h3,
+  h4,
+  h5 {
+    --flow-space: var(--space-xl);
+  }
+
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + * {
+    --flow-space: var(--space-s);
+  }
 }
 
 

@@ -1,3 +1,4 @@
+@use "article";
 @use "breadcrumb";
 // @use "button";
 @use "button-cta";
@@ -20,7 +21,8 @@
 @use "icon";
 @use "indicator";
 @use "header";
-@use "media-box";
+// @use "media-box";
+@use "member-profile";
 
 // @use "logo";
 @use "pagination";

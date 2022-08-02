@@ -12,6 +12,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
 :root, [data-theme-color="1"] {
   --color-ink: #{var.$black};
+  --color-ink-soft: #{map.get(var.$gray, "blue", "700")};
   --color-paper: #{var.$white};
   --color-primary: #{map.get(var.$lime, "500")};
   --color-contrast: #{map.get(var.$royal-blue, "500")};
@@ -26,6 +27,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-link: var(--color-contrast);
   --color-link-invert: #{var.$white};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
+
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$lime, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$lime, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
@@ -60,6 +63,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$disco, "400")};
   --color-link: var(--color-contrast);
 
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$yellow, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$yellow, "500"), 0.2)};
+
   // card
   --card-backgroundImage: #{$card-backgroundImage};
   --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
@@ -82,6 +87,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast: #{map.get(var.$eggplant, "500")};
   --color-contrast-400: #{map.get(var.$eggplant, "400")};
   --color-link: var(--color-contrast);
+
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$mint, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$mint, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
@@ -107,6 +114,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$blue, "400")};
   --color-link: var(--color-contrast);
 
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$palmas, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$palmas, "500"), 0.2)};
+
   // card
   --card-backgroundImage: #{$card-backgroundImage};
   --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
@@ -131,6 +140,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$minsk, "400")};
   --color-link: var(--color-contrast);
 
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$heliotrope, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$heliotrope, "500"), 0.2)};
+
   // card
   --card-backgroundImage: #{$card-backgroundImage};
   --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
@@ -154,6 +165,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast: #{map.get(var.$bordeaux, "500")};
   --color-contrast-400: #{map.get(var.$bordeaux, "400")};
   --color-link: var(--color-contrast);
+
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$dodger-blue, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$dodger-blue, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};

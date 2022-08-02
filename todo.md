@@ -16,3 +16,10 @@
 # accessibilité
 - label sur les logos rubriques et articles
 - aria-label : nav cf. <https://www.aditus.io/patterns/multiple-navigation-landmarks/>
+
+
+# Contenus Spip
+- supprimer les surtitres (cf. liste de 19 articles à modifier avant)
+
+# Plugins Spip
+- conserver les champs extras (plugin principal + interface) tant que la modification des données annuaires (site, auteur) n'est pas complète.

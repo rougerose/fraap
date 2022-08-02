@@ -10,6 +10,7 @@
   background-size: 100% 45%;
   background-repeat: no-repeat;
   background-position: 0 100%;
+  box-decoration-break: clone;
   padding-left: var(--underline-offset);
   padding-right: calc(var(--underline-offset) * 2);
   margin-left: calc(var(--underline-offset) * -1);
