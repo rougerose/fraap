@@ -18,3 +18,4 @@
 	<li class="site-nav_item[ (#ENV{css})]"[ data-type-link="(#GET{enfants}|=={oui}|?{shortcut,link}|trim)"][ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
     <a class="site-nav_link[ (#GET{icone}|oui)site-nav_link--icon]" href="#GET{url}"><span>[(#GET{titre})]</span>[ (#GET{icone})]</a>
 </BOUCLE_public>
+#FILTRE{trim}
