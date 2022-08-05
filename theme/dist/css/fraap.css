@@ -744,7 +744,6 @@ h5 {
 .article_back.variant-page-top {
   position: absolute;
   bottom: calc(100% - var(--space-l-xl));
-  width: 100%;
 }
 
 .article_logo {
