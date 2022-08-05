@@ -2,7 +2,7 @@
 - menu principal et recherche
 - flexbox gap
 - grid gap (grid-gap)
-- section réseau invisible
+- section réseau invisible => prévoir une alternative à IntersectionObserver pour ces versions incompatibles
 
 # Firefox mobile
 - ~~le header s'agrandit à l'ouverture de la fenêtre offcanvas~~

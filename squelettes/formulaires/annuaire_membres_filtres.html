@@ -26,7 +26,7 @@
             <B_mots_activites>
               #SET{openA, 0}
               [(#SET{openA, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
-              <h3 class="collapsible_heading xcard-member_tags-label">
+              <h3 class="collapsible_heading">
                 <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{openA}|=={1}|?{true,false})"]>
                   <span class="collapsible_title">
                     <span>#TITRE</span>
@@ -51,7 +51,7 @@
             <B_mots_localisation>
               #SET{openL, 0}
               [(#SET{openL, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
-              <h3 class="collapsible_heading xcard-member_tags-label">
+              <h3 class="collapsible_heading">
                 <button type="button" id="ch_#ID_GROUPE" aria-expanded="[(#GET{openL}|=={1}|?{true,false})]">
                   <span class="collapsible_title">
                     <span>#TITRE</span>
