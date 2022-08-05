@@ -7,4 +7,29 @@
       <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, env, ajax}/>
     </div>
 	</div>
+  <script>
+    jQuery(function($){
+      // Initialiser la modale de gestion des filtres des membres
+      var dialogMembers = fraapDialogMembers.init();
+
+      // Lors du chargement via ajax
+      onAjaxLoad(reload_dialogMembers);
+
+      function reload_dialogMembers() {
+        // Si la modale est ouverte,
+        if (dialogMembers.shown) {
+          // le fragment est rechargé à chaque clic sur un checkbox.
+          // Utiliser la méthode create() car le bouton de fermeture a
+          // perdu le gestionnaire d'événement.
+          dialogMembers.create();
+        } else {
+          // La modale est fermée, la totalité de la page est rechargée
+          // et tous les boutons ont perdu les gestionnaires.
+          // Recréer l'instance.
+          dialogMembers.destroy();
+          dialogMembers = fraapDialogMembers.init();
+        }
+      }
+		});
+  </script>
 </BOUCLE_rubrique_annuaire>

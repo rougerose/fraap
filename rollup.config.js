@@ -21,6 +21,8 @@ export default [
       {
         file: "theme/dist/js/fraap.js",
         format: "iife",
+        name: "fraapDialogMembers",
+        exports: "default",
         plugins: [process.env.NODE_ENV === "production" && terser()],
       },
     ],

@@ -1,4 +1,4 @@
-(function () {
+var fraapDialogMembers = (function () {
   'use strict';
 
   const toggleState = (state, newStatus) => {
@@ -1141,7 +1141,6 @@
         toggleState(dialogMembersState, "open");
         // Désactiver le scroll en dehors du menu
         disableBodyScroll(dialogMembersContent, { allowTouchMove: () => true });
-        // disableBodyScroll(menu.offcanvas.body, { allowTouchMove: () => true });
       });
 
       dialogInstance.on("hide", (dialogEl, dialogEvent) => {
@@ -1152,31 +1151,9 @@
         );
       });
 
-      // Le fragment contenant la modale est rechargé en ajax
-      // lorsque l'utilisateur clique sur l'un des filtres(checkbox) :
-      // recharger également l'instance afin que le bouton de fermeture
-      // soit toujours disponible.
-      onAjaxLoad(reload.bind(dialogInstance));
+      return dialogInstance;
     }
   };
-
-  function reload() {
-    let dialogInstance = this;
-
-    // Si la modale est ouverte,
-    if (dialogInstance.shown) {
-      // le fragment est rechargé à chaque clic sur un checkbox.
-      // Utiliser la méthode create() car le bouton de fermeture a
-      // perdu le gestionnaire d'événement.
-      dialogInstance.create();
-    } else {
-      // La modale est fermée, la totalité de la page est rechargée
-      // et tous les boutons ont perdu les gestionnaires.
-      // Recréer l'instance.
-      dialogInstance.destroy();
-      fraapDialogMembers.init();
-    }
-  }
 
   const fraapDialogMembers = {
     init: dialogMembersInit,
@@ -1185,6 +1162,7 @@
   fraapMenu.init();
   fraapDialogRecherche.init();
   fraapNetwork.init();
-  fraapDialogMembers.init();
+
+  return fraapDialogMembers;
 
 })();

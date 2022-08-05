@@ -6,4 +6,6 @@ import fraapDialogMembers from "./fraap-dialog-members";
 fraapMenu.init();
 fraapDialogRecherche.init();
 fraapNetwork.init();
-fraapDialogMembers.init();
+// Exporter fraapDialogMembers afin de pouvoir l'initialiser
+// depuis le squelettes.
+export default fraapDialogMembers;
