@@ -36,16 +36,6 @@ const dialogMembersTransitionEnd = (event) => {
   enableBodyScroll(event.target);
 };
 
-// const dialogMembersCreate = () => {
-//   console.log("ajax", dialogInstance);
-//   if (dialogInstance.shown) {
-//     // console.log(dialogInstance._closers[1]);
-//     let closeBtn = dialogMembers.querySelector("button[data-a11y-dialog-hide]");
-
-//   }
-//   // dialogInstance.create();
-// }
-
 
 /**
  * Init
@@ -56,15 +46,13 @@ const dialogMembersInit = () => {
   if (dialogMembers) {
     dialogInstance = new A11yDialog(dialogMembers);
 
-     dialogMembersContent = dialogMembers.querySelector(
-       ".dialog_content"
-     );
+    dialogMembersContent = dialogMembers.querySelector(".dialog_content");
     toggleState(dialogMembersState, "closed");
 
     dialogInstance.on("show", (dialogEl, dialogEvent) => {
       toggleState(dialogMembersState, "open");
       // Désactiver le scroll en dehors du menu
-      disableBodyScroll(dialogMembersContent);
+      disableBodyScroll(dialogMembersContent, { allowTouchMove: () => true });
       // disableBodyScroll(menu.offcanvas.body, { allowTouchMove: () => true });
     });
 
@@ -76,16 +64,31 @@ const dialogMembersInit = () => {
       );
     });
 
-    // Le fragment contenant le menu est rechargé en ajax
+    // Le fragment contenant la modale est rechargé en ajax
     // lorsque l'utilisateur clique sur l'un des filtres(checkbox) :
     // recharger également l'instance afin que le bouton de fermeture
     // soit toujours disponible.
-    // onAjaxLoad(dialogMembersCreate);
-
-    return dialogInstance;
+    onAjaxLoad(reload.bind(dialogInstance));
   }
 }
 
+function reload() {
+  let dialogInstance = this;
+
+  // Si la modale est ouverte,
+  if (dialogInstance.shown) {
+    // le fragment est rechargé à chaque clic sur un checkbox.
+    // Utiliser la méthode create() car le bouton de fermeture a
+    // perdu le gestionnaire d'événement.
+    dialogInstance.create();
+  } else {
+    // La modale est fermée, la totalité de la page est rechargée
+    // et tous les boutons ont perdu les gestionnaires.
+    // Recréer l'instance.
+    dialogInstance.destroy();
+    fraapDialogMembers.init();
+  }
+}
 
 const fraapDialogMembers = {
   init: dialogMembersInit,
