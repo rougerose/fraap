@@ -3,10 +3,13 @@
 
 @use "../tools/mq" as mq;
 
+.directory-members {
+  position: relative;
+}
+
 .directory-members_bar {
   position: sticky;
   top: 0;
-  // padding: var(--space-s) 0;
   background-color: white;
   z-index: var(--carousel-zindex);
 

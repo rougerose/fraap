@@ -1396,9 +1396,17 @@ html:not(.js) .dialog_close {
   right: 0;
   left: 0;
 }
+.dialog-members_footer .boutons {
+  display: flex;
+}
 .dialog-members_footer .submit {
   border: none;
   font-size: var(--step-0);
+  flex: 1;
+  justify-content: center;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .dialog-offcanvas_content {
@@ -1471,6 +1479,10 @@ html:not(.js) .dialog-recherche {
 
 .dialog-recherche_formulaire {
   width: 100%;
+}
+
+.directory-members {
+  position: relative;
 }
 
 .directory-members_bar {
@@ -1756,6 +1768,7 @@ a:hover .icon-nav-link {
 .indicator {
   background-color: var(--color-primary);
   border-radius: 100%;
+  color: var(--color-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;

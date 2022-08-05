@@ -9,6 +9,7 @@ var FraapMembers = (function ($) {
     this.map = map;
     this.container = map._container.parentElement.parentElement;
     this.list = this.container.querySelector("[role='list']");
+    this.bar = this.container.previousElementSibling;
     this.flyToMember.bind(this);
     this.create();
   }
@@ -27,6 +28,8 @@ var FraapMembers = (function ($) {
     // Attendre l'événement "ready" pour ajouter
     // un gestionnaire de clic sur les points et désactiver la carte
     $__default["default"]("#" + self.map._container.id).on("ready", onready);
+
+    // smoothscroll.polyfill();
 
     self.openers = $$(".card-member", this.container);
     self.openers.forEach((opener) => {
@@ -53,12 +56,15 @@ var FraapMembers = (function ($) {
     this.map.eachLayer(function (layer) {
       layer.on("click", function (event) {
         if (this.feature) {
-          // Position du container principal dans la fenêtre
-          self.container.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest",
-          });
+          // Position de la barre en haut de fenêtre
+          if (self.bar.offsetTop == 0) {
+            self.bar.scrollIntoView({ behavior: "smooth" });
+          }
+
+          // Si le bord haut du conteneur est trop, recentrer dans la fenêtre.
+          if (self.bar.offsetTop > 0) {
+            window.scrollTo({top: self.container.offsetParent.offsetTop, left: 0, behavior: "smooth"});
+          }
 
           self._toggleMember(this.feature.id);
         }
