@@ -1,5 +1,5 @@
 import toggleState from "./util/toggleState";
-import * as smoothscroll from "smoothscroll-polyfill";
+// import * as smoothscroll from "smoothscroll-polyfill";
 import A11yDialog from "a11y-dialog";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
@@ -124,7 +124,7 @@ const subMenuFromTo = (shortcut, container) => {
   return { from: from, to: to };
 };
 
-smoothscroll.polyfill();
+// smoothscroll.polyfill();
 
 // Afficher les sous-menus et permettre un lien retour
 const displaySubMenu = (shortcut, from, to) => {
