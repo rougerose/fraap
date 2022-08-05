@@ -43,9 +43,9 @@ var FraapMembers = (function ($) {
   FraapMembers.prototype.flyToMember = function (event) {
     let coord = [],
       id = event.target.dataset.fraapmemberId;
-
     coord.push(parseFloat(event.target.dataset.fraapmemberLat));
     coord.push(parseFloat(event.target.dataset.fraapmemberLon));
+    this._scrollUI();
     this.map.flyTo(coord, 15);
     this.openMemberPopup(id);
     this._toggleMember(id);
@@ -56,20 +56,26 @@ var FraapMembers = (function ($) {
     this.map.eachLayer(function (layer) {
       layer.on("click", function (event) {
         if (this.feature) {
-          // Position de la barre en haut de fenêtre
-          if (self.bar.offsetTop == 0) {
-            self.bar.scrollIntoView({ behavior: "smooth" });
-          }
-
-          // Si le bord haut du conteneur est trop, recentrer dans la fenêtre.
-          if (self.bar.offsetTop > 0) {
-            window.scrollTo({top: self.container.offsetParent.offsetTop, left: 0, behavior: "smooth"});
-          }
-
+          self._scrollUI();
           self._toggleMember(this.feature.id);
         }
       });
     });
+  };
+
+  /**
+   * Remettre au centre de la fenêtre la carte et la liste des membres.
+   */
+  FraapMembers.prototype._scrollUI = function () {
+    if (this.bar.offsetTop == 0) {
+      this.bar.scrollIntoView({ behavior: "smooth" });
+    } else if (this.bar.offsetTop > 0) {
+      window.scrollTo({
+        top: this.container.offsetParent.offsetTop,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
   };
 
   FraapMembers.prototype._toggleMember = function (memberId) {
