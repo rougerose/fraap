@@ -22,6 +22,7 @@
   <necessite nom="rezosocios" compatibilite="[1.0.2;1.99.*]" />
   <necessite nom="tw" compatibilite="[3.0.3;3.99.*]" />
   <!-- <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" /> -->
+  <utilise nom="bellespuces" compatibilite="[1.0.2;1.99.*]" />
   <pipeline nom="rezosocios_liste" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="formulaire_saisies" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="formulaire_charger" inclure="fraap_squelettes_pipelines.php" />
