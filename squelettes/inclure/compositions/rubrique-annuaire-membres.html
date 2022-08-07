@@ -29,22 +29,25 @@
               })]
               <a href="#GET{url}" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
             </div>
+
+            #SET{territoires, #ARRAY}
+            <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
+              <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
+              </BOUCLE_territoire>
+            </BOUCLE_set_territoires>
+
             <div class="card-member_tags gap-top-1 flow">
-              <B_territoire>
-                <BOUCLE_territoire(TERRITOIRES spip_territoires_liens){objet=article}{id_objet=#ID_ARTICLE}>
-                  [(#CATEGORIE|match{_region}|oui) #SET{region, #ISO_TITRE}][(#CATEGORIE|match{collectivity}|oui) #SET{region, #ISO_TITRE}]
-                  [(#CATEGORIE|match{_department}|oui) #SET{departement, #ISO_TITRE}]
-                </BOUCLE_territoire>
-                [(#GET{region}|ou{#GET{departement}})
-                  <div class="cluster">
-                    <h4 class="card-member_tags-label">Localisation</h4>
-                    <p class="cluster">
-                    [<span class="pill">(#GET{departement})</span>]
-                    [<span class="pill">(#GET{region})</span>]
-                    </p>
-                  </div>
-                ]
-              </B_territoire>
+              <B_get_territoires>
+                <div class="cluster">
+                  <h4 class="card-member_tags-label"><:fraap_squelettes:annuaire_localisation:></h4>
+                  <p class="cluster">
+                    <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
+                      [<span class="pill">(#TITRE)</span>]
+                    </BOUCLE_get_territoires>
+                  </p>
+                </div>
+              </B_get_territoires>
 
               [(#SET{activites, 0})]
               <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}> </BOUCLE_nb_activites>
