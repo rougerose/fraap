@@ -1,4 +1,4 @@
 <BOUCLE_article_head(ARTICLES){id_article}>
   <title>[(#TITRE|textebrut)][ | (#NOM_SITE_SPIP|textebrut)]</title>
-  [<meta name="description" content="(#DESCRIPTIF|textebrut)" />]
+  [<meta name="description" content="(#DESCRIPTIF|sinon{#INTRODUCTION|couper{200}}|textebrut)" />]
 </BOUCLE_article_head>
