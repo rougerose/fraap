@@ -9,6 +9,7 @@
 </BOUCLE_articles>
   [(#SET{total_articles, #TOTAL_BOUCLE})]
 </B_articles>
+
 <div class="formulaire_spip formulaire_#FORM dialog-members_formulaire-spip">
   <form method="post" action="#ENV{action}" class="dialog-members_form">
     <header class="dialog-members_header">
@@ -20,22 +21,22 @@
     <div class="dialog-members_body">
       #ACTION_FORMULAIRE
       <div class="dialog-members_content">
-        <h2 class="dialog-members_heading">Activités</h2>
+        <h2 class="dialog-members_heading"><:fraap_squelettes:annuaire_activites_associatives:></h2>
         <div class="collapsible">
-          <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,8,9}{par num titre}>
+          <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe_racine=11}{par num titre, titre}>
             <B_mots_activites>
-              #SET{openA, 0}
-              [(#SET{openA, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
               <h3 class="collapsible_heading">
-                <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{openA}|=={1}|?{true,false})"]>
+                <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
                   <span class="collapsible_title">
                     <span>#TITRE</span>
                   </span>
                   [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
                 </button>
-                <input type="hidden" name="btnOpen[]"[ value="(#GET{openA}|=={1}|?{ch_#ID_GROUPE,''})"]>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
               </h3>
-              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{openA}|=={1}|?{'',hidden})]>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
                 <BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
                   <div class="choix">
                     <INCLURE{fond=inclure/formulaires/annuaire-membres-checkbox, id_mot, mots} />
@@ -45,22 +46,22 @@
             </B_mots_activites>
           </BOUCLE_groupes_activites>
         </div>
-        <h2 class="dialog-members_heading">Localisation</h2>
+        <h2 class="dialog-members_heading"><:fraap_squelettes:annuaire_localisation:></h2>
         <div class="collapsible">
-          <BOUCLE_groupes_localisation(GROUPES_MOTS){id_groupe IN 1,10}{par num titre}>
+          <BOUCLE_groupes_localisation(GROUPES_MOTS){id_groupe_racine=30}{par num titre}>
             <B_mots_localisation>
-              #SET{openL, 0}
-              [(#SET{openL, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              #SET{open_loc, 0}
+              [(#SET{open_loc, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
               <h3 class="collapsible_heading">
-                <button type="button" id="ch_#ID_GROUPE" aria-expanded="[(#GET{openL}|=={1}|?{true,false})]">
+                <button type="button" id="ch_#ID_GROUPE" aria-expanded="[(#GET{open_loc}|=={1}|?{true,false})]">
                   <span class="collapsible_title">
                     <span>#TITRE</span>
                   </span>
                   [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
                 </button>
-                <input type="hidden" name="btnOpen[]"[ value="(#GET{openL}|=={1}|?{ch_#ID_GROUPE,''})"]>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_loc}|=={1}|?{ch_#ID_GROUPE,''})"]>
               </h3>
-              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{openL}|=={1}|?{'',hidden})]>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_loc}|=={1}|?{'',hidden})]>
                 <BOUCLE_mots_localisation(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
                   <div class="choix">
                     <INCLURE{fond=inclure/formulaires/annuaire-membres-checkbox, id_mot, mots} />

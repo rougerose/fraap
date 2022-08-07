@@ -2,7 +2,7 @@
 /// Squelette article-annuaire-membre
 
 .member-profile_address {
-  > span:first-child {
+  > span.address {
     display: flex;
     flex-direction: column;
   }

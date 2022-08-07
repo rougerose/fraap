@@ -30,40 +30,46 @@
               <a href="#GET{url}" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>
             </div>
             <div class="card-member_tags gap-top-1 flow">
-              <B_territoires>
-                <div class="cluster">
-                  <h4 class="card-member_tags-label">Localisation</h4>
-                  <p class="cluster">
-                    <BOUCLE_territoires(MOTS){id_article}{id_groupe IN 1, 10}{!par id_groupe}>
-                      <span class="pill">#TITRE</span>
-                    </BOUCLE_territoires>
-                  </p>
-                </div>
-              </B_territoires>
+              <B_territoire>
+                <BOUCLE_territoire(TERRITOIRES spip_territoires_liens){objet=article}{id_objet=#ID_ARTICLE}>
+                  [(#CATEGORIE|match{_region}|oui) #SET{region, #ISO_TITRE}][(#CATEGORIE|match{collectivity}|oui) #SET{region, #ISO_TITRE}]
+                  [(#CATEGORIE|match{_department}|oui) #SET{departement, #ISO_TITRE}]
+                </BOUCLE_territoire>
+                [(#GET{region}|ou{#GET{departement}})
+                  <div class="cluster">
+                    <h4 class="card-member_tags-label">Localisation</h4>
+                    <p class="cluster">
+                    [<span class="pill">(#GET{departement})</span>]
+                    [<span class="pill">(#GET{region})</span>]
+                    </p>
+                  </div>
+                ]
+              </B_territoire>
+
               [(#SET{activites, 0})]
-              <BOUCLE_nb_activites(MOTS){id_article}{id_groupe IN 2,7,9,8}> </BOUCLE_nb_activites>
+              <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}> </BOUCLE_nb_activites>
                 [(#TOTAL_BOUCLE|oui) #SET{activites, 1}]
               </B_nb_activites>
 
               <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
                 <div class="collapsible">
-                  <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,9,8}{par id_groupe}>
+                  <BOUCLE_groupe_activites(GROUPES_MOTS){id_groupe=11}>
                     <B_activites>
                       <h4 class="collapsible_heading card-member_tags-label">
                         <button type="button" id="ch_#ID_GROUPE" aria-expanded="false">
-                          <span>#_groupes_activites:TITRE[<span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
+                          <span><:fraap_squelettes:annuaire_activites_associatives:>[<span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
                           [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
                         </button>
                       </h4>
                       <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE" hidden>
                         <p class="cluster">
-                          <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                          <BOUCLE_activites(MOTS){id_article}{id_groupe_racine=#ID_GROUPE}{par titre}>
                             <span class="pill">#TITRE</span>
                           </BOUCLE_activites>
                         </p>
                       </div>
                     </B_activites>
-                  </BOUCLE_groupes_activites>
+                  </BOUCLE_groupe_activites>
                 </div>
               </BOUCLE_si_activites>
             </div>

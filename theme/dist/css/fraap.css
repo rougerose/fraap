@@ -189,7 +189,7 @@
 }
 :root, [data-theme-color="1"] {
   --color-ink: black;
-  --color-ink-soft: #4c4c52;
+  --color-ink-soft: #71717a;
   --color-paper: white;
   --color-primary: #5ceb24;
   --color-contrast: #3f2ced;
@@ -1806,7 +1806,7 @@ a:hover .icon-nav-link {
   line-height: 1.2;
 }
 
-.member-profile_address > span:first-child {
+.member-profile_address > span.address {
   display: flex;
   flex-direction: column;
 }
@@ -1913,11 +1913,22 @@ a:hover .icon-nav-link {
 .prose h5 {
   --flow-space: var(--space-xl);
 }
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  --flow-space: var(--space-l);
+}
 .prose h2 + *,
 .prose h3 + *,
 .prose h4 + *,
 .prose h5 + * {
   --flow-space: var(--space-s);
+}
+.prose h2 + h3,
+.prose h3 + h4,
+.prose h5 + h6 {
+  --flow-space: var(--space-l);
 }
 
 .search_group {

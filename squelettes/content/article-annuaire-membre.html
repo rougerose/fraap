@@ -1,5 +1,5 @@
 <BOUCLE_article(ARTICLES){id_article}>
-  #SET{titre, #TITRE} #SET{idrubrique, #ID_RUBRIQUE} #SET{retour_selection, 0}
+  #SET{titre, #TITRE} #SET{idrubrique, #ID_RUBRIQUE} #SET{retour_selection, 0} #SET{activites, 0} #SET{localisation, 0}
   [(#REM)
     <!-- Vérifier si mots\[\] est présent et qu'il contient au moins un id -->
   ][(#ENV{mots}|oui)
@@ -47,14 +47,15 @@
                   zoom=10})]
               </div>
             </BOUCLE_gis>
-            <BOUCLE_nb_activites(MOTS){id_article}{id_groupe IN 2,7,9,8}> </BOUCLE_nb_activites>
-              [(#TOTAL_BOUCLE|oui) #SET{activites, 1}]
-            </B_nb_activites>
+            <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}{0,1}>
+              #SET{activites, 1}
+            </BOUCLE_nb_activites>
 
             <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
-              <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe IN 2,7,9,8}{par id_groupe}>
+              <h2><span class="text-underline"><:fraap_squelettes:annuaire_activites_associatives:></span></h2>
+              <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe_racine=11}{id_parent!=0}{par id_groupe}>
                 <B_activites>
-                  <h2><span class="text-underline">#_groupes_activites:TITRE</span></h2>
+                  <h3><span class="text-underline">#_groupes_activites:TITRE</span></h3>
                   <p class="cluster">
                     <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
                       <a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">#TITRE</a>
@@ -64,35 +65,35 @@
               </BOUCLE_groupes_activites>
             </BOUCLE_si_activites>
 
-            <B_territoires>
-              <h2><span class="text-underline">Localisation</span></h2>
-              <p class="cluster">
-                <BOUCLE_territoires(MOTS){id_article}{id_groupe IN 1, 10}{!par id_groupe}>
-                  <a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">#TITRE</a>
-                </BOUCLE_territoires>
+            #SET{adresses, #ARRAY} #SET{territoires, #ARRAY}
+            <BOUCLE_set_adresses(ADRESSES){id_article}{type=work}>
+              [(#SET{localisation, 1})]
+              [(#SET{adresses, #GET{adresses}|push{#ID_ADRESSE}})]
+            </BOUCLE_set_adresses>
+            <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
+              <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                [(#SET{localisation, 1})]
+                [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
+              </BOUCLE_territoire>
+            </BOUCLE_set_territoires>
+
+            <BOUCLE_si_localisation(CONDITION){si #GET{localisation}|=={1}}>
+              <h2><span class="text-underline">Adresse</span></h2>
+              <p class="member-profile_address flow">
+                <BOUCLE_get_adresse(ADRESSES){id_adresse IN #GET{adresses}}>
+                  <span class="address">
+                    [<span>(#VOIE)</span> ]
+                    [<span>(#COMPLEMENT)</span> ]
+                    [<span>[(#CODE_POSTAL) ](#VILLE)</span> ]
+                  </span>
+                </BOUCLE_get_adresse>
+                <span class="cluster">
+                  <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
+                    [<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#TITRE)</a>]
+                  </BOUCLE_get_territoires>
+                </span>
               </p>
-            </B_territoires>
-            <B_adresse>
-                <h2><span class="text-underline">Adresse</span></h2>
-                <p class="member-profile_address flow">
-                  <BOUCLE_adresse(ADRESSES){id_article}{type=work}>
-                    <BOUCLE_territoire(TERRITOIRES spip_territoires_liens){objet=article}{id_objet=#_adresse:ID_ARTICLE}>
-                      [(#CATEGORIE|match{_region}|oui) #SET{region, #ISO_TITRE}][(#CATEGORIE|match{collectivity}|oui) #SET{region, #ISO_TITRE}]
-                      [(#CATEGORIE|match{_department}|oui) #SET{departement, #ISO_TITRE}]
-                    </BOUCLE_territoire>
-                    <span>
-                      [<span>(#VOIE)</span> ]
-                      [<span>(#COMPLEMENT)</span> ]
-                      [<span>[(#CODE_POSTAL) ](#VILLE)</span> ]
-                    </span>
-                    [(#GET{region}|ou{#GET{departement}})
-                      <span class="cluster">
-                        [<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#GET{departement})</a>][<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#GET{region})</a>]
-                      </span>
-                    ]
-                  </BOUCLE_adresse>
-                </p>
-            </B_adresse>
+            </BOUCLE_si_localisation>
 
             #SET{facebook, ''} #SET{twitter, ''} #SET{instagram, ''} #SET{site, ''}
             <BOUCLE_fb(REZOSOCIOS){type_rezo=facebook}{id_article}>
@@ -133,7 +134,7 @@
           [<div class="article_notes">
             (#NOTES)
           </div>]
-          <div class="article_back variant-page-bottom gap-top-4">
+          <div class="article_back variant-page-bottom gap-top-5">
             [(#GET{retour_selection}|=={1}|oui)
               [<a href="(#URL_RUBRIQUE|parametre_url{mots, #ENV{mots}})" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à votre sélection</a>]
             ][(#GET{retour_selection}|=={0}|oui)

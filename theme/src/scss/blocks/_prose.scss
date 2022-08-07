@@ -18,11 +18,24 @@
     --flow-space: var(--space-xl);
   }
 
+  h3,
+  h4,
+  h5,
+  h6 {
+    --flow-space: var(--space-l);
+  }
+
   h2 + *,
   h3 + *,
   h4 + *,
   h5 + * {
     --flow-space: var(--space-s);
+  }
+
+  h2 + h3,
+  h3 + h4,
+  h5 + h6 {
+    --flow-space: var(--space-l);
   }
 }
 
