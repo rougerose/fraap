@@ -6,7 +6,7 @@
       <div class="section_masked">
         <div class="wrapper-content">
           <div class="section_container">
-            <div class="section_content -icon-offset">
+            <div class="section_content variant-icon-offset">
               <div class="auto-grid">
                 <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
                   <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
@@ -14,7 +14,7 @@
                   </BOUCLE_sousrubriques_plaidoyer>
                 </BOUCLE_rubrique_plaidoyer>
                   <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
-                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore, afficher_date=0} />
+                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=0} />
                   </BOUCLE_tous_articles_card>
                 <//B_rubrique_plaidoyer>
               </div>

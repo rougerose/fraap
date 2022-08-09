@@ -3,11 +3,11 @@
     <div class="section_masked">
       <div class="wrapper-content">
         <div class="section_container">
-          <div class="section_content -icon-offset">
+          <div class="section_content variant-icon-offset">
             <h2 class="section_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:qui_sommes_nous_federation_headline:>})]</span></h2>
             <div class="auto-grid gap-top-5">
               <BOUCLE_qui_sommes_nous(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                <INCLURE{fond=inclure/resumes/selection-card, id_selections_contenu, variant=-variant-underscore} />
+                <INCLURE{fond=inclure/resumes/selection-card, id_selections_contenu, variant=variant-underscore} />
               </BOUCLE_qui_sommes_nous>
             </div>
           </div>

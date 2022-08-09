@@ -4,7 +4,7 @@
   max-width: var(--card-maxWidth);
   text-decoration: none;
 
-  &.-variant-box {
+  &.variant-box {
     background-color: var(--color-primary);
     box-shadow: var(--card-box-boxShadow);
     padding: var(--space-m);
@@ -19,7 +19,7 @@
 
 .card_heading {
 
-  &.-variant-underscore {
+  &.variant-underscore {
     display: flex;
     align-items: baseline;
 

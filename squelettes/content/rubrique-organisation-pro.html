@@ -13,7 +13,7 @@
         <div class="section_masked">
           <div class="wrapper-content">
             <div class="section_container">
-              <div class="section_content -icon-offset flow">
+              <div class="section_content variant-icon-offset flow">
                 <h2 id="rubrique#ID_RUBRIQUE" class="section_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
                 [<div class="section_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
                 <div class="auto-grid gap-top-5">
@@ -23,7 +23,7 @@
                     </BOUCLE_sousrubriques_plaidoyer>
                   </BOUCLE_si_rubrique_plaidoyer>
                       <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
-                        <INCLURE{fond=inclure/resumes/article-card, id_article, variante=-variant-underscore, afficher_date=0} />
+                        <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=0} />
                       </BOUCLE_tous_articles_card>
                   <//B_si_rubrique_plaidoyer>
                 </div>

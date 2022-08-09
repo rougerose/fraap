@@ -9,23 +9,23 @@
       </div>
       <div class="section_container">
         <div class="wrapper-content">
-          <div class="section_content -icon-offset">
+          <div class="section_content variant-icon-offset">
             <h2 class="section_headline">#TITRE</h2>
             <div class="switcher gap-top-3">
               <div class="card flow-small">
                 [(#DESCRIPTIF)]
-                <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_federation_rencontres_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+                <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_federation_rencontres_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
               </div>
               <BOUCLE_selection-federation-rencontres(SELECTIONS){identifiant=rubrique-federation-rencontres}>
                 <BOUCLE_contenu-federation-rencontres(SELECTIONS_CONTENUS){id_selection}{par rang}{0,1}>
-                  <div class="card -variant-box flow">
+                  <div class="card variant-box flow">
                     <div class="flow-small">
                       [<p class="card_subhead weight-300">(#_selection-federation-rencontres:TITRE)</p>]
                       <h3 class="card_heading weight-600"><a href="#URL">#TITRE</a></h3>
                     </div>
                     <div class="card_desc flow-small">
                       [(#DESCRIPTIF)]
-                      <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a></p>
+                      <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
                     </div>
                   </div>
                 </BOUCLE_contenu-federation-rencontres>

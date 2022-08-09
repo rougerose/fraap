@@ -9,7 +9,7 @@
     [(#SET{item, #ENV{page_courante}|moins{2}|mult{#ENV{pas}} })]
     <div class="pagination_prev-next">
         [(#ENV{page_courante}|>{1}|oui)
-          [<a href="(#ENV{url_precedent,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon with-icon-left" rel="prev nofollow" arial-label="<:lien_aller_a_la_page_precedente:>">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Page précédente</a>]
+          [<a href="(#ENV{url_precedent,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon with-icon-left" rel="prev nofollow" arial-label="<:lien_aller_a_la_page_precedente:>">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true}) ]Page précédente</a>]
         ]
       </div>
   ]
@@ -38,7 +38,7 @@
 		[(#SET{item, #ENV{page_courante}|mult{#ENV{pas}} })]
     <div class="pagination_prev-next">
         [(#ENV{page_courante}|<{#ENV{nombre_pages}}|oui)
-          [<a href="(#ENV{url_suivant,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon with-icon-right" rel="next nofollow" aria-label="<:lien_aller_a_la_page_suivante:>">Page suivante [ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link icon-nav-link-left, path1=icon-nav-link_path1, path2=icon-nav-link_path2})]</a>]
+          [<a href="(#ENV{url_suivant,#ENV{url}|parametre_url{#ENV{debut},#GET{item}|?{#GET{item}}}}|ancre_url{#ENV{ancre}})" class="pagination_button pagination_label button-cta variant-link with-icon with-icon-right" rel="next nofollow" aria-label="<:lien_aller_a_la_page_suivante:>">Page suivante [ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link icon-nav-link-left, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>]
         ]
       </div>
 	]

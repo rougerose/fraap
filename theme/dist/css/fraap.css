@@ -728,6 +728,32 @@ h5 {
   flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
 }
 
+.abstract,
+.abstract_desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.abstract_heading {
+  font-weight: 600;
+}
+.abstract_heading[data-heading-level="3"] {
+  font-size: var(--step-1);
+}
+
+.abstract_desc {
+  flex: 1;
+}
+.abstract_desc .abstract_cta {
+  margin-top: auto;
+}
+.abstract_desc p + .abstract_cta {
+  padding-top: var(--space-xs);
+}
+.abstract_desc.variant-list span {
+  color: var(--color-primary-700);
+}
+
 .article {
   --sidebar-gutter: var(--space-2xl) 0;
   --sidebar-content-min-width: 66%;
@@ -887,7 +913,7 @@ html:not(.js) .button-nav {
   max-width: var(--card-maxWidth);
   text-decoration: none;
 }
-.card.-variant-box {
+.card.variant-box {
   background-color: var(--color-primary);
   box-shadow: var(--card-box-boxShadow);
   padding: var(--space-m);
@@ -899,11 +925,11 @@ html:not(.js) .button-nav {
   text-transform: uppercase;
 }
 
-.card_heading.-variant-underscore {
+.card_heading.variant-underscore {
   display: flex;
   align-items: baseline;
 }
-.card_heading.-variant-underscore::before {
+.card_heading.variant-underscore::before {
   --card-heading-offset: calc(var(--auto-grid-gutter-column) * 0.4);
   background-color: var(--color-primary);
   content: "";
@@ -1043,8 +1069,6 @@ html:not(.js) .button-nav {
 }
 
 .card-news_content {
-  display: flex;
-  flex-direction: column;
   padding: var(--space-s);
   margin-left: calc(var(--space-s) * -1);
   position: relative;
@@ -1072,10 +1096,6 @@ html:not(.js) .button-nav {
 }
 .card-news_content:hover::after {
   height: 50%;
-}
-
-.card-news_heading {
-  font-size: var(--step-1);
 }
 
 .card-news_image a {
@@ -1792,7 +1812,7 @@ a:hover .icon-nav-link {
 .headline_title span {
   flex: 1;
 }
-.headline_title.-icon-offset {
+.headline_title.variant-icon-offset {
   margin-left: calc(var(--space-l-2xl) * -1);
 }
 
@@ -2030,7 +2050,7 @@ a:hover .icon-nav-link {
 .section_content {
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
-.section_content.-icon-offset {
+.section_content.variant-icon-offset {
   padding-left: var(--space-l-2xl);
 }
 .section_content ul[role=list] {

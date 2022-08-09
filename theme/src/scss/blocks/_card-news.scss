@@ -6,8 +6,6 @@
 }
 
 .card-news_content {
-  display: flex;
-  flex-direction: column;
   padding: var(--space-s);
   margin-left: calc(var(--space-s) * -1);
   position: relative;
@@ -45,9 +43,7 @@
   }
 }
 
-.card-news_heading {
-  font-size: var(--step-1);
-}
+// .card-news_heading {}
 
 // .card-news_desc {}
 

@@ -16,7 +16,7 @@
 
   // Titre de rubrique accompagné d'une icone :
   // l'icone est aligné en retrait négatif à gauche.
-  &.-icon-offset {
+  &.variant-icon-offset {
     margin-left: calc(var(--space-l-2xl) * -1);
   }
 }

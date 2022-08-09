@@ -1,0 +1,39 @@
+/// ABSTRACT
+/// Résumé contenu
+
+
+// .abstract {}
+
+.abstract,
+.abstract_desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.abstract_heading {
+  font-weight: 600;
+
+  &[data-heading-level="3"] {
+    font-size: var(--step-1); // équivalent à h3
+  }
+}
+
+.abstract_desc {
+  flex: 1;
+
+  // Valeurs de marges selon les contenus
+  .abstract_cta {
+    margin-top: auto;
+  }
+
+  p + .abstract_cta {
+    padding-top: var(--space-xs); // --flow-space-small
+  }
+
+  // Variante liste : styles sur le span utilisé comme séparateur
+  &.variant-list {
+    span {
+      color: var(--color-primary-700);
+    }
+  }
+}
