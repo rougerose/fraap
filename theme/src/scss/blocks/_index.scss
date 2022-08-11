@@ -21,7 +21,7 @@
 @use "directory-members";
 @use "icon";
 @use "indicator";
-@use "header";
+@use "headline";
 // @use "media-box";
 @use "member-profile";
 
@@ -29,6 +29,7 @@
 @use "pagination";
 @use "pill";
 @use "prose";
+@use "ressources";
 @use "search";
 @use "section";
 @use "site-header";
@@ -41,3 +42,5 @@
 @use "teaser-network";
 @use "teaser-rencontres";
 @use "text-underline";
+@use "text-underscore";
+@use "toc";

@@ -4,4 +4,10 @@
   max-width: var(--measure);
 }
 
-// .measure-short {}
+.measure-m {
+  max-width: var(--measure-m);
+}
+
+.measure-l {
+  max-width: var(--measure-l);
+}

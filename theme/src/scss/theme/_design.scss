@@ -43,6 +43,10 @@
   --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
 
   --measure: 60ch;
+  --measure-m: 70ch;
+  --measure-l: 80ch;
+
+  --offset-icon-space: var(--space-l-2xl);
 
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));
@@ -51,6 +55,7 @@
   --section-angle-padding-top-base-min: 32;
   --section-angle-padding-top-base-max: 64;
   --section-angle-marginBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --section-angle-marginBottom-min: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
 
   --underline-offset: 0.3em;
 }

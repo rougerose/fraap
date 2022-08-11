@@ -6,3 +6,7 @@
 ## Annaire 2022-08-06
 - ~~modification structure des mots-clés~~
 - ~~conserver les descriptifs des articles~~
+
+## Fiches pratiques
+- article : encadrés (conseil, à voir, etc.) ?
+- utiliser les notes : article 996, § précompte

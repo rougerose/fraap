@@ -66,4 +66,16 @@ export default [
       },
     ],
   },
+  {
+    input: "theme/src/js/fraap-scrollspy.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-scrollspy.js",
+        format: "iife",
+        name: "fraapCollapsible",
+        plugins: [process.env.NODE_ENV === "production" && terser()],
+      },
+    ],
+  },
 ];

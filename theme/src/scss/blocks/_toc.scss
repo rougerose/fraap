@@ -1,0 +1,42 @@
+/// TOC
+
+@use "../tools/mq" as mq;
+
+.toc {
+  font-size: var(--step--1);
+  line-height: 1.2;
+
+  &[data-type="side"] {
+    position: sticky;
+    top: var(--space-l);
+  }
+}
+
+.toc_heading {
+  font-size: var(--step-0);
+  font-weight: 500;
+}
+
+.toc_list {
+  margin-top: var(--space-s);
+}
+
+.toc_item {
+
+  &.is-active {
+    color: var(--color-link);
+    font-weight: 600;
+  }
+}
+
+@include mq.mq($until: l) {
+  .toc[data-type="side"] {
+    display: none;
+  }
+}
+
+@include mq.mq($from: l) {
+  .toc[data-type="inner"] {
+    display: none;
+  }
+}

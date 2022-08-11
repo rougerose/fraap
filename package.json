@@ -39,6 +39,7 @@
     "focus-visible": "^5.2.0",
     "gorko": "^0.9.1",
     "leaflet-sleep": "^0.5.2",
+    "menuspy": "^1.3.0",
     "postcss": "^8.4.14",
     "postcss-cli": "^9.1.0",
     "postcss-csso": "^6.0.0",

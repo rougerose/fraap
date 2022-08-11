@@ -1,6 +1,6 @@
 <composition>
   <nom>Fiches pratiques</nom>
-  <description>Composition pour la rubrique «Fiches pratiques»</description>
+  <description>Composition pour la rubrique Fiches pratiques</description>
   <icon>images/objet-liste-contenus.png</icon>
   <branche type="article" composition="fiches-pratiques" />
 </composition>

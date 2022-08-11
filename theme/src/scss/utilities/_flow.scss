@@ -5,6 +5,10 @@
   margin-top: var(--flow-space, var(--space-m));
 }
 
+.flow-large > * + * {
+  margin-top: var(--flow-space-large, var(--space-xl));
+}
+
 .flow-small > * + * {
   margin-top: var(--flow-space-small, var(--space-xs));
 }

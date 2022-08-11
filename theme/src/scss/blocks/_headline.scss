@@ -6,9 +6,9 @@
 // .headline {}
 
 .headline_title {
+  --gutter-headline: var(--space-2xs-xs);
   display: flex;
-  gap: var(--space-2xs-xs);
-  // font-size: var(--step-5);
+  gap: var(--gutter-headline);
 
   & span {
     flex: 1;
@@ -16,17 +16,18 @@
 
   // Titre de rubrique accompagné d'une icone :
   // l'icone est aligné en retrait négatif à gauche.
-  &.variant-icon-offset {
-    margin-left: calc(var(--space-l-2xl) * -1);
+  &.variant-offset-icon {
+    margin-left: calc(var(--offset-icon-space) * -1);
   }
 }
 
 .headline_icon {
-  --icon-size: calc(var(--space-l-2xl) - var(--space-2xs-xs));
+  --icon-size: calc(var(--offset-icon-space) - var(--gutter-headline));
   margin-top: -0.15em;
 }
 
 .headline_desc {
   font-size: var(--step-3);
   line-height: 1.2;
+  margin-top: var(--space-l);
 }

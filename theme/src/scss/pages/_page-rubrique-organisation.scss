@@ -1,0 +1,8 @@
+/// PAGE-RUBRIQUE-ORGANISATION
+
+.page[data-page="rubrique-organisation"] {
+
+  &[data-level="2"] {
+    margin-bottom: var(--section-angle-marginBottom-min);
+  }
+}

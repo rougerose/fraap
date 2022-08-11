@@ -1,28 +1,35 @@
 <BOUCLE_niveau_2_organisation_pro(RUBRIQUES){id_rubrique}>
-  <div class="page-rubrique -angleMarginBottom">
+  <div class="page" data-page="rubrique-organisation" data-level="2">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
     <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique49-64.svg', class_icon=icon-rubrique49, id_rubrique} />
-    <div class="section section--angleBottom-max">
-      <div class="section_masked">
-        <div class="wrapper-content">
-          <div class="section_container">
-            <div class="section_content variant-icon-offset">
-              <div class="auto-grid">
-                <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
-                  <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
-                    <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
-                  </BOUCLE_sousrubriques_plaidoyer>
-                </BOUCLE_rubrique_plaidoyer>
-                  <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
-                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=0} />
-                  </BOUCLE_tous_articles_card>
-                <//B_rubrique_plaidoyer>
-              </div>
+
+    <div class="pod variant-angle-bottom-max gap-top-3">
+      <div class="wrapper-content">
+        <div class="offset-icon">
+          <div class="pod_content">
+            <div class="auto-grid">
+              [(#REM)
+                <!--
+                  2 hypothèses :
+                    - si rubrique Plaidoyer : afficher les sous-rubriques,
+                    - sinon tous les articles contenus dans la rubrique consultée.
+                -->
+              ]
+              <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
+                <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
+                  <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
+                </BOUCLE_sousrubriques_plaidoyer>
+              </BOUCLE_rubrique_plaidoyer>
+                <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
+                  <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=0} />
+                </BOUCLE_tous_articles_card>
+              <//B_rubrique_plaidoyer>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     [(#REM)
       <!-- La Fraap, c'est aussi... -->
     ]<BOUCLE_teaser_orga_pro(SELECTIONS){identifiant=rubrique-organisation-pro-aussi}>

@@ -1,46 +1,34 @@
-<BOUCLE_fiche_pratique(ARTICLES){id_article}>
-  [(#SET{mots, #ARRAY})]
-  <div class="o-wrapper">
-    <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_article, id_mot=#ENV{id_mot}}/>
-    <article class="c-post u-flow">
-      <header class="c-post_header u-flow">
-        <h1 class="c-post_title">#TITRE</h1>
-        [<p class="c-post_subtitle">(#SOUSTITRE)</p>]
-        <div class="c-post_metas u-flow">
-          <p class="c-post_date">[Fiche publiée le (#DATE|affdate).[ (#DATE|!=={#DATE_MODIF}|oui)Mise à jour le [(#DATE_MODIF|affdate).]]]</p>
-          <B_mots_article>
-            <div class="o-cluster">
-              <BOUCLE_mots_article(MOTS){id_article}{par titre}>
-                [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
-                <a href="#URL_MOT" class="c-pill">#TITRE</a>
-              </BOUCLE_mots_article>
-            </div>
-          </B_mots_article>
+<BOUCLE_article_fiche_pratique(ARTICLES){id_article}>
+  <div class="page" data-page="article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe}/>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <article class="article region">
+        <div class="prose">
+          <!-- TODO: utiliser .headline -->
+          <header class="article_header">
+            <h1 class="article_title header_title weight-600">#TITRE</h1>
+            [<p class="article_subtitle weight-300">(#SOUSTITRE)</p>]
+            [<div class="article_intro header_desc flow gap-top-4 weight-600">(#CHAPO)</div>]
+            <p class="article_date gap-top-4">Fiche publiée en ligne le <time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>.[(#DATE|!={#DATE_MODIF}|oui) Mise à jour le <time datetime="[(#DATE|date_iso)]">[(#DATE_MODIF|affdate)]</time>.]</p>
+          </header>
+          <B_mots>
+            <p class="cluster">
+              <BOUCLE_mots(MOTS){id_article}{par titre}>
+                <span class="pill">#TITRE</span>
+              </BOUCLE_mots>
+            </p>
+          </B_mots>
+          [<div class="article_body flow gap-top-4">
+            (#TEXTE)
+          </div>]
+          [<div class="article_notes">
+            <hr>
+            (#NOTES)
+          </div>]
         </div>
-      </header>
-      [<div class="c-post_body u-flow">
-        (#TEXTE)
-      </div>]
-      <B_prolonger>
-        <div class="c-related text-500 measure-long">
-          <h2 class="c-related_title">Sur le même sujet</h2>
-          <ul class="c-fiches-liste">
-            <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
-              <li>
-                <article class="c-fiche-resume u-flow">
-                  <h3 class="c-fiche-resume_title text-500"><a href="[(#URL_ARTICLE|parametre_url{id_mot, #ENV{id_mot}})]">#TITRE</a></h3>
-                  [<div class="c-fiche-resume_desc">
-                    (#DESCRIPTIF)
-                  </div>]
-                  <p class="o-cluster c-fiche-resume_pills">
-                    <BOUCLE_mots_article_prolonger(MOTS){id_article}{par titre}>[<a class="c-pill" href="[(#URL_MOT{#ID_MOT})]">(#TITRE)</a>]</BOUCLE_mots_article_prolonger>
-                  </p>
-                </article>
-              </li>
-            </BOUCLE_prolonger>
-          </ul>
-        </div>
-      </B_prolonger>
-    </article>
+      </article>
+    </div>
   </div>
-</BOUCLE_fiche_pratique>
+</BOUCLE_article_fiche_pratique>

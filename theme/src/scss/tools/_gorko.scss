@@ -33,6 +33,30 @@ $gorko-colors: (
   // Use $gorko-config in the `with` map to configure gorko.
   $gorko-config:
     (
+      'flex-align': (
+        'items': (
+          'start': 'flex-start',
+        ),
+        'output': 'standard',
+        'property': 'align-items',
+      ),
+      'flex-dir': (
+        'items': (
+          // 'row': 'row',
+          'rev': 'row-reverse',
+          // 'column': 'column',
+        ),
+        'output': 'standard',
+        'property': 'flex-direction',
+      ),
+      'flex-wrap': (
+        'items': (
+          'no': 'nowrap',
+          // 'yes': 'wrap',
+        ),
+        'output': 'standard',
+        'property': 'flex-wrap',
+      ),
       // "bg": (
       //   "items": $gorko-colors,
       //   "output": "standard",
@@ -102,13 +126,13 @@ $gorko-colors: (
       // ),
       "stack": (
         "items": (
-          "0": 0,
+          // "0": 0,
           "100": 10,
           "200": 20,
           "300": 30,
           "400": 40,
           "500": 50,
-          "600": 60,
+          // "600": 60,
         ),
         "output": "standard",
         "property": "z-index",

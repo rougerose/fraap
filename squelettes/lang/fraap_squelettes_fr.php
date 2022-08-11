@@ -35,6 +35,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
 
 	// F
+	'fiche' => '1 fiche pratique',
+	'fiches' => '@nb@ fiches pratiques',
 	'filtrer' => 'Filtrer',
 
 	// H
@@ -77,4 +79,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// S
 	'search_placeholder' => 'Écrivez ici…',
 	'search_submit' => 'Rechercher',
+
+	// T
+	'toc_titre' => 'Sommaire de cette page',
 ];
