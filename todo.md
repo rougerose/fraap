@@ -1,8 +1,16 @@
 # Dev
 
+## WIP
+- Conversion .section -> .pod
+- Ajout data-page des rubriques
+
+## Fiches pratiques
+- moteur de recherche
+
 ## Contenus Spip
 - supprimer les surtitres (cf. liste de 19 articles à modifier avant).
 - Rubriques : descriptif pour les résumés, texte pour la page proprement dite.
+- schema json+ld
 
 
 ## Plugins Spip

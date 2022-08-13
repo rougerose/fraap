@@ -1,4 +1,8 @@
 <BOUCLE_article_fiche_pratique(ARTICLES){id_article}>
+  #SET{mots, #ARRAY}
+  <BOUCLE_mots(MOTS){id_article}>
+    [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
+  </BOUCLE_mots>
   <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe}/>
@@ -13,13 +17,6 @@
             [<div class="article_intro header_desc flow gap-top-4 weight-600">(#CHAPO)</div>]
             <p class="article_date gap-top-4">Fiche publiée en ligne le <time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>.[(#DATE|!={#DATE_MODIF}|oui) Mise à jour le <time datetime="[(#DATE|date_iso)]">[(#DATE_MODIF|affdate)]</time>.]</p>
           </header>
-          <B_mots>
-            <p class="cluster">
-              <BOUCLE_mots(MOTS){id_article}{par titre}>
-                <span class="pill">#TITRE</span>
-              </BOUCLE_mots>
-            </p>
-          </B_mots>
           [<div class="article_body flow gap-top-4">
             (#TEXTE)
           </div>]
@@ -30,5 +27,53 @@
         </div>
       </article>
     </div>
+
+    <B_prolonger>
+      <section class="pod variant-banner related">
+        <div class="pod_mask">
+          <div class="pod_bg-mask">
+            <div class="pod_bg-banner"></div>
+          </div>
+          <div class="wrapper-content">
+            <div class="pod_content">
+              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+              <ul class="related_list auto-grid gap-top-3" role="list">
+                <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
+                  #SET{groupes, #ARRAY} #SET{id_groupe, ''}
+                  [(#REM)
+                    <!--
+                      1- Récupérer la variable id_groupe : privilégier celle en cours de consultation si elle existe parmi les mots liés à l'article ; sinon la première de la série.
+                      2- Constituer le tableau dédoublé des id_groupe liés à l'article.
+                    -->
+                  ]
+                  <BOUCLE_groupes_article(MOTS){id_article}{fusion id_groupe}>
+                    [(#ID_GROUPE|=={#ENV{id_groupe}}|oui)
+                      [(#GET{id_groupe}|non) #SET{id_groupe, #ID_GROUPE} ]
+                    ]
+                    [(#SET{groupes, #GET{groupes}|push{#ID_GROUPE}})]
+                  </BOUCLE_groupes_article>
+                  <BOUCLE_premier_groupe_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}{0,1}{si #GET{id_groupe}|non}>
+                    #SET{id_groupe, #ID_GROUPE}
+                  </BOUCLE_premier_groupe_article>
+
+                  <li class="card variant-box related_item flow">
+                    <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe}})]">#TITRE</a></h3>
+                    <B_get_groupes_article>
+                      <p class="cluster">
+                        <BOUCLE_get_groupes_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}>
+                          <a href="[(#URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE})]" class="pill">#TITRE</a>
+                        </BOUCLE_get_groupes_article>
+                      </p>
+                    </B_get_groupes_article>
+                  </li>
+
+                </BOUCLE_prolonger>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </B_prolonger>
+
   </div>
 </BOUCLE_article_fiche_pratique>

@@ -32,7 +32,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$lime, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$lime, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$lime, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$lime, "500"), 0.2)};
 
   // dialog
@@ -67,7 +68,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$yellow, "500"), 0.1)};
 }
 
@@ -92,7 +94,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$mint, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$mint, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$mint, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$mint, "500"), 0.1)};
 }
 
@@ -118,7 +121,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$palmas, "500"), 0.1)};
 }
 
@@ -144,7 +148,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$heliotrope, "500"), 0.1)};
 }
 
@@ -170,6 +175,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-boxShadow: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$dodger-blue, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$dodger-blue, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$dodger-blue, "500")), 0.5)};
+
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$dodger-blue, "500"), 0.1)};
 }

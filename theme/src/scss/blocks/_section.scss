@@ -19,11 +19,7 @@
   }
 }
 
-.pod_content {
-  padding: var(--pod-padding-top, 0) 0 var(--pod-padding-bottom, 0);
-  position: relative;
-}
-
+// Mask zone
 .pod_mask {
   overflow: hidden;
 }
@@ -44,6 +40,18 @@
   transform-origin: center;
 }
 
+// Content zone
+.pod_content {
+  padding: var(--pod-padding-top, 0) 0 var(--pod-padding-bottom, 0);
+  position: relative;
+}
+
+// [1]  Décaler vers le bas, afin de ne pas cacher les accents
+//      (le bloc parent ayant un overflow hidden)
+.pod_headline {
+  font-size: var(--step-4);
+  //margin-top: 0.1em; // [1]
+}
 
 
 
@@ -125,13 +133,13 @@
   margin-top: 0.1em; // [1]
 }
 
-.section_heading {
-  font-weight: 500;
+// .section_heading {
+//   font-weight: 500;
 
-  &[data-heading-level="2"] {
-    font-size: var(--step-2); // équivalent à h2
-  }
-}
+//   &[data-heading-level="2"] {
+//     font-size: var(--step-2); // équivalent à h2
+//   }
+// }
 
 .section_desc {
   font-size: var(--step-2);

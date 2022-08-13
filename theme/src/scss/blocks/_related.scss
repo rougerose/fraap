@@ -1,0 +1,23 @@
+/// RELATED
+///
+/// Contenus liés à un article
+
+// .related {}
+
+.related_list {
+  --auto-grid-gutter-row: var(--space-l);
+  --auto-grid-gutter-column: var(--space-l);
+}
+
+.related_item {
+  --gutter: var(--space-2xs) var(--space-3xs);
+
+  h3 {
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+
+    a:hover {
+      color: var(--color-link);
+    }
+  }
+}

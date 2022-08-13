@@ -69,6 +69,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// O
 	'outils_headline' => 'Les outils de la Fraap',
 
+	// P
+	'prolonger_headline' => 'Prolonger',
+
 	// Q
 	'qui_sommes_nous_federation_headline' => 'Qui-sommes-nous&#8239;?',
 

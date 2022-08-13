@@ -6,7 +6,7 @@
 
   &--box {
     background-color: var(--color-primary);
-    box-shadow: var(--card-box-boxShadow);
+    box-shadow: var(--card-box-shadow, var(--card-box-shadow-high));
     display: flex;
     gap: var(--space-m);
     height: 100%;
