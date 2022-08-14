@@ -1,0 +1,10 @@
+#SET{liste, '*'}
+[(#CONFIG{sommaire_automatique_numerote}|=={on}|oui)
+	#SET{liste, '#'}
+]
+<B_somm>
+<BOUCLE_somm(POUR){tableau #ENV{sommaire}}>
+-[(#GET{liste}|str_pad{#VALEUR{niveau},#GET{liste}})] [#VALEUR{titre}->#VALEUR{href}]</BOUCLE_somm>
+#FILTRE{propre}
+</B_somm>
+#FILTRE{trim}

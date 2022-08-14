@@ -2703,19 +2703,36 @@ a:hover .icon-nav-link {
   position: sticky;
   top: var(--space-l);
 }
+.toc ul.spip > * + * {
+  margin-top: var(--space-xs);
+}
 
 .toc_heading {
   font-size: var(--step-0);
   font-weight: 500;
+  color: var(--color-primary);
 }
 
-.toc_list {
+.toc_list,
+.toc ul.spip {
   margin-top: var(--space-s);
+  list-style: none;
+  padding-left: 0;
 }
 
-.toc_item.is-active {
-  color: var(--color-link);
+.toc_item a.spip_ancre,
+.toc ul.spip li a.spip_ancre {
+  color: var(--color-ink);
+}
+.toc_item.is-active,
+.toc ul.spip li.is-active {
   font-weight: 600;
+}
+.toc_item.is-active,
+.toc_item.is-active a,
+.toc ul.spip li.is-active,
+.toc ul.spip li.is-active a {
+  color: var(--color-link);
 }
 
 @media (max-width: 63.99em) {

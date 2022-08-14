@@ -21,27 +21,41 @@
   [(#REM)
     <!-- Si l'article est consulté sans le paramètre id_groupe, on utilise celui qui vient d'être récupéré pour constituer un fil d'Ariane complet. -->
   ][(#GET{id_groupe_env}|non) #SET{id_groupe_env, #GET{id_groupe_mot}} ]
+  [(#SET{sommaire, #SOMMAIRE{#TEXTE}})]
   <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe=#GET{id_groupe_env}}/>
     </div>
     <div class="wrapper-content" data-flush>
-      <article class="article region">
-        <div class="prose">
-          <header class="headline">
-            <h1 class="headline_title variant-article">#TITRE</h1>
-            [<p class="headline_subtitle">(#SOUSTITRE)</p>]
-            [<div class="headline_desc variant-article flow measure">(#CHAPO)</div>]
-            <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE|!={#DATE_MODIF}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
-          </header>
-          [<div class="flow gap-top-5">
-            (#TEXTE)
-          </div>]
-          [<div class="notes auto-grid gap-top-6">
-            (#NOTES)
-          </div>]
-        </div>
-      </article>
+      <div class="region">
+        <article class="article">
+          <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+            [(#GET{sommaire}|oui)<div></div>]
+            <div class="prose">
+              <header class="headline">
+                <h1 class="headline_title variant-article">#TITRE</h1>
+                [<p class="headline_subtitle">(#SOUSTITRE)</p>]
+                [<div class="headline_desc variant-article flow measure">(#CHAPO)</div>]
+                <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE|!={#DATE_MODIF}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
+              </header>
+            </div>
+          </div>
+          <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+            [<nav class="toc" data-type="side">
+              <h2 class="toc_heading"><span class="text-underline"><:fraap_squelettes:toc_titre:></span></h2>
+              (#GET{sommaire})
+            </nav>]
+            <div class="prose">
+              [<div class="flow gap-top-5">
+                (#TEXTE|ancres_sommaire)
+              </div>]
+              [<div class="notes auto-grid gap-top-6">
+                (#NOTES)
+              </div>]
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
 
     <B_prolonger>

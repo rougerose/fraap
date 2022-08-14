@@ -10,22 +10,39 @@
     position: sticky;
     top: var(--space-l);
   }
+
+  ul.spip > * + * {
+    margin-top: var(--space-xs); // flow-small
+  }
 }
 
 .toc_heading {
   font-size: var(--step-0);
   font-weight: 500;
+  color: var(--color-primary);
 }
 
-.toc_list {
+.toc_list,
+.toc ul.spip {
   margin-top: var(--space-s);
+  list-style: none;
+  padding-left: 0;
 }
 
-.toc_item {
+.toc_item,
+.toc ul.spip li {
+
+  a.spip_ancre {
+    color: var(--color-ink);
+  }
 
   &.is-active {
-    color: var(--color-link);
     font-weight: 600;
+
+    &,
+    a {
+      color: var(--color-link);
+    }
   }
 }
 
