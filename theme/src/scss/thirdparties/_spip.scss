@@ -1,0 +1,13 @@
+/// Styles contenu produit par SPIP
+
+
+.spip_note_ref {
+  color: var(--color-link);
+  font-weight: 600;
+}
+
+.spip_note {
+  &:visited {
+    color: var(--color-link);
+  }
+}

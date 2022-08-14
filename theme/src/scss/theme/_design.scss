@@ -43,8 +43,8 @@
   --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
 
   --measure: 60ch;
-  --measure-m: 70ch;
-  --measure-l: 80ch;
+  // --measure-m: 70ch;
+  // --measure-l: 80ch;
 
   --offset-icon-space: var(--space-l-2xl);
 

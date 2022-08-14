@@ -134,6 +134,7 @@
   --space-s-l: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) * var(--fluid-bp));
   --space-m-xl: calc(((var(--fc-m-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-m-min)) * var(--fluid-bp));
   --space-l-2xl: calc(((var(--fc-l-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-l-min)) * var(--fluid-bp));
+  --space-xl-3xl: calc(((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
 }
 
 :root {
@@ -163,8 +164,6 @@
   --layout-width: calc(100vw - var(--gutter-width));
   --layout-max-width: 75rem;
   --measure: 60ch;
-  --measure-m: 70ch;
-  --measure-l: 80ch;
   --offset-icon-space: var(--space-l-2xl);
   --section-marginBottom: 0;
   --section-angle-height: calc(100vw * var(--angle-sin));
@@ -746,10 +745,12 @@ ol[role=list] {
   display: flex;
   flex-wrap: wrap;
   gap: var(--switcher-gutter-row, var(--auto-grid-gutter-row)) var(--switcher-gutter-column, var(--auto-grid-gutter-column));
-  align-items: var(--switcher-vertical-alignment, flex-start);
 }
 
 .switcher > * {
+  --num-gaps: calc(var(--columns, 3) - 1);
+  min-width: calc(calc(100% / var(--columns, 3)) - var(--num-gaps) * varvar(--switcher-gutter-row, var(--auto-grid-gutter-row)));
+  max-width: 100%;
   flex-grow: 1;
   flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
 }
@@ -1911,6 +1912,26 @@ a:hover .icon-nav-link {
   height: 400px;
 }
 
+.notes {
+  --auto-grid-gutter-row: var(--space-m);
+  --auto-grid-gutter-column: var(--space-s);
+  position: relative;
+}
+.notes div:first-child::before {
+  content: "";
+  width: 100px;
+  height: 2px;
+  background-color: var(--color-primary);
+  display: block;
+  position: absolute;
+  top: calc(var(--space-m) * -1);
+}
+.notes p {
+  font-size: var(--step--1);
+  line-height: 1.45;
+  max-width: 40ch;
+}
+
 .pagination {
   display: grid;
   align-items: center;
@@ -2041,6 +2062,7 @@ a:hover .icon-nav-link {
 }
 .related_item h3 {
   font-family: var(--font-family-sans);
+  font-size: var(--step-0);
   font-weight: 600;
 }
 .related_item h3 a:hover {
@@ -2733,16 +2755,16 @@ a:hover .icon-nav-link {
   margin-top: var(--space-2xl);
 }
 
+.gap-top-6 {
+  margin-top: var(--space-xl-3xl);
+}
+
 .measure {
   max-width: var(--measure);
 }
 
-.measure-m {
-  max-width: var(--measure-m);
-}
-
-.measure-l {
-  max-width: var(--measure-l);
+.measure-s {
+  max-width: var(--measure-s, 40ch);
 }
 
 .region {
@@ -2858,6 +2880,15 @@ a:hover .icon-nav-link {
 }
 .leaflet-toggleSleepMap_btn[aria-hidden=true] {
   display: none;
+}
+
+.spip_note_ref {
+  color: var(--color-link);
+  font-weight: 600;
+}
+
+.spip_note:visited {
+  color: var(--color-link);
 }
 
 .spip-admin-float {

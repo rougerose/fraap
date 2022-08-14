@@ -4,10 +4,14 @@
   max-width: var(--measure);
 }
 
-.measure-m {
-  max-width: var(--measure-m);
+.measure-s {
+  max-width: var(--measure-s, 40ch);
 }
 
-.measure-l {
-  max-width: var(--measure-l);
-}
+// .measure-m {
+//   max-width: var(--measure-m);
+// }
+
+// .measure-l {
+//   max-width: var(--measure-l);
+// }
