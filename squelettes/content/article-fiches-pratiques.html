@@ -1,27 +1,43 @@
 <BOUCLE_article_fiche_pratique(ARTICLES){id_article}>
-  #SET{mots, #ARRAY}
+  #SET{mots, #ARRAY} #SET{groupes, #ARRAY} #SET{id_groupe_mot, ''} #SET{id_groupe_env, #ENV{id_groupe, ''}}
   <BOUCLE_mots(MOTS){id_article}>
     [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
   </BOUCLE_mots>
+  [(#REM)
+    <!--
+      1- Récupérer la variable id_groupe : privilégier celle en cours de consultation si elle existe parmi les mots liés à l'article ; sinon la première de la série.
+      2- Constituer le tableau dédoublé des id_groupe liés à l'article.
+    -->
+  ]
+  <BOUCLE_groupes_article(MOTS){id_article}{fusion id_groupe}>
+    [(#ID_GROUPE|=={#ENV{id_groupe}}|oui)
+      [(#GET{id_groupe_mot}|non) #SET{id_groupe_mot, #ID_GROUPE} ]
+    ]
+    [(#SET{groupes, #GET{groupes}|push{#ID_GROUPE}})]
+  </BOUCLE_groupes_article>
+  <BOUCLE_premier_groupe_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}{0,1}{si #GET{id_groupe_mot}|non}>
+    #SET{id_groupe_mot, #ID_GROUPE}
+  </BOUCLE_premier_groupe_article>
+  [(#REM)
+    <!-- Si l'article est consulté sans le paramètre id_groupe, on utilise celui qui vient d'être récupéré pour constituer un fil d'Ariane complet. -->
+  ][(#GET{id_groupe_env}|non) #SET{id_groupe_env, #GET{id_groupe_mot}} ]
   <div class="page" data-page="article">
     <div class="wrapper-structure">
-      <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe}/>
+      <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe=#GET{id_groupe_env}}/>
     </div>
     <div class="wrapper-content" data-flush>
       <article class="article region">
         <div class="prose">
-          <!-- TODO: utiliser .headline -->
-          <header class="article_header">
-            <h1 class="article_title header_title weight-600">#TITRE</h1>
-            [<p class="article_subtitle weight-300">(#SOUSTITRE)</p>]
-            [<div class="article_intro header_desc flow gap-top-4 weight-600">(#CHAPO)</div>]
-            <p class="article_date gap-top-4">Fiche publiée en ligne le <time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>.[(#DATE|!={#DATE_MODIF}|oui) Mise à jour le <time datetime="[(#DATE|date_iso)]">[(#DATE_MODIF|affdate)]</time>.]</p>
+          <header class="headline">
+            <h1 class="headline_title variant-article">#TITRE</h1>
+            [<p class="headline_subtitle">(#SOUSTITRE)</p>]
+            [<div class="headline_desc variant-article flow measure">(#CHAPO)</div>]
+            <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE|!={#DATE_MODIF}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
           </header>
-          [<div class="article_body flow gap-top-4">
+          [<div class="flow gap-top-5">
             (#TEXTE)
           </div>]
-          [<div class="article_notes">
-            <hr>
+          [<div class="notes">
             (#NOTES)
           </div>]
         </div>
@@ -39,25 +55,8 @@
               <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
               <ul class="related_list auto-grid gap-top-3" role="list">
                 <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
-                  #SET{groupes, #ARRAY} #SET{id_groupe, ''}
-                  [(#REM)
-                    <!--
-                      1- Récupérer la variable id_groupe : privilégier celle en cours de consultation si elle existe parmi les mots liés à l'article ; sinon la première de la série.
-                      2- Constituer le tableau dédoublé des id_groupe liés à l'article.
-                    -->
-                  ]
-                  <BOUCLE_groupes_article(MOTS){id_article}{fusion id_groupe}>
-                    [(#ID_GROUPE|=={#ENV{id_groupe}}|oui)
-                      [(#GET{id_groupe}|non) #SET{id_groupe, #ID_GROUPE} ]
-                    ]
-                    [(#SET{groupes, #GET{groupes}|push{#ID_GROUPE}})]
-                  </BOUCLE_groupes_article>
-                  <BOUCLE_premier_groupe_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}{0,1}{si #GET{id_groupe}|non}>
-                    #SET{id_groupe, #ID_GROUPE}
-                  </BOUCLE_premier_groupe_article>
-
                   <li class="card variant-box related_item flow">
-                    <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe}})]">#TITRE</a></h3>
+                    <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe_mot}})]">#TITRE</a></h3>
                     <B_get_groupes_article>
                       <p class="cluster">
                         <BOUCLE_get_groupes_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}>
@@ -77,3 +76,4 @@
 
   </div>
 </BOUCLE_article_fiche_pratique>
+#FILTRE{trim}
