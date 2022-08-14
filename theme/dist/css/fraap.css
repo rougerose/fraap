@@ -745,12 +745,10 @@ ol[role=list] {
   display: flex;
   flex-wrap: wrap;
   gap: var(--switcher-gutter-row, var(--auto-grid-gutter-row)) var(--switcher-gutter-column, var(--auto-grid-gutter-column));
+  align-items: var(--switcher-vertical-alignment, flex-start);
 }
 
 .switcher > * {
-  --num-gaps: calc(var(--columns, 3) - 1);
-  min-width: calc(calc(100% / var(--columns, 3)) - var(--num-gaps) * varvar(--switcher-gutter-row, var(--auto-grid-gutter-row)));
-  max-width: 100%;
   flex-grow: 1;
   flex-basis: calc((var(--switcher-target-container-width, var(--auto-grid-min-item-size)) - 100%) * 999);
 }
