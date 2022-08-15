@@ -10,30 +10,24 @@
     position: sticky;
     top: var(--space-l);
   }
-
-  ul.spip > * + * {
-    margin-top: var(--space-xs); // flow-small
-  }
 }
 
 .toc_heading {
   font-size: var(--step-0);
-  font-weight: 500;
-  color: var(--color-primary);
+  font-weight: 600;
+  font-family: var(--font-family-sans);
 }
 
-.toc_list,
-.toc ul.spip {
-  margin-top: var(--space-s);
-  list-style: none;
-  padding-left: 0;
-}
+// .toc_list {}
 
-.toc_item,
-.toc ul.spip li {
+.toc_item {
 
   a.spip_ancre {
     color: var(--color-ink);
+
+    &:hover {
+      color: var(--color-link);
+    }
   }
 
   &.is-active {
@@ -47,13 +41,14 @@
 }
 
 @include mq.mq($until: l) {
-  .toc[data-type="side"] {
+  .toc[data-type="side"],
+  .toc[data-type="layout-only"] {
     display: none;
   }
 }
 
-@include mq.mq($from: l) {
-  .toc[data-type="inner"] {
-    display: none;
-  }
-}
+// @include mq.mq($from: l) {
+//   .toc[data-type="inner"] {
+//     display: none;
+//   }
+// }

@@ -21,7 +21,7 @@
   [(#REM)
     <!-- Si l'article est consulté sans le paramètre id_groupe, on utilise celui qui vient d'être récupéré pour constituer un fil d'Ariane complet. -->
   ][(#GET{id_groupe_env}|non) #SET{id_groupe_env, #GET{id_groupe_mot}} ]
-  [(#SET{sommaire, #SOMMAIRE{#TEXTE}})]
+  [(#SET{sommaire, #SOMMAIRE{#TEXTE}|ajouter_styles_toc|supprimer_soulignement})]
   <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe=#GET{id_groupe_env}}/>
@@ -30,7 +30,7 @@
       <div class="region">
         <article class="article">
           <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
-            [(#GET{sommaire}|oui)<div></div>]
+            [(#GET{sommaire}|oui)<div class="toc" data-type="layout-only"></div>]
             <div class="prose">
               <header class="headline">
                 <h1 class="headline_title variant-article">#TITRE</h1>
@@ -41,11 +41,17 @@
             </div>
           </div>
           <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
-            [<nav class="toc" data-type="side">
-              <h2 class="toc_heading"><span class="text-underline"><:fraap_squelettes:toc_titre:></span></h2>
+            [<nav class="toc gap-top-5 flow-small" data-type="side">
+              <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
               (#GET{sommaire})
             </nav>]
             <div class="prose">
+              [<div class="toc gap-top-5" data-type="inner">
+                <details role="navigation">
+                  <summary><:fraap_squelettes:toc_titre:></summary>
+                  (#GET{sommaire})
+                </details>
+              </div>]
               [<div class="flow gap-top-5">
                 (#TEXTE|ancres_sommaire)
               </div>]

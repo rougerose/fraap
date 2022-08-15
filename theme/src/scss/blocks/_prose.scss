@@ -53,17 +53,17 @@
 
   /// Details gets more surrounding space, but the inner elements
   /// should all be equal
-  details,
-  details + * {
-    --flow-space: var(--space-xl);
-  }
+  // details,
+  // details + * {
+  //   --flow-space: var(--space-xl);
+  // }
 
   details + details {
     margin-top: 0;
   }
 
-  details > * {
-    --flow-space: var(--space-m);
-  }
+  // details > * {
+  //   --flow-space: var(--space-m);
+  // }
 
 }
