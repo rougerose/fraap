@@ -2984,7 +2984,7 @@ a:hover .icon-nav-link {
   transition: background 0.3s, color 0.3s;
 }
 .spip_note:visited {
-  color: var(--color-link);
+  color: var(--color-paper);
 }
 .spip_note:hover {
   background-color: var(--color-paper);
