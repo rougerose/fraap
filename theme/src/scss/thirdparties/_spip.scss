@@ -1,13 +1,22 @@
 /// Styles contenu produit par SPIP
 
 
-.spip_note_ref {
-  color: var(--color-link);
-  font-weight: 600;
-}
+// .spip_note_ref {}
 
 .spip_note {
+  background-color: var(--color-link);
+  border-radius: 2px;
+  color: var(--color-paper);
+  font-size: 0.9em;
+  padding: 3px 2px 1px;
+  transition: background 0.3s, color 0.3s;
+
   &:visited {
+    color: var(--color-link);
+  }
+
+  &:hover {
+    background-color: var(--color-paper);
     color: var(--color-link);
   }
 }

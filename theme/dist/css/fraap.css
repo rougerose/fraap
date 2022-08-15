@@ -2068,10 +2068,7 @@ a:hover .icon-nav-link {
 }
 .prose figure,
 .prose figure + *,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5 {
+.prose h2 {
   --flow-space: var(--space-xl);
 }
 .prose h3,
@@ -2091,12 +2088,31 @@ a:hover .icon-nav-link {
 .prose h5 + h6 {
   --flow-space: var(--space-l);
 }
+.prose h2 a[href^="#"],
+.prose h3 a[href^="#"],
+.prose h4 a[href^="#"],
+.prose h5 a[href^="#"],
+.prose h6 a[href^="#"] {
+  color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.prose h2:hover a[href^="#"],
+.prose h2 a[href^="#"]:focus,
+.prose h3:hover a[href^="#"],
+.prose h3 a[href^="#"]:focus,
+.prose h4:hover a[href^="#"],
+.prose h4 a[href^="#"]:focus,
+.prose h5:hover a[href^="#"],
+.prose h5 a[href^="#"]:focus,
+.prose h6:hover a[href^="#"],
+.prose h6 a[href^="#"]:focus {
+  color: var(--color-link);
+}
 .prose > img,
 .prose > table {
   width: 100%;
-}
-.prose details + details {
-  margin-top: 0;
 }
 
 .related_list {
@@ -2941,12 +2957,19 @@ a:hover .icon-nav-link {
   display: none;
 }
 
-.spip_note_ref {
-  color: var(--color-link);
-  font-weight: 600;
+.spip_note {
+  background-color: var(--color-link);
+  border-radius: 2px;
+  color: var(--color-paper);
+  font-size: 0.9em;
+  padding: 3px 2px 1px;
+  transition: background 0.3s, color 0.3s;
 }
-
 .spip_note:visited {
+  color: var(--color-link);
+}
+.spip_note:hover {
+  background-color: var(--color-paper);
   color: var(--color-link);
 }
 

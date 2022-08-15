@@ -38,4 +38,11 @@ if (!defined('_COORDONNEES_PAYS_DEFAUT')) {
 	define('_COORDONNEES_PAYS_DEFAUT', 'FR');
 }
 
+// Spip_wheels : insérer un span.text-underscore sur chaque intertitre de #TEXTE
 $GLOBALS['spip_wheels']['raccourcis'][] = 'fraap_squelettes_intertitres';
+
+// Appels de notes
+define('_NOTES_OUVRE_REF', '<span class="spip_note_ref">&nbsp;');
+define('_NOTES_FERME_REF', '</span>');
+define('_NOTES_OUVRE_NOTE', '<span class="spip_note_ref">');
+define('_NOTES_FERME_NOTE', '&nbsp;</span>');
