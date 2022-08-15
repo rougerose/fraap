@@ -328,6 +328,12 @@
   margin: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
 html,
 body {
   height: 100%;
@@ -528,12 +534,6 @@ ol[role=list] {
   font-style: italic;
   font-display: swap;
 }
-html {
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-          text-size-adjust: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
