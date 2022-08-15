@@ -3,3 +3,7 @@
 
 @use "css-reset/reset.css";
 @use "fonts";
+
+html {
+  text-size-adjust: 100%;
+}
