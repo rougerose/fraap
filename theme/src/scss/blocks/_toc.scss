@@ -22,7 +22,7 @@
 
 .toc_item {
 
-  a.spip_ancre {
+  a {
     color: var(--color-ink);
 
     &:hover {
@@ -47,8 +47,8 @@
   }
 }
 
-// @include mq.mq($from: l) {
-//   .toc[data-type="inner"] {
-//     display: none;
-//   }
-// }
+@include mq.mq($from: l) {
+  .toc[data-type="inner"] {
+    display: none;
+  }
+}

@@ -1,5 +1,7 @@
 /// RESSOURCES
 
+@use "../tools/mq" as mq;
+
 // .ressources {}
 
 .ressources_section {
@@ -17,12 +19,10 @@
   }
 }
 
-// .tree-list_heading {
-
-//   // TODO: étendre une marge haute à tous les intertitres issus de #TEXTE ?
-//   padding-top: var(--space-xs);
-// }
-
-// .tree-list_link {
-
-// }
+@include mq.mq($from: l) {
+  .ressources_section {
+    &:first-of-type {
+      margin-top: 0; // annuler la marge appliquée par flow
+    }
+  }
+}

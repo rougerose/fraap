@@ -2127,6 +2127,11 @@ a:hover .icon-nav-link {
   color: var(--color-link);
 }
 
+@media (min-width: 64em) {
+  .ressources_section:first-of-type {
+    margin-top: 0;
+  }
+}
 .search_group {
   --form-fields-input-padding: 8px 8px 6px;
   display: flex;
@@ -2759,10 +2764,10 @@ a:hover .icon-nav-link {
   font-family: var(--font-family-sans);
 }
 
-.toc_item a.spip_ancre {
+.toc_item a {
   color: var(--color-ink);
 }
-.toc_item a.spip_ancre:hover {
+.toc_item a:hover {
   color: var(--color-link);
 }
 .toc_item.is-active {
@@ -2776,6 +2781,11 @@ a:hover .icon-nav-link {
 @media (max-width: 63.99em) {
   .toc[data-type=side],
 .toc[data-type=layout-only] {
+    display: none;
+  }
+}
+@media (min-width: 64em) {
+  .toc[data-type=inner] {
     display: none;
   }
 }
