@@ -38,7 +38,10 @@
             </B_toc_inner_mots>
             <BOUCLE_liste_mots(MOTS){id_mot IN #GET{mots}}>
               <section class="ressources_section flow">
-                <h2 id="[(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]"><span class="text-underline">#TITRE</span></h2>
+                <h2 id="[(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
+                  <span class="text-underline">#TITRE</span>
+                  <a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
+                </h2>
                 <B_articles>
                   <ul class="flow" role="list">
                     <BOUCLE_articles(ARTICLES){id_mot}{par titre}>

@@ -19,10 +19,7 @@
 
   figure,
   figure + *,
-  h2,
-  h3,
-  h4,
-  h5 {
+  h2 {
     --flow-space: var(--space-xl);
   }
 
@@ -46,6 +43,24 @@
     --flow-space: var(--space-l);
   }
 
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a[href^="#"] {
+      color: transparent;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    &:hover a[href^="#"],
+    a[href^="#"]:focus {
+      color: var(--color-link);
+    }
+  }
+
   > img,
   > table {
     width: 100%;
@@ -58,9 +73,9 @@
   //   --flow-space: var(--space-xl);
   // }
 
-  details + details {
-    margin-top: 0;
-  }
+  // details + details {
+  //   margin-top: 0;
+  // }
 
   // details > * {
   //   --flow-space: var(--space-m);
