@@ -1,13 +1,22 @@
 /// Styles contenu produit par SPIP
 
 
-// .spip_note_ref {}
+.spip_note_ref {
+  vertical-align: super;
+  line-height: 0;
+  margin-right: 3px;
+
+  .notes & {
+    vertical-align: baseline;
+    line-height: inherit;
+  }
+}
 
 .spip_note {
   background-color: var(--color-link);
   border-radius: 2px;
   color: var(--color-paper);
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 3px 2px 1px;
   transition: background 0.3s, color 0.3s;
 

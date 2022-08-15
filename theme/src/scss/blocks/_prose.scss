@@ -66,6 +66,14 @@
     width: 100%;
   }
 
+  ul.spip,
+  ol.spip {
+    --flow-space: var(--space-xs);
+    > li + li {
+      margin-top: var(--flow-space);
+    }
+  }
+
   /// Details gets more surrounding space, but the inner elements
   /// should all be equal
   // details,

@@ -2114,6 +2114,14 @@ a:hover .icon-nav-link {
 .prose > table {
   width: 100%;
 }
+.prose ul.spip,
+.prose ol.spip {
+  --flow-space: var(--space-xs);
+}
+.prose ul.spip > li + li,
+.prose ol.spip > li + li {
+  margin-top: var(--flow-space);
+}
 
 .related_list {
   --auto-grid-gutter-row: var(--space-l);
@@ -2957,11 +2965,21 @@ a:hover .icon-nav-link {
   display: none;
 }
 
+.spip_note_ref {
+  vertical-align: super;
+  line-height: 0;
+  margin-right: 3px;
+}
+.notes .spip_note_ref {
+  vertical-align: baseline;
+  line-height: inherit;
+}
+
 .spip_note {
   background-color: var(--color-link);
   border-radius: 2px;
   color: var(--color-paper);
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 3px 2px 1px;
   transition: background 0.3s, color 0.3s;
 }
