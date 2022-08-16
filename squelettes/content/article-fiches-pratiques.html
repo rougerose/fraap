@@ -21,7 +21,9 @@
   [(#REM)
     <!-- Si l'article est consulté sans le paramètre id_groupe, on utilise celui qui vient d'être récupéré pour constituer un fil d'Ariane complet. -->
   ][(#GET{id_groupe_env}|non) #SET{id_groupe_env, #GET{id_groupe_mot}} ]
-  [(#SET{sommaire, #SOMMAIRE{#TEXTE}|ajouter_styles_toc|supprimer_soulignement})]
+  [(#REM)
+    <!-- Sommaire -->
+  ][(#SET{sommaire, #SOMMAIRE{#TEXTE}|ajouter_styles_toc|supprimer_soulignement})]
   <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe=#GET{id_groupe_env}}/>

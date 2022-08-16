@@ -17,8 +17,11 @@
     padding-left: 0;
   }
 
+  // Règles de marges (flow)
   figure,
   figure + *,
+  aside,
+  aside + *,
   h2 {
     --flow-space: var(--space-xl);
   }
@@ -43,11 +46,22 @@
     --flow-space: var(--space-l);
   }
 
+  ul.spip,
+  ol.spip {
+    --flow-space: var(--space-xs);
+    > li + li {
+      margin-top: var(--flow-space);
+    }
+  }
+
+  //
   h2,
   h3,
   h4,
   h5,
   h6 {
+    max-width: 50ch;
+
     a[href^="#"] {
       color: transparent;
       font-weight: 600;
@@ -66,12 +80,9 @@
     width: 100%;
   }
 
-  ul.spip,
-  ol.spip {
-    --flow-space: var(--space-xs);
-    > li + li {
-      margin-top: var(--flow-space);
-    }
+  p,
+  li {
+    max-width: 70ch;
   }
 
   /// Details gets more surrounding space, but the inner elements
