@@ -81,7 +81,7 @@
               </p>
               <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
               <ul class="related_list auto-grid gap-top-3" role="list">
-                <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
+                <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots} !tri}{exclus}>
                   <li class="card variant-box related_item flow">
                     <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe_mot}})]">#TITRE</a></h3>
                     <B_get_groupes_article>
