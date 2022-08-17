@@ -199,14 +199,14 @@
   --color-primary-200: #bdf7a6;
   --color-primary-300: #9af278;
   --color-primary-400: #78ee49;
-  --color-primary-600: #48cd13;
-  --color-primary-700: #39a30f;
-  --color-primary-800: #2a790b;
+  --color-primary-600: #13cd13;
+  --color-primary-700: #0fa30f;
+  --color-primary-800: #0b790b;
   --color-link: var(--color-contrast);
   --color-link-invert: white;
   --color-disabled: #a0a0a7;
-  --boxShadow-primary: 0px 4px 15px rgba(42, 121, 11, 0.2), 0 1px 4px rgba(92, 235, 36, 0.2);
-  --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2348cd13'/%3E%3C/svg%3E");
+  --boxShadow-primary: 0px 4px 15px rgba(11, 121, 11, 0.2), 0 1px 4px rgba(92, 235, 36, 0.2);
+  --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2313cd13'/%3E%3C/svg%3E");
   --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(92, 235, 36, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(92, 235, 36, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(92, 235, 36, 0.2);
@@ -274,41 +274,60 @@
 }
 
 [data-theme-color="5"] {
-  --color-primary: #f752fa;
-  --color-primary-100: #fee6fe;
-  --color-primary-200: #fdcefd;
-  --color-primary-300: #fbabfc;
-  --color-primary-400: #f983fb;
-  --color-primary-600: #f41bf8;
-  --color-primary-700: #d107d5;
-  --color-primary-800: #9c059e;
-  --color-contrast: #093062;
-  --color-contrast-400: #0f4d9f;
-  --color-link: var(--color-contrast);
-  --boxShadow-primary: 0px 4px 15px rgba(156, 5, 158, 0.2), 0 1px 4px rgba(247, 82, 250, 0.2);
-  --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23f41bf8'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(247, 82, 250, 0.5);
-  --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(247, 82, 250, 0.5);
-  --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(247, 82, 250, 0.1);
-}
-
-[data-theme-color="6"] {
   --color-primary: #0dc1fd;
   --color-primary-100: #dcf6ff;
   --color-primary-200: #a9e9fe;
   --color-primary-300: #77dcfe;
   --color-primary-400: #44cffd;
   --color-primary-600: #02a3d9;
-  --color-primary-700: #0285b1;
-  --color-primary-800: #016383;
+  --color-primary-700: #0268b1;
+  --color-primary-800: #014d83;
   --color-contrast: maroon;
   --color-contrast-400: #c20000;
   --color-link: var(--color-contrast);
-  --boxShadow-primary: 0px 4px 15px rgba(1, 99, 131, 0.2), 0 1px 4px rgba(13, 193, 253, 0.2);
+  --boxShadow-primary: 0px 4px 15px rgba(1, 77, 131, 0.2), 0 1px 4px rgba(13, 193, 253, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2302a3d9'/%3E%3C/svg%3E");
   --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(13, 193, 253, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(13, 193, 253, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(13, 193, 253, 0.1);
+}
+
+[data-theme-color="6"] {
+  --color-primary: #60de0d;
+  --color-primary-100: #d5fbbc;
+  --color-primary-200: #b7f88b;
+  --color-primary-300: #99f55b;
+  --color-primary-400: #7bf32b;
+  --color-primary-600: #4bae0a;
+  --color-primary-700: #367d07;
+  --color-primary-800: #2a6006;
+  --color-contrast: #89152c;
+  --color-contrast-400: #b51c3b;
+  --color-link: var(--color-contrast);
+  --boxShadow-primary: 0px 4px 15px rgba(42, 96, 6, 0.2), 0 1px 4px rgba(96, 222, 13, 0.2);
+  --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%234bae0a'/%3E%3C/svg%3E");
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(96, 222, 13, 0.5);
+  --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(96, 222, 13, 0.5);
+  --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(96, 222, 13, 0.1);
+}
+
+[data-theme-color="7"] {
+  --color-primary: #ff9214;
+  --color-primary-100: #fff1e0;
+  --color-primary-200: #ffd9ad;
+  --color-primary-300: #ffc17a;
+  --color-primary-400: #ffa947;
+  --color-primary-600: #e04b00;
+  --color-primary-700: #ad3a00;
+  --color-primary-800: #7a2900;
+  --color-contrast: #2a00c2;
+  --color-contrast-400: #3700ff;
+  --color-link: var(--color-contrast);
+  --boxShadow-primary: 0px 4px 15px rgba(122, 41, 0, 0.2), 0 1px 4px rgba(255, 146, 20, 0.2);
+  --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23e04b00'/%3E%3C/svg%3E");
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(255, 146, 20, 0.5);
+  --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(255, 146, 20, 0.5);
+  --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(255, 146, 20, 0.1);
 }
 
 /*

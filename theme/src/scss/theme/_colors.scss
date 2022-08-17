@@ -6,35 +6,35 @@
 @use "sass:math";
 @use "../mixins/background-svg" as _backgroundSvg;
 
-// défaut et theme = 1 => lime/royal-blue
-$lime-600: map.get(var.$lime, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $lime-600 + '"/></svg>');
+// défaut et theme = 1 => lime/bleu roi
+$color-1A-600: map.get(var.$color-1A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-1A-600 + '"/></svg>');
 
 :root, [data-theme-color="1"] {
   --color-ink: #{var.$black};
   --color-ink-soft: #{map.get(var.$gray, "blue", "500")};
   --color-paper: #{var.$white};
-  --color-primary: #{map.get(var.$lime, "500")};
-  --color-contrast: #{map.get(var.$royal-blue, "500")};
-  --color-contrast-400: #{map.get(var.$royal-blue, "400")};
-  --color-primary-100: #{map.get(var.$lime, "100")};
-  --color-primary-200: #{map.get(var.$lime, "200")};
-  --color-primary-300: #{map.get(var.$lime, "300")};
-  --color-primary-400: #{map.get(var.$lime, "400")};
-  --color-primary-600: #{$lime-600};
-  --color-primary-700: #{map.get(var.$lime, "700")};
-  --color-primary-800: #{map.get(var.$lime, "800")};
+  --color-primary: #{map.get(var.$color-1A, "500")};
+  --color-contrast: #{map.get(var.$color-1B, "500")};
+  --color-contrast-400: #{map.get(var.$color-1B, "400")};
+  --color-primary-100: #{map.get(var.$color-1A, "100")};
+  --color-primary-200: #{map.get(var.$color-1A, "200")};
+  --color-primary-300: #{map.get(var.$color-1A, "300")};
+  --color-primary-400: #{map.get(var.$color-1A, "400")};
+  --color-primary-600: #{$color-1A-600};
+  --color-primary-700: #{map.get(var.$color-1A, "700")};
+  --color-primary-800: #{map.get(var.$color-1A, "800")};
   --color-link: var(--color-contrast);
   --color-link-invert: #{var.$white};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$lime, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$lime, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-1A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$lime, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$lime, "500")), 0.5)};
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$lime, "500"), 0.2)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-1A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-1A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
 
   // dialog
   --dialog-overlay-background: #{rgba(map.get(var.$gray, "blue", "300"), 0.6)};
@@ -47,136 +47,188 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --underline-color: var(--color-primary);
 }
 
-// 2 => yellow/disco
-$yellow-600: map.get(var.$yellow, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $yellow-600 + '"/></svg>');
+// 2 => jaune/prune
+$color-2A-600: map.get(var.$color-2A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-2A-600 + '"/></svg>');
 
 [data-theme-color="2"] {
-  --color-primary: #{map.get(var.$yellow, "500")};
-  --color-primary-100: #{map.get(var.$yellow, "100")};
-  --color-primary-200: #{map.get(var.$yellow, "200")};
-  --color-primary-300: #{map.get(var.$yellow, "300")};
-  --color-primary-400: #{map.get(var.$yellow, "400")};
-  --color-primary-600: #{$yellow-600};
-  --color-primary-700: #{map.get(var.$yellow, "700")};
-  --color-primary-800: #{map.get(var.$yellow, "800")};
-  --color-contrast: #{map.get(var.$disco, "500")};
-  --color-contrast-400: #{map.get(var.$disco, "400")};
+  --color-primary: #{map.get(var.$color-2A, "500")};
+  --color-primary-100: #{map.get(var.$color-2A, "100")};
+  --color-primary-200: #{map.get(var.$color-2A, "200")};
+  --color-primary-300: #{map.get(var.$color-2A, "300")};
+  --color-primary-400: #{map.get(var.$color-2A, "400")};
+  --color-primary-600: #{$color-2A-600};
+  --color-primary-700: #{map.get(var.$color-2A, "700")};
+  --color-primary-800: #{map.get(var.$color-2A, "800")};
+  --color-contrast: #{map.get(var.$color-2B, "500")};
+  --color-contrast-400: #{map.get(var.$color-2B, "400")};
   --color-link: var(--color-contrast);
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$yellow, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$yellow, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-2A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-2A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$yellow, "500")), 0.5)};
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$yellow, "500"), 0.1)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-2A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-2A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-2A, "500"), 0.1)};
 }
 
-// 3 =>
-$mint-600: map.get(var.$mint, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $mint-600 + '"/></svg>');
+// 3 => Vert perroquet - Aubergine
+$color-3A-600: map.get(var.$color-3A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-3A-600 + '"/></svg>');
 
 [data-theme-color="3"] {
-  --color-primary: #{map.get(var.$mint, "500")};
-  --color-primary-100: #{map.get(var.$mint, "100")};
-  --color-primary-200: #{map.get(var.$mint, "200")};
-  --color-primary-300: #{map.get(var.$mint, "300")};
-  --color-primary-400: #{map.get(var.$mint, "400")};
-  --color-primary-600: #{$mint-600};
-  --color-primary-700: #{map.get(var.$mint, "700")};
-  --color-primary-800: #{map.get(var.$mint, "800")};
-  --color-contrast: #{map.get(var.$eggplant, "500")};
-  --color-contrast-400: #{map.get(var.$eggplant, "400")};
+  --color-primary: #{map.get(var.$color-3A, "500")};
+  --color-primary-100: #{map.get(var.$color-3A, "100")};
+  --color-primary-200: #{map.get(var.$color-3A, "200")};
+  --color-primary-300: #{map.get(var.$color-3A, "300")};
+  --color-primary-400: #{map.get(var.$color-3A, "400")};
+  --color-primary-600: #{$color-3A-600};
+  --color-primary-700: #{map.get(var.$color-3A, "700")};
+  --color-primary-800: #{map.get(var.$color-3A, "800")};
+  --color-contrast: #{map.get(var.$color-3B, "500")};
+  --color-contrast-400: #{map.get(var.$color-3B, "400")};
   --color-link: var(--color-contrast);
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$mint, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$mint, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-3A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-3A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$mint, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$mint, "500")), 0.5)};
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$mint, "500"), 0.1)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-3A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-3A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-3A, "500"), 0.1)};
 }
 
 
-// 4 =>
-$palmas-600: map.get(var.$palmas, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $palmas-600 + '"/></svg>');
+// 4 => Jaune vert - Bleu
+$color-4A-600: map.get(var.$color-4A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-4A-600 + '"/></svg>');
 
 [data-theme-color="4"] {
-  --color-primary: #{map.get(var.$palmas, "500")};
-  --color-primary-100: #{map.get(var.$palmas, "100")};
-  --color-primary-200: #{map.get(var.$palmas, "200")};
-  --color-primary-300: #{map.get(var.$palmas, "300")};
-  --color-primary-400: #{map.get(var.$palmas, "400")};
-  --color-primary-600: #{$palmas-600};
-  --color-primary-700: #{map.get(var.$palmas, "700")};
-  --color-primary-800: #{map.get(var.$palmas, "800")};
-  --color-contrast: #{map.get(var.$blue, "500")};
-  --color-contrast-400: #{map.get(var.$blue, "400")};
+  --color-primary: #{map.get(var.$color-4A, "500")};
+  --color-primary-100: #{map.get(var.$color-4A, "100")};
+  --color-primary-200: #{map.get(var.$color-4A, "200")};
+  --color-primary-300: #{map.get(var.$color-4A, "300")};
+  --color-primary-400: #{map.get(var.$color-4A, "400")};
+  --color-primary-600: #{$color-4A-600};
+  --color-primary-700: #{map.get(var.$color-4A, "700")};
+  --color-primary-800: #{map.get(var.$color-4A, "800")};
+  --color-contrast: #{map.get(var.$color-4B, "500")};
+  --color-contrast-400: #{map.get(var.$color-4B, "400")};
   --color-link: var(--color-contrast);
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$palmas, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$palmas, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-4A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-4A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$palmas, "500")), 0.5)};
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$palmas, "500"), 0.1)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-4A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-4A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-4A, "500"), 0.1)};
 }
 
 
 // 5 =>
-$heliotrope-600: map.get(var.$heliotrope, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $heliotrope-600 + '"/></svg>');
+// $heliotrope-600: map.get(var.$heliotrope, "600");
+// $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $heliotrope-600 + '"/></svg>');
+
+// [data-theme-color="5"] {
+//   --color-primary: #{map.get(var.$heliotrope, "500")};
+//   --color-primary-100: #{map.get(var.$heliotrope, "100")};
+//   --color-primary-200: #{map.get(var.$heliotrope, "200")};
+//   --color-primary-300: #{map.get(var.$heliotrope, "300")};
+//   --color-primary-400: #{map.get(var.$heliotrope, "400")};
+//   --color-primary-600: #{$heliotrope-600};
+//   --color-primary-700: #{map.get(var.$heliotrope, "700")};
+//   --color-primary-800: #{map.get(var.$heliotrope, "800")};
+//   --color-contrast: #{map.get(var.$minsk, "500")};
+//   --color-contrast-400: #{map.get(var.$minsk, "400")};
+//   --color-link: var(--color-contrast);
+
+//   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$heliotrope, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$heliotrope, "500"), 0.2)};
+
+//   // card
+//   --card-backgroundImage: #{$card-backgroundImage};
+//   --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
+//   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
+//   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$heliotrope, "500"), 0.1)};
+// }
+
+
+// 5 => Bleu céleste - Bordeaux
+$color-5A-600: map.get(var.$color-5A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-5A-600 + '"/></svg>');
 
 [data-theme-color="5"] {
-  --color-primary: #{map.get(var.$heliotrope, "500")};
-  --color-primary-100: #{map.get(var.$heliotrope, "100")};
-  --color-primary-200: #{map.get(var.$heliotrope, "200")};
-  --color-primary-300: #{map.get(var.$heliotrope, "300")};
-  --color-primary-400: #{map.get(var.$heliotrope, "400")};
-  --color-primary-600: #{$heliotrope-600};
-  --color-primary-700: #{map.get(var.$heliotrope, "700")};
-  --color-primary-800: #{map.get(var.$heliotrope, "800")};
-  --color-contrast: #{map.get(var.$minsk, "500")};
-  --color-contrast-400: #{map.get(var.$minsk, "400")};
+  --color-primary: #{map.get(var.$color-5A, "500")};
+  --color-primary-100: #{map.get(var.$color-5A, "100")};
+  --color-primary-200: #{map.get(var.$color-5A, "200")};
+  --color-primary-300: #{map.get(var.$color-5A, "300")};
+  --color-primary-400: #{map.get(var.$color-5A, "400")};
+  --color-primary-600: #{$color-5A-600};
+  --color-primary-700: #{map.get(var.$color-5A, "700")};
+  --color-primary-800: #{map.get(var.$color-5A, "800")};
+  --color-contrast: #{map.get(var.$color-5B, "500")};
+  --color-contrast-400: #{map.get(var.$color-5B, "400")};
   --color-link: var(--color-contrast);
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$heliotrope, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$heliotrope, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-5A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-5A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$heliotrope, "500")), 0.5)};
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$heliotrope, "500"), 0.1)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-5A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-5A, "500")), 0.5)};
+
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-5A, "500"), 0.1)};
 }
 
-
-// 6 =>
-$dodger-blue-600: map.get(var.$dodger-blue, "600");
-$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $dodger-blue-600 + '"/></svg>');
+// 6 => Vert brillant - Amarante
+$color-6A-600: map.get(var.$color-6A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-6A-600 + '"/></svg>');
 
 [data-theme-color="6"] {
-  --color-primary: #{map.get(var.$dodger-blue, "500")};
-  --color-primary-100: #{map.get(var.$dodger-blue, "100")};
-  --color-primary-200: #{map.get(var.$dodger-blue, "200")};
-  --color-primary-300: #{map.get(var.$dodger-blue, "300")};
-  --color-primary-400: #{map.get(var.$dodger-blue, "400")};
-  --color-primary-600: #{$dodger-blue-600};
-  --color-primary-700: #{map.get(var.$dodger-blue, "700")};
-  --color-primary-800: #{map.get(var.$dodger-blue, "800")};
-  --color-contrast: #{map.get(var.$bordeaux, "500")};
-  --color-contrast-400: #{map.get(var.$bordeaux, "400")};
+  --color-primary: #{map.get(var.$color-6A, "500")};
+  --color-primary-100: #{map.get(var.$color-6A, "100")};
+  --color-primary-200: #{map.get(var.$color-6A, "200")};
+  --color-primary-300: #{map.get(var.$color-6A, "300")};
+  --color-primary-400: #{map.get(var.$color-6A, "400")};
+  --color-primary-600: #{$color-6A-600};
+  --color-primary-700: #{map.get(var.$color-6A, "700")};
+  --color-primary-800: #{map.get(var.$color-6A, "800")};
+  --color-contrast: #{map.get(var.$color-6B, "500")};
+  --color-contrast-400: #{map.get(var.$color-6B, "400")};
   --color-link: var(--color-contrast);
 
-  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$dodger-blue, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$dodger-blue, "500"), 0.2)};
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-6A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-6A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$dodger-blue, "500")), 0.5)};
-  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$dodger-blue, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-6A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-6A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-6A, "500"), 0.1)};
+}
 
-  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$dodger-blue, "500"), 0.1)};
+/// 7 => Orange - Bleu outremer
+$color-7A-600: map.get(var.$color-7A, "600");
+$card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><path d="M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z" fill="' + $color-7A-600 + '"/></svg>');
+
+[data-theme-color="7"] {
+  --color-primary: #{map.get(var.$color-7A, "500")};
+  --color-primary-100: #{map.get(var.$color-7A, "100")};
+  --color-primary-200: #{map.get(var.$color-7A, "200")};
+  --color-primary-300: #{map.get(var.$color-7A, "300")};
+  --color-primary-400: #{map.get(var.$color-7A, "400")};
+  --color-primary-600: #{$color-7A-600};
+  --color-primary-700: #{map.get(var.$color-7A, "700")};
+  --color-primary-800: #{map.get(var.$color-7A, "800")};
+  --color-contrast: #{map.get(var.$color-7B, "500")};
+  --color-contrast-400: #{map.get(var.$color-7B, "400")};
+  --color-link: var(--color-contrast);
+
+  --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-7A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-7A, "500"), 0.2)};
+
+  // card
+  --card-backgroundImage: #{$card-backgroundImage};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-7A, "500")), 0.5)};
+  --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-7A, "500")), 0.5)};
+  --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-7A, "500"), 0.1)};
 }
