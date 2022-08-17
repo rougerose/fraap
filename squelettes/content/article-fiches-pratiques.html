@@ -74,6 +74,11 @@
           </div>
           <div class="wrapper-content">
             <div class="pod_content">
+              <p class="cluster">
+                <BOUCLE_principal(MOTS){id_article}>
+                  #TITRE <br>
+                </BOUCLE_principal>
+              </p>
               <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
               <ul class="related_list auto-grid gap-top-3" role="list">
                 <BOUCLE_prolonger(ARTICLES){mots 1 #GET{mots}}{exclus}>
@@ -86,6 +91,11 @@
                         </BOUCLE_get_groupes_article>
                       </p>
                     </B_get_groupes_article>
+                    <p class="cluster">
+                      <BOUCLE_get_mots(MOTS){id_article}>
+                        #TITRE <br>
+                      </BOUCLE_get_mots>
+                    </p>
                   </li>
 
                 </BOUCLE_prolonger>
