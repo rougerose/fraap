@@ -7,10 +7,18 @@
 ## Fiches pratiques
 - moteur de recherche
 
+## Accordéon
+- harmoniser les styles avec details + summary
+
+## Annuaire
+- focus sur un point dans la carte : augmenter la valeur du zoom.
+
 ## Contenus Spip
 - supprimer les surtitres (cf. liste de 19 articles à modifier avant).
 - Rubriques : descriptif pour les résumés, texte pour la page proprement dite.
 - schema json+ld
+- liens internes dans le texte en noir.
+- adapter le sommaire automatique aux niveaux des intertitres
 
 
 ## Plugins Spip
@@ -23,6 +31,7 @@
 # Bugs
 
 ## Safari 11.1.2
+- erreurs JS, soulignement intertitres...
 - menu principal et recherche
 - flexbox gap
 - grid gap (grid-gap)
