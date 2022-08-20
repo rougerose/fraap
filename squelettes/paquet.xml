@@ -23,6 +23,7 @@
   <necessite nom="tw" compatibilite="[3.0.3;3.99.*]" />
   <necessite nom="sommaire" compatibilite="[2.0.0;2.0.*]" />
   <necessite nom="encarts" compatibilite="[3.0.1;3.99.*]" />
+  <necessite nom="a2a" compatibilite="[4.0.0;4.99.*]" />
   <!-- <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" /> -->
   <utilise nom="bellespuces" compatibilite="[1.0.2;1.99.*]" />
   <pipeline nom="rezosocios_liste" inclure="fraap_squelettes_pipelines.php" />

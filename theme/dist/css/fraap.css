@@ -916,6 +916,10 @@ ol[role=list] {
   padding: var(--aside-padding);
   border: 2px solid var(--color-primary);
 }
+.aside.variant-plus {
+  border: none;
+  background-color: var(--color-primary);
+}
 
 .aside > * {
   --flow-space: var(--space-m);
