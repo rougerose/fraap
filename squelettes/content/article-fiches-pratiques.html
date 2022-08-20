@@ -1,10 +1,9 @@
 <BOUCLE_article_fiche_pratique(ARTICLES){id_article}>
   #SET{mots, #ARRAY} #SET{groupes, #ARRAY} #SET{id_groupe_mot, ''} #SET{id_groupe_env, #ENV{id_groupe, ''}}
 
-  <BOUCLE_mots_role_secondaire(MOTS){id_article}{role=secondaire}{doublons}> </BOUCLE_mots_role_secondaire>
-  <BOUCLE_mots_role_normal(MOTS){id_article}{role=normal}{doublons}>
+  <BOUCLE_mots(MOTS){id_article}>
     [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
-  </BOUCLE_mots_role_normal>
+  </BOUCLE_mots>
   [(#REM)
     <!--
       1- Récupérer la variable id_groupe : privilégier celle en cours de consultation si elle existe parmi les mots liés à l'article ; sinon la première de la série.
@@ -65,23 +64,22 @@
             </div>
           </div>
         </article>
-        <B_liste_normale>
-          <br><br>
-          <p>
-            <h4>Mots-clés rôle normal</h4>
-            <br>
-            <BOUCLE_liste_normale(MOTS){id_mot IN #GET{mots}}{', '}>#TITRE</BOUCLE_liste_normale>
-          </p>
-        </B_liste_normale>
-
         <B_liste_secondaire>
           <br><br>
           <h4>Mot-clés rôle secondaire</h4>
           <br>
           <p>
-            <BOUCLE_liste_secondaire(MOTS){id_article}{role=secondaire}{', '}>#TITRE</BOUCLE_liste_secondaire>
+            <BOUCLE_liste_secondaire(MOTS){id_article}{role=secondaire}{doublons}{', '}>#TITRE</BOUCLE_liste_secondaire>
           </p>
         </B_liste_secondaire>
+        <B_liste_normale>
+          <br><br>
+          <p>
+            <h4>Mots-clés rôle normal</h4>
+            <br>
+            <BOUCLE_liste_normale(MOTS){id_article}{role=normal}{doublons}{', '}>#TITRE</BOUCLE_liste_normale>
+          </p>
+        </B_liste_normale>
       </div>
     </div>
 
@@ -93,9 +91,9 @@
           </div>
           <div class="wrapper-content">
             <div class="pod_content">
-              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:> (mots-clés)</h2>
               <ul class="related_list auto-grid gap-top-3" role="list">
-                <BOUCLE_prolonger(ARTICLES){mots 0.5 #GET{mots}{!tri}}{exclus}>
+                <BOUCLE_prolonger(ARTICLES){mots 0.5 #GET{mots} !tri}{exclus}>
                   <li class="card variant-box related_item flow">
                     <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe_mot}})]">#TITRE</a></h3>
                     <B_article_prolonger_groupes>
@@ -127,7 +125,7 @@
           </div>
           <div class="wrapper-content">
             <div class="pod_content">
-              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:> (liaisons «&nbsp;à la main&nbsp;» entre articles)</h2>
               <ul class="related_list auto-grid gap-top-3" role="list">
                 <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{par rang}>
                   <li class="card variant-box related_item flow">
