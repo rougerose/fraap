@@ -39,7 +39,8 @@
                 <h1 class="headline_title variant-article">#TITRE</h1>
                 [<p class="headline_subtitle">(#SOUSTITRE)</p>]
                 [<div class="headline_desc variant-article flow measure">(#CHAPO)</div>]
-                <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE|!={#DATE_MODIF}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
+                [(#REM) <!-- Date de publication et éventuellement date de modification si supérieure à 24h après la date de publication  --> ]
+                <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
               </header>
             </div>
           </div>
