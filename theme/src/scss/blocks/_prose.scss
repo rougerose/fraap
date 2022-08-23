@@ -7,12 +7,13 @@
 @use "sass:math";
 
 .prose {
+  --flow-space: var(--space-m);
+
   @extend .flow;
   @extend .wrapper-content;
   max-width: #{math.div(settings.$FRAAP-PROSE-MAX-WIDTH, 16) * 1rem};
 
-  --flow-space: var(--space-m);
-
+  // Variant offset-icon (rubrique et certains articles).
   &.with-offset-icon {
     padding-left: 0;
   }
@@ -54,14 +55,38 @@
     }
   }
 
-  //
+  // Liens
+  // Etendre la couleur à tous liens avec ou sans classe (@voir _links.scss)
+  a {
+    color: var(--color-link);
+  }
+
+  // Etendue des lignes/blocs
   h2,
   h3,
   h4,
   h5,
   h6 {
     max-width: 50ch;
+  }
 
+  p,
+  li,
+  hr {
+    max-width: 70ch;
+  }
+
+  > img,
+  > table {
+    width: 100%;
+  }
+
+  // Ancre des les intertitres
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     a[href^="#"] {
       color: transparent;
       font-weight: 600;
@@ -75,15 +100,6 @@
     }
   }
 
-  > img,
-  > table {
-    width: 100%;
-  }
-
-  p,
-  li {
-    max-width: 70ch;
-  }
 
   /// Details gets more surrounding space, but the inner elements
   /// should all be equal
