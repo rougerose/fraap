@@ -47,14 +47,6 @@
     --flow-space: var(--space-l);
   }
 
-  ul.spip,
-  ol.spip {
-    --flow-space: var(--space-xs);
-    > li + li {
-      margin-top: var(--flow-space);
-    }
-  }
-
   // Liens
   // Etendre la couleur à tous liens avec ou sans classe (@voir _links.scss)
   a {
@@ -97,6 +89,20 @@
     &:hover a[href^="#"],
     a[href^="#"]:focus {
       color: var(--color-link);
+    }
+  }
+
+  // Cibler les blocs d'édition de spip afin d'éviter des conflits
+  // notamment entre les listes de texte et la table des matière
+  // (de type inner).
+  .prose-editor {
+
+    ul.spip,
+    ol.spip {
+      --flow-space: var(--space-xs);
+      > li + li {
+        margin-top: var(--flow-space);
+      }
     }
   }
 

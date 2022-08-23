@@ -10,7 +10,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  */
 function ajouter_styles_toc($texte) {
 	if (strpos($texte, '<ul class="spip">') !== false) {
-		$texte = preg_replace('/<ul class="spip">/Uims', '<ul class="spip toc_list flow-small" role="list">', $texte);
+		$texte = preg_replace('/<ul class="spip">/Uims', '<ul class="spip toc_list" role="list">', $texte);
 	}
 	if (strpos($texte, '<li>') !== false) {
 		$texte = preg_replace('/<li>/', '<li class="toc_item">', $texte);
