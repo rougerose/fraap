@@ -7,7 +7,7 @@
         </div>
         <div class="wrapper-content">
           <div class="pod_content">
-            <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:> (mots-clés)</h2>
+            <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
             <ul class="related_list auto-grid gap-top-3" role="list">
               <BOUCLE_prolonger(ARTICLES){mots 0.5 #ENV{mots} !tri}{exclus}>
                 <li class="card variant-box related_item flow">
@@ -19,11 +19,6 @@
                       </BOUCLE_article_prolonger_groupes>
                     </p>
                   </B_article_prolonger_groupes>
-                  <p class="cluster">
-                    <BOUCLE_get_mots(MOTS){id_article}>
-                      #TITRE<br>
-                    </BOUCLE_get_mots>
-                  </p>
                 </li>
               </BOUCLE_prolonger>
             </ul>
