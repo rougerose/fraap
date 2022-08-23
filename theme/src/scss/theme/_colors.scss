@@ -15,8 +15,6 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-ink-soft: #{map.get(var.$gray, "blue", "500")};
   --color-paper: #{var.$white};
   --color-primary: #{map.get(var.$color-1A, "500")};
-  --color-contrast: #{map.get(var.$color-1B, "500")};
-  --color-contrast-400: #{map.get(var.$color-1B, "400")};
   --color-primary-100: #{map.get(var.$color-1A, "100")};
   --color-primary-200: #{map.get(var.$color-1A, "200")};
   --color-primary-300: #{map.get(var.$color-1A, "300")};
@@ -24,6 +22,9 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-1A-600};
   --color-primary-700: #{map.get(var.$color-1A, "700")};
   --color-primary-800: #{map.get(var.$color-1A, "800")};
+  --color-contrast: #{map.get(var.$color-1B, "500")};
+  --color-contrast-400: #{map.get(var.$color-1B, "400")};
+  --color-contrast-300: #{map.get(var.$color-1B, "300")};
   --color-link: var(--color-contrast);
   --color-link-invert: #{var.$white};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
@@ -62,6 +63,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-2A, "800")};
   --color-contrast: #{map.get(var.$color-2B, "500")};
   --color-contrast-400: #{map.get(var.$color-2B, "400")};
+  --color-contrast-300: #{map.get(var.$color-2B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-2A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-2A, "500"), 0.2)};
@@ -88,6 +90,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-3A, "800")};
   --color-contrast: #{map.get(var.$color-3B, "500")};
   --color-contrast-400: #{map.get(var.$color-3B, "400")};
+  --color-contrast-300: #{map.get(var.$color-3B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-3A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-3A, "500"), 0.2)};
@@ -115,6 +118,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-4A, "800")};
   --color-contrast: #{map.get(var.$color-4B, "500")};
   --color-contrast-400: #{map.get(var.$color-4B, "400")};
+  --color-contrast-300: #{map.get(var.$color-4B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-4A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-4A, "500"), 0.2)};
@@ -169,6 +173,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-5A, "800")};
   --color-contrast: #{map.get(var.$color-5B, "500")};
   --color-contrast-400: #{map.get(var.$color-5B, "400")};
+  --color-contrast-300: #{map.get(var.$color-5B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-5A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-5A, "500"), 0.2)};
@@ -196,6 +201,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-6A, "800")};
   --color-contrast: #{map.get(var.$color-6B, "500")};
   --color-contrast-400: #{map.get(var.$color-6B, "400")};
+  --color-contrast-300: #{map.get(var.$color-6B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-6A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-6A, "500"), 0.2)};
@@ -222,6 +228,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-800: #{map.get(var.$color-7A, "800")};
   --color-contrast: #{map.get(var.$color-7B, "500")};
   --color-contrast-400: #{map.get(var.$color-7B, "400")};
+  --color-contrast-300: #{map.get(var.$color-7B, "300")};
   --color-link: var(--color-contrast);
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-7A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-7A, "500"), 0.2)};
