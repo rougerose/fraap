@@ -1,10 +1,9 @@
 /// Styles contenu produit par SPIP
 
-
 .spip_note_ref {
-  vertical-align: super;
-  line-height: 0;
-  margin-right: 3px;
+  // vertical-align: super;
+  // line-height: 0;
+  // margin-right: 3px;
 
   .notes & {
     vertical-align: baseline;
@@ -12,20 +11,20 @@
   }
 }
 
-.spip_note {
+a.spip_note {
   background-color: var(--color-link);
   border-radius: 2px;
   color: var(--color-paper);
   font-size: 0.8em;
-  padding: 3px 2px 1px;
-  transition: background 0.3s, color 0.3s;
+  padding: 3px 2px 0px;
+  transition: background 0.3s;
 
   &:visited {
     color: var(--color-paper);
   }
 
   &:hover {
-    background-color: var(--color-paper);
-    color: var(--color-link);
+    background-color: var(--color-contrast-300);
+    text-decoration: none;
   }
 }
