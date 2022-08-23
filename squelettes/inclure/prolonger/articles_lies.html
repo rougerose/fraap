@@ -1,0 +1,28 @@
+<BOUCLE_article(ARTICLES){id_article}>
+  <section class="pod variant-banner related">
+    <div class="pod_mask">
+      <div class="pod_bg-mask">
+        <div class="pod_bg-banner"></div>
+      </div>
+      <div class="wrapper-content">
+        <div class="pod_content">
+          <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+          <ul class="related_list auto-grid gap-top-3" role="list">
+            <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{par rang}>
+              <li class="card variant-box related_item flow">
+                <h3 class="card_heading"><a href="#URL_ARTICLE{#ID_ARTICLE_LIE}">#INFO_TITRE{article, #ID_ARTICLE_LIE}</a></h3>
+                <B_article_liaison_prolonger_groupes>
+                  <p class="cluster">
+                    <BOUCLE_article_liaison_prolonger_groupes(MOTS){id_article=#ID_ARTICLE_LIE}{fusion_supprimer}{fusion id_groupe}>
+                      <a href="[(#_article:URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE})]" class="pill">#INFO_TITRE{groupe_mots, #ID_GROUPE}</a>
+                    </BOUCLE_article_liaison_prolonger_groupes>
+                  </p>
+                </B_article_liaison_prolonger_groupes>
+              </li>
+            </BOUCLE_prolonger_liaisons>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BOUCLE_article>

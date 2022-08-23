@@ -65,88 +65,14 @@
             </div>
           </div>
         </article>
-        <B_liste_secondaire>
-          <br><br>
-          <h4>Mot-clés rôle secondaire</h4>
-          <br>
-          <p>
-            <BOUCLE_liste_secondaire(MOTS){id_article}{role=secondaire}{doublons}{', '}>#TITRE</BOUCLE_liste_secondaire>
-          </p>
-        </B_liste_secondaire>
-        <B_liste_normale>
-          <br><br>
-          <p>
-            <h4>Mots-clés rôle normal</h4>
-            <br>
-            <BOUCLE_liste_normale(MOTS){id_article}{role=normal}{doublons}{', '}>#TITRE</BOUCLE_liste_normale>
-          </p>
-        </B_liste_normale>
       </div>
     </div>
 
-    <B_prolonger>
-      <section class="pod variant-banner related">
-        <div class="pod_mask">
-          <div class="pod_bg-mask">
-            <div class="pod_bg-banner"></div>
-          </div>
-          <div class="wrapper-content">
-            <div class="pod_content">
-              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:> (mots-clés)</h2>
-              <ul class="related_list auto-grid gap-top-3" role="list">
-                <BOUCLE_prolonger(ARTICLES){mots 0.5 #GET{mots} !tri}{exclus}>
-                  <li class="card variant-box related_item flow">
-                    <h3 class="card_heading"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #GET{id_groupe_mot}})]">#TITRE</a></h3>
-                    <B_article_prolonger_groupes>
-                      <p class="cluster">
-                        <BOUCLE_article_prolonger_groupes(MOTS){id_article}{fusion_supprimer}{fusion id_groupe}>
-                          <a href="[(#URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE})]" class="pill">#INFO_TITRE{groupe_mots, #ID_GROUPE}</a>
-                        </BOUCLE_article_prolonger_groupes>
-                      </p>
-                    </B_article_prolonger_groupes>
-                    <p class="cluster">
-                      <BOUCLE_get_mots(MOTS){id_article}>
-                        #TITRE<br>
-                      </BOUCLE_get_mots>
-                    </p>
-                  </li>
-                </BOUCLE_prolonger>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </B_prolonger>
-
-    <B_prolonger_liaisons>
-      <section class="pod variant-banner related">
-        <div class="pod_mask">
-          <div class="pod_bg-mask">
-            <div class="pod_bg-banner"></div>
-          </div>
-          <div class="wrapper-content">
-            <div class="pod_content">
-              <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:> (liaisons «&nbsp;à la main&nbsp;» entre articles)</h2>
-              <ul class="related_list auto-grid gap-top-3" role="list">
-                <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{par rang}>
-                  <li class="card variant-box related_item flow">
-                    <h3 class="card_heading"><a href="#URL_ARTICLE{#ID_ARTICLE_LIE}">#INFO_TITRE{article, #ID_ARTICLE_LIE}</a></h3>
-                    <B_article_liaison_prolonger_groupes>
-                      <p class="cluster">
-                        <BOUCLE_article_liaison_prolonger_groupes(MOTS){id_article=#ID_ARTICLE_LIE}{fusion_supprimer}{fusion id_groupe}>
-                          <a href="[(#URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE})]" class="pill">#INFO_TITRE{groupe_mots, #ID_GROUPE}</a>
-                        </BOUCLE_article_liaison_prolonger_groupes>
-                      </p>
-                    </B_article_liaison_prolonger_groupes>
-                  </li>
-                </BOUCLE_prolonger_liaisons>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </B_prolonger_liaisons>
-
+    <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{0,1}>
+      <INCLURE{fond=inclure/prolonger/articles_lies, id_article} />
+    </BOUCLE_prolonger_liaisons>
+      <INCLURE{fond=inclure/prolonger/mots_articles, mots=#GET{mots}, id_article, id_groupe_mot=#GET{id_groupe_mot}} />
+    <//B_prolonger_liaisons>
   </div>
 </BOUCLE_article_fiche_pratique>
 #FILTRE{trim}

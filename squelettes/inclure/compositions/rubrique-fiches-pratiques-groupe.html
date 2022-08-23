@@ -4,8 +4,7 @@
   <INCLURE{fond=inclure/sections/rubrique-fiches-pratiques-groupe-header, icon='icon-rubrique38-64.svg', class_icon=icon-rubrique38, id_groupe} />
 
   #SET{mots, #ARRAY}
-  <BOUCLE_mots_secondaires(MOTS spip_mots_liens spip_articles){objet=article}{role=secondaire}{id_groupe}{par num titre, titre}{articles.statut=publie}{doublons}> </BOUCLE_mots_secondaires>
-  <BOUCLE_mots(MOTS spip_mots_liens spip_articles){objet=article}{id_groupe}{role=normal}{par num titre, titre}{articles.statut=publie}{doublons}>
+  <BOUCLE_mots(MOTS spip_mots_liens spip_articles){objet=article}{id_groupe}{par num titre, titre}{articles.statut=publie}>
     [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
   </BOUCLE_mots>
 
