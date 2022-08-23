@@ -193,8 +193,6 @@
   --color-ink-soft: #71717a;
   --color-paper: white;
   --color-primary: #5ceb24;
-  --color-contrast: #3f2ced;
-  --color-contrast-400: #5d4def;
   --color-primary-100: #e0fbd5;
   --color-primary-200: #bdf7a6;
   --color-primary-300: #9af278;
@@ -202,6 +200,9 @@
   --color-primary-600: #13cd13;
   --color-primary-700: #0fa30f;
   --color-primary-800: #0b790b;
+  --color-contrast: #3f2ced;
+  --color-contrast-400: #5d4def;
+  --color-contrast-300: #7f72f3;
   --color-link: var(--color-contrast);
   --color-link-invert: white;
   --color-disabled: #a0a0a7;
@@ -227,6 +228,7 @@
   --color-primary-800: #dc7609;
   --color-contrast: #85144b;
   --color-contrast-400: #ba1c68;
+  --color-contrast-300: #e02e84;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(220, 118, 9, 0.2), 0 1px 4px rgba(246, 208, 14, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23fbc02d'/%3E%3C/svg%3E");
@@ -246,6 +248,7 @@
   --color-primary-800: #137c1f;
   --color-contrast: #961386;
   --color-contrast-400: #c819b3;
+  --color-contrast-300: #e633d1;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(19, 124, 31, 0.2), 0 1px 4px rgba(56, 240, 77, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%231fd134'/%3E%3C/svg%3E");
@@ -265,6 +268,7 @@
   --color-primary-800: #728307;
   --color-contrast: #3111e4;
   --color-contrast-400: #4f33f0;
+  --color-contrast-300: #7059f3;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(114, 131, 7, 0.2), 0 1px 4px rgba(215, 243, 32, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23beda0b'/%3E%3C/svg%3E");
@@ -284,6 +288,7 @@
   --color-primary-800: #014d83;
   --color-contrast: maroon;
   --color-contrast-400: #c20000;
+  --color-contrast-300: red;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(1, 77, 131, 0.2), 0 1px 4px rgba(13, 193, 253, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2302a3d9'/%3E%3C/svg%3E");
@@ -303,6 +308,7 @@
   --color-primary-800: #2a6006;
   --color-contrast: #89152c;
   --color-contrast-400: #b51c3b;
+  --color-contrast-300: ;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(42, 96, 6, 0.2), 0 1px 4px rgba(96, 222, 13, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%234bae0a'/%3E%3C/svg%3E");
@@ -322,6 +328,7 @@
   --color-primary-800: #7a2900;
   --color-contrast: #2a00c2;
   --color-contrast-400: #3700ff;
+  --color-contrast-300: ;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(122, 41, 0, 0.2), 0 1px 4px rgba(255, 146, 20, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23e04b00'/%3E%3C/svg%3E");
@@ -591,6 +598,15 @@ button::-moz-focus-inner {
   padding: 0;
 }
 
+code {
+  background-color: #f2f2f3;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  padding: 0.125em 0.25em;
+}
+
 .flow > * + *, .prose > * + *, .aside > * + *, details > * + * {
   margin-top: var(--flow-space, var(--space-m));
 }
@@ -664,6 +680,14 @@ details[open] summary::before {
 details[open] summary::after {
   top: 7px;
   transform: rotate(-135deg);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-primary-600);
+}
+hr, hr + * {
+  --flow-space: var(--space-xl);
 }
 
 a:not([class]) {
@@ -751,16 +775,20 @@ h2 {
 }
 
 h3 {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
 }
 
 h4 {
   font-size: var(--step-1);
-  font-style: italic;
 }
 
 h5 {
   font-size: var(--step-1);
+  font-style: italic;
+}
+
+h6 {
+  font-size: var(--step-0);
   font-weight: 500;
 }
 
@@ -895,20 +923,6 @@ ol[role=list] {
 }
 .article_logo img {
   margin: auto;
-}
-
-.article_subtitle {
-  font-size: var(--step-2);
-  font-family: var(--font-family-headings);
-}
-
-.article_date {
-  font-size: var(--step--1);
-  color: var(--color-ink-soft);
-}
-
-.article_body {
-  max-width: 70ch;
 }
 
 .aside {
@@ -1956,10 +1970,9 @@ a:hover .icon-nav-link {
 }
 
 .headline_subtitle {
-  font-size: var(--step-2);
+  font-size: var(--step-3);
   font-family: var(--font-family-headings);
-  font-weight: 300;
-  margin-top: var(--space-m);
+  margin-top: var(--space-xs);
 }
 
 .headline_date {
@@ -2028,7 +2041,7 @@ a:hover .icon-nav-link {
   content: "";
   width: 100px;
   height: 2px;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-600);
   display: block;
   position: absolute;
   top: calc(var(--space-m) * -1);
@@ -2101,8 +2114,8 @@ a:hover .icon-nav-link {
 }
 
 .prose {
-  max-width: 50rem;
   --flow-space: var(--space-m);
+  max-width: 50rem;
 }
 .prose.with-offset-icon {
   padding-left: 0;
@@ -2139,12 +2152,24 @@ a:hover .icon-nav-link {
 .prose ol.spip > li + li {
   margin-top: var(--flow-space);
 }
+.prose a {
+  color: var(--color-link);
+}
 .prose h2,
 .prose h3,
 .prose h4,
 .prose h5,
 .prose h6 {
   max-width: 50ch;
+}
+.prose p,
+.prose li,
+.prose hr {
+  max-width: 70ch;
+}
+.prose > img,
+.prose > table {
+  width: 100%;
 }
 .prose h2 a[href^="#"],
 .prose h3 a[href^="#"],
@@ -2167,14 +2192,6 @@ a:hover .icon-nav-link {
 .prose h6:hover a[href^="#"],
 .prose h6 a[href^="#"]:focus {
   color: var(--color-link);
-}
-.prose > img,
-.prose > table {
-  width: 100%;
-}
-.prose p,
-.prose li {
-  max-width: 70ch;
 }
 
 .related_list {
@@ -3019,30 +3036,25 @@ a:hover .icon-nav-link {
   display: none;
 }
 
-.spip_note_ref {
-  vertical-align: super;
-  line-height: 0;
-  margin-right: 3px;
-}
 .notes .spip_note_ref {
   vertical-align: baseline;
   line-height: inherit;
 }
 
-.spip_note {
+a.spip_note {
   background-color: var(--color-link);
   border-radius: 2px;
   color: var(--color-paper);
   font-size: 0.8em;
-  padding: 3px 2px 1px;
-  transition: background 0.3s, color 0.3s;
+  padding: 3px 2px 0px;
+  transition: background 0.3s;
 }
-.spip_note:visited {
+a.spip_note:visited {
   color: var(--color-paper);
 }
-.spip_note:hover {
-  background-color: var(--color-paper);
-  color: var(--color-link);
+a.spip_note:hover {
+  background-color: var(--color-contrast-300);
+  text-decoration: none;
 }
 
 .spip-admin-float {

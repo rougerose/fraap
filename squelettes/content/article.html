@@ -1,27 +1,50 @@
-<BOUCLE_article_standard(ARTICLES){id_article}>
-  <div class="page-article">
+<BOUCLE(ARTICLES){id_article}>
+  [(#REM)
+    <!-- Préparer le sommaire -->
+  ][(#SET{sommaire, #SOMMAIRE{#TEXTE}|ajouter_styles_toc|supprimer_soulignement})]
+  <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
-      <!-- logo ou document avec role -->
-      <!-- <div class="region">
-        <div class="logo-fake"></div>
-      </div> -->
     </div>
     <div class="wrapper-content" data-flush>
       <div class="region">
-        <article class="article prose">
-          <!-- TODO: utiliser .headline -->
-          <header class="article_header flow">
-            <h1 class="article_title header_title">#TITRE</h1>
-            [<p>(#SOUSTITRE)</p>]
-            [<div class="article_intro header_desc weight-300">(#CHAPO)</div>]
-            <p>[Publié le (#DATE|affdate)]</p>
-          </header>
-          [<div class="article_body flow">
-            (#TEXTE)
-          </div>]
+        <article class="article">
+          <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+            [(#GET{sommaire}|oui)<div class="toc" data-type="layout-only"></div>]
+            <div class="prose">
+              <header class="headline">
+                <h1 class="headline_title variant-article">#TITRE</h1>
+                [<p class="headline_subtitle">(#SOUSTITRE)</p>]
+                [<div class="headline_desc variant-article flow measure">(#CHAPO)</div>]
+                [(#REM) <!-- Date de publication et éventuellement date de modification si supérieure à 24h après la date de publication  --> ]
+                <p class="headline_date">
+                  <:fraap_squelettes:date_publication_article:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]
+                </p>
+              </header>
+            </div>
+          </div>
+          <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+            [<nav class="toc gap-top-5 flow-small" data-type="side">
+              <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
+              (#GET{sommaire})
+            </nav>]
+            <div class="prose">
+              [<div class="toc gap-top-5" data-type="inner">
+                <details role="navigation">
+                  <summary><:fraap_squelettes:toc_titre:></summary>
+                  (#GET{sommaire})
+                </details>
+              </div>]
+              [<div class="flow gap-top-5">
+                (#TEXTE|ancres_sommaire)
+              </div>]
+              [<div class="notes auto-grid gap-top-6">
+                (#NOTES)
+              </div>]
+            </div>
+          </div>
         </article>
       </div>
     </div>
   </div>
-</BOUCLE_article_standard>
+</BOUCLE>
