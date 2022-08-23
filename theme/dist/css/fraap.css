@@ -328,7 +328,7 @@
   --color-primary-800: #7a2900;
   --color-contrast: #2a00c2;
   --color-contrast-400: #3700ff;
-  --color-contrast-300: ;
+  --color-contrast-300: #5729ff;
   --color-link: var(--color-contrast);
   --boxShadow-primary: 0px 4px 15px rgba(122, 41, 0, 0.2), 0 1px 4px rgba(255, 146, 20, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23e04b00'/%3E%3C/svg%3E");
@@ -2144,14 +2144,6 @@ a:hover .icon-nav-link {
 .prose h5 + h6 {
   --flow-space: var(--space-l);
 }
-.prose ul.spip,
-.prose ol.spip {
-  --flow-space: var(--space-xs);
-}
-.prose ul.spip > li + li,
-.prose ol.spip > li + li {
-  margin-top: var(--flow-space);
-}
 .prose a {
   color: var(--color-link);
 }
@@ -2192,6 +2184,14 @@ a:hover .icon-nav-link {
 .prose h6:hover a[href^="#"],
 .prose h6 a[href^="#"]:focus {
   color: var(--color-link);
+}
+.prose .prose-editor ul.spip,
+.prose .prose-editor ol.spip {
+  --flow-space: var(--space-xs);
+}
+.prose .prose-editor ul.spip > li + li,
+.prose .prose-editor ol.spip > li + li {
+  margin-top: var(--flow-space);
 }
 
 .related_list {
@@ -2844,6 +2844,7 @@ a:hover .icon-nav-link {
 }
 
 .toc {
+  --toc-vertical-space: var(--space-xs);
   font-size: var(--step--1);
   line-height: 1.2;
 }
@@ -2859,17 +2860,26 @@ a:hover .icon-nav-link {
   font-family: var(--font-family-sans);
 }
 
+.toc_list .toc_list {
+  margin: calc(var(--toc-vertical-space) / 2) 0;
+}
+.toc_list .toc_list .toc_item {
+  padding-left: 8px;
+  padding-bottom: 0;
+  border-left: 1px solid #cfcfd3;
+}
+
+.toc_item {
+  padding: calc(var(--toc-vertical-space) / 2) 0;
+}
 .toc_item a {
   color: var(--color-ink);
 }
 .toc_item a:hover {
   color: var(--color-link);
 }
-.toc_item.is-active {
+.toc_item.is-active > a {
   font-weight: 600;
-}
-.toc_item.is-active,
-.toc_item.is-active a {
   color: var(--color-link);
 }
 
@@ -3055,6 +3065,19 @@ a.spip_note:visited {
 a.spip_note:hover {
   background-color: var(--color-contrast-300);
   text-decoration: none;
+}
+
+a.spip_out::after {
+  background-color: var(--color-contrast);
+  content: "";
+  display: inline-flex;
+  margin-left: 4px;
+  -webkit-mask-image: url(../../images/icon-link-external-16.svg);
+          mask-image: url(../../images/icon-link-external-16.svg);
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  width: 12px;
+  height: 12px;
 }
 
 .spip-admin-float {
