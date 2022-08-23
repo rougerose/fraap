@@ -1,4 +1,4 @@
-/// PROSE
+/// PROSE / PROSE-EDITOR
 /// https://github.com/GoogleChrome/web.dev/blob/main/src/scss/blocks/_prose.scss
 
 @use "../utilities/wrapper-content";
@@ -47,12 +47,6 @@
     --flow-space: var(--space-l);
   }
 
-  // Liens
-  // Etendre la couleur à tous liens avec ou sans classe (@voir _links.scss)
-  a {
-    color: var(--color-link);
-  }
-
   // Etendue des lignes/blocs
   h2,
   h3,
@@ -92,20 +86,6 @@
     }
   }
 
-  // Cibler les blocs d'édition de spip afin d'éviter des conflits
-  // notamment entre les listes de texte et la table des matière
-  // (de type inner).
-  .prose-editor {
-
-    ul.spip,
-    ol.spip {
-      --flow-space: var(--space-xs);
-      > li + li {
-        margin-top: var(--flow-space);
-      }
-    }
-  }
-
 
   /// Details gets more surrounding space, but the inner elements
   /// should all be equal
@@ -122,4 +102,61 @@
   //   --flow-space: var(--space-m);
   // }
 
+}
+
+// .prose-editor
+// Cibler les blocs d'édition de spip afin d'éviter des conflits
+// notamment entre les listes de texte et la table des matière
+// (de type inner).
+.prose-editor {
+
+  a[class*="spip"] {
+    color: var(--color-link);
+  }
+
+  a[class*="spip"]:visited {
+    color: var(--color-link-visited);
+  }
+
+  // Lien spip_note
+  a.spip_note {
+    background-color: var(--color-link);
+    border-radius: 2px;
+    color: var(--color-paper);
+    font-size: 0.8em;
+    padding: 3px 2px 0px;
+    transition: background 0.3s;
+
+    &:hover {
+      background-color: var(--color-contrast-300);
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: var(--color-paper);
+    }
+  }
+
+  // Icone sur les liens externes
+  a.spip_out {
+    &::after {
+      background-color: currentColor;
+      content: "";
+      display: inline-flex;
+      margin-left: 4px;
+      mask-image: url(../../images/icon-link-external-16.svg);
+      mask-size: cover;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+
+  ul.spip,
+  ol.spip {
+    --flow-space: var(--space-xs);
+    > li + li {
+      margin-top: var(--flow-space);
+    }
+  }
 }
