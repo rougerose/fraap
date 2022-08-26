@@ -819,7 +819,7 @@ ol[role=list] {
 .cluster {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gutter, var(--space-xs));
+  gap: var(--cluster-gutter, var(--space-xs));
   justify-content: var(--cluster-horizontal-alignment, flex-start);
   align-items: var(--cluster-vertical-alignment, center);
 }
@@ -1191,7 +1191,7 @@ html:not(.js) .button-nav {
 }
 
 .card-member_tags {
-  --gutter: var(--space-2xs);
+  --cluster-gutter: var(--space-2xs);
 }
 
 .card-member_tags-label {
@@ -2018,7 +2018,7 @@ a:hover .icon-nav-link {
 }
 
 .member-profile_online {
-  --gutter: var(--space-xs) var(--space-m);
+  --cluster-gutter: var(--space-xs) var(--space-m);
 }
 .member-profile_online svg {
   fill: currentColor;
@@ -2286,12 +2286,13 @@ a:hover .icon-nav-link {
 }
 
 .related_item {
-  --gutter: var(--space-2xs) var(--space-3xs);
+  --cluster-gutter: var(--space-2xs) var(--space-3xs);
+}
+.related_item.card {
+  max-width: unset;
 }
 .related_item h3 {
   font-family: var(--font-family-sans);
-  font-size: var(--step-0);
-  font-weight: 600;
 }
 .related_item h3 a:hover {
   color: var(--color-link);
@@ -2809,7 +2810,7 @@ a:hover .icon-nav-link {
 }
 
 .teaser-network_action.cluster {
-  --gutter: var(--space-m);
+  --cluster-gutter: var(--space-m);
 }
 
 .teaser-network_image {

@@ -10,12 +10,16 @@
 }
 
 .related_item {
-  --gutter: var(--space-2xs) var(--space-3xs);
+  --cluster-gutter: var(--space-2xs) var(--space-3xs);
+
+  &.card {
+    max-width: unset;
+  }
 
   h3 {
     font-family: var(--font-family-sans);
-    font-size: var(--step-0);
-    font-weight: 600;
+    // font-size: var(--step-0);
+    // font-weight: 600;
 
     a:hover {
       color: var(--color-link);

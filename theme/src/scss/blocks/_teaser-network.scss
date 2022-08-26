@@ -46,7 +46,7 @@
 
 .teaser-network_action {
   &.cluster {
-    --gutter: var(--space-m);
+    --cluster-gutter: var(--space-m);
     // --buttonCta-padding: 8px 8px 6px;
     // --buttonCta-marginLeft: -8px;
   }
