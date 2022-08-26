@@ -89,10 +89,11 @@
     </div>
 
     <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{0,1}>
-      <INCLURE{fond=inclure/prolonger/articles_lies, id_article} />
+      <INCLURE{fond=inclure/prolonger/fiche_pratique-articles_lies, id_article} />
     </BOUCLE_prolonger_liaisons>
-      <INCLURE{fond=inclure/prolonger/mots_articles, mots=#GET{mots}, id_article, id_groupe_mot=#GET{id_groupe_mot}} />
+      <INCLURE{fond=inclure/prolonger/fiche_pratique-mots_articles, mots=#GET{mots}, id_article, id_groupe_mot=#GET{id_groupe_mot}} />
     <//B_prolonger_liaisons>
+
   </div>
 </BOUCLE_article_fiche_pratique>
 #FILTRE{trim}
