@@ -2289,7 +2289,7 @@ a:hover .icon-nav-link {
   --cluster-gutter: var(--space-2xs) var(--space-3xs);
 }
 .related_item.card {
-  max-width: unset;
+  max-width: calc((1132px - var(--auto-grid-gutter-column)) / 2);
 }
 .related_item h3 {
   font-family: var(--font-family-sans);

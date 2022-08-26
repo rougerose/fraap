@@ -13,7 +13,7 @@
   --cluster-gutter: var(--space-2xs) var(--space-3xs);
 
   &.card {
-    max-width: unset;
+    max-width: calc((1132px - var(--auto-grid-gutter-column)) / 2);
   }
 
   h3 {
