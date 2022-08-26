@@ -7,7 +7,9 @@
           <div class="section_content variant-icon-offset flow">
             <div class="auto-grid">
               <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12} _articles}>
-                <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore} />
+                <article class="card abstract flow">
+                  <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore} />
+                </article>
               </BOUCLE_articles>
             </div>
             [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
