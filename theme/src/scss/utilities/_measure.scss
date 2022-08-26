@@ -1,7 +1,7 @@
 /// MEASURE (justification)
 
 .measure {
-  max-width: var(--measure);
+  max-width: var(--measure, 60ch);
 }
 
 .measure-s {

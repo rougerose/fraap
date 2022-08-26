@@ -30,12 +30,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'cta_reseau_annuaire_consulter' => "Consulter l'annuaire",
 	'cta_federation_rencontres_suite' => 'En savoir plus sur les rencontres',
 	'cta_rubrique_publications_toutes' => '@rubrique@ toutes les publications',
+	'cta_telecharger' => 'Télécharger',
 
 	// D
 	'date_publication_article' => 'Publié en ligne le ',
 	'date_mise_a_jour_fiche' => ' et mise à jour le ',
 	'date_publication_fiche' => 'Fiche publiée en ligne le ',
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
+	'document_associe' => 'Document associé',
+	'documents_associes' => 'Documents associés',
 
 	// F
 	'fiche' => '1 fiche pratique',
@@ -45,6 +48,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// H
 	'headline_dernieres_publications' => 'Dernières publications',
 	'headline_fraap_organisation_pro_aussi' => "La Fraap, c'est aussi",
+
+	// I
+	'image_associee' => 'Image associée',
+	'images_associees' => 'Images associées',
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',

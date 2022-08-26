@@ -3,7 +3,9 @@
 /// Têtière de page (rubrique, article, etc.)
 
 
-// .headline {}
+.headline {
+  --measure: 50ch;
+}
 
 .headline_title {
   font-size: var(--step-5);
@@ -31,6 +33,7 @@
   font-size: var(--step-3);
   font-family: var(--font-family-headings);
   margin-top: var(--space-xs);
+  max-width: var(--measure, 60ch) !important;
 }
 
 .headline_date {

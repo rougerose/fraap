@@ -13,16 +13,22 @@
   @extend .wrapper-content;
   max-width: #{math.div(settings.$FRAAP-PROSE-MAX-WIDTH, 16) * 1rem};
 
-  // Variant offset-icon (rubrique et certains articles).
+  // Variante offset-icon (rubrique et certains articles).
   &.with-offset-icon {
     padding-left: 0;
   }
 
+  // Variante article avec un sommaire : le header occupe la largeur
+  // des 2 colonnes (texte et sommaire).
+  &.with-large-width {
+    max-width: 100%;
+  }
+
   // Règles de marges (flow)
-  figure,
-  figure + *,
   aside,
   aside + *,
+  table,
+  table + *,
   h2 {
     --flow-space: var(--space-xl);
   }
@@ -60,11 +66,6 @@
   li,
   hr {
     max-width: 70ch;
-  }
-
-  > img,
-  > table {
-    width: 100%;
   }
 
   // Ancre des les intertitres
@@ -110,6 +111,11 @@
 // (de type inner).
 .prose-editor {
 
+  > table {
+    width: 100%;
+  }
+
+  // Liens
   a[class*="spip"] {
     color: var(--color-link);
   }
@@ -151,12 +157,60 @@
     }
   }
 
-
+  // Listes
   ul.spip,
   ol.spip {
     --flow-space: var(--space-xs);
-    > li + li {
-      margin-top: var(--flow-space);
+    padding-left: 2rem;
+    > li + li,
+    ul,
+    ol {
+      margin-top: calc(var(--flow-space) / 2);
     }
   }
+
+  // Tableaux
+  table {
+    max-width: 100%;
+    min-width: 50%;
+    width: 100%;
+    border-spacing: 0;
+  }
+
+  th,
+  td {
+    padding: 0.8em 0.5em;
+    text-align: left;
+    border-collapse: collapse;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  tr th,
+  tr td {
+    border-bottom: 1px solid var(--color-stroke);
+  }
+
+  caption {
+    caption-side: bottom;
+    padding: 0.8em 0.5em;
+    font-size: var(--step--1);
+  }
+
+  // Citations
+  blockquote {
+    @extend .flow;
+    border-left: 4px solid var(--color-primary-600);
+    margin-left: var(--flow-space);
+    padding-left: var(--flow-space);
+  }
+
+  // Images et documents
+  .spip_document,
+  .spip_document + * {
+    --flow-space: var(--space-xl);
+  }
+
 }

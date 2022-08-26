@@ -7,3 +7,81 @@
     line-height: inherit;
   }
 }
+
+
+/// Documents
+.spip_document {
+  display: flex;
+
+  figcaption {
+    font-size: var(--step--1);
+
+    > p + p {
+      margin-top: var(--space-2xs);
+    }
+  }
+}
+
+// Images
+.spip_document_image {
+
+  > figure {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .portfolio & > figure {
+    margin: 0;
+  }
+
+  figcaption {
+    border-left: 1px solid var(--color-primary);
+    padding: var(--space-xs) 1rem 0;
+  }
+}
+
+
+// Fichiers
+.spip_document_file {
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 1rem;
+  // sidebar
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+
+  > figure {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-width: 60%;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  img {
+    width: 64px;
+    height: auto;
+  }
+}
+
+.spip_doc_titre {
+  font-family: var(--font-family-headings);
+  font-weight: 600;
+  font-size: var(--step-0);
+}
+
+.spip_doc_credits {
+  font-weight: 300;
+}
+
+.spip_doc_action {
+  flex-grow: 1;
+  display: flex;
+
+  .button-cta {
+    flex: 1;
+    justify-content: center;
+  }
+}

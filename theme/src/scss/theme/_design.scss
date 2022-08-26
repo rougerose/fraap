@@ -42,7 +42,7 @@
   --layout-width: calc(100vw - var(--gutter-width));
   --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
 
-  --measure: 60ch;
+  // --measure: 60ch;
   // --measure-m: 70ch;
   // --measure-l: 80ch;
 

@@ -69,3 +69,11 @@
     }
   }
 }
+
+.button-cta_label {
+  span:last-child {
+    color: var(--color-contrast-100);
+    font-size: 0.7em;
+    margin-left: 0.5em;
+  }
+}
