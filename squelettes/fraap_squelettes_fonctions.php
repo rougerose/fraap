@@ -33,6 +33,6 @@ function callback_supprimer_span($matches) {
 	if (strpos($matches[2], '<span') !== false) {
 		return $matches[1] . strip_tags($matches[2]) . $matches[3];
 	} else {
-		return '';
+		return $matches[0];
 	}
 }
