@@ -18,7 +18,7 @@
 - Rubriques : descriptif pour les résumés, texte pour la page proprement dite.
 - schema json+ld
 - liens internes dans le texte en noir.
-- adapter le sommaire automatique aux niveaux des intertitres
+- ~~adapter le sommaire automatique aux niveaux des intertitres~~
 
 
 ## Plugins Spip
