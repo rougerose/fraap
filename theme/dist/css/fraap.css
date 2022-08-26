@@ -2275,8 +2275,8 @@ a:hover .icon-nav-link {
   margin-left: var(--flow-space);
   padding-left: var(--flow-space);
 }
-.prose-editor .spip_document,
-.prose-editor .spip_document + * {
+.prose-editor .spip_documents,
+.prose-editor .spip_documents + * {
   --flow-space: var(--space-xl);
 }
 
@@ -3138,13 +3138,13 @@ a:hover .icon-nav-link {
   line-height: inherit;
 }
 
-.spip_document {
+.spip_documents {
   display: flex;
 }
-.spip_document figcaption {
+.spip_documents figcaption {
   font-size: var(--step--1);
 }
-.spip_document figcaption > p + p {
+.spip_documents figcaption > p + p {
   margin-top: var(--space-2xs);
 }
 
@@ -3155,6 +3155,18 @@ a:hover .icon-nav-link {
 .portfolio .spip_document_image > figure {
   margin: 0;
 }
+
+.spip_documents.oembed figure,
+.spip_document_image figure {
+  flex: 1;
+}
+.spip_documents.oembed .oembed,
+.spip_document_image .oembed {
+  background: var(--color-paper);
+  padding: 0;
+  border-color: var(--color-paper);
+}
+.spip_documents.oembed figcaption,
 .spip_document_image figcaption {
   border-left: 1px solid var(--color-primary);
   padding: var(--space-xs) 1rem 0;

@@ -10,7 +10,7 @@
 
 
 /// Documents
-.spip_document {
+.spip_documents {
   display: flex;
 
   figcaption {
@@ -22,7 +22,7 @@
   }
 }
 
-// Images
+// Images et video oembed
 .spip_document_image {
 
   > figure {
@@ -32,6 +32,19 @@
 
   .portfolio & > figure {
     margin: 0;
+  }
+}
+
+.spip_documents.oembed,
+.spip_document_image {
+  figure {
+    flex: 1;
+  }
+
+  .oembed {
+    background: var(--color-paper);
+    padding: 0;
+    border-color: var(--color-paper);
   }
 
   figcaption {

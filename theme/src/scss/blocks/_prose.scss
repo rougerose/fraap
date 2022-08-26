@@ -208,9 +208,12 @@
   }
 
   // Images et documents
-  .spip_document,
-  .spip_document + * {
+  // Utiliser uniquement le pluriel spip_documentS
+  // car le singulier n'est pas présent dans le modèle utilisé par oembed
+  // .spip_document,
+  // .spip_document + *,
+  .spip_documents,
+  .spip_documents + * {
     --flow-space: var(--space-xl);
   }
-
 }
