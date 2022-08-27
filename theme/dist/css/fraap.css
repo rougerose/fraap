@@ -2056,7 +2056,7 @@ a:hover .icon-nav-link {
   content: "";
   width: 100px;
   height: 2px;
-  background-color: var(--color-primary-600);
+  background-color: var(--color-primary);
   display: block;
   position: absolute;
   top: calc(var(--space-m) * -1);
@@ -2271,8 +2271,7 @@ a:hover .icon-nav-link {
   font-size: var(--step--1);
 }
 .prose-editor blockquote {
-  border-left: 4px solid var(--color-primary-600);
-  margin-left: var(--flow-space);
+  border-left: 4px solid var(--color-primary);
   padding-left: var(--flow-space);
 }
 .prose-editor .spip_documents,

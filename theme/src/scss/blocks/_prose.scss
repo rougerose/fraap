@@ -202,8 +202,7 @@
   // Citations
   blockquote {
     @extend .flow;
-    border-left: 4px solid var(--color-primary-600);
-    margin-left: var(--flow-space);
+    border-left: 4px solid var(--color-primary);
     padding-left: var(--flow-space);
   }
 
