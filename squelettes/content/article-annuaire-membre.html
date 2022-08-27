@@ -8,143 +8,145 @@
       #SET{retour_selection, 0}
     })]
   ]
-  <div class="page-article">
+  <div class="page" data-page="article">
     <div class="wrapper-structure">
       <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
     </div>
     <div class="wrapper-content" data-flush>
-      <article class="article variant-member region[(#LOGO_ARTICLE|oui) with-sidebar]">
-        <div class="prose">
-          [(#GET{retour_selection}|=={1}|oui)
-            [<div class="article_back variant-page-top">
-              <a href="(#URL_RUBRIQUE|parametre_url{mots, #ENV{mots}})" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à votre sélection</a>
-            </div>]
-          ]
-          [<div class="article_logo">
-            <img src="(#LOGO_ARTICLE|image_passe_partout{360}|image_reduire{360,0}|extraire_attribut{src})"[ alt="(#TITRE|attribut_html)"]>
-          </div>]
-        </div>
-        <div class="prose">
-          <!-- TODO: utiliser .headline -->
-          <header class="article_header">
-            <h1 class="article_title header_title weight-600">#TITRE</h1>
-            [<p class="article_subtitle weight-300">(#SOUSTITRE)</p>]
-            [<div class="article_intro header_desc flow gap-top-4 weight-600">(#CHAPO)</div>]
-            [<p class="article_date gap-top-4">Publié en ligne le <time datetime="[(#DATE|date_iso)]">(#DATE|affdate)</time></p>]
-          </header>
-          [<div class="article_body flow gap-top-4">
-            (#TEXTE)
-          </div>]
-          <div class="article_body member-profile flow gap-top-4">
-            <BOUCLE_gis(ARTICLES){id_article}{gis}>
-              <div class="member-profile_map">
-                [(#INCLURE{fond=modeles/carte_gis,
-                  objets=membres,
-                  id_article=#ID_ARTICLE,
-                  center=oui,
-                  style=non,
-                  lon=#LON,
-                  lat=#LAT,
-                  zoom=10})]
-              </div>
-            </BOUCLE_gis>
-            <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}{0,1}>
-              #SET{activites, 1}
-            </BOUCLE_nb_activites>
-
-            <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
-              <h2><span class="text-underline"><:fraap_squelettes:annuaire_activites_associatives:></span></h2>
-              <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe_racine=11}{id_parent!=0}{par id_groupe}>
-                <B_activites>
-                  <h3><span class="text-underline">#_groupes_activites:TITRE</span></h3>
-                  <p class="cluster">
-                    <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
-                      <a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">#TITRE</a>
-                    </BOUCLE_activites>
-                  </p>
-                </B_activites>
-              </BOUCLE_groupes_activites>
-            </BOUCLE_si_activites>
-
-            #SET{adresses, #ARRAY} #SET{territoires, #ARRAY}
-            <BOUCLE_set_adresses(ADRESSES){id_article}{type=work}>
-              [(#SET{localisation, 1})]
-              [(#SET{adresses, #GET{adresses}|push{#ID_ADRESSE}})]
-            </BOUCLE_set_adresses>
-            <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
-              <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
-                [(#SET{localisation, 1})]
-                [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
-              </BOUCLE_territoire>
-            </BOUCLE_set_territoires>
-
-            <BOUCLE_si_localisation(CONDITION){si #GET{localisation}|=={1}}>
-              <h2><span class="text-underline">Adresse</span></h2>
-              <p class="member-profile_address flow">
-                <BOUCLE_get_adresse(ADRESSES){id_adresse IN #GET{adresses}}>
-                  <span class="address">
-                    [<span>(#VOIE)</span> ]
-                    [<span>(#COMPLEMENT)</span> ]
-                    [<span>[(#CODE_POSTAL) ](#VILLE)</span> ]
-                  </span>
-                </BOUCLE_get_adresse>
-                <span class="cluster">
-                  <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
-                    [<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#TITRE)</a>]
-                  </BOUCLE_get_territoires>
-                </span>
-              </p>
-            </BOUCLE_si_localisation>
-
-            #SET{facebook, ''} #SET{twitter, ''} #SET{instagram, ''} #SET{site, ''}
-            <BOUCLE_fb(REZOSOCIOS){type_rezo=facebook}{id_article}>
-              [(#SET{facebook, #LISTE{
-                #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
-                #GET{titre}|concat{' sur Facebook'}|textebrut
-              }})]
-            </BOUCLE_fb>
-            <BOUCLE_tw(REZOSOCIOS){type_rezo=twitter}{id_article}>
-              #SET{twitter, #TYPE_REZO*|rezosocios_url{#NOM_COMPTE}}
-              [(#SET{twitter, #LISTE{
-                #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
-                #GET{titre}|concat{' sur Twitter'}|textebrut
-              }})]
-            </BOUCLE_tw>
-            <BOUCLE_ig(REZOSOCIOS){type_rezo=instagram}{id_article}>
-              [(#SET{instagram, #LISTE{
-                #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
-                #GET{titre}|concat{' sur Instagram'}|textebrut
-              }})]
-            </BOUCLE_ig>
-            <BOUCLE_site(REZOSOCIOS){type_rezo=site}{id_article}>
-              [(#SET{site, #LISTE{
-                #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
-                #VAL{'Site internet '}|concat{#GET{titre}}|textebrut
-              }})]
-            </BOUCLE_site>
-            [(#GET{site}|ou{#GET{facebook}}|ou{#GET{twitter}}|ou{#GET{instagram}})
-              <h2><span class="text-underline">En ligne</span></h2>
-              <p class="cluster member-profile_online">
-                [<a href="(#GET{site/0})" target="_blank">[(#INCLURE{fond=images/icon-website-32.svg, largeur=32, hauteur=32, label=#GET{site/1}})]</a>]
-                [<a href="(#GET{facebook/0})" target="_blank">[(#INCLURE{fond=images/icon-social-facebook-32.svg, largeur=32, hauteur=32, label=#GET{facebook/1}})]</a>]
-                [<a href="(#GET{twitter/0})" target="_blank">[(#INCLURE{fond=images/icon-social-twitter-32.svg, largeur=32, hauteur=32, label=#GET{twitter/1}})]</a>]
-                [<a href="(#GET{instagram/0})" target="_blank">[(#INCLURE{fond=images/icon-social-instagram-32.svg, largeur=32, hauteur=32, label=#GET{instagram/1}})]</a>]
-              </p>
-            ]
-          </div>
-          [<div class="article_notes">
-            <hr>
-            (#NOTES)
-          </div>]
-          <div class="article_back variant-page-bottom gap-top-5">
+      <div class="region">
+        <article class="article variant-member[(#LOGO_ARTICLE|oui) with-sidebar]">
+          <div class="prose">
             [(#GET{retour_selection}|=={1}|oui)
-              [<a href="(#URL_RUBRIQUE|parametre_url{mots, #ENV{mots}})" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à votre sélection</a>]
-            ][(#GET{retour_selection}|=={0}|oui)
-              [<a href="(#URL_RUBRIQUE)" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à l'annuaire</a>]
+              [<div class="article_back variant-page-top">
+                <a href="(#URL_RUBRIQUE|parametre_url{mots, #ENV{mots}})" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à votre sélection</a>
+              </div>]
             ]
+            [<div class="article_logo">
+              <img src="(#LOGO_ARTICLE|image_passe_partout{360}|image_reduire{360,0}|extraire_attribut{src})"[ alt="(#TITRE|attribut_html)"]>
+            </div>]
           </div>
-        </div>
-      </article>
+          <div class="prose">
+            <header class="headline">
+              <h1 class="headline_title variant-article measure">#TITRE</h1>
+              [<p class="headline_subtitle measure">(#SOUSTITRE)</p>]
+              [<div class="headline_desc variant-article prose-editor flow measure">(#CHAPO)</div>]
+              <p class="headline_date">
+                <:fraap_squelettes:date_publication_article:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]
+              </p>
+            </header>
+            [<div class="flow prose-editor gap-top-5">
+              (#TEXTE)
+            </div>]
+            <div class="member-profile flow prose-editor gap-top-5">
+              <BOUCLE_gis(ARTICLES){id_article}{gis}>
+                <div class="member-profile_map">
+                  [(#INCLURE{fond=modeles/carte_gis,
+                    objets=membres,
+                    id_article=#ID_ARTICLE,
+                    center=oui,
+                    style=non,
+                    lon=#LON,
+                    lat=#LAT,
+                    zoom=10})]
+                </div>
+              </BOUCLE_gis>
+              <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}{0,1}>
+                #SET{activites, 1}
+              </BOUCLE_nb_activites>
+
+              <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
+                <h2><span class="text-underline"><:fraap_squelettes:annuaire_activites_associatives:></span></h2>
+                <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe_racine=11}{id_parent!=0}{par id_groupe}>
+                  <B_activites>
+                    <h3><span class="text-underline">#_groupes_activites:TITRE</span></h3>
+                    <p class="cluster">
+                      <BOUCLE_activites(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                        <a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">#TITRE</a>
+                      </BOUCLE_activites>
+                    </p>
+                  </B_activites>
+                </BOUCLE_groupes_activites>
+              </BOUCLE_si_activites>
+
+              #SET{adresses, #ARRAY} #SET{territoires, #ARRAY}
+              <BOUCLE_set_adresses(ADRESSES){id_article}{type=work}>
+                [(#SET{localisation, 1})]
+                [(#SET{adresses, #GET{adresses}|push{#ID_ADRESSE}})]
+              </BOUCLE_set_adresses>
+              <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
+                <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
+                  [(#SET{localisation, 1})]
+                  [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
+                </BOUCLE_territoire>
+              </BOUCLE_set_territoires>
+
+              <BOUCLE_si_localisation(CONDITION){si #GET{localisation}|=={1}}>
+                <h2><span class="text-underline">Adresse</span></h2>
+                <p class="member-profile_address flow">
+                  <BOUCLE_get_adresse(ADRESSES){id_adresse IN #GET{adresses}}>
+                    <span class="address">
+                      [<span>(#VOIE)</span> ]
+                      [<span>(#COMPLEMENT)</span> ]
+                      [<span>[(#CODE_POSTAL) ](#VILLE)</span> ]
+                    </span>
+                  </BOUCLE_get_adresse>
+                  <span class="cluster">
+                    <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
+                      [<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#TITRE)</a>]
+                    </BOUCLE_get_territoires>
+                  </span>
+                </p>
+              </BOUCLE_si_localisation>
+
+              #SET{facebook, ''} #SET{twitter, ''} #SET{instagram, ''} #SET{site, ''}
+              <BOUCLE_fb(REZOSOCIOS){type_rezo=facebook}{id_article}>
+                [(#SET{facebook, #LISTE{
+                  #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
+                  #GET{titre}|concat{' sur Facebook'}|textebrut
+                }})]
+              </BOUCLE_fb>
+              <BOUCLE_tw(REZOSOCIOS){type_rezo=twitter}{id_article}>
+                #SET{twitter, #TYPE_REZO*|rezosocios_url{#NOM_COMPTE}}
+                [(#SET{twitter, #LISTE{
+                  #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
+                  #GET{titre}|concat{' sur Twitter'}|textebrut
+                }})]
+              </BOUCLE_tw>
+              <BOUCLE_ig(REZOSOCIOS){type_rezo=instagram}{id_article}>
+                [(#SET{instagram, #LISTE{
+                  #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
+                  #GET{titre}|concat{' sur Instagram'}|textebrut
+                }})]
+              </BOUCLE_ig>
+              <BOUCLE_site(REZOSOCIOS){type_rezo=site}{id_article}>
+                [(#SET{site, #LISTE{
+                  #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
+                  #VAL{'Site internet '}|concat{#GET{titre}}|textebrut
+                }})]
+              </BOUCLE_site>
+              [(#GET{site}|ou{#GET{facebook}}|ou{#GET{twitter}}|ou{#GET{instagram}})
+                <h2><span class="text-underline">En ligne</span></h2>
+                <p class="cluster member-profile_online">
+                  [<a href="(#GET{site/0})" target="_blank">[(#INCLURE{fond=images/icon-website-32.svg, largeur=32, hauteur=32, label=#GET{site/1}})]</a>]
+                  [<a href="(#GET{facebook/0})" target="_blank">[(#INCLURE{fond=images/icon-social-facebook-32.svg, largeur=32, hauteur=32, label=#GET{facebook/1}})]</a>]
+                  [<a href="(#GET{twitter/0})" target="_blank">[(#INCLURE{fond=images/icon-social-twitter-32.svg, largeur=32, hauteur=32, label=#GET{twitter/1}})]</a>]
+                  [<a href="(#GET{instagram/0})" target="_blank">[(#INCLURE{fond=images/icon-social-instagram-32.svg, largeur=32, hauteur=32, label=#GET{instagram/1}})]</a>]
+                </p>
+              ]
+            </div>
+            [<div class="notes prose-editor auto-grid gap-top-6">
+              (#NOTES)
+            </div>]
+            <div class="article_back variant-page-bottom gap-top-5">
+              [(#GET{retour_selection}|=={1}|oui)
+                [<a href="(#URL_RUBRIQUE|parametre_url{mots, #ENV{mots}})" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à votre sélection</a>]
+              ][(#GET{retour_selection}|=={0}|oui)
+                [<a href="(#URL_RUBRIQUE)" class="button-cta variant-button with-icon with-icon-left">[(#INCLURE{fond=images/icon-arrow-left-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}) ]Revenir à l'annuaire</a>]
+              ]
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </BOUCLE_article>
