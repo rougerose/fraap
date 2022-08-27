@@ -4,6 +4,7 @@
 @use "../utilities/wrapper-content";
 @use "../utilities/flow";
 @use "../settings";
+@use "../tools/mq" as mq;
 @use "sass:math";
 
 .prose {
@@ -16,12 +17,6 @@
   // Variante offset-icon (rubrique et certains articles).
   &.with-offset-icon {
     padding-left: 0;
-  }
-
-  // Variante article avec un sommaire : le header occupe la largeur
-  // des 2 colonnes (texte et sommaire).
-  &.with-large-width {
-    max-width: 100%;
   }
 
   // Règles de marges (flow)
@@ -86,23 +81,14 @@
       color: var(--color-link);
     }
   }
+}
 
-
-  /// Details gets more surrounding space, but the inner elements
-  /// should all be equal
-  // details,
-  // details + * {
-  //   --flow-space: var(--space-xl);
-  // }
-
-  // details + details {
-  //   margin-top: 0;
-  // }
-
-  // details > * {
-  //   --flow-space: var(--space-m);
-  // }
-
+// Variante article avec un sommaire : le header occupe la largeur
+// des 2 colonnes (texte et sommaire).
+@include mq.mq($from: l) {
+  .prose.with-large-width {
+    max-width: 100%;
+  }
 }
 
 // .prose-editor

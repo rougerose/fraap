@@ -1,5 +1,6 @@
 /// ARTICLE
 
+@use "../tools/mq" as mq;
 
 .article {
   --sidebar-gutter: var(--space-2xl) 0;
@@ -26,12 +27,18 @@
 .article_logo {
   background-color: var(--color-paper);
   box-shadow: var(--boxShadow-primary);
-  margin: auto;
 
-  img {
+  img, svg {
     margin: auto;
+    padding: 10px;
+  }
+
+  .article.variant-member & {
+    margin: 0 var(--column-padding);
   }
 }
+
+
 
 // .article_header {}
 

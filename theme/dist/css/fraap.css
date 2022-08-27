@@ -626,7 +626,7 @@ code {
 
 details {
   --flow-space: var(--space-xs);
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary-200);
   border-width: 1px 0;
   padding: 1rem 0.25rem 1rem 0.25rem;
   text-align: left;
@@ -652,7 +652,7 @@ details summary::before {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--color-primary);
+  border: 1px solid var(--color-primary-600);
   background-color: transparent;
   top: 50%;
   right: 0;
@@ -918,10 +918,13 @@ ol[role=list] {
 .article_logo {
   background-color: var(--color-paper);
   box-shadow: var(--boxShadow-primary);
-  margin: auto;
 }
-.article_logo img {
+.article_logo img, .article_logo svg {
   margin: auto;
+  padding: 10px;
+}
+.article.variant-member .article_logo {
+  margin: 0 var(--column-padding);
 }
 
 .aside {
@@ -2134,9 +2137,6 @@ a:hover .icon-nav-link {
 .prose.with-offset-icon {
   padding-left: 0;
 }
-.prose.with-large-width {
-  max-width: 100%;
-}
 .prose aside,
 .prose aside + *,
 .prose table,
@@ -2196,6 +2196,11 @@ a:hover .icon-nav-link {
   color: var(--color-link);
 }
 
+@media (min-width: 64em) {
+  .prose.with-large-width {
+    max-width: 100%;
+  }
+}
 .prose-editor > table {
   width: 100%;
 }
@@ -2937,6 +2942,12 @@ a:hover .icon-nav-link {
   position: -webkit-sticky;
   position: sticky;
   top: var(--space-l);
+}
+.toc.variant-right-side {
+  padding-right: var(--column-padding);
+}
+.toc.variant-left-side {
+  padding-left: var(--column-padding);
 }
 
 .toc_heading {

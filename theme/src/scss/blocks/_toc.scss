@@ -12,6 +12,14 @@
     top: var(--space-l);
   }
 
+  &.variant-right-side {
+    padding-right: var(--column-padding);
+  }
+
+  &.variant-left-side {
+    padding-left: var(--column-padding);
+  }
+
   // &[data-type="inner"] {}
 }
 
