@@ -1962,10 +1962,6 @@ a:hover .icon-nav-link {
   width: max-content;
 }
 
-.headline {
-  --measure: 50ch;
-}
-
 .headline_title {
   font-size: var(--step-5);
   font-weight: 600;
@@ -1980,14 +1976,16 @@ a:hover .icon-nav-link {
   flex: 1;
 }
 .headline_title.variant-article {
+  --measure: 50ch;
   font-size: var(--step-4);
 }
 
 .headline_subtitle {
+  --measure: 60ch;
   font-size: var(--step-3);
   font-family: var(--font-family-headings);
   margin-top: var(--space-xs);
-  max-width: var(--measure, 60ch) !important;
+  max-width: var(--measure) !important;
 }
 
 .headline_date {
@@ -2008,6 +2006,7 @@ a:hover .icon-nav-link {
   margin-top: var(--space-l);
 }
 .headline_desc.variant-article {
+  --measure: 60ch;
   font-size: var(--step-2);
   margin-top: var(--space-l-xl);
 }
