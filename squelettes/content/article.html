@@ -13,7 +13,7 @@
     [(#SET{docs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:document_associe, fraap_squelettes:documents_associes}|wrap{<h2>}})]
   </B_docs>
   <BOUCLE_imgs(DOCUMENTS){id_article}{vu=non}{media=image}> </BOUCLE_imgs>
-    [(#SET{imgs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:image_associee, fraap_squelettes:images_associees}|wrap{<h2>}})]
+    [(#SET{imgs, #VAL{<:fraap_squelettes:image_associee:>}|wrap{<h2>}})]
   </B_imgs>
   [(#SET{sommaire, [(#SOMMAIRE{[(#TEXTE) #GET{docs} #GET{imgs}]}|ajouter_styles_toc|supprimer_soulignement)]})]
   <div class="page" data-page="article">

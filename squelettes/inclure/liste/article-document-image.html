@@ -1,9 +1,8 @@
 <B_imgs_associees>
-  [(#SET{titre_imgs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:image_associe, fraap_squelettes:images_associees}})]
   <div class="flow prose-editor gap-top-5">
-    <h2 id="[(#GET{titre_imgs}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
-      <span class="text-underline">#GET{titre_imgs}</span>
-      <a href="[#(#GET{titre_imgs}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
+    <h2 id="[(#VAL{<:fraap_squelettes:image_associee:>}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
+      <span class="text-underline"><:fraap_squelettes:image_associee:></span>
+      <a href="[#(#VAL{<:fraap_squelettes:image_associee:>}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
     </h2>
     <div class="auto-grid portfolio">
       <BOUCLE_imgs_associees(DOCUMENTS){id_article}{vu=non}{media=image}{par rang_lien, num titre, titre, id_document}>

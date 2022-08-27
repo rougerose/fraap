@@ -37,8 +37,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'date_mise_a_jour_fiche' => ' et mise à jour le ',
 	'date_publication_fiche' => 'Fiche publiée en ligne le ',
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
-	'document_associe' => 'Document associé',
-	'documents_associes' => 'Documents associés',
+	'document_associe' => 'Document',
+	'documents_associes' => 'Documents',
 
 	// F
 	'fiche' => '1 fiche pratique',
@@ -50,8 +50,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'headline_fraap_organisation_pro_aussi' => "La Fraap, c'est aussi",
 
 	// I
-	'image_associee' => 'Image associée',
-	'images_associees' => 'Images associées',
+	'image_associee' => 'Portfolio',
+	// 'images_associees' => 'Images associées',
 
 	// L
 	'lien_aller_au_contenu' => 'Aller au contenu',
