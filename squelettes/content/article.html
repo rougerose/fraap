@@ -30,7 +30,7 @@
               [<div class="headline_desc variant-article prose-editor flow measure">(#CHAPO)</div>]
               [(#REM) <!-- Date de publication et éventuellement date de modification si supérieure à 24h après la date de publication  --> ]
               <p class="headline_date">
-                <:fraap_squelettes:date_publication_article:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]
+                <:fraap_squelettes:date_publication_article:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_article:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]
               </p>
             </header>
           </div>

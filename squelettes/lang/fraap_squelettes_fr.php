@@ -35,8 +35,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'cta_telecharger' => 'Télécharger',
 
 	// D
-	'date_publication_article' => 'Publié en ligne le ',
+	'date_mise_a_jour_article' => ' et mis à jour le ',
 	'date_mise_a_jour_fiche' => ' et mise à jour le ',
+	'date_publication_article' => 'Publié en ligne le ',
 	'date_publication_fiche' => 'Fiche publiée en ligne le ',
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
 	'document_associe' => 'Document',
