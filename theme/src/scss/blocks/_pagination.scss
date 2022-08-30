@@ -21,6 +21,7 @@
 .pagination_item {
   > * {
     padding: calc(var(--space-2xs) + 2px) var(--space-2xs) var(--space-2xs);
+    color: var(--color-link);
   }
 
   > .on {
