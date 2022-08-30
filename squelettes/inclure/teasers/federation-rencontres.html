@@ -18,10 +18,10 @@
               </div>
               <BOUCLE_selection-federation-rencontres(SELECTIONS){identifiant=rubrique-federation-rencontres}>
                 <BOUCLE_contenu-federation-rencontres(SELECTIONS_CONTENUS){id_selection}{par rang}{0,1}>
-                  <div class="card variant-box flow">
+                  <div class="card variant-box abstract flow">
                     <div class="flow-small">
-                      [<p class="card_subhead weight-300">(#_selection-federation-rencontres:TITRE)</p>]
-                      <h3 class="card_heading weight-600"><a href="#URL">#TITRE</a></h3>
+                      [<p class="abstract_subheading">(#_selection-federation-rencontres:TITRE)</p>]
+                      <h3 class="card_heading abstract_heading" data-heading-level="3"><a href="#URL">#TITRE</a></h3>
                     </div>
                     <div class="card_desc flow-small">
                       [(#DESCRIPTIF)]

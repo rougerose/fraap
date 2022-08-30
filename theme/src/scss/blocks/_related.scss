@@ -1,12 +1,19 @@
 /// RELATED
-///
 /// Contenus liés à un article
+
+@use "../tools/mq" as mq;
 
 // .related {}
 
 .related_list {
   --auto-grid-gutter-row: var(--space-l);
   --auto-grid-gutter-column: var(--space-l);
+
+  // Désactiver le mode auto-grid
+  @include mq.mq($from: 1100) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
 
 .related_item {
@@ -14,15 +21,5 @@
 
   &.card {
     max-width: calc((1132px - var(--auto-grid-gutter-column)) / 2);
-  }
-
-  h3 {
-    font-family: var(--font-family-sans);
-    // font-size: var(--step-0);
-    // font-weight: 600;
-
-    a:hover {
-      color: var(--color-link);
-    }
   }
 }

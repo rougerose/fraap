@@ -11,7 +11,7 @@
             <ul class="related_list auto-grid gap-top-3" role="list">
               <BOUCLE_prolonger(ARTICLES){mots 0.5 #ENV{mots} !tri}{exclus}>
                 <li class="card variant-box abstract related_item flow">
-                  <INCLURE{fond=inclure/resumes/article-card, id_article, heading_level=4, afficher_date=0} />
+                  <INCLURE{fond=inclure/resumes/article-card, id_article, heading_level=3, afficher_mots=1, afficher_date=0} />
                 </li>
               </BOUCLE_prolonger>
             </ul>

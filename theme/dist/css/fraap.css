@@ -762,7 +762,7 @@ h5,
 h6 {
   font-family: var(--font-family-headings);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 h1 {
@@ -877,6 +877,12 @@ ol[role=list] {
   flex-direction: column;
 }
 
+.abstract_subheading {
+  font-size: var(--step-0);
+  font-family: var(--font-family-headings);
+  text-transform: uppercase;
+}
+
 .abstract_heading {
   font-weight: 600;
 }
@@ -886,18 +892,16 @@ ol[role=list] {
 .abstract_heading[data-heading-level="4"] {
   font-size: var(--step-0);
 }
+.abstract_heading a:hover {
+  color: var(--color-link);
+}
 
-.abstract_desc {
+.abstract--vertical-stretch .abstract_desc {
   flex: 1;
 }
-.abstract_desc .abstract_cta {
+.abstract--vertical-stretch .abstract_desc p:last-child {
   margin-top: auto;
-}
-.abstract_desc p + .abstract_cta {
-  padding-top: var(--space-xs);
-}
-.abstract_desc.variant-list span {
-  color: var(--color-primary-700);
+  padding-top: var(--space-m);
 }
 
 .article {
@@ -1075,12 +1079,6 @@ html:not(.js) .button-nav {
   background-color: var(--color-primary);
   box-shadow: var(--card-box-shadow, var(--card-box-shadow-low));
   padding: var(--space-m);
-}
-
-.card_subhead {
-  font-size: var(--step-0);
-  font-family: var(--font-family-headings);
-  text-transform: uppercase;
 }
 
 .card_heading.variant-underscore {
@@ -1729,6 +1727,10 @@ html:not(.js) .dialog-recherche {
     height: 100%;
   }
 }
+.enum-horizontal > p > span {
+  color: var(--color-primary-700);
+}
+
 .icon {
   height: var(--icon-size, 1em);
   width: var(--icon-size, 1em);
@@ -2328,18 +2330,17 @@ a:hover .icon-nav-link {
   --auto-grid-gutter-row: var(--space-l);
   --auto-grid-gutter-column: var(--space-l);
 }
+@media (min-width: 68.75em) {
+  .related_list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 .related_item {
   --cluster-gutter: var(--space-2xs) var(--space-3xs);
 }
 .related_item.card {
   max-width: calc((1132px - var(--auto-grid-gutter-column)) / 2);
-}
-.related_item h3 {
-  font-family: var(--font-family-sans);
-}
-.related_item h3 a:hover {
-  color: var(--color-link);
 }
 
 .ressources_section h2 {

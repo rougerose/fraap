@@ -14,9 +14,9 @@
               <BOUCLE_mots(MOTS spip_mots_liens){objet=article}{id_groupe=#ID_OBJET}>
                 [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
               </BOUCLE_mots>
-              <li class="card-stack abstract flow-small">
+              <li class="card-stack abstract abstract--vertical-stretch flow">
                 <h2 class="abstract_heading" data-heading-level="3"><a href="[(#URL_RUBRIQUE{#GET{id}}parametre_url{id_groupe, #ID_OBJET})]">#TITRE</a></h2>
-                <div class="abstract_desc variant-list flow-small">
+                <div class="abstract_desc enum-horizontal flow">
                   <BOUCLE_si_descriptif_non(CONDITION){si #DESCRIPTIF|non}>
                     <B_liste_mots>
                       <p>
@@ -27,7 +27,7 @@
                   </BOUCLE_si_descriptif_non>
                   [(#DESCRIPTIF)]
                   <BOUCLE_total_articles(ARTICLES){id_rubrique=#GET{id}}{id_groupe=#ID_OBJET}> </BOUCLE_total_articles>
-                    <p class="abstract_cta"><a href="[(#URL_RUBRIQUE{#GET{id}}|parametre_url{id_groupe, #ID_OBJET})]" class="button-cta variant-link with-icon with-icon-right">[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:fiche, fraap_squelettes:fiches})][ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+                    <p><a href="[(#URL_RUBRIQUE{#GET{id}}|parametre_url{id_groupe, #ID_OBJET})]" class="button-cta variant-link with-icon with-icon-right">[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:fiche, fraap_squelettes:fiches})][ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
                   </B_total_articles>
                 </div>
               </li>

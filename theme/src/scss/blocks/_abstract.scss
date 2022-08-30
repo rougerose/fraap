@@ -10,6 +10,12 @@
   flex-direction: column;
 }
 
+.abstract_subheading {
+  font-size: var(--step-0);
+  font-family: var(--font-family-headings);
+  text-transform: uppercase;
+}
+
 .abstract_heading {
   font-weight: 600;
 
@@ -20,24 +26,20 @@
   &[data-heading-level="4"] {
     font-size: var(--step-0);
   }
+
+  a:hover {
+    color: var(--color-link);
+  }
 }
 
 .abstract_desc {
-  flex: 1;
 
-  // Valeurs de marges selon les contenus
-  .abstract_cta {
-    margin-top: auto;
-  }
+  .abstract--vertical-stretch & {
+    flex: 1;
 
-  p + .abstract_cta {
-    padding-top: var(--space-xs); // --flow-space-small
-  }
-
-  // Variante liste : styles sur le span utilisé comme séparateur
-  &.variant-list {
-    span {
-      color: var(--color-primary-700);
+    p:last-child {
+      margin-top: auto;
+      padding-top: var(--space-m);
     }
   }
 }
