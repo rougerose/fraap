@@ -1,0 +1,16 @@
+<B_rencontres>
+  #ANCRE_PAGINATION
+  <div class="index-timeline">
+    <BOUCLE_rencontres(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12}}>
+      #SET{event, ''}
+      <BOUCLE_event(EVENEMENTS){id_article}>[(#DATE_FIN|>{#ENV{date}}|oui) [(#DATE_DEBUT|<={#ENV{date}}|?{#SET{event, Actuellement}, #SET{event, Bientôt}})]]</BOUCLE_event>
+      <div class="index-timeline_item"[ (#GET{event}|oui)data-event]>
+        <div class="index-timeline_header">[(#DATE|annee|unique|?{[<h2>(#DATE|annee)[ <span>/ (#GET{event})</span>]</h2>], ' '})]</div>
+        <article class="card abstract flow index-timeline_content gap-top-2">
+          <INCLURE{fond=inclure/resumes/article-card, id_article} />
+        </article>
+      </div>
+    </BOUCLE_rencontres>
+  </div>
+  [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
+</B_rencontres>

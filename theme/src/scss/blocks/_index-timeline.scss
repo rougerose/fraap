@@ -1,0 +1,45 @@
+/// INDEX-TIMELINE
+
+@use "../tools/mq" as mq;
+
+.index-timeline {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--auto-grid-placement, auto-fill),
+    minmax(var(--auto-grid-min-item-size, 16rem), 1fr)
+  );
+  row-gap: var(--space-l);
+
+  @include mq.mq($from: 800px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.index-timeline_item {
+  --border-color: var(--color-primary);
+  --header-color: var(--color-primary);
+
+  &[data-event] {
+    --border-color: var(--color-paper);
+    --header-color: var(--color-paper);
+    background-color: var(--color-primary);
+  }
+}
+
+.index-timeline_header {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--header-color);
+  padding: 1rem 1rem 0;
+  height: 2em;
+
+  font-size: var(--step-1);
+
+  > h2 {
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+}
+
+.index-timeline_content {
+  padding: 0 1rem 1rem;
+}

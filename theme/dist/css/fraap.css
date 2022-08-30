@@ -1947,6 +1947,43 @@ a:hover .icon-nav-link {
   stroke: currentColor;
 }
 
+.index-timeline {
+  display: grid;
+  grid-template-columns: repeat(var(--auto-grid-placement, auto-fill), minmax(var(--auto-grid-min-item-size, 16rem), 1fr));
+  row-gap: var(--space-l);
+}
+@media (min-width: 50em) {
+  .index-timeline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.index-timeline_item {
+  --border-color: var(--color-primary);
+  --header-color: var(--color-primary);
+}
+.index-timeline_item[data-event] {
+  --border-color: var(--color-paper);
+  --header-color: var(--color-paper);
+  background-color: var(--color-primary);
+}
+
+.index-timeline_header {
+  border-bottom: 1px solid var(--border-color);
+  color: var(--header-color);
+  padding: 1rem 1rem 0;
+  height: 2em;
+  font-size: var(--step-1);
+}
+.index-timeline_header > h2 {
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+
+.index-timeline_content {
+  padding: 0 1rem 1rem;
+}
+
 .indicator {
   background-color: var(--color-primary);
   border-radius: 100%;
@@ -2091,6 +2128,7 @@ a:hover .icon-nav-link {
 
 .pagination_item > * {
   padding: calc(var(--space-2xs) + 2px) var(--space-2xs) var(--space-2xs);
+  color: var(--color-link);
 }
 .pagination_item > .on {
   background-color: var(--color-contrast);
@@ -3004,6 +3042,10 @@ a:hover .icon-nav-link {
 
 .gap-top-1 {
   margin-top: var(--space-s);
+}
+
+.gap-top-2 {
+  margin-top: var(--space-m);
 }
 
 .gap-top-3 {
