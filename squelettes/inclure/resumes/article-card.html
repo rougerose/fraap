@@ -1,10 +1,17 @@
 [(#ENV{afficher_date}|=={1}|?{
   #SET{afficher_date, ' '}, #SET{afficher_date, ''}
-})]
+})][(#ENV{afficher_mots}|=={1}|?{#SET{afficher_mots, ' '}, #SET{afficher_mots, ''}})]
 <BOUCLE_card(ARTICLES){id_article}>
   <h3 class="card_heading[ (#ENV{variante})] abstract_heading" data-heading-level="#ENV{heading_level, 3}"><a href="#URL_ARTICLE">#TITRE #ENV{heading_level} XX</a></h3>
   <div class="card_desc abstract_desc flow-small">
     [(#DESCRIPTIF)]
     <p>[(#GET{afficher_date}|oui)[<time[ datetime="(#DATE|date_iso)"]>(#DATE|affdate)</time>]]<a href="#URL_ARTICLE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+    <B_mots_article>
+      <p class="cluster">
+        <BOUCLE_mots_article(MOTS){id_article}{par titre}{si #GET{afficher_mots}|oui}>
+          <a href="[(#URL_MOT)]" class="pill">#TITRE</a>
+        </BOUCLE_mots_article>
+      </p>
+    </B_mots_article>
   </div>
 </BOUCLE_card>

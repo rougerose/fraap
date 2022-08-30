@@ -64,6 +64,14 @@
               [<div class="notes prose-editor auto-grid gap-top-6">
                 (#NOTES)
               </div>]
+
+              <B_mots_article>
+                <div class="cluster gap-top-6">
+                  <BOUCLE_mots_article(MOTS){id_article}{par titre}>
+                    <a href="[(#URL_MOT)]" class="pill">#TITRE</a>
+                  </BOUCLE_mots_article>
+                </div>
+              </B_mots_article>
             </div>
           </div>
         </article>
