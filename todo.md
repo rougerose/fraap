@@ -7,6 +7,10 @@
 ## Fiches pratiques
 - moteur de recherche
 
+## Page Mot-clé
+- Différencier articles, fiches pratiques, Médiathèque, et ??
+- référence : https://www.monde-diplomatique.fr/index/pays/royaumeuni#pagination_livres
+
 ## Accordéon
 - harmoniser les styles avec details + summary
 
