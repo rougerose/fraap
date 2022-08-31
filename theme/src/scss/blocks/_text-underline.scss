@@ -7,7 +7,7 @@
 // Cf. https://css-tricks.com/cool-hover-effects-using-background-properties/
 .text-underline {
   background-image: linear-gradient(var(--underline-color) 0 0); // [1]
-  background-size: 100% 45%;
+  background-size: 100% 40%;
   background-repeat: no-repeat;
   background-position: 0 100%;
   box-decoration-break: clone;
@@ -20,5 +20,13 @@
       color: var(--color-link);
       text-decoration: none;
     }
+  }
+}
+
+h4,
+h5,
+h6 {
+  > span.text-underline {
+    background-size: 100% 38%;
   }
 }

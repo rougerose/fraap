@@ -10,7 +10,7 @@
   --auto-grid-gutter-column: var(--space-l);
 
   // Désactiver le mode auto-grid
-  @include mq.mq($from: 1100) {
+  @include mq.mq($from: 1100px) {
     grid-template-columns: repeat(3, 1fr);
   }
 

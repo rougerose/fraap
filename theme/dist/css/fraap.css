@@ -2204,13 +2204,6 @@ a:hover .icon-nav-link {
 .prose h5 + h6 {
   --flow-space: var(--space-l);
 }
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6 {
-  max-width: 50ch;
-}
 .prose p,
 .prose li,
 .prose hr {
@@ -2945,7 +2938,7 @@ a:hover .icon-nav-link {
 }
 .text-underline {
   background-image: linear-gradient(var(--underline-color) 0 0);
-  background-size: 100% 45%;
+  background-size: 100% 40%;
   background-repeat: no-repeat;
   background-position: 0 100%;
   -webkit-box-decoration-break: clone;
@@ -2957,6 +2950,12 @@ a:hover .icon-nav-link {
 .text-underline > a:hover {
   color: var(--color-link);
   text-decoration: none;
+}
+
+h4 > span.text-underline,
+h5 > span.text-underline,
+h6 > span.text-underline {
+  background-size: 100% 38%;
 }
 
 .text-underscore {
