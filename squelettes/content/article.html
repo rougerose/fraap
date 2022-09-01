@@ -1,8 +1,4 @@
 <BOUCLE(ARTICLES){id_article}>
-  #SET{mots, #ARRAY}
-  <BOUCLE_mots(MOTS){id_article}>
-    [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
-  </BOUCLE_mots>
   [(#REM)
     <!--
       Préparer le sommaire, qui s'affiche à condition que #TEXTE contiennent des intertitres,
@@ -87,7 +83,7 @@
     <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{0,1}>
       <INCLURE{fond=inclure/liste/prolonger/article-articles_lies, id_article} />
     </BOUCLE_prolonger_liaisons>
-      <INCLURE{fond=inclure/liste/prolonger/article-mots_articles, mots=#GET{mots}, id_article} />
+      <INCLURE{fond=inclure/liste/prolonger/article-mots_articles, id_article} />
     <//B_prolonger_liaisons>
 
   </div>
