@@ -1,0 +1,26 @@
+/// BOX-FILTERS
+/// Menu de filtres (annuaire, sous-rubrique Plaidoyer)
+
+
+.box-filters {
+  --cluster-vertical-alignment: baseline;
+  --buttonCta-fontsize: var(--step--1);
+  font-size: var(--buttonCta-fontsize);
+  margin: var(--space-xs) 0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: var(--carousel-zindex);
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-primary-200);
+    display: block;
+  }
+}
+
+.box-filters_inner {
+  padding: 0.25rem 0;
+}

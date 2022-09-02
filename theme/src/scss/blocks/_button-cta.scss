@@ -2,13 +2,13 @@
 
 .button-cta {
   color: currentColor;
+  display: inline-flex;
   font-size: var(--buttonCta-fontsize, var(--step-0));
   line-height: 1;
   padding: var(--buttonCta-padding, 0);
   white-space: nowrap;
 
   &.with-icon {
-    display: inline-flex;
     align-items: baseline;
     align-items: center;
 

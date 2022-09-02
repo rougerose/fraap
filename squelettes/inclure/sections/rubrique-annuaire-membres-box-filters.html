@@ -1,4 +1,4 @@
-<div class="directory-members_infos">
+<div class="box-filters_inner">
   <div class="reel">
     <div>
       [(#ENV{articles}|oui)
@@ -8,7 +8,7 @@
       ]
     </div>
     <div>
-        <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogMembers">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]Filtrer</button>
+        <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogMembers">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
     </div>
     <B_selections>
       <BOUCLE_selections(DATA){source table, #ENV{mots}}{par cle}>
@@ -19,7 +19,7 @@
       </BOUCLE_selections>
       [(#ENV{mots}|array_filter|oui)
         <div>
-          [<a href="(#SELF|parametre_url{mots, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]Effacer tout</a>]
+          [<a href="(#SELF|parametre_url{mots, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
         </div>
       ]
     </B_selections>
