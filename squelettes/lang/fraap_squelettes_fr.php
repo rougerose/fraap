@@ -44,7 +44,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'documents_associes' => 'Documents téléchargeables',
 
 	// E
-	'effacer_tout' => 'Supprimer la sélection',
+	'effacer_tout' => 'Tout effacer',
 
 	// F
 	'fiche' => '1 fiche pratique',
