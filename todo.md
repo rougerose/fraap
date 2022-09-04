@@ -3,6 +3,7 @@
 ## WIP
 - Conversion .section -> .pod
 - Ajout data-page des rubriques
+- Ajouter le sous-titre des articles dans les résumés
 
 ## Fiches pratiques
 - moteur de recherche
@@ -10,6 +11,10 @@
 ## Page Mot-clé
 - Différencier articles, fiches pratiques, Médiathèque, et ??
 - référence : https://www.monde-diplomatique.fr/index/pays/royaumeuni#pagination_livres
+
+## Squelettes de Rubrique
+- supprimer la marge gauche liée à l'icône de la rubrique
+- adapter la couleur de l'icône, notamment fiches pratique avec la couleur principale à 500
 
 ## Accordéon
 - harmoniser les styles avec details + summary

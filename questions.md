@@ -1,5 +1,8 @@
 # Questions à régler
 
+## Mots-clés
+- JD : la différence entre communiqué et communiqué Fraap est-elle vraiment pertinente a priori pour l'utilisateur ? Si la Fraap publie un CP d'une autre organisation c'est soit qu'elle le co-signe ou qu'elle soutient cette position, donc c'est à peu près identique en terme d'engagement de la Fraap que si le CP était rédigée par la Fraap ?
+
 ## Annuaire 2022-08-02
 - Ajouter les données de type téléphone ?
 
