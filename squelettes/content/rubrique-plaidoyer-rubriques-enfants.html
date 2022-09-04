@@ -1,0 +1,30 @@
+<BOUCLE_rubrique_standard(RUBRIQUES){id_rubrique}>
+  #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
+  #SET{icon-svg, #GET{icon}|concat{-64.svg}}
+  #SET{articles, #ARRAY}
+  <BOUCLE_liste_articles(ARTICLES){id_rubrique}{mots?}>
+    [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+  </BOUCLE_liste_articles>
+  [(#REM)
+    <!--
+      Récupérer uniquement les groupes de mots-clés pertinents pour la rubrique en cours.
+        - rubrique Élections (id_rubrique 5) : id_groupe 33
+        - rubrique CP (id_rubrique 59) et mobilisation (id_rubrique 62) : id_groupe 32
+    -->
+  ] #SET{groupes, #ARRAY{5, 33, 59, 32, 62, 32}}
+  [(#SET{id_groupe, #GET{groupes/#ENV{id_rubrique}}})]
+  #SET{filtres, #ARRAY}
+  <BOUCLE_filtres(MOTS spip_mots_liens articles){id_groupe_racine=#GET{id_groupe}}{mots_liens.objet=article}{articles.statut=publie}{articles.id_rubrique=#ENV{id_rubrique}}>
+    [(#SET{filtres, #GET{filtres}|push{#ID_MOT}})]
+  </BOUCLE_filtres>
+
+  <div class="page" data-page="rubrique">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+    <INCLURE{fond=inclure/sections/rubrique-header, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique}/>
+
+    <INCLURE{fond=inclure/compositions/rubrique-articles-filtres-mots, articles=#GET{articles}, env, ajax}/>
+
+    <INCLURE{fond=inclure/dialog/rubrique-plaidoyer-rubriques-enfants-filtres, env}/>
+  </div>
+</BOUCLE_rubrique_standard>
