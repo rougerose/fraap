@@ -1,8 +1,15 @@
 import { terser } from "rollup-plugin-terser";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import filesize from "rollup-plugin-filesize";
+
+var output_plugins = [
+  process.env.NODE_ENV === "production" && terser(),
+  filesize(),
+];
 
 export default [
+  // polyfill focus-visible
   {
     input: "focus-visible/src/focus-visible.js",
     plugins: [nodeResolve(), commonjs()],
@@ -10,20 +17,32 @@ export default [
       {
         file: "theme/dist/js/polyfill/focus-visible.js",
         format: "umd",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        plugins: output_plugins,
       },
     ],
   },
+  // Fraap.js : export dans une variable globale Fraap
   {
     input: "theme/src/js/index.js",
     plugins: [nodeResolve(), commonjs()],
     output: [
       {
-        file: "theme/dist/js/fraap.js",
+        file: "theme/dist/js/Fraap.js",
         format: "iife",
-        name: "fraapDialogMembers",
-        exports: "default",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        name: "Fraap",
+        exports: "named",
+        plugins: output_plugins,
+      },
+    ],
+  },
+  {
+    input: "theme/src/js/fraap-members-init.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-members-init.js",
+        format: "es",
+        plugins: output_plugins,
       },
     ],
   },
@@ -34,7 +53,7 @@ export default [
       {
         file: "theme/dist/js/fraap-carousel.js",
         format: "iife",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        plugins: output_plugins,
       },
     ],
   },
@@ -49,20 +68,33 @@ export default [
         name: "FraapMembers",
         exports: "default",
         globals: { jQuery: "$" },
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        plugins: output_plugins,
       },
     ],
   },
+  // {
+  //   input: "theme/src/js/fraap-dialog.js",
+  //   plugins: [nodeResolve(), commonjs()],
+  //   output: [
+  //     {
+  //       file: "theme/dist/js/fraap-dialog.js",
+  //       format: "iife",
+  //       name: "FraapDialog",
+  //       exports: "default",
+  //       plugins: [process.env.NODE_ENV === "production" && terser()],
+  //     },
+  //   ],
+  // },
   {
     input: "theme/src/js/fraap-collapsible.js",
     plugins: [nodeResolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-collapsible.js",
-        format: "umd",
+        format: "iife",
         name: "fraapCollapsible",
         exports: "default",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        plugins: output_plugins,
       },
     ],
   },
@@ -74,7 +106,7 @@ export default [
         file: "theme/dist/js/fraap-scrollspy.js",
         format: "iife",
         name: "fraapCollapsible",
-        plugins: [process.env.NODE_ENV === "production" && terser()],
+        plugins: output_plugins,
       },
     ],
   },
