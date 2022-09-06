@@ -1,5 +1,3 @@
-
-
 /**
  * Collapsible (accordion)
  * Source https://inclusive-components.design/collapsible-sections/
@@ -12,7 +10,7 @@ const collapsibleInit = (container, extend) => {
   const headings = container.querySelectorAll(".collapsible_heading");
 
   if (headings.length > 0) {
-    Array.prototype.forEach.call(headings, (heading) => {
+    headings.forEach((heading) => {
       let btn = heading.firstElementChild,
         target = heading.nextElementSibling,
         checkboxes,
@@ -67,14 +65,14 @@ const collapsibleInit = (container, extend) => {
 };
 
 /**
- * Ajouter dans le bouton les choix de l'utilisateur
+ * Ajouter sur le bouton les choix de l'utilisateur
  *
  * @param {node} btn Élément parent
  * @param {nodeList} checkboxes Les sélections de l'utilisateur
  */
 const addUserChoice = (btn, checkboxes) => {
   let labels = [];
-  Array.prototype.forEach.call(checkboxes, (checkbox) => {
+  checkboxes.forEach((checkbox) => {
     labels.push(checkbox.dataset.label);
   });
 

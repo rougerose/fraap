@@ -95,20 +95,8 @@
       lon=2.890619,
       lat=46.949328,
       zoom=6})]
-    <script>
-      jQuery(function($){
-        // Initialiser les accordéons
-        let container_collapsible = document.querySelector(".directory-members_container-list");
-        if (container_collapsible && container_collapsible.querySelector(".collapsible")) {
-          fraapCollapsible.init(container_collapsible, false);
-        }
-        // Callback de la carte GIS
-        callback_map_members = function(map) {
-          new FraapMembers(map);
-        };
-      });
-    </script>
   </div>
 </div>
 <INCLURE{fond=inclure/dialog/annuaire-membres-filtres, env}/>
+[<script src="(#CHEMIN{dist/js/fraap-members-init.js})"></script>]
 #FILTRE{trim}

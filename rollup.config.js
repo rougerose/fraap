@@ -21,7 +21,8 @@ export default [
       },
     ],
   },
-  // Fraap.js : export dans une variable globale Fraap
+  // Fraap.js : export variable globale Fraap
+  // Dialog
   {
     input: "theme/src/js/index.js",
     plugins: [nodeResolve(), commonjs()],
@@ -35,17 +36,7 @@ export default [
       },
     ],
   },
-  {
-    input: "theme/src/js/fraap-members-init.js",
-    plugins: [nodeResolve(), commonjs()],
-    output: [
-      {
-        file: "theme/dist/js/fraap-members-init.js",
-        format: "es",
-        plugins: output_plugins,
-      },
-    ],
-  },
+  // Carousel / Swiperjs
   {
     input: "theme/src/js/fraap-carousel.js",
     plugins: [nodeResolve(), commonjs()],
@@ -57,6 +48,7 @@ export default [
       },
     ],
   },
+  // Carte de l'annuaire
   {
     input: "theme/src/js/fraap-members.js",
     external: ["jQuery"],
@@ -72,19 +64,19 @@ export default [
       },
     ],
   },
-  // {
-  //   input: "theme/src/js/fraap-dialog.js",
-  //   plugins: [nodeResolve(), commonjs()],
-  //   output: [
-  //     {
-  //       file: "theme/dist/js/fraap-dialog.js",
-  //       format: "iife",
-  //       name: "FraapDialog",
-  //       exports: "default",
-  //       plugins: [process.env.NODE_ENV === "production" && terser()],
-  //     },
-  //   ],
-  // },
+  // Init Carte et Dialog de l'annuaire
+  {
+    input: "theme/src/js/fraap-members-init.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-members-init.js",
+        format: "es",
+        plugins: output_plugins,
+      },
+    ],
+  },
+  // Accordéons
   {
     input: "theme/src/js/fraap-collapsible.js",
     plugins: [nodeResolve(), commonjs()],
@@ -98,6 +90,7 @@ export default [
       },
     ],
   },
+  // Sommaire des articles
   {
     input: "theme/src/js/fraap-scrollspy.js",
     plugins: [nodeResolve(), commonjs()],
@@ -106,6 +99,18 @@ export default [
         file: "theme/dist/js/fraap-scrollspy.js",
         format: "iife",
         name: "fraapCollapsible",
+        plugins: output_plugins,
+      },
+    ],
+  },
+  // Teaser Réseau : animation du compteur
+  {
+    input: "theme/src/js/fraap-network.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-network.js",
+        format: "iife",
         plugins: output_plugins,
       },
     ],

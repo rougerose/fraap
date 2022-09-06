@@ -112,4 +112,4 @@ const fraapNetwork = {
   init: fraapNetworkInit
 }
 
-export default fraapNetwork;
+fraapNetwork.init();

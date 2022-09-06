@@ -1,11 +1,23 @@
-import fraapMenu from "./fraap-menu";
-import fraapDialogRecherche from "./fraap-dialog-recherche";
-import fraapNetwork from "./fraap-network";
-import fraapDialogMembers from "./fraap-dialog-members";
+import FraapDialog from "./fraap-dialog";
+import fraapMenu from "./fraap-main-menu";
 
-fraapMenu.init();
-fraapDialogRecherche.init();
-fraapNetwork.init();
-// Exporter fraapDialogMembers afin de pouvoir l'initialiser
-// depuis le squelettes.
-export default fraapDialogMembers;
+let dialogs = [
+  ["dialogRecherche", {}],
+  ["siteNavOffcanvas", {allowTouchMove: () => true}],
+];
+
+dialogs.forEach((dialog) => {
+  let id = dialog[0],
+    options = dialog[1];
+
+  let dialogEl = document.querySelector("#" + id);
+  if (dialogEl) {
+    if (id == "siteNavOffcanvas") {
+      // Activer les raccourcis avant l'instance Dialog
+      fraapMenu.init();
+    }
+    let dialogInstance = new FraapDialog(dialogEl, options);
+  }
+});
+
+export {FraapDialog};

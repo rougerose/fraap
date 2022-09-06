@@ -1,16 +1,50 @@
-var fraapDialogMembers = (function () {
+var Fraap = (function (exports) {
   'use strict';
 
-  const toggleState = (state, newStatus) => {
-    if (newStatus) {
-      if (state.status === newStatus) {
-        return;
-      }
-      state.status = newStatus;
-    } else {
-      state.status = state.status === "closed" ? "open" : "closed";
-    }
-  };
+  let onScrollTimeout = "",
+    onScrollEnd = [];
+
+  function subMenuFromTo(shortcut, container) {
+    let from = shortcut.closest(".site-nav_list"),
+      to = container.querySelector(new URL(shortcut.href).hash);
+    return { from: from, to: to };
+  }
+
+  function displaySubMenu(shortcut, from, to) {
+    let isBack = from.compareDocumentPosition(to) === 2,
+      menuBody = shortcut.closest("div.site-nav_body");
+
+    to.setAttribute("aria-hidden", "false");
+    from.scrollIntoView({ inline: "start" });
+
+    menuBody.addEventListener("scroll", onScroll, { passive: true });
+    let left = isBack ? 0 : to.offsetLeft;
+    menuBody.scrollTo({ left: left, behavior: "smooth" });
+
+    onScrollEnd.push(() => {
+      from.setAttribute("aria-hidden", "true");
+      to.querySelector("[href]").focus();
+    });
+  }
+
+  function onScroll(event) {
+    clearTimeout(onScrollTimeout);
+    onScrollTimeout = setTimeout(() => {
+      event.target.removeEventListener("scroll", onScroll, { passive: true });
+      onScrollEnd.map((fn) => {
+        fn();
+      });
+      onScrollEnd = [];
+    }, 50);
+  }
+
+  function resetMenu(menu) {
+    menu.querySelectorAll("ul.site-nav_list").forEach((list, index) => {
+      list.setAttribute("aria-hidden", String(index !== 0));
+    });
+    menu.scrollLeft = 0;
+    onScrollEnd = [];
+  }
 
   var focusableSelectors = [
     'a[href]:not([tabindex^="-"])',
@@ -654,171 +688,116 @@ var fraapDialogMembers = (function () {
     }
   };
 
-  const menu = {};
-  const menuOffcanvasId = "siteNavOffcanvas";
-  const menuShortcutsId = "navShortcuts";
+  function FraapDialog(el, BodyScrollOptions) {
+    const self = this;
+    // Prebind pour éviter de perdre les références lors de l'ajout et du retrait de l'événement
+    this._handleEvent = this._handleEvent.bind(this);
+    this.el = el;
+    this.options = BodyScrollOptions || {};
+    this.document = this.el.querySelector('[role="document"]');
+    this.state = new Proxy(
+      {
+        status: "open",
+      },
+      {
+        set(state, key, value) {
+          const oldValue = state[key];
+          state[key] = value;
+          if (oldValue !== value) {
+            self._processState();
+          }
+          return state;
+        },
+      }
+    );
 
-  /**
-   * Menu offcanvas
-   * .
-   * Sources :
-   * https://piccalil.li/tutorial/build-a-fully-responsive-progressively-enhanced-burger-menu/
-   * https://dbushell.com/2021/06/17/css-off-canvas-responsive-navigation/
-   * .
-   */
+    this.create();
+  }
 
-  let onScrollTimeout = "",
-    onScrollEnd = [];
+  FraapDialog.prototype.create = function () {
+    this.dialog = new A11yDialog(this.el);
+    this._toggleState(this.state);
 
-  const menuOffCanvasInit = () => {
-    let container = document.querySelector("#" + menuOffcanvasId);
+    this.dialog.on("show", (dialogEl, dialogEvent) => {
+      this._toggleState(this.state, "open");
+      disableBodyScroll(this.el, this.options);
+      // le bouton est un raccourci vers un sous-menu ?
+      let menuId = dialogEvent.currentTarget.getAttribute("data-menu-controls");
+      if (menuId && menuId !== "menu-0") {
+        if (menuId !== "menu-0") {
+          // Afficher le sous-menu souhaité à l'ouverture de la modale
+          submenuControl(this.document, this.el, menuId);
+        }
+      }
+    });
 
-    if (container) {
-      let content = container.querySelector('div[role="document"]'),
-        body = container.querySelector(".site-nav_body"),
-        dialog = new A11yDialog(container),
-        shortcuts = content.querySelectorAll(
-          'li[data-type-link="shortcut"] [href][data-menu-controls]'
-        );
+    this.dialog.on("hide", (dialogEl, dialogEvent) => {
+      this._toggleState(this.state, "closing");
+      this.document.addEventListener(
+        "transitionend",
+        this._handleEvent
+      );
+    });
+  };
 
-      resetMenu(content);
+  FraapDialog.prototype._processState = function () {
+    this.el.setAttribute("data-dialog-status", this.state.status);
+  };
 
-      shortcuts.forEach((shortcut) => {
-        let subMenuPath = subMenuFromTo(shortcut, content);
+  FraapDialog.prototype._toggleState = function (state, newStatus) {
+    if (newStatus) {
+      if (state.status === newStatus) {
+        return;
+      }
+      state.status = newStatus;
+    } else {
+      state.status = state.status === "closed" ? "open" : "closed";
+    }
+  };
+
+  FraapDialog.prototype._handleEvent = function (event) {
+    this._toggleState(this.state, "closed");
+    this.document.removeEventListener("transitionend", this._handleEvent);
+    enableBodyScroll(event.target, this.options);
+    resetMenu(this.document);
+  };
+
+
+  function submenuControl(dialogDocument, dialogEl, menuId) {
+    let shortcut = dialogDocument.querySelector("a[data-menu-controls=" + menuId + "]"),
+      submenuPath = subMenuFromTo(shortcut, dialogEl);
+    displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
+  }
+
+  function mainMenuInit() {
+    let menuShortcuts = document.querySelector("#navShortcuts"),
+      menuOffcanvas = document.querySelector("#siteNavOffcanvas");
+      menuOffcanvas.querySelector('[role="document"]');
+      let menuShortcutsList, offcanvasShortcutsList;
+
+    if (menuShortcuts && menuOffcanvas) {
+      menuShortcutsList = menuShortcuts.querySelectorAll('li[data-type-link="shortcut"]');
+      offcanvasShortcutsList = menuOffcanvas.querySelectorAll('li[data-type-link="shortcut"] > [href][data-menu-controls]');
+
+      offcanvasShortcutsList.forEach((shortcut) => {
+        let submenuPath = subMenuFromTo(shortcut, menuOffcanvas);
 
         shortcut.addEventListener("click", (event) => {
           event.preventDefault();
-          displaySubMenu(shortcut, subMenuPath.from, subMenuPath.to);
+          displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
         });
       });
 
-      return {
-        container,
-        content,
-        body,
-        dialog,
-      };
-    } else {
-      return null;
-    }
-  };
+      resetMenu(menuOffcanvas);
 
-  // Proxy pour enregistrer l'état du menu.
-  // 3 états possibles: open / closing / closed
-  const menuState = new Proxy(
-    {
-      status: "open",
-    },
-    {
-      set(state, key, value) {
-        const oldValue = state[key];
-        state[key] = value;
-        if (oldValue !== value) {
-          processMenuState();
-        }
-        return state;
-      },
-    }
-  );
-
-  const processMenuState = () => {
-    let offcanvas = menu.offcanvas.container;
-    // Statut du menu par défaut
-    offcanvas.setAttribute("data-dialog-status", menuState.status);
-
-    // Statut de bouton d'ouverture
-    // switch (menuState.status) {
-    //   case "closed":
-    //     openBtn.setAttribute("aria-expanded", "false");
-    //     break;
-    //   case "open":
-    //     openBtn.setAttribute("aria-expanded", "true");
-    //     break;
-    //   case "closing":
-    //     openBtn.setAttribute("aria-expanded", "false");
-    //     break;
-    // }
-  };
-
-  const menuDialogTransitionEnd = (event) => {
-    // Considérer uniquement le div[role="document"] et non le bouton de fermeture
-    if (event.target.hasAttribute("role")) {
-      toggleState(menuState, "closed");
-      event.target.removeEventListener("transitionend", menuDialogTransitionEnd);
-      let body = event.target.querySelector(".site-nav_body");
-      resetMenu(event.target);
-      // Rétablir le scroll
-      enableBodyScroll(body);
-    }
-  };
-
-  // Défilement des sous-menus
-  const onScroll = (event) => {
-    clearTimeout(onScrollTimeout);
-    onScrollTimeout = setTimeout(() => {
-      event.target.removeEventListener("scroll", onScroll, { passive: true });
-      onScrollEnd.map((fn) => {
-        fn();
-      });
-      onScrollEnd = [];
-    }, 50);
-  };
-
-  // Identifier les éléments DOM du menu qui forment
-  // le point de départ et le point d'arrivée.
-  const subMenuFromTo = (shortcut, container) => {
-    let from = shortcut.closest(".site-nav_list"),
-      to = container.querySelector(new URL(shortcut.href).hash);
-    return { from: from, to: to };
-  };
-
-  // smoothscroll.polyfill();
-
-  // Afficher les sous-menus et permettre un lien retour
-  const displaySubMenu = (shortcut, from, to) => {
-    const isBack = from.compareDocumentPosition(to) === 2;
-    let menuBody = shortcut.closest("div.site-nav_body");
-
-    to.setAttribute("aria-hidden", "false");
-    from.scrollIntoView({ inline: "start" });
-
-    menuBody.addEventListener("scroll", onScroll, { passive: true });
-    let left = isBack ? 0 : to.offsetLeft;
-    menuBody.scrollTo({ left: left, behavior: "smooth" });
-
-    onScrollEnd.push(() => {
-      from.setAttribute("aria-hidden", "true");
-      to.querySelector("[href]").focus();
-    });
-  };
-
-  // Mise en place du menu au point zéro et aria minimal
-  const resetMenu = (menu) => {
-    menu.querySelectorAll("div > ul.site-nav_list").forEach((list, index) => {
-      list.setAttribute("aria-hidden", String(index !== 0));
-    });
-    menu.scrollLeft = 0;
-  };
-
-  /**
-   * Menu Shortcuts
-   */
-
-  const menuShortcutsInit = () => {
-    let container = document.querySelector("#" + menuShortcutsId),
-      menuOffcanvas = document.querySelector("#" + menuOffcanvasId);
-
-    if (container && menuOffcanvas) {
-      let shortcuts = container.querySelectorAll("li[data-type-link='shortcut'");
-
-      shortcuts.forEach((shortcut) => {
+      menuShortcutsList.forEach((shortcut) => {
         let link = shortcut.getElementsByTagName("a")[0];
         convertLinkToButton(shortcut, link);
       });
     }
-  };
+  }
 
-  const convertLinkToButton = (el, link) => {
+  function convertLinkToButton(element, link) {
     let linkHTML = link.innerHTML,
       linkAttr = link.attributes,
       button = document.createElement("button");
@@ -831,338 +810,39 @@ var fraapDialogMembers = (function () {
         if ("href" !== attribute.name) {
           button.setAttribute(attribute.name, attribute.value);
           button.setAttribute("type", "button");
-          button.setAttribute("data-a11y-dialog-show", menuOffcanvasId);
+          button.setAttribute("data-a11y-dialog-show", "siteNavOffcanvas");
         }
       }
-      el.replaceChild(button, link);
+      element.replaceChild(button, link);
     }
-    return button;
-  };
-
-  const fraapMenuInit = () => {
-    menuShortcutsInit();
-    menu.offcanvas = menuOffCanvasInit();
-
-    if (menu.offcanvas) {
-      toggleState(menuState);
-
-      menu.offcanvas.dialog.on("show", (dialogEl, dialogEvent) => {
-        toggleState(menuState, "open");
-        // Désactiver le scroll en dehors du menu
-        disableBodyScroll(menu.offcanvas.body, { allowTouchMove: () => true });
-
-        let menuId = dialogEvent.currentTarget.getAttribute("data-menu-controls");
-
-        if (menuId !== "menu-0") {
-          let shortcut = menu.offcanvas.content.querySelector(
-              "a[data-menu-controls=" + menuId + "]"
-            ),
-            submenuPath = subMenuFromTo(shortcut, menu.offcanvas.container);
-
-          displaySubMenu(shortcut, submenuPath.from, submenuPath.to);
-        }
-      });
-
-      menu.offcanvas.dialog.on("hide", (dialogEl, dialogEvent) => {
-        toggleState(menuState, "closing");
-        menu.offcanvas.content.addEventListener(
-          "transitionend",
-          menuDialogTransitionEnd
-        );
-      });
-    }
-  };
-
-  const fraapMenu = {
-    init: fraapMenuInit,
-  };
-
-  const dialogSearchId = "dialogRecherche";
-  let dialogSearch, dialogSearchContent;
-
-  const dialogSearchState = new Proxy(
-    {
-      status: "open",
-    },
-    {
-      set(state, key, value) {
-        const oldValue = state[key];
-        state[key] = value;
-        if (oldValue !== value) {
-          processDialogSearchState();
-        }
-        return state;
-      },
-    }
-  );
-
-  const processDialogSearchState = () => {
-    // Statut de la fenêtre par défaut
-    dialogSearch.setAttribute("data-dialog-status", dialogSearchState.status);
-  };
-
-  const searchDialogTransitionEnd = (event) => {
-    toggleState(dialogSearchState, "closed");
-    event.target.removeEventListener("transitionend", searchDialogTransitionEnd);
-    // Rétablir le scroll
-    enableBodyScroll(event.target);
-  };
-
-  const dialogSearchInit = () => {
-    dialogSearch = document.querySelector("#" + dialogSearchId);
-
-    if (dialogSearch) {
-      let dialog = new A11yDialog(dialogSearch);
-
-      dialogSearchContent = dialogSearch.querySelector(
-        ".dialog-recherche_content"
-      );
-      toggleState(dialogSearchState);
-
-      dialog.on("show", (dialogEl, dialogEvent) => {
-        toggleState(dialogSearchState, "open");
-        // Désactiver le scroll en dehors du menu
-        disableBodyScroll(dialogSearch);
-      });
-
-      dialog.on("hide", (dialogEl, dialogEvent) => {
-        toggleState(dialogSearchState, "closing");
-        dialogSearchContent.addEventListener(
-          "transitionend",
-          searchDialogTransitionEnd
-        );
-      });
-    }
-  };
-
-  const fraapDialogRecherche = {
-    init: dialogSearchInit,
-  };
-
-  /// Shuffle array
-  /// @link https://stackoverflow.com/a/2450976
-
-  function shuffle(array) {
-    let currentIndex = array.length,
-      randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex != 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
+    // return button;
   }
 
-  /// Iterate an array with delay
-  /// @link https://stackoverflow.com/a/45484448
+  const fraapMenu = { init: mainMenuInit };
 
-  const iterate = (array, fn, delay) => {
-    let i = 0,
-      // seed first call and store interval (to clear later)
-      interval = setInterval(() => {
-        // each loop, call passed in function
-        fn(array[i]);
-        // increment, and if we're past array, clear interval
-        i++;
-        if (i >= array.length - 1) {
-          clearInterval(interval);
-        }
-      }, delay);
-    return interval;
-  };
+  let dialogs = [
+    ["dialogRecherche", {}],
+    ["siteNavOffcanvas", {allowTouchMove: () => true}],
+  ];
 
-  /**
-   * Mettre à zéro le compteur des associations
-   */
-  const resetCompteur = (element, attr) => {
-    let compteurTexte = element.querySelector("[data-network-counter-text]"),
-      compteur = attr.debut.toLocaleString("fr", {minimumIntegerDigits: 3});
+  dialogs.forEach((dialog) => {
+    let id = dialog[0],
+      options = dialog[1];
 
-    compteurTexte.innerHTML = attr.format.replace("{}", compteur);
-  };
-
-
-  /**
-   * Animation et incrémentation du compteur des associations
-   */
-  const animerCompteur = (element, attr) => {
-    let compteurTexte = element.querySelector("[data-network-counter-text]"),
-      compteur = attr.debut;
-
-    compteurTexte.innerHTML = attr.format.replace("{}", compteur);
-    let intervalTime = Math.ceil(attr.duree / (attr.fin - attr.debut));
-
-    setTimeout(() => {
-      let interval = setInterval(intervalHandler, intervalTime);
-      function intervalHandler() {
-        compteur +=
-          ((attr.fin - attr.debut) / Math.abs(attr.fin - attr.debut)) * 1;
-        compteurTexte.innerHTML = attr.format.replace(
-          "{}",
-          compteur.toLocaleString("fr", { minimumIntegerDigits: 3 })
-        );
-        if (compteur == attr.fin) {
-          clearInterval(interval);
-        }
+    let dialogEl = document.querySelector("#" + id);
+    if (dialogEl) {
+      if (id == "siteNavOffcanvas") {
+        // Activer les raccourcis avant l'instance Dialog
+        fraapMenu.init();
       }
-    }, attr.delai);
-  };
-
-
-  /**
-   * Sélectionner dans la carte un nombre de points identique
-   * au total des associations et leur attribuer la couleur du thème
-   * via une classe.
-   */
-  const animerCarte = (element, attr) => {
-    let pointsNode = element
-        .querySelector("#mapGroup2")
-        .querySelectorAll("circle"),
-      total = attr.fin,
-      pointsListe = [].slice.call(pointsNode),
-      points = [],
-      intervalTime = Math.ceil(attr.duree / (attr.fin - attr.debut));
-
-    pointsListe = shuffle(pointsListe);
-    points = pointsListe.slice(0, total);
-    iterate(
-      points,
-      function (obj) {
-        obj.classList.add("teaser-network_map-dot");
-      },
-      intervalTime
-    );
-  };
-
-  /**
-   * Activer le script
-   *
-   * Si l'API IntersectionObserver est disponible,
-   * différentes animations sont appliquées :
-   *    - opacité et légère translation d'apparition du bloc entier
-   *    - animation du compteur
-   *    - animation de la carte
-   */
-  const fraapNetworkInit = () => {
-    let network = document.querySelector("[data-network]");
-
-    if (network && !!window.IntersectionObserver) {
-      let compteur = network.querySelector("[data-network-counter]");
-        network.querySelector(".teaser-network_content");
-        let carte = network.querySelector("[data-network-map]"),
-        data = {
-          debut: 0,
-          fin: parseInt(network.getAttribute("data-network-total"), 10) || 0,
-          format: "{}",
-          duree: parseInt(network.getAttribute("data-network-duree"), 10) || 1000,
-          delai: parseInt(network.getAttribute("data-network-delai"), 10) || 0,
-        };
-
-      network.setAttribute("data-network-animation", "wait");
-      resetCompteur(compteur, data);
-
-      let observer = new IntersectionObserver(
-        (entry, observer) => {
-          let el = entry[0];
-          if (el.isIntersecting) {
-            el.target.setAttribute("data-network-animation", "true");
-            animerCompteur(compteur, data);
-            animerCarte(carte, data);
-            observer.unobserve(el.target);
-          }
-        },
-        { threshold: 0.2 }
-      );
-      observer.observe(network);
+      new FraapDialog(dialogEl, options);
     }
-  };
+  });
 
-  const fraapNetwork = {
-    init: fraapNetworkInit
-  };
+  exports.FraapDialog = FraapDialog;
 
-  const dialogMembersId = "dialogMembers";
-  let dialogInstance, dialogMembers, dialogMembersContent;
+  Object.defineProperty(exports, '__esModule', { value: true });
 
+  return exports;
 
-  const dialogMembersState = new Proxy(
-    {
-      status: "open",
-    },
-    {
-      set(state, key, value) {
-        const oldValue = state[key];
-        state[key] = value;
-        if (oldValue !== value) {
-          dialogMembersProcessState();
-        }
-        return state;
-      },
-    }
-  );
-
-
-  const dialogMembersProcessState = () => {
-    // Statut de la fenêtre par défaut
-    dialogMembers.setAttribute("data-dialog-status", dialogMembersState.status);
-  };
-
-
-  const dialogMembersTransitionEnd = (event) => {
-    toggleState(dialogMembersState, "closed");
-    event.target.removeEventListener("transitionend", dialogMembersTransitionEnd);
-    // Rétablir le scroll
-    enableBodyScroll(event.target);
-  };
-
-
-  /**
-   * Init
-   */
-  const dialogMembersInit = () => {
-    dialogMembers = document.querySelector("#" + dialogMembersId);
-
-    if (dialogMembers) {
-      dialogInstance = new A11yDialog(dialogMembers);
-
-      dialogMembersContent = dialogMembers.querySelector(".dialog_content");
-      toggleState(dialogMembersState, "closed");
-
-      dialogInstance.on("show", (dialogEl, dialogEvent) => {
-        toggleState(dialogMembersState, "open");
-        // Désactiver le scroll en dehors du menu
-        disableBodyScroll(dialogMembersContent, { allowTouchMove: () => true });
-      });
-
-      dialogInstance.on("hide", (dialogEl, dialogEvent) => {
-        toggleState(dialogMembersState, "closing");
-        dialogMembersContent.addEventListener(
-          "transitionend",
-          dialogMembersTransitionEnd
-        );
-      });
-
-      return dialogInstance;
-    }
-  };
-
-  const fraapDialogMembers = {
-    init: dialogMembersInit,
-  };
-
-  fraapMenu.init();
-  fraapDialogRecherche.init();
-  fraapNetwork.init();
-
-  return fraapDialogMembers;
-
-})();
+})({});
