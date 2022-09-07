@@ -4,7 +4,7 @@
   -->
 ]
 #SET{articles, #ARRAY}
-<BOUCLE_articles(ARTICLES){gis}{id_rubrique=3}>
+<BOUCLE_articles(ARTICLES){gis}{id_rubrique=#ENV{id_rubrique}}>
   [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
 </BOUCLE_articles>
   [(#SET{total_articles, #TOTAL_BOUCLE})]
