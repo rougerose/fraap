@@ -5,6 +5,9 @@
 - Ajout data-page des rubriques
 - Ajouter le sous-titre des articles dans les résumés
 
+## Observatoire
+Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...
+
 ## Fiches pratiques
 - moteur de recherche
 
@@ -27,7 +30,6 @@
 - Rubriques : descriptif pour les résumés, texte pour la page proprement dite.
 - schema json+ld
 - liens internes dans le texte en noir.
-- ~~adapter le sommaire automatique aux niveaux des intertitres~~
 
 
 ## Plugins Spip
@@ -47,7 +49,6 @@
 - section réseau invisible => prévoir une alternative à IntersectionObserver pour ces versions incompatibles
 
 ## Firefox mobile
-- ~~le header s'agrandit à l'ouverture de la fenêtre offcanvas~~
 - le focus est visible et les styles sont à corriger
 
 ## A vérifier
