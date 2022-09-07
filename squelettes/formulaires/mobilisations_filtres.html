@@ -21,56 +21,52 @@
     <div class="dialog-filters_body">
       #ACTION_FORMULAIRE
       <div class="dialog-filters_inner-body">
-        <BOUCLE_groupe_type(GROUPES_MOTS){id_groupe=36}{si #ENV{afficher_type}}>
-          <div class="collapsible">
-              <B_mots_type>
-                #SET{open_act, 0}
-                [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
-                <h3 class="collapsible_heading">
-                  <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
-                    <span class="collapsible_title">
-                      <span>#TITRE</span>
-                    </span>
-                    [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
-                  </button>
-                  <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
-                </h3>
-                <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
-                  <BOUCLE_mots_type(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
-                    <div class="choix">
-                      <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_mot, mots} />
-                    </div>
-                  </BOUCLE_mots_type>
-                </div>
-              </B_mots_type>
-          </div>
-        </BOUCLE_groupe_type>
-        <//B_groupe_type>
-        <BOUCLE_groupe_themes(GROUPES_MOTS){id_groupe=37}{si #ENV{afficher_theme}}>
-          <div class="collapsible">
-              <B_mots_themes>
-                #SET{open_act, 0}
-                [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
-                <h3 class="collapsible_heading">
-                  <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
-                    <span class="collapsible_title">
-                      <span>#TITRE</span>
-                    </span>
-                    [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
-                  </button>
-                  <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
-                </h3>
-                <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
-                  <BOUCLE_mots_themes(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
-                    <div class="choix">
-                      <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_mot, mots} />
-                    </div>
-                  </BOUCLE_mots_themes>
-                </div>
-              </B_mots_themes>
-          </div>
-        </BOUCLE_groupe_themes>
-        <//B_groupe_themes>
+        <div class="collapsible">
+          <BOUCLE_groupe_type(GROUPES_MOTS){id_groupe=36}{si #ENV{options/afficher_types, 1}}>
+            <B_mots_type>
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title">
+                    <span>#TITRE</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_mots_type(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=#ENV{id_rubrique}, id_mot, mots} />
+                  </div>
+                </BOUCLE_mots_type>
+              </div>
+            </B_mots_type>
+          </BOUCLE_groupe_type>
+          <BOUCLE_groupe_themes(GROUPES_MOTS){id_groupe=37}{si #ENV{options/afficher_themes, 1}}>
+            <B_mots_themes>
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title">
+                    <span>#TITRE</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_mots_themes(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=#ENV{id_rubrique}, id_mot, mots} />
+                  </div>
+                </BOUCLE_mots_themes>
+              </div>
+            </B_mots_themes>
+          </BOUCLE_groupe_themes>
+        </div>
       </div>
     </div>
     [(#REM)

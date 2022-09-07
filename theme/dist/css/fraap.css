@@ -209,6 +209,14 @@
   --color-link-visited: var(--color-primary-800);
   --color-stroke: #cfcfd3;
   --color-disabled: #a0a0a7;
+  --color-callout-bg: rgba(207, 207, 211, 0.1);
+  --color-callout-border: #cfcfd3;
+  --color-callout-bg-info: rgba(13, 204, 242, 0.1);
+  --color-callout-border-info: #0dccf2;
+  --color-callout-bg-warn: rgba(253, 126, 23, 0.1);
+  --color-callout-border-warn: #fd7e17;
+  --color-callout-bg-alert: rgba(226, 18, 39, 0.1);
+  --color-callout-border-alert: #e21227;
   --boxShadow-primary: 0px 4px 15px rgba(10, 103, 10, 0.2), 0 1px 4px rgba(92, 235, 36, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2313cd13'/%3E%3C/svg%3E");
   --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(92, 235, 36, 0.5);
@@ -1092,6 +1100,24 @@ html:not(.js) .button-nav {
   background-color: var(--color-contrast-400);
   background-size: 100%;
   transition: background 0s;
+}
+
+.callout {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-callout-bg);
+  border-left: 8px solid var(--color-callout-border);
+}
+.callout.variant-info {
+  --color-callout-bg: var(--color-callout-bg-info);
+  --color-callout-border: var(--color-callout-border-info);
+}
+.callout.variant-warn {
+  --color-callout-bg: var(--color-callout-bg-warn);
+  --color-callout-border: var(--color-callout-border-warn);
+}
+.callout.variant-alert {
+  --color-callout-bg: var(--color-callout-bg-alert);
+  --color-callout-border: var(--color-callout-border-alert);
 }
 
 .card {

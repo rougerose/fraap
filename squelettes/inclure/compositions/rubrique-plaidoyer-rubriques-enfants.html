@@ -1,0 +1,35 @@
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+  <B_articles>
+    <div class="wrapper-content">
+      #ANCRE_PAGINATION
+      <div id="articles" class="box-filters">
+        <INCLURE{fond=inclure/sections/rubrique-box-filters, id_rubrique, env}/>
+      </div>
+      <div class="offset-icon gap-top-5">
+        <div class="auto-grid">
+          <BOUCLE_articles(ARTICLES){id_rubrique}{mots?}{!par date}{pagination #ENV{pagination, 12}}>
+            <article class="card abstract flow">
+              <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=1} />
+            </article>
+          </BOUCLE_articles>
+        </div>
+        [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
+      </div>
+    </div>
+  </B_articles>
+    <div class="wrapper-content">
+      #ANCRE_PAGINATION
+      <div id="articles" class="box-filters">
+        <INCLURE{fond=inclure/sections/rubrique-box-filters, id_rubrique, env}/>
+      </div>
+      <div class="offset-icon gap-top-5 flow">
+        <div class="callout variant-warn">
+          <p><strong><:fraap_squelettes:resultat_aucun:>.</strong></p>
+          <p><:fraap_squelettes:message_recharger_page{url=#URL_RUBRIQUE}:></p>
+        </div>
+      </div>
+    </div>
+  <//B_articles>
+  <INCLURE{fond=inclure/dialog/rubrique-plaidoyer-rubriques-enfants-filtres, articles=#ENV{articles}, id_rubrique, env}/>
+  [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
+</BOUCLE_rubrique>

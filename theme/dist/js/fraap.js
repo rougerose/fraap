@@ -822,7 +822,7 @@ var Fraap = (function (exports) {
 
   let dialogs = [
     ["dialogRecherche", {}],
-    ["siteNavOffcanvas", {allowTouchMove: () => true}],
+    ["siteNavOffcanvas", { allowTouchMove: () => true }],
   ];
 
   dialogs.forEach((dialog) => {

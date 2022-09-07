@@ -6,7 +6,7 @@
     [(#SET{mots_compteur, #GET{mots_compteur}|array_unique})]
   ]
   <B_total_mots>
-    <BOUCLE_total_mots(ARTICLES){id_rubrique=3}{mots 100% #GET{mots_compteur}}> </BOUCLE_total_mots>
+    <BOUCLE_total_mots(ARTICLES){id_rubrique=#ENV{id_rubrique}}{mots 100% #GET{mots_compteur}}> </BOUCLE_total_mots>
     [(#SET{total, #TOTAL_BOUCLE})]
   </B_total_mots>
   <input type="checkbox" name="mots\[\]" class="checkbox" id="mot#ID_MOT" value="#ID_MOT"[(#ENV{mots}|find{#ID_MOT}|oui) checked="checked"][ (#GET{total}|=={0}|oui) disabled ] data-label="[(#TITRE|attribut_html)]"/>

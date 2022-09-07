@@ -76,6 +76,18 @@ export default [
       },
     ],
   },
+  // Init Dialog Filtres
+  {
+    input: "theme/src/js/fraap-dialog-filtres-init.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-dialog-filtres-init.js",
+        format: "iife",
+        plugins: output_plugins,
+      },
+    ],
+  },
   // Accordéons
   {
     input: "theme/src/js/fraap-collapsible.js",

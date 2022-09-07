@@ -39,7 +39,7 @@
               <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
                 <BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
                   <div class="choix">
-                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_mot, mots} />
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=3, id_mot, mots} />
                   </div>
                 </BOUCLE_mots_activites>
               </div>
@@ -64,7 +64,7 @@
               <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_loc}|=={1}|?{'',hidden})]>
                 <BOUCLE_mots_localisation(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
                   <div class="choix">
-                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_mot, mots} />
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=3, id_mot, mots} />
                   </div>
                 </BOUCLE_mots_localisation>
               </div>

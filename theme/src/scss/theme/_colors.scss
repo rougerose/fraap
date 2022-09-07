@@ -32,6 +32,15 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-link-visited: var(--color-primary-800);
   --color-stroke: #{map.get(var.$gray, "blue", "200")};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
+  --color-callout-bg: #{rgba(map.get(var.$gray, "blue", "200"), 0.1)};
+  --color-callout-border: #{map.get(var.$gray, "blue", "200")};
+  --color-callout-bg-info: #{rgba(var.$color-info, 0.1)};
+  --color-callout-border-info: #{var.$color-info};
+  --color-callout-bg-warn: #{rgba(var.$color-warn, 0.1)};
+  --color-callout-border-warn: #{var.$color-warn};
+  --color-callout-bg-alert: #{rgba(var.$color-alert, 0.1)};
+  --color-callout-border-alert: #{var.$color-alert};
+
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-1A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
 
@@ -69,8 +78,8 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-2B, "400")};
   --color-contrast-300: #{map.get(var.$color-2B, "300")};
   --color-contrast-100: #{map.get(var.$color-2B, "100")};
-  // --color-link: var(--color-contrast);
   --color-link-visited: #{map.get(var.$color-2A, "900")};
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-2A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-2A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-2A, "500"), 0.2)};
 
@@ -98,8 +107,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-3B, "400")};
   --color-contrast-300: #{map.get(var.$color-3B, "300")};
   --color-contrast-100: #{map.get(var.$color-3B, "100")};
-  // --color-link: var(--color-contrast);
-  // --color-link-visited: #{map.get(var.$color-3A, "800")};
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-3A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-3A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-3A, "500"), 0.2)};
 
@@ -128,8 +136,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-4B, "400")};
   --color-contrast-300: #{map.get(var.$color-4B, "300")};
   --color-contrast-100: #{map.get(var.$color-4B, "100")};
-  // --color-link: var(--color-contrast);
-  // --color-link-visited: #{map.get(var.$color-4A, "800")};
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-4A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-4A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-4A, "500"), 0.2)};
 
@@ -185,8 +192,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-5B, "400")};
   --color-contrast-300: #{map.get(var.$color-5B, "300")};
   --color-contrast-100: #{map.get(var.$color-5B, "100")};
-  // --color-link: var(--color-contrast);
-  // --color-link-visited: #{map.get(var.$color-5A, "800")};
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-5A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-5A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-5A, "500"), 0.2)};
 
@@ -215,8 +221,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-6B, "400")};
   --color-contrast-300: #{map.get(var.$color-6B, "300")};
   --color-contrast-100: #{map.get(var.$color-6B, "100")};
-  // --color-link: var(--color-contrast);
-  // --color-link-visited: var(--color-primary-800); //#{map.get(var.$color-6C, "500")};
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-6A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-6A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-6A, "500"), 0.2)};
 
@@ -244,8 +249,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-400: #{map.get(var.$color-7B, "400")};
   --color-contrast-300: #{map.get(var.$color-7B, "300")};
   --color-contrast-100: #{map.get(var.$color-7B, "100")};
-  // --color-link: var(--color-contrast);
-  // --color-link-visited: var(--color-primary-800);
+  // --color-callout-bg-info: #{rgba(map.get(var.$color-7A, "200"), 0.3)};
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-7A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-7A, "500"), 0.2)};
 

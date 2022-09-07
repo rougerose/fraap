@@ -1,11 +1,12 @@
+<BOUCLE_total_articles(ARTICLES){id_rubrique=#ENV{id_rubrique}}{mots?}> </BOUCLE_total_articles>
+  [(#SET{total_articles, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:article, fraap_squelettes:articles}})]
+</B_total_articles>
+  [(#SET{total_articles, <:fraap_squelettes:article_aucun:>})]
+<//B_total_articles>
 <div class="box-filters_inner">
   <div class="reel">
     <div>
-      [(#ENV{articles}|oui)
-        [<span>(#ENV{articles}|count|singulier_ou_pluriel{fraap_squelettes:membre, fraap_squelettes:membres})</span>]
-      ][(#ENV{articles}|non)
-        <span><:fraap_squelettes:resultat_aucun:></span>
-      ]
+      [<span>(#GET{total_articles})</span>]
     </div>
     <div>
         <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>

@@ -17,6 +17,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'annuaire_localisation' => 'Localisation',
 	'article' => '1 article',
 	'articles' => '@nb@ articles',
+	'article_aucun' => 'Aucun article',
 
 	// B
 	'bouton_valider' => 'Valider',
@@ -74,6 +75,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'menu_racine_description' => 'Desc',
 	'menu_footer_objet_nom' => 'Fraap (pied de page) : article ou rubrique',
 	'menu_footer_objet_description' => 'Desc',
+	'message_recharger_page' => 'Veuillez <a href="@url@" class="spip_in">recharger la page</a>.',
 
 	// N
 	'nav_bouton_burger' => 'Ouvrir le menu',
