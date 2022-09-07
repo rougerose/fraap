@@ -1,8 +1,21 @@
+[(#REM)
+  <!--
+    Options à préciser :
+      - les identifiants des groupes que l'on souhaite récupérer en fonction de la rubrique consultée :
+        - rubriques CP (59) et Mobilisations (62) : groupes 36 (types mobilisations et CP) et 37 (thèmes)
+        - rubrique Élections (5) : groupes 35 (dates élections) et 34 (types élections)
+      - afficher_types
+      - afficher_themes
+  -->
+][(#ENV{id_rubrique}|match{59|62}|oui)
+  [(#SET{options, #ARRAY{afficher_types, 1, afficher_themes, 1, groupe_types, 36, groupe_themes, 37}})]
+][(#ENV{id_rubrique}|=={5})
+  [(#SET{options, #ARRAY{afficher_types, 1, afficher_themes, 1, groupe_types, 34, groupe_themes, 35}})]
+]
 <div id="dialogFiltres" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true">
   <div class="dialog_overlay" data-a11y-dialog-hide></div>
   <div class="dialog_content dialog-offcanvas_content dialog-filters" role="document">
     <div class="dialog-filters_wrapper ajax">
-      [(#SET{options, #ARRAY{afficher_types, 1, afficher_themes, 1}})]
       [(#FORMULAIRE_MOBILISATIONS_FILTRES{#ENV{id_rubrique}, #SELF, #GET{options}})]
     </div>
   </div>

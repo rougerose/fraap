@@ -22,7 +22,7 @@
       #ACTION_FORMULAIRE
       <div class="dialog-filters_inner-body">
         <div class="collapsible">
-          <BOUCLE_groupe_type(GROUPES_MOTS){id_groupe=36}{si #ENV{options/afficher_types, 1}}>
+          <BOUCLE_groupe_type(GROUPES_MOTS){id_groupe=#ENV{options/groupe_types}}{si #ENV{options/afficher_types, 1}}>
             <B_mots_type>
               #SET{open_act, 0}
               [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
@@ -44,7 +44,7 @@
               </div>
             </B_mots_type>
           </BOUCLE_groupe_type>
-          <BOUCLE_groupe_themes(GROUPES_MOTS){id_groupe=37}{si #ENV{options/afficher_themes, 1}}>
+          <BOUCLE_groupe_themes(GROUPES_MOTS){id_groupe=#ENV{options/groupe_themes}}{si #ENV{options/afficher_themes, 1}}>
             <B_mots_themes>
               #SET{open_act, 0}
               [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
