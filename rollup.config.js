@@ -28,7 +28,7 @@ export default [
     plugins: [nodeResolve(), commonjs()],
     output: [
       {
-        file: "theme/dist/js/Fraap.js",
+        file: "theme/dist/js/fraap.js",
         format: "iife",
         name: "Fraap",
         exports: "named",
