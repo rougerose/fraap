@@ -10,6 +10,10 @@
   padding: 0;
 }
 
+.wrapper-content[data-size="narrow"] {
+  max-width: 60rem;
+}
+
 // .wrapper-content[data-size="large"] {
 //   max-width: 1400px;
 // }

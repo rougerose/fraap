@@ -15,7 +15,7 @@
           <B_toc_side_mots>
             <nav class="toc flow-small" data-type="side">
               <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
-              <ul class="toc_list flow-small" role="list">
+              <ul class="toc_list" role="list">
                 <BOUCLE_toc_side_mots(MOTS){id_mot IN #GET{mots}}>
                   <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
                 </BOUCLE_toc_side_mots>
@@ -28,7 +28,7 @@
               <div class="toc" data-type="inner">
                 <details role="navigation">
                   <summary><:fraap_squelettes:toc_titre:></summary>
-                  <ul class="toc_list flow-small" role="list">
+                  <ul class="toc_list" role="list">
                     <BOUCLE_toc_inner_mots(MOTS){id_mot IN #GET{mots}}>
                       <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
                     </BOUCLE_toc_inner_mots>

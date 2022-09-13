@@ -1,0 +1,48 @@
+#SET{tri,#ENV{tri,nb}}
+#SET{sens_tri,#ENV{sens_tri,DESC}}
+#SET{groupby,#ENV{critere}}
+[(#ENV{critere}|match{'\x28'}|oui)
+	#SET{groupby,valeur}
+]
+#SET{name, #ENV{cle}}
+[(#ENV{cle}|=={tags}|oui) #SET{name, tags\[\]} ]
+
+<B_resultats_facette>
+  #SET{open_act, 0}
+  [(#SET{open_act, #ENV{btnOpen}|find{ch_#ENV{cle}}|?{1,0}})]
+  <h3 class="collapsible_heading">
+    <button type="button" id="ch_#ENV{cle}"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+      <span class="collapsible_title">
+        <span>#ENV{titre}</span>
+      </span>
+      [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+    </button>
+    <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ENV{cle}, ''})"]>
+  </h3>
+  <div class="collapsible_content" role="region" aria-labelledby="ch_#ENV{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+    <BOUCLE_resultats_facette(SPHINX)
+      {index #ENV{source,spip}}
+      {recherche #ENV*{recherche}}
+      {select COUNT(*) AS nb}
+      {select GROUPBY() AS facette}
+      {facette != ''}
+      {select (#ENV{critere}|concat{' '}) AS valeur}
+      {groupby #GET{groupby}}
+      {filter #ENV{annee},  'YEAR(date) = @valeur' }
+      {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
+      {filtermultijson #ENV{origine}, properties.origine, #ENV{origine}}
+      {par #GET{tri}}{inverse #GET{sens_tri}}
+    >
+      <div class="choix">
+        [(#FACETTE|=={site}|non)
+          [(#ENV{#ENV{cle}}|is_array|?{
+            [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}}  })],
+            [(#SET{checked, #FACETTE|=={#ENV{#ENV{cle}}}|?{' ', ''} })]
+          })]
+          <input type="checkbox" name="#GET{name}" class="checkbox" id="[(#ENV{cle})-#COMPTEUR_BOUCLE]" value="[(#FACETTE|attribut_html)]" [(#GET{checked}|oui) checked="checked"][ (#GET{total}|=={0}|oui) disabled ] data-label="[(#FACETTE|attribut_html)]"/>
+          <label for="[(#ENV{cle})-#COMPTEUR_BOUCLE]">[(#FACETTE)][<span class="indicator">(#NB)</span>]</label>
+        ]
+      </div>
+    </BOUCLE_resultats_facette>
+  </div>
+</B_resultats_facette>

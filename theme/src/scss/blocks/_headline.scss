@@ -26,6 +26,11 @@
     --measure: 50ch;
     font-size: var(--step-4);
   }
+
+  &.variant-recherche {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-m);
+  }
 }
 
 .headline_subtitle {

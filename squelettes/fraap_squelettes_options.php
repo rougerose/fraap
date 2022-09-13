@@ -23,10 +23,10 @@ $GLOBALS['fin_intertitre'] = '</h2>';
 define('_MAX_MOTS_LISTE', 300);
 
 // Recherche
-define('_SURLIGNE_RECHERCHE_REFERERS', true);
-if (isset($_REQUEST['recherche'])) {
-  $_GET['var_recherche'] = $_REQUEST['recherche'];
-}
+// define('_SURLIGNE_RECHERCHE_REFERERS', true);
+// if (isset($_REQUEST['recherche'])) {
+//   $_GET['var_recherche'] = $_REQUEST['recherche'];
+// }
 
 // Type de coordonnées par défaut
 if (!defined('_COORDONNEES_TYPE_DEFAUT')) {

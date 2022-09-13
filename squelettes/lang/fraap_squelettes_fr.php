@@ -94,8 +94,19 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'qui_sommes_nous_federation_headline' => 'Qui-sommes-nous&#8239;?',
 
 	// R
+	'recherche_resultat_date' => '1 résultat classé par date',
+	'recherche_resultats_date' => '@nb@ résultats classés par date',
+	'recherche_resultat_pertinence' => '1 résultat classé par pertinence',
+	'recherche_resultats_pertinence' => '@nb@ résultats classés par pertinence',
+	'recherche_classement_date' => 'Résultats classés par date',
+	'recherche_classement_pertinence' => 'Résultats classés par pertinence',
+	'recherche_titre_page' => 'Résultats de la recherche',
+	'recherche_trier_date' => 'Trier par date',
+	'recherche_trier_pertinence' => 'Trier par pertinence',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
 	'resultat_aucun' => 'Aucun résultat',
+	'resultat' => '1 résultat',
+	'resultats' => '@nb@ résultats',
 
 	// S
 	'search_placeholder' => 'Écrivez ici…',

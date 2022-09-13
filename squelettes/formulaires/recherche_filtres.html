@@ -1,0 +1,76 @@
+<div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
+  <form method="post" action="#ENV{action}" class="dialog-filters_form">
+    <header class="dialog-filters_header">
+      <h1 id="dialogTitle"><span class="text-underline"><:fraap_squelettes:filtrer:></span></h1>
+      [<button type="button" class="dialog_close button-icon circle-hover" data-a11y-dialog-hide="" aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
+        (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
+      </button>]
+    </header>
+    <div class="dialog-filters_body">
+      #ACTION_FORMULAIRE
+      <div class="dialog-filters_inner-body">
+        <div class="collapsible">
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
+            critere=properties.tags,
+            cle=tags,
+            id=tags,
+            titre=Par thèmes
+          }/>
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
+            critere=YEAR(date),
+            cle=annee,
+            id=annee,
+            titre=Par année,
+            tri=date,
+            sens_tri=-1
+          }/>
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
+            critere=properties.origine,
+            cle=origine,
+            id=origine,
+            titre=Par origine,
+          }/>
+        </div>
+      </div>
+    </div>
+    [(#REM)
+      <!--
+        Calculer le total des articles à afficher en fonction des sélections demandées.
+      -->
+    ]
+    #SET{total_resultats, 0}
+    <BOUCLE_total(SPHINX)
+        {index #ENV{source}}
+        {recherche #ENV*{recherche}}
+        {filter #ENV{annee}, 'YEAR(date) = @valeur'}
+        {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
+        {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
+        {pagination 20}
+      > </BOUCLE_total>
+      #SET{total_resultats, #GRAND_TOTAL}
+    </B_total>
+    [(#GET{total_resultats}|>{0}|?{
+      [(#SET{total_resultats, #GET{total_resultats}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
+      [(#SET{total_resultats, Aucun résultat})]
+    })]
+    <div class="dialog-filters_footer">
+      <p class="boutons">
+        <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="[(#GET{total_resultats}|attribut_html)]" />
+      </p>
+    </div>
+  </form>
+  <script>
+    //
+    jQuery(function($){
+      let form_filtres = document.querySelector("div.formulaire_#FORM form");
+      if (form_filtres && form_filtres.querySelector(".collapsible")) {
+        fraapCollapsible.init(form_filtres, true);
+        $(form_filtres).on("change", "input[type='checkbox']", function(){
+          console.log($(this).parents("form"));
+          $(this).parents("form").submit();
+        });
+      }
+		});
+  </script>
+</div>
+#FILTRE{trim}

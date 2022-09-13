@@ -73,3 +73,37 @@ function fraap_squelettes_formulaire_charger($flux) {
 	}
 	return $flux;
 }
+
+/**
+ * Utiliser le pipeline indexer_document
+ * pour ajouter une dimension origine aux articles.
+ */
+function fraap_squelettes_indexer_document($flux) {
+	if ($flux['data']->properties['objet'] == 'article') {
+		$id_rubrique = $flux['data']->properties['id_rubrique'];
+		$flux['data']->properties['origine'] = ajouter_origine_article($id_rubrique);
+	}
+	return $flux;
+}
+
+/**
+ * Indexation des articles, ajouter une dimension origine :
+ * 	- fiches pratiques
+ *  - annuaire des membres
+ *  - site pour tous les autres articles.
+ */
+function ajouter_origine_article($id_rubrique) {
+	// fiches pratiques, id_rubrique = 38
+	// annuaire membres, id_rubrique = 3
+	$id_origines = [38, 3];
+	$origine = '';
+
+	if (in_array($id_rubrique, $id_origines)) {
+		$titre = sql_getfetsel('titre', 'spip_rubriques', 'id_rubrique=' . $id_rubrique);
+		$origine = trim(supprimer_numero($titre));
+	} else {
+		$origine = 'site';
+	}
+
+	return $origine;
+}
