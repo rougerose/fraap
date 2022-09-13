@@ -4,9 +4,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-function formulaires_recherche_filtres_charger($recherche = '', $facets = [], $redirect = '') {
+function formulaires_recherche_filtres_charger($facets = [], $redirect = '') {
 	$valeurs = [
-		'recherche' => $recherche,
+		'recherche' => _request('recherche'),
 		'facets' => $facets,
 		'btnOpen' => _request('btnOpen'),
 		'annee' => _request('annee'),
@@ -16,12 +16,12 @@ function formulaires_recherche_filtres_charger($recherche = '', $facets = [], $r
 	return $valeurs;
 }
 
-function formulaires_recherche_filtres_verifier($recherche = '', $facets = [], $redirect = '') {
+function formulaires_recherche_filtres_verifier($facets = [], $redirect = '') {
 	$erreurs = [];
 	return $erreurs;
 }
 
-function formulaires_recherche_filtres_traiter($recherche = '', $facets = [], $redirect = '') {
+function formulaires_recherche_filtres_traiter($facets = [], $redirect = '') {
 	$retour = [];
 	$voir_resultats = _request('voir_resultats');
 	$tags = _request('tags');

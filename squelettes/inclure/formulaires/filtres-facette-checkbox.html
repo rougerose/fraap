@@ -8,6 +8,7 @@
 [(#ENV{cle}|=={tags}|oui) #SET{name, tags\[\]} ]
 
 <B_resultats_facette>
+  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   #SET{open_act, 0}
   [(#SET{open_act, #ENV{btnOpen}|find{ch_#ENV{cle}}|?{1,0}})]
   <h3 class="collapsible_heading">
@@ -32,6 +33,7 @@
       {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
       {filtermultijson #ENV{origine}, properties.origine, #ENV{origine}}
       {par #GET{tri}}{inverse #GET{sens_tri}}
+      {0, 20}
     >
       <div class="choix">
         [(#FACETTE|=={site}|non)
