@@ -8,29 +8,11 @@
     </header>
     <div class="dialog-filters_body">
       #ACTION_FORMULAIRE
-      [<div><tt>(#ENV)</tt></div>]
       <div class="dialog-filters_inner-body">
         <div class="collapsible">
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
-            critere=properties.tags,
-            cle=tags,
-            id=tags,
-            titre=Par thèmes
-          }/>
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
-            critere=YEAR(date),
-            cle=annee,
-            id=annee,
-            titre=Par année,
-            tri=date,
-            sens_tri=-1
-          }/>
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env,
-            critere=properties.origine,
-            cle=origine,
-            id=origine,
-            titre=Par origine,
-          }/>
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=properties.tags, cle=tags, titre=Par thèmes}/>
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=YEAR(date), cle=annee, titre=Par année, tri=date, sens_tri=-1}/>
+          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=properties.origine, cle=origine, titre=Par origine}/>
         </div>
       </div>
     </div>

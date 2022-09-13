@@ -33,12 +33,12 @@
       {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
       {filtermultijson #ENV{origine}, properties.origine, #ENV{origine}}
       {par #GET{tri}}{inverse #GET{sens_tri}}
-      {0, 20}
+      {pagination 20}
     >
       <div class="choix">
         [(#FACETTE|=={site}|non)
           [(#ENV{#ENV{cle}}|is_array|?{
-            [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}}  })],
+            [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}} })],
             [(#SET{checked, #FACETTE|=={#ENV{#ENV{cle}}}|?{' ', ''} })]
           })]
           <input type="checkbox" name="#GET{name}" class="checkbox" id="[(#ENV{cle})-#COMPTEUR_BOUCLE]" value="[(#FACETTE|attribut_html)]" [(#GET{checked}|oui) checked="checked"][ (#GET{total}|=={0}|oui) disabled ] data-label="[(#FACETTE|attribut_html)]"/>
