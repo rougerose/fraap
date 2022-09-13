@@ -2,6 +2,7 @@
 [(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
 [(#SET{tags, #ENV{tags}|array_filter})]
 [(#SET{effacer, ''})]
+[(#SET{source_sphinx, #EVAL{SPHINX_DEFAULT_INDEX}})]
 <BOUCLE_si_recherche(CONDITION){si #ENV{recherche}|oui}>
 <B_recherche>
   #ANCRE_PAGINATION

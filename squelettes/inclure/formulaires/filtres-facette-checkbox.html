@@ -8,7 +8,6 @@
 [(#ENV{cle}|=={tags}|oui) #SET{name, tags\[\]} ]
 
 <B_resultats_facette>
-  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   #SET{open_act, 0}
   [(#SET{open_act, #ENV{btnOpen}|find{ch_#ENV{cle}}|?{1,0}})]
   <h3 class="collapsible_heading">
@@ -22,12 +21,17 @@
   </h3>
   <div class="collapsible_content" role="region" aria-labelledby="ch_#ENV{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
     <BOUCLE_resultats_facette(SPHINX)
-      {index #ENV{source,spip}}
+      {index #ENV{source}}
       {recherche #ENV*{recherche}}
       {select COUNT(*) AS nb}
       {select GROUPBY() AS facette}
+      {facette != ''}
       {select (#ENV{critere}|concat{' '}) AS valeur}
       {groupby #GET{groupby}}
+      {filter #ENV{annee},  'YEAR(date) = @valeur' }
+      {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
+      {filtermultijson #ENV{origine}, properties.origine, #ENV{origine}}
+      {par #GET{tri}}{inverse #GET{sens_tri}}
       {pagination 20}
     >
       <div class="choix">

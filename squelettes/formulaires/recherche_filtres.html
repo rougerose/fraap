@@ -20,17 +20,18 @@
       <!--
         Calculer le total des articles à afficher en fonction des sélections demandées.
       -->
-    ]<B_total>[<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
-    #SET{total_resultats, 0}
-    <BOUCLE_total(SPHINX)
-        {index #ENV{source}}
-        {recherche #ENV*{recherche}}
-        {filter #ENV{annee}, 'YEAR(date) = @valeur'}
-        {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
-        {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
-        {pagination 20}
-      > </BOUCLE_total>
-      #SET{total_resultats, #GRAND_TOTAL}
+    ]
+    <B_total>
+      #SET{total_resultats, 0}
+      <BOUCLE_total(SPHINX)
+          {index #ENV{source}}
+          {recherche #ENV*{recherche}}
+          {filter #ENV{annee}, 'YEAR(date) = @valeur'}
+          {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
+          {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
+          {pagination 20}
+        > </BOUCLE_total>
+        #SET{total_resultats, #GRAND_TOTAL}
     </B_total>
     [(#GET{total_resultats}|>{0}|?{
       [(#SET{total_resultats, #GET{total_resultats}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
