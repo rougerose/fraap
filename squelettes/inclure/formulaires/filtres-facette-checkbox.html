@@ -26,13 +26,8 @@
       {recherche #ENV*{recherche}}
       {select COUNT(*) AS nb}
       {select GROUPBY() AS facette}
-      {facette != ''}
       {select (#ENV{critere}|concat{' '}) AS valeur}
       {groupby #GET{groupby}}
-      {filter #ENV{annee},  'YEAR(date) = @valeur' }
-      {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
-      {filtermultijson #ENV{origine}, properties.origine, #ENV{origine}}
-      {par #GET{tri}}{inverse #GET{sens_tri}}
       {pagination 20}
     >
       <div class="choix">

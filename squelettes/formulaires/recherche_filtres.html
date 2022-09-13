@@ -20,7 +20,7 @@
       <!--
         Calculer le total des articles à afficher en fonction des sélections demandées.
       -->
-    ]
+    ]<B_total>[<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
     #SET{total_resultats, 0}
     <BOUCLE_total(SPHINX)
         {index #ENV{source}}
