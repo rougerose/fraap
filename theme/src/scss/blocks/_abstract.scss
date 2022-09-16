@@ -43,6 +43,10 @@
     }
   }
 
+  mark {
+    background-color: var(--color-primary-300);
+  }
+
   time {
     align-items: baseline;
     display: inline-flex;

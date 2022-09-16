@@ -1,3 +1,4 @@
+#SET{total, 0}
 <div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
   <form method="post" action="#ENV{action}" class="dialog-filters_form">
     <header class="dialog-filters_header">
@@ -10,47 +11,59 @@
       #ACTION_FORMULAIRE
       <div class="dialog-filters_inner-body">
         <div class="collapsible">
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=properties.tags, cle=tags, titre=Par thèmes}/>
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=YEAR(date), cle=annee, titre=Par année, tri=date, sens_tri=-1}/>
-          <INCLURE{fond=inclure/formulaires/filtres-facette-checkbox, env, critere=properties.origine, cle=origine, titre=Par origine}/>
+          <BOUCLE_groupes(DATA){source tableau, #ENV{datas}}{par cle}>
+            #SET{cle, #VALEUR|table_valeur{cle}} #SET{valeur, #VALEUR}
+            [(#SET{name,
+              [(#VALEUR|table_valeur{type}|=={multiple}|?{
+                [(#GET{cle}|concat{\[\]})],
+                [(#GET{cle})]
+              })]
+            })]
+            <B_checkbox>
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#GET{cle}}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#GET{cle}"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title">
+                    <span>[(#GET{valeur}|table_valeur{titre})]</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#GET{cle}, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#GET{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_checkbox(DATA){source tableau, #VALEUR|table_valeur{data}}>
+                  [(#ENV{#GET{cle}}|is_array|?{
+                    [(#SET{checked, #VALEUR|table_valeur{0}|in_array{#ENV{#GET{cle}}} })],
+                    [(#SET{checked, #VALEUR|table_valeur{0}|=={#ENV{#GET{cle}}}|?{' ', ''} })]
+                  })]
+                  <div class="choix">
+                    <input type="checkbox" name="[(#GET{name}|trim)]" class="checkbox" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#VALEUR|table_valeur{0}|trim)]"/>
+                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[(#VALEUR|table_valeur{0}|trim) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
+                  </div>
+                </BOUCLE_checkbox>
+              </div>
+            </B_checkbox>
+          </BOUCLE_groupes>
         </div>
       </div>
     </div>
-    [(#REM)
-      <!--
-        Calculer le total des articles à afficher en fonction des sélections demandées.
-      -->
-    ]
-    <B_total>
-      #SET{total_resultats, 0}
-      <BOUCLE_total(SPHINX)
-          {index #ENV{source}}
-          {recherche #ENV*{recherche}}
-          {filter #ENV{annee}, 'YEAR(date) = @valeur'}
-          {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
-          {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
-          {pagination 20}
-        > </BOUCLE_total>
-        #SET{total_resultats, #GRAND_TOTAL}
-    </B_total>
-    [(#GET{total_resultats}|>{0}|?{
-      [(#SET{total_resultats, #GET{total_resultats}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
-      [(#SET{total_resultats, Aucun résultat})]
-    })]
     <div class="dialog-filters_footer">
+      [(#ENV{total}|>{0}|?{
+        [(#SET{total, #ENV{total}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
+        [(#SET{total, <:fraap_squelettes:bouton_voir_resultat_aucun:>})]
+      })]
       <p class="boutons">
-        <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="[(#GET{total_resultats}|attribut_html)]" />
+        <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="[(#GET{total}|attribut_html)]" />
       </p>
     </div>
   </form>
   <script>
-    //
     jQuery(function($){
       let form_filtres = document.querySelector("div.formulaire_#FORM form");
       if (form_filtres && form_filtres.querySelector(".collapsible")) {
         fraapCollapsible.init(form_filtres, true);
         $(form_filtres).on("change", "input[type='checkbox']", function(){
-          console.log($(this).parents("form"));
           $(this).parents("form").submit();
         });
       }

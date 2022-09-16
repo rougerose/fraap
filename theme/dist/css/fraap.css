@@ -911,6 +911,9 @@ ol[role=list] {
   margin-top: auto;
   padding-top: var(--space-m);
 }
+.abstract_desc mark {
+  background-color: var(--color-primary-300);
+}
 .abstract_desc time {
   align-items: baseline;
   display: inline-flex;

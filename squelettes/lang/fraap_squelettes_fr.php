@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'bouton_valider' => 'Valider',
 	'bouton_voir_resultat' => 'Voir 1 résultat',
 	'bouton_voir_resultats' => 'Voir @nb@ résultats',
+	'bouton_voir_resultat_aucun' => 'Aucun résultat',
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
@@ -94,6 +95,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'qui_sommes_nous_federation_headline' => 'Qui-sommes-nous&#8239;?',
 
 	// R
+	'recherche_resultat_aucun' => 'Aucun résultat pour cette recherche',
 	'recherche_resultat_date' => '1 résultat classé par date',
 	'recherche_resultats_date' => '@nb@ résultats classés par date',
 	'recherche_resultat_pertinence' => '1 résultat classé par pertinence',

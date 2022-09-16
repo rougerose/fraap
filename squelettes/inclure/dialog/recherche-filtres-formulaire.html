@@ -2,7 +2,7 @@
   <div class="dialog_overlay" data-a11y-dialog-hide></div>
   <div class="dialog_content dialog-offcanvas_content dialog-filters" role="document">
     <div class="dialog-filters_wrapper ajax">
-      #FORMULAIRE_RECHERCHE_FILTRES{#ENV{facets}, #SELF}
+      [(#FORMULAIRE_RECHERCHE_FILTRES{#ENV*{recherche}, #ENV{criteres}, #SELF})]
     </div>
   </div>
 </div>

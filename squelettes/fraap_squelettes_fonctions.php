@@ -38,7 +38,7 @@ function callback_supprimer_span($matches) {
 }
 
 /**
- * Prend une url et la transforme en supprimant un élèment de tableau passé en paramètre.
+ * Prend une url et la transforme en supprimant un élément de tableau passé en paramètre.
  * function supprimer
  * @source https://git.spip.net/spip-contrib-squelettes/ressourcotheque/src/branch/master/ressourcotheque_fonctions.php
  * @param url
@@ -52,4 +52,32 @@ function parametre_url_supprimer_element_tableau($url, $param, $tableau_original
 	unset($tableau_original[$index_element_supprimer]);
 	$url = parametre_url($url, $param, $tableau_original);
 	return $url;
+}
+
+/**
+ * Recherche : retirer un élément de la liste
+ */
+function filtre_enleve_tag_liste($liste, $tag) {
+	if (!is_array($liste) or !$liste) {
+		return $liste;
+	}
+	$liste = array_unique($liste);
+	$liste = array_diff($liste, [$tag]);
+	return $liste;
+}
+
+
+function calculer_contexte_recherche_filtres($valeurs = []) {
+	if (count($valeurs) > 0) {
+		foreach ($valeurs as $cle => $valeur) {
+			if ($valeur) {
+				$contexte[$cle] = $valeur;
+			} else {
+				$contexte[$cle] = '';
+			}
+		}
+		return $contexte;
+	} else {
+		return null;
+	}
 }

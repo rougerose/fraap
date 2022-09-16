@@ -1,0 +1,10 @@
+<BOUCLE_recherche_total(SPHINX)
+ {index #ENV{source}}{recherche #ENV*{recherche}}
+        {filter #ENV{annee}, 'YEAR(date) = @valeur'}
+        {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
+        {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
+        {par #GET{tri}}{inverse #GET{ordre}}
+        {pagination 20}
+> </BOUCLE_recherche_total>
+#GRAND_TOTAL
+</B_recherche_total>

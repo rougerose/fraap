@@ -2,8 +2,7 @@
 [(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
 [(#SET{tags, #ENV{tags}|array_filter})]
 [(#SET{effacer, ''})]
-[(#SET{source_sphinx, #EVAL{SPHINX_DEFAULT_INDEX}})]
-<BOUCLE_si_recherche(CONDITION){si #ENV{recherche}|oui}>
+
 <B_recherche>
   #ANCRE_PAGINATION
   <div class="box-filters variant-search">
@@ -18,6 +17,7 @@
             [<strong>(#GRAND_TOTAL|singulier_ou_pluriel{fraap_squelettes:recherche_resultat_pertinence, fraap_squelettes:recherche_resultats_pertinence})</strong>]
           })]
         </div>
+        [<div>(#SPHINX_MESSAGE)</div>]
       </div>
       <div class="reel">
         <div>
@@ -30,9 +30,9 @@
           <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
         </div>
         <BOUCLE_selections(DATA){source table, #GET{tags}}{par cle}>
-          #SET{c,#COMPTEUR_BOUCLE|moins{1}} #SET{effacer, ' '}
+          #SET{effacer, ' '} [(#SET{param, #GET{tags}|enleve_tag_liste{#VALEUR}})]
           <div>
-            [<a href="[(#SELF|parametre_url_supprimer_element_tableau{tags,#ENV{tags},#GET{c}})]" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
+            [<a href="[(#SELF|parametre_url{tags, #GET{param}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#VALEUR)</a>]
           </div>
         </BOUCLE_selections>
         [(#ENV{annee}|oui)
@@ -47,7 +47,7 @@
           </div>
         ][(#GET{effacer}|oui)
           <div>
-            [<a href="(#SELF|parametre_url{'mots|origine|annee', ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+            [<a href="(#SELF|parametre_url{'tags\[\]|origine|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
           </div>
         ]
       </div>
@@ -56,12 +56,11 @@
 
   <div class="gap-top-3">
     <div class="search-page_results">
-      [<p>(#SPHINX_MESSAGE)</p>]
       <BOUCLE_recherche(SPHINX)
         {index #ENV{source}}
         {recherche #ENV*{recherche}}
         {filter #ENV{annee}, 'YEAR(date) = @valeur'}
-        {filtermultijson #ENV{tags}, properties.tags, #ENV{tags}}
+        {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
         {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
         {facet annee, YEAR(date) ORDER BY date DESC}
         {facet tags, properties.tags ORDER BY COUNT(*) DESC}
@@ -72,7 +71,7 @@
         <article class="search-page_result abstract flow-small">
           <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
           <div class="abstract_desc flow-small">
-            [(#SNIPPET|sinon{#SUMMARY}|propre)]
+            [(#SNIPPET|sinon{#SUMMARY}|replace{b>,mark>}|propre)]
             <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#URI" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
           </div>
         </article>
@@ -80,14 +79,54 @@
     </div>
     [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
   </div>
-  <INCLURE{fond=inclure/dialog/recherche-filtres, facets=#SPHINX_FACETS, env}/>
+
+  [(#SET{criteres_tags, #ARRAY{
+    cle,tags,
+    type,multiple,
+    critere,properties.tags,
+    titre,Par thèmes,
+    tri,'',
+    sens_tri,'',
+    tags,#ENV{tags}
+  }})]
+  [(#SET{criteres_annee, #ARRAY{
+    cle,annee,
+    type,unique,
+    critere,'YEAR(date)',
+    titre,'Par année',
+    tri,date,
+    sens_tri,-1,
+    annee,#ENV{annee}
+  }})]
+  [(#SET{criteres_origine, #ARRAY{
+    cle,origine,
+    type,unique,
+    critere,properties.origine,
+    titre,'Par origine',
+    tri,'',
+    sens_tri,'',
+    origine, #ENV{origine}
+  }})]
+
+  [(#SET{criteres, #ARRAY})]
+  [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_origine}}|push{#GET{criteres_annee}}})]
+
+  <INCLURE{fond=inclure/dialog/recherche-filtres-formulaire, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
   [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
 </B_recherche>
-</BOUCLE_si_recherche>
   <div class="box-filters variant-search">
     <div class="box-filters_inner">
       #FORMULAIRE_RECHERCHE
       <br>
     </div>
   </div>
-<//B_si_recherche>
+  <div class="gap-top-3">
+    <div class="search-page_results">
+      <div class="search-page_result">
+        <div class="callout variant-warn">
+          <p><strong><:fraap_squelettes:recherche_resultat_aucun:>.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<//B_recherche>
