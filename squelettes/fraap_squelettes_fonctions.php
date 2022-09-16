@@ -65,19 +65,3 @@ function filtre_enleve_tag_liste($liste, $tag) {
 	$liste = array_diff($liste, [$tag]);
 	return $liste;
 }
-
-
-function calculer_contexte_recherche_filtres($valeurs = []) {
-	if (count($valeurs) > 0) {
-		foreach ($valeurs as $cle => $valeur) {
-			if ($valeur) {
-				$contexte[$cle] = $valeur;
-			} else {
-				$contexte[$cle] = '';
-			}
-		}
-		return $contexte;
-	} else {
-		return null;
-	}
-}

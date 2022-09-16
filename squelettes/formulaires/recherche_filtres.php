@@ -12,6 +12,7 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 	];
 
 	if (strlen($recherche)) {
+		include_spip('inc/fraap_squelettes');
 		$contexte_total = [];
 
 		foreach ($criteres as $key => $valeurs) {
