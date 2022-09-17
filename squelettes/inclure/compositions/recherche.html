@@ -17,7 +17,7 @@
             [<strong>(#GRAND_TOTAL|singulier_ou_pluriel{fraap_squelettes:recherche_resultat_pertinence, fraap_squelettes:recherche_resultats_pertinence})</strong>]
           })]
         </div>
-        [<div>(#SPHINX_MESSAGE)</div>]
+        [<div class="search-page_message-sphinx">(#SPHINX_MESSAGE)</div>]
       </div>
       <div class="reel">
         <div>
@@ -79,7 +79,9 @@
     </div>
     [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
   </div>
-
+  [(#REM)
+    <!-- Préparer les critères envoyés au formulaire de filtres -->
+  ]
   [(#SET{criteres_tags, #ARRAY{
     cle,tags,
     type,multiple,
@@ -107,13 +109,21 @@
     sens_tri,'',
     origine, #ENV{origine}
   }})]
-
+  [(#REM)
+    <!--
+      Tous les critères sont concaténés dans un seul tableau.
+      Les paramètres de recherche sont inclus explicitement et en format brut
+      pour éviter un échappement sur les apostrophes notamment.
+    -->
+  ]
   [(#SET{criteres, #ARRAY})]
   [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_origine}}|push{#GET{criteres_annee}}})]
-
-  <INCLURE{fond=inclure/dialog/recherche-filtres-formulaire, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
+  <INCLURE{fond=inclure/dialog/recherche-filtres, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
   [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
 </B_recherche>
+  [(#REM)
+    <!-- Pas de résultats -->
+  ]
   <div class="box-filters variant-search">
     <div class="box-filters_inner">
       #FORMULAIRE_RECHERCHE

@@ -11,6 +11,9 @@
       #ACTION_FORMULAIRE
       <div class="dialog-filters_inner-body">
         <div class="collapsible">
+          [(#REM)
+            <!-- Récupérer les données envoyées par le fonction charger du formulaire -->
+          ]
           <BOUCLE_groupes(DATA){source tableau, #ENV{datas}}{par cle}>
             #SET{cle, #VALEUR|table_valeur{cle}} #SET{valeur, #VALEUR}
             [(#SET{name,
@@ -49,6 +52,9 @@
       </div>
     </div>
     <div class="dialog-filters_footer">
+      [(#REM)
+        <!-- Récupérer le total envoyé par la fonction charger du formulaire -->
+      ]
       [(#ENV{total}|>{0}|?{
         [(#SET{total, #ENV{total}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
         [(#SET{total, <:fraap_squelettes:bouton_voir_resultat_aucun:>})]

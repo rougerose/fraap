@@ -4,6 +4,13 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
+
+/**
+ * Les données recherche et filtres sont envoyées à Sphinx via la fonction charger
+ * du formulaire de filtre. Si l'on utilise la méthode squelettes, les données contenant
+ * notamment une apostrophe sont systématiquement converties et fausse les résultats
+ * dans la fenêtre des filtres.
+ */
 function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], $redirect = '') {
 	$datas = [];
 	$retour = [
@@ -13,21 +20,25 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 
 	if (strlen($recherche)) {
 		include_spip('inc/fraap_squelettes');
+		// Calculer les contextes pour les filtres et le total des résultats.
+		$contexte_filtres = [];
 		$contexte_total = [];
 
 		foreach ($criteres as $key => $valeurs) {
-			$contexte = calculer_contexte_recherche_filtres($valeurs);
-			if ($contexte) {
-				$cle = $valeurs['cle'];
-				$type = $valeurs['type'];
-				$retour[$cle] = _request($cle);
-				// Prendre en compte les filtres ajoutés/supprimés par l'utilisateur
-				$contexte[$cle] = $retour[$cle];
+			$contexte_filtres = calculer_contexte_recherche_filtres($valeurs);
+			if ($contexte_filtres) {
+				$cle = $valeurs['cle']; // tags, origine, annee
+				$type = $valeurs['type']; // type multiple ou unique ?
+				$retour[$cle] = _request($cle); // récupérer les filtres saisis/supprimés par l'utilisateur
+
+				// La saisie de l'utilisateur est prioritaire
+				$contexte_filtres[$cle] = $retour[$cle];
 				$contexte_total[$cle] = $retour[$cle];
 
-				$contexte['recherche'] = $recherche;
+				$contexte_filtres['recherche'] = $recherche;
 				$datas[$key]['cle'] = $cle;
-				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/filtres-facette', $contexte));
+				// Récupérer les facettes depuis un squelette
+				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/filtres-facette', $contexte_filtres));
 				$datas[$key]['titre'] = $valeurs['titre'];
 				$datas[$key]['type'] = $valeurs['type'];
 			}
