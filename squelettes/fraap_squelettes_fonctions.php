@@ -38,23 +38,6 @@ function callback_supprimer_span($matches) {
 }
 
 /**
- * Prend une url et la transforme en supprimant un élément de tableau passé en paramètre.
- * function supprimer
- * @source https://git.spip.net/spip-contrib-squelettes/ressourcotheque/src/branch/master/ressourcotheque_fonctions.php
- * @param url
- * @param param
- * @param tableau_original
- * @param index_element_supprimer
- * @return string
- **/
-function parametre_url_supprimer_element_tableau($url, $param, $tableau_original, $index_element_supprimer) {
-	$url = parametre_url($url, $param, '');//effacons d'abord
-	unset($tableau_original[$index_element_supprimer]);
-	$url = parametre_url($url, $param, $tableau_original);
-	return $url;
-}
-
-/**
  * Recherche : retirer un élément de la liste
  */
 function filtre_enleve_tag_liste($liste, $tag) {
