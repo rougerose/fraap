@@ -300,3 +300,16 @@
   margin-top: -0.25em;
   stroke: currentColor;
 }
+
+// 10 - icon-mot
+// ========================================
+.icon-mot {
+  circle {
+    fill: var(--color-contrast);
+  }
+
+  path {
+    fill: var(--color-primary);
+    fill-opacity: 0.8;
+  }
+}

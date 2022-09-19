@@ -1980,6 +1980,14 @@ a:hover .icon-nav-link {
   stroke: currentColor;
 }
 
+.icon-mot circle {
+  fill: var(--color-contrast);
+}
+.icon-mot path {
+  fill: var(--color-primary);
+  fill-opacity: 0.8;
+}
+
 .index-timeline {
   display: grid;
   grid-template-columns: repeat(var(--auto-grid-placement, auto-fill), minmax(var(--auto-grid-min-item-size, 16rem), 1fr));
@@ -3138,6 +3146,10 @@ h6 > span.text-underline {
 
 .measure-s {
   max-width: var(--measure-s, 40ch);
+}
+
+.pad-top-5 {
+  padding-top: var(--space-2xl);
 }
 
 .region {

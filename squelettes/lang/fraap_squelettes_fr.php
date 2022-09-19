@@ -77,6 +77,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'menu_footer_objet_nom' => 'Fraap (pied de page) : article ou rubrique',
 	'menu_footer_objet_description' => 'Desc',
 	'message_recharger_page' => 'Veuillez <a href="@url@" class="spip_in">recharger la page</a>.',
+	'mot_titre' => 'Mot-clé :',
 
 	// N
 	'nav_bouton_burger' => 'Ouvrir le menu',
@@ -115,5 +116,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'search_submit' => 'Rechercher',
 
 	// T
+	'titre_articles' => 'Articles',
 	'toc_titre' => 'Sommaire de cette page',
 ];

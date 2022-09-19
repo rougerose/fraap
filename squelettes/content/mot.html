@@ -1,19 +1,65 @@
 <BOUCLE_mot(MOTS){id_mot}>
-  [(#SET{mots_exclus, #ARRAY{0, #ID_MOT}})]
-  <div class="o-wrapper">
-    <INCLURE{fond=inclure/breadcrumb/fiches_pratiques, id_mot}/>
-    <article class="c-post u-flow">
-      <h1 class="c-post_title">#TITRE</h1>
-      <div class="c-post_body">
-        [(#DESCRIPTIF)]
+  <div class="page" data-page="mot">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/mot, id_mot}/>
+    </div>
+
+    <INCLURE{fond=inclure/sections/header-mot, icon='icon-mot-64.svg', class_icon=icon-mot, id_mot} />
+    [(#REM)
+      <!--
+        Récupérer les différentes typologies de contenus :
+          - annuaire des membres
+          - fiches pratiques
+          - tous les autres articles
+      -->
+    ]
+    #SET{typologies, #ARRAY}
+    #SET{articles, #ARRAY}
+    #SET{annuaire, #ARRAY}
+    #SET{fiches, #ARRAY}
+
+    <BOUCLE_tableau_articles(ARTICLES){id_rubrique !IN 3,38}{id_mot}{par titre}{doublons}>
+      [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+    </BOUCLE_tableau_articles>
+    [(#SET{articles_total, #GET{articles}|count})]
+
+    <BOUCLE_tableau_annuaire(ARTICLES){id_rubrique=3}{id_mot}{par titre}{doublons}>
+      [(#SET{annuaire, #GET{annuaire}|push{#ID_ARTICLE}})]
+    </BOUCLE_tableau_annuaire>
+    [(#SET{annuaire_total, #GET{annuaire}|count})]
+
+    <BOUCLE_tableau_fiches(ARTICLES){id_rubrique=38}{id_mot}{par titre}{doublons}>
+      [(#SET{fiches, #GET{fiches}|push{#ID_ARTICLE}})]
+    </BOUCLE_tableau_fiches>
+    [(#SET{fiches_total, #GET{fiches}|count})]
+
+    [(#SET{total, #GET{articles_total}|plus{#GET{annuaire_total}}|plus{#GET{fiches_total}}})]
+
+    <BOUCLE_si_total(CONDITION){si #GET{total}|>{0}}>
+      [(#REM)
+        <!--
+          Créer le tableau des typologies d'articles
+        -->
+      ][(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, articles, titre, <:fraap_squelettes:titre_articles:>, total, #GET{articles_total}, ids, #GET{articles} } } })]
+      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, annuaire, titre, #INFO_TITRE{rubrique,3}, total, #GET{annuaire_total}, ids, #GET{annuaire} } } })]
+      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, fiches, titre, #INFO_TITRE{rubrique,38}, total, #GET{fiches_total}, ids, #GET{fiches} } } })]
+
+      [(#REM)
+        <!-- Trier le tableau selon la colonne total -->
+      ][(#SET{typologies, #GET{typologies}|trier_selon_cle{total, DESC}})]
+
+      <div class="wrapper-content">
+        <div class="box-filters">
+          <INCLURE{fond=inclure/sections/mot-box-filters, typologies=#GET{typologies}}/>
+        </div>
+
+        <div class="offset-icon">
+          <BOUCLE_articles(DATA){source tableau, #GET{typologies}}>
+            <INCLURE{fond=inclure/liste/mot-articles, articles=#VALEUR|table_valeur{ids}, titre=#VALEUR|table_valeur{titre}, total=#VALEUR|table_valeur{total}, pagination=24, nom_pagination=_#VALEUR|table_valeur{typologie}, ajax, env}/>
+          </BOUCLE_articles>
+        </div>
       </div>
-      <div class="measure-long text-500">
-        <BOUCLE_condition_mot_niveau_1(CONDITION){si #ID_PARENT|=={0}}>
-          <INCLURE{fond=inclure/liste/fiches_pratiques/mots_enfants, id_mot}/>
-        </BOUCLE_condition_mot_niveau_1>
-          <INCLURE{fond=inclure/liste/fiches_pratiques/resume, id_mot}/>
-        <//B_condition_mot_niveau_1>
-      </div>
-    </article>
+
+    </BOUCLE_si_total>
   </div>
 </BOUCLE_mot>

@@ -48,3 +48,18 @@ function filtre_enleve_tag_liste($liste, $tag) {
 	$liste = array_diff($liste, [$tag]);
 	return $liste;
 }
+
+/**
+ * Trier un tableau multidimensionnel selon une clé déterminée.
+ */
+function filtre_trier_selon_cle($tableau, $cle, $sens) {
+	$k = array_column($tableau, $cle);
+
+	if ($sens == 'DESC') {
+		array_multisort($k, SORT_DESC, $tableau);
+	} else {
+		array_multisort($k, SORT_ASC, $tableau);
+	}
+
+	return $tableau;
+}
