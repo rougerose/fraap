@@ -19,6 +19,26 @@
   }
 }
 
+.ressources_list {
+  &.cluster {
+    --cluster-gutter: 0 var(--space-xs);
+    font-size: var(--step-0);
+
+    li {
+      &::before {
+        content: "\2022";
+        margin-right: var(--space-xs);
+        color: var(--color-primary-700);
+      }
+      &:last-child::after {
+        content: "\2022";
+        margin-left: var(--space-xs);
+        color: var(--color-primary-700);
+      }
+    }
+  }
+}
+
 @include mq.mq($from: l) {
   .ressources_section {
     &:first-of-type {

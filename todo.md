@@ -9,11 +9,10 @@
 Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...
 
 ## Fiches pratiques
-- moteur de recherche
+- moteur de recherche ?
 
-## Page Mot-clé
-- Différencier articles, fiches pratiques, Médiathèque, et ??
-- référence : https://www.monde-diplomatique.fr/index/pays/royaumeuni#pagination_livres
+## Index des mots-clés
+- fusionner certains groupes en thèmes (cp, mobilisations, élections) ?
 
 ## Squelettes de Rubrique
 - supprimer la marge gauche liée à l'icône de la rubrique

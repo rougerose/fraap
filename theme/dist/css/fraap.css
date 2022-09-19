@@ -2394,6 +2394,21 @@ a:hover .icon-nav-link {
   color: var(--color-link);
 }
 
+.ressources_list.cluster {
+  --cluster-gutter: 0 var(--space-xs);
+  font-size: var(--step-0);
+}
+.ressources_list.cluster li::before {
+  content: "•";
+  margin-right: var(--space-xs);
+  color: var(--color-primary-700);
+}
+.ressources_list.cluster li:last-child::after {
+  content: "•";
+  margin-left: var(--space-xs);
+  color: var(--color-primary-700);
+}
+
 @media (min-width: 64em) {
   .ressources_section:first-of-type {
     margin-top: 0;

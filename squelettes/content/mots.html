@@ -1,0 +1,60 @@
+<div class="page" data-page="mots">
+  <div class="wrapper-structure">
+    <INCLURE{fond=inclure/breadcrumb/mots}/>
+  </div>
+
+  <INCLURE{fond=inclure/sections/header-mots, icon='icon-mot-64.svg', class_icon=icon-mot} />
+
+  <div class="page_content gap-top-3">
+    <div class="wrapper-content">
+      <div class="offset-icon">
+        <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+          <B_toc_side_mots>
+            <nav class="toc flow-small" data-type="side">
+              <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
+              <ul class="toc_list" role="list">
+                <BOUCLE_toc_side_mots(GROUPES_MOTS){id_parent=0}{par num titre, titre}>
+                  <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
+                </BOUCLE_toc_side_mots>
+              </ul>
+            </nav>
+          </B_toc_side_mots>
+
+          <div class="ressources prose with-offset-icon flow-large">
+            <B_toc_inner_mots>
+              <div class="toc" data-type="inner">
+                <details role="navigation">
+                  <summary><:fraap_squelettes:toc_titre:></summary>
+                  <ul class="toc_list" role="list">
+                    <BOUCLE_toc_inner_mots(GROUPES_MOTS){id_parent=0}{par num titre, titre}>
+                      <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
+                    </BOUCLE_toc_inner_mots>
+                  </ul>
+                </details>
+              </div>
+            </B_toc_inner_mots>
+            <BOUCLE_liste_mots(GROUPES_MOTS){id_parent=0}{par num titre, titre}>
+              <section class="ressources_section flow">
+                <h2 id="[(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
+                  <span class="text-underline">#TITRE</span>
+                  <a href="[\#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
+                </h2>
+                <BOUCLE_sousgroupes(GROUPES_MOTS){id_parent}{par titre}>
+                  #SET{titre, #TITRE}
+                  <B_mots>
+                    <h3 id="[(#GET{titre}|identifiant_slug{id, #ARRAY{separateur, -, longeur_mini, 5}})]" class="text-underscore">[(#GET{titre}) ]<a href="[\#(#GET{titre}|identifiant_slug{id, #ARRAY{separateur, -, longeur_mini, 5}})]">#</a></h3>
+                    <ul role="list" class="ressources_list cluster">
+                      <BOUCLE_mots(MOTS spip_mots_liens spip_articles){objet=article}{id_groupe}{par titre}{articles.statut=publie}>
+                        <li><a href="#URL_MOT">#TITRE</a></li>
+                      </BOUCLE_mots>
+                    </ul>
+                  </B_mots>
+                </BOUCLE_sousgroupes>
+              </section>
+            </BOUCLE_liste_mots>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
