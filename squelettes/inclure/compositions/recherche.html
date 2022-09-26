@@ -2,9 +2,14 @@
 [(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
 [(#SET{tags, #ENV{tags}|array_filter})]
 [(#SET{effacer, ''})]
+[(#REM)
+  <!--
+    Récupérer l'id_rubrique Médiathèque dans la config du plugin fraap_bliblio.
+    Ce qui permettra de réécrire l'url des fbiblios contenus dans les résultats.
+  -->
+][(#SET{mediatheque, #CONFIG{fraap_biblio}|table_valeur{mediatheque}|table_valeur{0}|explode{|}|table_valeur{1}|intval})]
 
 <B_recherche>
-  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   #ANCRE_PAGINATION
   <div class="box-filters variant-search">
     <div class="box-filters_inner">
@@ -70,10 +75,12 @@
         {pagination 20}
       >
         <article class="search-page_result abstract flow-small">
-          <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
+          [(#SET{url, #URI})]
+          [(#PROPERTIES|table_valeur{objet}|=={fbiblio}|oui) [(#SET{url, #URL_RUBRIQUE{#GET{mediatheque}}|parametre_url{id_fbiblio, #PROPERTIES|table_valeur{id_objet}}})] ]
+          <h2 class="abstract_heading"><a href="#GET{url}">#TITLE</a></h2>
           <div class="abstract_desc flow-small">
             [(#SNIPPET|sinon{#SUMMARY}|replace{b>,mark>}|propre)]
-            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#URI" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#GET{url}" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
           </div>
         </article>
       </BOUCLE_recherche>
@@ -82,8 +89,7 @@
   </div>
   [(#REM)
     <!-- Préparer les critères envoyés au formulaire de filtres -->
-  ]
-  [(#SET{criteres_tags, #ARRAY{
+  ][(#SET{criteres_tags, #ARRAY{
     cle, tags,
     type, multiple,
     critere, properties.tags,
@@ -116,8 +122,7 @@
       Les paramètres de recherche sont inclus explicitement et en format brut
       pour éviter un échappement sur les apostrophes notamment.
     -->
-  ]
-  [(#SET{criteres, #ARRAY})]
+  ][(#SET{criteres, #ARRAY})]
   [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_origine}}|push{#GET{criteres_annee}}})]
   <INCLURE{fond=inclure/dialog/recherche-filtres, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
   [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]

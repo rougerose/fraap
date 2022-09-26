@@ -8,6 +8,7 @@
     <div class="mediatheque-list flow">
       <BOUCLE_sphinx(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
         {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
+        {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
         {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
         {par #GET{tri}}{inverse #GET{sens}}{pagination 20}

@@ -114,6 +114,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'recherche_trier_date' => 'Trier par date',
 	'recherche_trier_pertinence' => 'Trier par pertinence',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
+	'ressources_afficher_tout' => 'Afficher toutes les ressources disponibles',
 	'ressources_resultat' => '1 ressource',
 	'ressources_resultat_aucun' => 'Aucune ressource',
 	'ressources_resultats' => '@nb@ ressources',

@@ -11,7 +11,12 @@
       <div>
         <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
       </div>
-      [(#ENV{recherche}|oui)
+      [(#ENV{id_fbiblio}|oui)
+        #SET{effacer, ' '}
+        <div>
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{id_fbiblio, ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:ressources_afficher_tout:></a>]
+        </div>
+      ][(#ENV{recherche}|oui)
         #SET{effacer, ' '}
         <div>
           [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
@@ -30,7 +35,7 @@
       </BOUCLE_mots>
       [(#GET{effacer}|oui)
         <div>
-          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{mots\[\]|recherche|type_ref', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{mots\[\]|recherche|type_ref|id_fbiblio', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
         </div>
       ]
     </div>
