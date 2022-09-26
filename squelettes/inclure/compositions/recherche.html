@@ -4,10 +4,11 @@
 [(#SET{effacer, ''})]
 
 <B_recherche>
+  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   #ANCRE_PAGINATION
   <div class="box-filters variant-search">
     <div class="box-filters_inner">
-      #FORMULAIRE_RECHERCHE
+      #FORMULAIRE_RECHERCHE{'', search-page_form}
     </div>
     <div class="box-filters_inner">
       <div class="reel">
@@ -83,30 +84,30 @@
     <!-- Préparer les critères envoyés au formulaire de filtres -->
   ]
   [(#SET{criteres_tags, #ARRAY{
-    cle,tags,
-    type,multiple,
-    critere,properties.tags,
-    titre,Par thèmes,
-    tri,'',
-    sens_tri,'',
-    tags,#ENV{tags}
+    cle, tags,
+    type, multiple,
+    critere, properties.tags,
+    titre, <:fraap_squelettes:filtre_categorie_theme:>,
+    tri, '',
+    sens_tri, '',
+    tags, #ENV{tags}
   }})]
   [(#SET{criteres_annee, #ARRAY{
-    cle,annee,
-    type,unique,
-    critere,'YEAR(date)',
-    titre,'Par année',
-    tri,date,
-    sens_tri,-1,
-    annee,#ENV{annee}
+    cle, annee,
+    type, unique,
+    critere, 'YEAR(date)',
+    titre, <:fraap_squelettes:filtre_categorie_annee:>,
+    tri, date,
+    sens_tri, -1,
+    annee, #ENV{annee}
   }})]
   [(#SET{criteres_origine, #ARRAY{
-    cle,origine,
-    type,unique,
-    critere,properties.origine,
-    titre,'Par origine',
-    tri,'',
-    sens_tri,'',
+    cle, origine,
+    type, unique,
+    critere, properties.origine,
+    titre, <:fraap_squelettes:filtre_categorie_origine:>,
+    tri, '',
+    sens_tri, '',
     origine, #ENV{origine}
   }})]
   [(#REM)
@@ -126,7 +127,7 @@
   ]
   <div class="box-filters variant-search">
     <div class="box-filters_inner">
-      #FORMULAIRE_RECHERCHE
+      #FORMULAIRE_RECHERCHE{'', search-page_form}
       <br>
     </div>
   </div>

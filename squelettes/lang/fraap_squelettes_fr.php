@@ -29,6 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'cartographie_localiser' => 'Afficher sur la carte',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
+	'cta_source' => 'Consulter la source',
 	'cta_suite' => 'La suite',
 	'cta_reseau_annuaire_decouvrir' => 'Découvrir le réseau',
 	'cta_reseau_annuaire_consulter' => "Consulter l'annuaire",
@@ -51,6 +52,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// F
 	'fiche' => '1 fiche pratique',
 	'fiches' => '@nb@ fiches pratiques',
+	'filtre_categorie_annee' => 'Par année',
+	'filtre_categorie_origine' => 'Par origine',
+	'filtre_categorie_theme' => 'Par thème',
+	'filtre_categorie_type_ressource' => 'Par type de ressource',
+	'filtre_label_type_tous' => 'Tous les types de ressource',
 	'filtrer' => 'Filtrer',
 
 	// H
@@ -108,11 +114,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'recherche_trier_date' => 'Trier par date',
 	'recherche_trier_pertinence' => 'Trier par pertinence',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
+	'ressources_resultat' => '1 ressource',
+	'ressources_resultat_aucun' => 'Aucune ressource',
+	'ressources_resultats' => '@nb@ ressources',
 	'resultat_aucun' => 'Aucun résultat',
 	'resultat' => '1 résultat',
 	'resultats' => '@nb@ résultats',
 
 	// S
+	'search_label_mediatheque' => 'Rechercher dans les ressources',
 	'search_placeholder' => 'Écrivez ici…',
 	'search_submit' => 'Rechercher',
 

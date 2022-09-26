@@ -1,0 +1,38 @@
+#SET{effacer, ''} [(#SET{mots, #ENV{mots}|array_filter})]
+<div class="box-filters variant-search offset-icon">
+  <div class="box-filters_inner">
+    [(#FORMULAIRE_RECHERCHE{#SELF, mediatheque})]
+  </div>
+  <div class="box-filters_inner">
+    <div class="reel">
+      <div>
+        [<strong>(#ENV{total_resultats}|singulier_ou_pluriel{fraap_squelettes:ressources_resultat, fraap_squelettes:ressources_resultats})</strong>]
+      </div>
+      <div>
+        <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
+      </div>
+      [(#ENV{recherche}|oui)
+        #SET{effacer, ' '}
+        <div>
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
+        </div>
+      ][(#ENV{type_ref}|oui)
+        #SET{effacer, ' '}
+        <div>
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{type_ref, ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{type_ref}|zotspip_traduire_type)]</a>]
+        </div>
+      ]<BOUCLE_mots(DATA){source table, #GET{mots}}{par cle}>
+        [(#SET{delete, [(#GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
+        #SET{effacer, ' '}
+        <div>
+          [<a href="[(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{mots, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
+        </div>
+      </BOUCLE_mots>
+      [(#GET{effacer}|oui)
+        <div>
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{mots\[\]|recherche|type_ref', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+        </div>
+      ]
+    </div>
+  </div>
+</div>

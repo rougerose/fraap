@@ -1,0 +1,11 @@
+<BOUCLE_mot(MOTS){id_mot}>
+  #SET{total, 0}
+  <B_total_mots>
+    <BOUCLE_total_mots(SPIP_MOTS_LIENS){objet=fbiblio}{id_mot}{id_objet IN #ENV{references}}> </BOUCLE_total_mots>
+    [(#SET{total, #TOTAL_BOUCLE})]
+  </B_total_mots>
+  <div class="choix">
+    <input type="checkbox" name="mots\[\]" class="checkbox" id="mot#ID_MOT" value="#ID_MOT"[(#ENV{mots}|find{#ID_MOT}|oui) checked="checked"][ (#GET{total}|=={0}|oui) disabled ] data-label="[(#TITRE|attribut_html)]"/>
+    <label for="mot#ID_MOT">[(#TITRE)][<span class="indicator">(#GET{total})</span>]</label>
+  </div>
+</BOUCLE_mot>

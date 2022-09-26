@@ -76,26 +76,33 @@ function fraap_squelettes_formulaire_charger($flux) {
 
 /**
  * Utiliser le pipeline indexer_document
- * pour ajouter une dimension origine aux articles.
+ * pour ajouter une dimension origine aux articles et fbiblios.
  */
 function fraap_squelettes_indexer_document($flux) {
-	if ($flux['data']->properties['objet'] == 'article') {
+	if ($flux['data']->properties['objet'] == 'article' or $flux['data']->properties['objet'] == 'fbiblio') {
 		$id_rubrique = $flux['data']->properties['id_rubrique'];
-		$flux['data']->properties['origine'] = ajouter_origine_article($id_rubrique);
+		$flux['data']->properties['origine'] = ajouter_origine_document($id_rubrique);
+
+		if ($flux['data']->properties['objet'] == 'fbiblio') {
+			$id_fbiblio = $flux['data']->properties['id_objet'];
+			$flux['data']->properties['type_ref'] = ajouter_type_ref_fbiblio($id_fbiblio);
+		}
 	}
 	return $flux;
 }
 
 /**
- * Indexation des articles, ajouter une dimension origine :
- * 	- fiches pratiques
- *  - annuaire des membres
+ * Indexation des documents, ajouter une dimension origine :
+ * 	- fiches pratiques (articles)
+ *  - annuaire des membres (articles)
+ *  - médiathèque (fbiblios)
  *  - site pour tous les autres articles.
  */
-function ajouter_origine_article($id_rubrique) {
+function ajouter_origine_document($id_rubrique) {
 	// fiches pratiques, id_rubrique = 38
 	// annuaire membres, id_rubrique = 3
-	$id_origines = [38, 3];
+	// médiathèque, id_rubrique = 47
+	$id_origines = [38, 3, 47];
 	$origine = '';
 
 	if (in_array($id_rubrique, $id_origines)) {
@@ -106,4 +113,12 @@ function ajouter_origine_article($id_rubrique) {
 	}
 
 	return $origine;
+}
+
+function ajouter_type_ref_fbiblio($id_fbiblio) {
+	if ($id_fbiblio = intval($id_fbiblio)) {
+		return $type_ref = sql_getfetsel('type_ref', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
+	} else {
+		return '';
+	}
 }

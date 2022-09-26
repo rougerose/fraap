@@ -25,7 +25,8 @@ textarea {
 // Checkbox
 // Référence possible https://moderncss.dev/pure-css-custom-checkbox-style/
 // mais non suivie ici
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   width: min(1.13em, 18px);
   height: min(1.13em, 18px);
 

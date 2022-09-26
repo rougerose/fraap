@@ -12,7 +12,7 @@
       <div class="dialog-filters_inner-body">
         <div class="collapsible">
           [(#REM)
-            <!-- Récupérer les données envoyées par le fonction charger du formulaire -->
+            <!-- Récupérer le tableau datas envoyé par la fonction charger du formulaire -->
           ]
           <BOUCLE_groupes(DATA){source tableau, #ENV{datas}}{par cle}>
             #SET{cle, #VALEUR|table_valeur{cle}} #SET{valeur, #VALEUR}

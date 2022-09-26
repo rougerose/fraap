@@ -3,7 +3,7 @@
     <div class="editer-groupe search_group">
       [(#ENV{action}|form_hidden)]
       [<input type="hidden" name="lang" value="(#ENV{lang})" />]
-      <label class="search_label[ (#ENV{class}|match{dialog-recherche_formulaire}|non)visually-hidden]" for="#ENV{_id_champ}"><span id="search_label_text"><:info_rechercher:></span></label>
+      <label class="search_label[ (#ENV{class}|match{search-page_form}|oui)visually-hidden][ (#ENV{class}|=={mediatheque}|oui)search_label-mediatheque]" for="#ENV{_id_champ}"><span id="search_label_text">[(#ENV{class}|=={mediatheque}|?{<:fraap_squelettes:search_label_mediatheque:>, <:info_rechercher:>})]</span></label>
       <input type="[(#HTML5|?{search,text})]" class="search_input" size="10" name="recherche" id="#ENV{_id_champ}"[ value="(#ENV{recherche})"] accesskey="4" autocapitalize="off" autocorrect="off" placeholder="<:fraap_squelettes:search_placeholder:>"/>
       <button type="submit" class="button button-ripple search_submit"><:fraap_squelettes:search_submit:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-arrow-right, path1='', path2='', aria-hidden=true})]</button>
     </div>

@@ -28,12 +28,12 @@
       &::before {
         content: "\2022";
         margin-right: var(--space-xs);
-        color: var(--color-primary-700);
+        color: var(--color-primary);
       }
       &:last-child::after {
         content: "\2022";
         margin-left: var(--space-xs);
-        color: var(--color-primary-700);
+        color: var(--color-primary);
       }
     }
   }

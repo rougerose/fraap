@@ -1,0 +1,24 @@
+<BOUCLE_rubrique_mediatheque_composition(RUBRIQUES){id_rubrique}>
+  #SET{tri, #ENV{tri, title}} #SET{sens, #ENV{sens, ''}}
+  <div class="offset-icon gap-top-3">
+    <B_sphinx>
+      #ANCRE_PAGINATION
+      <div class="mediatheque-list flow">
+        [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
+        <BOUCLE_sphinx(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
+          {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
+          {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
+          {filtermultijson #ENV{mots}, properties.mots.ids, #ENV{mots}}
+          {par #GET{tri}}{inverse #GET{sens}}{pagination 20}
+        >
+          <BOUCLE_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
+            <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio}/>
+          </BOUCLE_reference>
+        </BOUCLE_sphinx>
+      </div>
+      [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
+    </B_sphinx>
+      [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
+    <//B_sphinx>
+  </div>
+</BOUCLE_rubrique_mediatheque_composition>

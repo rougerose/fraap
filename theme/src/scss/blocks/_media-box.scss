@@ -13,9 +13,16 @@
   gap: var(--media-box-gutter, 1rem);
 }
 
-.media-box_img {
-  width: var(--media-box-img-size);
-  height: var(--media-box-img-size);
+.media-box_fig {
+  .media-box_img,
+  img {
+    width: var(--media-box-img-size, 32px);
+    height: var(--media-box-img-size, 32px);
+  }
+
+  figcaption {
+    font-size: var(--step--2);
+  }
 }
 
 .media-box_content {

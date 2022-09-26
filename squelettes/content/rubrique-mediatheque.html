@@ -1,21 +1,9 @@
-<div class="o-wrapper">
-  <div class="c-page-mediatheque">
-    <div class="c-page-mediatheque_sidebar">
-      <INCLURE{fond=inclure/mediatheque/sidebar, env}/>
-    </div>
-    <div class="c-page-mediatheque_content">
-      <BOUCLE_env_mots(CONDITION){si #ENV{mots}|>{0}}>
-        #SET{zitems, #ARRAY}
-        <BOUCLE_env_fbiblios(FBIBLIOS){id_rubrique}{mots_liens.id_mot IN #ENV{mots}}>
-          [(#SET{zitems, #GET{zitems}|push{#ID_ZITEM}})]
-        </BOUCLE_env_fbiblios>
-      </BOUCLE_env_mots>
-        #SET{zitems, #ARRAY}
-        <BOUCLE_fbiblios(FBIBLIOS){id_rubrique}>
-          [(#SET{zitems, #GET{zitems}|push{#ID_ZITEM}})]
-        </BOUCLE_fbiblios>
-      <//B_env_mots>
-      <INCLURE{fond=inclure/mediatheque/content, zitems=#GET{zitems}, nom_pagination=_references, pagination=15, ajax=mediatheque_content, env}/>
+<BOUCLE_rubrique_mediatheque(RUBRIQUES){id_rubrique}>
+  <div class="page" data-page="mediatheque">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+    <INCLURE{fond=inclure/sections/header-rubrique-mediatheque, icon='icon-rubrique47-64.svg', class_icon=icon-rubrique47, id_rubrique} />
+    <div class="wrapper-content" data-size="narrow">
+      <INCLURE{fond=inclure/compositions/rubrique-mediatheque, id_rubrique, mots=#ENV{mots}, type_ref=#ENV{type_ref}, recherche=#ENV*{recherche}, ajax=mediatheque, env}/>
     </div>
   </div>
-</div>
+</BOUCLE_rubrique_mediatheque>

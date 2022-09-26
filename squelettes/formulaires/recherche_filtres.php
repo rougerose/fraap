@@ -38,13 +38,13 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 				$contexte_filtres['recherche'] = $recherche;
 				$datas[$key]['cle'] = $cle;
 				// Récupérer les facettes depuis un squelette
-				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/filtres-facette', $contexte_filtres));
+				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres));
 				$datas[$key]['titre'] = $valeurs['titre'];
 				$datas[$key]['type'] = $valeurs['type'];
 			}
 		}
 		$contexte_total['recherche'] = $recherche;
-		$retour['total'] = recuperer_fond('inclure/formulaires/filtres-total', $contexte_total);
+		$retour['total'] = recuperer_fond('inclure/formulaires/fond-filtres-total-recherche', $contexte_total);
 	}
 	$retour['datas'] = $datas;
 	return $retour;

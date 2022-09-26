@@ -13,20 +13,20 @@ const collapsibleInit = (container, extend) => {
     headings.forEach((heading) => {
       let btn = heading.firstElementChild,
         target = heading.nextElementSibling,
-        checkboxes,
+        inputs,
         expanded = false;
 
       // Ajouter au bouton les labels des filtres déjà cochés
       if (extendMode) {
-        checkboxes = heading.nextElementSibling.querySelectorAll(
-          "input[type='checkbox']:checked"
+        inputs = heading.nextElementSibling.querySelectorAll(
+          "input:checked"
         );
 
         expanded = btn.getAttribute("aria-expanded") === "true" || false;
 
         // Afficher la sélection
-        if (expanded === false && checkboxes.length > 0) {
-          addUserChoice(btn, checkboxes);
+        if (expanded === false && inputs.length > 0) {
+          addUserChoice(btn, inputs);
         }
       }
 
@@ -44,11 +44,11 @@ const collapsibleInit = (container, extend) => {
           }
 
           // Afficher le choix de l'utilisateur à la fermeture du bouton
-          checkboxes = heading.nextElementSibling.querySelectorAll(
-            "input[type='checkbox']:checked"
+          inputs = heading.nextElementSibling.querySelectorAll(
+            "input:checked"
           );
-          if (expanded === true && checkboxes.length > 0) {
-            addUserChoice(btn, checkboxes);
+          if (expanded === true && inputs.length > 0) {
+            addUserChoice(btn, inputs);
           }
 
           let hiddenInput = btn.nextElementSibling;
@@ -68,12 +68,12 @@ const collapsibleInit = (container, extend) => {
  * Ajouter sur le bouton les choix de l'utilisateur
  *
  * @param {node} btn Élément parent
- * @param {nodeList} checkboxes Les sélections de l'utilisateur
+ * @param {nodeList} inputs Les sélections de l'utilisateur
  */
-const addUserChoice = (btn, checkboxes) => {
+const addUserChoice = (btn, inputs) => {
   let labels = [];
-  checkboxes.forEach((checkbox) => {
-    labels.push(checkbox.dataset.label);
+  inputs.forEach((input) => {
+    labels.push(input.dataset.label);
   });
 
   if (labels.length > 0) {
