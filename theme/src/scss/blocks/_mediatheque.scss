@@ -1,26 +1,13 @@
-/// MEDIATHEQUE-LIST
-/// Liste de contenus, affichage horizontal
+/// MEDIATHEQUE
 
-
-.mediatheque-list {
-//  padding-left: calc(var(--offset-icon-space) * 2);
-//  padding-right: calc(var(--offset-icon-space) * 2);
-}
-
-.mediatheque-list_item {
+// Page mediatheque
+.mediatheque_item {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
   border-bottom: 1px solid var(--color-primary);
   padding-bottom: var(--space-l);
-
-  .media-box_fig {
-    --media-box-img-size: 24px;
-    background-color: var(--color-primary);
-    border-radius: 100%;
-    padding: 8px;
-  }
 
   .abstract_subheading {
     color: var(--color-primary-600);
@@ -36,6 +23,33 @@
   .abstract_desc {
     max-width: 75ch;
   }
+}
+
+
+// Page fbiblio
+.mediatheque_article {
+  .media-box {
+    align-items: center;
+    margin-bottom: var(--space-s);
+  }
+
+  .headline_subtitle {
+    color: var(--color-primary-600);
+  }
+}
+
+
+// Règles communes
+.mediatheque_item,
+.mediatheque_article {
+
+  .media-box_fig {
+    --media-box-img-size: 24px;
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    padding: 8px;
+  }
+
 
   // zotspip
   .csl-entry {

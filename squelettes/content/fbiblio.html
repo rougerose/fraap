@@ -1,0 +1,51 @@
+[(#REM)
+  <!--
+    Récupérer l'id_rubrique Médiathèque dans la config du plugin fraap_bliblio.
+    Ce qui permettra de réécrire l'url des fbiblios contenus dans les résultats.
+  -->
+][(#SET{id_mediatheque, #CONFIG{fraap_biblio}|table_valeur{mediatheque}|table_valeur{0}|explode{|}|table_valeur{1}|intval})]
+
+<BOUCLE_bibliographie(FBIBLIOS){id_fbiblio}>
+  <div class="page" data-page="fbiblio">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/fbiblio, id_fbiblio}/>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <div class="region">
+        <article class="article mediatheque_article">
+          <div class="prose">
+            <header class="headline">
+              <div class="media-box">
+                [<figure class="media-box_fig">
+                  (#TYPE_REF|zotspip_icone_type{#MIMETYPE,#FICHIER}|inserer_attribut{title, #TYPE_REF|zotspip_traduire_type})
+                </figure>]
+                <div class="media-box_content">
+                  [<p class="headline_subtitle">(#TYPE_REF|zotspip_traduire_type)</p>]
+                </div>
+              </div>
+              <h1 class="headline_title variant-article measure">#TITRE</h1>
+            </header>
+          </div>
+          <div class="prose">
+            <BOUCLE_zitem(ZITEMS){id_zitem}>
+              [<div class="flow prose-editor gap-top-5">
+                (#REFERENCE)
+                [<p><a href="(#URL)" class="button-cta variant-link spip_out"><:fraap_squelettes:cta_source:></a></p>]
+              </div>]
+            </BOUCLE_zitem>
+            <B_mots_article>
+              <div class="cluster gap-top-6">
+                <BOUCLE_mots_article(MOTS){id_fbiblio}{par titre}>
+                  <a href="[(#URL_RUBRIQUE{#GET{id_mediatheque}}|parametre_url{mots\[\], #ID_MOT})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
+                </BOUCLE_mots_article>
+              </div>
+            </B_mots_article>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <INCLURE{fond=inclure/liste/prolonger/fbiblio-mots_fbiblios, id_fbiblio, id_rubrique=#GET{id_mediatheque}}/>
+
+  </div>
+</BOUCLE_bibliographie>

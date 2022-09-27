@@ -1,0 +1,18 @@
+[(#ENV{afficher_date}|=={1}|?{
+  #SET{afficher_date, ' '}, #SET{afficher_date, ''}
+})][(#ENV{afficher_mots}|=={1}|?{#SET{afficher_mots, ' '}, #SET{afficher_mots, ''}})]
+<BOUCLE_fbiblio_card(FBIBLIOS){id_fbiblio}>
+  <h3 class="card_heading[ (#ENV{variante})] abstract_heading" data-heading-level="#ENV{heading_level, 3}">
+    <a href="#URL_FBIBLIO">#TITRE</a>
+  </h3>
+  <div class="card_desc abstract_desc flow-small">
+    <p><a href="#URL_FBIBLIO" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+    <B_mots_fbiblio>
+      <p class="cluster gap-top-2">
+        <BOUCLE_mots_fbiblio(MOTS){id_fbiblio}{par titre}{si #GET{afficher_mots}|oui}>
+          <a href="[(#URL_RUBRIQUE{#ENV{id_rubrique}}|parametre_url{mots\[\], #ID_MOT})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
+        </BOUCLE_mots_fbiblio>
+      </p>
+    </B_mots_fbiblio>
+  </div>
+</BOUCLE_fbiblio_card>

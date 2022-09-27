@@ -1,0 +1,25 @@
+<BOUCLE_fbiblio(FBIBLIOS){id_fbiblio}>
+  #SET{mots, #ARRAY}
+  <BOUCLE_mots(MOTS){id_fbiblio}>[(#SET{mots, #GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
+  <B_prolonger>
+    <section class="pod variant-banner related">
+      <div class="pod_mask">
+        <div class="pod_bg-mask">
+          <div class="pod_bg-banner"></div>
+        </div>
+        <div class="wrapper-content">
+          <div class="pod_content">
+            <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+            <ul class="related_list auto-grid gap-top-3" role="list">
+              <BOUCLE_prolonger(FBIBLIOS){mots 0.7 #GET{mots} !tri}{exclus}>
+                <li class="card variant-box abstract related_item flow">
+                  <INCLURE{fond=inclure/resumes/fbiblio-card, id_fbiblio, heading_level=3, afficher_mots=1, afficher_date=0, id_rubrique=#ENV{id_rubrique}}/>
+                </li>
+              </BOUCLE_prolonger>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </B_prolonger>
+</BOUCLE_fbiblio>

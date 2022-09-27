@@ -1,6 +1,6 @@
 <BOUCLE_reference(FBIBLIOS){id_fbiblio}>
   <BOUCLE_zitem(ZITEMS){id_zitem}>
-    <article class="mediatheque-list_item media-box abstract">
+    <article class="mediatheque_item media-box abstract">
       [<figure class="media-box_fig">
         (#TYPE_REF|zotspip_icone_type{#MIMETYPE,#FICHIER}|inserer_attribut{title, #TYPE_REF|zotspip_traduire_type})
       </figure>]
@@ -9,14 +9,14 @@
         <h2 class="abstract_heading">#TITRE</h2>
         <div class="abstract_desc flow-small">
           [(#REFERENCE)]
-          [<p class="prose-editor"><a href="(#URL)" class="button-cta variant-link spip_out xwith-icon xwith-icon-right"><:fraap_squelettes:cta_source:></a></p>]
+          [<p class="prose-editor"><a href="(#URL)" class="button-cta variant-link spip_out"><:fraap_squelettes:cta_source:></a></p>]
           <B_mots_reference>
             <p class="cluster gap-top-2">
               <BOUCLE_mots_reference(MOTS){id_fbiblio}{par id_groupe, titre}>
                 <span class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</span>
               </BOUCLE_mots_reference>
             </p>
-          </B_mots_article>
+          </B_mots_reference>
         </div>
       </div>
     </article>

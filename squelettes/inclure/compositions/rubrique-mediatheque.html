@@ -5,7 +5,7 @@
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
   <div class="offset-icon gap-top-3">
     #ANCRE_PAGINATION
-    <div class="mediatheque-list flow">
+    <div class="flow">
       <BOUCLE_sphinx(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
         {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
@@ -23,7 +23,7 @@
 </B_sphinx>
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
   <div class="offset-icon gap-top-3">
-    <div class="mediatheque-list flow">
+    <div class="flow">
       <div class="callout variant-warn">
         <p><strong><:fraap_squelettes:recherche_resultat_aucun:>.</strong></p>
       </div>
