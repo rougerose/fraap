@@ -96,7 +96,7 @@
     ]
     #SET{total_fbiblios, 0}
     <B_total_fbiblios>
-      <BOUCLE_total_fbiblios(FBIBLIOS){id_fbiblio IN #GET{_ref}}>#ID_FBIBLIO</BOUCLE_total_fbiblios>
+      <BOUCLE_total_fbiblios(FBIBLIOS){id_fbiblio IN #GET{_ref}}> </BOUCLE_total_fbiblios>
       #SET{total_fbiblios, #TOTAL_BOUCLE}
     </B_total_fbiblios>
     [(#GET{total_fbiblios}|>{0}|?{
