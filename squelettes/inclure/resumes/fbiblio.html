@@ -14,12 +14,13 @@
             <p class="cluster gap-top-2">
               <BOUCLE_mots_reference(MOTS){id_fbiblio}{par id_groupe, titre}>
                 [(#SET{_mots, #ARRAY})]
-                [(#ENV{mots}|oui)
+                [(#ENV{mots}|?{
                   [(#ENV{mots}|find{#ID_MOT}|?{
                     #SET{_mots, #ENV{mots}},
                     #SET{_mots, #ENV{mots}|push{#ID_MOT}}
-                  })]
-                ]
+                  })],
+                  [(#SET{_mots, #GET{_mots}|push{#ID_MOT}})]
+                })]
                 <a href="[(#ENV{self}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
               </BOUCLE_mots_reference>
             </p>
