@@ -14,7 +14,7 @@
         {par #GET{tri}}{inverse #GET{sens}}{pagination 20}
       >
         <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
-          <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio}/>
+          <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
         </BOUCLE_sphinx_reference>
       </BOUCLE_sphinx>
     </div>
