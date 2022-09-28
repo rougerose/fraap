@@ -75,12 +75,10 @@
         {pagination 20}
       >
         <article class="search-page_result abstract flow-small">
-          [(#SET{url, #URI})]
-          [(#PROPERTIES|table_valeur{objet}|=={fbiblio}|oui) [(#SET{url, #URL_RUBRIQUE{#GET{mediatheque}}|parametre_url{id_fbiblio, #PROPERTIES|table_valeur{id_objet}}})] ]
-          <h2 class="abstract_heading"><a href="#GET{url}">#TITLE</a></h2>
+          <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
           <div class="abstract_desc flow-small">
             [(#SNIPPET|sinon{#SUMMARY}|replace{b>,mark>}|propre)]
-            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#GET{url}" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#URI" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
           </div>
         </article>
       </BOUCLE_recherche>

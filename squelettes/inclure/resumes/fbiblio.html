@@ -4,26 +4,33 @@
       [<figure class="media-box_fig">
         (#TYPE_REF|zotspip_icone_type{#MIMETYPE,#FICHIER}|inserer_attribut{title, #TYPE_REF|zotspip_traduire_type})
       </figure>]
-      <div class="media-box_content flow-small">
-        [<p class="abstract_subheading">(#TYPE_REF|zotspip_traduire_type)</p>]
-        <h2 class="abstract_heading">#TITRE</h2>
-        <div class="abstract_desc flow-small">
-          [(#REFERENCE)]
-          [<p class="prose-editor"><a href="(#URL)" class="button-cta variant-link spip_out"><:fraap_squelettes:cta_source:></a></p>]
+      <div class="media-box_content flow">
+        <header class="flow-small">
+          [<p class="abstract_subheading">(#TYPE_REF|zotspip_traduire_type)</p>]
+          <h2 class="abstract_heading">#TITRE</h2>
+        </header>
+        <div class="abstract_desc flow">
+          [<div>(#RESUME|paragrapher)</div>]
+          <div class="flow-small">
+            [(#REFERENCE)]
+            [<p class="prose-editor"><a href="(#URL)" class="button-cta variant-link spip_out"><:fraap_squelettes:cta_source:></a></p>]
+          </div>
           <B_mots_reference>
-            <p class="cluster gap-top-2">
-              <BOUCLE_mots_reference(MOTS){id_fbiblio}{par id_groupe, titre}>
-                [(#SET{_mots, #ARRAY})]
-                [(#ENV{mots}|?{
-                  [(#ENV{mots}|find{#ID_MOT}|?{
-                    #SET{_mots, #ENV{mots}},
-                    #SET{_mots, #ENV{mots}|push{#ID_MOT}}
-                  })],
-                  [(#SET{_mots, #GET{_mots}|push{#ID_MOT}})]
-                })]
-                <a href="[(#ENV{self}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
-              </BOUCLE_mots_reference>
-            </p>
+            <footer class="gap-top-2">
+              <p class="cluster">
+                <BOUCLE_mots_reference(MOTS){id_fbiblio}{par id_groupe, titre}>
+                  [(#SET{_mots, #ARRAY})]
+                  [(#ENV{mots}|?{
+                    [(#ENV{mots}|find{#ID_MOT}|?{
+                      #SET{_mots, #ENV{mots}},
+                      #SET{_mots, #ENV{mots}|push{#ID_MOT}}
+                    })],
+                    [(#SET{_mots, #GET{_mots}|push{#ID_MOT}})]
+                  })]
+                  <a href="[(#ENV{self}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
+                </BOUCLE_mots_reference>
+              </p>
+            </footer>
           </B_mots_reference>
         </div>
       </div>
