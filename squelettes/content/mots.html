@@ -40,15 +40,32 @@
                   <a href="[\#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
                 </h2>
                 <BOUCLE_sousgroupes(GROUPES_MOTS){id_parent}{par titre}>
-                  #SET{titre, #TITRE}
+                  #SET{titre, #TITRE} #SET{mots, #ARRAY}
+                  [(#REM)
+                    <!--
+                      Récupérer la liste des objets **PUBLIES** liés à chaque mot : apparemment impossible d'écrire
+                      une boucle contenant le critère nom_objets.statut=publie où nom_objets serait dynamnique.
+                      Donc, pour faire simple, on suppose que les mots-clés sont liés soit à un objet article ou fbiblio
+                    -->
+                  ]
+                  <BOUCLE_articles(MOTS spip_mots_liens articles){objet=article}{articles.statut=publie}{id_groupe}>
+                    [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
+                  </BOUCLE_articles>
+                  <BOUCLE_fbiblios(MOTS spip_mots_liens fbiblios){objet=fbiblio}{fbiblios.statut=publie}{id_groupe}>
+                    [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
+                  </BOUCLE_fbiblios>
+
+                  [(#SET{mots, #GET{mots}|array_unique})]
+
                   <B_mots>
                     <h3 id="[(#GET{titre}|identifiant_slug{id, #ARRAY{separateur, -, longeur_mini, 5}})]" class="text-underscore">[(#GET{titre}) ]<a href="[\#(#GET{titre}|identifiant_slug{id, #ARRAY{separateur, -, longeur_mini, 5}})]">#</a></h3>
                     <ul role="list" class="ressources_list cluster">
-                      <BOUCLE_mots(MOTS spip_mots_liens spip_articles){objet=article}{id_groupe}{par titre}{articles.statut=publie}>
+                      <BOUCLE_mots(MOTS){id_mot IN #GET{mots}}{par titre}>
                         <li><a href="#URL_MOT">#TITRE</a></li>
                       </BOUCLE_mots>
                     </ul>
                   </B_mots>
+
                 </BOUCLE_sousgroupes>
               </section>
             </BOUCLE_liste_mots>
