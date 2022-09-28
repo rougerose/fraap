@@ -4,7 +4,7 @@
       <BOUCLE_ancres(DATA){source tableau, #ENV{typologies}}>
         [(#VALEUR|table_valeur{total}|>{0}|oui)
           <div>
-            <a href="[\#pagination_(#VALEUR|table_valeur{typologie})]">[(#VALEUR|table_valeur{titre})][ <span class="indicator">(#VALEUR|table_valeur{total})</span>]</a>
+            <a href="[\#(#VALEUR|table_valeur{typologie}|identifiant_slug{id})]">[(#VALEUR|table_valeur{titre})][ <span class="indicator">(#VALEUR|table_valeur{total})</span>]</a>
           </div>
         ]
       </BOUCLE_ancres>

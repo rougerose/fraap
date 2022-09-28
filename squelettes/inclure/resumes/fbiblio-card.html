@@ -1,7 +1,7 @@
 [(#ENV{afficher_date}|=={1}|?{
   #SET{afficher_date, ' '}, #SET{afficher_date, ''}
 })][(#ENV{afficher_mots}|=={1}|?{#SET{afficher_mots, ' '}, #SET{afficher_mots, ''}})]
-<BOUCLE_fbiblio_card(FBIBLIOS){id_fbiblio}>
+<BOUCLE_fbiblio_card(FBIBLIOS){id_fbiblio=#ENV{id_objet}}>
   <h3 class="card_heading[ (#ENV{variante})] abstract_heading" data-heading-level="#ENV{heading_level, 3}">
     <a href="#URL_FBIBLIO">#TITRE</a>
   </h3>

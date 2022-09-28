@@ -1,7 +1,7 @@
 [(#ENV{afficher_date}|=={1}|?{
   #SET{afficher_date, ' '}, #SET{afficher_date, ''}
 })][(#ENV{afficher_mots}|=={1}|?{#SET{afficher_mots, ' '}, #SET{afficher_mots, ''}})]
-<BOUCLE_article_card(ARTICLES){id_article}>
+<BOUCLE_article_card(ARTICLES){id_article=#ENV{id_objet}}>
   <h3 class="card_heading[ (#ENV{variante})] abstract_heading" data-heading-level="#ENV{heading_level, 3}">
     <a href="#URL_ARTICLE">#TITRE</a>
   </h3>

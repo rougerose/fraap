@@ -22,7 +22,7 @@
               </BOUCLE_rubrique_plaidoyer>
                 <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
                   <article class="card abstract flow">
-                    <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore, afficher_date=0} />
+                    <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
                   </article>
                 </BOUCLE_tous_articles_card>
               <//B_rubrique_plaidoyer>

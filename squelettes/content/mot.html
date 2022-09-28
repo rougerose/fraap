@@ -17,6 +17,7 @@
     #SET{articles, #ARRAY}
     #SET{annuaire, #ARRAY}
     #SET{fiches, #ARRAY}
+    #SET{fbiblios, #ARRAY}
 
     <BOUCLE_tableau_articles(ARTICLES){id_rubrique !IN 3,38}{id_mot}{par titre}{doublons}>
       [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
@@ -33,16 +34,22 @@
     </BOUCLE_tableau_fiches>
     [(#SET{fiches_total, #GET{fiches}|count})]
 
-    [(#SET{total, #GET{articles_total}|plus{#GET{annuaire_total}}|plus{#GET{fiches_total}}})]
+    <BOUCLE_tableau_fbiblios(FBIBLIOS){id_rubrique=47}{id_mot}{par titre}{doublons}>
+      [(#SET{fbiblios, #GET{fbiblios}|push{#ID_FBIBLIO}})]
+    </BOUCLE_tableau_fbiblios>
+    [(#SET{fbiblios_total, #GET{fbiblios}|count})]
+
+    [(#SET{total, #GET{articles_total}|plus{#GET{annuaire_total}}|plus{#GET{fiches_total}}|plus{#GET{fbiblios_total}} })]
 
     <BOUCLE_si_total(CONDITION){si #GET{total}|>{0}}>
       [(#REM)
         <!--
           Créer le tableau des typologies d'articles
         -->
-      ][(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, articles, titre, <:fraap_squelettes:titre_articles:>, total, #GET{articles_total}, ids, #GET{articles} } } })]
-      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, annuaire, titre, #INFO_TITRE{rubrique,3}, total, #GET{annuaire_total}, ids, #GET{annuaire} } } })]
-      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, fiches, titre, #INFO_TITRE{rubrique,38}, total, #GET{fiches_total}, ids, #GET{fiches} } } })]
+      ][(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, 'articles', titre, <:fraap_squelettes:titre_articles:>, total, #GET{articles_total}, ids, #GET{articles}, objet, 'article'}}})]
+      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, 'annuaire', titre, #INFO_TITRE{rubrique,3}, total, #GET{annuaire_total}, ids, #GET{annuaire}, objet, 'article'}}})]
+      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, 'fiches', titre, #INFO_TITRE{rubrique,38}, total, #GET{fiches_total}, ids, #GET{fiches}, objet, 'article'}}})]
+      [(#SET{typologies, #GET{typologies}|push{#ARRAY{typologie, 'mediatheque', titre, #INFO_TITRE{rubrique,47}, total, #GET{fbiblios_total}, ids, #GET{fbiblios}, objet, 'fbiblio'}}})]
 
       [(#REM)
         <!-- Trier le tableau selon la colonne total -->
@@ -54,9 +61,9 @@
         </div>
 
         <div class="offset-icon">
-          <BOUCLE_articles(DATA){source tableau, #GET{typologies}}>
-            <INCLURE{fond=inclure/liste/mot-articles, articles=#VALEUR|table_valeur{ids}, titre=#VALEUR|table_valeur{titre}, total=#VALEUR|table_valeur{total}, pagination=24, nom_pagination=_#VALEUR|table_valeur{typologie}, ajax, env}/>
-          </BOUCLE_articles>
+          <BOUCLE_objets(DATA){source tableau, #GET{typologies}}>
+            <INCLURE{fond=inclure/liste/mot-objets, objets=#VALEUR|table_valeur{ids}, objet=#VALEUR|table_valeur{objet}, titre=#VALEUR|table_valeur{titre}, total=#VALEUR|table_valeur{total}, pagination=24, nom_pagination=_#VALEUR|table_valeur{typologie}, ajax, env}/>
+          </BOUCLE_objets>
         </div>
       </div>
 

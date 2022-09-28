@@ -8,7 +8,7 @@
             <div class="auto-grid">
               <BOUCLE_articles(ARTICLES){id_rubrique}{!par date}{pagination #ENV{pagination, 12} _articles}>
                 <article class="card abstract flow">
-                  <INCLURE{fond=inclure/resumes/article-card, id_article, variante=variant-underscore} />
+                  <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore} />
                 </article>
               </BOUCLE_articles>
             </div>
