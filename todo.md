@@ -5,13 +5,6 @@
 - Ajout data-page des rubriques
 - Ajouter le sous-titre des articles dans les résumés
 
-## Toutes les rubriques
-- ajouter TEXTE et DESCRIPTIF (site dev)
-
-## Médiathèque
-- rubrique médiathèque, régler la pagination : position de l'ancre et url perso
-- rubrique médiathèque : mots-clés chaque ressource : ajouter lien pour ajouter le critère de filtre
-
 ## Observatoire
 Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...
 
