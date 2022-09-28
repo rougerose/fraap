@@ -2,9 +2,9 @@
 
 <B_sphinx>
   #SET{total_resultats, #GRAND_TOTAL}
+  #ANCRE_PAGINATION
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
-  <div class="offset-icon gap-top-3">
-    #ANCRE_PAGINATION
+  <div class="offset-icon pad-top-5">
     <div class="flow">
       <BOUCLE_sphinx(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
         {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
