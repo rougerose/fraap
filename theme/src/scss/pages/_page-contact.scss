@@ -1,0 +1,64 @@
+
+@use "../settings" as var;
+@use "sass:map";
+
+.formulaire_ecrire_auteur,
+.formulaire_formidable {
+
+  fieldset {
+    border: 1px solid map.get(var.$gray, "blue", "100");
+    background-color: var(--color-paper);
+    margin-bottom: var(--space-m);
+    padding: var(--space-s);
+
+    fieldset {
+      border: none;
+      // border-radius: var(--border-radius-base);
+    }
+  }
+
+  // legend {}
+
+  .editer {
+    margin-bottom: var(--space-m);
+
+    legend {
+      font-size: var(--step-0);
+      color: var(--color-ink);
+    }
+
+    label {
+      display: block;
+      padding-bottom: 4px;
+    }
+  }
+
+  .explication {
+    margin-bottom: var(--space-m);
+    font-style: italic;
+  }
+
+  button.submit,
+  input.submit {
+    color: currentColor;
+    display: inline-flex;
+    font-size: var(--buttonCta-fontsize, var(--step-0));
+    line-height: 1;
+    padding: var(--buttonCta-padding, 0);
+    white-space: nowrap;
+    background-color: var(--color-paper);
+    // border-radius: 2em;
+    border: 1px solid var(--color-contrast);
+    transition: background 0.3s, color 0.3s;
+    background-color: var(--buttonCta-background, var(--color-contrast));
+    border-radius: 4px;
+    color: var(--buttonCta-color, var(--color-link-invert));
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--color-contrast);
+      color: var(--color-link-invert);
+      text-decoration: none;
+    }
+  }
+}

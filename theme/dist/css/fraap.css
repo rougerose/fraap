@@ -725,6 +725,15 @@ a:not(:hover) {
   outline-offset: 2px;
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  font-size: var(--step-2);
+}
+
 input:not([type]),
 input[type=text],
 input[type=email],
@@ -3279,6 +3288,63 @@ h6 > span.text-underline {
 
 .page_content {
   position: relative;
+}
+
+.formulaire_ecrire_auteur fieldset,
+.formulaire_formidable fieldset {
+  border: 1px solid #e7e7e9;
+  background-color: var(--color-paper);
+  margin-bottom: var(--space-m);
+  padding: var(--space-s);
+}
+.formulaire_ecrire_auteur fieldset fieldset,
+.formulaire_formidable fieldset fieldset {
+  border: none;
+}
+.formulaire_ecrire_auteur .editer,
+.formulaire_formidable .editer {
+  margin-bottom: var(--space-m);
+}
+.formulaire_ecrire_auteur .editer legend,
+.formulaire_formidable .editer legend {
+  font-size: var(--step-0);
+  color: var(--color-ink);
+}
+.formulaire_ecrire_auteur .editer label,
+.formulaire_formidable .editer label {
+  display: block;
+  padding-bottom: 4px;
+}
+.formulaire_ecrire_auteur .explication,
+.formulaire_formidable .explication {
+  margin-bottom: var(--space-m);
+  font-style: italic;
+}
+.formulaire_ecrire_auteur button.submit,
+.formulaire_ecrire_auteur input.submit,
+.formulaire_formidable button.submit,
+.formulaire_formidable input.submit {
+  color: currentColor;
+  display: inline-flex;
+  font-size: var(--buttonCta-fontsize, var(--step-0));
+  line-height: 1;
+  padding: var(--buttonCta-padding, 0);
+  white-space: nowrap;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-contrast);
+  transition: background 0.3s, color 0.3s;
+  background-color: var(--buttonCta-background, var(--color-contrast));
+  border-radius: 4px;
+  color: var(--buttonCta-color, var(--color-link-invert));
+  text-decoration: none;
+}
+.formulaire_ecrire_auteur button.submit:hover,
+.formulaire_ecrire_auteur input.submit:hover,
+.formulaire_formidable button.submit:hover,
+.formulaire_formidable input.submit:hover {
+  background-color: var(--color-contrast);
+  color: var(--color-link-invert);
+  text-decoration: none;
 }
 
 .page[data-page=rubrique-federation] {
