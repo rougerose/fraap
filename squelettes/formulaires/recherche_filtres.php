@@ -15,6 +15,9 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 	$datas = [];
 	$retour = [
 		'recherche' => $recherche,
+		'tags' => _request('tags'),
+		'typologie' => _request('typologie'),
+		'annee' => _request('annee'),
 		'btnOpen' => _request('btnOpen'),
 	];
 
@@ -27,7 +30,7 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 		foreach ($criteres as $key => $valeurs) {
 			$contexte_filtres = calculer_contexte_recherche_filtres($valeurs);
 			if ($contexte_filtres) {
-				$cle = $valeurs['cle']; // tags, origine, annee
+				$cle = $valeurs['cle']; // tags, typologie, annee
 				$type = $valeurs['type']; // type multiple ou unique ?
 				$retour[$cle] = _request($cle); // récupérer les filtres saisis/supprimés par l'utilisateur
 
@@ -35,7 +38,12 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 				$contexte_filtres[$cle] = $retour[$cle];
 				$contexte_total[$cle] = $retour[$cle];
 
+				// ajouter tous les paramètres possibles de recherche
 				$contexte_filtres['recherche'] = $recherche;
+				$contexte_filtres['tags'] = ($retour['tags']) ? $retour['tags'] : '';
+				$contexte_filtres['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
+				$contexte_filtres['annee'] = ($retour['annee']) ? $retour['annee'] : '';
+
 				$datas[$key]['cle'] = $cle;
 				// Récupérer les facettes depuis un squelette
 				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres));
@@ -43,7 +51,11 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 				$datas[$key]['type'] = $valeurs['type'];
 			}
 		}
+		// ajouter tous les paramètres possibles de recherche
 		$contexte_total['recherche'] = $recherche;
+		$contexte_total['tags'] = ($retour['tags']) ? $retour['tags'] : '';
+		$contexte_total['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
+		$contexte_total['annee'] = ($retour['annee']) ? $retour['annee'] : '';
 		$retour['total'] = recuperer_fond('inclure/formulaires/fond-filtres-total-recherche', $contexte_total);
 	}
 	$retour['datas'] = $datas;

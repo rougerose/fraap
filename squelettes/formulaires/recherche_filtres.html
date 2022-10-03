@@ -22,7 +22,7 @@
                 [(#GET{cle})]
               })]
             })]
-            <B_checkbox>
+            <B_input>
               #SET{open_act, 0}
               [(#SET{open_act, #ENV{btnOpen}|find{ch_#GET{cle}}|?{1,0}})]
               <h3 class="collapsible_heading">
@@ -35,18 +35,19 @@
                 <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#GET{cle}, ''})"]>
               </h3>
               <div class="collapsible_content" role="region" aria-labelledby="ch_#GET{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
-                <BOUCLE_checkbox(DATA){source tableau, #VALEUR|table_valeur{data}}>
+                <BOUCLE_input(DATA){source tableau, #VALEUR|table_valeur{data}}>
                   [(#ENV{#GET{cle}}|is_array|?{
                     [(#SET{checked, #VALEUR|table_valeur{0}|in_array{#ENV{#GET{cle}}} })],
                     [(#SET{checked, #VALEUR|table_valeur{0}|=={#ENV{#GET{cle}}}|?{' ', ''} })]
                   })]
+                  [(#VALEUR|table_valeur{0}|match{article}|?{#SET{label,<:fraap_squelettes:filtre_label_article:>},[(#SET{label,#VALEUR|table_valeur{0}|trim})]})]
                   <div class="choix">
-                    <input type="checkbox" name="[(#GET{name}|trim)]" class="checkbox" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#VALEUR|table_valeur{0}|trim)]"/>
-                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[(#VALEUR|table_valeur{0}|trim) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
+                    <input type="checkbox" name="[(#GET{name}|trim)]" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#VALEUR|table_valeur{0}|trim)]"/>
+                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[(#GET{label}) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
                   </div>
-                </BOUCLE_checkbox>
+                </BOUCLE_input>
               </div>
-            </B_checkbox>
+            </B_input>
           </BOUCLE_groupes>
         </div>
       </div>

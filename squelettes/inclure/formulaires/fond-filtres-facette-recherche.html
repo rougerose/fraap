@@ -18,18 +18,16 @@
     {select (#ENV{critere}|concat{' '}) AS valeur}
     {groupby #GET{groupby}}
     {filter #ENV{annee},  'YEAR(date) = @valeur' }
-    {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
+    {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
     {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
     {par #GET{tri}}{inverse #GET{sens_tri}}
     {0, 20}
   >
-    [(#FACETTE|=={site}|non)
-      [(#ENV{#ENV{cle}}|is_array|?{
-        [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}}|?{checked, ''} })],
-        [(#SET{checked, #FACETTE|=={#ENV{#ENV{cle}}}|?{checked, ''}})]
-      })]
-      [(#SET{resultats, #GET{resultats}|push{#LISTE{#FACETTE, #NB, #GET{checked} } } })]
-    ]
+    [(#ENV{#ENV{cle}}|is_array|?{
+      [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}}|?{checked, ''} })],
+      [(#SET{checked, #FACETTE|=={#ENV{#ENV{cle}}}|?{checked, ''}})]
+    })]
+    [(#SET{resultats, #GET{resultats}|push{#LISTE{#FACETTE, #NB, #GET{checked} } } })]
   </BOUCLE_resultats_facette>
   [(#GET{resultats}|serialize)]
 </B_resultats_facette>

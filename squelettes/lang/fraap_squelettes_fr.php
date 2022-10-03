@@ -53,10 +53,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'fiche' => '1 fiche pratique',
 	'fiches' => '@nb@ fiches pratiques',
 	'filtre_categorie_annee' => 'Par année',
-	'filtre_categorie_origine' => 'Par origine',
+	'filtre_categorie_typologie' => 'Par type de document',
 	'filtre_categorie_theme' => 'Par thème',
 	'filtre_categorie_type_ressource' => 'Par type de ressource',
 	'filtre_label_type_tous' => 'Tous les types de ressource',
+	'filtre_label_article' => 'Articles',
 	'filtrer' => 'Filtrer',
 
 	// H

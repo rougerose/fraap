@@ -46,14 +46,14 @@
           <div>
             [<a href="(#SELF|parametre_url{annee, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{annee})]</a>]
           </div>
-        ][(#ENV{origine}|oui)
+        ][(#ENV{typologie}|oui)
           #SET{effacer, ' '}
           <div>
-            [<a href="(#SELF|parametre_url{origine, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{origine})]</a>]
+            [<a href="(#SELF|parametre_url{typologie, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{typologie})]</a>]
           </div>
         ][(#GET{effacer}|oui)
           <div>
-            [<a href="(#SELF|parametre_url{'tags\[\]|origine|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+            [<a href="(#SELF|parametre_url{'tags\[\]|typologie|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
           </div>
         ]
       </div>
@@ -67,10 +67,10 @@
         {recherche #ENV*{recherche}}
         {filter #ENV{annee}, 'YEAR(date) = @valeur'}
         {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
-        {filtermono #ENV{origine}, properties.origine, #ENV{origine}}
+        {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
         {facet annee, YEAR(date) ORDER BY date DESC}
         {facet tags, properties.tags ORDER BY COUNT(*) DESC}
-        {facet origine, properties.origine ORDER BY COUNT(*) DESC}
+        {facet typologie, properties.typologie ORDER BY COUNT(*) DESC}
         {par #GET{tri}}{inverse #GET{ordre}}
         {pagination 20}
       >
@@ -105,14 +105,14 @@
     sens_tri, -1,
     annee, #ENV{annee}
   }})]
-  [(#SET{criteres_origine, #ARRAY{
-    cle, origine,
+  [(#SET{criteres_typologie, #ARRAY{
+    cle, typologie,
     type, unique,
-    critere, properties.origine,
-    titre, <:fraap_squelettes:filtre_categorie_origine:>,
+    critere, properties.typologie,
+    titre, <:fraap_squelettes:filtre_categorie_typologie:>,
     tri, '',
     sens_tri, '',
-    origine, #ENV{origine}
+    type, #ENV{typologie}
   }})]
   [(#REM)
     <!--
@@ -121,7 +121,8 @@
       pour éviter un échappement sur les apostrophes notamment.
     -->
   ][(#SET{criteres, #ARRAY})]
-  [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_origine}}|push{#GET{criteres_annee}}})]
+  [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_typologie}}|push{#GET{criteres_annee}}})]
+
   <INCLURE{fond=inclure/dialog/recherche-filtres, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
   [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
 </B_recherche>
