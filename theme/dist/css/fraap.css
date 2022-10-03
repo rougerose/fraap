@@ -916,6 +916,12 @@ ol[role=list] {
   color: var(--color-link);
 }
 
+.abstract_subtitle {
+  margin-top: var(--space-xs);
+  font-family: var(--font-family-headings);
+  line-height: 1.2;
+}
+
 .abstract--vertical-stretch .abstract_desc {
   flex: 1;
 }
@@ -2084,6 +2090,7 @@ a:hover .icon-nav-link {
 .headline_subtitle {
   --measure: 60ch;
   font-size: var(--step-3);
+  line-height: 1.2;
   font-family: var(--font-family-headings);
   margin-top: var(--space-xs);
   max-width: var(--measure) !important;

@@ -10,6 +10,7 @@
   flex-direction: column;
 }
 
+// surtitre
 .abstract_subheading {
   font-size: var(--step-0);
   font-family: var(--font-family-headings);
@@ -30,6 +31,12 @@
   a:hover {
     color: var(--color-link);
   }
+}
+
+.abstract_subtitle {
+  margin-top: var(--space-xs);
+  font-family: var(--font-family-headings);
+  line-height: 1.2;
 }
 
 .abstract_desc {
