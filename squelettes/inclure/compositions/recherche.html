@@ -123,7 +123,7 @@
   ][(#SET{criteres, #ARRAY})]
   [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_typologie}}|push{#GET{criteres_annee}}})]
 
-  <INCLURE{fond=inclure/dialog/recherche-filtres, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
+  <INCLURE{fond=inclure/dialog/filtres-recherche, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
   [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
 </B_recherche>
   [(#REM)
