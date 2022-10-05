@@ -49,6 +49,11 @@
     border-radius: 4px;
     color: var(--buttonCta-color, var(--color-link-invert));
     text-decoration: none;
+
+    &[data-state="disabled"],
+    &[disabled] {
+      background-color: var(--color-disabled);
+    }
   }
 
   &.variant-link {

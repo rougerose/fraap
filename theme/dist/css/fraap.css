@@ -1091,6 +1091,9 @@ ol[role=list] {
   color: var(--buttonCta-color, var(--color-link-invert));
   text-decoration: none;
 }
+.button-cta.variant-button[data-state=disabled], .button-cta.variant-button[disabled] {
+  background-color: var(--color-disabled);
+}
 .button-cta.variant-link {
   color: var(--color-link);
   margin-left: var(--buttonCta-marginLeft, 0);
