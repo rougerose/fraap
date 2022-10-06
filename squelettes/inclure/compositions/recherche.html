@@ -1,6 +1,6 @@
 #SET{tri,''} #SET{ordre, 0}
 [(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
-[(#SET{tags, #ENV{tags}|array_filter})]
+[(#SET{mots, #ENV{mots}|array_filter})]
 [(#SET{effacer, ''})]
 [(#REM)
   <!--
@@ -35,10 +35,10 @@
         <div>
           <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
         </div>
-        <BOUCLE_selections(DATA){source table, #GET{tags}}{par cle}>
-          #SET{effacer, ' '} [(#SET{param, #GET{tags}|enleve_tag_liste{#VALEUR}})]
+        <BOUCLE_selections(DATA){source table, #GET{mots}}{par cle}>
+          #SET{effacer, ' '} [(#SET{param, #GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR}})]
           <div>
-            [<a href="[(#SELF|parametre_url{tags, #GET{param}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#VALEUR)</a>]
+            [<a href="[(#SELF|parametre_url{mots, #GET{param}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
           </div>
         </BOUCLE_selections>
         [(#ENV{annee}|oui)
@@ -53,7 +53,7 @@
           </div>
         ][(#GET{effacer}|oui)
           <div>
-            [<a href="(#SELF|parametre_url{'tags\[\]|typologie|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+            [<a href="(#SELF|parametre_url{'mots\[\]|typologie|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
           </div>
         ]
       </div>
@@ -66,10 +66,10 @@
         {index #ENV{source}}
         {recherche #ENV*{recherche}}
         {filter #ENV{annee}, 'YEAR(date) = @valeur'}
-        {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
+        {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
         {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
         {facet annee, YEAR(date) ORDER BY date DESC}
-        {facet tags, properties.tags ORDER BY COUNT(*) DESC}
+        {facet mots, properties.mots.ids ORDER BY COUNT(*) DESC}
         {facet typologie, properties.typologie ORDER BY COUNT(*) DESC}
         {par #GET{tri}}{inverse #GET{ordre}}
         {pagination 20}
@@ -88,13 +88,13 @@
   [(#REM)
     <!-- Préparer les critères envoyés au formulaire de filtres -->
   ][(#SET{criteres_tags, #ARRAY{
-    cle, tags,
+    cle, mots,
     type, multiple,
-    critere, properties.tags,
+    critere, properties.mots.ids,
     titre, <:fraap_squelettes:filtre_categorie_theme:>,
     tri, '',
     sens_tri, '',
-    tags, #ENV{tags}
+    tags, #ENV{mots}
   }})]
   [(#SET{criteres_annee, #ARRAY{
     cle, annee,

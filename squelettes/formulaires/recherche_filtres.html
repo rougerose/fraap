@@ -36,14 +36,18 @@
               </h3>
               <div class="collapsible_content" role="region" aria-labelledby="ch_#GET{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
                 <BOUCLE_input(DATA){source tableau, #VALEUR|table_valeur{data}}>
-                  [(#ENV{#GET{cle}}|is_array|?{
-                    [(#SET{checked, #VALEUR|table_valeur{0}|in_array{#ENV{#GET{cle}}} })],
-                    [(#SET{checked, #VALEUR|table_valeur{0}|=={#ENV{#GET{cle}}}|?{' ', ''} })]
-                  })]
-                  [(#VALEUR|table_valeur{0}|match{article}|?{#SET{label,<:fraap_squelettes:filtre_label_article:>},[(#SET{label,#VALEUR|table_valeur{0}|trim})]})]
+                  #SET{titre_groupe, ''}
+                  [(#SET{checked, #VALEUR|table_valeur{2}})]
+                  [(#VALEUR|table_valeur{0}|match{article}|?{#SET{label,<:fraap_squelettes:filtre_label_autres:>},[(#SET{label,#VALEUR|table_valeur{0}|trim})]})]
+                  <BOUCLE_si_mots(CONDITION){si #GET{name}|match{mots}}>
+                    <BOUCLE_mot(MOTS){id_mot=#GET{label}}>
+                      #SET{titre_groupe, #INFO_TITRE{groupe_mots, #ID_GROUPE_RACINE}}
+                      #SET{label, #TITRE}
+                    </BOUCLE_mot>
+                  </BOUCLE_si_mots>
                   <div class="choix">
-                    <input type="checkbox" name="[(#GET{name}|trim)]" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#VALEUR|table_valeur{0}|trim)]"/>
-                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[(#GET{label}) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
+                    <input type="checkbox" name="[(#GET{name}|trim)]" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#GET{label})]"/>
+                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[[\[(#GET{titre_groupe})\] ](#GET{label}) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
                   </div>
                 </BOUCLE_input>
               </div>

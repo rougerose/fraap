@@ -1501,6 +1501,7 @@ html:not(.js) .button-nav {
 }
 .collapsible_heading button .icon-plus {
   transition: transform 0.3s;
+  flex-shrink: 0;
 }
 .collapsible_heading button[aria-expanded=true] .vertical {
   display: none;
@@ -1524,8 +1525,10 @@ html:not(.js) .button-nav {
 }
 
 .collapsible_user-choice {
+  display: inline-flex;
   font-family: var(--font-family-sans);
   font-size: var(--step--1);
+  line-height: 1.2;
 }
 
 .collapsible_content {

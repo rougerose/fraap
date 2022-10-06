@@ -15,7 +15,7 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 	$datas = [];
 	$retour = [
 		'recherche' => $recherche,
-		'tags' => _request('tags'),
+		'mots' => _request('mots'),
 		'typologie' => _request('typologie'),
 		'annee' => _request('annee'),
 		'btnOpen' => _request('btnOpen'),
@@ -40,7 +40,7 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 
 				// ajouter tous les paramètres possibles de recherche
 				$contexte_filtres['recherche'] = $recherche;
-				$contexte_filtres['tags'] = ($retour['tags']) ? $retour['tags'] : '';
+				$contexte_filtres['mots'] = ($retour['mots']) ? $retour['mots'] : '';
 				$contexte_filtres['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
 				$contexte_filtres['annee'] = ($retour['annee']) ? $retour['annee'] : '';
 
@@ -53,7 +53,7 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 		}
 		// ajouter tous les paramètres possibles de recherche
 		$contexte_total['recherche'] = $recherche;
-		$contexte_total['tags'] = ($retour['tags']) ? $retour['tags'] : '';
+		$contexte_total['mots'] = ($retour['mots']) ? $retour['mots'] : '';
 		$contexte_total['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
 		$contexte_total['annee'] = ($retour['annee']) ? $retour['annee'] : '';
 		$retour['total'] = recuperer_fond('inclure/formulaires/fond-filtres-total-recherche', $contexte_total);

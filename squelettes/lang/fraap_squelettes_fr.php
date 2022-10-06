@@ -52,12 +52,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// F
 	'fiche' => '1 fiche pratique',
 	'fiches' => '@nb@ fiches pratiques',
-	'filtre_categorie_annee' => 'Par année',
-	'filtre_categorie_typologie' => 'Par type de document',
+	'filtre_categorie_annee' => 'Par année de publication',
+	'filtre_categorie_typologie' => 'Par rubrique du site',
 	'filtre_categorie_theme' => 'Par thème',
 	'filtre_categorie_type_ressource' => 'Par type de ressource',
+	'filtre_label_autres' => 'Toutes les autres rubriques',
 	'filtre_label_type_tous' => 'Tous les types de ressource',
-	'filtre_label_article' => 'Articles',
 	'filtrer' => 'Filtrer',
 
 	// H

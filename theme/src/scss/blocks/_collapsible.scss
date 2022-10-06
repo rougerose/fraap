@@ -19,6 +19,7 @@
 
     .icon-plus {
       transition: transform 0.3s;
+      flex-shrink: 0;
     }
 
     &[aria-expanded="true"] {
@@ -55,8 +56,10 @@
 }
 
 .collapsible_user-choice {
+  display: inline-flex;
   font-family: var(--font-family-sans);
   font-size: var(--step--1);
+  line-height: 1.2;
 }
 
 

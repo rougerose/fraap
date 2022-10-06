@@ -7,7 +7,7 @@
 <BOUCLE_recherche_total(SPHINX)
  {index #ENV{source}}{recherche #ENV*{recherche}}
   {filter #ENV{annee}, 'YEAR(date) = @valeur'}
-  {filtermultijson #ENV*{tags}, properties.tags, #ENV*{tags}}
+  {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
   {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
   {par #GET{tri}}{inverse #GET{ordre}}
   {pagination 20}
