@@ -16,20 +16,19 @@
                 [(#DESCRIPTIF)]
                 <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_federation_rencontres_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
               </div>
-              <BOUCLE_selection-federation-rencontres(SELECTIONS){identifiant=rubrique-federation-rencontres}>
-                <BOUCLE_contenu-federation-rencontres(SELECTIONS_CONTENUS){id_selection}{par rang}{0,1}>
-                  <div class="card variant-box abstract flow">
-                    <div class="flow-small">
-                      [<p class="abstract_subheading">(#_selection-federation-rencontres:TITRE)</p>]
-                      <h3 class="card_heading abstract_heading" data-heading-level="3"><a href="#URL">#TITRE</a></h3>
-                    </div>
-                    <div class="card_desc flow-small">
-                      [(#DESCRIPTIF)]
-                      <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
-                    </div>
-                  </div>
-                </BOUCLE_contenu-federation-rencontres>
-              </BOUCLE_selection-federation-rencontres>
+              <BOUCLE_evenement_actuellement(EVENEMENTS){id_rubrique}{evenement_en_cours}{par date_debut}{0,1}>
+                [(#SET{annee, #DATE_DEBUT|annee})]
+                <BOUCLE_article_actuellement(ARTICLES){id_evenement}>
+                  <INCLURE{fond=inclure/resumes/rencontres-article-card, id_article, annee=#GET{annee}}/>
+                </BOUCLE_article_actuellement>
+              </BOUCLE_evenement_actuellement>
+                <BOUCLE_evenement_bientot(EVENEMENTS){id_rubrique}{evenement_a_venir}{par date_debut}{0,1}>
+                  [(#SET{annee, #DATE_DEBUT|annee})]
+                  <BOUCLE_article_bientot(ARTICLES){id_evenement}>
+                    <INCLURE{fond=inclure/resumes/rencontres-article-card, id_article, annee=#GET{annee}}/>
+                  </BOUCLE_article_bientot>
+                </BOUCLE_evenement_bientot>
+              <//B_evenement_actuellement>
             </div>
           </div>
         </div>

@@ -114,6 +114,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'recherche_titre_page' => 'Résultats de la recherche',
 	'recherche_trier_date' => 'Trier par date',
 	'recherche_trier_pertinence' => 'Trier par pertinence',
+	'rencontres_surtitre_actuellement' => 'Actuellement',
+	'rencontres_surtitre_bientot' => 'Bientôt',
+	'rencontres_surtitre_teaser' => 'Rencontres',
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
 	'ressources_afficher_tout' => 'Afficher toutes les ressources disponibles',
 	'ressources_resultat' => '1 ressource affichée',
@@ -124,7 +127,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'resultats' => '@nb@ résultats',
 
 	// S
-	'search_label_mediatheque' => 'Rechercher dans les ressources',
+	'search_label_mediatheque' => 'Rechercher dans la médiathèque',
 	'search_placeholder' => 'Écrivez ici…',
 	'search_submit' => 'Rechercher',
 
