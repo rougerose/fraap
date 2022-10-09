@@ -117,11 +117,11 @@ export default [
   },
   // Teaser Réseau : animation du compteur
   {
-    input: "theme/src/js/fraap-network.js",
+    input: "theme/src/js/fraap-compteur-reseau.js",
     plugins: [nodeResolve(), commonjs()],
     output: [
       {
-        file: "theme/dist/js/fraap-network.js",
+        file: "theme/dist/js/fraap-compteur-reseau.js",
         format: "iife",
         plugins: output_plugins,
       },
