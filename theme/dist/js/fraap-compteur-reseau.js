@@ -93,7 +93,6 @@
       reseau.setAttribute("data-network-animation", "wait");
 
       compteur_reset(compteur, data);
-      carte_animer(carte, data);
 
       let observer = new IntersectionObserver(
         (entry, observer) => {
@@ -101,6 +100,8 @@
           if (element.isIntersecting) {
             element.target.setAttribute("data-network-animation", "true");
             compteur_animer(compteur, data);
+            carte_animer(carte, data);
+            observer.unobserve(element.target);
           }
         },
         { threshold: 0.2 }
