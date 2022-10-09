@@ -1,0 +1,14 @@
+<BOUCLE_rubrique_teaser_fiches(RUBRIQUES){id_rubrique}>
+  <div class="teaser-ressources media">
+    <BOUCLE_total(ARTICLES){id_rubrique}/>#SET{total, #TOTAL_BOUCLE}<//B_total>
+    <div class="media_figure" data-compteur data-compteur-total="#GET{total}" data-compteur-animation="false">
+      [(#INCLURE{fond=images/teaser-ressources-fiches-250.svg, total=#GET{total}})]
+    </div>
+    <div class="media_content">
+      <div class="pod_desc weight-300 flow">
+        [(#DESCRIPTIF)]
+        <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_fiches:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+      </div>
+    </div>
+  </div>
+</BOUCLE_rubrique_teaser_fiches>

@@ -1,0 +1,16 @@
+/// media(box) object
+
+
+.media {
+  display: flex;
+  align-items: var(--media-align, flex-start);
+  gap: var(--media-gutter, 1rem);
+}
+
+.media_figure {
+  width: var(--media-figure-width, 64px);
+}
+
+.media_content {
+  flex: 1;
+}

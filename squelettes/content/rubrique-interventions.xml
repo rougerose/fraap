@@ -1,0 +1,6 @@
+<composition>
+  <nom>Rubrique Interventions</nom>
+  <description>Composition pour la rubrique «Interventions»</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <branche type="article" composition="interventions" />
+</composition>

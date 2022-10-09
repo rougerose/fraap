@@ -3,6 +3,8 @@
 @use "../tools/mq" as mq;
 
 .pod {
+  --pod-paddingTop: var(--space-l-xl);
+  --pod-paddingBottom: var(--space-l-xl);
   position: relative;
 
   &.variant-angle-bottom {
@@ -46,13 +48,14 @@
   position: relative;
 }
 
-// [1]  Décaler vers le bas, afin de ne pas cacher les accents
-//      (le bloc parent ayant un overflow hidden)
 .pod_headline {
   font-size: var(--step-4);
-  //margin-top: 0.1em; // [1]
 }
 
+.pod_desc {
+  --measure: 70ch;
+  font-size: var(--step-2);
+}
 
 
 

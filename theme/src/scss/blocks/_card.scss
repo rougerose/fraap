@@ -29,6 +29,12 @@
       margin-right: var(--space-2xs);
     }
   }
+
+  &.variant-underscore-negative {
+    &::before {
+      background-color: var(--color-paper);
+    }
+  }
 }
 
 .card_desc {

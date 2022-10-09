@@ -127,4 +127,16 @@ export default [
       },
     ],
   },
+  // Teasers Ressources : animation des compteurs
+  {
+    input: "theme/src/js/fraap-compteur-ressources.js",
+    plugins: [nodeResolve(), commonjs()],
+    output: [
+      {
+        file: "theme/dist/js/fraap-compteur-ressources.js",
+        format: "iife",
+        plugins: output_plugins,
+      },
+    ],
+  },
 ];

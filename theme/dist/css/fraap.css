@@ -1193,6 +1193,9 @@ html:not(.js) .button-nav {
   margin-left: calc((var(--card-heading-offset) + var(--space-2xs)) * -1);
   margin-right: var(--space-2xs);
 }
+.card_heading.variant-underscore-negative::before {
+  background-color: var(--color-paper);
+}
 
 .card_desc {
   margin-top: var(--space-m);
@@ -2125,6 +2128,20 @@ a:hover .icon-nav-link {
   margin-top: var(--space-l-xl);
 }
 
+.media {
+  display: flex;
+  align-items: var(--media-align, flex-start);
+  gap: var(--media-gutter, 1rem);
+}
+
+.media_figure {
+  width: var(--media-figure-width, 64px);
+}
+
+.media_content {
+  flex: 1;
+}
+
 .media-box {
   display: flex;
   align-items: flex-start;
@@ -2573,6 +2590,8 @@ a:hover .icon-nav-link {
 }
 
 .pod {
+  --pod-paddingTop: var(--space-l-xl);
+  --pod-paddingBottom: var(--space-l-xl);
   position: relative;
 }
 .pod.variant-angle-bottom {
@@ -2613,6 +2632,11 @@ a:hover .icon-nav-link {
 
 .pod_headline {
   font-size: var(--step-4);
+}
+
+.pod_desc {
+  --measure: 70ch;
+  font-size: var(--step-2);
 }
 
 .section {
@@ -3020,7 +3044,7 @@ a:hover .icon-nav-link {
   font-size: var(--step-4);
 }
 .teaser-network_headline-svg {
-  font-family: Glypha;
+  font-family: var(--font-family-headings);
   font-weight: 300;
 }
 .teaser-network_headline-svgText {
@@ -3125,6 +3149,35 @@ a:hover .icon-nav-link {
     width: calc(var(--layout-width) * 0.7);
   }
 }
+.teaser-ressources {
+  --media-align: center;
+  --media-figure-width: 250px;
+  --media-gutter: 2rem;
+  --buttonCta-fontsize: var(--step-2);
+}
+
+.teaser-ressources_img-circle {
+  fill: var(--color-primary);
+  transform-origin: center;
+}
+[data-compteur-animation=wait] .teaser-ressources_img-circle {
+  transform: scale(0);
+}
+[data-compteur-animation=true] .teaser-ressources_img-circle {
+  transform: scale(1);
+  transition: transform 0.95s ease-in-out;
+}
+
+.teaser-ressources_img-text {
+  font-family: var(--font-family-headings);
+  font-size: 29px;
+}
+
+.teaser-ressources_img-total {
+  font-weight: 600;
+  font-size: 144px;
+}
+
 .text-underline {
   background-image: linear-gradient(var(--underline-color) 0 0);
   background-size: 100% 40%;
@@ -3383,6 +3436,11 @@ h6 > span.text-underline {
 
 .page[data-page=rubrique-organisation][data-level="2"] {
   margin-bottom: var(--section-angle-marginBottom-min);
+}
+
+.page-rubrique[data-page=informations-ressources] {
+  --pod-padding-top: var(--space-l-2xl);
+  --pod-padding-bottom: var(--space-l-2xl);
 }
 
 .page-sommaire {

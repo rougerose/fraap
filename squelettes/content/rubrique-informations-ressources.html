@@ -1,0 +1,49 @@
+<BOUCLE_rubrique_infos(RUBRIQUES){id_rubrique}>
+  #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
+  #SET{icon-svg, #GET{icon}|concat{-64.svg}}
+  <div class="page-rubrique" data-page="informations-ressources">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+    <INCLURE{fond=inclure/sections/rubrique-header, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique} />
+
+    <BOUCLE_rubriques_fiches_mediatheque(RUBRIQUES){id_parent}{id_rubrique IN 38,47}{par num titre}>
+      <section class="pod[(#COMPTEUR_BOUCLE|=={2}|oui) variant-angle-bottom-max]">
+        <div class="pod_mask">
+          <div class="wrapper-content">
+            <div class="offset-icon">
+              <div class="pod_content flow">
+                <h2 class="pod_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
+                <BOUCLE_si_rubrique_fiches(CONDITION){si #ID_RUBRIQUE|=={38}}>
+                  <INCLURE{fond=inclure/teasers/ressources-fiches, id_rubrique}/>
+                </BOUCLE_si_rubrique_fiches>
+                  <INCLURE{fond=inclure/teasers/ressources-mediatheque, id_rubrique}/>
+                <//B_si_rubrique_fiches>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </BOUCLE_rubriques_fiches_mediatheque>
+
+    <BOUCLE_rubrique_interventions(RUBRIQUES){id_rubrique=66}>
+      <section class="pod variant-banner">
+        <div class="pod_mask">
+          <div class="pod_bg-mask">
+            <div class="pod_bg-banner"></div>
+          </div>
+        </div>
+        <div class="wrapper-content">
+          <div class="offset-icon">
+            <div class="pod_content flow">
+              <h2 class="pod_headline"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
+              <div class="pod_desc teaser-ressources weight-300 measure flow">
+                [(#DESCRIPTIF)]
+                <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </BOUCLE_rubrique_interventions>
+  </div>
+</BOUCLE_rubrique_infos>
