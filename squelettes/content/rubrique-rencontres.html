@@ -2,12 +2,10 @@
   <div class="page" data-page="rubrique-rencontres">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
 
-    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique48-64.svg', class_icon=icon-rubrique48, id_rubrique} />
+    <INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique48-64.svg', class_icon=icon-rubrique48, id_rubrique} />
 
     <div class="wrapper-content">
-      <div class="offset-icon">
-        <INCLURE{fond=inclure/liste/rencontres_articles, id_rubrique, env, ajax} />
-      </div>
+      <INCLURE{fond=inclure/liste/rencontres_articles, id_rubrique, env, ajax} />
     </div>
   </div>
 </BOUCLE_rencontres>

@@ -10,14 +10,11 @@
   font-weight: 600;
 
   // Titre de rubrique accompagné d'une icone :
-  // l'icone est aligné en retrait négatif à gauche.
   &.variant-offset-icon {
     --gutter-headline: var(--space-2xs-xs);
     display: flex;
     align-items: baseline;
     gap: var(--gutter-headline);
-    margin-left: calc(var(--offset-icon-space) * -1);
-    // transform: translateY(var(--offset-icon-space));
 
     & span {
       flex: 1;
@@ -52,7 +49,6 @@
 
 .headline_icon {
   --icon-size: calc(var(--offset-icon-space) - var(--gutter-headline));
-  // margin-top: -0.15em;
   transform: translateY(0.125em);
 }
 

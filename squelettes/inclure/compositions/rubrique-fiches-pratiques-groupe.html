@@ -1,7 +1,7 @@
 <BOUCLE_rubrique_fiches_pratiques_groupe(RUBRIQUES){id_rubrique}>
   <INCLURE{fond=inclure/breadcrumb/rubrique-fiches-pratiques-groupe, id_rubrique, id_groupe}/>
 
-  <INCLURE{fond=inclure/sections/rubrique-fiches-pratiques-groupe-header, icon='icon-rubrique38-64.svg', class_icon=icon-rubrique38, id_groupe} />
+  <INCLURE{fond=inclure/sections/header-rubrique-fiches-groupe, icon='icon-rubrique38-64.svg', class_icon=icon-rubrique38, id_groupe} />
 
   #SET{mots, #ARRAY}
   <BOUCLE_mots(MOTS spip_mots_liens spip_articles){objet=article}{id_groupe}{par num titre, titre}{articles.statut=publie}>
@@ -10,48 +10,46 @@
 
   <div class="page_content gap-top-3">
     <div class="wrapper-content">
-      <div class="offset-icon">
-        <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
-          <B_toc_side_mots>
-            <nav class="toc flow-small" data-type="side">
-              <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
-              <ul class="toc_list" role="list">
-                <BOUCLE_toc_side_mots(MOTS){id_mot IN #GET{mots}}>
-                  <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
-                </BOUCLE_toc_side_mots>
-              </ul>
-            </nav>
-          </B_toc_side_mots>
+      <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+        <B_toc_side_mots>
+          <nav class="toc flow-small" data-type="side">
+            <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
+            <ul class="toc_list" role="list">
+              <BOUCLE_toc_side_mots(MOTS){id_mot IN #GET{mots}}>
+                <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
+              </BOUCLE_toc_side_mots>
+            </ul>
+          </nav>
+        </B_toc_side_mots>
 
-          <div class="ressources prose with-offset-icon flow-large">
-            <B_toc_inner_mots>
-              <div class="toc" data-type="inner">
-                <details role="navigation">
-                  <summary><:fraap_squelettes:toc_titre:></summary>
-                  <ul class="toc_list" role="list">
-                    <BOUCLE_toc_inner_mots(MOTS){id_mot IN #GET{mots}}>
-                      <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
-                    </BOUCLE_toc_inner_mots>
-                  </ul>
-                </details>
-              </div>
-            </B_toc_inner_mots>
-            <BOUCLE_liste_mots(MOTS){id_mot IN #GET{mots}}>
-              <section class="ressources_section flow">
-                <h2 id="[(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
-                  <span class="text-underline">#TITRE</span>
-                  <a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
-                </h2>
-                <B_articles>
-                  <ul class="flow" role="list">
-                    <BOUCLE_articles(ARTICLES){id_mot}{par titre}>
-                      <li class="text-underscore"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #ID_GROUPE})]">#TITRE</a></li>
-                    </BOUCLE_articles>
-                  </ul>
-                </B_articles>
-              </section>
-            </BOUCLE_liste_mots>
-          </div>
+        <div class="ressources prose with-offset-icon flow-large">
+          <B_toc_inner_mots>
+            <div class="toc" data-type="inner">
+              <details role="navigation">
+                <summary><:fraap_squelettes:toc_titre:></summary>
+                <ul class="toc_list" role="list">
+                  <BOUCLE_toc_inner_mots(MOTS){id_mot IN #GET{mots}}>
+                    <li class="toc_item"><a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#TITRE</a></li>
+                  </BOUCLE_toc_inner_mots>
+                </ul>
+              </details>
+            </div>
+          </B_toc_inner_mots>
+          <BOUCLE_liste_mots(MOTS){id_mot IN #GET{mots}}>
+            <section class="ressources_section flow">
+              <h2 id="[(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
+                <span class="text-underline">#TITRE</span>
+                <a href="[#(#TITRE|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
+              </h2>
+              <B_articles>
+                <ul class="flow" role="list">
+                  <BOUCLE_articles(ARTICLES){id_mot}{par titre}>
+                    <li class="text-underscore"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #ID_GROUPE})]">#TITRE</a></li>
+                  </BOUCLE_articles>
+                </ul>
+              </B_articles>
+            </section>
+          </BOUCLE_liste_mots>
         </div>
       </div>
     </div>

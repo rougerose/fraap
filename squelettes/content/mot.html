@@ -60,11 +60,9 @@
           <INCLURE{fond=inclure/sections/mot-box-filters, typologies=#GET{typologies}}/>
         </div>
 
-        <div class="offset-icon">
-          <BOUCLE_objets(DATA){source tableau, #GET{typologies}}>
-            <INCLURE{fond=inclure/liste/mot-objets, objets=#VALEUR|table_valeur{ids}, objet=#VALEUR|table_valeur{objet}, titre=#VALEUR|table_valeur{titre}, total=#VALEUR|table_valeur{total}, pagination=24, nom_pagination=_#VALEUR|table_valeur{typologie}, ajax, env}/>
-          </BOUCLE_objets>
-        </div>
+        <BOUCLE_objets(DATA){source tableau, #GET{typologies}}>
+          <INCLURE{fond=inclure/liste/mot-objets, objets=#VALEUR|table_valeur{ids}, objet=#VALEUR|table_valeur{objet}, titre=#VALEUR|table_valeur{titre}, total=#VALEUR|table_valeur{total}, pagination=24, nom_pagination=_#VALEUR|table_valeur{typologie}, ajax, env}/>
+        </BOUCLE_objets>
       </div>
 
     </BOUCLE_si_total>

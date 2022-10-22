@@ -2126,7 +2126,6 @@ a:hover .icon-nav-link {
   display: flex;
   align-items: baseline;
   gap: var(--gutter-headline);
-  margin-left: calc(var(--offset-icon-space) * -1);
 }
 .headline_title.variant-offset-icon span {
   flex: 1;
@@ -2756,9 +2755,6 @@ a:hover .icon-nav-link {
 .section_content {
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 }
-.section_content.variant-icon-offset {
-  padding-left: var(--space-l-2xl);
-}
 
 .section_action {
   text-align: center;
@@ -3198,6 +3194,7 @@ a:hover .icon-nav-link {
 .teaser-ressources {
   --media-align: center;
   --media-figure-width: 250px;
+  --media-figure-height: 250px;
   --media-gutter: 2rem;
   --buttonCta-fontsize: var(--step-2);
 }

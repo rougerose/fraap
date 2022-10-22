@@ -5,22 +5,20 @@
         <div class="pod_bg-banner"></div>
       </div>
       <div class="wrapper-content">
-        <div class="offset-icon">
-          <div class="pod_content">
-            <h2 class="pod_headline">// Les autres interventions de la Fraap //</h2>
-            <div class="switcher gap-top-3">
-              <BOUCLE_autres_interventions(ARTICLES){id_rubrique}{par num titre, titre}{exclus}>
-                <div class="card variant-box flow">
-                  <div class="flow-small">
-                    <h3 class="card_heading weight-600"><a href="#URL">#TITRE</a></h3>
-                  </div>
-                  <div class="card_desc flow-small">
-                    [(#DESCRIPTIF)]
-                    <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
-                  </div>
+        <div class="pod_content">
+          <h2 class="pod_headline">// Les autres interventions de la Fraap //</h2>
+          <div class="switcher gap-top-3">
+            <BOUCLE_autres_interventions(ARTICLES){id_rubrique}{par num titre, titre}{exclus}>
+              <div class="card variant-box flow">
+                <div class="flow-small">
+                  <h3 class="card_heading weight-600"><a href="#URL">#TITRE</a></h3>
                 </div>
-              </BOUCLE_autres_interventions>
-            </div>
+                <div class="card_desc flow-small">
+                  [(#DESCRIPTIF)]
+                  <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+                </div>
+              </div>
+            </BOUCLE_autres_interventions>
           </div>
         </div>
       </div>

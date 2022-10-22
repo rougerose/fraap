@@ -2,7 +2,7 @@
   <div class="page" data-page="rubrique-organisation">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
 
-    <INCLURE{fond=inclure/sections/rubrique-header, icon='icon-rubrique49-64.svg', class_icon=icon-rubrique49, id_rubrique} />
+    <INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique49-64.svg', class_icon=icon-rubrique49, id_rubrique} />
 
     <BOUCLE_actualites(SELECTIONS){identifiant=rubrique-organisation-pro-actualites}>
       <INCLURE{fond=inclure/selections/rubrique-actualites, id_selection, section_titre=<:fraap_squelettes:actualites_orga_pro_headline:>} />
@@ -13,7 +13,7 @@
         <div class="section_masked">
           <div class="wrapper-content">
             <div class="section_container">
-              <div class="section_content variant-icon-offset flow">
+              <div class="section_content flow">
                 <h2 id="rubrique#ID_RUBRIQUE" class="section_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
                 [<div class="section_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
                 <div class="auto-grid gap-top-5">

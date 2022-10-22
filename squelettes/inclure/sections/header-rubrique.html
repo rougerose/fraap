@@ -1,6 +1,6 @@
-<BOUCLE_header_mot(MOTS){id_mot}>
+<BOUCLE_rubrique_header(RUBRIQUES){id_rubrique}>
   #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
-  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon headline_icon}}
+  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
   <header class="headline region">
     <div class="wrapper-content">
       <h1 class="headline_title variant-offset-icon">
@@ -10,4 +10,4 @@
       [<div class="headline_desc measure flow">(#TEXTE)</div>]
     </div>
   </header>
-</BOUCLE_header_mot>
+</BOUCLE_rubrique_header>

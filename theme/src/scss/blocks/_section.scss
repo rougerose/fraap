@@ -152,9 +152,9 @@
 .section_content {
   padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
 
-  &.variant-icon-offset {
-    padding-left: var(--space-l-2xl);
-  }
+  // &.variant-icon-offset {
+  //   padding-left: var(--space-l-2xl);
+  // }
 }
 
 .section_action {

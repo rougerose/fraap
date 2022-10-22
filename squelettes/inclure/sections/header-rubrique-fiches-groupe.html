@@ -1,9 +1,9 @@
-<BOUCLE_rubrique_header(RUBRIQUES){id_rubrique}>
+<BOUCLE_header_groupe(GROUPES_MOTS){id_groupe}>
   #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
   #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon -contrats-light headline_icon}}
-  <header class="headline region">
+  <header class="region">
     <div class="wrapper-content">
-      <div class="offset-icon">
+      <div class="headline flow">
         <h1 class="headline_title variant-offset-icon">
           <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
           <span>#TITRE</span>
@@ -12,4 +12,4 @@
       </div>
     </div>
   </header>
-</BOUCLE_rubrique_header>
+</BOUCLE_header_groupe>

@@ -1,13 +1,11 @@
 <div class="box-filters_inner">
-  <div class="offset-icon">
-    <div class="reel">
-      <BOUCLE_ancres(DATA){source tableau, #ENV{typologies}}>
-        [(#VALEUR|table_valeur{total}|>{0}|oui)
-          <div>
-            <a href="[\#(#VALEUR|table_valeur{typologie}|identifiant_slug{id})]">[(#VALEUR|table_valeur{titre})][ <span class="indicator">(#VALEUR|table_valeur{total})</span>]</a>
-          </div>
-        ]
-      </BOUCLE_ancres>
-    </div>
+  <div class="reel">
+    <BOUCLE_ancres(DATA){source tableau, #ENV{typologies}}>
+      [(#VALEUR|table_valeur{total}|>{0}|oui)
+        <div>
+          <a href="[\#(#VALEUR|table_valeur{typologie}|identifiant_slug{id})]">[(#VALEUR|table_valeur{titre})][ <span class="indicator">(#VALEUR|table_valeur{total})</span>]</a>
+        </div>
+      ]
+    </BOUCLE_ancres>
   </div>
 </div>
