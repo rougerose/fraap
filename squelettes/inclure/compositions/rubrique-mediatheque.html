@@ -1,27 +1,34 @@
-#SET{tri, #ENV{tri, title}} #SET{sens, #ENV{sens, ''}} #SET{total_resultats, 0}
-
-<B_sphinx>
+[(#SET{tri_defaut, #ENV{tri}|=={annee}|?{properties.annee, title}})]
+#SET{tris_defaut, #ARRAY{title, 1, properties.annee, -1}}
+#SET{total_resultats, 0}
+<B_ressources>
   #SET{total_resultats, #GRAND_TOTAL}
+  [(#ENV{debug}|oui)
+    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
+  ]
   #ANCRE_PAGINATION
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
   <div class="offset-icon pad-top-5">
     <div class="flow">
-      <BOUCLE_sphinx(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
+      <BOUCLE_ressources(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
         {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
         {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
-        {par #GET{tri}}{inverse #GET{sens}}{pagination 20}
+        {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 20}
       >
         <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
           <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
         </BOUCLE_sphinx_reference>
-      </BOUCLE_sphinx>
+      </BOUCLE_ressources>
     </div>
     [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
   </div>
-</B_sphinx>
+</B_ressources>
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
+  [(#ENV{debug}|oui)
+    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
+  ]
   <div class="offset-icon gap-top-3">
     <div class="flow">
       <div class="callout variant-warn">
@@ -29,6 +36,6 @@
       </div>
     </div>
   </div>
-<//B_sphinx>
+<//B_ressources>
 <INCLURE{fond=inclure/dialog/filtres-mediatheque, id_rubrique, recherche=#ENV*{recherche}, env}/>
 [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]

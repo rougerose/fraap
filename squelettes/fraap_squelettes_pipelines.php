@@ -86,7 +86,9 @@ function fraap_squelettes_indexer_document($flux) {
 
 		if ($flux['data']->properties['objet'] == 'fbiblio') {
 			$id_fbiblio = $flux['data']->properties['id_objet'];
-			$flux['data']->properties['type_ref'] = ajouter_type_ref_fbiblio($id_fbiblio);
+			$fbiblio = completer_indexation_fbiblio($id_fbiblio);
+			$flux['data']->properties['type_ref'] = $fbiblio['type_ref'];
+			$flux['data']->properties['annee'] = $fbiblio['annee'];
 		}
 	}
 	return $flux;
@@ -116,10 +118,14 @@ function ajouter_typologie_document($id_rubrique) {
 	return $typologie;
 }
 
-function ajouter_type_ref_fbiblio($id_fbiblio) {
+/**
+ * Ajouter aux objets fbiblio les données type_ref et année
+ */
+function completer_indexation_fbiblio($id_fbiblio) {
 	if ($id_fbiblio = intval($id_fbiblio)) {
-		return $type_ref = sql_getfetsel('type_ref', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
+		$complement = sql_allfetsel('type_ref, annee', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
+		return $complement[0];
 	} else {
-		return '';
+		return [];
 	}
 }

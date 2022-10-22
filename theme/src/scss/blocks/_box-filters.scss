@@ -3,12 +3,23 @@
 
 
 .box-filters {
-  --cluster-vertical-alignment: baseline;
+  // --cluster-vertical-alignment: baseline;
   --buttonCta-fontsize: var(--step--1);
   --inner-padding: 0.25rem 0;
 
   font-size: var(--buttonCta-fontsize);
   margin: var(--space-xs) 0;
+
+  &.variant-search {
+    &::after {
+      width: calc(100% + var(--space-l));
+      margin-left: calc(var(--space-s) * -1);
+      margin-right: calc(var(--space-s) * -1);
+    }
+  }
+}
+
+.box-filters-sticky {
   position: sticky;
   top: 0;
   background-color: white;
@@ -20,15 +31,6 @@
     height: 1px;
     background-color: var(--color-primary-300);
     display: block;
-  }
-
-  &.variant-search {
-
-    &::after {
-      width: calc(100% + var(--space-l));
-      margin-left: calc(var(--space-s) * -1);
-      margin-right: calc(var(--space-s) * -1);
-    }
   }
 }
 

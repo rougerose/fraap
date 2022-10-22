@@ -74,6 +74,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'lien_aller_au_contenu' => 'Aller au contenu',
 
 	// M
+	'mediatheque_trier_annee' => 'Trier par année de publication',
+	'mediatheque_trier_titre' => 'Trier par titre',
 	'membre' => '1 membre',
 	'membres' => '@nb@ membres',
 	'menu_articles_rubrique_nom' => "Fraap : tous les articles d'une rubrique",
@@ -122,8 +124,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'reseau_teaser_headline' => 'Un réseau de @total@ associations & collectifs',
 	'ressources_afficher_tout' => 'Afficher toutes les ressources disponibles',
 	'ressources_resultat' => '1 ressource affichée',
+	'ressources_resultat' => '1 ressource affichée',
 	'ressources_resultat_aucun' => 'Aucune ressource',
-	'ressources_resultats' => '@nb@ ressources affichées',
+	'ressources_resultats_annee' => '@nb@ ressources affichées, triées par année de publication',
+	'ressources_resultats_titre' => '@nb@ ressources affichées, triées par titre',
 	'resultat_aucun' => 'Aucun résultat',
 	'resultat' => '1 résultat',
 	'resultats' => '@nb@ résultats',
