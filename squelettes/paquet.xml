@@ -26,7 +26,7 @@
   <necessite nom="a2a" compatibilite="[4.0.0;4.99.*]" />
   <necessite nom="indexer" compatibilite="[3.0.2;3.99.*]" />
   <necessite nom="agenda" compatibilite="[4.5.3;4.99.*]" />
-  <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" />
+  <!-- <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" /> -->
   <utilise nom="bellespuces" compatibilite="[1.0.2;1.99.*]" />
   <utilise nom="odt2spip" compatibilite="[4.1.2;4.99.*]" />
   <utilise nom="oembed" compatibilite="[3.0.0;3.99.*]" />
