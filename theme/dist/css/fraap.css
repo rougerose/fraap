@@ -1791,6 +1791,48 @@ html:not(.js) .dialog-recherche {
   color: var(--color-primary-700);
 }
 
+.fbiblio .media_figure {
+  --media-figure-width: 40px;
+  --media-figure-height: 40px;
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  padding: 8px;
+}
+.fbiblio .media_figure img {
+  width: 24px;
+}
+.fbiblio .csl-entry {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.fbiblio a.spip_out {
+  align-items: baseline;
+}
+.fbiblio.abstract {
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: var(--space-l);
+  flex-direction: row;
+}
+.fbiblio.abstract .abstract_subheading {
+  color: var(--color-primary-600);
+  font-size: var(--step--2);
+  letter-spacing: 0.04em;
+}
+.fbiblio.abstract .abstract_heading {
+  font-size: var(--step-2);
+  max-width: 60ch;
+}
+.fbiblio.abstract .abstract_desc {
+  max-width: 75ch;
+}
+.fbiblio.article .media {
+  align-items: center;
+  margin-bottom: var(--space-s);
+}
+.fbiblio.article .headline_subtitle {
+  color: var(--color-primary-600);
+}
+
 .icon {
   height: var(--icon-size, 1em);
   width: var(--icon-size, 1em);
@@ -2138,6 +2180,7 @@ a:hover .icon-nav-link {
 
 .media_figure {
   width: var(--media-figure-width, 64px);
+  height: var(--media-figure-height, 64px);
 }
 
 .media_content {
@@ -2541,6 +2584,7 @@ a:hover .icon-nav-link {
 .search_label-mediatheque {
   font-size: var(--step-1);
   font-weight: 600;
+  line-height: 1.1;
 }
 
 .search_input {
