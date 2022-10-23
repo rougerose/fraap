@@ -206,7 +206,7 @@
   --color-contrast-100: #bfb9f9;
   --color-link: var(--color-contrast);
   --color-link-invert: white;
-  --color-link-visited: var(--color-primary-800);
+  --color-link-visited: var(--color-primary-900);
   --color-stroke: #cfcfd3;
   --color-disabled: #a0a0a7;
   --color-callout-bg: rgba(207, 207, 211, 0.1);
@@ -2471,6 +2471,9 @@ a:hover .icon-nav-link {
 .prose-editor a[class*=spip]:visited {
   color: var(--color-link-visited);
 }
+.prose-editor a[class*=spip]:hover {
+  color: var(--color-link);
+}
 .prose-editor a.spip_note {
   background-color: var(--color-link);
   border-radius: 2px;
@@ -2479,12 +2482,12 @@ a:hover .icon-nav-link {
   padding: 3px 2px 0px;
   transition: background 0.3s;
 }
+.prose-editor a.spip_note:visited {
+  color: var(--color-paper);
+}
 .prose-editor a.spip_note:hover {
   background-color: var(--color-contrast-300);
   text-decoration: none;
-}
-.prose-editor a.spip_note:visited {
-  color: var(--color-paper);
 }
 .prose-editor a.spip_out::after {
   background-color: currentColor;

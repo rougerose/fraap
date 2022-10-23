@@ -29,7 +29,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-contrast-100: #{map.get(var.$color-1B, "100")};
   --color-link: var(--color-contrast);
   --color-link-invert: #{var.$white};
-  --color-link-visited: var(--color-primary-800);
+  --color-link-visited: var(--color-primary-900);
   --color-stroke: #{map.get(var.$gray, "blue", "200")};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
   --color-callout-bg: #{rgba(map.get(var.$gray, "blue", "200"), 0.1)};

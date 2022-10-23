@@ -110,6 +110,10 @@
     color: var(--color-link-visited);
   }
 
+  a[class*="spip"]:hover {
+    color: var(--color-link);
+  }
+
   // Lien spip_note
   a.spip_note {
     background-color: var(--color-link);
@@ -119,13 +123,13 @@
     padding: 3px 2px 0px;
     transition: background 0.3s;
 
+    &:visited {
+      color: var(--color-paper);
+    }
+
     &:hover {
       background-color: var(--color-contrast-300);
       text-decoration: none;
-    }
-
-    &:visited {
-      color: var(--color-paper);
     }
   }
 
