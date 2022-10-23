@@ -2,9 +2,8 @@
 <BOUCLE_articles(ARTICLES){gis}{id_rubrique}{mots?}>
   [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
 </BOUCLE_articles>
-<div id="annuaire" class="box-filters">
-  <INCLURE{fond=inclure/sections/rubrique-annuaire-membres-box-filters, env, articles=#GET{articles}}/>
-</div>
+
+<INCLURE{fond=inclure/sections/box-filters-rubrique-annuaire-membres, env, articles=#GET{articles}}/>
 
 <div class="directory-members_container">
   <div class="directory-members_container-list">

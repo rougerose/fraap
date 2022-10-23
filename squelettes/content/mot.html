@@ -56,8 +56,8 @@
       ][(#SET{typologies, #GET{typologies}|trier_selon_cle{total, DESC}})]
 
       <div class="wrapper-content">
-        <div class="box-filters">
-          <INCLURE{fond=inclure/sections/mot-box-filters, typologies=#GET{typologies}}/>
+        <div class="box-filters box-filters-sticky">
+          <INCLURE{fond=inclure/sections/box-filters-mot, typologies=#GET{typologies}}/>
         </div>
 
         <BOUCLE_objets(DATA){source tableau, #GET{typologies}}>

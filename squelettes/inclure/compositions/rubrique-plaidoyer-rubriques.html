@@ -2,9 +2,8 @@
   <B_articles>
     <div class="wrapper-content">
       #ANCRE_PAGINATION
-      <div id="articles" class="box-filters">
-        <INCLURE{fond=inclure/sections/rubrique-box-filters, id_rubrique, env}/>
-      </div>
+      <INCLURE{fond=inclure/sections/box-filters-rubrique, id_rubrique, env}/>
+
       <div class="gap-top-5">
         <div class="auto-grid">
           <BOUCLE_articles(ARTICLES){id_rubrique}{mots?}{!par date}{pagination #ENV{pagination, 12}}>
@@ -18,8 +17,8 @@
     </div>
   </B_articles>
     <div class="wrapper-content">
-      <div id="articles" class="box-filters">
-        <INCLURE{fond=inclure/sections/rubrique-box-filters, id_rubrique, env}/>
+      <div id="articles" class="box-filters box-filters-sticky">
+        <INCLURE{fond=inclure/sections/box-filters-rubrique, id_rubrique, env}/>
       </div>
       <div class="gap-top-5 flow">
         <div class="callout variant-warn">

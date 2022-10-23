@@ -11,7 +11,7 @@
 
 <B_recherche>
   #ANCRE_PAGINATION
-  <div class="box-filters variant-search">
+  <div class="box-filters box-filters-sticky variant-search">
     <div class="box-filters_inner">
       #FORMULAIRE_RECHERCHE{'', search-page_form}
     </div>
@@ -35,6 +35,13 @@
         <div>
           <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-filters">
+    <div class="box-filters_inner">
+      <div class="reel">
         <BOUCLE_selections(DATA){source table, #GET{mots}}{par cle}>
           #SET{effacer, ' '} [(#SET{param, #GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR}})]
           <div>
@@ -129,7 +136,7 @@
   [(#REM)
     <!-- Pas de résultats -->
   ]
-  <div class="box-filters variant-search">
+  <div class="box-filters box-filters-sticky variant-search">
     <div class="box-filters_inner">
       #FORMULAIRE_RECHERCHE{'', search-page_form}
       <br>
