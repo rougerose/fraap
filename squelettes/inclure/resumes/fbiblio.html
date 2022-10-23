@@ -28,7 +28,7 @@
                     })],
                     [(#SET{_mots, #GET{_mots}|push{#ID_MOT}})]
                   })]
-                  <a href="[(#ENV{self}|parametre_url{debut_ressources, ''}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
+                  <a href="[(#ENV{self}|parametre_url{vue,tout}|parametre_url{debut_ressources, ''}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
                 </BOUCLE_mots_reference>
               </p>
             </footer>
