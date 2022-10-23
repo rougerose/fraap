@@ -1,16 +1,14 @@
 <B_contenus_actualites>
-  <div class="section section--angleBottom-max">
-    <div class="section_masked">
+  <div class="pod variant-angle-bottom-max">
+    <div class="pod_mask">
       <div class="wrapper-content">
-        <div class="section_container">
-          <div class="section_content">
-            <h2 class="section_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:actualites_headline:>})]</span></h2>
-            <ul class="auto-grid gap-top-5" role="list">
-              <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                <INCLURE{fond=inclure/resumes/selection-card-news, id_selections_contenu} />
-              </BOUCLE_contenus_actualites>
-            </ul>
-          </div>
+        <div class="pod_content">
+          <h2 class="pod_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:actualites_headline:>})]</span></h2>
+          <ul class="auto-grid gap-top-5" role="list">
+            <BOUCLE_contenus_actualites(SELECTIONS_CONTENUS){id_selection}{par rang}>
+              <INCLURE{fond=inclure/resumes/selection-card-news, id_selections_contenu} />
+            </BOUCLE_contenus_actualites>
+          </ul>
         </div>
       </div>
     </div>

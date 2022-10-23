@@ -1,11 +1,9 @@
 # Dev
 
 ## WIP
-- Conversion .section -> .pod
 - Conversion .media-box -> .media
 - Ajout data-page des rubriques
 - Ajouter le sous-titre des articles dans les résumés
-- Supprimer offset-icon pour les écrans étroits
 
 ## Observatoire
 Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...

@@ -2359,6 +2359,63 @@ a:hover .icon-nav-link {
   text-decoration: none;
 }
 
+.pod {
+  --pod-padding-top: var(--space-l-xl);
+  --pod-padding-bottom: var(--space-l-xl);
+  position: relative;
+}
+.pod.variant-angle-bottom {
+  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.pod.variant-angle-top-bottom {
+  --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.pod.variant-angle-bottom-max {
+  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.pod.variant-banner {
+  --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.pod.variant-overlap {
+  margin-bottom: calc((var(--pod-padding-bottom) * 0.3) * -1);
+}
+
+.pod_mask {
+  overflow: hidden;
+}
+
+.pod_bg-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.pod_bg-banner {
+  position: relative;
+  background-color: var(--color-primary);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transform: skewY(-3deg);
+  transform-origin: center;
+}
+
+.pod_content {
+  padding: var(--pod-padding-top, 0) 0 var(--pod-padding-bottom, 0);
+  position: relative;
+}
+
+.pod_headline {
+  font-size: var(--step-4);
+}
+
+.pod_desc {
+  --measure: 70ch;
+  font-size: var(--step-2);
+}
+
 .wrapper-content, .prose {
   margin: 0 auto;
   padding: 0 var(--column-padding);
@@ -2634,137 +2691,6 @@ a:hover .icon-nav-link {
   margin-top: var(--space-l);
 }
 
-.pod {
-  --pod-paddingTop: var(--space-l-xl);
-  --pod-paddingBottom: var(--space-l-xl);
-  position: relative;
-}
-.pod.variant-angle-bottom {
-  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.pod.variant-angle-bottom-max {
-  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.pod.variant-banner {
-  --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-  --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-
-.pod_mask {
-  overflow: hidden;
-}
-
-.pod_bg-mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.pod_bg-banner {
-  position: relative;
-  background-color: var(--color-primary);
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  transform: skewY(-3deg);
-  transform-origin: center;
-}
-
-.pod_content {
-  padding: var(--pod-padding-top, 0) 0 var(--pod-padding-bottom, 0);
-  position: relative;
-}
-
-.pod_headline {
-  font-size: var(--step-4);
-}
-
-.pod_desc {
-  --measure: 70ch;
-  font-size: var(--step-2);
-}
-
-.section {
-  --section-paddingTop: var(--space-l-xl);
-  --section-paddingBottom: var(--space-l-xl);
-  position: relative;
-  color: var(--color-section-ink, var(--color-ink));
-}
-.section.variant-simple {
-  --section-paddingBottom: 0;
-}
-.section--angleTop {
-  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--angleBottom {
-  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--angleBottom-max {
-  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--angleTopBottom {
-  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--banner {
-  --section-paddingTop: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-  --section-paddingBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
-}
-.section--overlap {
-  margin-bottom: calc((var(--section-paddingBottom) * 0.3) * -1);
-}
-.section.-headline {
-  --section-paddingTop: var(--space-xl-2xl);
-  --section-paddingBottom: var(--space-m-l);
-}
-
-.section_masked {
-  overflow: hidden;
-}
-
-.section_bgmask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.section_background-banner {
-  position: relative;
-  background-color: var(--color-primary);
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  transform: skewY(-3deg);
-  transform-origin: center;
-}
-
-.section_container {
-  position: relative;
-}
-
-.section_headline {
-  font-size: var(--step-4);
-  margin-top: 0.1em;
-}
-
-.section_desc {
-  --measure: 70ch;
-  font-size: var(--step-2);
-}
-
-.section_content {
-  padding: var(--section-paddingTop) 0 var(--section-paddingBottom);
-}
-
-.section_action {
-  text-align: center;
-}
-
-@media (min-width: 46.25em) {
-  .section--overlap {
-    margin-bottom: unset;
-  }
-}
 .no-js .site-header_btn-burger {
   display: none;
 }

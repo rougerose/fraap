@@ -1,15 +1,13 @@
 <B_qui_sommes_nous>
-  <section class="section">
-    <div class="section_masked">
+  <section class="pod">
+    <div class="pod_mask">
       <div class="wrapper-content">
-        <div class="section_container">
-          <div class="section_content">
-            <h2 class="section_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:qui_sommes_nous_federation_headline:>})]</span></h2>
-            <div class="auto-grid gap-top-5">
-              <BOUCLE_qui_sommes_nous(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                <INCLURE{fond=inclure/resumes/selection-card, id_selections_contenu, variant=variant-underscore} />
-              </BOUCLE_qui_sommes_nous>
-            </div>
+        <div class="pod_content">
+          <h2 class="pod_headline"><span class="text-underline">[(#ENV{selection_titre, <:fraap_squelettes:qui_sommes_nous_federation_headline:>})]</span></h2>
+          <div class="auto-grid gap-top-5">
+            <BOUCLE_qui_sommes_nous(SELECTIONS_CONTENUS){id_selection}{par rang}>
+              <INCLURE{fond=inclure/resumes/selection-card, id_selections_contenu, variant=variant-underscore} />
+            </BOUCLE_qui_sommes_nous>
           </div>
         </div>
       </div>

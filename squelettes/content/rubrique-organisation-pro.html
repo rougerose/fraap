@@ -9,26 +9,24 @@
     </BOUCLE_actualites>
 
     <BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre}>
-      <section class="section">
-        <div class="section_masked">
+      <section class="pod">
+        <div class="pod_mask">
           <div class="wrapper-content">
-            <div class="section_container">
-              <div class="section_content flow">
-                <h2 id="rubrique#ID_RUBRIQUE" class="section_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
-                [<div class="section_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
-                <div class="auto-grid gap-top-5">
-                  <BOUCLE_si_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
-                    <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
-                      <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
-                    </BOUCLE_sousrubriques_plaidoyer>
-                  </BOUCLE_si_rubrique_plaidoyer>
-                      <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
-                        <article class="card abstract flow">
-                          <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
-                        </article>
-                      </BOUCLE_tous_articles_card>
-                  <//B_si_rubrique_plaidoyer>
-                </div>
+            <div class="pod_content flow">
+              <h2 id="rubrique#ID_RUBRIQUE" class="pod_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
+              [<div class="pod_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
+              <div class="auto-grid gap-top-5">
+                <BOUCLE_si_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
+                  <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
+                    <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
+                  </BOUCLE_sousrubriques_plaidoyer>
+                </BOUCLE_si_rubrique_plaidoyer>
+                    <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}>
+                      <article class="card abstract flow">
+                        <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
+                      </article>
+                    </BOUCLE_tous_articles_card>
+                <//B_si_rubrique_plaidoyer>
               </div>
             </div>
           </div>
