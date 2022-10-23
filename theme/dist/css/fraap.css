@@ -2186,25 +2186,6 @@ a:hover .icon-nav-link {
   flex: 1;
 }
 
-.media-box {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--media-box-gutter, 1rem);
-}
-
-.media-box_fig .media-box_img,
-.media-box_fig img {
-  width: var(--media-box-img-size, 32px);
-  height: var(--media-box-img-size, 32px);
-}
-.media-box_fig figcaption {
-  font-size: var(--step--2);
-}
-
-.media-box_content {
-  flex: 1;
-}
-
 .member-profile_address > span.address {
   display: flex;
   flex-direction: column;
@@ -2238,53 +2219,6 @@ a:hover .icon-nav-link {
 .member-profile_map > .carte_gis {
   width: 100%;
   height: 400px;
-}
-
-.mediatheque_item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1rem;
-  border-bottom: 1px solid var(--color-primary);
-  padding-bottom: var(--space-l);
-}
-.mediatheque_item .abstract_subheading {
-  color: var(--color-primary-600);
-  font-size: var(--step--2);
-  letter-spacing: 0.04em;
-}
-.mediatheque_item .abstract_heading {
-  font-size: var(--step-2);
-  max-width: 60ch;
-}
-.mediatheque_item .abstract_desc {
-  max-width: 75ch;
-}
-
-.mediatheque_article .media-box {
-  align-items: center;
-  margin-bottom: var(--space-s);
-}
-.mediatheque_article .headline_subtitle {
-  color: var(--color-primary-600);
-}
-
-.mediatheque_item .media-box_fig,
-.mediatheque_article .media-box_fig {
-  --media-box-img-size: 24px;
-  background-color: var(--color-primary);
-  border-radius: 100%;
-  padding: 8px;
-}
-.mediatheque_item .csl-entry,
-.mediatheque_article .csl-entry {
-  -webkit-hyphens: auto;
-          hyphens: auto;
-  word-break: normal;
-}
-.mediatheque_item a.spip_out,
-.mediatheque_article a.spip_out {
-  align-items: baseline;
 }
 
 .notes {
