@@ -174,6 +174,13 @@
   path:nth-child(4) {
     fill: var(--color-primary-700);
   }
+
+  &.headline_icon {
+    circle:nth-of-type(2),
+    path:nth-child(4) {
+      fill: var(--color-primary-600);
+    }
+  }
 }
 
 // icon Observer
@@ -193,10 +200,12 @@
 .icon-rubrique38 {
   path:nth-child(odd) {
     fill: var(--color-contrast);
+    fill-opacity: 0.8;
   }
 
   path:nth-child(2) {
     fill: var(--color-primary-700);
+    fill-opacity: 0.8;
   }
 }
 
@@ -252,6 +261,12 @@
   }
   path:nth-child(2) {
     fill: var(--color-contrast);
+  }
+
+  &.headline_icon {
+    path:nth-child(odd) {
+      fill: var(--color-primary-600);
+    }
   }
 }
 
