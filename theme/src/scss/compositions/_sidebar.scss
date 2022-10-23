@@ -3,7 +3,8 @@
 
 @use "../settings";
 
-.with-sidebar {
+.with-sidebar,
+.with-sidebar-right {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sidebar-gutter, settings.$FRAAP-GLOBAL-GUTTER);
@@ -20,15 +21,15 @@
   min-width: var(--sidebar-content-min-width, 50%);
 }
 
-// .with-sidebar-right > :first-child {
-//   flex-basis: 0;
-//   flex-grow: 999;
-//   min-width: var(--sidebar-content-min-width, 50%);
-//   // background-color: var(--color-primary);
-// }
+.with-sidebar-right > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: var(--sidebar-right-content-min-width, 50%);
+  // background-color: var(--color-primary);
+}
 
-// .with-sidebar-right > :last-child {
-//   flex-basis: var(--sidebar-target-width, 20rem);
-//   flex-grow: 1;
-//   // background-color: var(--color-contrast);
-// }
+.with-sidebar-right > :last-child {
+  flex-basis: var(--sidebar-right-target-width, 20rem);
+  flex-grow: 1;
+  // background-color: var(--color-contrast);
+}

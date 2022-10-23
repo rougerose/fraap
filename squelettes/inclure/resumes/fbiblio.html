@@ -1,6 +1,7 @@
 <BOUCLE_reference(FBIBLIOS){id_fbiblio}>
+  #SET{selection, #ENV{selection, ''}}
   <BOUCLE_zitem(ZITEMS){id_zitem}>
-    <article class="fbiblio media abstract">
+    <article class="fbiblio[(#GET{selection}|oui) selection] media abstract">
       [<figure class="media_figure">
         (#TYPE_REF|zotspip_icone_type{#MIMETYPE,#FICHIER}|inserer_attribut{title, #TYPE_REF|zotspip_traduire_type})
       </figure>]
@@ -27,7 +28,7 @@
                     })],
                     [(#SET{_mots, #GET{_mots}|push{#ID_MOT}})]
                   })]
-                  <a href="[(#ENV{self}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
+                  <a href="[(#ENV{self}|parametre_url{debut_ressources, ''}|parametre_url{mots, #GET{_mots}})]" class="pill">[(#INFO_TITRE{groupes_mots, #ID_GROUPE}) : ]#TITRE</a>
                 </BOUCLE_mots_reference>
               </p>
             </footer>

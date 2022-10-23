@@ -8,3 +8,24 @@
 .page_content {
   position: relative;
 }
+
+
+// Rubrique Médiathèque
+.page[data-page="rubrique-mediatheque"] {
+  .selections_headline {
+    --sidebar-gutter: var(--space-3xs-2xs);
+    --buttonCta-marginLeft: 0;
+    --buttonCta-padding: 0;
+    align-items: baseline;
+    margin-bottom: var(--space-2xs);
+
+    h2 {
+      font-size: var(--step-4);
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+  }
+  .selections_action {
+    text-align: center;
+  }
+}

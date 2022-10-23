@@ -11,7 +11,7 @@
         <div class="pod_mask">
           <div class="wrapper-content">
             <div class="pod_content flow">
-              <h2 class="pod_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
+              <h2 class="pod_headline"><span class="text-underline"><a href="[(#ID_RUBRIQUE|=={47}|?{#URL_RUBRIQUE|parametre_url{vue,selection}, #URL_RUBRIQUE})]">#TITRE</a></span></h2>
               <BOUCLE_si_rubrique_fiches(CONDITION){si #ID_RUBRIQUE|=={38}}>
                 <INCLURE{fond=inclure/teasers/ressources-fiches, id_rubrique}/>
               </BOUCLE_si_rubrique_fiches>

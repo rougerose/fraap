@@ -74,6 +74,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-2A-600};
   --color-primary-700: #{map.get(var.$color-2A, "700")};
   --color-primary-800: #{map.get(var.$color-2A, "800")};
+  --color-primary-900: #{map.get(var.$color-2A, "900")};
   --color-contrast: #{map.get(var.$color-2B, "500")};
   --color-contrast-400: #{map.get(var.$color-2B, "400")};
   --color-contrast-300: #{map.get(var.$color-2B, "300")};
@@ -103,6 +104,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-3A-600};
   --color-primary-700: #{map.get(var.$color-3A, "700")};
   --color-primary-800: #{map.get(var.$color-3A, "800")};
+  --color-primary-900: #{map.get(var.$color-3A, "900")};
   --color-contrast: #{map.get(var.$color-3B, "500")};
   --color-contrast-400: #{map.get(var.$color-3B, "400")};
   --color-contrast-300: #{map.get(var.$color-3B, "300")};
@@ -132,6 +134,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-4A-600};
   --color-primary-700: #{map.get(var.$color-4A, "700")};
   --color-primary-800: #{map.get(var.$color-4A, "800")};
+  --color-primary-900: #{map.get(var.$color-4A, "900")};
   --color-contrast: #{map.get(var.$color-4B, "500")};
   --color-contrast-400: #{map.get(var.$color-4B, "400")};
   --color-contrast-300: #{map.get(var.$color-4B, "300")};
@@ -188,6 +191,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-5A-600};
   --color-primary-700: #{map.get(var.$color-5A, "700")};
   --color-primary-800: #{map.get(var.$color-5A, "800")};
+  --color-primary-900: #{map.get(var.$color-5A, "900")};
   --color-contrast: #{map.get(var.$color-5B, "500")};
   --color-contrast-400: #{map.get(var.$color-5B, "400")};
   --color-contrast-300: #{map.get(var.$color-5B, "300")};
@@ -217,6 +221,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-6A-600};
   --color-primary-700: #{map.get(var.$color-6A, "700")};
   --color-primary-800: #{map.get(var.$color-6A, "800")};
+  --color-primary-900: #{map.get(var.$color-6A, "900")};
   --color-contrast: #{map.get(var.$color-6B, "500")};
   --color-contrast-400: #{map.get(var.$color-6B, "400")};
   --color-contrast-300: #{map.get(var.$color-6B, "300")};
@@ -245,6 +250,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-primary-600: #{$color-7A-600};
   --color-primary-700: #{map.get(var.$color-7A, "700")};
   --color-primary-800: #{map.get(var.$color-7A, "800")};
+  --color-primary-900: #{map.get(var.$color-7A, "900")};
   --color-contrast: #{map.get(var.$color-7B, "500")};
   --color-contrast-400: #{map.get(var.$color-7B, "400")};
   --color-contrast-300: #{map.get(var.$color-7B, "300")};

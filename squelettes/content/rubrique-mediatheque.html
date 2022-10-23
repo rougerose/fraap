@@ -1,9 +1,10 @@
+#SET{vue, #ENV{vue, selection}}
 <BOUCLE_rubrique_mediatheque(RUBRIQUES){id_rubrique}>
-  <div class="page" data-page="mediatheque">
+  <div class="page" data-page="rubrique-mediatheque">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
     <INCLURE{fond=inclure/sections/header-rubrique-mediatheque, icon='icon-rubrique47-64.svg', class_icon=icon-rubrique47, id_rubrique} />
     <div class="wrapper-content" data-size="narrow">
-      <INCLURE{fond=inclure/compositions/rubrique-mediatheque, id_rubrique, mots=#ENV{mots}, type_ref=#ENV{type_ref}, recherche=#ENV*{recherche}, ajax=mediatheque, env}/>
+        <INCLURE{fond=inclure/compositions/rubrique-mediatheque-#GET{vue}, ajax=mediatheque, env}/>
     </div>
   </div>
 </BOUCLE_rubrique_mediatheque>

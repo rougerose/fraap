@@ -1,0 +1,45 @@
+#SET{total_ressources, 0} #SET{fbiblios, #ARRAY} #SET{total_fbiblios, 0}
+<BOUCLE_total_ressources(FBIBLIOS){id_rubrique}{statut=publie}> </BOUCLE_total_ressources>
+  #SET{total_ressources, #TOTAL_BOUCLE}
+</B_total_ressources>
+
+<BOUCLE_selection_ressources(SELECTIONS){identifiant=mediatheque}>
+  <BOUCLE_fbiblios(SELECTIONS_CONTENUS){id_selection}{objet=fbiblio}{par rang}>
+    [(#SET{fbiblios, #GET{fbiblios}|push{#ID_FBIBLIO}})]
+  </BOUCLE_fbiblios>
+    #SET{total_fbiblios, #TOTAL_BOUCLE}
+  </B_fbiblios>
+</BOUCLE_selection_ressources>
+
+<B_ressources>
+  <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_fbiblios}, vue=#ENV{vue}, env}/>
+  <div class="selections pad-top-3">
+    <div class="selections_headline with-sidebar-right">
+      <h2><:fraap_squelettes:mediatheque_selection_titre:/></h2>
+      <div>
+        <a href="[(#URL_RUBRIQUE{#ENV{id_rubrique}}|parametre_url{vue, tout})]" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_mediatheque_voir_tout{nb=#GET{total_ressources}}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+      </div>
+    </div>
+    <div class="flow">
+      <BOUCLE_ressources(SELECTIONS){identifiant=mediatheque}>
+        <BOUCLE_selections(SELECTIONS_CONTENUS){id_selection}{objet=fbiblio}{par rang}>
+          <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio=#ID_OBJET, self=#SELF, selection=oui}/>
+        </BOUCLE_selections>
+        <div class="selections_action">
+          <a href="[(#URL_RUBRIQUE{#ENV{id_rubrique}}|parametre_url{vue, tout})]" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_mediatheque_voir_tout{nb=#GET{total_ressources}}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+        </div>
+      </BOUCLE_ressources>
+    </div>
+  </div>
+</B_ressources>
+  <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
+  <div class="gap-top-3">
+    <div class="flow">
+      <div class="callout variant-warn">
+        <p><strong><:fraap_squelettes:recherche_resultat_aucun:>.</strong></p>
+      </div>
+    </div>
+  </div>
+<//B_ressources>
+<INCLURE{fond=inclure/dialog/filtres-mediatheque, id_rubrique, recherche=#ENV*{recherche}, env}/>
+[<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
