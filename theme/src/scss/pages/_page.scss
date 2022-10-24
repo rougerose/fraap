@@ -1,16 +1,54 @@
 /// PAGE
-///
-/// Styles communs aux pages
 
-
-// .page {}
-
-.page_content {
-  position: relative;
+.page {
+  padding-top: var(--space-l-xl);
+  padding-bottom: var(--space-4xl-5xl);
 }
 
 
-// Rubrique Médiathèque
+// rubrique
+// .page[data-page="rubrique"] {}
+
+// rubrique annuaire
+// .page[data-page="rubrique-annuaire"] {}
+
+// rubrique informations-ressources
+.page[data-page="rubrique-informations-ressources"] {
+  --pod-padding-top: var(--space-l-2xl);
+  --pod-padding-bottom: var(--space-l-2xl);
+}
+
+
+// rubrique federation
+.page[data-page="rubrique-federation"] {
+  margin-bottom: var(--section-angle-marginBottom-min);
+}
+
+
+// rubrique fiches
+.page[data-page="rubrique-fiches"] {
+  --sidebar-gutter: var(--space-l);
+}
+
+
+// rubrique interventions
+// .page[data-page="rubrique-interventions"] {}
+
+
+// rubrique rencontres
+// .page[data-page="rubrique-rencontres"] {}
+
+
+// rubrique-organisation
+.page[data-page="rubrique-organisation"] {
+  // Niveau 2, sous-rubriques
+  &[data-level="2"] {
+    margin-bottom: var(--section-angle-marginBottom-min);
+  }
+}
+
+
+// page rubrique-médiathèque
 .page[data-page="rubrique-mediatheque"] {
   .selections_headline {
     --sidebar-gutter: var(--space-3xs-2xs);
@@ -29,3 +67,14 @@
     text-align: center;
   }
 }
+
+
+// sommaire
+.page[data-page="sommaire"] {
+  margin-bottom: var(--section-angle-marginBottom);
+}
+
+
+// .page_content {
+//   position: relative;
+// }

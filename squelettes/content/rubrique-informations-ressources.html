@@ -1,7 +1,7 @@
 <BOUCLE_rubrique_infos(RUBRIQUES){id_rubrique}>
   #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
   #SET{icon-svg, #GET{icon}|concat{-64.svg}}
-  <div class="page-rubrique" data-page="informations-ressources">
+  <div class="page" data-page="rubrique-informations-ressources">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
 
     <INCLURE{fond=inclure/sections/header-rubrique, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique} />

@@ -1,8 +1,6 @@
 # Dev
 
 ## WIP
-- Conversion .media-box -> .media
-- Ajout data-page des rubriques
 - Ajouter le sous-titre des articles dans les résumés
 
 ## Observatoire
