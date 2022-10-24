@@ -965,6 +965,24 @@ ol[role=list] {
   margin: 0 6px;
 }
 
+.alert {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-callout-bg);
+  border-left: 8px solid var(--color-callout-border);
+}
+.alert.variant-info {
+  --color-callout-bg: var(--color-callout-bg-info);
+  --color-callout-border: var(--color-callout-border-info);
+}
+.alert.variant-warn {
+  --color-callout-bg: var(--color-callout-bg-warn);
+  --color-callout-border: var(--color-callout-border-warn);
+}
+.alert.variant-alert {
+  --color-callout-bg: var(--color-callout-bg-alert);
+  --color-callout-border: var(--color-callout-border-alert);
+}
+
 .article {
   --sidebar-gutter: var(--space-2xl) 0;
   --sidebar-content-min-width: 66%;
@@ -1168,24 +1186,6 @@ html:not(.js) .button-nav {
   background-color: var(--color-contrast-400);
   background-size: 100%;
   transition: background 0s;
-}
-
-.callout {
-  padding: 0.75rem 1rem;
-  background-color: var(--color-callout-bg);
-  border-left: 8px solid var(--color-callout-border);
-}
-.callout.variant-info {
-  --color-callout-bg: var(--color-callout-bg-info);
-  --color-callout-border: var(--color-callout-border-info);
-}
-.callout.variant-warn {
-  --color-callout-bg: var(--color-callout-bg-warn);
-  --color-callout-border: var(--color-callout-border-warn);
-}
-.callout.variant-alert {
-  --color-callout-bg: var(--color-callout-bg-alert);
-  --color-callout-border: var(--color-callout-border-alert);
 }
 
 .card {

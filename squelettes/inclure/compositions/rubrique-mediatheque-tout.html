@@ -15,7 +15,7 @@
         {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
         {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
-        {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 20}
+        {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 10}
       >
         <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
           <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
@@ -31,7 +31,7 @@
   ]
   <div class="gap-top-3">
     <div class="flow">
-      <div class="callout variant-warn">
+      <div class="alert variant-warn">
         <p><strong><:fraap_squelettes:recherche_resultat_aucun{recherche=#ENV{recherche}}:>.</strong></p>
       </div>
     </div>
