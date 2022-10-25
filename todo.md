@@ -2,6 +2,7 @@
 
 ## WIP
 - Ajouter le sous-titre des articles dans les résumés
+- .variant-offset-icon -> .icon-offset
 
 ## Observatoire
 Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...

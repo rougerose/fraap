@@ -27,6 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
+	'cta_contacter' => 'Nous contacter',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
 	'cta_fiches' => 'Consulter les fiches pratiques',
@@ -75,6 +76,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'lien_aller_au_contenu' => 'Aller au contenu',
 
 	// M
+	'mediatheque_label_cta' => 'Faire une suggestion&nbsp;? Signaler une erreur&nbsp;?',
 	'mediatheque_trier_annee' => 'Trier par année de publication',
 	'mediatheque_trier_titre' => 'Trier par titre',
 	'mediatheque_selection_titre' => 'Le titre à trouver',

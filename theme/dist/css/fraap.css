@@ -1188,6 +1188,47 @@ html:not(.js) .button-nav {
   transition: background 0s;
 }
 
+.callout.callout-mediatheque {
+  --media-figure-width: 32px;
+  --media-figure-height: 32px;
+  --icon-size: 32px;
+  --media-gutter: 1rem;
+  align-items: center;
+}
+
+.callout_title {
+  display: flex;
+  align-items: baseline;
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+.callout_title .icon {
+  margin-right: var(--space-2xs-xs);
+}
+
+.callout_cta {
+  background-color: var(--color-paper);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(37, 37, 40, 0.2), 0 2px 2px rgba(160, 160, 167, 0.5);
+  margin-left: calc(var(--media-gutter) + var(--icon-size));
+  padding: var(--space-s);
+  flex-grow: 0 !important;
+}
+.callout_cta.variant-banner {
+  background-color: var(--color-primary);
+  box-shadow: var(--card-box-shadow-low);
+}
+
+.callout_cta-label {
+  font-size: var(--step--1);
+  font-style: italic;
+}
+
+.callout_cta-btn .button-cta {
+  justify-content: center;
+  width: 100%;
+}
+
 .card {
   max-width: var(--card-maxWidth);
   text-decoration: none;
