@@ -4,11 +4,13 @@
 </B_total_ressources>
 
 <BOUCLE_selection_ressources(SELECTIONS){identifiant=mediatheque}>
-  <BOUCLE_fbiblios(SELECTIONS_CONTENUS){id_selection}{objet=fbiblio}{par rang}>
-    [(#SET{fbiblios, #GET{fbiblios}|push{#ID_FBIBLIO}})]
-  </BOUCLE_fbiblios>
-    #SET{total_fbiblios, #TOTAL_BOUCLE}
-  </B_fbiblios>
+  <BOUCLE_contenu(SELECTIONS_CONTENUS){id_selection}{objet=fbiblio}{par rang}>
+    <BOUCLE_fbiblio(FBIBLIOS){id_fbiblio=#ID_OBJET}{statut=publie}>
+      [(#SET{fbiblios, #GET{fbiblios}|push{#ID_FBIBLIO}})]
+    </BOUCLE_fbiblio>
+  </BOUCLE_contenu>
+    [(#SET{total_fbiblios, #GET{fbiblios}|count})]
+  </B_fbiblio>
 </BOUCLE_selection_ressources>
 
 <B_ressources>
