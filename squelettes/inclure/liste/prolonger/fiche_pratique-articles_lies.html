@@ -1,6 +1,6 @@
 <BOUCLE_article(ARTICLES){id_article}>
   #SET{articles, #ARRAY}
-  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique=38}{id_article IN 1095, 1094}>
+  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique=38}{id_article IN 1094, 1095}>
     #SET{articles, #GET{articles}|push{#ID_ARTICLE}}
   </BOUCLE_articles_presentation_contact>
   <B_prolonger_liaisons>

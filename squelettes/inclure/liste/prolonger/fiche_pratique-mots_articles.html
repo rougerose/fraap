@@ -1,7 +1,7 @@
 <BOUCLE_article(ARTICLES){id_article}>
   #SET{mots, #ARRAY} #SET{articles, #ARRAY}
   <BOUCLE_mots(MOTS){id_article}>[(#SET{mots, #GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
-  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1095, 1094}>#SET{articles, #GET{articles}|push{#ID_ARTICLE}}</BOUCLE_articles_presentation_contact>
+  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1094, 1095}>#SET{articles, #GET{articles}|push{#ID_ARTICLE}}</BOUCLE_articles_presentation_contact>
   <B_prolonger>
     <section class="pod variant-banner related">
       <div class="pod_mask">

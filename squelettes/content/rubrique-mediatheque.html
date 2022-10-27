@@ -8,7 +8,7 @@
     </div>
     #SET{articles, #ARRAY}
     <B_articles_presentation_contact>
-      <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1092, 1093}>
+      <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1096, 1097}>
         #SET{articles, #GET{articles}|push{#ID_ARTICLE}}
       </BOUCLE_articles_presentation_contact>
       <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, articles=#GET{articles}, wrapper_narrow=oui, banner=oui}/>
