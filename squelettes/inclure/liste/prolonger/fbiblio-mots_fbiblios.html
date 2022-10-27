@@ -1,6 +1,7 @@
 <BOUCLE_fbiblio(FBIBLIOS){id_fbiblio}>
-  #SET{mots, #ARRAY}
+  #SET{mots, #ARRAY} #SET{articles, #ARRAY}
   <BOUCLE_mots(MOTS){id_fbiblio}>[(#SET{mots, #GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
+  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique=47}{id_article IN 1092, 1093}>#SET{articles, #GET{articles}|push{#ID_ARTICLE}}</BOUCLE_articles_presentation_contact>
   <B_prolonger>
     <section class="pod variant-banner related">
       <div class="pod_mask">
@@ -21,8 +22,8 @@
         </div>
       </div>
     </section>
-    <INCLURE{fond=inclure/sections/callout-mediatheque, id_rubrique, banner=non}/>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, articles=#GET{articles}, id_rubrique=47, wrapper_narrow=oui, banner=non}/>
   </B_prolonger>
-    <INCLURE{fond=inclure/sections/callout-mediatheque, id_rubrique, banner=oui}/>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, articles=#GET{articles}, id_rubrique=47, wrapper_narrow=non, banner=oui}/>
   <//B_prolonger>
 </BOUCLE_fbiblio>

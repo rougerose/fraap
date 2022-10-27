@@ -43,7 +43,7 @@
               </h2>
               <B_articles>
                 <ul class="flow" role="list">
-                  <BOUCLE_articles(ARTICLES){id_mot}{par titre}>
+                  <BOUCLE_articles(ARTICLES){id_mot}{par num titre}>
                     <li class="text-underscore"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #ID_GROUPE})]">#TITRE</a></li>
                   </BOUCLE_articles>
                 </ul>
@@ -54,4 +54,11 @@
       </div>
     </div>
   </div>
+  #SET{articles, #ARRAY}
+  <B_articles_presentation_contact>
+    <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1095, 1094}>
+      #SET{articles, #GET{articles}|push{#ID_ARTICLE}}
+    </BOUCLE_articles_presentation_contact>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, articles=#GET{articles}, wrapper_narrow=oui, banner=oui}/>
+  </B_articles_presentation_contact>
 </BOUCLE_rubrique_fiches_pratiques_groupe>
