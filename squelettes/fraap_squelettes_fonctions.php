@@ -20,7 +20,7 @@ function ajouter_styles_toc($texte) {
 
 /**
  * Filtre supplémentaire au sommaire :
- * Supprimer les span.text-underline ajoutés aux intertitres de #TEXTE
+ * Supprimer les span.text-underline copiés collés dans le sommaire
  */
 function supprimer_soulignement($texte) {
 	if (strpos($texte, '<span class="text-underline">') !== false) {
