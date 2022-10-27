@@ -32,14 +32,16 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-link-visited: var(--color-primary-900);
   --color-stroke: #{map.get(var.$gray, "blue", "200")};
   --color-disabled: #{map.get(var.$gray, "blue", "400")};
-  --color-callout-bg: #{rgba(map.get(var.$gray, "blue", "200"), 0.1)};
-  --color-callout-border: #{map.get(var.$gray, "blue", "200")};
-  --color-callout-bg-info: #{rgba(var.$color-info, 0.1)};
-  --color-callout-border-info: #{var.$color-info};
-  --color-callout-bg-warn: #{rgba(var.$color-warn, 0.1)};
-  --color-callout-border-warn: #{var.$color-warn};
-  --color-callout-bg-alert: #{rgba(var.$color-alert, 0.1)};
-  --color-callout-border-alert: #{var.$color-alert};
+  --color-message-bg: #{rgba(map.get(var.$gray, "blue", "200"), 0.1)};
+  --color-message-border: #{map.get(var.$gray, "blue", "200")};
+  --color-message-bg-alert: #{rgba(var.$color-alert, 0.1)};
+  --color-message-border-alert: #{var.$color-alert};
+  --color-message-bg-info: #{rgba(var.$color-info, 0.1)};
+  --color-message-border-info: #{var.$color-info};
+  --color-message-bg-success: #{rgba(var.$color-success, 0.1)};
+  --color-message-border-success: #{var.$color-success};
+  --color-message-bg-warn: #{rgba(var.$color-warn, 0.1)};
+  --color-message-border-warn: #{var.$color-warn};
 
 
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-1A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
