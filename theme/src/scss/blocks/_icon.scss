@@ -134,12 +134,8 @@
 
 // icon Fédérer
 .icon-rubrique48 {
-  --color-circle: var(--color-primary-800);
+  --color-circle: var(--color-primary-600);
   --color-path: var(--color-contrast);
-
-  &.headline_icon {
-    --color-circle: var(--color-primary-600);
-  }
 
   circle {
     fill: var(--color-circle);
@@ -153,7 +149,7 @@
 // icon Représenter
 .icon-rubrique49 {
   path:nth-of-type(1) {
-    fill: var(--color-primary-800);
+    fill: var(--color-primary-600);
     fill-opacity: 1;
   }
   path:nth-of-type(2) {
@@ -173,6 +169,7 @@
   circle:nth-of-type(2),
   path:nth-child(4) {
     fill: var(--color-primary-700);
+    fill-opacity: 0.8;
   }
 
   &.headline_icon {
@@ -189,7 +186,7 @@
     fill: var(--color-contrast);
   }
   path:nth-of-type(2) {
-    fill: var(--color-primary-700);
+    fill: var(--color-primary-600);
   }
   path:nth-of-type(3) {
     fill: var(--color-primary);
@@ -204,7 +201,7 @@
   }
 
   path:nth-child(2) {
-    fill: var(--color-primary-700);
+    fill: var(--color-primary-600);
     fill-opacity: 0.8;
   }
 }
@@ -216,10 +213,11 @@
     fill-opacity: 1;
   }
   circle {
-    fill: var(--color-primary-800);
+    fill: var(--color-primary-600);
+    fill-opacity: 1;
   }
   path:nth-child(3) {
-    fill: var(--color-primary-700);
+    fill: var(--color-primary-600);
   }
 }
 
@@ -229,7 +227,7 @@
     fill: var(--color-contrast);
   }
   path:nth-child(2) {
-    fill: var(--color-primary-800);
+    fill: var(--color-primary-600);
   }
   path:nth-child(3) {
     fill: var(--color-primary-400);
@@ -257,16 +255,10 @@
 // icon Mediathèque
 .icon-rubrique47 {
   path:nth-child(odd) {
-    fill: var(--color-primary-800);
+    fill: var(--color-primary-600);
   }
   path:nth-child(2) {
     fill: var(--color-contrast);
-  }
-
-  &.headline_icon {
-    path:nth-child(odd) {
-      fill: var(--color-primary-600);
-    }
   }
 }
 

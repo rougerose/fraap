@@ -1173,7 +1173,7 @@ html:not(.js) .button-nav {
   transition: background 0s;
 }
 
-.callout.callout-mediatheque {
+.callout.callout-infos-ressources {
   --media-figure-width: 32px;
   --media-figure-height: 32px;
   --icon-size: 32px;
@@ -1983,11 +1983,8 @@ a:hover .icon-nav-link {
 }
 
 .icon-rubrique48 {
-  --color-circle: var(--color-primary-800);
-  --color-path: var(--color-contrast);
-}
-.icon-rubrique48.headline_icon {
   --color-circle: var(--color-primary-600);
+  --color-path: var(--color-contrast);
 }
 .icon-rubrique48 circle {
   fill: var(--color-circle);
@@ -1998,7 +1995,7 @@ a:hover .icon-nav-link {
 }
 
 .icon-rubrique49 path:nth-of-type(1) {
-  fill: var(--color-primary-800);
+  fill: var(--color-primary-600);
   fill-opacity: 1;
 }
 .icon-rubrique49 path:nth-of-type(2) {
@@ -2015,6 +2012,7 @@ a:hover .icon-nav-link {
 .icon-rubrique1 circle:nth-of-type(2),
 .icon-rubrique1 path:nth-child(4) {
   fill: var(--color-primary-700);
+  fill-opacity: 0.8;
 }
 .icon-rubrique1.headline_icon circle:nth-of-type(2),
 .icon-rubrique1.headline_icon path:nth-child(4) {
@@ -2025,7 +2023,7 @@ a:hover .icon-nav-link {
   fill: var(--color-contrast);
 }
 .icon-rubrique55 path:nth-of-type(2) {
-  fill: var(--color-primary-700);
+  fill: var(--color-primary-600);
 }
 .icon-rubrique55 path:nth-of-type(3) {
   fill: var(--color-primary);
@@ -2036,7 +2034,7 @@ a:hover .icon-nav-link {
   fill-opacity: 0.8;
 }
 .icon-rubrique38 path:nth-child(2) {
-  fill: var(--color-primary-700);
+  fill: var(--color-primary-600);
   fill-opacity: 0.8;
 }
 
@@ -2045,17 +2043,18 @@ a:hover .icon-nav-link {
   fill-opacity: 1;
 }
 .icon-article512 circle {
-  fill: var(--color-primary-800);
+  fill: var(--color-primary-600);
+  fill-opacity: 1;
 }
 .icon-article512 path:nth-child(3) {
-  fill: var(--color-primary-700);
+  fill: var(--color-primary-600);
 }
 
 .icon-article962 path:nth-child(1) {
   fill: var(--color-contrast);
 }
 .icon-article962 path:nth-child(2) {
-  fill: var(--color-primary-800);
+  fill: var(--color-primary-600);
 }
 .icon-article962 path:nth-child(3) {
   fill: var(--color-primary-400);
@@ -2077,13 +2076,10 @@ a:hover .icon-nav-link {
 }
 
 .icon-rubrique47 path:nth-child(odd) {
-  fill: var(--color-primary-800);
+  fill: var(--color-primary-600);
 }
 .icon-rubrique47 path:nth-child(2) {
   fill: var(--color-contrast);
-}
-.icon-rubrique47.headline_icon path:nth-child(odd) {
-  fill: var(--color-primary-600);
 }
 
 .icon-arrow-right {
