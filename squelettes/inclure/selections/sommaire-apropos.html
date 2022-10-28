@@ -15,12 +15,13 @@
                 <div class="swiper-slide">
                   <div class="card-carousel card-carousel--flat flow">
                     [(#SET{iconID, ''})]
-                    [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
+                    [(#SET{iconID, #OBJET|concat{#ID_OBJET}})]
+                    [(#SET{class, #VAL{card-carousel card-carousel--flat icon-}|concat{#GET{iconID}}|concat{' with-bg'}})]
                     [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
                     <h3 class="card-carousel_heading card-carousel_heading--flat[(#CHEMIN{#GET{iconURL}|concat{.html}}|oui) with-icon]">
                       <a href="#URL">
                         [(#CHEMIN{#GET{iconURL}|concat{.html}}|oui)
-                          [(#INCLURE{fond=#GET{iconURL}, svg=card-carousel card-carousel--flat icon-#GET{iconID}})]
+                          [(#INCLURE{fond=#GET{iconURL}, svg=#GET{class}})]
                         ]
                         #TITRE
                       </a>

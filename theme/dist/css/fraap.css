@@ -1993,6 +1993,9 @@ a:hover .icon-nav-link {
   fill: var(--color-path);
   fill-opacity: 0.85;
 }
+.icon-rubrique48.with-bg {
+  --color-circle: var(--color-primary-700);
+}
 
 .icon-rubrique49 path:nth-of-type(1) {
   fill: var(--color-primary-600);
@@ -2000,9 +2003,16 @@ a:hover .icon-nav-link {
 }
 .icon-rubrique49 path:nth-of-type(2) {
   fill: var(--color-primary-700);
+  fill-opacity: 0.8;
 }
 .icon-rubrique49 path:nth-of-type(3) {
   fill: var(--color-contrast);
+}
+.icon-rubrique49.with-bg path:nth-of-type(1) {
+  fill: var(--color-primary-800);
+}
+.icon-rubrique49.with-bg path:nth-of-type(2) {
+  fill: var(--color-primary-700);
 }
 
 .icon-rubrique1 circle:nth-of-type(1),
@@ -2023,10 +2033,13 @@ a:hover .icon-nav-link {
   fill: var(--color-contrast);
 }
 .icon-rubrique55 path:nth-of-type(2) {
-  fill: var(--color-primary-600);
+  fill: var(--color-primary-700);
 }
 .icon-rubrique55 path:nth-of-type(3) {
   fill: var(--color-primary);
+}
+.icon-rubrique55.with-bg path:nth-of-type(3) {
+  fill: var(--color-primary-600);
 }
 
 .icon-rubrique38 path:nth-child(odd) {
@@ -2036,6 +2049,9 @@ a:hover .icon-nav-link {
 .icon-rubrique38 path:nth-child(2) {
   fill: var(--color-primary-600);
   fill-opacity: 0.8;
+}
+.icon-rubrique38.with-bg path:nth-child(2) {
+  fill: var(--color-primary-700);
 }
 
 .icon-article512 path:nth-child(2) {
@@ -2049,6 +2065,12 @@ a:hover .icon-nav-link {
 .icon-article512 path:nth-child(3) {
   fill: var(--color-primary-600);
 }
+.icon-article512.with-bg circle {
+  fill: var(--color-primary-700);
+}
+.icon-article512.with-bg path:nth-child(3) {
+  fill: var(--color-primary-700);
+}
 
 .icon-article962 path:nth-child(1) {
   fill: var(--color-contrast);
@@ -2058,6 +2080,9 @@ a:hover .icon-nav-link {
 }
 .icon-article962 path:nth-child(3) {
   fill: var(--color-primary-400);
+}
+.icon-article962.with-bg path:nth-child(2) {
+  fill: var(--color-primary-700);
 }
 
 .icon-rubrique3 {
@@ -2080,6 +2105,9 @@ a:hover .icon-nav-link {
 }
 .icon-rubrique47 path:nth-child(2) {
   fill: var(--color-contrast);
+}
+.icon-rubrique47.with-bg path:nth-child(odd) {
+  fill: var(--color-primary-700);
 }
 
 .icon-arrow-right {

@@ -13,8 +13,8 @@
             <BOUCLE_fonctionnement(ARTICLES){id_rubrique}{id_article IN #ENV{articles}}{0,1}>
               <div class="callout_content media">
                 <div class="media_figure">
-                  [(#ID_RUBRIQUE|=={47}|oui) [(#SET{chemin, icon-rubrique47-64.svg})] [(#SET{class, icon icon-rubrique47})] ]
-                  [(#ID_RUBRIQUE|=={38}|oui) [(#SET{chemin, icon-rubrique38-64.svg})] [(#SET{class, icon icon-rubrique38})] ]
+                  [(#ID_RUBRIQUE|=={47}|oui) [(#SET{chemin, icon-rubrique47-64.svg})] [(#SET{class, icon icon-rubrique47 with-bg})] ]
+                  [(#ID_RUBRIQUE|=={38}|oui) [(#SET{chemin, icon-rubrique38-64.svg})] [(#SET{class, icon icon-rubrique38 with-bg})] ]
                   <INCLURE{fond=images/#GET{chemin}, svg=#GET{class}, aria-hidden=true} />
                 </div>
                 <div class="media_content flow-small">

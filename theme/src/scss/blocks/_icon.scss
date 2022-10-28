@@ -144,6 +144,10 @@
     fill: var(--color-path);
     fill-opacity: 0.85;
   }
+
+  &.with-bg {
+    --color-circle: var(--color-primary-700);
+  }
 }
 
 // icon Représenter
@@ -154,9 +158,19 @@
   }
   path:nth-of-type(2) {
     fill: var(--color-primary-700);
+    fill-opacity: 0.8;
   }
   path:nth-of-type(3) {
     fill: var(--color-contrast);
+  }
+
+  &.with-bg {
+    path:nth-of-type(1) {
+      fill: var(--color-primary-800);
+    }
+    path:nth-of-type(2) {
+      fill: var(--color-primary-700);
+    }
   }
 }
 
@@ -186,10 +200,16 @@
     fill: var(--color-contrast);
   }
   path:nth-of-type(2) {
-    fill: var(--color-primary-600);
+    fill: var(--color-primary-700);
   }
   path:nth-of-type(3) {
     fill: var(--color-primary);
+  }
+
+  &.with-bg {
+    path:nth-of-type(3) {
+      fill: var(--color-primary-600);
+    }
   }
 }
 
@@ -203,6 +223,12 @@
   path:nth-child(2) {
     fill: var(--color-primary-600);
     fill-opacity: 0.8;
+  }
+
+  &.with-bg {
+    path:nth-child(2) {
+      fill: var(--color-primary-700);
+    }
   }
 }
 
@@ -219,6 +245,15 @@
   path:nth-child(3) {
     fill: var(--color-primary-600);
   }
+
+  &.with-bg {
+    circle {
+      fill: var(--color-primary-700);
+    }
+    path:nth-child(3) {
+      fill: var(--color-primary-700);
+    }
+  }
 }
 
 // icon Atlas ATA
@@ -231,6 +266,11 @@
   }
   path:nth-child(3) {
     fill: var(--color-primary-400);
+  }
+  &.with-bg {
+    path:nth-child(2) {
+      fill: var(--color-primary-700);
+    }
   }
 }
 
@@ -259,6 +299,12 @@
   }
   path:nth-child(2) {
     fill: var(--color-contrast);
+  }
+
+  &.with-bg {
+    path:nth-child(odd) {
+      fill: var(--color-primary-700);
+    }
   }
 }
 
