@@ -59,6 +59,6 @@
     <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1094, 1095}>
       #SET{articles, #GET{articles}|push{#ID_ARTICLE}}
     </BOUCLE_articles_presentation_contact>
-    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, articles=#GET{articles}, wrapper_narrow=oui, banner=oui}/>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, articles=#GET{articles}, wrapper_narrow=non, banner=oui}/>
   </B_articles_presentation_contact>
 </BOUCLE_rubrique_fiches_pratiques_groupe>
