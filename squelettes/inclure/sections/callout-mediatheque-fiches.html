@@ -1,7 +1,7 @@
 <BOUCLE_si_articles(CONDITION){si #ENV{articles}|count|=={2}}>
+  [(#SET{banner, #ENV{banner, oui}|=={oui}|?{' ', ''}})]
+  [(#SET{wrapper_narrow, #ENV{wrapper_narrow, oui}|=={oui}|?{' ', ''}})]
   <B_fonctionnement>
-    #SET{banner, #ENV{banner, oui}|=={oui}|?{' ', ''}}
-    #SET{wrapper_narrow, #ENV{wrapper_narrow, oui}|=={oui}|?{' ', ''}}
     <section class="pod[(#GET{banner}|oui) variant-banner] gap-top-6">
       <div class="pod_mask">
         <div class="pod_bg-mask">
@@ -13,8 +13,9 @@
             <BOUCLE_fonctionnement(ARTICLES){id_rubrique}{id_article IN #ENV{articles}}{0,1}>
               <div class="callout_content media">
                 <div class="media_figure">
-                  [(#ID_RUBRIQUE|=={47}|oui) [(#SET{chemin, icon-rubrique47-64.svg})] [(#SET{class, icon icon-rubrique47 with-bg})] ]
-                  [(#ID_RUBRIQUE|=={38}|oui) [(#SET{chemin, icon-rubrique38-64.svg})] [(#SET{class, icon icon-rubrique38 with-bg})] ]
+                  [(#ID_RUBRIQUE|=={47}|oui) [(#SET{chemin, icon-rubrique47-64.svg})] [(#SET{class, icon icon-rubrique47})] ]
+                  [(#ID_RUBRIQUE|=={38}|oui) [(#SET{chemin, icon-rubrique38-64.svg})] [(#SET{class, icon icon-rubrique38})] ]
+                  [(#GET{banner}|oui) [(#SET{class, #GET{class}|concat{' with-bg'}})]]
                   <INCLURE{fond=images/#GET{chemin}, svg=#GET{class}, aria-hidden=true} />
                 </div>
                 <div class="media_content flow-small">
