@@ -1,8 +1,6 @@
 /// ARTICLE
 /// page article
 
-@use "../tools/mq" as mq;
-
 .article {
   --sidebar-gutter: var(--space-2xl) 0;
   --sidebar-content-min-width: 66%;

@@ -4,6 +4,7 @@
 .media {
   display: flex;
   align-items: var(--media-align, flex-start);
+  flex-wrap: wrap;
   gap: var(--media-gutter, 1rem);
 }
 

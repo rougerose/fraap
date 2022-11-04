@@ -221,7 +221,7 @@
   --color-message-border-warn: #fd7e17;
   --boxShadow-primary: 0px 4px 15px rgba(10, 103, 10, 0.2), 0 1px 4px rgba(92, 235, 36, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2313cd13'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(92, 235, 36, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(92, 235, 36, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(92, 235, 36, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(92, 235, 36, 0.2);
   --dialog-overlay-background: rgba(183, 183, 189, 0.6);
@@ -247,7 +247,7 @@
   --color-link-visited: #7b3404;
   --boxShadow-primary: 0px 4px 15px rgba(182, 77, 7, 0.2), 0 1px 4px rgba(246, 208, 14, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23f8bf30'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(246, 208, 14, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(246, 208, 14, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(246, 208, 14, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(246, 208, 14, 0.1);
 }
@@ -268,7 +268,7 @@
   --color-contrast-100: #f39be8;
   --boxShadow-primary: 0px 4px 15px rgba(8, 104, 19, 0.2), 0 1px 4px rgba(56, 240, 77, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2311df29'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(56, 240, 77, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(56, 240, 77, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(56, 240, 77, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(56, 240, 77, 0.1);
 }
@@ -289,7 +289,7 @@
   --color-contrast-100: #baaef9;
   --boxShadow-primary: 0px 4px 15px rgba(93, 107, 6, 0.2), 0 1px 4px rgba(215, 243, 32, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23beda0b'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(215, 243, 32, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(215, 243, 32, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(215, 243, 32, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(215, 243, 32, 0.1);
 }
@@ -310,7 +310,7 @@
   --color-contrast-100: #ff6666;
   --boxShadow-primary: 0px 4px 15px rgba(1, 91, 121, 0.2), 0 1px 4px rgba(13, 193, 253, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%2302a3d9'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(13, 193, 253, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(13, 193, 253, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(13, 193, 253, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(13, 193, 253, 0.1);
 }
@@ -331,7 +331,7 @@
   --color-contrast-100: #eb7f95;
   --boxShadow-primary: 0px 4px 15px rgba(38, 87, 5, 0.2), 0 1px 4px rgba(96, 222, 13, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%234bae0a'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(96, 222, 13, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(96, 222, 13, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(96, 222, 13, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(96, 222, 13, 0.1);
 }
@@ -352,7 +352,7 @@
   --color-contrast-100: #a78fff;
   --boxShadow-primary: 0px 4px 15px rgba(117, 39, 0, 0.2), 0 1px 4px rgba(255, 146, 20, 0.2);
   --card-backgroundImage: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg' xml:space='preserve' fill-rule='evenodd' clip-rule='evenodd' stroke-linejoin='round' stroke-miterlimit='2'%3E%3Cpath d='M1.5.134C1.022-.142.41.022.134.5-.142.978.022 1.59.5 1.866L1.5.134ZM5.5 4.134C5.022 3.858 4.41 4.022 4.134 4.5 3.858 4.978 4.022 5.59 4.5 5.866L5.5 4.134Z' fill='%23e04b00'/%3E%3C/svg%3E");
-  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(255, 146, 20, 0.5);
+  --card-box-shadow-high: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(255, 146, 20, 0.5);
   --card-box-shadow-low: 0 2px 6px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(255, 146, 20, 0.5);
   --card-img-boxShadow: 0 4px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(255, 146, 20, 0.1);
 }
@@ -438,10 +438,8 @@ ol[role=list] {
   *,
 *::before,
 *::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -1029,7 +1027,6 @@ ol[role=list] {
 }
 
 .box-filters-sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   background-color: white;
@@ -1621,8 +1618,7 @@ html:not(.js) .dialog_close {
 
 .dialog[data-dialog-status] .dialog_overlay {
   background-color: var(--dialog-overlay-background);
-  -webkit-animation: 200ms both fade-in;
-          animation: 200ms both fade-in;
+  animation: 200ms both fade-in;
 }
 
 .dialog_close svg {
@@ -1631,12 +1627,6 @@ html:not(.js) .dialog_close {
 }
 .dialog_close:hover svg {
   transform: rotate(180deg);
-}
-
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
 }
 
 @keyframes fade-in {
@@ -1659,7 +1649,6 @@ html:not(.js) .dialog_close {
   display: flex;
   justify-content: space-between;
   padding: var(--space-s) var(--space-l);
-  position: -webkit-sticky;
   position: sticky;
 }
 .dialog-filters_header h1 {
@@ -2110,6 +2099,20 @@ a:hover .icon-nav-link {
   fill: var(--color-primary-700);
 }
 
+.icon-rubrique66 {
+  --i66-path-odd: var(--color-primary);
+  --i66-path-even: var(--color-contrast);
+}
+.icon-rubrique66 path:nth-child(odd) {
+  fill: var(--i66-path-odd);
+}
+.icon-rubrique66 path:nth-child(even) {
+  fill: var(--i66-path-even);
+}
+.icon-rubrique66.with-bg {
+  --i66-path-odd: var(--color-contrast);
+}
+
 .icon-arrow-right {
   padding: 0;
   stroke: currentColor;
@@ -2142,6 +2145,65 @@ a:hover .icon-nav-link {
 .icon-mot path {
   fill: var(--color-primary);
   fill-opacity: 0.8;
+}
+
+.icon-offset {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gutter-headline, var(--space-2xs-xs));
+}
+.icon-offset .icon {
+  margin-right: var(--space-2xs-xs);
+}
+
+.image-browser {
+  --browser-bg-color: #e7e7e9;
+  --browser-url-color: #a0a0a7;
+  background-color: var(--color-paper);
+  border-radius: 8px;
+  box-shadow: var(--card-box-shadow-high);
+  display: grid;
+  grid: 52px auto/auto;
+  width: 120%;
+}
+@media (min-width: 75em) {
+  .image-browser {
+    width: 140%;
+  }
+}
+
+.image-browser_bar {
+  padding: 16px 96px;
+  position: relative;
+}
+
+.image-browser_url {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--browser-bg-color);
+  color: var(--browser-url-color);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.image-browser_button-list {
+  display: grid;
+  grid: auto/repeat(3, 1fr);
+  gap: 0 6px;
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 20px;
+}
+
+.image-browser_button {
+  height: 12px;
+  width: 12px;
+  background-color: var(--browser-bg-color);
+  border-radius: 100%;
 }
 
 .index-timeline {
@@ -2197,7 +2259,6 @@ a:hover .icon-nav-link {
   min-height: 1.7em;
   padding: 0.2em;
   text-align: center;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
@@ -2259,6 +2320,7 @@ a:hover .icon-nav-link {
 .media {
   display: flex;
   align-items: var(--media-align, flex-start);
+  flex-wrap: wrap;
   gap: var(--media-gutter, 1rem);
 }
 
@@ -2355,7 +2417,6 @@ a:hover .icon-nav-link {
 }
 @media (min-width: 40em) {
   .pagination {
-    grid-template-columns: 1fr minmax(0, -webkit-max-content) 1fr;
     grid-template-columns: 1fr minmax(0, max-content) 1fr;
   }
 }
@@ -2407,6 +2468,9 @@ a:hover .icon-nav-link {
 }
 .pod.variant-angle-bottom {
   --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+}
+.pod.variant-angle-top {
+  --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
 }
 .pod.variant-angle-top-bottom {
   --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
@@ -2904,7 +2968,6 @@ a:hover .icon-nav-link {
   display: flex;
   justify-content: space-between;
   padding: var(--space-m) 1.125rem var(--space-m);
-  position: -webkit-sticky;
   position: sticky;
 }
 .site-nav_header h1 {
@@ -3157,11 +3220,26 @@ a:hover .icon-nav-link {
   }
 }
 .teaser-ressources {
-  --media-align: center;
-  --media-figure-width: 250px;
-  --media-figure-height: 250px;
+  --icon-size: 192px;
+  --media-figure-width: 192px;
+  --media-figure-height: 192px;
   --media-gutter: 2rem;
   --buttonCta-fontsize: var(--step-2);
+}
+.teaser-ressources.variant-guide {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--media-gutter);
+  -moz-column-gap: var(--media-gutter);
+       column-gap: var(--media-gutter);
+}
+@media (min-width: 46.25em) {
+  .teaser-ressources.variant-guide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.teaser-ressources .media_content {
+  min-width: 16rem;
 }
 
 .teaser-ressources_img-circle {
@@ -3186,6 +3264,10 @@ a:hover .icon-nav-link {
   font-size: 144px;
 }
 
+.teaser-ressources_hero-guide {
+  position: relative;
+}
+
 .text-underline {
   background-image: linear-gradient(var(--underline-color) 0 0);
   background-size: 100% 40%;
@@ -3196,6 +3278,9 @@ a:hover .icon-nav-link {
   padding-left: var(--underline-offset);
   padding-right: calc(var(--underline-offset) * 2);
   margin-left: calc(var(--underline-offset) * -1);
+}
+.text-underline.variant-bg {
+  --underline-color: var(--color-paper);
 }
 .text-underline > a:hover {
   color: var(--color-link);
@@ -3230,7 +3315,6 @@ h6 > span.text-underline {
   line-height: 1.2;
 }
 .toc[data-type=side] {
-  position: -webkit-sticky;
   position: sticky;
   top: var(--space-l);
 }

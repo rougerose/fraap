@@ -5,7 +5,7 @@
   pour les articles de cette rubrique
 -->
 ]<BOUCLE_rubrique_interventions(RUBRIQUES){id_rubrique}>
-  #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
+  #SET{icon, #VAL{icon-rubrique}|concat{#ID_RUBRIQUE}}
   #SET{icon-svg, #GET{icon}|concat{-64.svg}}
   <div class="page" data-page="rubrique-interventions">
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>

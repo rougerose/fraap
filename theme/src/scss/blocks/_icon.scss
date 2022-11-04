@@ -1,7 +1,7 @@
 /// ICON
 /// 01 - icon-nav-[search-burger-close]
 /// 02 - icon-social
-/// 03 - icon rubrique/article
+/// 03 - icons rubrique/article
 /// 04 - icon-arrow-right
 /// 05 - icon-locate
 /// 06 - icon-plus
@@ -305,6 +305,24 @@
     path:nth-child(odd) {
       fill: var(--color-primary-700);
     }
+  }
+}
+
+// icon Interventions
+.icon-rubrique66 {
+  --i66-path-odd: var(--color-primary);
+  --i66-path-even: var(--color-contrast);
+
+  path:nth-child(odd) {
+    fill: var(--i66-path-odd);
+  }
+
+  path:nth-child(even) {
+    fill: var(--i66-path-even);
+  }
+
+  &.with-bg {
+    --i66-path-odd: var(--color-contrast);
   }
 }
 

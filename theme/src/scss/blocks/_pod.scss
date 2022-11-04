@@ -1,7 +1,5 @@
 /// SECTION
 
-@use "../tools/mq" as mq;
-
 .pod {
   --pod-padding-top: var(--space-l-xl);
   --pod-padding-bottom: var(--space-l-xl);
@@ -9,6 +7,10 @@
 
   &.variant-angle-bottom {
     --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-angle-top {
+    --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
   }
 
   &.variant-angle-top-bottom {

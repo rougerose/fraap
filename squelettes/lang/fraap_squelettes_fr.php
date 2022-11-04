@@ -47,8 +47,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'date_publication_article' => 'Publié en ligne le ',
 	'date_publication_fiche' => 'Fiche publiée en ligne le ',
 	'dialog_bouton_fermer' => 'Fermer la fenêtre',
-	'document_associe' => 'Document téléchargeable',
-	'documents_associes' => 'Documents téléchargeables',
+	'document_associe' => 'Document à télécharger',
+	'documents_associes' => 'Documents à télécharger',
 
 	// E
 	'effacer_tout' => 'Tout effacer',

@@ -1,0 +1,55 @@
+/// IMAGE-BROWSER
+/// Reproduire une fenêtre d'un navigateur en html
+
+@use "../settings" as var;
+@use "sass:map";
+@use "../tools/mq" as mq;
+
+.image-browser {
+  --browser-bg-color: #{map.get(var.$gray, "blue", "100")};
+  --browser-url-color: #{map.get(var.$gray, "blue", "400")};
+  background-color: var(--color-paper);
+  border-radius: 8px;
+  box-shadow: var(--card-box-shadow-high);
+  display: grid;
+  grid: 52px auto/auto;
+  width: 120%;
+
+  @include mq.mq($from: xl) {
+    width: 140%;
+  }
+}
+
+.image-browser_bar {
+  padding: 16px 96px;
+  position: relative;
+}
+
+.image-browser_url {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--browser-bg-color);
+  color: var(--browser-url-color);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.image-browser_button-list {
+  display: grid;
+  grid: auto/repeat(3,1fr);
+  gap: 0 6px;
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 20px;
+}
+
+.image-browser_button {
+  height: 12px;
+  width: 12px;
+  background-color: var(--browser-bg-color);
+  border-radius: 100%;
+}

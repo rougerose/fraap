@@ -43,12 +43,11 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
   --color-message-bg-warn: #{rgba(var.$color-warn, 0.1)};
   --color-message-border-warn: #{var.$color-warn};
 
-
   --boxShadow-primary: 0px 4px 15px #{rgba(map.get(var.$color-1A, "800"), 0.2)}, 0 1px 4px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-1A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-1A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-1A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-1A, "500"), 0.2)};
 
@@ -88,7 +87,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-2A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-2A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-2A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-2A, "500"), 0.1)};
 }
@@ -117,7 +116,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-3A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-3A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-3A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-3A, "500"), 0.1)};
 }
@@ -147,7 +146,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-4A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-4A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-4A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-4A, "500"), 0.1)};
 }
@@ -204,7 +203,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba((map.get(var.$color-5A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-5A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-5A, "500")), 0.5)};
 
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-5A, "500"), 0.1)};
@@ -234,7 +233,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-6A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-6A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-6A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-6A, "500"), 0.1)};
 }
@@ -263,7 +262,7 @@ $card-backgroundImage: _backgroundSvg.svg-url('<svg viewBox="0 0 8 8" xmlns="htt
 
   // card
   --card-backgroundImage: #{$card-backgroundImage};
-  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-7A, "500")), 0.5)};
+  --card-box-shadow-high: 0 5px 15px #{rgba((var.$black), 0.2)}, 0 2px 8px #{rgba((map.get(var.$color-7A, "500")), 0.5)};
   --card-box-shadow-low: 0 2px 6px #{rgba((var.$black), 0.2)}, 0 2px 2px #{rgba((map.get(var.$color-7A, "500")), 0.5)};
   --card-img-boxShadow: 0 4px 4px #{rgba((var.$black), 0.2)}, 0 1px 2px #{rgba(map.get(var.$color-7A, "500"), 0.1)};
 }

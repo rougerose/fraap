@@ -11,7 +11,9 @@
         <div class="pod_mask">
           <div class="wrapper-content">
             <div class="pod_content flow">
-              <h2 class="pod_headline"><span class="text-underline"><a href="[(#ID_RUBRIQUE|=={47}|?{#URL_RUBRIQUE|parametre_url{vue,selection}, #URL_RUBRIQUE})]">#TITRE</a></span></h2>
+              <h2 class="pod_headline">
+                <span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span>
+              </h2>
               <BOUCLE_si_rubrique_fiches(CONDITION){si #ID_RUBRIQUE|=={38}}>
                 <INCLURE{fond=inclure/teasers/ressources-fiches, id_rubrique}/>
               </BOUCLE_si_rubrique_fiches>
@@ -29,17 +31,64 @@
           <div class="pod_bg-mask">
             <div class="pod_bg-banner"></div>
           </div>
-        </div>
-        <div class="wrapper-content">
-          <div class="pod_content flow">
-            <h2 class="pod_headline"><a href="#URL_RUBRIQUE">#TITRE</a></h2>
-            <div class="pod_desc teaser-ressources weight-300 measure flow">
-              [(#DESCRIPTIF)]
-              <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+          <div class="wrapper-content">
+            <div class="pod_content flow">
+              <h2 class="pod_headline">
+                <span class="text-underline variant-bg"><a href="#URL_RUBRIQUE">#TITRE</a></span>
+              </h2>
+              <div class="teaser-ressources media">
+                <div class="media_figure">
+                  [(#INCLURE{fond=images/icon-rubrique66-64.svg, svg=icon icon-rubrique66 with-bg, largeur=192, hauteur=192, aria-hidden=true})]
+                </div>
+                <div class="media_content">
+                  <div class="pod_desc weight-300 measure flow">
+                    [(#DESCRIPTIF)]
+                    <a href="[(#URL_RUBRIQUE|parametre_url{vue, selection})]" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </BOUCLE_rubrique_interventions>
+
+    <BOUCLE_article_guide(ARTICLES){id_article=1093}>
+      <section class="pod variant-angle-top">
+        <div class="pod_mask">
+          <div class="wrapper-content">
+            <div class="pod_content flow">
+              <h2 class="pod_headline">
+                <span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span>
+              </h2>
+              <div class="teaser-ressources variant-guide">
+                <div class="pod_desc weight-300 measure flow">
+                  [(#DESCRIPTIF)]
+                  <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+                </div>
+                <figure class="teaser-ressources_hero-guide">
+                  <div class="image-browser">
+                    <div class="image-browser_bar">
+                      <div class="image-browser_button-list">
+                        <div class="image-browser_button"></div>
+                        <div class="image-browser_button"></div>
+                        <div class="image-browser_button"></div>
+                      </div>
+                      <div class="image-browser_url">
+                        https://guide.fraap.org
+                      </div>
+                    </div>
+                    <div class="image-browser_content">
+                      <INCLURE{fond=inclure/teasers/guide-capture}/>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </BOUCLE_article_guide>
+
   </div>
 </BOUCLE_rubrique_infos>

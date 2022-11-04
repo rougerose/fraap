@@ -15,6 +15,10 @@
   padding-right: calc(var(--underline-offset) * 2);
   margin-left: calc(var(--underline-offset) * -1);
 
+  &.variant-bg {
+    --underline-color: var(--color-paper);
+  }
+
   & > a {
     &:hover {
       color: var(--color-link);

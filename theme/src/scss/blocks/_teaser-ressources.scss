@@ -1,12 +1,29 @@
 /// TEASER-RESSOURCES
-/// Résumés de présentation des rubriques Fiches pratiques et médiathèque
+/// Résumés de présentation des rubriques Fiches pratiques, Interventions et Médiathèque
+
+@use "../tools/mq" as mq;
 
 .teaser-ressources {
-  --media-align: center;
-  --media-figure-width: 250px;
-  --media-figure-height: 250px;
+  --icon-size: 192px;
+  --media-figure-width: 192px;
+  --media-figure-height: 192px;
   --media-gutter: 2rem;
   --buttonCta-fontsize: var(--step-2);
+
+  &.variant-guide {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--media-gutter);
+    column-gap: var(--media-gutter);
+
+    @include mq.mq($from: m) {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+
+  .media_content {
+    min-width: 16rem;
+  }
 }
 
 // .teaser-ressources_img {}
@@ -33,4 +50,8 @@
 .teaser-ressources_img-total {
   font-weight: 600;
   font-size: 144px;
+}
+
+.teaser-ressources_hero-guide {
+  position: relative;
 }
