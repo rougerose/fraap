@@ -134,7 +134,7 @@
 
 // icon Fédérer
 .icon-rubrique48 {
-  --color-circle: var(--color-primary-600);
+  --color-circle: var(--color-primary);
   --color-path: var(--color-contrast);
 
   circle {
@@ -152,81 +152,113 @@
 
 // icon Représenter
 .icon-rubrique49 {
-  path:nth-of-type(1) {
+  .path1 {
     fill: var(--color-primary-600);
     fill-opacity: 1;
   }
-  path:nth-of-type(2) {
-    fill: var(--color-primary-700);
+
+  .path2 {
+    fill: var(--color-primary);
     fill-opacity: 0.8;
   }
-  path:nth-of-type(3) {
+
+  .path3 {
     fill: var(--color-contrast);
+    fill-opacity: 0.8;
   }
+  // path:nth-of-type(1) {
+  //   fill: var(--color-primary-600);
+  //   fill-opacity: 1;
+  // }
+  // path:nth-of-type(2) {
+  //   fill: var(--color-primary-700);
+  //   fill-opacity: 0.8;
+  // }
+  // path:nth-of-type(3) {
+  //   fill: var(--color-contrast);
+  // }
 
   &.with-bg {
-    path:nth-of-type(1) {
+    .path1 {
       fill: var(--color-primary-800);
     }
-    path:nth-of-type(2) {
+    .path2 {
       fill: var(--color-primary-700);
     }
+    // path:nth-of-type(1) {
+    //   fill: var(--color-primary-800);
+    // }
+    // path:nth-of-type(2) {
+    //   fill: var(--color-primary-700);
+    // }
   }
 }
 
 // icon Informer
 .icon-rubrique1 {
-  circle:nth-of-type(1),
-  path:nth-child(2) {
+  .circle1,
+  .path1 {
     fill: var(--color-contrast);
   }
-  circle:nth-of-type(2),
-  path:nth-child(4) {
-    fill: var(--color-primary-700);
+
+  .circle2,
+  .path2 {
+    fill: var(--color-primary-600);
     fill-opacity: 0.8;
   }
 
-  &.headline_icon {
-    circle:nth-of-type(2),
-    path:nth-child(4) {
-      fill: var(--color-primary-600);
+  &.with-bg {
+    .circle1,
+    .path1 {
+      fill-opacity: 0.8;
+    }
+    .circle2,
+    .path2 {
+      fill: var(--color-primary-700);
     }
   }
 }
 
 // icon Observer
 .icon-rubrique55 {
-  path:nth-of-type(1) {
+  .path1 {
     fill: var(--color-contrast);
   }
-  path:nth-of-type(2) {
-    fill: var(--color-primary-700);
+  .path2 {
+    fill: var(--color-primary-600);
   }
-  path:nth-of-type(3) {
+  .path3 {
     fill: var(--color-primary);
   }
 
   &.with-bg {
-    path:nth-of-type(3) {
-      fill: var(--color-primary-600);
+    .path1 {
+      fill-opacity: 0.8;
+    }
+    .path2 {
+      fill: var(--color-primary-700);
+    }
+    .path3 {
+      fill: var(--color-primary);
     }
   }
 }
 
 // icon Fiches pratiques
 .icon-rubrique38 {
-  path:nth-child(odd) {
+  .path1,
+  .path3 {
     fill: var(--color-contrast);
     fill-opacity: 0.8;
   }
 
-  path:nth-child(2) {
+  .path2 {
     fill: var(--color-primary-600);
     fill-opacity: 0.8;
   }
 
   &.with-bg {
-    path:nth-child(2) {
+    .path2 {
       fill: var(--color-primary-700);
     }
   }
@@ -234,77 +266,97 @@
 
 // icon Fraap-infos
 .icon-article512 {
-  path:nth-child(2) {
-    fill: var(--color-contrast);
-    fill-opacity: 1;
-  }
   circle {
-    fill: var(--color-primary-600);
-    fill-opacity: 1;
+    fill: var(--color-primary-700);
   }
-  path:nth-child(3) {
-    fill: var(--color-primary-600);
+  .carre {
+    fill: var(--color-contrast);
+    fill-opacity: 0.8;
+  }
+  .triangle {
+    fill: var(--color-primary-700);
+    fill-opacity: 0.8;
   }
 
-  &.with-bg {
-    circle {
-      fill: var(--color-primary-700);
-    }
-    path:nth-child(3) {
-      fill: var(--color-primary-700);
-    }
-  }
+  // &.with-bg {
+  //   circle {
+  //     fill: var(--color-primary-600);
+  //   }
+  //   .carre {
+  //     fill: var(--color-contrast);
+  //   }
+  // }
 }
 
 // icon Atlas ATA
 .icon-article962 {
-  path:nth-child(1) {
+  .path1 {
     fill: var(--color-contrast);
   }
-  path:nth-child(2) {
-    fill: var(--color-primary-600);
+  .path2 {
+    fill: var(--color-primary-700);
+    fill-opacity: 0.8;
   }
-  path:nth-child(3) {
-    fill: var(--color-primary-400);
+  .path3 {
+    fill: var(--color-primary);
   }
+
   &.with-bg {
-    path:nth-child(2) {
-      fill: var(--color-primary-700);
+    .path1 {
+      fill-opacity: 0.8;
     }
   }
 }
 
 // icon Annuaire
 .icon-rubrique3 {
-  --color-path: var(--color-primary);
+  --color-path: var(--color-paper);
   --color-circle: var(--color-contrast);
 
   path {
     stroke: var(--color-path);
   }
+
   circle {
     fill: var(--color-circle);
-    fill-opacity: 1;
   }
 
-  &.headline_icon {
-    --color-path: var(--color-paper);
+  &.with-bg {
+    --color-path: var(--color-primary);
+    circle {
+      fill-opacity: 0.8;
+    }
   }
 }
 
 // icon Mediathèque
 .icon-rubrique47 {
-  path:nth-child(odd) {
-    fill: var(--color-primary-600);
-  }
-  path:nth-child(2) {
-    fill: var(--color-contrast);
+  .path1,
+  .path3 {
+    fill: var(--color-primary);
   }
 
+  .path2 {
+    fill: var(--color-contrast);
+    opacity: 0.8;
+  }
+
+  .path3 {
+    fill-opacity: 0.8;
+  }
+  // path:nth-child(odd) {
+  //   fill: var(--color-primary-600);
+  // }
+  // path:nth-child(2) {
+  //   fill: var(--color-contrast);
+  // }
+
   &.with-bg {
-    path:nth-child(odd) {
+    .path1,
+    .path3 {
       fill: var(--color-primary-700);
     }
+
   }
 }
 
@@ -313,16 +365,34 @@
   --i66-path-odd: var(--color-primary);
   --i66-path-even: var(--color-contrast);
 
-  path:nth-child(odd) {
+  .path1,
+  .path3 {
     fill: var(--i66-path-odd);
   }
 
-  path:nth-child(even) {
+  .path2 {
     fill: var(--i66-path-even);
   }
 
   &.with-bg {
     --i66-path-odd: var(--color-contrast);
+  }
+}
+
+// icon Guide entités publiques
+.icon-article1093 {
+  --path1: var(--color-primary);
+  --path2: var(--color-contrast);
+  .path1 {
+    fill: var(--path1);
+  }
+  .path2 {
+    fill: var(--path2);
+    fill-opacity: 0.8;
+  }
+
+  &.with-bg {
+    --path1: var(--color-primary-700);
   }
 }
 

@@ -11,15 +11,15 @@
         <div class="carousel gap-top-3">
           <div class="swiper">
             <div class="swiper-wrapper">
-              <BOUCLE_contenus_outils(SELECTIONS_CONTENUS){id_selection}{par rang}>
+              <BOUCLE_contenus_outils(SELECTIONS_CONTENUS){id_selection}{par hasard}>
                 <div class="swiper-slide swiper-slide--box">
                   <div class="card-carousel card-carousel--box">
                     [(#SET{iconID, ''})]
                     [(#SET{iconID, [(#OBJET|concat{#ID_OBJET})]})]
                     [(#SET{iconURL, #VAL{images/icon-}|concat{#GET{iconID}}|concat{-64.svg}})]
                     [(#SET{class, #VAL{card-carousel_icon card-carousel_icon--box icon-}|concat{#GET{iconID}|concat{' with-bg'}}})]
-                    [<a href="#URL">
-                      (#INCLURE{fond=#GET{iconURL}, svg=#GET{class}})
+                    [<a href="#URL" title="Consulter [(#TITRE|textebrut)]">
+                      (#INCLURE{fond=#GET{iconURL}, svg=#GET{class}, titre=[(#TITRE|textebrut)]})
                     </a>]
                     <div class="card-carousel_content card-carousel_content--box flow-small">
                       <h3 class="card-carousel_heading card-carousel_heading--box"><a href="#URL">#TITRE</a></h3>

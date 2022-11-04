@@ -21,7 +21,7 @@
                     <h3 class="card-carousel_heading card-carousel_heading--flat[(#CHEMIN{#GET{iconURL}|concat{.html}}|oui) with-icon]">
                       <a href="#URL">
                         [(#CHEMIN{#GET{iconURL}|concat{.html}}|oui)
-                          [(#INCLURE{fond=#GET{iconURL}, svg=#GET{class}})]
+                          [(#INCLURE{fond=#GET{iconURL}, svg=#GET{class}, aria-hidden=true})]
                         ]
                         #TITRE
                       </a>
