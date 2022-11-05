@@ -1,4 +1,6 @@
-/// SECTION
+/// POD (section)
+///
+@use "../tools/mq" as mq;
 
 .pod {
   --pod-padding-top: var(--space-l-xl);
@@ -66,4 +68,17 @@
 .pod_desc {
   --measure: 70ch;
   font-size: var(--step-2);
+}
+
+.pod_banner-mask-bottom {
+  background-color: var(--color-paper);
+  padding-top: calc(var(--section-angle-height));
+  transform: skewY(-3deg);
+
+  @include mq.mq($until: l) {
+    padding-top: calc(var(--section-angle-height) * 2);
+    bottom: calc(var(--section-angle-height) * -1);
+    position: absolute;
+    width: 100%;
+  }
 }

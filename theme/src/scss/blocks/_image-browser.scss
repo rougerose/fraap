@@ -2,8 +2,8 @@
 /// Reproduire une fenêtre d'un navigateur en html
 
 @use "../settings" as var;
-@use "sass:map";
 @use "../tools/mq" as mq;
+@use "sass:map";
 
 .image-browser {
   --browser-bg-color: #{map.get(var.$gray, "blue", "100")};
@@ -13,6 +13,8 @@
   box-shadow: var(--card-box-shadow-high);
   display: grid;
   grid: 52px auto/auto;
+  position: absolute;
+  top: calc(var(--section-angle-height) * -0.3);
   width: 120%;
 
   @include mq.mq($from: xl) {

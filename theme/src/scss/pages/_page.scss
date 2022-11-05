@@ -36,6 +36,12 @@
 // .page[data-page="rubrique-interventions"] {}
 
 
+// rubrique Observatoire
+// .page[data-page="rubrique-observatoire"] {
+//   padding-bottom: 0;
+// }
+
+
 // rubrique rencontres
 // .page[data-page="rubrique-rencontres"] {}
 
@@ -63,9 +69,6 @@
       font-weight: 600;
       color: var(--color-primary);
     }
-  }
-  .selections_action {
-    text-align: center;
   }
 }
 
