@@ -202,7 +202,7 @@
 
 	var MenuSpy = menuspy.exports;
 
-	let tocNode = document.querySelectorAll('.toc[data-type="side"');
+	let tocNode = document.querySelectorAll('.toc[data-type="side"]');
 
 	if (tocNode.length > 0) {
 	  tocNode.forEach((toc) => {

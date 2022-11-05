@@ -161,7 +161,7 @@ const menuShortcutsInit = () => {
     menuOffcanvas = document.querySelector("#" + menuOffcanvasId);
 
   if (container && menuOffcanvas) {
-    let shortcuts = container.querySelectorAll("li[data-type-link='shortcut'");
+    let shortcuts = container.querySelectorAll("li[data-type-link='shortcut']");
 
     shortcuts.forEach((shortcut) => {
       let link = shortcut.getElementsByTagName("a")[0];
