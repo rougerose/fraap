@@ -2519,6 +2519,9 @@ a:hover .icon-nav-link {
 .pod.variant-overlap {
   margin-bottom: calc((var(--pod-padding-bottom) * 0.3) * -1);
 }
+.pod.variant-banner-mask-bottom .pod_mask {
+  margin-bottom: -0.5rem;
+}
 
 .pod_mask {
   overflow: hidden;
