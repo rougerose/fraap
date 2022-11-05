@@ -74,6 +74,8 @@
   background-color: var(--color-paper);
   padding-top: calc(var(--section-angle-height));
   transform: skewY(-3deg);
+  position: relative;
+  bottom: -0.2rem;
 
   @include mq.mq($until: l) {
     padding-top: calc(var(--section-angle-height) * 2);

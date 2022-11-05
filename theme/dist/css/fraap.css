@@ -2558,6 +2558,8 @@ a:hover .icon-nav-link {
   background-color: var(--color-paper);
   padding-top: calc(var(--section-angle-height));
   transform: skewY(-3deg);
+  position: relative;
+  bottom: -0.2rem;
 }
 @media (max-width: 63.99em) {
   .pod_banner-mask-bottom {
