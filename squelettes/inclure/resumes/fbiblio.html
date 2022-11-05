@@ -2,9 +2,9 @@
   #SET{selection, #ENV{selection, ''}}
   <BOUCLE_zitem(ZITEMS){id_zitem}>
     <article class="fbiblio[(#GET{selection}|oui) selection] media abstract">
-      [<figure class="media_figure">
+      [<div class="media_figure">
         (#TYPE_REF|zotspip_icone_type{#MIMETYPE,#FICHIER}|inserer_attribut{title, #TYPE_REF|zotspip_traduire_type})
-      </figure>]
+      </div>]
       <div class="media_content flow">
         <header class="flow-small">
           [<p class="abstract_subheading">(#TYPE_REF|zotspip_traduire_type)</p>]
