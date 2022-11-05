@@ -37,8 +37,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'cta_suite' => 'La suite',
 	'cta_reseau_annuaire_decouvrir' => 'Découvrir le réseau',
 	'cta_reseau_annuaire_consulter' => "Consulter l'annuaire",
+	'cta_rubrique_voir_tout' => 'Voir toutes les publications',
 	'cta_federation_rencontres_suite' => 'En savoir plus sur les rencontres',
-	'cta_rubrique_publications_toutes' => '@rubrique@ toutes les publications',
 	'cta_telecharger' => 'Télécharger',
 
 	// D

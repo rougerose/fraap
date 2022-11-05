@@ -2195,6 +2195,8 @@ a:hover .icon-nav-link {
   box-shadow: var(--card-box-shadow-high);
   display: grid;
   grid: 52px auto/auto;
+  position: absolute;
+  top: calc(var(--section-angle-height) * -0.3);
   width: 120%;
 }
 @media (min-width: 75em) {
@@ -2550,6 +2552,20 @@ a:hover .icon-nav-link {
 .pod_desc {
   --measure: 70ch;
   font-size: var(--step-2);
+}
+
+.pod_banner-mask-bottom {
+  background-color: var(--color-paper);
+  padding-top: calc(var(--section-angle-height));
+  transform: skewY(-3deg);
+}
+@media (max-width: 63.99em) {
+  .pod_banner-mask-bottom {
+    padding-top: calc(var(--section-angle-height) * 2);
+    bottom: calc(var(--section-angle-height) * -1);
+    position: absolute;
+    width: 100%;
+  }
 }
 
 .wrapper-content, .prose {
@@ -3124,6 +3140,25 @@ a:hover .icon-nav-link {
     display: flex;
   }
 }
+.teaser-image-browser {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--row-gutter, 2rem);
+  -moz-column-gap: var(--column-gutter, 2rem);
+       column-gap: var(--column-gutter, 2rem);
+}
+.teaser-image-browser figure {
+  padding-bottom: 75%;
+}
+@media (min-width: 46.25em) {
+  .teaser-image-browser {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .teaser-image-browser figure {
+    padding-bottom: 50%;
+  }
+}
+
 .teaser-network {
   display: flex;
   flex-wrap: wrap;
@@ -3293,10 +3328,6 @@ a:hover .icon-nav-link {
 .teaser-ressources_img-total {
   font-weight: 600;
   font-size: 144px;
-}
-
-.teaser-ressources_hero-guide {
-  position: relative;
 }
 
 .text-underline {
@@ -3512,9 +3543,6 @@ h6 > span.text-underline {
   font-size: var(--step-4);
   font-weight: 600;
   color: var(--color-primary);
-}
-.page[data-page=rubrique-mediatheque] .selections_action {
-  text-align: center;
 }
 
 .page[data-page=sommaire] {
@@ -4165,8 +4193,20 @@ button.swiper-pagination-bullet {
   flex-direction: row-reverse;
 }
 
+.flex-content-center {
+  justify-content: center;
+}
+
 .flex-wrap-no {
   flex-wrap: nowrap;
+}
+
+.box-flex {
+  display: flex;
+}
+
+.position-rel {
+  position: relative;
 }
 
 .stack-100 {

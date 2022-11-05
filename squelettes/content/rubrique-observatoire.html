@@ -1,0 +1,77 @@
+<BOUCLE(RUBRIQUES){id_rubrique}>
+  <div class="page" data-page="rubrique-observatoire">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+    <INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique55-64.svg', class_icon=icon-rubrique55, id_rubrique} />
+
+    <BOUCLE_sous_rubriques(RUBRIQUES){id_parent}{par num titre}>
+      <section class="pod variant-angle-bottom-max">
+        <div class="pod_mask">
+          <div class="wrapper-content">
+            <div class="pod_content flow">
+              <h2 id="rubrique#ID_RUBRIQUE" class="pod_headline"><span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span></h2>
+              [<div class="pod_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
+              <B_articles_card>
+                <div class="auto-grid gap-top-5">
+                  <BOUCLE_articles_card(ARTICLES){id_rubrique}{!par date}{0,6}>
+                    <article class="card abstract flow">
+                      <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
+                    </article>
+                  </BOUCLE_articles_card>
+                </div>
+                <BOUCLE_articles_card_suite(ARTICLES){id_rubrique}{!par date}{6,1}>
+                  <div class="box-flex flex-content-center gap-top-5">
+                    <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_rubrique_voir_tout{titre=#INFO_TITRE{rubrique, #ID_RUBRIQUE}}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                  </div>
+                </BOUCLE_articles_card_suite>
+              </B_articles_card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </BOUCLE_sous_rubriques>
+
+    <BOUCLE_atlas(ARTICLES){id_article=962}>
+      <section class="pod variant-banner">
+        <div class="pod_mask">
+          <div class="pod_bg-mask">
+            <div class="pod_bg-banner"></div>
+          </div>
+          <div class="wrapper-content">
+            <div class="pod_content">
+              <div class="teaser-image-browser">
+                <div class="flow">
+                  <h2 class="pod_headline">
+                    <span class="text-underline variant-bg"><a href="#URL_ARTICLE">#TITRE</a></span>
+                  </h2>
+                  <div class="pod_desc weight-300 measure flow">
+                    [(#DESCRIPTIF)]
+                    <a href="" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                  </div>
+                </div>
+                <figure class="position-rel">
+                  <div class="image-browser">
+                    <div class="image-browser_bar">
+                      <div class="image-browser_button-list">
+                        <div class="image-browser_button"></div>
+                        <div class="image-browser_button"></div>
+                        <div class="image-browser_button"></div>
+                      </div>
+                      <div class="image-browser_url">
+                        https://atlas-ata.fr
+                      </div>
+                    </div>
+                    <div class="image-browser_content">
+                      [(#CHEMIN{images/ata.png}|image_reduire{1400,0}|balise_img{#TITRE})]
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pod_banner-mask-bottom"></div>
+      </section>
+    </BOUCLE_atlas>
+  </div>
+</BOUCLE>
