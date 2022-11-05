@@ -27,7 +27,7 @@
         <BOUCLE_selections(SELECTIONS_CONTENUS){id_selection}{objet=fbiblio}{par rang}>
           <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio=#ID_OBJET, self=#SELF, selection=oui}/>
         </BOUCLE_selections>
-        <div class="selections_action">
+        <div class="box-flex flex-content-center">
           <a href="[(#URL_RUBRIQUE{#ENV{id_rubrique}}|parametre_url{vue, tout})]" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_mediatheque_voir_tout{nb=#GET{total_ressources}}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
         </div>
       </BOUCLE_ressources>
