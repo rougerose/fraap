@@ -36,7 +36,7 @@ export default [
       },
     ],
   },
-  // Carousel / Swiperjs
+  // Carousel
   {
     input: "theme/src/js/fraap-carousel.js",
     plugins: [nodeResolve(), commonjs()],

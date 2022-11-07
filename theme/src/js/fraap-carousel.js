@@ -1,31 +1,16 @@
-import Swiper, { Navigation, Pagination } from "swiper";
+import Splide from '@splidejs/splide';
 
-const fraapCarouselInit = (el) => {
-  let carousel = new Swiper(el, {
-    modules: [Pagination, Navigation],
-    slidesPerView: "auto",
-    grabCursor: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    watchOverflow: true,
-  });
-};
+let carousels = document.querySelectorAll('.splide');
 
-const fraapCarousel = {
-  init: fraapCarouselInit,
-};
-
-
-let carousels = document.querySelectorAll(".swiper");
-
-if (carousels.length) {
-  carousels.forEach((carousel) => {
-    fraapCarousel.init(carousel);
-  });
-}
+carousels.forEach((carousel) => {
+  let splide = new Splide(carousel, {
+    autoWidth: true,
+    focus: 'center',
+    drag: true,
+    classes: {
+      arrows: 'splide__arrows carousel_navigation',
+      pagination: 'splide__pagination carousel_pagination',
+    }
+    });
+    splide.mount();
+});

@@ -1,18 +1,18 @@
 <B_contenus_apropos>
-  <section class="pod variant-banner">
+  <section class="pod variant-banner splide" aria-labelledby="carousel_headline">
     <div class="pod_mask">
       <div class="pod_bg-mask">
         <div class="pod_bg-banner"></div>
       </div>
       <div class="pod_content">
         <div class="wrapper-content">
-          <h2 class="pod_headline">[(#ENV{selection_titre, <:fraap_squelettes:a_propos_headline:>})]</h2>
+          <h2 id="carousel_headline" class="pod_headline">[(#ENV{selection_titre, <:fraap_squelettes:a_propos_headline:>})]</h2>
         </div>
         <div class="carousel gap-top-3">
-          <div class="swiper">
-            <div class="swiper-wrapper">
+          <div class="splide__track">
+            <ul class="splide__list">
               <BOUCLE_contenus_apropos(SELECTIONS_CONTENUS){id_selection}{par rang}>
-                <div class="swiper-slide">
+                <li class="splide__slide">
                   <div class="card-carousel card-carousel--flat flow">
                     [(#SET{iconID, ''})]
                     [(#SET{iconID, #OBJET|concat{#ID_OBJET}})]
@@ -28,14 +28,9 @@
                     </h3>
                     [<div class="card-carousel_desc flow-small">(#DESCRIPTIF)</div>]
                   </div>
-                </div>
+                </li>
               </BOUCLE_contenus_apropos>
-            </div>
-            <div class="carousel_navigation">
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-            <div class="carousel_pagination swiper-pagination"></div>
+            </ul>
           </div>
         </div>
       </div>
