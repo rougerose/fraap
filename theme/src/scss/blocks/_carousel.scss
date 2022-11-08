@@ -60,10 +60,21 @@
     background: var(--color-primary-900);
     width: 12px;
     height: 12px;
+    margin: 3px 6px;
 
     &.is-active {
       background: var(--color-contrast);
       opacity: 1;
+    }
+  }
+}
+
+@include mq.mq($until: xl) {
+  .carousel_navigation {
+    .splide__arrow {
+      top: auto;
+      bottom: 0;
+      transform: translateY(0);
     }
   }
 }

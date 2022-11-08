@@ -1480,12 +1480,20 @@ html:not(.js) .button-nav {
   background: var(--color-primary-900);
   width: 12px;
   height: 12px;
+  margin: 3px 6px;
 }
 .carousel_pagination .splide__pagination__page.is-active {
   background: var(--color-contrast);
   opacity: 1;
 }
 
+@media (max-width: 74.99em) {
+  .carousel_navigation .splide__arrow {
+    top: auto;
+    bottom: 0;
+    transform: translateY(0);
+  }
+}
 @media (min-width: 75em) {
   .carousel .splide__slide {
     width: 50%;
