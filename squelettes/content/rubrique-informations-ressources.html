@@ -7,7 +7,7 @@
     <INCLURE{fond=inclure/sections/header-rubrique, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique} />
 
     <BOUCLE_rubriques_fiches_mediatheque(RUBRIQUES){id_parent}{id_rubrique IN 38,47}{par num titre}>
-      <section class="pod[(#COMPTEUR_BOUCLE|=={2}|oui) variant-angle-bottom-max]">
+      <section class="pod">
         <div class="pod_mask">
           <div class="wrapper-content">
             <div class="pod_content flow">
@@ -24,6 +24,31 @@
         </div>
       </section>
     </BOUCLE_rubriques_fiches_mediatheque>
+
+    <BOUCLE_rubrique_interventions(RUBRIQUES){id_rubrique=66}>
+      <section class="pod variant-angle-bottom-max">
+        <div class="pod_mask">
+          <div class="wrapper-content">
+            <div class="pod_content flow">
+              <h2 class="pod_headline">
+                <span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span>
+              </h2>
+              <div class="teaser-ressources media">
+                <div class="media_figure">
+                  [(#INCLURE{fond=images/icon-rubrique66-64.svg, svg=icon icon-rubrique66, largeur=192, hauteur=192, aria-hidden=true})]
+                </div>
+                <div class="media_content">
+                  <div class="pod_desc weight-300 measure flow">
+                    [(#DESCRIPTIF)]
+                    <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </BOUCLE_rubrique_interventions>
 
     <BOUCLE_article_guide(ARTICLES){id_article=1093}>
       <section class="pod variant-banner variant-banner-mask-bottom">
@@ -67,30 +92,5 @@
         <div class="pod_banner-mask-bottom"></div>
       </section>
     </BOUCLE_article_guide>
-
-    <BOUCLE_rubrique_interventions(RUBRIQUES){id_rubrique=66}>
-      <section class="pod variant-angle-top">
-        <div class="pod_mask">
-          <div class="wrapper-content">
-            <div class="pod_content flow">
-              <h2 class="pod_headline">
-                <span class="text-underline"><a href="#URL_RUBRIQUE">#TITRE</a></span>
-              </h2>
-              <div class="teaser-ressources media">
-                <div class="media_figure">
-                  [(#INCLURE{fond=images/icon-rubrique66-64.svg, svg=icon icon-rubrique66, largeur=192, hauteur=192, aria-hidden=true})]
-                </div>
-                <div class="media_content">
-                  <div class="pod_desc weight-300 measure flow">
-                    [(#DESCRIPTIF)]
-                    <a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </BOUCLE_rubrique_interventions>
   </div>
 </BOUCLE_rubrique_infos>
