@@ -67,6 +67,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	// H
 	'headline_dernieres_publications' => 'Dernières publications',
 	'headline_fraap_organisation_pro_aussi' => "La Fraap, c'est aussi",
+	'headline_interventions_aussi' => 'Les autres interventions de la Fraap',
 
 	// I
 	'image_associee' => 'Portfolio',
