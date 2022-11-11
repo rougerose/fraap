@@ -30,4 +30,5 @@
 // XX - Tiers : Spip
 @use "thirdparties";
 
-@include tools.generate-utility-classes();
+@use "print";
+// @include tools.generate-utility-classes();

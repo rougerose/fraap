@@ -29,7 +29,7 @@ $gorko-colors: (
 );
 
 @use "gorko/gorko" with (
-  $generate-utility-classes: false,
+  $generate-utility-classes: true,
   // Use $gorko-config in the `with` map to configure gorko.
   $gorko-config:
     (
