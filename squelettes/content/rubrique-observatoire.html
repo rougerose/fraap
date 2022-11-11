@@ -13,13 +13,13 @@
               [<div class="pod_desc weight-300 measure flow">(#DESCRIPTIF)</div>]
               <B_articles_card>
                 <div class="auto-grid gap-top-5">
-                  <BOUCLE_articles_card(ARTICLES){id_rubrique}{!par date}{0,6}>
+                  <BOUCLE_articles_card(ARTICLES){id_rubrique}{!par date}{0,3}>
                     <article class="card abstract flow">
                       <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
                     </article>
                   </BOUCLE_articles_card>
                 </div>
-                <BOUCLE_articles_card_suite(ARTICLES){id_rubrique}{!par date}{6,1}>
+                <BOUCLE_articles_card_suite(ARTICLES){id_rubrique}{!par date}{3,1}>
                   <div class="box-flex flex-content-center gap-top-5">
                     <a href="#URL_RUBRIQUE" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_rubrique_voir_tout{titre=#INFO_TITRE{rubrique, #ID_RUBRIQUE}}:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
                   </div>
