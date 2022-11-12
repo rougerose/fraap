@@ -1,6 +1,0 @@
-<BOUCLE_mot_filtre(MOTS){id_mot}>
-  <div class="o-cluster">
-    <label for="mot#ID_MOT">#TITRE[&nbsp;<sup>(#ENV{liens_nb})</sup>]</label>
-    <input id="mot#ID_MOT" type="checkbox" name="mots[]" value="#ID_MOT"[(#ENV{liens_nb}|=={0}|oui) disabled ][(#ID_MOT|in_array{#ENV{mots}}|oui) checked]>
-  </div>
-</BOUCLE_mot_filtre>
