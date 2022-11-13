@@ -1,0 +1,34 @@
+<BOUCLE_article(ARTICLES){id_article}>
+  [(#REM)
+    <!--
+      LOGOS
+      *****
+      Si aucun logo de rubrique, récupérer le logo par défaut (metaplus ou celui du site),
+      redimensionner au format Twitter et appliquer en fond d'image la nuance en cours (si nécessaire).
+      *****
+    -->
+  ][(#SET{nuances, #ARRAY{
+    1,#5ceb24,
+    2,#f6d00e,
+    3,#38f04d,
+    4,#d7f320,
+    5,#0dc1fd,
+    6,#60de0d,
+    7,#ff9214,
+  }})]
+  [(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
+  [(#LOGO_ARTICLE|non)
+    [(#SET{logo_auto,#INFO_FICHIER{document,#CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logos, #GET{logo_auto}|image_recadre{1200,630,focus}|image_aplatir{png, #GET{nuance}}|extraire_attribut{src}})]
+  ][(#LOGO_ARTICLE|oui)
+    [(#SET{logos, #LOGO_ARTICLE|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+  ]
+  [(#SET{titre, #TITRE|textebrut})]
+  [(#SET{desc, #DESCRIPTIF|textebrut})]
+  #SET{url, #URL_ARTICLE}
+  <BOUCLE_groupe(GROUPES_MOTS){id_groupe=#ENV{id_groupe}}>
+    [(#SET{url, #_article:URL_ARTICLE|parametre_url{id_groupe, #ID_GROUPE}})]
+  </BOUCLE_groupe>
+  <INCLURE{fond=inclure/metasplus/dist, objet=article, id_objet=#ID_ARTICLE, titre=#GET{titre}, desc=#GET{desc}, url=#GET{url}, logos=#GET{logos}} />
+</BOUCLE_article>
+#FILTRE{trim}

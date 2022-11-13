@@ -1,0 +1,47 @@
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+  [(#REM)
+    <!--
+      LOGOS
+      *****
+      Si aucun logo de rubrique, récupérer le logo par défaut (metaplus ou celui du site),
+      redimensionner au format Twitter et appliquer en fond d'image la nuance en cours (si nécessaire).
+      *****
+    -->
+  ][(#SET{nuances, #ARRAY{
+    1,#5ceb24,
+    2,#f6d00e,
+    3,#38f04d,
+    4,#d7f320,
+    5,#0dc1fd,
+    6,#60de0d,
+    7,#ff9214,
+  }})]
+  [(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
+  [(#LOGO_RUBRIQUE|non)
+    [(#SET{logo_auto,#INFO_FICHIER{document,#CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logos, #GET{logo_auto}|image_recadre{1200,630,focus}|image_aplatir{png, #GET{nuance}}|extraire_attribut{src}})]
+  ][(#LOGO_RUBRIQUE|oui)
+    [(#SET{logos, #LOGO_RUBRIQUE|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+  ]
+
+  [(#SET{titre, #TITRE|textebrut})]
+  [(#SET{desc, #DESCRIPTIF|sinon{#INTRODUCTION}|textebrut})]
+  #SET{url, #URL_RUBRIQUE}
+
+  [(#REM)
+    <!-- Adapter titres, descriptif et url si rubrique Fiches pratiques -->
+  ]<BOUCLE_groupe(GROUPES_MOTS){id_groupe=#ENV{id_groupe}}>
+    [(#SET{titre, #GET{titre}|concat{' : '}|concat{#TITRE|textebrut}})]
+    #SET{desc, ''} #SET{titres, #ARRAY}
+    #SET{url, #_rubrique:URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE}}
+    <B_liste_mots>
+      <BOUCLE_liste_mots(MOTS spip_mots_liens articles){id_groupe}{objet=article}{articles.statut=publie}{par titre}>
+        [(#SET{titres, #GET{titres}|push{#TITRE|textebrut}})]
+      </BOUCLE_liste_mots>
+    </B_liste_mots>
+    [(#SET{desc, #GET{titres}|implode{', '}})]
+  </BOUCLE_groupe>
+
+  <INCLURE{fond=inclure/metasplus/dist, objet=rubrique, id_objet=#ID_RUBRIQUE, titre=#GET{titre}, desc=#GET{desc}, url=#GET{url}, logos=#GET{logos}} />
+</BOUCLE_rubrique>
+#FILTRE{trim}
