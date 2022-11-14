@@ -1,13 +1,6 @@
 <BOUCLE_article(ARTICLES){id_article}>
-  [(#REM)
-    <!--
-      LOGOS
-      *****
-      Si aucun logo de rubrique, récupérer le logo par défaut (metaplus ou celui du site),
-      redimensionner au format Twitter et appliquer en fond d'image la nuance en cours (si nécessaire).
-      *****
-    -->
-  ][(#SET{nuances, #ARRAY{
+  <h2>#TITRE</h2>
+  [(#SET{nuances, #ARRAY{
     1,#5ceb24,
     2,#f6d00e,
     3,#38f04d,
@@ -17,36 +10,30 @@
     7,#ff9214,
   }})]
   [(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
-
   <BOUCLE_si_logo(CONDITION){si #LOGO_ARTICLE|oui}>
     [(#SET{logo, #LOGO_ARTICLE|extraire_attribut{src}})]
   </BOUCLE_si_logo>
     [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
   <//B_si_logo>
-
   [(#SET{fichier_logo,#GET{logo}|replace{#VAL{_NOM_PERMANENTS_ACCESSIBLES}|constant}|replace{'\.\./'}|supprimer_timestamp})]
   [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
   [(#SET{logos_auto, #LISTE{#ARRAY{url, #GET{logo}}}})]
-
-  #SET{par, rang_lien}
+  #SET{par, #SPIP_VERSION|floatval|>{3.1}|?{rang_lien,largeur}}
   #SET{defaut_tri,#ARRAY{
     rang_lien, 1,
     largeur, -1,
   }}
-
-  <BOUCLE_images_objet(DOCUMENTS){id_article}{media = image}{extension != svg}{fichier != #GET{fichier_logo}}{tri #GET{par}, #GET{defaut_tri}}{0,#GET{logos_auto}|?{2,3}}{!par largeur}{tout}>
+  <BOUCLE_images_objet(DOCUMENTS){id_article}{media = image}{extension != svg}{fichier != #GET{fichier_logo}}{tri #GET{par}, #GET{defaut_tri}}{!par largeur}{tout}>
     [(#SET{logos_auto, #GET{logos_auto}|push{#ARRAY{
       url, #FICHIER|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src},
       alt, #TITRE|sinon{#DESCRIPTIF}|couper{80},
     }}})]
   </BOUCLE_images_objet>
 
-  [(#SET{titre, #TITRE|textebrut})]
-  [(#SET{desc, #DESCRIPTIF|textebrut})]
-  #SET{url, #URL_ARTICLE}
-  <BOUCLE_groupe(GROUPES_MOTS){id_groupe=#ENV{id_groupe}}>
-    [(#SET{url, #_article:URL_ARTICLE|parametre_url{id_groupe, #ID_GROUPE}})]
-  </BOUCLE_groupe>
-  <INCLURE{fond=inclure/metasplus/dist, objet=article, id_objet=#ID_ARTICLE, titre=#GET{titre}, desc=#GET{desc}, url=#GET{url}, logos=#GET{logos_auto}} />
+  <BOUCLE_data(DATA){source table, #GET{logos_auto}}>
+    <div class="gap-top-3">
+      <img src="#VALEUR{url}" alt="">
+    </div>
+  </BOUCLE_data>
+
 </BOUCLE_article>
-#FILTRE{trim}
