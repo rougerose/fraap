@@ -20,13 +20,14 @@
 
   <BOUCLE_si_logo(CONDITION){si #LOGO_ARTICLE|oui}>
     [(#SET{logo, #LOGO_ARTICLE|extraire_attribut{src}})]
+    [(#SET{fichier_logo,#GET{logo}|replace{#VAL{_NOM_PERMANENTS_ACCESSIBLES}|constant}|replace{'\.\./'}|supprimer_timestamp})]
+    [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+    [(#SET{logos_auto, #LISTE{#ARRAY{url, #GET{logo}}}})]
   </BOUCLE_si_logo>
-    [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logos_auto, #ARRAY})]
+    [(#SET{fichier_logo, ''})]
   <//B_si_logo>
 
-  [(#SET{fichier_logo,#GET{logo}|replace{#VAL{_NOM_PERMANENTS_ACCESSIBLES}|constant}|replace{'\.\./'}|supprimer_timestamp})]
-  [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
-  [(#SET{logos_auto, #LISTE{#ARRAY{url, #GET{logo}}}})]
 
   #SET{par, rang_lien}
   #SET{defaut_tri,#ARRAY{
@@ -41,6 +42,12 @@
     }}})]
   </BOUCLE_images_objet>
 
+  <BOUCLE_si_aucune_img(CONDITION){si #GET{logos_auto}|count|=={0}}>
+    [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+    [(#SET{logos_auto, #GET{logos_auto}|push{#ARRAY{url, #GET{logo}}}})]
+  </BOUCLE_si_aucune_img>
+
   [(#SET{titre, #TITRE|textebrut})]
   [(#SET{desc, #DESCRIPTIF|textebrut})]
   #SET{url, #URL_ARTICLE}
@@ -50,3 +57,6 @@
   <INCLURE{fond=inclure/metasplus/dist, objet=article, id_objet=#ID_ARTICLE, titre=#GET{titre}, desc=#GET{desc}, url=#GET{url}, logos=#GET{logos_auto}} />
 </BOUCLE_article>
 #FILTRE{trim}
+
+
+[(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]

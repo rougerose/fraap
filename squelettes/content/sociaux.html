@@ -1,6 +1,14 @@
 <BOUCLE_article(ARTICLES){id_article}>
   <h2>#TITRE</h2>
-  [(#SET{nuances, #ARRAY{
+  [(#REM)
+    <!--
+      LOGOS
+      *****
+      Si aucun logo de rubrique, récupérer le logo par défaut (metaplus ou celui du site),
+      redimensionner au format Twitter et appliquer en fond d'image la nuance en cours (si nécessaire).
+      *****
+    -->
+  ][(#SET{nuances, #ARRAY{
     1,#5ceb24,
     2,#f6d00e,
     3,#38f04d,
@@ -10,25 +18,38 @@
     7,#ff9214,
   }})]
   [(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
+
   <BOUCLE_si_logo(CONDITION){si #LOGO_ARTICLE|oui}>
     [(#SET{logo, #LOGO_ARTICLE|extraire_attribut{src}})]
+    [(#SET{fichier_logo,#GET{logo}|replace{#VAL{_NOM_PERMANENTS_ACCESSIBLES}|constant}|replace{'\.\./'}|supprimer_timestamp})]
+    [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+    [(#SET{logos_auto, #LISTE{#ARRAY{url, #GET{logo}}}})]
   </BOUCLE_si_logo>
-    [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logos_auto, #ARRAY})]
+    [(#SET{fichier_logo, ''})]
   <//B_si_logo>
-  [(#SET{fichier_logo,#GET{logo}|replace{#VAL{_NOM_PERMANENTS_ACCESSIBLES}|constant}|replace{'\.\./'}|supprimer_timestamp})]
-  [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
-  [(#SET{logos_auto, #LISTE{#ARRAY{url, #GET{logo}}}})]
-  #SET{par, #SPIP_VERSION|floatval|>{3.1}|?{rang_lien,largeur}}
+
+  #SET{par, rang_lien}
   #SET{defaut_tri,#ARRAY{
     rang_lien, 1,
     largeur, -1,
   }}
+
   <BOUCLE_images_objet(DOCUMENTS){id_article}{media = image}{extension != svg}{fichier != #GET{fichier_logo}}{tri #GET{par}, #GET{defaut_tri}}{!par largeur}{tout}>
     [(#SET{logos_auto, #GET{logos_auto}|push{#ARRAY{
       url, #FICHIER|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src},
       alt, #TITRE|sinon{#DESCRIPTIF}|couper{80},
     }}})]
   </BOUCLE_images_objet>
+
+  <BOUCLE_si_aucune_img(CONDITION){si #GET{logos_auto}|count|=={0}}>
+    [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+    [(#SET{logo, #GET{logo}|image_recadre{1200,630,focus,#GET{nuance}}|image_aplatir{png,#GET{nuance}}|extraire_attribut{src}})]
+    [(#SET{logos_auto, #GET{logos_auto}|push{#ARRAY{url, #GET{logo}}}})]
+  </BOUCLE_si_aucune_img>
+
+
+
 
   <BOUCLE_data(DATA){source table, #GET{logos_auto}}>
     <div class="gap-top-3">
