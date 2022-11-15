@@ -28,7 +28,6 @@
     [(#SET{fichier_logo, ''})]
   <//B_si_logo>
 
-
   #SET{par, rang_lien}
   #SET{defaut_tri,#ARRAY{
     rang_lien, 1,
@@ -44,7 +43,7 @@
 
   <BOUCLE_si_aucune_img(CONDITION){si #GET{logos_auto}|count|=={0}}>
     [(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
-    [(#SET{logo, #GET{logo}|image_passe_partout{1200,630}|image_reduire{1200,630}|image_recadre{1200,630,focus,#GET{nuance}}|extraire_attribut{src}})]
+    [(#SET{logo, #GET{logo}|image_recadre{1200,630,focus,#GET{nuance}}|image_aplatir{png,#GET{nuance}}|extraire_attribut{src}})]
     [(#SET{logos_auto, #GET{logos_auto}|push{#ARRAY{url, #GET{logo}}}})]
   </BOUCLE_si_aucune_img>
 
@@ -57,6 +56,3 @@
   <INCLURE{fond=inclure/metasplus/dist, objet=article, id_objet=#ID_ARTICLE, titre=#GET{titre}, desc=#GET{desc}, url=#GET{url}, logos=#GET{logos_auto}} />
 </BOUCLE_article>
 #FILTRE{trim}
-
-
-[(#SET{logo, #INFO_FICHIER{document, #CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
