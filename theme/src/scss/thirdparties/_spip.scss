@@ -8,6 +8,7 @@
 // 3- Fichiers
 // 4- Notes
 // 5- Formulaires Formidable
+// 6- Exposants et indices
 
 
 
@@ -230,4 +231,12 @@
       text-decoration: none;
     }
   }
+}
+
+// 6- Exposants et indices
+// ========================================
+sup,
+sub,
+.typo_exposants {
+  line-height: 0;
 }
