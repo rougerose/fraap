@@ -27,7 +27,7 @@
   <necessite nom="indexer" compatibilite="[3.0.2;3.99.*]" />
   <necessite nom="agenda" compatibilite="[4.5.3;4.99.*]" />
   <necessite nom="metasplus" compatibilite="[2.4.2;2.99.*]" />
-  <necessite nom="formidable" compatibilite="[5.2.3;5.99.*]" />
+  <necessite nom="formidable" compatibilite="[5.2.2;5.99.*]" />
   <necessite nom="cvtupload" compatibilite="[2.0.1;2.99.*]" />
   <!-- <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" /> -->
   <utilise nom="bellespuces" compatibilite="[1.0.2;1.99.*]" />
