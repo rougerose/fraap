@@ -1,18 +1,19 @@
 # Dev
+- supprimer content/sociaux.html
+- vérifier les TODO
+
+
+## Ajouter
+- skiplinks
+- mentions légales et crédits
+- Documentation utilisateurs
+- ajouter au fil RSS : fbiblio ? retirer les rubriques ?
+
+- Achat typo !!
 
 ## WIP
 - Ajouter le sous-titre des articles dans les résumés
 - .variant-offset-icon -> .icon-offset
-
-## Observatoire
-Design à définir. 2 possibilités : ou bien présentation des sous-rubriques à la manière de Organisation > Plaidoyer ; ou bien une liste des articles comme pour CP, Mobilisations...
-
-## Index des mots-clés
-- fusionner certains groupes en thèmes (cp, mobilisations, élections) ?
-
-## Squelettes de Rubrique
-- supprimer la marge gauche liée à l'icône de la rubrique
-- adapter la couleur de l'icône, notamment fiches pratique avec la couleur principale à 500
 
 ## Accordéon
 - harmoniser les styles avec details + summary
