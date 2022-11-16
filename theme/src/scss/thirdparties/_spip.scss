@@ -138,6 +138,14 @@
     font-size: var(--step-3);
   }
 
+  // Formulaire multi-étapes
+  .formulaire_spip__etapes {
+    color: var(--color-contrast);
+    font-size: var(--step-2);
+    font-family: var(--font-family-headings);
+    margin-bottom: var(--space-m);
+  }
+
   form {
     border: 1px solid rgba(map.get(var.$gray, "blue", "100"), 0.4);
     background-color: rgba(map.get(var.$gray, "blue", "100"), 0.2);
@@ -153,7 +161,8 @@
 
   legend {
 
-    &.legend {
+    &.legend,
+    &.fieldset_legend {
       color: var(--color-contrast);
       font-family: var(--font-family-headings);
       margin-bottom: var(--space-s);
@@ -171,8 +180,13 @@
     padding-bottom: var(--space-2xs);
   }
 
-  .editer {
+  .editer,
+  .afficher {
     margin-bottom: var(--space-m);
+  }
+
+  .afficher .valeur .spip {
+    padding-left: 0;
   }
 
   .choix {
@@ -182,16 +196,20 @@
   }
 
   .explication {
-    margin-bottom: var(--space-m);
+    color: var(--color-ink-soft);
     font-style: italic;
+    font-size: 0.8em;
+    margin-bottom: var(--space-2xs);
   }
 
   span.obligatoire {
     font-style: italic;
+    color: var(--color-message-border-warn);
   }
 
   .reponse_formulaire {
     padding: 0.75rem 1rem;
+    margin-bottom: var(--space-m);
     background-color: var(--color-message-bg);
     border-left: 8px solid var(--color-message-border);
 

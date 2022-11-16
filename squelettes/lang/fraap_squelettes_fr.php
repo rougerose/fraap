@@ -27,6 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
+	'cta_adhesion' => 'Mon association souhaite adhérer à la Fraap',
 	'cta_contacter' => 'Nous contacter',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
@@ -93,6 +94,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'menu_footer_objet_nom' => 'Fraap (pied de page) : article ou rubrique',
 	'menu_footer_objet_description' => 'Desc',
 	'message_recharger_page' => 'Veuillez <a href="@url@" class="spip_in">recharger la page</a>.',
+	'message_retour_article' => 'Une erreur est survenue. Veuillez <a href="@url@" class="spip_in">revenir sur cette page</a>',
 	'mot_titre' => 'Mot-clé :',
 	'mots_titre' => 'Index des mots-clés',
 

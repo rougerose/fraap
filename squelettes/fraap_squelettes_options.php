@@ -43,3 +43,6 @@ define('_NOTES_OUVRE_REF', '<span class="spip_note_ref">&nbsp;');
 define('_NOTES_FERME_REF', '</span>');
 define('_NOTES_OUVRE_NOTE', '<span class="spip_note_ref">');
 define('_NOTES_FERME_NOTE', '&nbsp;</span>');
+
+// cvtupload - délai avant effacement des fichiers
+define('_CVTUPLOAD_AGE_MAX', 24 * 3600 * 5);

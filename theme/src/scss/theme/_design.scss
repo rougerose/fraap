@@ -30,7 +30,8 @@
   --font-family-mono: #{settings.$FRAAP-FONT-BASE-MONO};
   --font-family-sans: #{settings.$FRAAP-FONT-BASE-SANS};
   --form-fields-width: 100%;
-  --form-fields-input-padding: 14px;
+  // --form-fields-input-padding: 14px;
+  --form-fields-input-padding: 0.5em 0.5em 0.375em;
 
   --icon-border-radius: 100%;
   --icon-padding: 8px;

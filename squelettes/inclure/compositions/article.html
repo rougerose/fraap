@@ -1,5 +1,6 @@
 <BOUCLE(ARTICLES){id_article}>
   [(#SET{afficher_date, #ENV{afficher_date, oui}|=={oui}|?{' ', ''}})]
+  [(#SET{adhesion, #ENV{adhesion, non}|=={non}|?{'', ' '}})]
   [(#REM)
     <!--
       Préparer le sommaire, qui s'affiche à condition que #TEXTE contiennent des intertitres,
@@ -76,6 +77,14 @@
                 </BOUCLE_mots_article>
               </div>
             </B_mots_article>
+
+            <BOUCLE_si_adhesion(CONDITION){si #GET{adhesion}|oui}>
+              <BOUCLE_formulaire(FORMULAIRES){id_article}>
+                <div class="gap-top-6">
+                  <a href="[(#URL_PAGE{adhesion}|parametre_url{id_article, #ID_ARTICLE})]" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_adhesion:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                </div>
+              </BOUCLE_formulaire>
+            </BOUCLE_si_adhesion>
           </div>
         </div>
       </article>
