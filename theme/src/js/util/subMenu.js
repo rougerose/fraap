@@ -39,7 +39,7 @@ function onScroll(event) {
 }
 
 function resetMenu(menu) {
-  menu.querySelectorAll("ul.site-nav_list").forEach((list, index) => {
+  menu.querySelectorAll("ul.site-nav_list.-variant-offcanvas").forEach((list, index) => {
     list.setAttribute("aria-hidden", String(index !== 0));
   });
   menu.scrollLeft = 0;
