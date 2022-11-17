@@ -56,7 +56,7 @@ details summary {
 
   /// The marker handles our focus state for us
   &:focus {
-    outline: none;
+    outline: 0;
 
     &::before {
       outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid var(--color-link);
