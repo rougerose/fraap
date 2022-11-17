@@ -1,6 +1,6 @@
 module.exports = (ctx) => ({
   plugins: {
     "autoprefixer": {},
-    "postcss-csso": ctx.env === "production" ? {} : false,
+    "postcss-csso": ctx.env === "production" ? {restructure:false} : false,
   },
 });
