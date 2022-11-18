@@ -3,6 +3,7 @@
 .button-cta {
   color: currentColor;
   display: inline-flex;
+  align-items: center;
   font-size: var(--buttonCta-fontsize, var(--step-0));
   line-height: 1.2;
   padding: var(--buttonCta-padding, 0);
@@ -12,7 +13,7 @@
 
   &.with-icon {
     // align-items: baseline;
-    align-items: center;
+
 
     svg.icon.icon-nav-link {
       --icon-border-radius: 0;

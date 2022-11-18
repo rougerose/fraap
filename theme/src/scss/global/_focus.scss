@@ -7,7 +7,8 @@
 
 @use "../settings";
 
-*:focus {
+*:focus,
+*:focus-visible {
   // outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid blue;
   // outline: none;
   outline: settings.$FRAAP-FOCUS-OUTLINE-WIDTH solid var(--color-link);

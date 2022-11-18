@@ -1,0 +1,10 @@
+/// SKIP-LINK
+@use "../utilities/visually-hidden";
+
+.skip-link {
+  position: absolute;
+  z-index: 50;
+  &:not(:focus) {
+    @extend .visually-hidden;
+  }
+}
