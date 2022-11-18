@@ -55,6 +55,10 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 
+  &.-variant-offcanvas {
+    height: 100%;
+  }
+
   & > * {
     flex: 1 0 100%;
     overflow: hidden auto;

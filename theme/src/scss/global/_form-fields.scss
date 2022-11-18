@@ -29,6 +29,7 @@ textarea {
   line-height: 1;
   padding: var(--form-fields-input-padding);
   width: var(--form-fields-width);
+  appearance: none;
 }
 
 input[type="file"] {
