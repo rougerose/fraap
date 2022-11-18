@@ -23,10 +23,15 @@
         </div>
       </BOUCLE_menus_footer>
     </div>
-    [<div class="auto-grid site-footer_layout --variant-baseline">
+    <div class="site-footer_layout --variant-baseline">
       <div class="site-footer_baseline">
-        (#INCLURE{fond=images/fraap-baseline.svg})
+        #SLOGAN_SITE_SPIP
       </div>
-    </div>]
+      <BOUCLE_credits(ARTICLES){page=credits}>
+        <div class="site-footer_credits">
+          <a href="#URL_ARTICLE">#TITRE</a>
+        </div>
+      </BOUCLE_credits>
+    </div>
   </div>
 </nav>

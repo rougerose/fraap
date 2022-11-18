@@ -1,11 +1,13 @@
 /// SITE-FOOTER
 
+@use "../tools/mq" as mq;
+
 .site-footer {
   background-color: var(--color-contrast);
   color: var(--color-primary);
   margin-top: auto;
   padding-top: var(--space-5xl);
-  padding-bottom: var(--space-xl);
+  padding-bottom: var(--space-l);
 }
 
 // .site-footer_nav {}
@@ -17,13 +19,20 @@
   --cluster-vertical-alignment: flex-start;
 
   & + & {
-    --auto-grid-placement: auto-fill;
     margin-top: var(--space-m-xl);
   }
 
   &.--variant-baseline {
-    --auto-grid-placement: auto-fit;
+    display: grid;
+    align-items: baseline;
+    grid-template-columns: 1fr;
+    grid-gap: var(--space-m);
+    line-height: 1.1;
     padding-top: var(--space-m);
+
+    @include mq.mq($from: l) {
+      grid-template-columns: auto 1fr;
+    }
   }
 }
 
@@ -45,11 +54,21 @@
 }
 
 .site-footer_baseline {
-  max-width: 600px;
-  & svg {
-    height: 100%;
-    width: auto;
-    fill: var(--color-link-invert);
+  color: var(--color-paper);
+  font-family: var(--font-family-baseline);
+  font-size: var(--step-1);
+  letter-spacing: 0.02em;
+}
+
+.site-footer_credits {
+  font-size: var(--step--2);
+
+  a {
+    padding: 0.75em 0;
+  }
+
+  @include mq.mq($from: l) {
+    justify-self: end;
   }
 }
 

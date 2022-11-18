@@ -82,6 +82,16 @@
   font-display: swap;
 }
 
+// Frutiger Bold Condensed
+@font-face {
+  font-family: "FrutigerBC";
+  src: url("../fonts/frutiger/FrutigerLTStd-BoldCn.woff2") format("woff2"),
+    url("../fonts/frutiger/FrutigerLTStd-BoldCn.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /// Glypha
 @font-face {
   font-family: "Glypha";
