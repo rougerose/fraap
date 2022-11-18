@@ -230,10 +230,11 @@
   input.submit {
     color: currentColor;
     display: inline-flex;
+    justify-content: center;
     font-size: var(--buttonCta-fontsize, var(--step-0));
     line-height: 1;
     padding: var(--buttonCta-padding, 0);
-    white-space: nowrap;
+    // white-space: nowrap;
     background-color: var(--color-paper);
     // border-radius: 2em;
     border: 1px solid var(--color-contrast);
@@ -242,6 +243,8 @@
     border-radius: 4px;
     color: var(--buttonCta-color, var(--color-link-invert));
     text-decoration: none;
+    min-width: 10ch;
+    min-height: 44px;
 
     &:hover {
       background-color: var(--color-contrast);
