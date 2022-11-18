@@ -34,9 +34,12 @@
 }
 
 .abstract_subtitle {
-  margin-top: var(--space-xs);
   font-family: var(--font-family-headings);
-  line-height: 1.2;
+  font-style: italic;
+
+  & + .abstract_desc {
+    margin-top: 0;
+  }
 }
 
 .abstract_desc {
