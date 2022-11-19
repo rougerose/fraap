@@ -1,0 +1,14 @@
+// Flow utility
+// @link https://web.dev/design-system/css-utilities/#flow
+//
+.flow > * + * {
+  margin-top: var(--flow-space, var(--space-m));
+}
+
+.flow-large > * + * {
+  margin-top: var(--flow-space-large, var(--space-xl));
+}
+
+.flow-small > * + * {
+  margin-top: var(--flow-space-small, var(--space-xs));
+}

@@ -1,0 +1,11 @@
+<div class="wrapper-structure">
+  <nav class="breadcrumb" aria-label="Vous êtes dans :">
+    <ul class="breadcrumb_list" role="list">
+      <li><a href="#URL_SITE_SPIP">#NOM_SITE_SPIP</a></li>
+      <BOUCLE_breadcrumb(HIERARCHIE){id_rubrique}{tout}>
+        <li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+      </BOUCLE_breadcrumb>
+      [<li><a href="[(#URL_RUBRIQUE|parametre_url{id_groupe, #ENV{id_groupe}})] " aria-current="page">(#INFO_TITRE{groupe_mots, #ENV{id_groupe}})</a></li>]
+    </ul>
+  </nav>
+</div>

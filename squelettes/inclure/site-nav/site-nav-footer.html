@@ -1,0 +1,28 @@
+<BOUCLE_sitenav_footer(MENUS){id_menu?}{identifiant?}>
+  <B_entrees>
+    <ul role="list" class="site-nav_list"[ data-depth="(#ENV{depth,0})"]>
+      <BOUCLE_entrees(MENUS_ENTREES){id_menu}{par rang}>
+        [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+        [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+        [(#SET{entree, ''})]
+
+        [(#MENUS_AFFICHER_ENTREE)
+        #SET{entree, ' '}
+        [(#SET{titre, #PARAMETRES|table_valeur{titre}|sinon{#INFO_TITRE{#GET{objet}, #GET{id_objet}}}})]
+        [(#SET{url, #INFO_URL{#GET{objet}, #GET{id_objet}}})]
+        ]
+        <BOUCLE_sous_menu(MENUS){id_menus_entree}{si #GET{entree}}>
+          <INCLURE{fond=inclure/site-nav/site-nav-footer, env, id_menu, identifiant, depth=#ENV{depth,0}|plus{1}} />
+        </BOUCLE_sous_menu>
+        [(#REM)
+          <!--
+            On ferme le li si le type d'entrée accepte des sous-menus
+            et si on a bien quelque chose dans le <li>
+          -->]
+        [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+        </li>]
+      </BOUCLE_entrees>
+    </ul>
+  </B_entrees>
+</BOUCLE_sitenav_footer>
+#FILTRE{trim}

@@ -1,0 +1,29 @@
+<BOUCLE_fbiblio(FBIBLIOS){id_fbiblio}>
+  #SET{mots, #ARRAY} #SET{articles, #ARRAY}
+  <BOUCLE_mots(MOTS){id_fbiblio}>[(#SET{mots, #GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
+  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique=47}{id_article IN 1096, 1097}>#SET{articles, #GET{articles}|push{#ID_ARTICLE}}</BOUCLE_articles_presentation_contact>
+  <B_prolonger>
+    <section class="pod variant-banner related">
+      <div class="pod_mask">
+        <div class="pod_bg-mask">
+          <div class="pod_bg-banner"></div>
+        </div>
+        <div class="wrapper-content">
+          <div class="pod_content">
+            <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+            <ul class="related_list auto-grid gap-top-3" role="list">
+              <BOUCLE_prolonger(FBIBLIOS){id_rubrique=#ENV{id_rubrique}}{mots 0.7 #GET{mots} !tri}{exclus}>
+                <li class="card variant-box abstract related_item flow">
+                  <INCLURE{fond=inclure/resumes/fbiblio-card, id_objet=#ID_FBIBLIO, heading_level=3, afficher_mots=1, afficher_date=0, id_rubrique=#ENV{id_rubrique}}/>
+                </li>
+              </BOUCLE_prolonger>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, articles=#GET{articles}, id_rubrique=47, wrapper_narrow=oui, banner=non}/>
+  </B_prolonger>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, articles=#GET{articles}, id_rubrique=47, wrapper_narrow=oui, banner=oui}/>
+  <//B_prolonger>
+</BOUCLE_fbiblio>

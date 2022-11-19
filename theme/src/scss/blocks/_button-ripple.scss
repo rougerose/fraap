@@ -1,0 +1,23 @@
+/// RIPPLE EFFECT
+/// https://css-tricks.com/how-to-recreate-the-ripple-effect-of-material-design-buttons/#aa-css-only
+
+@use "../settings" as var;
+@use "sass:map";
+
+.button-ripple {
+  background-color: var(--color-contrast);
+  background-position: center;
+  color: var(--color-link-invert);
+  transition: background 0.8s, box-shadow  0.3s;
+
+  &:hover {
+    background: var(--color-contrast) radial-gradient(circle, transparent 1%, var(--color-contrast) 1%) center/15000%;
+    box-shadow: var(--boxShadow-elevation-middle);
+  }
+
+  &:active {
+    background-color: var(--color-contrast-400);
+    background-size: 100%;
+    transition: background 0s;
+  }
+}

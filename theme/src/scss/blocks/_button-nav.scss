@@ -1,0 +1,23 @@
+/// BUTTON-NAV
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.button-nav {
+  html:not(.js) & {
+    display: none;
+  }
+}
+
+@include mq.mq($from: navTop) {
+  .button-nav {
+    &.-variant-burger,
+    &.-variant-search {
+      margin-top: settings.$FRAAP-NAV-VERTICAL-ALIGNMENT;
+    }
+
+    &.-variant-burger {
+      display: none;
+    }
+  }
+}

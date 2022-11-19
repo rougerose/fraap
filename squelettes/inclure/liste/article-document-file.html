@@ -1,0 +1,12 @@
+<B_docs_associes>
+  [(#SET{titre_docs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:document_associe, fraap_squelettes:documents_associes}})]
+  <div class="flow prose-editor gap-top-5">
+    <h2 id="[(#GET{titre_docs}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">
+      <span class="text-underline">#GET{titre_docs}</span>
+      <a href="[#(#GET{titre_docs}|identifiant_slug{id, #ARRAY{separateur,-,longueur_mini,5}})]">#</a>
+    </h2>
+    <BOUCLE_docs_associes(DOCUMENTS){id_article}{vu=non}{media=file}{par rang_lien, num titre, titre, id_document}>
+      [(#INCLURE{fond=modeles/file, id_document})]
+    </BOUCLE_docs_associes>
+  </div>
+</B_docs_associes>

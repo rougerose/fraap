@@ -1,0 +1,11 @@
+<BOUCLE_rubrique_standard(RUBRIQUES){id_rubrique}>
+  #SET{icon, #VAL{icon-rubrique}|concat{#ID_SECTEUR}}
+  #SET{icon-svg, #GET{icon}|concat{-64.svg}}
+  <div class="page" data-page="rubrique">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+    <INCLURE{fond=inclure/sections/header-rubrique, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique} />
+    <BOUCLE_si_article(ARTICLES){id_rubrique}{0,1}>
+      <INCLURE{fond=inclure/liste/articles-card, id_rubrique, pagination=6, env, ajax} />
+    </BOUCLE_si_article>
+  </div>
+</BOUCLE_rubrique_standard>

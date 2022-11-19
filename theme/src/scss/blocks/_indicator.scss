@@ -1,0 +1,20 @@
+/// INDICATOR
+
+.indicator {
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--indicator-fontsize, var(--step--2));
+  line-height: 0.9;
+  margin-left: 0.5em;
+  min-width: 1.7em; // 1.6rem;
+  min-height: 1.7em; // 1.6rem;
+  padding: 0.2em;
+  text-align: center;
+  width: max-content;
+}

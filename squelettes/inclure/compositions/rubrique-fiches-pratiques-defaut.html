@@ -1,0 +1,46 @@
+<BOUCLE_rubrique_fiches_pratiques_defaut(RUBRIQUES){id_rubrique}>
+  <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+  <INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique38-64.svg', class_icon=icon-rubrique38, id_rubrique} />
+
+  #SET{id, #ID_RUBRIQUE}
+  <div class="page_content gap-top-3">
+    <div class="wrapper-content">
+      <BOUCLE_categories(SELECTIONS){identifiant=fiches-pratiques}>
+        <ul class="auto-grid" role="list">
+          <BOUCLE_categorie(SELECTIONS_CONTENUS){id_selection}{par rang}{objet=groupe_mots}>
+            #SET{mots, #ARRAY}
+            <BOUCLE_mots(MOTS spip_mots_liens){objet=article}{id_groupe=#ID_OBJET}>
+              [(#SET{mots, #GET{mots}|push{#ID_MOT}})]
+            </BOUCLE_mots>
+            <li class="card-stack abstract abstract--vertical-stretch flow">
+              <h2 class="abstract_heading" data-heading-level="3"><a href="[(#URL_RUBRIQUE{#GET{id}}parametre_url{id_groupe, #ID_OBJET})]">#TITRE</a></h2>
+              <div class="abstract_desc enum-horizontal flow">
+                <BOUCLE_si_descriptif_non(CONDITION){si #DESCRIPTIF|non}>
+                  <B_liste_mots>
+                    <p>
+                      <BOUCLE_liste_mots(MOTS){id_mot IN #GET{mots}}{par num titre, titre}{0,8}{" <span>&bullet;</span> "}>#TITRE</BOUCLE_liste_mots>
+                      <BOUCLE_mots_ellipse(MOTS){id_mot IN #GET{mots}}{par num titre, titre}{8,1}>…</BOUCLE_mots_ellipse>
+                    </p>
+                  </B_liste_mots>
+                </BOUCLE_si_descriptif_non>
+                [(#DESCRIPTIF)]
+                <BOUCLE_total_articles(ARTICLES){id_rubrique=#GET{id}}{id_groupe=#ID_OBJET}> </BOUCLE_total_articles>
+                  <p><a href="[(#URL_RUBRIQUE{#GET{id}}|parametre_url{id_groupe, #ID_OBJET})]" class="button-cta variant-link with-icon with-icon-right">[(#TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:fiche, fraap_squelettes:fiches})][ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+                </B_total_articles>
+              </div>
+            </li>
+          </BOUCLE_categorie>
+        </ul>
+      </BOUCLE_categories>
+    </div>
+  </div>
+  #SET{articles, #ARRAY}
+  <B_articles_presentation_contact>
+    <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1094, 1095}>
+      #SET{articles, #GET{articles}|push{#ID_ARTICLE}}
+    </BOUCLE_articles_presentation_contact>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, articles=#GET{articles}, wrapper_narrow=non ,banner=oui}/>
+  </B_articles_presentation_contact>
+</BOUCLE_rubrique_fiches_pratiques_defaut>
+#FILTRE{trim}

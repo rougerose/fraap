@@ -1,0 +1,42 @@
+#SET{id_objet, #ENV{id_objet}}
+[(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
+
+#SET{visible, oui}
+[(#ENV{type_objet}|objet_test_si_publie{#GET{id_objet}}|non) #SET{visible, non}]
+
+[(#SET{enfants, #ENV*{enfants, non}})]
+[(#GET{enfants}|!=={oui}|oui) #SET{enfants, non} ]
+[(#SET{ancre, ''})]
+[(#GET{enfants}|=={oui}|oui)
+  [(#SET{rang, [(#ENV*{env}|table_valeur{rang}|intval)]})]
+  [(#GET{rang}|=={0}|?{
+    [(#SET{ancre, ''})],
+    [(#SET{ancre, #VAL{menu-}|concat{#GET{rang}}})]
+  })]
+]
+[(#SET{icone, ''})]
+[(#SET{circleHover, ''})]
+[(#SET{contexte, #ENV*{env}|table_valeur{contexte}})]
+[(#GET{contexte}|=={offcanvas}|non)
+  [(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
+]
+[(#GET{contexte}|=={offcanvas}|oui)
+  [(#SET{circleHover, ' '})]
+  [(#GET{enfants}|=={oui}|?{
+    [(#SET{url, [#(#GET{ancre})]})]
+    [(#SET{icone, #INCLURE{fond=images/icon-arrow-double-right-32.svg, aria-hidden=true, svg=icon icon-nav-forward, path1=icon-nav-forward_path1, path2=icon-nav-forward_path2}})],
+    [(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
+    [(#SET{icone, #INCLURE{fond=images/icon-arrow-right-hover-32.svg, aria-hidden=true, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2}})]
+  })]
+]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos">#ENV{type_objet}-#GET{id_objet}[. L'objet possède des enfants : (#GET{enfants}|=={oui}|?{oui,non}).]</div>
+]
+
+<BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
+	<li class="racine site-nav_item[ --variant-(#ENV{contexte})][(#GET{circleHover}|non) circle-hover][ (#ENV{css})]"[ data-type-link="(#GET{enfants}|=={oui}|?{shortcut,link}|trim)"][ data-state="(#GET{id_objet}|menus_exposer{#ENV{type_objet}, #ENV*{env}, active})"]>
+    <a class="site-nav_link[ (#GET{icone}|oui)site-nav_link--icon]" href="#GET{url}"[ (#GET{ancre}|!=={''}|oui)data-menu-controls=["(#GET{ancre})"]]>[(#GET{titre})][(#GET{icone})]</a>
+</BOUCLE_public>
+#FILTRE{trim}

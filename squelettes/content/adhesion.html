@@ -1,0 +1,33 @@
+<BOUCLE_article(ARTICLES){id_article}>
+  <div class="page" data-page="article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
+    </div>
+    <BOUCLE_formulaire_adhesion(FORMULAIRES){id_article}{vu=non}{0,1}>
+      <div class="wrapper-content" data-flush>
+        <div class="region">
+          <article class="article">
+            <div class="prose">
+              <header class="headline">
+                <h1 class="headline_title variant-article measure">#TITRE</h1>
+              </header>
+            </div>
+            <div class="prose">
+              [(#FORMULAIRE_FORMIDABLE{#ID_FORMULAIRE})]
+            </div>
+          </article>
+        </div>
+      </div>
+    </BOUCLE_formulaire_adhesion>
+      <div class="wrapper-content" data-flush>
+        <div class="region">
+          <div class="prose">
+            <div class="alert variant-warn">
+              <p><strong><:fraap_squelettes:message_retour_article{url=#URL_ARTICLE}:/>.</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <//B_formulaire_adhesion>
+  </div>
+</BOUCLE_article>

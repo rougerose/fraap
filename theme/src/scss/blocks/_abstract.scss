@@ -1,0 +1,75 @@
+/// ABSTRACT
+/// Résumé contenu
+
+
+// .abstract {}
+
+.abstract,
+.abstract_desc {
+  display: flex;
+  flex-direction: column;
+}
+
+// surtitre
+.abstract_subheading {
+  font-size: var(--step-0);
+  font-family: var(--font-family-headings);
+  text-transform: uppercase;
+}
+
+.abstract_heading {
+  font-weight: 600;
+
+  &[data-heading-level="3"] {
+    font-size: var(--step-1); // équivalent à h3
+  }
+
+  &[data-heading-level="4"] {
+    font-size: var(--step-0);
+  }
+
+  a:hover {
+    color: var(--color-link);
+  }
+}
+
+.abstract_subtitle {
+  font-family: var(--font-family-headings);
+  font-style: italic;
+
+  & + .abstract_desc {
+    margin-top: 0;
+  }
+}
+
+.abstract_desc {
+
+  .abstract--vertical-stretch & {
+    flex: 1;
+
+    p:last-child {
+      margin-top: auto;
+      padding-top: var(--space-m);
+    }
+  }
+
+  mark {
+    background-color: var(--color-primary-300);
+  }
+
+  time {
+    align-items: baseline;
+    display: inline-flex;
+    font-size: var(--step--1);
+    font-weight: 300;
+
+    &::after {
+      content: "";
+      width: 1em;
+      height: 2px;
+      display: inline-block;
+      background-color: var(--color-primary);
+      margin: 0 6px;
+    }
+  }
+}

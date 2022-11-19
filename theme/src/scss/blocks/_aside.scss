@@ -1,0 +1,42 @@
+/// ASIDE
+
+@use "../utilities/flow";
+
+.aside {
+  @extend .flow;
+  --aside-padding: 1.5rem;
+
+  padding: var(--aside-padding);
+  border: 2px solid var(--color-primary);
+
+  // Variante plus
+  &.variant-plus {
+    border: none;
+    background-color: var(--color-primary);
+  }
+
+
+  // ul {
+  //   list-style-type: none;
+  //   padding-left: 0;
+  // }
+
+
+  // li {
+  //   padding-left: 1rem;
+  //   &::before {
+  //     content: '-> ';
+  //     color: var(--color-primary-800);
+  //     margin-left: -1rem;
+  //   }
+  // }
+
+}
+
+.aside > * {
+  --flow-space: var(--space-m); // flow-space
+}
+
+.aside + * {
+  --flow-space: var(--space-xl); // flow-space-large
+}

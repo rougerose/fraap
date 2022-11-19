@@ -1,0 +1,31 @@
+/// Tiers : Spip
+/// Boutons d'administration
+
+// @use "../settings";
+
+// Conteneur
+.spip-admin-float {
+	display: flex;
+	top: auto !important;
+	right: auto !important;
+  bottom: 4px;
+  left: 4px;
+	// bottom: rem.convert(8px) !important;
+	// left: rem.convert(8px) !important;
+}
+
+// Boutons
+.spip-admin-float .spip-admin-boutons {
+  margin: 0 0.25rem 0 0;
+  font: normal 9px var(--font-family-mono);
+  border-radius: 4px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.05em;
+  text-align: left;
+  opacity: 0.8;
+  transition: color 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}

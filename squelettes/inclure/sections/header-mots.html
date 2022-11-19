@@ -1,0 +1,10 @@
+#SET{icon, #VAL{images/}|concat{#ENV{icon}}}
+#SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon headline_icon}}
+<header class="headline region">
+  <div class="wrapper-content">
+    <h1 class="headline_title variant-offset-icon">
+      <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
+      <span><:fraap_squelettes:mots_titre:></span>
+    </h1>
+  </div>
+</header>

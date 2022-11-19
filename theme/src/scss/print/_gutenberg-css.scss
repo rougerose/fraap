@@ -1,0 +1,365 @@
+/// PRINT STYLES
+/// Source https://github.com/BafS/Gutenberg
+/// ========================================
+/// Reprise intégrale du code original, à défaut de pouvoir l'intégrer
+/// avec @use, avec adaptations et surcharges spécifiques au site.
+
+@use "variables" as var;
+@use "sass:math";
+
+@media print {
+  // gutenberg/print-reset
+  // ========================================
+  //
+  // Global
+  //
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  // Remove shadow and background
+  *,
+  *:before,
+  *:after,
+  p:first-letter,
+  div:first-letter,
+  blockquote:first-letter,
+  li:first-letter,
+  p:first-line,
+  div:first-line,
+  blockquote:first-line,
+  li:first-line {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    font-size: var.$base-font-size;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background: var.$background-color !important;
+    color: var.$body-color !important;
+    font-family: var.$base-font-family;
+    font-size: 1rem;
+    line-height: var.$line-height;
+    margin: 0 auto;
+    overflow: visible;
+    text-rendering: optimizeLegibility;
+  }
+
+  p,
+  blockquote,
+  table,
+  ul,
+  ol,
+  dl {
+    margin-bottom: var.$spacing;
+    margin-top: 0;
+  }
+
+  p,
+  ul,
+  ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  //
+  // Headers
+  //
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var.$links-color;
+    font-family: var.$headers-font-family;
+    line-height: 1.2;
+    margin-bottom: math.div(var.$spacing, 2);
+    margin-top: 0;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-size: var.$font-size-h1;
+  }
+
+  h2 {
+    font-size: var.$font-size-h2;
+  }
+
+  h3 {
+    font-size: var.$font-size-h3;
+  }
+
+  h4 {
+    font-size: var.$font-size-h4;
+  }
+
+  h5 {
+    font-size: var.$font-size-h5;
+  }
+
+  h6 {
+    font-size: var.$font-size-h6;
+  }
+
+  //
+  // Links
+  //
+  a {
+    &,
+    &:visited {
+      color: var.$links-color;
+      text-decoration: underline;
+      word-wrap: break-word;
+    }
+  }
+
+  //
+  // Table
+  //
+  table {
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  table,
+  th,
+  td {
+    border-bottom: 1px solid var.$table-color;
+  }
+
+  td,
+  th {
+    padding: math.div(var.$base-font-size, 2) var.$base-font-size;
+    page-break-inside: avoid;
+  }
+
+  //
+  // Code, Pre
+  //
+  code,
+  pre,
+  kbd {
+    border: 1px solid var.$code-color;
+    font-family: var.$font-family-monospace;
+    font-size: 85%;
+  }
+
+  code,
+  kbd {
+    padding: 3px;
+  }
+
+  pre {
+    margin-bottom: var.$spacing;
+    padding: 10px 12px;
+
+    code,
+    kbd {
+      border: 0;
+    }
+  }
+
+  //
+  // Placeholder
+  //
+  // see https://stackoverflow.com/a/16493412/1066915
+  // WebKit browsers
+  ::-webkit-input-placeholder {
+    color: transparent;
+  }
+  // Mozilla Firefox 4 to 18
+  :-moz-placeholder {
+    color: transparent;
+  }
+  // Mozilla Firefox 19+
+  ::-moz-placeholder {
+    color: transparent;
+  }
+  // Internet Explorer 10+
+  :-ms-input-placeholder {
+    color: transparent;
+  }
+
+  //
+  // Others
+  //
+  blockquote {
+    border: 0;
+    border-left: 5px solid var.$blockquote-color;
+    margin-left: 1px;
+    padding: 12px var.$spacing;
+
+    [dir="rtl"] & {
+      border-left: 0;
+      border-right: 5px solid var.$blockquote-color;
+      margin-left: 0;
+      margin-right: 1px;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    p,
+    ul,
+    ol {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    footer {
+      display: block;
+      font-size: 80%;
+    }
+  }
+
+  img {
+    border: 0;
+    display: block;
+    max-width: 100% !important;
+    // vertical-align: middle;
+  }
+
+  hr {
+    border: 0;
+    border-bottom: 2px solid var.$hr-color;
+    height: 0;
+    margin: var.$spacing * 1.5 0;
+    padding: 0;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0;
+    margin-bottom: math.div(var.$spacing, 2);
+  }
+
+  abbr,
+  acronym {
+    &[title] {
+      border: 0;
+      text-decoration: none;
+    }
+  }
+
+  // gutenberg/pagination
+  // ========================================
+  table,
+  blockquote,
+  pre,
+  code,
+  figure,
+  li,
+  hr,
+  ul,
+  ol,
+  a,
+  tr {
+    page-break-inside: avoid;
+  }
+
+  // Orphans and widows
+  h2,
+  h3,
+  h4,
+  p,
+  a {
+    orphans: 3; // minimum number of lines that must be left at the bottom of a page
+    widows: 3; // minimum number of lines that must be left at the top of a page
+  }
+
+  // Avoid breaking inside or just after titles
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  // Avoid breaking before a paragraph if header before
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    page-break-before: avoid;
+  }
+
+  // Avoid to break inside an image
+  img {
+    page-break-after: auto;
+    page-break-before: auto;
+    page-break-inside: avoid;
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word;
+  }
+
+  // gutenberg/page
+  // ========================================
+  body {
+    padding-bottom: var.$page-padding-bottom;
+    padding-left: var.$page-padding-left;
+    padding-right: var.$page-padding-right;
+    padding-top: var.$page-padding-top;
+  }
+
+  @page {
+    margin-bottom: 2.5cm;
+    margin-top: 2.5cm;
+  }
+
+  // gutenberg/reformat
+  // ========================================
+  // Show link source
+  // For fully qualified URLs only
+  a {
+    &[href^="http"],
+    &[href^="ftp"] {
+      &:after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+      }
+    }
+
+    &[href$=".jpg"],
+    &[href$=".jpeg"],
+    &[href$=".gif"],
+    &[href$=".png"] {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  // Show abbreviation or acronym title
+  abbr[title],
+  acronym[title] {
+    &:after {
+      content: " (" attr(title) ")";
+    }
+  }
+}

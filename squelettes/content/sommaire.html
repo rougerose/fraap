@@ -1,0 +1,17 @@
+<div class="page" data-page="sommaire">
+  <BOUCLE_accueil_actualites(SELECTIONS){identifiant=accueil-actualites}>
+    <INCLURE{fond=inclure/selections/sommaire-actualites, id_selection, selection_titre=#TITRE}/>
+  </BOUCLE_accueil_actualites>
+
+  <BOUCLE_accueil_apropos(SELECTIONS){identifiant=accueil-apropos}>
+    <INCLURE{fond=inclure/selections/sommaire-apropos, id_selection, selection_titre=#TITRE}/>
+  </BOUCLE_accueil_apropos>
+
+  <BOUCLE_accueil_teaser_network(ARTICLES){id_rubrique=3}{0,1}>
+    <INCLURE{fond=inclure/teasers/sommaire-reseau, id_rubrique, contexte=sommaire}/>
+  </BOUCLE_accueil_teaser_network>
+
+  <BOUCLE_accueil_outils(SELECTIONS){identifiant=accueil-outils}>
+    <INCLURE{fond=inclure/selections/sommaire-outils, id_selection, selection_titre=#TITRE}/>
+  </BOUCLE_accueil_outils>
+</div>

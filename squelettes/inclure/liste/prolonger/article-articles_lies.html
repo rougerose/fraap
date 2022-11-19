@@ -1,0 +1,21 @@
+<BOUCLE_article(ARTICLES){id_article}>
+  <section class="pod variant-banner related">
+    <div class="pod_mask">
+      <div class="pod_bg-mask">
+        <div class="pod_bg-banner"></div>
+      </div>
+      <div class="wrapper-content">
+        <div class="pod_content">
+          <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+          <ul class="related_list auto-grid gap-top-3" role="list">
+            <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{par rang}>
+              <li class="card variant-box abstract related_item flow">
+                <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE_LIE, heading_level=3, afficher_mots=1, afficher_date=0} />
+              </li>
+            </BOUCLE_prolonger_liaisons>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BOUCLE_article>

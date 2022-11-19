@@ -1,0 +1,8 @@
+<div id="dialogFiltres" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true">
+  <div class="dialog_overlay" data-a11y-dialog-hide></div>
+  <div class="dialog_content dialog-offcanvas_content dialog-filters" role="document">
+    <div class="dialog-filters_wrapper ajax">
+      [(#FORMULAIRE_MEDIATHEQUE_FILTRES{#ENV*{recherche}, #ENV{id_rubrique}, #SELF|parametre_url{debut_ressources, ''}})]
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<BOUCLE_rencontre_article_card(ARTICLES){id_article}>
+  <div class="card variant-box abstract flow">
+    <div class="flow-small">
+      [<p class="abstract_subheading"><:fraap_squelettes:rencontres_surtitre_teaser:/> (#ENV{annee})</p>]
+      <h3 class="card_heading abstract_heading" data-heading-level="3"><a href="#URL_ARTICLE">#TITRE</a></h3>
+    </div>
+    <div class="card_desc flow-small">
+      [(#DESCRIPTIF)]
+      <p><a href="#URL_ARTICLE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+    </div>
+  </div>
+</BOUCLE_rencontre_article_card>

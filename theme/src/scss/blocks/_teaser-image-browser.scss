@@ -1,0 +1,21 @@
+/// TEASER-IMAGE-BROWSER
+
+@use "../tools/mq" as mq;
+
+.teaser-image-browser {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--row-gutter, 2rem);
+  column-gap: var(--column-gutter, 2rem);
+
+  figure {
+    padding-bottom: 75%;
+  }
+
+  @include mq.mq($from: m) {
+    grid-template-columns: repeat(2,1fr);
+    figure {
+      padding-bottom: 50%;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[(#REM)
+  <!--
+    Récupérer l'id_rubrique Médiathèque dans la config du plugin fraap_bliblio.
+    Ce qui permettra de réécrire l'url des fbiblios contenus dans les résultats.
+  -->
+]
+<div class="box-filters box-filters-sticky variant-search">
+  <div class="box-filters_inner">
+    #FORMULAIRE_RECHERCHE{'', search-page_form}
+  </div>
+  <div class="box-filters_inner">
+    <div class="reel">
+      <div>
+          <span class="button-cta variant-button with-icon with-icon-left" data-state="disabled">[(#INCLURE{fond=images/icon-sort-32.svg, svg=icon icon-sort, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:recherche_trier_date:/></span>
+      </div>
+      <div>
+        <button type="button" class="button-cta variant-button with-icon with-icon-left" disabled data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="gap-top-5">
+
+</div>
+[(#REM)
+  <!-- Préparer les critères envoyés au formulaire de filtres -->
+][(#SET{criteres_tags, #ARRAY{
+  cle, tags,
+  type, multiple,
+  critere, properties.tags,
+  titre, <:fraap_squelettes:filtre_categorie_theme:>,
+  tri, '',
+  sens_tri, '',
+  tags, #ENV{tags}
+}})]
+[(#SET{criteres_annee, #ARRAY{
+  cle, annee,
+  type, unique,
+  critere, 'YEAR(date)',
+  titre, <:fraap_squelettes:filtre_categorie_annee:>,
+  tri, date,
+  sens_tri, -1,
+  annee, #ENV{annee}
+}})]
+[(#SET{criteres_typologie, #ARRAY{
+  cle, typologie,
+  type, unique,
+  critere, properties.typologie,
+  titre, <:fraap_squelettes:filtre_categorie_typologie:>,
+  tri, '',
+  sens_tri, '',
+  type, #ENV{typologie}
+}})]
+[(#REM)
+  <!--
+    Tous les critères sont concaténés dans un seul tableau.
+    Les paramètres de recherche sont inclus explicitement et en format brut
+    pour éviter un échappement sur les apostrophes notamment.
+  -->
+][(#SET{criteres, #ARRAY})]
+[(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_typologie}}|push{#GET{criteres_annee}}})]
+
+<INCLURE{fond=inclure/dialog/filtres-recherche, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
+[<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]

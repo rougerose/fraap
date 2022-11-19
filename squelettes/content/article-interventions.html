@@ -1,0 +1,8 @@
+<BOUCLE(ARTICLES){id_article}>
+  <div class="page" data-page="article">
+    [(#REM)
+      <!-- contenu de l'article -->
+    ]<INCLURE{fond=inclure/compositions/article, id_article}/>
+    <INCLURE{fond=inclure/teasers/interventions-aussi, id_rubrique, id_article}/>
+  </div>
+</BOUCLE>

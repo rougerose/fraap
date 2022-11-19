@@ -1,0 +1,9 @@
+<BOUCLE_card(SELECTIONS_CONTENUS){id_selections_contenu}>
+  <article class="card abstract flow">
+    <h3 class="card_heading[ (#ENV{variant})] abstract_heading" data-heading-level="3"><a href="#URL">#TITRE</a></h3>
+    <div class="card_desc abstract_desc flow-small">
+      [(#DESCRIPTIF)]
+      <p><a href="#URL" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+    </div>
+  </article>
+</BOUCLE_card>

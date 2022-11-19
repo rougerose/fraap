@@ -1,0 +1,6 @@
+<composition>
+  <nom>Observatoire</nom>
+  <description>Composition pour la rubrique Observatoire</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <branche type="rubrique" composition="observatoire-rubriques" />
+</composition>

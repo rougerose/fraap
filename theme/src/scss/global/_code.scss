@@ -1,0 +1,12 @@
+/// code
+
+@use "../settings" as var;
+@use "sass:map";
+
+code {
+  background-color: #{map.get(var.$gray, "blue", "50")};
+  box-decoration-break: clone;
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  padding: 0.125em 0.25em;
+}

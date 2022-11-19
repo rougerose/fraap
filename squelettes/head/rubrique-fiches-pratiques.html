@@ -1,0 +1,10 @@
+<BOUCLE_rubrique_head(RUBRIQUES){id_rubrique}>
+  <title>[(#TITRE|textebrut)][(#ENV{id_groupe}|oui)[ : (#INFO_TITRE{groupes_mots, #ENV{id_groupe}})]][ | (#NOM_SITE_SPIP|textebrut)]</title>
+  <BOUCLE_si_groupe(GROUPES_MOTS){id_groupe=#ENV{id_groupe}}>
+    [(#DESCRIPTIF|?{
+      [<meta name="description" content="(#DESCRIPTIF|textebrut)" />],
+      [(#INCLURE{fond=inclure/head/rubrique-fiches-pratiques_groupe_description, id_groupe})]
+    })]
+    [<meta name="description" content="(#DESCRIPTIF|textebrut)" />]
+  </BOUCLE_si_groupe>
+</BOUCLE_rubrique_head>

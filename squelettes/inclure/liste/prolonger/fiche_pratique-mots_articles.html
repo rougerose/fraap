@@ -1,0 +1,36 @@
+<BOUCLE_article(ARTICLES){id_article}>
+  #SET{mots, #ARRAY} #SET{articles, #ARRAY}
+  <BOUCLE_mots(MOTS){id_article}>[(#SET{mots, #GET{mots}|push{#ID_MOT}})]</BOUCLE_mots>
+  <BOUCLE_articles_presentation_contact(ARTICLES){id_rubrique}{id_article IN 1094, 1095}>#SET{articles, #GET{articles}|push{#ID_ARTICLE}}</BOUCLE_articles_presentation_contact>
+  <B_prolonger>
+    <section class="pod variant-banner related">
+      <div class="pod_mask">
+        <div class="pod_bg-mask">
+          <div class="pod_bg-banner"></div>
+        </div>
+        <div class="wrapper-content">
+          <div class="pod_content">
+            <h2 class="pod_headline"><:fraap_squelettes:prolonger_headline:></h2>
+            <ul class="related_list auto-grid gap-top-3" role="list">
+              <BOUCLE_prolonger(ARTICLES){mots 0.5 #GET{mots} !tri}{exclus}>
+                <li class="card variant-box abstract related_item flow">
+                  <h3 class="card_heading abstract_heading" data-heading-level="#ENV{heading_level,3}"><a href="[(#URL_ARTICLE|parametre_url{id_groupe, #ENV{id_groupe_mot}})]">#TITRE</a></h3>
+                  <B_article_prolonger_groupes>
+                    <p class="cluster">
+                      <BOUCLE_article_prolonger_groupes(MOTS){id_article}{fusion_supprimer}{fusion id_groupe}>
+                        <a href="[(#_article:URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE})]" class="pill">#INFO_TITRE{groupe_mots, #ID_GROUPE}</a>
+                      </BOUCLE_article_prolonger_groupes>
+                    </p>
+                  </B_article_prolonger_groupes>
+                </li>
+              </BOUCLE_prolonger>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, wrapper_narrow=oui, articles=#GET{articles}, banner=non}/>
+  </B_prolonger>
+  <INCLURE{fond=inclure/sections/callout-mediatheque-fiches, id_rubrique, wrapper_narrow=non, articles=#GET{articles}, banner=oui}/>
+  <//B_prolonger>
+</BOUCLE_article>

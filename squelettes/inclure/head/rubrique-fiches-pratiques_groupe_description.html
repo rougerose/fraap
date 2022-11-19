@@ -1,0 +1,7 @@
+[(#REM)
+  <!-- Fiches pratiques > page id_groupe : afficher la liste des mots-clés dans la méta description -->
+]<BOUCLE_groupe(GROUPES_MOTS){id_groupe}>
+  <B_liste_mots>
+    <meta name="description" content="<BOUCLE_liste_mots(MOTS spip_mots_liens articles){id_groupe}{objet=article}{articles.statut=publie}{", "}{par titre}>[(#TITRE|textebrut)]</BOUCLE_liste_mots>"/>
+  </B_liste_mots>
+</BOUCLE_groupe>

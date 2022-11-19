@@ -1,0 +1,10 @@
+<BOUCLE_rubrique_annuaire(RUBRIQUES){id_rubrique}>
+	<div class="page" data-page="rubrique-annuaire">
+		<INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+
+		<INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique3-64.svg', class_icon=icon-rubrique3, id_rubrique} />
+    <div class="wrapper-structure directory-members">
+      <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, env, ajax=annuaire}/>
+    </div>
+	</div>
+</BOUCLE_rubrique_annuaire>

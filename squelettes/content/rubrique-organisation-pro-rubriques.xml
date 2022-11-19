@@ -1,0 +1,6 @@
+<composition>
+  <nom>Organisation professionnelle : sous-rubriques</nom>
+  <description>Composition pour les sous-rubriques Organisation prof.</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <!-- <branche type="article" composition="fiches-pratiques" /> -->
+</composition>

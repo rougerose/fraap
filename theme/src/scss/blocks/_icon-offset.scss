@@ -1,0 +1,31 @@
+// ICON-OFFSET
+// icones sur les titres de rubrique
+
+.icon-offset {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gutter-headline, var(--space-2xs-xs));
+
+  .icon {
+    margin-right: var(--space-2xs-xs);
+  }
+
+  // span {
+  //   flex: 1;
+  // }
+}
+
+// &.icon-offset {
+//   --gutter-headline: var(--space-2xs-xs);
+//   display: flex;
+//   align-items: baseline;
+//   // gap: var(--gutter-headline, var(--space-2xs-xs));
+
+//   .icon {
+//     margin-right: var(--space-2xs-xs);
+//   }
+
+//   & span {
+//     flex: 1;
+//   }
+// }

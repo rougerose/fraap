@@ -1,0 +1,84 @@
+#SET{total, 0}
+<div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
+  <form method="post" action="#ENV{action}" class="dialog-filters_form">
+    <header class="dialog-filters_header">
+      <h1 id="dialogTitle"><span class="text-underline"><:fraap_squelettes:filtrer:></span></h1>
+      [<button type="button" class="dialog_close button-icon circle-hover" data-a11y-dialog-hide="" aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
+        (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
+      </button>]
+    </header>
+    <div class="dialog-filters_body">
+      #ACTION_FORMULAIRE
+      <div class="dialog-filters_inner-body">
+        <div class="collapsible">
+          [(#REM)
+            <!-- Récupérer le tableau datas envoyé par la fonction charger du formulaire -->
+          ]
+          <BOUCLE_groupes(DATA){source tableau, #ENV{datas}}{par cle}>
+            #SET{cle, #VALEUR|table_valeur{cle}} #SET{valeur, #VALEUR}
+            [(#SET{name,
+              [(#VALEUR|table_valeur{type}|=={multiple}|?{
+                [(#GET{cle}|concat{\[\]})],
+                [(#GET{cle})]
+              })]
+            })]
+            <B_input>
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#GET{cle}}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#GET{cle}"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title">
+                    <span>[(#GET{valeur}|table_valeur{titre})]</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#GET{cle}, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#GET{cle}"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_input(DATA){source tableau, #VALEUR|table_valeur{data}}>
+                  #SET{titre_groupe, ''}
+                  [(#SET{checked, #VALEUR|table_valeur{2}})]
+                  [(#VALEUR|table_valeur{0}|match{article}|?{#SET{label,<:fraap_squelettes:filtre_label_autres:>},[(#SET{label,#VALEUR|table_valeur{0}|trim})]})]
+                  <BOUCLE_si_mots(CONDITION){si #GET{name}|match{mots}}>
+                    <BOUCLE_mot(MOTS){id_mot=#GET{label}}>
+                      #SET{titre_groupe, #INFO_TITRE{groupe_mots, #ID_GROUPE_RACINE}}
+                      #SET{label, #TITRE}
+                    </BOUCLE_mot>
+                  </BOUCLE_si_mots>
+                  <div class="choix">
+                    <input type="checkbox" name="[(#GET{name}|trim)]" id="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]" value="[(#VALEUR|table_valeur{0})]"[(#GET{checked}|oui) checked][(#VALEUR|table_valeur{1}|=={0}|oui) disabled ] data-label="[(#GET{label})]"/>
+                    <label for="[(#GET{cle}|concat{-#COMPTEUR_BOUCLE})]">[[\[(#GET{titre_groupe})\] ](#GET{label}) ][<span class="indicator">(#VALEUR|table_valeur{1})</span>]</label>
+                  </div>
+                </BOUCLE_input>
+              </div>
+            </B_input>
+          </BOUCLE_groupes>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-filters_footer">
+      [(#REM)
+        <!-- Récupérer le total envoyé par la fonction charger du formulaire -->
+      ]
+      [(#ENV{total}|>{0}|?{
+        [(#SET{total, #ENV{total}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
+        [(#SET{total, <:fraap_squelettes:bouton_voir_resultat_aucun:>})]
+      })]
+      <p class="boutons">
+        <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="[(#GET{total}|attribut_html)]" />
+      </p>
+    </div>
+  </form>
+  <script>
+    jQuery(function($){
+      let form_filtres = document.querySelector("div.formulaire_#FORM form");
+      if (form_filtres && form_filtres.querySelector(".collapsible")) {
+        fraapCollapsible.init(form_filtres, true);
+        $(form_filtres).on("change", "input[type='checkbox']", function(){
+          $(this).parents("form").submit();
+        });
+      }
+		});
+  </script>
+</div>
+#FILTRE{trim}

@@ -1,0 +1,9 @@
+#SET{checked, ''}
+[(#ENV{value}|?{
+  [(#ENV{value}|=={#ENV{type_ref}}|?{ #SET{checked, ' '}, #SET{checked, ''} })],
+  [(#ENV{index}|=={tous}|?{ #SET{checked, ' '}, #SET{checked, ''} })]
+})]
+<div class="choix">
+  <input type="radio" name="type_ref" id="type_ref_#ENV{index}" value="#ENV{value}"[ (#GET{checked}|oui)checked][ (#ENV{total}|=={0}|oui)disabled] data-label="[(#ENV{label}|attribut_html)]">
+  <label for="type_ref_#ENV{index}">[(#ENV{label}) ][<span class="indicator">(#ENV{total})</span>]</label>
+</div>

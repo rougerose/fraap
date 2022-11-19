@@ -1,0 +1,8 @@
+{
+  "fraap_squelettes_intertitres": {
+    "match": "/({{{)((?:\\*|#){0,5})(.*?)(}}})(?:{(.*?)})?/s",
+    "is_callback": "y",
+    "replace": "fraap_squelettes_intertitres",
+    "priority": -60
+  }
+}

@@ -1,0 +1,154 @@
+#SET{tri,''} #SET{ordre, 0}
+[(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
+[(#SET{mots, #ENV{mots}|array_filter})]
+[(#SET{effacer, ''})]
+[(#REM)
+  <!--
+    Récupérer l'id_rubrique Médiathèque dans la config du plugin fraap_bliblio.
+    Ce qui permettra de réécrire l'url des fbiblios contenus dans les résultats.
+  -->
+][(#SET{mediatheque, #CONFIG{fraap_biblio}|table_valeur{mediatheque}|table_valeur{0}|explode{|}|table_valeur{1}|intval})]
+
+<B_recherche>
+  #ANCRE_PAGINATION
+  <div class="box-filters box-filters-sticky variant-search">
+    <div class="box-filters_inner">
+      #FORMULAIRE_RECHERCHE{'', search-page_form}
+    </div>
+    <div class="box-filters_inner">
+      <div class="reel">
+        <div>
+          [(#GET{tri}|=={date}|?{
+            [<strong>(#GRAND_TOTAL|singulier_ou_pluriel{fraap_squelettes:recherche_resultat_date, fraap_squelettes:recherche_resultats_date})</strong>],
+            [<strong>(#GRAND_TOTAL|singulier_ou_pluriel{fraap_squelettes:recherche_resultat_pertinence, fraap_squelettes:recherche_resultats_pertinence})</strong>]
+          })]
+        </div>
+        [<div class="search-page_message-sphinx">(#SPHINX_MESSAGE)</div>]
+      </div>
+      <div class="reel">
+        <div>
+          [(#GET{tri}|=={date}|?{
+            [<a href="(#SELF|parametre_url{tri, ''})" class="ajax button-cta variant-button button-ripple with-icon with-icon-left">[(#INCLURE{fond=images/icon-sort-32.svg, svg=icon icon-sort, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:recherche_trier_pertinence:></a>],
+            [<a href="(#SELF|parametre_url{tri, date})" class="ajax button-cta variant-button button-ripple with-icon with-icon-left">[(#INCLURE{fond=images/icon-sort-32.svg, svg=icon icon-sort, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:recherche_trier_date:></a>]
+          })]
+        </div>
+        <div>
+          <button type="button" class="button-cta variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogFiltres">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box-filters">
+    <div class="box-filters_inner">
+      <div class="reel">
+        <BOUCLE_selections(DATA){source table, #GET{mots}}{par cle}>
+          #SET{effacer, ' '} [(#SET{param, #GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR}})]
+          <div>
+            [<a href="[(#SELF|parametre_url{mots, #GET{param}})]" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
+          </div>
+        </BOUCLE_selections>
+        [(#ENV{annee}|oui)
+          #SET{effacer, ' '}
+          <div>
+            [<a href="(#SELF|parametre_url{annee, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{annee})]</a>]
+          </div>
+        ][(#ENV{typologie}|oui)
+          #SET{effacer, ' '}
+          <div>
+            [<a href="(#SELF|parametre_url{typologie, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{typologie})]</a>]
+          </div>
+        ][(#GET{effacer}|oui)
+          <div>
+            [<a href="(#SELF|parametre_url{'mots\[\]|typologie|annee', ''})" class="button-cta variant-pill with-icon with-icon-left">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+          </div>
+        ]
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-top-3">
+    <div class="search-page_results">
+      <BOUCLE_recherche(SPHINX)
+        {index #ENV{source}}
+        {recherche #ENV*{recherche}}
+        {filter #ENV{annee}, 'YEAR(date) = @valeur'}
+        {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
+        {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
+        {facet annee, YEAR(date) ORDER BY date DESC}
+        {facet mots, properties.mots.ids ORDER BY COUNT(*) DESC}
+        {facet typologie, properties.typologie ORDER BY COUNT(*) DESC}
+        {par #GET{tri}}{inverse #GET{ordre}}
+        {pagination 20}
+      >
+        <article class="search-page_result abstract flow-small">
+          <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
+          <div class="abstract_desc flow-small">
+            [(#SNIPPET|sinon{#SUMMARY}|replace{b>,mark>}|propre)]
+            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#URI" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+          </div>
+        </article>
+      </BOUCLE_recherche>
+    </div>
+    [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
+  </div>
+  [(#REM)
+    <!-- Préparer les critères envoyés au formulaire de filtres -->
+  ][(#SET{criteres_tags, #ARRAY{
+    cle, mots,
+    type, multiple,
+    critere, properties.mots.ids,
+    titre, <:fraap_squelettes:filtre_categorie_theme:>,
+    tri, '',
+    sens_tri, '',
+    tags, #ENV{mots}
+  }})]
+  [(#SET{criteres_annee, #ARRAY{
+    cle, annee,
+    type, unique,
+    critere, 'YEAR(date)',
+    titre, <:fraap_squelettes:filtre_categorie_annee:>,
+    tri, date,
+    sens_tri, -1,
+    annee, #ENV{annee}
+  }})]
+  [(#SET{criteres_typologie, #ARRAY{
+    cle, typologie,
+    type, unique,
+    critere, properties.typologie,
+    titre, <:fraap_squelettes:filtre_categorie_typologie:>,
+    tri, '',
+    sens_tri, '',
+    type, #ENV{typologie}
+  }})]
+  [(#REM)
+    <!--
+      Tous les critères sont concaténés dans un seul tableau.
+      Les paramètres de recherche sont inclus explicitement et en format brut
+      pour éviter un échappement sur les apostrophes notamment.
+    -->
+  ][(#SET{criteres, #ARRAY})]
+  [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_typologie}}|push{#GET{criteres_annee}}})]
+
+  <INCLURE{fond=inclure/dialog/filtres-recherche, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
+  [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
+</B_recherche>
+  [(#REM)
+    <!-- Pas de résultats -->
+  ]
+  <div class="box-filters box-filters-sticky variant-search">
+    <div class="box-filters_inner">
+      #FORMULAIRE_RECHERCHE{'', search-page_form}
+      <br>
+    </div>
+  </div>
+  <div class="gap-top-3">
+    <div class="search-page_results">
+      <div class="search-page_result">
+        <div class="message variant-warn">
+          <p><strong><:fraap_squelettes:recherche_resultat_aucun{recherche=#ENV{recherche}}:>.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<//B_recherche>

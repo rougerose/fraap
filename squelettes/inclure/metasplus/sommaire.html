@@ -1,0 +1,24 @@
+[(#REM)
+  <!--
+    LOGOS
+    *****
+    Si aucun logo de rubrique, récupérer le logo par défaut (metaplus ou celui du site),
+    redimensionner au format Twitter et appliquer en fond d'image la nuance en cours (si nécessaire).
+    *****
+  -->
+][(#SET{nuances, #ARRAY{
+  1,#5ceb24,
+  2,#f6d00e,
+  3,#38f04d,
+  4,#d7f320,
+  5,#0dc1fd,
+  6,#60de0d,
+  7,#ff9214,
+}})]
+[(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
+[(#SET{logo_auto,#INFO_FICHIER{document,#CONFIG{metasplus/id_doc_logo}}|sinon{#LOGO_SITE_SPIP|extraire_attribut{src}}})]
+[(#SET{logos, #GET{logo_auto}|image_recadre{1200,630,focus}|image_aplatir{png, #GET{nuance}}|extraire_attribut{src}})]
+
+<INCLURE{fond=inclure/metasplus/dist, logos=#GET{logos}} />
+
+#FILTRE{trim}

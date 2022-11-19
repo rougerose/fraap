@@ -1,0 +1,19 @@
+/// REEL
+/// A layout that creates a carousel-like element
+/// https://every-layout.dev/layouts/reel/
+
+.reel {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+
+  & > * {
+    margin: 0.5rem;
+    margin-right: 0;
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

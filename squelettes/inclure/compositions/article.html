@@ -1,0 +1,93 @@
+<BOUCLE(ARTICLES){id_article}>
+  [(#SET{afficher_date, #ENV{afficher_date, oui}|=={oui}|?{' ', ''}})]
+  [(#SET{adhesion, #ENV{adhesion, non}|=={non}|?{'', ' '}})]
+  [(#REM)
+    <!--
+      Préparer le sommaire, qui s'affiche à condition que #TEXTE contiennent des intertitres,
+      sinon les intertitres documents et portfolio -- si présents -- ne sont pas pris en compte.
+    -->
+  ]
+  [(#SET{sommaire, ''})]
+  [(#SET{sommaire, #SOMMAIRE{#TEXTE}})]
+  <BOUCLE_si_sommaire(CONDITION){si #GET{sommaire}|oui}>
+    #SET{docs, ''} #SET{imgs, ''}
+    <BOUCLE_docs(DOCUMENTS){id_article}{vu=non}{media=file}> </BOUCLE_docs>
+      [(#SET{docs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:document_associe, fraap_squelettes:documents_associes}|wrap{<h2>}})]
+    </B_docs>
+    <BOUCLE_imgs(DOCUMENTS){id_article}{vu=non}{media=image}> </BOUCLE_imgs>
+      [(#SET{imgs, #VAL{<:fraap_squelettes:image_associee:>}|wrap{<h2>}})]
+    </B_imgs>
+    [(#SET{sommaire, [(#SOMMAIRE{[(#TEXTE) #GET{docs} #GET{imgs}]}|ajouter_styles_toc|supprimer_soulignement)]})]
+  </BOUCLE_si_sommaire>
+
+  <div class="wrapper-structure">
+    <INCLURE{fond=inclure/breadcrumb/article, id_article}/>
+  </div>
+  <div class="wrapper-content" data-flush>
+    <div class="region">
+      <article class="article">
+        <div class="prose[(#GET{sommaire}|oui) with-large-width]">
+          <header class="headline">
+            <h1 class="headline_title variant-article measure">#TITRE</h1>
+            [<p class="headline_subtitle measure">(#SOUSTITRE)</p>]
+            [<div class="headline_desc variant-article prose-editor flow measure">(#CHAPO)</div>]
+            [(#REM) <!-- Date de publication et éventuellement date de modification si supérieure à 24h après la date de publication  --> ]
+            [(#GET{afficher_date}|oui)
+              <p class="headline_date">
+                <:fraap_squelettes:date_publication_article:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_article:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]
+              </p>
+            ]
+          </header>
+        </div>
+        <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+          [<nav class="toc variant-right-side gap-top-5 flow-small" data-type="side">
+            <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
+            (#GET{sommaire})
+          </nav>]
+          <div class="prose">
+            [<div class="article_logo gap-top-5">
+              (#LOGO_ARTICLE|image_reduire{1200, 0})
+            </div>]
+            [<div class="toc gap-top-5" data-type="inner">
+              <details role="navigation">
+                <summary><:fraap_squelettes:toc_titre:></summary>
+                (#GET{sommaire})
+              </details>
+            </div>]
+            [<div class="flow prose-editor gap-top-5">
+              (#TEXTE|ancres_sommaire)
+            </div>]
+
+            <BOUCLE_docs_article(DOCUMENTS){id_article}{vu=non}{media=file}{0,1}>
+              <INCLURE{fond=inclure/liste/article-document-file, id_article}/>
+            </BOUCLE_docs_article>
+
+            <BOUCLE_imgs_article(DOCUMENTS){id_article}{vu=non}{media=image}{0,1}>
+              <INCLURE{fond=inclure/liste/article-document-image, id_article}/>
+            </BOUCLE_imgs_article>
+
+            [<div class="notes prose-editor auto-grid gap-top-6">
+              (#NOTES)
+            </div>]
+
+            <B_mots_article>
+              <div class="cluster gap-top-6">
+                <BOUCLE_mots_article(MOTS){id_article}{par titre}>
+                  <a href="[(#URL_MOT)]" class="pill">#TITRE</a>
+                </BOUCLE_mots_article>
+              </div>
+            </B_mots_article>
+
+            <BOUCLE_si_adhesion(CONDITION){si #GET{adhesion}|oui}>
+              <BOUCLE_formulaire(FORMULAIRES){id_article}>
+                <div class="gap-top-6">
+                  <a href="[(#URL_PAGE{adhesion}|parametre_url{id_article, #ID_ARTICLE})]" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_adhesion:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                </div>
+              </BOUCLE_formulaire>
+            </BOUCLE_si_adhesion>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</BOUCLE>
