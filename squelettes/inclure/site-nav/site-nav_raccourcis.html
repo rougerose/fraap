@@ -1,0 +1,37 @@
+<BOUCLE_sitenav_raccourcis(MENUS){id_menu?}{identifiant?}>
+  <div class="site-header_links">
+    <B_raccourcis_entrees>
+      <ul id="navShortcuts" role="list" class="site-nav_list[ -variant-(#ENV{contexte})]"[ data-depth="(#ENV{depth,0})"]>
+        <BOUCLE_raccourcis_entrees(MENUS_ENTREES){id_menu}{par rang}>
+          [(#COMPTEUR_BOUCLE|setenv{rang})]
+          [(#ENV{contexte}|setenv{contexte})]
+          [(#SET{objet, #PARAMETRES|table_valeur{type_objet}})]
+          [(#SET{id_objet, #PARAMETRES|table_valeur{id_objet}})]
+          [(#SET{entree, ''})]
+
+          [(#REM)
+            Pas de sous-menu possible.
+          ]
+
+          [(#MENUS_AFFICHER_ENTREE)
+            #SET{entree, ' '}
+          ]
+          [(#REM)
+            <!--
+              On ferme le li si le type d'entrée accepte des sous-menus
+              et si on a bien quelque chose dans le <li>
+            -->]
+          [(#GET{entree}|et{#TYPE_ENTREE|menus_type_refuser_sous_menu|non})
+          </li>]
+        </BOUCLE_raccourcis_entrees>
+      </ul>
+      [<button id="buttonNavBurger" type="button" class="button-nav -variant-burger button-icon circle-hover" data-menu-controls="menu-0" data-a11y-dialog-show="siteNavOffcanvas" aria-label="<:fraap_squelettes:nav_bouton_burger:>">
+        (#INCLURE{fond=images/icon-burger-100.svg, svg=icon-nav-burger, aria-hidden=true})
+      </button>]
+      [<button type="button" class="button-nav -variant-search button-icon button-nav-search circle-hover" data-a11y-dialog-show="dialogRecherche" aria-label="<:fraap_squelettes:nav_bouton_search:>">
+        (#INCLURE{fond=images/icon-search-100.svg, svg=icon-nav-search, aria-hidden=true})
+      </button>]
+    </B_raccourcis_entrees>
+  </div>
+</BOUCLE_sitenav_raccourcis>
+#FILTRE{trim}

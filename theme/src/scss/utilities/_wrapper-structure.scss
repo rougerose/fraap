@@ -1,0 +1,7 @@
+/// WRAPPER-STRUCTURE
+/// Wrapper sans max-width et utilisé pour le header, footer, breadcrumb.
+
+.wrapper-structure {
+  padding-left: var(--column-padding);
+  padding-right: var(--column-padding);
+}

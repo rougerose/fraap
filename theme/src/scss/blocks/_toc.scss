@@ -1,0 +1,77 @@
+/// TOC
+
+@use "../tools/mq" as mq;
+
+.toc {
+  --toc-vertical-space: var(--space-xs);
+  font-size: var(--step--1);
+  line-height: 1.2;
+
+  &[data-type="side"] {
+    position: sticky;
+    top: var(--space-l);
+  }
+
+  &.variant-right-side {
+    padding-right: var(--column-padding);
+  }
+
+  &.variant-left-side {
+    padding-left: var(--column-padding);
+  }
+
+  // &[data-type="inner"] {}
+}
+
+.toc_heading {
+  font-size: var(--step-0);
+  font-weight: 600;
+  font-family: var(--font-family-sans);
+}
+
+.toc_list {
+
+  // Liste imbriquée
+  .toc_list {
+    margin: calc(var(--toc-vertical-space) / 2) 0;
+
+    .toc_item {
+      padding-left: 8px;
+      padding-bottom: 0;
+      border-left: 1px solid var(--color-stroke);
+    }
+  }
+}
+
+.toc_item {
+  padding: calc(var(--toc-vertical-space) / 2) 0;
+
+  a {
+    color: var(--color-ink);
+
+    &:hover {
+      color: var(--color-link);
+    }
+  }
+
+  &.is-active {
+    > a {
+      font-weight: 600;
+      color: var(--color-link);
+    }
+  }
+}
+
+
+@include mq.mq($until: l) {
+  .toc[data-type="side"],
+  .toc[data-type="layout-only"] {
+    display: none;
+  }
+}
+
+@include mq.mq($from: l) {
+  .toc[data-type="inner"] {
+    display: none;
+  }
+}

@@ -1,0 +1,79 @@
+/// DIALOG-FILTERS
+/// Styles génériques des modales de filtres
+
+.dialog-filters {
+  --dialog-offcanvas-padding: 0;
+
+  // & .ajax-form-container,
+  // & .dialog-filters_wrapper,
+  // & .dialog-filters_formulaire-spip,
+  // & .dialog-filters_form {
+  //   flex: 1;
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+}
+
+//
+.dialog-filters_form {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+.dialog-filters_header {
+  background-color: var(--color-paper);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-s) var(--space-l);
+  position: sticky;
+
+  h1 {
+    font-size: var(--step-3);
+    align-self: flex-end;
+  }
+}
+
+.dialog-filters_body {
+  padding-bottom: var(--space-3xl);
+  overflow-y: scroll;
+}
+
+.dialog-filters_inner-body {
+  padding: var(--space-s) var(--space-l);
+}
+
+.dialog-filters_category {
+  margin-top: var(--space-m);
+  margin-bottom: var(--space-2xs);
+  font-size: var(--step-0);
+  font-family: var(--font-family-sans);
+  font-weight: 300;
+  color: var(--color-primary-800);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.dialog-filters_footer {
+  background-color: var(--color-paper);
+  padding: var(--space-s) var(--space-l);
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  .boutons {
+    display: flex;
+  }
+
+  .submit {
+    border: none;
+    font-size: var(--step-0);
+    flex: 1;
+    justify-content: center;
+    appearance: none;
+  }
+}

@@ -1,0 +1,17 @@
+[(#SET{nuances, #ARRAY{
+  1,#5ceb24,
+  2,#f6d00e,
+  3,#38f04d,
+  4,#d7f320,
+  5,#0dc1fd,
+  6,#60de0d,
+  7,#ff9214,
+}})][(#SET{nuance, #GET{nuances}|table_valeur{#EVAL{$GLOBALS\['meta'\]\['fraap_theme_nuance'\]}}})]
+[<link rel="icon" type="image/png" sizes="16x16" href="(#CHEMIN{images/favicons/favicon-16x16.png})">]
+[<link rel="icon" type="image/png" sizes="32x32" href="(#CHEMIN{images/favicons/favicon-32x32.png})">]
+[<link rel="icon" href="(#PRODUIRE{fond=images/favicons/favicon.svg, nuance=#GET{nuance}})" type="image/svg+xml">]
+[<link rel="apple-touch-icon" sizes="180x180" href="(#CHEMIN{images/favicons/apple-touch-icon.png})">]
+<link rel="mask-icon" href="#CHEMIN{images/favicons/safari-pinned-tab.svg}" color="#000000">
+[<meta name="msapplication-TileImage" content="(#CHEMIN{images/favicons/mstile-150x150.png})">]
+<meta name="msapplication-TileColor" content="#GET{nuance}">
+<meta name="theme-color" content="#GET{nuance}">

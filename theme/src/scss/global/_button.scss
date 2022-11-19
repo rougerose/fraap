@@ -1,0 +1,21 @@
+@use "../mixins/button-base-styles" as mixin;
+
+button {
+  @include mixin.button-base-styles();
+
+  // https://github.com/necolas/normalize.css/blob/master/normalize.css
+  // Remove the inner border and padding in Firefox.
+  &::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+
+  // https://github.com/necolas/normalize.css/blob/master/normalize.css
+  // Restore the focus styles unset by the previous rule.
+  //
+  // INUTILE COMPTE TENU DU RESET
+  //
+  // &:-moz-focusring {
+  //   outline: 1px dotted ButtonText;
+  // }
+}

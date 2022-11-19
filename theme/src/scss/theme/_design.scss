@@ -1,0 +1,80 @@
+@use "../settings";
+@use "sass:math";
+@use "sass:string";
+@use "../tools/gorko" as gorko;
+@use "../tools/mq" as mq;
+
+:root {
+  --angle-sin: 0.052;
+  --auto-grid-placement: auto-fit;
+  // --auto-grid-gutter: var(--space-m-xl);
+  --auto-grid-gutter-column: var(--space-m-xl);
+  --auto-grid-gutter-row: var(--space-2xl-3xl);
+  --auto-grid-min-item-size: 250px;
+
+  --border-radius-base: #{settings.$FRAAP-BORDER-RADIUS-BASE};
+  --boxShadow-elevation-middle: 0 10px 20px rgb(0 0 0 / 15%), 0 3px 6px rgb(0 0 0 / 10%);
+  // --buttonCta-fontsize: var(--step-0);
+  --buttonCta-marginLeft: -8px;
+  --buttonCta-padding: 8px 8px 6px;
+
+  --carousel-zindex: #{gorko.get-utility-value("stack", "100")};
+
+  --card-icon-size: 1.2em;
+  --card-maxWidth: 31rem;
+
+  --column-padding: var(--space-m-l);
+
+  --dialog-zindex: #{gorko.get-utility-value('stack', '400')};
+
+  --font-family-headings: #{settings.$FRAAP-FONT-HEADINGS};
+  --font-family-mono: #{settings.$FRAAP-FONT-BASE-MONO};
+  --font-family-sans: #{settings.$FRAAP-FONT-BASE-SANS};
+  --font-family-baseline: #{string.quote(FrutigerBC) + ', ' + settings.$FRAAP-FONT-BASE-SANS};
+  --form-fields-width: 100%;
+  // --form-fields-input-padding: 14px;
+  --form-fields-input-padding: 0.5em 0.5em 0.375em;
+
+  --icon-border-radius: 100%;
+  --icon-padding: 8px;
+  --icon-stroke-width: 4px;
+  // --icon-nav-size: 32px;
+
+  --gutter-width: var(--column-padding);
+
+  --layout-width: calc(100vw - var(--gutter-width));
+  --layout-max-width: #{math.div(settings.$FRAAP-LAYOUT-WIDTH-MAX, 16) * 1rem};
+
+  // --measure: 60ch;
+  // --measure-m: 70ch;
+  // --measure-l: 80ch;
+
+  --offset-icon-space: var(--space-l-2xl);
+
+  --section-marginBottom: 0;
+  --section-angle-height: calc(100vw * var(--angle-sin));
+  --section-angle-padding-bottom-base-min: 48;
+  --section-angle-padding-bottom-base-max: 64;
+  --section-angle-padding-top-base-min: 32;
+  --section-angle-padding-top-base-max: 64;
+  --section-angle-marginBottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  --section-angle-marginBottom-min: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+
+  --underline-offset: 0.3em;
+}
+
+@include mq.mq($from: m) {
+  :root {
+    --section-angle-padding-bottom-base-min: 48;
+    --section-angle-padding-bottom-base-max: 96;
+    --section-angle-padding-top-base-min: 48;
+    --section-angle-padding-top-base-max: 96;
+  }
+}
+
+@include mq.mq($from: xl) {
+  :root {
+    --layout-width: var(--layout-max-width);
+    --gutter-width: calc((100vw / 2) - (var(--layout-width) / 2 ));
+  }
+}

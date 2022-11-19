@@ -1,0 +1,16 @@
+<div class="page" data-page="recherche">
+  <div class="wrapper-content" data-size="narrow">
+    <div class="region">
+      <div class="search-page">
+        <header class="headline">
+          <h1 class="headline_title variant-recherche"><:fraap_squelettes:recherche_titre_page:></h1>
+        </header>
+        <BOUCLE_si_recherche(CONDITION){si #ENV{recherche}}>
+          <INCLURE{fond=inclure/compositions/recherche, recherche=#ENV*{recherche}, env, ajax=recherche}/>
+        </BOUCLE_si_recherche>
+          <INCLURE{fond=inclure/compositions/recherche-vide, recherche=#ENV*{recherche}, env, ajax=recherche}/>
+        <//B_si_recherche>
+      </div>
+    </div>
+  </div>
+</div>

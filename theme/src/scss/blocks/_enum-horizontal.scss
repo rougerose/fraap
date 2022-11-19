@@ -1,0 +1,9 @@
+/// ENUM-HORIZONTAL
+/// Liste horizontale, éléments séparés par une puce
+
+
+.enum-horizontal {
+  > p > span {
+    color: var(--color-primary-700);
+  }
+}

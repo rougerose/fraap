@@ -1,0 +1,25 @@
+/// PILL
+
+.pill {
+  --pill-color: var(--color-primary);
+  background-color: transparent;
+  display: inline-block;
+  padding: 4px 10px 2px;
+  border-radius: 2em;
+  border: 1px solid var(--pill-color);
+  font-size: var(--pill-fontSize, var(--step--1));
+  line-height: 1.1;
+  font-weight: 300;
+
+  &[href] {
+    --pill-color: var(--color-link);
+    color: var(--pill-color);
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+      background-color: var(--color-link);
+      color: var(--color-link-invert);
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<BOUCLE_rubrique_fiches(RUBRIQUES){id_rubrique}>
+	<div class="page" data-page="rubrique-fiches">
+    <BOUCLE_si_env_groupe_non(CONDITION){si #ENV{id_groupe}|non}>
+      [(#REM) <!-- Contenu par défaut de la rubrique -->]
+      <INCLURE{fond=inclure/compositions/rubrique-fiches-pratiques-defaut, id_rubrique}/>
+    </BOUCLE_si_env_groupe_non>
+      <INCLURE{fond=inclure/compositions/rubrique-fiches-pratiques-groupe, id_rubrique, id_groupe}/>
+    <//B_si_env_groupe_non>
+	</div>
+</BOUCLE_rubrique_fiches>

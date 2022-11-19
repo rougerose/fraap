@@ -1,0 +1,66 @@
+/// HEADLINE
+///
+/// Têtière de page (rubrique, article, etc.)
+
+
+// .headline {}
+
+.headline_title {
+  font-size: var(--step-5);
+  font-weight: 600;
+
+  // Titre de rubrique accompagné d'une icone :
+  &.variant-offset-icon {
+    --gutter-headline: var(--space-2xs-xs);
+    display: flex;
+    align-items: baseline;
+    gap: var(--gutter-headline);
+
+    & span {
+      flex: 1;
+    }
+  }
+
+  &.variant-article {
+    --measure: 50ch;
+    font-size: var(--step-4);
+  }
+
+  &.variant-recherche {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-m);
+  }
+}
+
+.headline_subtitle {
+  --measure: 60ch;
+  font-size: var(--step-3);
+  line-height: 1.2;
+  font-family: var(--font-family-headings);
+  margin-top: var(--space-xs);
+  max-width: var(--measure) !important;
+}
+
+.headline_date {
+  font-size: var(--step--1);
+  color: var(--color-ink-soft);
+  margin-top: var(--space-l-xl);
+}
+
+.headline_icon {
+  --icon-size: calc(var(--offset-icon-space) - var(--gutter-headline));
+  transform: translateY(0.125em);
+}
+
+.headline_desc {
+  font-size: var(--step-3);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-top: var(--space-l);
+
+  &.variant-article {
+    --measure: 60ch;
+    font-size: var(--step-2);
+    margin-top: var(--space-l-xl);
+  }
+}

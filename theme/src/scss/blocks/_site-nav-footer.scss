@@ -1,0 +1,55 @@
+
+.site-nav-footer {
+  .site-nav_list[data-depth] {
+    font-weight: 500;
+    font-size: var(--step--1);
+    letter-spacing: 0.3px;
+
+    & ul {
+      padding: 0.125rem;
+      padding-left: 0;
+
+      ul a span {
+        display: flex;
+
+        &::before {
+          content: "—";
+          align-self: baseline;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .site-nav_list[data-depth="0"] {
+    font-size: var(--step-0);
+    font-weight: 600;
+
+    & > li {
+
+      &::before {
+        background-color: var(--color-link-invert);
+        content: "";
+        display: block;
+        height: 1px;
+        width: 32px;
+        margin-bottom: 1em;
+      }
+    }
+
+    & > li + li {
+      margin-top: var(--space-m);
+    }
+  }
+
+  .site-nav_item {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .site-nav_link {
+    &:hover {
+      color: var(--color-link-invert);
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<composition>
+  <nom>Médiathèque</nom>
+  <description>Composition pour la rubrique «Médiathèque»</description>
+  <icon>images/objet-liste-contenus.png</icon>
+  <!-- <branche type="article" composition="fiches-pratiques" /> -->
+</composition>

@@ -1,0 +1,12 @@
+/// LEAFLET
+/// Quelques ajouts ou reset des styles de Leafletjs
+
+
+.leaflet-popup-content {
+  max-width: 250px;
+
+  strong.title {
+    display: block;
+    font-weight: unset;
+  }
+}

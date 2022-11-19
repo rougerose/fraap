@@ -1,0 +1,99 @@
+/// CAROUSEL
+/// Règles spécifiques et surcharge des règles de splidejs
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.carousel {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--layout-max-width);
+    padding: var(--space-xs) var(--column-padding) var(--space-xl);
+    position: relative;
+
+  .splide__track {
+    overflow: visible;
+
+    &.splide__track--draggable {
+      cursor: grab;
+    }
+  }
+
+  .splide__list {
+    z-index: calc(var(--carousel-zindex) + 1);
+  }
+
+  .splide__slide {
+    padding-right: var(--space-m-xl);
+    max-width: 100%;
+    width: 35rem;
+    height: auto;
+
+    &--box {
+      padding-right: var(--space-m);
+    }
+  }
+}
+
+.carousel_navigation {
+  .splide__arrow {
+    background: var(--color-contrast);
+    box-shadow: var(--card-box-shadow-high);
+    opacity: 1;
+
+    svg {
+      fill: var(--color-paper);
+    }
+
+    &.splide__arrow--prev {
+      left: var(--space-m-l);
+    }
+
+    &.splide__arrow--next {
+      right: var(--space-m-l);
+    }
+  }
+}
+
+.carousel_pagination {
+  .splide__pagination__page {
+    background: var(--color-primary-900);
+    width: 12px;
+    height: 12px;
+    margin: 3px 6px;
+
+    &.is-active {
+      background: var(--color-contrast);
+      opacity: 1;
+    }
+  }
+}
+
+@include mq.mq($until: xl) {
+  .carousel_navigation {
+    .splide__arrow {
+      top: auto;
+      bottom: 0;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+@include mq.mq($from: xl) {
+  .carousel {
+    .splide__slide {
+      width: 50%;
+    }
+  }
+  .carousel_navigation {
+    .splide__arrow {
+      &.splide__arrow--prev {
+        left: calc(var(--space-xs) * -1);
+      }
+      &.splide__arrow--next {
+        right: calc(var(--space-xs) * -1);
+      }
+    }
+  }
+}

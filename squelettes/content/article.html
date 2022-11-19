@@ -1,0 +1,12 @@
+<BOUCLE(ARTICLES){id_article}>
+  <div class="page" data-page="article">
+    [(#REM)
+      <!-- contenu de l'article -->
+    ]<INCLURE{fond=inclure/compositions/article, id_article}/>
+    <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{0,1}>
+      <INCLURE{fond=inclure/liste/prolonger/article-articles_lies, id_article} />
+    </BOUCLE_prolonger_liaisons>
+      <INCLURE{fond=inclure/liste/prolonger/article-mots_articles, id_article} />
+    <//B_prolonger_liaisons>
+  </div>
+</BOUCLE>

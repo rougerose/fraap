@@ -1,0 +1,36 @@
+<BOUCLE_rubrique_rencontres(RUBRIQUES){id_rubrique}>
+  <section class="pod variant-banner teaser-rencontres">
+    <div class="pod_mask">
+      <div class="pod_bg-mask">
+        <div class="pod_bg-banner">
+          <INCLURE{fond=images/teaser-rencontres.svg, svg=teaser-rencontres_background, aria-hidden=true} />
+          <INCLURE{fond=images/teaser-rencontres.svg, svg=teaser-rencontres_background, aria-hidden=true} />
+        </div>
+      </div>
+      <div class="wrapper-content">
+        <div class="pod_content">
+          <h2 class="pod_headline">#TITRE</h2>
+          <div class="switcher gap-top-3">
+            <div class="card flow-small">
+              [(#DESCRIPTIF)]
+              <p><a href="#URL_RUBRIQUE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_federation_rencontres_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+            </div>
+            <BOUCLE_evenement_actuellement(EVENEMENTS){id_rubrique}{evenement_en_cours}{par date_debut}{0,1}>
+              [(#SET{annee, #DATE_DEBUT|annee})]
+              <BOUCLE_article_actuellement(ARTICLES){id_evenement}>
+                <INCLURE{fond=inclure/resumes/rencontres-article-card, id_article, annee=#GET{annee}}/>
+              </BOUCLE_article_actuellement>
+            </BOUCLE_evenement_actuellement>
+              <BOUCLE_evenement_bientot(EVENEMENTS){id_rubrique}{evenement_a_venir}{par date_debut}{0,1}>
+                [(#SET{annee, #DATE_DEBUT|annee})]
+                <BOUCLE_article_bientot(ARTICLES){id_evenement}>
+                  <INCLURE{fond=inclure/resumes/rencontres-article-card, id_article, annee=#GET{annee}}/>
+                </BOUCLE_article_bientot>
+              </BOUCLE_evenement_bientot>
+            <//B_evenement_actuellement>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BOUCLE_rubrique_rencontres>

@@ -1,0 +1,37 @@
+/// SEARCH-PAGE
+
+.search-page {
+  .headline,
+  .box-filters,
+  .search-page_result {
+    background-color: var(--color-paper);
+    padding-left: var(--space-s);
+    padding-right: var(--space-s);
+  }
+}
+
+.search-page_message-sphinx {
+  border: 1px solid var(--color-message-border-warn);
+  border-radius: 4px;
+  padding: 1px 2px;
+}
+
+// .search-page_results {}
+
+.search-page_result {
+  border-bottom: 1px solid var(--color-primary-300);
+  padding-bottom: var(--space-l);
+
+  .abstract_heading {
+    font-size: var(--step-2);
+    max-width: 60ch;
+  }
+
+  .abstract_desc p {
+    max-width: 75ch;
+  }
+
+  & + & {
+    margin-top: var(--space-l);
+  }
+}

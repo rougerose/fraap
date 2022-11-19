@@ -1,8 +1,0 @@
-<BOUCLE_art(ARTICLES){gis}{id_mot}{","}><BOUCLE_gis(GIS){id_article}{doublons}{","}>
-		{"type": "Feature",
-		"geometry": {"type": "Point", "coordinates": [#LON, #LAT]},
-		"id":"#ID_GIS",
-		"properties": {
-			"title": [(#TITRE*|sinon{#_art:TITRE*}|supprimer_numero|json_encode)],
-			"description":[(#DESCRIPTIF|sinon{#_art:INTRODUCTION}|textebrut|concat{... <a href="#_art:URL_ARTICLE">En savoir plus</a>}|replace{"'","\'"}|json_encode)]
-		}}</BOUCLE_gis></BOUCLE_art>

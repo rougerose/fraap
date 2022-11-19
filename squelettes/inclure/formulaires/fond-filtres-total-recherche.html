@@ -1,0 +1,16 @@
+[(#REM)
+  <!--
+    Calculer le total des résultats dans la fenêtre des filtres.
+    Squelette utilisé par la fonction charger du formulaire recherche_filtres
+  -->
+]
+<BOUCLE_recherche_total(SPHINX)
+ {index #ENV{source}}{recherche #ENV*{recherche}}
+  {filter #ENV{annee}, 'YEAR(date) = @valeur'}
+  {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
+  {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
+  {par #GET{tri}}{inverse #GET{ordre}}
+  {pagination 20}
+> </BOUCLE_recherche_total>
+#GRAND_TOTAL
+</B_recherche_total>

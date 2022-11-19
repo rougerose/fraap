@@ -1,0 +1,21 @@
+#SET{id_objet, #ENV{id_objet}}
+[(#SET{titre, #ENV*{titre}|typo|sinon{#INFO_TITRE{#ENV{type_objet}, #GET{id_objet}}}|sinon{<:info_sans_titre:>}})]
+
+#SET{visible, oui}
+[(#ENV{type_objet}|objet_test_si_publie{#GET{id_objet}}|non) #SET{visible, non}]
+[(#SET{url, #INFO_URL{#ENV{type_objet}, #GET{id_objet}}})]
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos">#ENV{type_objet}-#GET{id_objet}</div>
+]
+
+<BOUCLE_public(CONDITION){si #ENV{appel_menu}|et{#GET{visible}|=={oui}}}>
+  <BOUCLE_parametres(DATA){source table, #ENV*{parametres}|explode{&}}>
+	#SET{param,#VALEUR|explode{=}}
+	#SET{url,#GET{url}|parametre_url{#GET{param/0},#GET{param/1}}}
+	</BOUCLE_parametres>
+	<li class="site-nav_item[ (#ENV{css})]">
+    <a class="site-nav_link" href="#GET{url}">[<span>(#GET{titre})</span>]</a>
+</BOUCLE_public>
+#FILTRE{trim}

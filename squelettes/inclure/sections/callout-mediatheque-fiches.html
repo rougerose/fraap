@@ -1,0 +1,43 @@
+<BOUCLE_si_articles(CONDITION){si #ENV{articles}|count|=={2}}>
+  [(#SET{banner, #ENV{banner, oui}|=={oui}|?{' ', ''}})]
+  [(#SET{wrapper_narrow, #ENV{wrapper_narrow, oui}|=={oui}|?{' ', ''}})]
+  <B_fonctionnement>
+    <section class="pod[(#GET{banner}|oui) variant-banner] gap-top-6">
+      <div class="pod_mask">
+        <div class="pod_bg-mask">
+          [(#GET{banner}|oui)
+          <div class="pod_bg-banner"></div>]
+        </div>
+        <div class="wrapper-content"[(#GET{wrapper_narrow}|oui) data-size="narrow"]>
+          <div class="pod_content callout callout-infos-ressources with-sidebar-right flow-small">
+            <BOUCLE_fonctionnement(ARTICLES){id_rubrique}{id_article IN #ENV{articles}}{0,1}>
+              <div class="callout_content media">
+                <div class="media_figure">
+                  [(#ID_RUBRIQUE|=={47}|oui) [(#SET{chemin, icon-rubrique47-64.svg})] [(#SET{class, icon icon-rubrique47})] ]
+                  [(#ID_RUBRIQUE|=={38}|oui) [(#SET{chemin, icon-rubrique38-64.svg})] [(#SET{class, icon icon-rubrique38})] ]
+                  [(#GET{banner}|oui) [(#SET{class, #GET{class}|concat{' with-bg'}})]]
+                  <INCLURE{fond=images/#GET{chemin}, svg=#GET{class}, aria-hidden=true} />
+                </div>
+                <div class="media_content flow-small">
+                  <h2 class="callout_title">#TITRE</h2>
+                  <div class="callout_desc flow">
+                    [(#DESCRIPTIF)]
+                    <a href="#URL_ARTICLE" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                  </div>
+                </div>
+              </div>
+            </BOUCLE_fonctionnement>
+            <BOUCLE_cta(ARTICLES){id_rubrique}{id_article IN #ENV{articles}}{1,1}>
+              <div class="callout_cta[(#GET{banner}|oui) variant-banner] flow-small">
+                <p class="callout_cta-label"><:fraap_squelettes:mediatheque_label_cta:></p>
+                <p class="callout_cta-btn">
+                  <a href="#URL_ARTICLE" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_contacter:/>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+                </p>
+              </div>
+            </BOUCLE_cta>
+          </div>
+        </div>
+      </div>
+    </section>
+  </B_fonctionnement>
+</BOUCLE_si_articles>

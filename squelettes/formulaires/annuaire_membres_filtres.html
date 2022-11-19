@@ -1,0 +1,108 @@
+[(#REM)
+  <!--
+    Récupérer la totalité des articles (sans le critères mots) ce qui permet de faire un décompte des articles disponibles pour chaque checkbox
+  -->
+]
+#SET{articles, #ARRAY}
+<BOUCLE_articles(ARTICLES){gis}{id_rubrique=#ENV{id_rubrique}}>
+  [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+</BOUCLE_articles>
+  [(#SET{total_articles, #TOTAL_BOUCLE})]
+</B_articles>
+
+<div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
+  <form method="post" action="#ENV{action}" class="dialog-filters_form">
+    <header class="dialog-filters_header">
+      <h1 id="dialogTitle"><span class="text-underline"><:fraap_squelettes:filtrer:></span></h1>
+      [<button type="button" class="dialog_close button-icon circle-hover" data-a11y-dialog-hide="" aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
+        (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
+      </button>]
+    </header>
+    <div class="dialog-filters_body">
+      #ACTION_FORMULAIRE
+      <div class="dialog-filters_inner-body">
+        <h2 class="dialog-filters_category"><:fraap_squelettes:annuaire_activites_associatives:></h2>
+        <div class="collapsible">
+          <BOUCLE_groupes_activites(GROUPES_MOTS){id_groupe_racine=11}{par num titre, titre}>
+            <B_mots_activites>
+              #SET{open_act, 0}
+              [(#SET{open_act, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title">
+                    <span>#TITRE</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_mots_activites(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=3, id_mot, mots} />
+                  </div>
+                </BOUCLE_mots_activites>
+              </div>
+            </B_mots_activites>
+          </BOUCLE_groupes_activites>
+        </div>
+        <h2 class="dialog-filters_category"><:fraap_squelettes:annuaire_localisation:></h2>
+        <div class="collapsible">
+          <BOUCLE_groupes_localisation(GROUPES_MOTS){id_groupe_racine=30}{par num titre}>
+            <B_mots_localisation>
+              #SET{open_loc, 0}
+              [(#SET{open_loc, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
+              <h3 class="collapsible_heading">
+                <button type="button" id="ch_#ID_GROUPE" aria-expanded="[(#GET{open_loc}|=={1}|?{true,false})]">
+                  <span class="collapsible_title">
+                    <span>#TITRE</span>
+                  </span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_loc}|=={1}|?{ch_#ID_GROUPE,''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_loc}|=={1}|?{'',hidden})]>
+                <BOUCLE_mots_localisation(MOTS spip_mots_liens){id_objet IN #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox, id_rubrique=3, id_mot, mots} />
+                  </div>
+                </BOUCLE_mots_localisation>
+              </div>
+            </B_mots_localisation>
+          </BOUCLE_groupes_localisation>
+        </div>
+      </div>
+    </div>
+    [(#REM)
+      <!--
+        Calculer le total des articles à afficher en fonction des sélections demandées.
+      -->
+    ]
+    #SET{total_articles, 0}
+    <B_articles_mots>
+      <BOUCLE_articles_mots(ARTICLES){mots?}{id_article IN #GET{articles}}> </BOUCLE_articles_mots>
+      #SET{total_articles, #TOTAL_BOUCLE}
+    </B_articles_mots>
+    [(#GET{total_articles}|>{0}|?{
+      [(#SET{total, #GET{total_articles}|singulier_ou_pluriel{fraap_squelettes:bouton_voir_resultat, fraap_squelettes:bouton_voir_resultats}})],
+      [(#SET{total, Aucun résultat})]
+    })]
+    <div class="dialog-filters_footer">
+      <p class="boutons">
+        <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="[(#GET{total}|attribut_html)]" />
+      </p>
+    </div>
+  </form>
+  <script>
+    jQuery(function($){
+      let form_filtres = document.querySelector("div.formulaire_#FORM form");
+      if (form_filtres && form_filtres.querySelector(".collapsible")) {
+        fraapCollapsible.init(form_filtres, true);
+        $(form_filtres).on("change", "input[type='checkbox']", function(){
+          $(this).parents("form").submit();
+        });
+      }
+		});
+  </script>
+</div>
+#FILTRE{trim}

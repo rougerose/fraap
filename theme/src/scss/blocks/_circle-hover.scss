@@ -1,0 +1,36 @@
+/// CIRCLE HOVER
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.circle-hover {
+  position: relative;
+
+  &::before {
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.3s;
+    transform: translate(-50%, -50%);
+    transform-origin: left center;
+    height: 2.25rem;
+    width: 2.25rem;
+    z-index: -1;
+  }
+
+  &.dialog_close {
+    &::before {
+      background-color: var(--color-contrast);
+    }
+  }
+
+  &:hover {
+    &::before {
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<BOUCLE_header_mot(MOTS){id_mot}>
+  #SET{icon, #VAL{images/}|concat{#ENV{icon}}}
+  #SET{class_icon, #ENV{class_icon}|concat{' '}|concat{icon headline_icon}}
+  <header class="headline region">
+    <div class="wrapper-content">
+      <h1 class="headline_title variant-offset-icon">
+        <INCLURE{fond=#GET{icon}, svg=#GET{class_icon}, aria-hidden=true} />
+        <span>#TITRE</span>
+      </h1>
+      [<div class="headline_desc measure flow">(#TEXTE)</div>]
+    </div>
+  </header>
+</BOUCLE_header_mot>

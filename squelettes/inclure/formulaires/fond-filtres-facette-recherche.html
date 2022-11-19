@@ -1,0 +1,36 @@
+[(#REM)
+  <!-- Squelette de filtres utilisé par le fonction charger du formulaire -->
+]
+#SET{tri,#ENV{tri,nb}}
+#SET{sens_tri,#ENV{sens_tri,DESC}}
+#SET{groupby,#ENV{critere}}
+[(#ENV{critere}|match{'\x28'}|oui)
+	#SET{groupby,valeur}
+]
+[(#SET{resultats, #ARRAY})]
+<B_resultats_facette>
+  <BOUCLE_resultats_facette(SPHINX)
+    {index #ENV{source}}
+    {recherche #ENV*{recherche}}
+    {select COUNT(*) AS nb}
+    {select GROUPBY() AS facette}
+    {select (#ENV{critere}|concat{' '}) AS valeur}
+    {select properties.mots.ids  AS ids}
+    {facette != ''}
+    {groupby #GET{groupby}}
+    {filter #ENV{annee},  'YEAR(date) = @valeur' }
+    {filtermono #ENV{typologie}, properties.typologie, #ENV{typologie}}
+    {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
+    {par #GET{tri}}{inverse #GET{sens_tri}}
+    {0, 20}
+  >
+    [(#ENV{#ENV{cle}}|is_array|?{
+      [(#SET{checked, #FACETTE|in_array{#ENV{#ENV{cle}}}|?{checked, ''} })],
+      [(#SET{checked, #FACETTE|=={#ENV{#ENV{cle}}}|?{checked, ''}})]
+    })]
+    [(#SET{resultats, #GET{resultats}|push{#LISTE{#FACETTE, #NB, #GET{checked}}}})]
+  </BOUCLE_resultats_facette>
+  [(#GET{resultats}|serialize)]
+</B_resultats_facette>
+  [(#GET{resultats}|serialize)]
+<//B_resultats_facette>

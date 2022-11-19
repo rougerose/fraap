@@ -1,0 +1,19 @@
+[(#REM)
+	Legende pour les documents
+  <!--
+    Légende pour les documents
+
+    Surcharge site FRAAP :
+      - h3 sur les titres
+      - supprimer les notes dans le descriptif.
+      - titre, descriptif et crédits -> <p> au lieu de <div>
+  -->
+]<BOUCLE_legendaire(DOCUMENTS){id_document=#ENV{id,#ENV{id_document}}}{tout}>
+  [(#ENV*{titre,#TITRE}|trim|sinon{#ENV*{descriptif,#DESCRIPTIF}|trim}|sinon{#ENV*{credits,#CREDITS}|trim}|oui)
+    <figcaption class="spip_doc_legende">
+      [<p class="spip_doc_titre [(#ENV{titre}|non)#EDIT{titre}]">(#ENV*{titre,#TITRE}|propre|ptobr)</p>]
+      [<p class="spip_doc_descriptif [(#ENV{descriptif}|non)#EDIT{descriptif}]">(#ENV*{descriptif,#DESCRIPTIF}|propre|PtoBR)</p>]
+      [<p class="spip_doc_credits [(#ENV{credits}|non)#EDIT{credits}]">(#ENV*{credits,#CREDITS}|propre|PtoBR)</p>]
+    </figcaption>
+  ]
+</BOUCLE_legendaire>

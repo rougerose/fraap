@@ -1,0 +1,89 @@
+/// BUTTON CALL TO ACTION
+
+.button-cta {
+  color: currentColor;
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--buttonCta-fontsize, var(--step-0));
+  line-height: 1.2;
+  padding: var(--buttonCta-padding, 0);
+  // white-space: nowrap;
+  min-width: 10ch;
+  min-height: 44px;
+
+  &.with-icon {
+    // align-items: baseline;
+
+
+    svg.icon.icon-nav-link {
+      --icon-border-radius: 0;
+      --icon-size: 0.75em;
+      --icon-padding: 0;
+      fill: currentColor;
+      position: relative;
+      // top: 0.1em;
+    }
+
+    // &[rel*="prev"] {
+    //   svg.icon.icon-nav-link {
+    //     --iconPathOffset: translateX(-6px);
+    //   }
+    // }
+  }
+
+  &.with-icon-right {
+    svg {
+      margin-left: 0.5em;
+    }
+  }
+
+  &.with-icon-left {
+    svg {
+      margin-right: 0.5em;
+    }
+
+    svg.icon.icon-nav-link {
+      --iconPathOffset: translateX(-8px);
+    }
+  }
+
+  &.variant-button {
+    background-color: var(--buttonCta-background, var(--color-contrast));
+    border-radius: 4px;
+    color: var(--buttonCta-color, var(--color-link-invert));
+    text-decoration: none;
+
+    &[data-state="disabled"],
+    &[disabled] {
+      background-color: var(--color-disabled);
+    }
+  }
+
+  &.variant-link {
+    color: var(--color-link);
+    margin-left: var(--buttonCta-marginLeft, 0);
+  }
+
+  &.variant-pill {
+    background-color: var(--color-paper);
+    border-radius: 2em;
+    border: 1px solid var(--color-contrast);
+    transition: background 0.3s, color 0.3s;
+    min-height: 0;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: var(--color-contrast);
+      color: var(--color-link-invert);
+      text-decoration: none;
+    }
+  }
+}
+
+.button-cta_label {
+  span:last-child {
+    color: var(--color-contrast-100);
+    font-size: 0.7em;
+    margin-left: 0.5em;
+  }
+}

@@ -1,0 +1,39 @@
+<BOUCLE_niveau_2_organisation_pro(RUBRIQUES){id_rubrique}>
+  <div class="page" data-page="rubrique-organisation" data-level="2">
+    <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
+    <INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique49-64.svg', class_icon=icon-rubrique49, id_rubrique} />
+
+    <div class="pod variant-angle-bottom-max gap-top-3">
+      <div class="wrapper-content">
+        <div class="pod_content">
+          <div class="auto-grid">
+            [(#REM)
+              <!--
+                2 hypothèses :
+                  - si rubrique Plaidoyer : afficher les sous-rubriques,
+                  - sinon tous les articles contenus dans la rubrique consultée.
+              -->
+            ]
+            <BOUCLE_rubrique_plaidoyer(CONDITION){si #ID_RUBRIQUE|=={52}}>
+              <BOUCLE_sousrubriques_plaidoyer(RUBRIQUES){id_parent}{par num titre}>
+                <INCLURE{fond=inclure/resumes/rubrique, id_rubrique}/>
+              </BOUCLE_sousrubriques_plaidoyer>
+            </BOUCLE_rubrique_plaidoyer>
+              <BOUCLE_tous_articles_card(ARTICLES){id_rubrique}{par num titre}{!par date}>
+                <article class="card abstract flow">
+                  <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=0} />
+                </article>
+              </BOUCLE_tous_articles_card>
+            <//B_rubrique_plaidoyer>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    [(#REM)
+      <!-- La Fraap, c'est aussi... -->
+    ]<BOUCLE_teaser_orga_pro(SELECTIONS){identifiant=rubrique-organisation-pro-aussi}>
+      <INCLURE{fond=inclure/teasers/organisation-pro-aussi, id_parent, id_rubrique, id_selection, selection_titre=#TITRE}/>
+    </BOUCLE_teaser_orga_pro>
+  </div>
+</BOUCLE_niveau_2_organisation_pro>

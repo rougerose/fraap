@@ -1,0 +1,11 @@
+// Links
+
+// @use "../settings";
+
+a:not([class]) {
+  color: currentColor;
+}
+
+a:not(:hover) {
+  text-decoration: none;
+}

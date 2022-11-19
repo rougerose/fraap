@@ -1,0 +1,102 @@
+<BOUCLE_article_fiche_pratique(ARTICLES){id_article}>
+  #SET{groupes, #ARRAY} #SET{id_groupe_mot, ''} #SET{id_groupe_env, #ENV{id_groupe, ''}}
+
+  [(#REM)
+    <!--
+      1- Récupérer la variable id_groupe : privilégier celle en cours de consultation si elle existe parmi les mots liés à l'article ; sinon la première de la série.
+      2- Constituer le tableau dédoublé des id_groupe liés à l'article.
+    -->
+  ]
+  <BOUCLE_groupes_article(MOTS){id_article}{fusion_supprimer}{fusion id_groupe}>
+    [(#ID_GROUPE|=={#ENV{id_groupe}}|oui)
+      [(#GET{id_groupe_mot}|non) #SET{id_groupe_mot, #ID_GROUPE} ]
+    ]
+    [(#SET{groupes, #GET{groupes}|push{#ID_GROUPE}})]
+  </BOUCLE_groupes_article>
+  <BOUCLE_premier_groupe_article(GROUPES_MOTS){id_groupe IN #GET{groupes}}{par titre}{0,1}{si #GET{id_groupe_mot}|non}>
+    #SET{id_groupe_mot, #ID_GROUPE}
+  </BOUCLE_premier_groupe_article>
+  [(#REM)
+    <!-- Si l'article est consulté sans le paramètre id_groupe, on utilise celui qui vient d'être récupéré pour constituer un fil d'Ariane complet. -->
+  ][(#GET{id_groupe_env}|non) #SET{id_groupe_env, #GET{id_groupe_mot}} ]
+
+  [(#REM)
+    <!--
+      Préparer le sommaire, qui s'affiche à condition que #TEXTE contiennent des intertitres,
+      sinon les intertitres documents et portfolio -- si présents -- ne sont pas pris en compte.
+    -->
+  ]
+  [(#SET{sommaire, ''})]
+  [(#SET{sommaire, #SOMMAIRE{#TEXTE}})]
+  <BOUCLE_si_sommaire(CONDITION){si #GET{sommaire}|oui}>
+    #SET{docs, ''} #SET{imgs, ''}
+    <BOUCLE_docs(DOCUMENTS){id_article}{vu=non}{media=file}> </BOUCLE_docs>
+      [(#SET{docs, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:document_associe, fraap_squelettes:documents_associes}|wrap{<h2>}})]
+    </B_docs>
+    <BOUCLE_imgs(DOCUMENTS){id_article}{vu=non}{media=image}> </BOUCLE_imgs>
+      [(#SET{imgs, #VAL{<:fraap_squelettes:image_associee:>}|wrap{<h2>}})]
+    </B_imgs>
+    [(#SET{sommaire, [(#SOMMAIRE{[(#TEXTE) #GET{docs} #GET{imgs}]}|ajouter_styles_toc|supprimer_soulignement)]})]
+  </BOUCLE_si_sommaire>
+
+  <div class="page" data-page="article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/article-fiches-pratiques, id_article, id_rubrique, id_groupe=#GET{id_groupe_env}}/>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <div class="region">
+        <article class="article">
+          <div class="prose[(#GET{sommaire}|oui) with-large-width]">
+            <header class="headline">
+              <h1 class="headline_title variant-article measure">#TITRE</h1>
+              [<p class="headline_subtitle measure">(#SOUSTITRE)</p>]
+              [<div class="headline_desc variant-article flow measure prose-editor">(#CHAPO)</div>]
+              [(#REM) <!-- Date de publication et éventuellement date de modification si supérieure à 24h après la date de publication  --> ]
+              <p class="headline_date"><:fraap_squelettes:date_publication_fiche:><time datetime="[(#DATE|date_iso)]">[(#DATE|affdate)]</time>[(#DATE_MODIF|affdate{U}|moins{#DATE|affdate{U}}|>{86400}|?{[<:fraap_squelettes:date_mise_a_jour_fiche:><time datetime="[(#DATE_MODIF|date_iso)]">(#DATE_MODIF|affdate)</time>.], '.'})]</p>
+            </header>
+          </div>
+          <div class="with-sidebar flex-dir-rev flex-align-start flex-wrap-no">
+            [<nav class="toc gap-top-5 flow-small" data-type="side">
+              <h2 class="toc_heading"><:fraap_squelettes:toc_titre:></h2>
+              (#GET{sommaire})
+            </nav>]
+            <div class="prose">
+              [<div class="article_logo gap-top-5">
+                (#LOGO_ARTICLE|image_reduire{1200, 0})
+              </div>]
+              [<div class="toc gap-top-5" data-type="inner">
+                <details role="navigation">
+                  <summary><:fraap_squelettes:toc_titre:></summary>
+                  (#GET{sommaire})
+                </details>
+              </div>]
+              [<div class="flow gap-top-5 prose-editor">
+                (#TEXTE|ancres_sommaire)
+              </div>]
+
+              <BOUCLE_docs_article(DOCUMENTS){id_article}{vu=non}{media=file}{0,1}>
+                <INCLURE{fond=inclure/liste/article-document-file, id_article}/>
+              </BOUCLE_docs_article>
+
+              <BOUCLE_imgs_article(DOCUMENTS){id_article}{vu=non}{media=image}{0,1}>
+                <INCLURE{fond=inclure/liste/article-document-image, id_article}/>
+              </BOUCLE_imgs_article>
+
+              [<div class="notes auto-grid gap-top-6 prose-editor">
+                (#NOTES)
+              </div>]
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <BOUCLE_prolonger_liaisons(ARTICLES_LIES){id_article}{type_liaison=prolonger}{0,1}>
+      <INCLURE{fond=inclure/liste/prolonger/fiche_pratique-articles_lies, id_article, heading_level=4} />
+    </BOUCLE_prolonger_liaisons>
+      <INCLURE{fond=inclure/liste/prolonger/fiche_pratique-mots_articles, id_article, id_groupe_mot=#GET{id_groupe_mot}, heading_level=4} />
+    <//B_prolonger_liaisons>
+
+  </div>
+</BOUCLE_article_fiche_pratique>
+#FILTRE{trim}

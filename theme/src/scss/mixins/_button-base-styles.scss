@@ -1,0 +1,35 @@
+/// BUTTON BASE STYLES
+/// Consistent, base styles that can be shared
+/// between button-type elements
+/// @link https://github.com/GoogleChrome/web.dev/blob/main/src/scss/mixins/_button-base-styles.scss
+
+@use "./vertically-align-label" as mixin;
+
+@mixin button-base-styles() {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  border-radius: var(--border-radius-base);
+  cursor: pointer;
+  // Inutile, cf. _reset.scss
+  // font-family: inherit; /* For all browsers */
+  // font-size: 100%; /* For all browsers */
+  // line-height: 1.15; /* For all browsers */
+  line-height: 1 !important;
+  margin: 0; // Firefox and Safari have margin
+  overflow: visible; // Edge hides overflow
+  position: relative;
+  text-transform: none; // Firefox inherits text-transform
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-appearance: button; // Safari otherwise prevents some styles
+  appearance: none;
+  // @include mixin.vertically-align-label();
+
+  & svg {
+    width: 1.3em;
+    height: 1.3em;
+    fill: currentColor;
+    transform: translateY(-0.2ex);
+  }
+}

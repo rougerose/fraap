@@ -1,0 +1,43 @@
+/// MEMBER-PROFILE
+/// Squelette article-annuaire-membre
+
+.member-profile_address {
+  > span.address {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.member-profile_online {
+  --cluster-gutter: var(--space-xs) var(--space-m);
+
+  svg {
+    fill: currentColor;
+    transition: fill 0.3s;
+  }
+
+  a {
+    border: 1px solid var(--color-link);
+    border-radius: 4px;
+    padding: 2px;
+    background-color: var(--color-paper);
+    color: var(--color-link);
+    transition: background-color 0.3s;
+  }
+
+  a:hover {
+    background-color: var(--color-link);
+    svg {
+      fill: var(--color-link-invert);
+    }
+  }
+}
+
+.member-profile_map {
+  width: 100%;
+
+  > .carte_gis {
+    width: 100%;
+    height: 400px;
+  }
+}

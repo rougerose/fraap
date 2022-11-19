@@ -1,0 +1,456 @@
+/// ICON
+/// 01 - icon-nav-[search-burger-close]
+/// 02 - icon-social
+/// 03 - icons rubrique/article
+/// 04 - icon-arrow-right
+/// 05 - icon-locate
+/// 06 - icon-plus
+/// 07 - icon-filter
+/// 08 - icon-close
+
+@use "../settings";
+@use "../tools/mq" as mq;
+
+.icon {
+  height: var(--icon-size, 1em);
+  width: var(--icon-size, 1em);
+}
+
+// 01 .icon-nav
+// ========================================
+
+.icon-nav-search,
+.icon-nav-burger,
+.icon-nav-close {
+  --icon-size: 32px;
+  fill: none;
+  stroke: settings.$FRAAP-COLOR-INK;
+  height: var(--icon-size);
+  width: var(--icon-size);
+}
+
+.icon-nav-back {
+  fill: none;
+  stroke: currentColor;
+}
+
+.icon-nav-forward,
+.icon-nav-back,
+.icon-nav-link {
+  --icon-size: 32px;
+  --iconPathOffset: translateX(12px);
+  --hoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  border-radius: var(--icon-border-radius);
+  flex-shrink: 0;
+  height: var(--icon-size);
+  padding: var(--icon-padding);
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke-width);
+  transition: transform 0.3s ease-out, stroke 0.1s;
+  width: var(--icon-size);
+}
+
+.icon-nav-back {
+  background-color: var(--color-contrast);
+
+  &_path1,
+  &_path2 {
+    stroke: var(--color-icon-nav-back-stroke);
+    transform-origin: center;
+    transition: transform var(--hoverTransition); //150ms cubic-bezier(0.215,0.61,0.355,1);
+  }
+
+  a:hover & {
+    stroke: currentColor;
+    transform: translateX(-12px);
+
+    &_path1 {
+      transform: scale(1.2);
+    }
+
+    &_path2 {
+      transform: scale(0.8) translateX(8px);
+    }
+  }
+}
+
+.icon-nav-forward {
+  &_path1,
+  &_path2 {
+    transform-origin: center;
+    transition: transform var(--hoverTransition); //150ms cubic-bezier(0.215,0.61,0.355,1);
+  }
+
+  a:hover & {
+    stroke: currentColor;
+    transform: var(--iconPathOffset);
+
+    &_path1 {
+      transform: scale(1.2);
+    }
+
+    &_path2 {
+      transform: scale(0.8) translateX(-8px);
+    }
+  }
+}
+
+.icon-nav-link {
+  --iconPathOpacity: 0;
+  --iconPathTransform: none;
+  --iconPathOffset: translateX(6px);
+  --iconTranslate: transalteX(-8px);
+  // align-self: baseline;
+
+  a:hover & {
+    --iconPathOpacity: 1;
+    --iconPathTransform: var(--iconPathOffset);
+    stroke: currentColor;
+    transform: var(--iconTranslate);
+  }
+
+  path:nth-of-type(1) {
+    // stroke: red;
+    transition: opacity var(--hoverTransition);
+    opacity: var(--iconPathOpacity);
+  }
+
+  path:nth-of-type(2) {
+    transition: transform var(--hoverTransition);
+    transform: var(--iconPathTransform);
+  }
+}
+
+// 02 icon-social
+// ========================================
+
+.icon-social {
+  fill: var(--color-primary);
+  transition: fill 0.15s ease-in;
+}
+
+// 03 icon rubrique/article
+// ========================================
+
+// icon Fédérer
+.icon-rubrique48 {
+  --color-circle: var(--color-primary);
+  --color-path: var(--color-contrast);
+
+  circle {
+    fill: var(--color-circle);
+  }
+  path {
+    fill: var(--color-path);
+    fill-opacity: 0.85;
+  }
+
+  &.with-bg {
+    --color-circle: var(--color-primary-700);
+  }
+}
+
+// icon Représenter
+.icon-rubrique49 {
+  .path1 {
+    fill: var(--color-primary-600);
+    fill-opacity: 1;
+  }
+
+  .path2 {
+    fill: var(--color-primary);
+    fill-opacity: 0.8;
+  }
+
+  .path3 {
+    fill: var(--color-contrast);
+    fill-opacity: 0.8;
+  }
+  // path:nth-of-type(1) {
+  //   fill: var(--color-primary-600);
+  //   fill-opacity: 1;
+  // }
+  // path:nth-of-type(2) {
+  //   fill: var(--color-primary-700);
+  //   fill-opacity: 0.8;
+  // }
+  // path:nth-of-type(3) {
+  //   fill: var(--color-contrast);
+  // }
+
+  &.with-bg {
+    .path1 {
+      fill: var(--color-primary-800);
+    }
+    .path2 {
+      fill: var(--color-primary-700);
+    }
+    // path:nth-of-type(1) {
+    //   fill: var(--color-primary-800);
+    // }
+    // path:nth-of-type(2) {
+    //   fill: var(--color-primary-700);
+    // }
+  }
+}
+
+// icon Informer
+.icon-rubrique1 {
+  .circle1,
+  .path1 {
+    fill: var(--color-contrast);
+  }
+
+  .circle2,
+  .path2 {
+    fill: var(--color-primary-600);
+    fill-opacity: 0.8;
+  }
+
+  &.with-bg {
+    .circle1,
+    .path1 {
+      fill-opacity: 0.8;
+    }
+    .circle2,
+    .path2 {
+      fill: var(--color-primary-700);
+    }
+  }
+}
+
+// icon Observer
+.icon-rubrique55 {
+  .path1 {
+    fill: var(--color-contrast);
+  }
+  .path2 {
+    fill: var(--color-primary-600);
+  }
+  .path3 {
+    fill: var(--color-primary);
+  }
+
+  &.with-bg {
+    .path1 {
+      fill-opacity: 0.8;
+    }
+    .path2 {
+      fill: var(--color-primary-700);
+    }
+    .path3 {
+      fill: var(--color-primary);
+    }
+  }
+}
+
+// icon Fiches pratiques
+.icon-rubrique38 {
+  .path1,
+  .path3 {
+    fill: var(--color-contrast);
+    fill-opacity: 0.8;
+  }
+
+  .path2 {
+    fill: var(--color-primary-600);
+    fill-opacity: 0.8;
+  }
+
+  &.with-bg {
+    .path2 {
+      fill: var(--color-primary-700);
+    }
+  }
+}
+
+// icon Fraap-infos
+.icon-article512 {
+  circle {
+    fill: var(--color-primary-700);
+  }
+  .carre {
+    fill: var(--color-contrast);
+    fill-opacity: 0.8;
+  }
+  .triangle {
+    fill: var(--color-primary-700);
+    fill-opacity: 0.8;
+  }
+
+  // &.with-bg {
+  //   circle {
+  //     fill: var(--color-primary-600);
+  //   }
+  //   .carre {
+  //     fill: var(--color-contrast);
+  //   }
+  // }
+}
+
+// icon Atlas ATA
+.icon-article962 {
+  .path1 {
+    fill: var(--color-contrast);
+  }
+  .path2 {
+    fill: var(--color-primary-700);
+    fill-opacity: 0.8;
+  }
+  .path3 {
+    fill: var(--color-primary);
+  }
+
+  &.with-bg {
+    .path1 {
+      fill-opacity: 0.8;
+    }
+  }
+}
+
+// icon Annuaire
+.icon-rubrique3 {
+  --color-path: var(--color-paper);
+  --color-circle: var(--color-contrast);
+
+  path {
+    stroke: var(--color-path);
+  }
+
+  circle {
+    fill: var(--color-circle);
+  }
+
+  &.with-bg {
+    --color-path: var(--color-primary);
+    circle {
+      fill-opacity: 0.8;
+    }
+  }
+}
+
+// icon Mediathèque
+.icon-rubrique47 {
+  .path1,
+  .path3 {
+    fill: var(--color-primary);
+  }
+
+  .path2 {
+    fill: var(--color-contrast);
+    opacity: 0.8;
+  }
+
+  .path3 {
+    fill-opacity: 0.8;
+  }
+  // path:nth-child(odd) {
+  //   fill: var(--color-primary-600);
+  // }
+  // path:nth-child(2) {
+  //   fill: var(--color-contrast);
+  // }
+
+  &.with-bg {
+    .path1,
+    .path3 {
+      fill: var(--color-primary-700);
+    }
+
+  }
+}
+
+// icon Interventions
+.icon-rubrique66 {
+  --i66-path-odd: var(--color-primary);
+  --i66-path-even: var(--color-contrast);
+
+  .path1,
+  .path3 {
+    fill: var(--i66-path-odd);
+  }
+
+  .path2 {
+    fill: var(--i66-path-even);
+  }
+
+  &.with-bg {
+    --i66-path-odd: var(--color-contrast);
+  }
+}
+
+// icon Guide entités publiques
+.icon-article1093 {
+  --path1: var(--color-primary);
+  --path2: var(--color-contrast);
+  .path1 {
+    fill: var(--path1);
+  }
+  .path2 {
+    fill: var(--path2);
+    fill-opacity: 0.8;
+  }
+
+  &.with-bg {
+    --path1: var(--color-primary-700);
+  }
+}
+
+// 04 - icon-arrow-right
+// ========================================
+.icon-arrow-right {
+  padding: 0;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke-width);
+
+  & path:first-child {
+    stroke-width: 0;
+  }
+}
+
+
+// 05 - icon-locate
+// ========================================
+.icon-locate {
+  // align-self: center;
+  fill: currentColor;
+}
+
+
+// 06 - icon-plus
+// ========================================
+.icon-plus {
+  stroke-width: 2;
+}
+
+
+// 07 - icon-filter
+// ========================================
+// .icon-filter {}
+
+
+// 08 - icon-close
+// ========================================
+.icon-close {
+  stroke: currentColor;
+}
+
+// 09 - icon-download
+// ========================================
+.icon-download {
+  margin-top: -0.25em;
+  stroke: currentColor;
+}
+
+// 10 - icon-mot
+// ========================================
+.icon-mot {
+  circle {
+    fill: var(--color-contrast);
+  }
+
+  path {
+    fill: var(--color-primary);
+    fill-opacity: 0.8;
+  }
+}

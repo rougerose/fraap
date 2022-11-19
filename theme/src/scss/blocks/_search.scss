@@ -1,0 +1,46 @@
+/// SEARCH
+
+@use "../tools/mq" as mq;
+
+// .search {}
+
+.search_group {
+  --form-fields-input-padding: 8px 8px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.search_label {
+  font-family: var(--font-family-headings);
+  font-size: var(--step-3);
+  flex: 0 0 100%;
+}
+
+.search_label-mediatheque {
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.search_input {
+  --form-fields-width: auto;
+  // Règles en mode "sidebar" (https://every-layout.dev/layouts/sidebar/)
+  // mais appliquées sur le champ de recherche et le bouton (et non le label).
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: 66.666%;
+}
+
+.search_submit {
+  flex-grow: 1;
+  justify-content: center; // button flexbox
+  padding: var(--form-fields-input-padding);
+  margin: 0 auto;
+
+  & svg {
+    margin-left: 8px;
+    height: 0.75em;
+    width: 0.75em;
+  }
+}

@@ -1,0 +1,92 @@
+/// POD (section)
+///
+@use "../tools/mq" as mq;
+
+.pod {
+  --pod-padding-top: var(--space-l-xl);
+  --pod-padding-bottom: var(--space-l-xl);
+  position: relative;
+
+  &.variant-angle-bottom {
+    --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-angle-top {
+    --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-angle-top-bottom {
+    --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-angle-bottom-max {
+    --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-max) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-banner {
+    --pod-padding-top: calc(var(--section-angle-height) + (var(--section-angle-padding-top-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+    --pod-padding-bottom: calc(var(--section-angle-height) + (var(--section-angle-padding-bottom-base-min) * 1px) - (var(--angle-sin) * (100vw / 2)));
+  }
+
+  &.variant-overlap {
+    margin-bottom: calc((var(--pod-padding-bottom) * 0.3) * -1);
+  }
+
+  &.variant-banner-mask-bottom {
+    .pod_mask {
+      margin-bottom: -0.5rem;
+    }
+  }
+}
+
+// Mask zone
+.pod_mask {
+  overflow: hidden;
+}
+
+.pod_bg-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.pod_bg-banner {
+  position: relative;
+  background-color: var(--color-primary);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transform: skewY(-3deg);
+  transform-origin: center;
+}
+
+// Content zone
+.pod_content {
+  padding: var(--pod-padding-top, 0) 0 var(--pod-padding-bottom, 0);
+  position: relative;
+}
+
+.pod_headline {
+  font-size: var(--step-4);
+}
+
+.pod_desc {
+  --measure: 70ch;
+  font-size: var(--step-2);
+}
+
+.pod_banner-mask-bottom {
+  background-color: var(--color-paper);
+  padding-top: calc(var(--section-angle-height));
+  transform: skewY(-3deg);
+  position: relative;
+  bottom: -0.2rem;
+
+  @include mq.mq($until: l) {
+    padding-top: calc(var(--section-angle-height) * 2);
+    bottom: calc(var(--section-angle-height) * -1);
+    position: absolute;
+    width: 100%;
+  }
+}

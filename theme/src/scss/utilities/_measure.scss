@@ -1,0 +1,17 @@
+/// MEASURE (justification)
+
+.measure {
+  max-width: var(--measure, 60ch);
+}
+
+.measure-s {
+  max-width: var(--measure-s, 40ch);
+}
+
+// .measure-m {
+//   max-width: var(--measure-m);
+// }
+
+// .measure-l {
+//   max-width: var(--measure-l);
+// }

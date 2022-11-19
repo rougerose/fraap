@@ -1,0 +1,195 @@
+/// FRAAP-PRINT
+/// Reset des styles
+
+@media print {
+  :root {
+    --color-link-invert: var(--color-ink);
+  }
+
+  .wrapper-structure,
+  .wrapper-content,
+  .site-header,
+  .text-underline {
+    padding: 0;
+  }
+
+  // button-cta
+  // ========================================
+  .button-cta {
+    white-space: normal;
+
+    &.spip_out {
+      display: inline;
+    }
+  }
+
+  // card
+  // ========================================
+  .card {
+    &.variant-box {
+      border: 1px solid;
+    }
+  }
+
+  .card-member {
+    border-color: var(--color-ink);
+  }
+
+  // fbiblio
+  // ========================================
+  .fbiblio {
+    &.selection,
+    .media_figure {
+      padding: 0;
+    }
+
+    &.abstract {
+      padding-bottom: var(--space-l);
+      border-color: var(--color-ink);
+
+      .abstract_subheading {
+        color: var(--color-ink);
+        font-size: initial;
+      }
+    }
+
+    &.article .headline_subtitle {
+      color: var(--color-ink);
+      margin-top: 0;
+    }
+  }
+
+  // formulaires
+  // ========================================
+  .formulaire_formidable legend.legend {
+    color: var(--color-ink);
+  }
+
+  // header
+  // ========================================
+  .site-header {
+    &_baseline,
+    &_nav {
+      justify-content: center;
+    }
+  }
+
+  // member
+  // ========================================
+  .member-profile_online {
+    a {
+      border: none;
+      color: var(--color-ink);
+    }
+  }
+
+  // page
+  // ========================================
+  .page {
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+
+    &[data-page="rubrique-mediatheque"] .selections_headline h2 {
+      color: var(--color-ink);
+    }
+  }
+
+  // paginaton
+  // ========================================
+  .pagination_item > .on {
+    border: 1px solid;
+  }
+
+  // pill
+  // ========================================
+  .pill {
+    &,
+    &[href] {
+      --pill-color: var(--color-ink);
+    }
+  }
+
+  // pod
+  // ========================================
+  .pod {
+    &.variant-overlap {
+      display: none;
+    }
+  }
+
+  .pod_mask {
+    overflow: visible;
+  }
+
+  .pod_content {
+    --pod-padding-top: 0;
+  }
+
+  .pod_headline {
+    line-height: unset;
+  }
+
+  // prose-editor
+  // ========================================
+
+  .prose-editor {
+    a[class*="spip"] {
+      color: var(--color-ink);
+    }
+
+    // a.spip_out::after {
+    //   display: none;
+    // }
+  }
+
+  // splide
+  // ========================================
+  .splide__list {
+    flex-wrap: wrap;
+  }
+
+  .splide__slide {
+    padding-bottom: var(--space-m-xl);
+  }
+
+  // text-underline
+  // ========================================
+
+  .text-underline {
+    margin-left: 0;
+  }
+
+
+  // no-print
+  .box-filters,
+  .breadcrumb,
+  .member-profile_map,
+  .site-header_links,
+  .site-footer,
+  .spip_admin_float,
+  .spip_doc_action,
+  .toc {
+    display: none;
+  }
+
+  a[href*="fraap"] {
+    &::after {
+      display: none;
+    }
+  }
+
+  a.spip_out,
+  .prose-editor a.spip_out {
+    &::after {
+      content: " (" attr(href) ")";
+      display: inline;
+      mask-image: none;
+      mask-size: auto;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+  }
+
+
+
+}

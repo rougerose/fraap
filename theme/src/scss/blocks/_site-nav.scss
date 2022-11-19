@@ -1,0 +1,17 @@
+/// SITE-NAV
+///
+/// Styles communs à toutes les variantes
+///
+/// Variantes disponibles:
+///   - blocks/site-nav-top
+///   - blocks/site-nav-offcanvas
+
+.site-nav_list {
+  padding: 0;
+}
+
+.site-nav_link {
+  text-decoration: none;
+  color: currentColor;
+  transition: color 0.15s ease-in;
+}

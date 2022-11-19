@@ -1,0 +1,17 @@
+<paquet
+	prefix="fraap_theme"
+	categorie="theme"
+	version="4.0.0-alpha"
+	etat="dev"
+	compatibilite="[4.0.0;4.1.*]"
+	logo="prive/themes/spip/images/fraap_theme-128.png"
+  schema="1.0.0"
+>
+	<nom>Fraap.org - Thème</nom>
+	<auteur lien="http://rouge-rose.net">christophe le drean</auteur>
+	<licence>GPLv3</licence>
+	<necessite nom="fraap_squelettes" />
+  <genie nom="renouveler_nuance" periode="86400" />
+  <pipeline nom="recuperer_fond" inclure="fraap_theme_pipelines.php" />
+	<chemin path="" />
+</paquet>
