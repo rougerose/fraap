@@ -1,8 +1,8 @@
 <paquet
 	prefix="fraap_squelettes"
 	categorie="squelettes"
-	version="4.0.0-alpha"
-	etat="dev"
+	version="4.0.0"
+	etat="stable"
 	compatibilite="[4.0.0;4.1.*]"
 	logo="prive/themes/spip/images/fraap_squelettes-128.png"
 >
@@ -29,7 +29,7 @@
   <necessite nom="metasplus" compatibilite="[2.4.2;2.99.*]" />
   <necessite nom="formidable" compatibilite="[5.2.2;5.99.*]" />
   <necessite nom="cvtupload" compatibilite="[2.0.1;2.99.*]" />
-  <!-- <necessite nom="fraap_biblio" compatibilite="[1.0.0;[" /> -->
+  <utilise nom="fraap_biblio" compatibilite="[1.0.0;[" />
   <utilise nom="bellespuces" compatibilite="[1.0.2;1.99.*]" />
   <utilise nom="odt2spip" compatibilite="[4.1.2;4.99.*]" />
   <utilise nom="oembed" compatibilite="[3.0.0;3.99.*]" />
