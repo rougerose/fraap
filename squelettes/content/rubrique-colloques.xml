@@ -1,0 +1,5 @@
+<composition>
+  <nom>Colloques et Conférences</nom>
+  <description>Composition pour la rubrique Colloques et Conférences :  liste des articles avec un menu de filtres</description>
+  <icon>images/objet-liste-contenus.png</icon>
+</composition>
