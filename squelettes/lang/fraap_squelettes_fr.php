@@ -27,7 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
-	'cta_adhesion' => 'Mon association souhaite adhérer à la Fraap',
+	'cta_adhesion' => 'Pour adhérer à la Fraap',
 	'cta_contacter' => 'Nous contacter',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
