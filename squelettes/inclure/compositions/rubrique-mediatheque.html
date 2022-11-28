@@ -7,7 +7,7 @@
     [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   ]
   #ANCRE_PAGINATION
-  <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, vue=#ENV{vue}, env}/>
+  <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
   <div class="pad-top-5">
     <div class="flow">
       <BOUCLE_ressources(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
