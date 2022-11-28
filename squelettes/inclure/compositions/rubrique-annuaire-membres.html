@@ -19,14 +19,14 @@
               [<div class="card-member_desc">(#DESCRIPTIF)</div>]
             </div>
             <div class="card-member_action cluster">
-              <button class="button-cta variant-button with-icon with-icon-left button-ripple" type="button" data-fraapMember-id="#GET{gis/id}" data-fraapMember-lat="#GET{gis/lat}" data-fraapMember-lon="#GET{gis/lon}">
+              <button class="button-cta variant-small variant-button with-icon with-icon-left button-ripple" type="button" data-fraapMember-id="#GET{gis/id}" data-fraapMember-lat="#GET{gis/lat}" data-fraapMember-lon="#GET{gis/lon}">
                 [(#INCLURE{fond=images/icon-marker-32.svg, svg=icon icon-locate, aria-hidden=true, focusable=false, largeur=0.8em, hauteur=0.8em}) ]<:fraap_squelettes:cartographie_localiser:>
               </button>
               [(#ENV{mots}|?{
                 [(#SET{url, #URL_ARTICLE|parametre_url{mots, #ENV{mots}|array_filter}})],
                 [(#SET{url, #URL_ARTICLE})]
               })]
-              <a href="#GET{url}" class="button-cta variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
+              <a href="#GET{url}" class="button-cta variant-small variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
             </div>
 
             #SET{territoires, #ARRAY}

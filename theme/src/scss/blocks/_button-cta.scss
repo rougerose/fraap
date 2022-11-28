@@ -9,7 +9,7 @@
   padding: var(--buttonCta-padding, 0);
   // white-space: nowrap;
   min-width: 10ch;
-  min-height: 44px;
+  min-height: var(--buttonCta-height, 44px);
 
   &.with-icon {
     // align-items: baseline;
@@ -65,11 +65,11 @@
   }
 
   &.variant-pill {
+    --buttonCta-height: 0;
     background-color: var(--color-paper);
     border-radius: 2em;
     border: 1px solid var(--color-contrast);
     transition: background 0.3s, color 0.3s;
-    min-height: 0;
     white-space: nowrap;
 
     &:hover {
@@ -77,6 +77,10 @@
       color: var(--color-link-invert);
       text-decoration: none;
     }
+  }
+
+  &.variant-small {
+    --buttonCta-height: 32px;
   }
 }
 
