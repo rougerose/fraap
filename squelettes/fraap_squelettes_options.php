@@ -46,3 +46,8 @@ define('_NOTES_FERME_NOTE', '&nbsp;</span>');
 
 // cvtupload - délai avant effacement des fichiers
 define('_CVTUPLOAD_AGE_MAX', 24 * 3600 * 5);
+
+// metaplus : pages exclues
+if (!defined('_METASPLUS_PAGES_EXCLUES')) {
+	define('_METASPLUS_PAGES_EXCLUES', ['404']);
+}
