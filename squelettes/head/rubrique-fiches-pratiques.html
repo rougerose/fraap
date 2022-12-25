@@ -5,6 +5,8 @@
       [<meta name="description" content="(#DESCRIPTIF|textebrut)" />],
       [(#INCLURE{fond=inclure/head/rubrique-fiches-pratiques_groupe_description, id_groupe})]
     })]
-    [<meta name="description" content="(#DESCRIPTIF|textebrut)" />]
+    [<link rel="canonical" href="(#URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE}|url_absolue)"/>]
   </BOUCLE_si_groupe>
+  [<link rel="canonical" href="(#URL_RUBRIQUE|parametre_url{id_groupe, #ID_GROUPE}|url_absolue)"/>]
+  <//B_si_groupe>
 </BOUCLE_rubrique_head>
