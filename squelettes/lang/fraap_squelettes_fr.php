@@ -27,7 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// C
 	'cartographie_localiser' => 'Afficher sur la carte',
-	'cta_adhesion' => 'Pour adhérer à la Fraap',
+	'cta_adhesion' => 'Pour adhérer à la Fraap <svg with="1em" height="1em" class="icon icon-nav-link" aria-hidden="true" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1.5"><g fill="none"><path class="icon-nav-link_path1" d="M2 16h24"></path><path class="icon-nav-link_path2" d="m8 4 12 12L8 28" stroke-miterlimit="2"></path></g></svg>',
 	'cta_contacter' => 'Nous contacter',
 	'cta_en_savoir_plus' => 'En savoir plus',
 	'cta_federation_adherer' => 'Adhérer à la fédération',
