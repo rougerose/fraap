@@ -1,0 +1,10 @@
+[(#REM) Sitemap pour les fbiblios ]
+[(#SET{recent,[(#VAL{Y-m-d H:i:s}|date{#VAL{"-1 day"}|strtotime})]})]
+<BOUCLE_fbiblios(FBIBLIOS){!par date}{0,2000}>
+<url>
+  [<loc>(#URL_FBIBLIO|url_absolue)</loc>]
+  [(#DATE**|>{#GET{recent}}|?{
+  [<lastmod>(#DATE**|date_iso)</lastmod>]
+  })]
+</url>
+</BOUCLE_fbiblios>
