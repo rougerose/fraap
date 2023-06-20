@@ -15,11 +15,11 @@
   <necessite nom="selections_editoriales" compatibilite="[2.0.3;[" />
   <necessite nom="menus" compatibilite="[2.0.4;[" />
   <necessite nom="gis" compatibilite="[4.53.0;[" />
-  <necessite nom="pages" compatibilite="[1.5.7;1.99.*]" />
+  <necessite nom="pages" compatibilite="[1.5.7;[" />
   <necessite nom="gma" compatibilite="[1.3.0;1.99.*]" />
   <necessite nom="porte_plume_intertitres" compatibilite="[2.0.1;2.99.*]" />
-  <necessite nom="coordonnees" compatibilite="[3.2.3;3.99.*]" />
-  <necessite nom="rezosocios" compatibilite="[1.0.2;1.99.*]" />
+  <necessite nom="coordonnees" compatibilite="[3.2.3;[" />
+  <necessite nom="rezosocios" compatibilite="[1.0.2;[" />
   <necessite nom="tw" compatibilite="[3.0.3;3.99.*]" />
   <necessite nom="sommaire" compatibilite="[2.0.0;2.0.*]" />
   <necessite nom="encarts" compatibilite="[3.0.1;3.99.*]" />
