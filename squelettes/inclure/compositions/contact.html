@@ -78,12 +78,6 @@
               </div>
             </B_mots_article>
 
-            <BOUCLE_contact(FORMULAIRES){id_article}>
-              <div class="ajax">
-                #FORMULAIRE_FORMIDABLE{#ID_FORMULAIRE}
-              </div>
-            </BOUCLE_contact>
-
             <BOUCLE_si_adhesion(CONDITION){si #GET{adhesion}|oui}>
               <BOUCLE_formulaire(FORMULAIRES){id_article}>
                 <div class="gap-top-6">
