@@ -1,0 +1,22 @@
+#SET{articles, #ARRAY}
+<BOUCLE_articles(ARTICLES){id_rubrique=3}>
+  [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
+</BOUCLE_articles>
+
+<div class="formulaire_spip formulaire_#FORM">
+  <form action="#ENV{action}">
+    #ACTION_FORMULAIRE
+    <BOUCLE_activites(GROUPES_MOTS){id_groupe_racine=11}{par num titre}>
+      <h3>#TITRE</h3>
+      <BOUCLE_mots(MOTS mots_liens){id_objet IN #GET{articles}}{id_groupe=#ID_GROUPE}{doublons}{par titre}>
+        <div class="choix">
+          <input type="checkbox" name="mots_ou_#ID_GROUPE\[\]" id="gr#ID_GROUPE-mot#ID_MOT" value="#ID_MOT"[ (#ENV{mots_ou_#ID_GROUPE}|find{#ID_MOT}|oui)checked]>
+          <label for="gr#ID_GROUPE-mot#ID_MOT">#TITRE</label>
+        </div>
+      </BOUCLE_mots>
+    </BOUCLE_activites>
+    <p class="boutons">
+      <input type="submit" name="voir_resultats" class="submit button-cta variant-button button-ripple" value="VALIDER" />
+    </p>
+  </form>
+</div>

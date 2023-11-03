@@ -1,0 +1,33 @@
+[(#REM)
+  plugin "critère mots" avec critère OU
+  Source : https://contrib.spip.net/Critere-mots#comment492643-488792
+]
+
+<div class="wrapper-content">
+  <div class="with-sidebar">
+    <div class="formulaire">
+      <div class="ajax">
+        #FORMULAIRE_FILTRES_OU{#SELF}
+      </div>
+    </div>
+    <div class="resultats">
+      <h2>Résultats</h2>
+      <B_articles>
+        <p>#TOTAL_BOUCLE articles</p>
+        <hr>
+        <br><br>
+        <BOUCLE_articles(ARTICLES){id_rubrique=3}{mots_selon_id? 1 #ENV{mots_ou_24}}{mots_selon_id? 1 #ENV{mots_ou_25}}>
+          <p>#TITRE</p>
+          <p>
+            <BOUCLE_mots24(MOTS){id_article}{id_groupe=24}{par titre}{", "}>#TITRE</BOUCLE_mots24>
+          </p>
+          <p>
+            <BOUCLE_mots25(MOTS){id_article}{id_groupe=25}{par titre}{", "}>#TITRE</BOUCLE_mots25>
+          </p>
+          <hr>
+          <br><br>
+        </BOUCLE_articles>
+      </B_articles>
+    </div>
+  </div>
+</div>
