@@ -12,7 +12,7 @@
     "compile:css": "npm run compile:scss && npm run compile:postcss",
     "compile:scss": "sass --no-source-map --load-path=node_modules theme/src/scss/index.scss theme/src/css/index.css",
     "compile:postcss": "postcss theme/src/css/index.css -o theme/dist/css/fraap.css",
-    "compile:js": "rollup -c",
+    "compile:js": "rollup -c --bundleConfigAsCjs",
     "compress:css": "gzip -9 -fkc theme/dist/css/fraap.css > theme/dist/css/fraap.css.gz",
     "copy": "node copy.mjs",
     "server": "npm run server:init & npm run watch",

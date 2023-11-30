@@ -1,5 +1,5 @@
-import { terser } from "@rollup/plugin-terser";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
+import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
 
@@ -12,7 +12,7 @@ export default [
   // polyfill focus-visible
   {
     input: "focus-visible/src/focus-visible.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/polyfill/focus-visible.js",
@@ -25,7 +25,7 @@ export default [
   // Dialog
   {
     input: "theme/src/js/index.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap.js",
@@ -39,7 +39,7 @@ export default [
   // Carousel
   {
     input: "theme/src/js/fraap-carousel.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-carousel.js",
@@ -52,7 +52,7 @@ export default [
   {
     input: "theme/src/js/fraap-members.js",
     external: ["jQuery"],
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-members.js",
@@ -67,7 +67,7 @@ export default [
   // Init Carte et Dialog de l'annuaire
   {
     input: "theme/src/js/fraap-members-init.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-members-init.js",
@@ -79,7 +79,7 @@ export default [
   // Init Dialog Filtres
   {
     input: "theme/src/js/fraap-dialog-filtres-init.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-dialog-filtres-init.js",
@@ -91,7 +91,7 @@ export default [
   // Accordéons
   {
     input: "theme/src/js/fraap-collapsible.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-collapsible.js",
@@ -105,7 +105,7 @@ export default [
   // Sommaire des articles
   {
     input: "theme/src/js/fraap-scrollspy.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-scrollspy.js",
@@ -118,7 +118,7 @@ export default [
   // Teaser Réseau : animation du compteur
   {
     input: "theme/src/js/fraap-compteur-reseau.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-compteur-reseau.js",
@@ -130,7 +130,7 @@ export default [
   // Teasers Ressources : animation des compteurs
   {
     input: "theme/src/js/fraap-compteur-ressources.js",
-    plugins: [nodeResolve(), commonjs()],
+    plugins: [resolve(), commonjs()],
     output: [
       {
         file: "theme/dist/js/fraap-compteur-ressources.js",
