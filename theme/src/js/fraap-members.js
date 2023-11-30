@@ -55,6 +55,20 @@ FraapMembers.prototype.onclickMarker = function () {
         self._toggleMember(this.feature.id);
       }
     });
+    // Ajouter le clic dans les clusters
+    if (
+      self.map.options.cluster &&
+      typeof layer.getChildCount !== "undefined"
+    ) {
+      $.each(layer.getAllChildMarkers(), function (index, marker) {
+        marker.on("click", function () {
+          if (this.feature) {
+            self._scrollUI();
+            self._toggleMember(this.feature.id);
+          }
+        });
+      });
+    }
   });
 };
 
