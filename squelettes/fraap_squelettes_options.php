@@ -49,5 +49,5 @@ define('_CVTUPLOAD_AGE_MAX', 24 * 3600 * 5);
 
 // metaplus : pages exclues
 if (!defined('_METASPLUS_PAGES_EXCLUES')) {
-	define('_METASPLUS_PAGES_EXCLUES', ['404']);
+	define('_METASPLUS_PAGES_EXCLUES', '404');
 }
