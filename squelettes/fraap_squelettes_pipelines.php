@@ -80,12 +80,12 @@ function fraap_squelettes_formulaire_charger($flux) {
  * et type_ref pour les fbiblios
  */
 function fraap_squelettes_indexer_document($flux) {
-	if ($flux['data']->properties['objet'] == 'article' or $flux['data']->properties['objet'] == 'fbiblio') {
-		$id_rubrique = $flux['data']->properties['id_rubrique'];
+	if (preg_match('/article|fbiblio/', $flux['args']['objet']) === 1  && $flux['args']['champs']['statut'] == 'publie') {
+		$id_rubrique = $flux['args']['champs']['id_rubrique'];
 		$flux['data']->properties['typologie'] = ajouter_typologie_document($id_rubrique);
 
-		if ($flux['data']->properties['objet'] == 'fbiblio') {
-			$id_fbiblio = $flux['data']->properties['id_objet'];
+		if ($flux['args']['objet'] == 'fbiblio') {
+			$id_fbiblio = $flux['args']['id_objet'];
 			$fbiblio = completer_indexation_fbiblio($id_fbiblio);
 			$flux['data']->properties['type_ref'] = $fbiblio['type_ref'];
 			$flux['data']->properties['annee'] = $fbiblio['annee'];
