@@ -1,6 +1,6 @@
 #SET{tri,''} #SET{ordre, 0}
 [(#ENV{tri}|match{date}|?{ #SET{tri, date} #SET{ordre, -1} })]
-[(#SET{mots, #ENV{mots}|array_filter})]
+[(#SET{mots, #ENV{mots, #ARRAY}|array_filter})]
 [(#SET{effacer, ''})]
 [(#REM)
   <!--
