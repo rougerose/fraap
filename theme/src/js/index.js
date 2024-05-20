@@ -1,5 +1,8 @@
+import smoothscroll from "smoothscroll-polyfill";
 import FraapDialog from "./fraap-dialog";
 import fraapMenu from "./fraap-main-menu";
+
+smoothscroll.polyfill();
 
 let dialogs = [
   ["dialogRecherche", {}],
@@ -20,4 +23,4 @@ dialogs.forEach((dialog) => {
   }
 });
 
-export {FraapDialog};
+export { FraapDialog };

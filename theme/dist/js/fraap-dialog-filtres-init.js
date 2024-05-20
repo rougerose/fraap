@@ -1,1 +1,12 @@
-!function(){"use strict";let e=document.querySelector("#dialogFiltres"),o={allowTouchMove:()=>!0};e&&new Fraap.FraapDialog(e,o)}();
+(function () {
+	'use strict';
+
+	// Dialog init
+	let dialogEl = document.querySelector("#dialogFiltres"),
+	options = { allowTouchMove: () => true };
+
+	if (dialogEl) {
+	new Fraap.FraapDialog(dialogEl, options);
+	}
+
+})();
