@@ -1,0 +1,18 @@
+[(#REM)
+  <!-- Le total des ressources disponibles en fonction des filtres activés -->
+]
+[(#ENV{total_references}||>{0}|?{
+  [(#SET{nb_total, #ENV{total_references}|singulier_ou_pluriel{
+    fraap_squelettes:bouton_voir_resultat,
+    fraap_squelettes:bouton_voir_resultats}
+  })],
+  [(#SET{total, <:fraap_squelettes:bouton_voir_resultat_aucun:>})]
+})]
+<div class="dialog-filters_footer">
+  <p class="boutons">
+    <input type="submit" name="voir_resultats"
+      class="submit button-cta variant-button button-ripple"
+      value="[(#GET{nb_total}|attribut_html)]" />
+  </p>
+</div>
+#FILTRE{trim}

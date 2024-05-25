@@ -1,9 +1,36 @@
 #SET{checked, ''}
-[(#ENV{value}|?{
-  [(#ENV{value}|=={#ENV{type_ref}}|?{ #SET{checked, ' '}, #SET{checked, ''} })],
+#SET{total, 0}
+
+[(#REM)
+  <!--
+    Si le bouton demandé n'est pas "Tous les types", alors
+    calculer le nombre de références disponibles selon les filtres
+    activés.
+  -->
+]<BOUCLE_condition(CONDITION){si #ENV{index}|!={tous}}>
+  <BOUCLE_compteur_references(FBIBLIOS){id_rubrique}{id_fbiblio IN #ENV{references}}
+    {type_ref=#ENV{value}}> </BOUCLE_compteur_references>
+    #SET{total, 0}
+    #SET{total, #TOTAL_BOUCLE}
+  </B_compteur_references>
+</BOUCLE_condition>
+  [(#REM)
+    <!--
+      Le bouton est "Tous les types", le total est fourni dans l'env
+      et correspond à la totalité des ressources disponibles.
+    -->
+  ] #SET{total, #ENV{total_references}}
+<//B_condition>
+
+[(#REM)
+  <!-- Déterminer si le bouton est coché ou non -->
+][(#ENV{value}|?{
+  [(#ENV{value}|=={#ENV{env_type_ref}}|?{ #SET{checked, ' '}, #SET{checked, ''} })],
   [(#ENV{index}|=={tous}|?{ #SET{checked, ' '}, #SET{checked, ''} })]
 })]
+
 <div class="choix">
-  <input type="radio" name="type_ref" id="type_ref_#ENV{index}" value="#ENV{value}"[ (#GET{checked}|oui)checked][ (#ENV{total}|=={0}|oui)disabled] data-label="[(#ENV{label}|attribut_html)]">
-  <label for="type_ref_#ENV{index}">[(#ENV{label}) ][<span class="indicator">(#ENV{total})</span>]</label>
+  <input type="radio" name="type_ref" id="type_ref_#ENV{index}" value="#ENV{value}"[ (#GET{checked}|oui)checked][ (#GET{total}|=={0}|oui)disabled] data-label="[(#ENV{label}|attribut_html)]">
+  <label for="type_ref_#ENV{index}">[(#ENV{label}) ][<span class="indicator">(#GET{total})</span>]</label>
 </div>
+#FILTRE{trim}

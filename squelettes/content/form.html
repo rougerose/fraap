@@ -1,0 +1,15 @@
+<BOUCLE_mediatheque(RUBRIQUES){id_rubrique=47}>
+  <div class="wrapper-content">
+    <div class="with-sidebar">
+      <div>
+        #FORMULAIRE_FILTRES_DEBUG
+      </div>
+      <div>
+        <h1>#TITRE</h1>
+        <BOUCLE_resultats(FBIBLIOS){id_rubrique}>
+          <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
+        </BOUCLE_resultats>
+      </div>
+    </div>
+  </div>
+</BOUCLE_mediatheque>

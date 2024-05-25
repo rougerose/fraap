@@ -15,7 +15,7 @@
         {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
         {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
         {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
-        {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 10}
+        {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 10}{option max_matches, 1000}
       >
         <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
           <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
@@ -37,5 +37,5 @@
     </div>
   </div>
 <//B_ressources>
-<INCLURE{fond=inclure/dialog/filtres-mediatheque, id_rubrique, recherche=#ENV*{recherche}, env}/>
-[<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
+<INCLURE{fond=inclure/dialog/filtres-mediatheque, id_rubrique, recherche=#ENV*{recherche}, ajax=filtres, env}/>
+[<script src="(#CHEMIN{XXdist/js/fraap-dialog-filtres-init.js})" defer></script>]

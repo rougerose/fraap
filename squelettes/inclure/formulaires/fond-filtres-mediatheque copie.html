@@ -1,0 +1,19 @@
+[(#REM)
+  <!-- Fond utilisé par la fonction charger de formulaire_filtres_mediatheque -->
+]
+#SET{resultats, #ARRAY}
+<B_fond_filtres>
+  <BOUCLE_fond_filtres(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
+    {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
+    {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
+    {filtermultijson #ENV{mots}, properties.mots.ids, #ENV{mots}}
+    {par #GET{tri}}{inverse #GET{sens}}{pagination 999}
+  >
+    <BOUCLE_reference(FBIBLIOS){id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
+      [(#SET{resultats, #GET{resultats}|push{#ID_FBIBLIO}})]
+    </BOUCLE_reference>
+  </BOUCLE_fond_filtres>
+  [(#GET{resultats}|serialize)]
+</B_fond_filtres>
+  [(#GET{resultats}|serialize)]
+<//B_fond_filtres>

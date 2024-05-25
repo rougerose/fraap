@@ -5,32 +5,32 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 function formulaires_mediatheque_filtres_charger($recherche = '', $id_rubrique = '', $redirect = null) {
-	$contexte = [];
-
 	$valeurs = [
 		'recherche' => $recherche,
-		'id_rubrique' => $id_rubrique,
+		'id_rubrique' => intval($id_rubrique),
 		'btnOpen' => _request('btnOpen'),
 		'mots' => _request('mots'),
 		'type_ref' => _request('type_ref'),
 		'resultats' => '',
 	];
 
+	// récupérer les paramètres
+	$contexte = [];
+
 	if (strlen($valeurs['recherche'])) {
 		$contexte['recherche'] = $valeurs['recherche'];
 	}
 
-	if (is_array($valeurs['mots'])) {
-		$contexte['mots'] = $valeurs['mots'];
-	}
-
-	if (strlen($valeurs['type_ref'])) {
+	if ($valeurs['type_ref'] && strlen($valeurs['type_ref'])) {
 		$contexte['type_ref'] = $valeurs['type_ref'];
 	}
 
-	if (count($contexte) > 0) {
-		$valeurs['resultats'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-mediatheque', $contexte));
+	if ($valeurs['mots'] && count($valeurs['mots']) > 0) {
+		$contexte['mots'] = $valeurs['mots'];
 	}
+
+	// Récupérer la liste des références en fonction des filtres cochés
+	$valeurs['resultats'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-mediatheque', $contexte));
 
 	return $valeurs;
 }
@@ -42,12 +42,14 @@ function formulaires_mediatheques_filtres_verifier($recherche = '', $id_rubrique
 
 function formulaires_mediatheque_filtres_traiter($recherche = '', $id_rubrique = '', $redirect = null) {
 	$retour = [];
+	//refuser_traiter_formulaire_ajax();
 	$mots = _request('mots');
 	$type_ref = _request('type_ref');
 	$voir_resultats = _request('voir_resultats');
+	//$self = self();
 
 	if ($voir_resultats) {
-		$redirect = parametre_url($redirect, 'mots|type_ref', '');
+		$redirect = parametre_url($redirect, 'id_rubrique|mots|type_ref', '');
 
 		if ($mots) {
 			$mots = array_unique($mots);
@@ -60,7 +62,7 @@ function formulaires_mediatheque_filtres_traiter($recherche = '', $id_rubrique =
 
 		// $redirect = ancre_url($redirect, 'articles');
 		$retour['redirect'] = $redirect;
-		$retour['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("mediatheque");</script>';
+		//$retour['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("mediatheque");</script>';
 	}
 	$retour['editable'] = true;
 	return $retour;
