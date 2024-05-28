@@ -1,7 +1,7 @@
 <BOUCLE_sitenav_raccourcis(MENUS){id_menu?}{identifiant?}>
   <div class="site-header_links">
     <B_raccourcis_entrees>
-      <ul id="navShortcuts" role="list" class="site-nav_list[ -variant-(#ENV{contexte})]"[ data-depth="(#ENV{depth,0})"]>
+      <ul id="navShortcuts" role="list" class="site-nav_list[ -variant-(#ENV{contexte})]"[ data-depth="(#ENV{depth,0})"] data-module-nav>
         <BOUCLE_raccourcis_entrees(MENUS_ENTREES){id_menu}{par rang}>
           [(#COMPTEUR_BOUCLE|setenv{rang})]
           [(#ENV{contexte}|setenv{contexte})]

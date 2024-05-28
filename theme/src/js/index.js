@@ -1,26 +1,11 @@
+import modular from "modujs";
+import * as modules from "./modules";
 import smoothscroll from "smoothscroll-polyfill";
-import FraapDialog from "./fraap-dialog";
-import fraapMenu from "./fraap-main-menu";
+
+const fraap = new modular({
+  modules: modules
+});
 
 smoothscroll.polyfill();
 
-let dialogs = [
-  ["dialogRecherche", {}],
-  ["siteNavOffcanvas", { allowTouchMove: () => true }],
-];
-
-dialogs.forEach((dialog) => {
-  let id = dialog[0],
-    options = dialog[1];
-
-  let dialogEl = document.querySelector("#" + id);
-  if (dialogEl) {
-    if (id == "siteNavOffcanvas") {
-      // Activer les raccourcis avant l'instance Dialog
-      fraapMenu.init();
-    }
-    let dialogInstance = new FraapDialog(dialogEl, options);
-  }
-});
-
-export { FraapDialog };
+fraap.init(fraap);

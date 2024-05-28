@@ -32,7 +32,7 @@
 ]</BOUCLE_type_ref>
 
 <div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
-  <form action="#ENV{action}" method="post" class="dialog-filters_form">
+  <form action="#ENV{action}" method="post" class="dialog-filters_form" data-module-formfilters>
       #ACTION_FORMULAIRE{#ENV{action}}
 
       [(#REM)<!-- Inclure un fichier header identique pour tous les dialogs -->]
@@ -52,8 +52,10 @@
           [(#REM)<!-- Groupe 1 : filtres par type de référence -->]
           <B_filtres_types>
             [(#SET{btnOpen, #ENV{btnOpen}|find{type_ref}|?{1,0}})]
-            <div class="collapsible">
-              <h3 class="collapsible_heading">
+            <div class="collapsible"
+              data-module-collapsible
+              data-collapsible-extend="true">
+              <h3 class="collapsible_heading" data-collapsible="header">
                 <button type="button" id="btn_type_ref"[ aria-expanded="(#GET{btnOpen}|=={1}|?{true,false})"]>
                   <span class="collapsible_title">
                     <span>
@@ -64,7 +66,7 @@
                 </button>
                 <input type="hidden" name="btnOpen[]"[ value="(#GET{btnOpen}|=={1}|?{btn_type_ref, ''})"]>
               </h3>
-              <div class="collapsible_content" role="region" aria-labelledby="btn_type_ref"[ (#GET{btnOpen}|=={1}|?{'', hidden})]>
+              <div class="collapsible_content" role="region" aria-labelledby="btn_type_ref"[ (#GET{btnOpen}|=={1}|?{'', hidden})] data-collapsible="content">
                 [(#REM) <!-- Bouton "Tous les types" -->]
                 <INCLURE{fond=inclure/formulaires/filtres-radio-type_ref-fbiblio,
                   label=<:fraap_squelettes:filtre_label_type_tous:>,
@@ -97,7 +99,9 @@
           ]
           <B_groupes>
           <h3 class="dialog-filters_category"><:fraap_squelettes:filtre_categorie_theme:></h3>
-          <div class="collapsible">
+          <div class="collapsible"
+            data-module-collapsible
+            data-collapsible-extend="true">
             <BOUCLE_groupes(GROUPES_MOTS){id_groupe_racine=#GET{id_groupe_racine}}{id_parent!=0}{par titre}>
               #SET{titre, #TITRE}
               #SET{id_groupe, #ID_GROUPE}
@@ -105,7 +109,7 @@
               #SET{choix, choix#ID_GROUPE}
               <B_filtre_mot>
                 [(#SET{btnOpen, #ENV{btnOpen}|find{#GET{choix}}|?{1,0}})]
-                <h4 class="collapsible_heading">
+                <h4 class="collapsible_heading" data-collapsible="header">
                   <button type="button" id="#GET{choix}"[ aria-expanded="(#GET{btnOpen}|=={1}|?{true,false})"]>
                     <span class="collapsible_title">
                       <span>#GET{titre}</span>
@@ -114,7 +118,7 @@
                   </button>
                   <input type="hidden" name="btnOpen[]"[ value="(#GET{btnOpen}|=={1}|?{#GET{choix}, ''})"]>
                 </h4>
-                <div class="collapsible_content" role="region" aria-labelledby="#GET{choix}"[ (#GET{btnOpen}|=={1}|?{'', hidden})]>
+                <div class="collapsible_content" role="region" aria-labelledby="#GET{choix}"[ (#GET{btnOpen}|=={1}|?{'', hidden})] data-collapsible="content">
                   <BOUCLE_filtre_mot(MOTS spip_mots_liens){objet=fbiblio}{mots.id_groupe}{id_objet IN #GET{references}}>
                     <INCLURE{fond=inclure/formulaires/filtres-checkbox-fbiblio,
                       id_rubrique=#ENV{id_rubrique},
@@ -132,5 +136,13 @@
       </div>
       <INCLURE{fond=inclure/formulaires/bouton-voir-resultats, total_references=#GET{total_references}, env}/>
   </form>
+  <!-- <script>
+    jQuery(function ($) {
+      let form_filtres = document.querySelector("div.formulaire_#FORM form");
+      $(form_filtres).on("change", "input", function () {
+        $(this).parents("form").submit();
+      });
+    });
+  </script> -->
 </div>
 #FILTRE{trim}

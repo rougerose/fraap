@@ -39,7 +39,7 @@ function build(
 
 export default [
   // fraap.js : export variable globale "FraapDialog"
-  build("theme/src/js/index.js", "theme/dist/js/fraap.js", "iife", "Fraap"),
+  build("theme/src/js/index.js", "theme/dist/js/fraap.js"),
   // carousel
   build(
     "theme/src/js/fraap-carousel.js",

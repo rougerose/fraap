@@ -1,13 +1,13 @@
-<nav id="siteNavOffcanvas" class="dialog dialog-offcanvas variant-left site-nav-offcanvas" aria-hidden="true" aria-labelledby="navTitle">
+<nav id="siteNavOffcanvas" class="dialog dialog-offcanvas variant-left site-nav-offcanvas" aria-hidden="true" aria-labelledby="navTitle" data-module-dialog data-dialog-type="menu">
   <div class="dialog_overlay" data-a11y-dialog-hide></div>
-  <div class="dialog_content dialog-offcanvas_content" role="document">
+  <div class="dialog_content dialog-offcanvas_content" role="document" data-dialog="content">
     <header class="site-nav_header -variant-offcanvas">
       <h1 id="navTitle"><span class="text-underline"><:fraap_squelettes:nav_offcanvas_titre:></span></h1>
       [<button type="button" class="dialog_close button-icon circle-hover" data-a11y-dialog-hide aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
         (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
       </button>]
     </header>
-    <div class="site-nav_body -variant-offcanvas">
+    <div class="site-nav_body -variant-offcanvas" data-module-menu>
       <BOUCLE_menus_offcanvas(MENUS){identifiant LIKE site-nav-offcanvas%}{par identifiant}>
         [(#SET{index, #COMPTEUR_BOUCLE|moins{1}})]
         <INCLURE{fond=inclure/site-nav/site-nav_menu, identifiant=#IDENTIFIANT, index=#GET{index}, contexte=offcanvas, env}/>

@@ -12,9 +12,9 @@
 ][(#ENV{id_rubrique}|=={5})
   [(#SET{options, #ARRAY{afficher_types, 1, afficher_themes, 1, groupe_types, 34, groupe_themes, 35}})]
 ]
-<div id="dialogFiltres" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true">
+<div id="dialogFiltres" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true" data-module-dialog data-dialog-type="filtres">
   <div class="dialog_overlay" data-a11y-dialog-hide></div>
-  <div class="dialog_content dialog-offcanvas_content dialog-filters" role="document">
+  <div class="dialog_content dialog-offcanvas_content dialog-filters" data-dialog="content" role="document">
     <div class="dialog-filters_wrapper ajax">
       [(#FORMULAIRE_MOBILISATIONS_FILTRES{#ENV{id_rubrique}, #SELF, #GET{options}})]
     </div>
