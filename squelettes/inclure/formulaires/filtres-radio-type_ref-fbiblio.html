@@ -30,7 +30,7 @@
 })]
 
 <div class="choix">
-  <input type="radio" name="type_ref" id="type_ref_#ENV{index}" value="#ENV{value}"[ (#GET{checked}|oui)checked][ (#GET{total}|=={0}|oui)disabled] data-label="[(#ENV{label}|attribut_html)]" data-formfilters="filters">
+  <input type="radio" name="type_ref" id="type_ref_#ENV{index}" value="#ENV{value}"[ (#GET{checked}|oui)checked][ (#GET{total}|=={0}|oui)disabled] data-label="[(#ENV{label}|attribut_html)]" data-filters="filters">
   <label for="type_ref_#ENV{index}">[(#ENV{label}) ][<span class="indicator">(#GET{total})</span>]</label>
 </div>
 #FILTRE{trim}

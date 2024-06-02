@@ -1565,6 +1565,10 @@ html:not(.js) .button-nav {
   border-style: solid;
 }
 
+.collapsible_section + .collapsible_section {
+  border-top: 1px solid;
+}
+
 .collapsible_heading button {
   background-color: transparent;
   border: 0;
@@ -1610,9 +1614,6 @@ html:not(.js) .button-nav {
 
 .collapsible_content {
   padding-bottom: var(--space-s);
-}
-.collapsible_content + .collapsible_heading {
-  border-top: 1px solid;
 }
 
 html:not(.js) .dialog,

@@ -6,6 +6,12 @@
   border-style: solid;
 }
 
+.collapsible_section {
+  & + & {
+    border-top: 1px solid;
+  }
+}
+
 .collapsible_heading {
   button {
     background-color: transparent;
@@ -67,7 +73,7 @@
 .collapsible_content {
   padding-bottom: var(--space-s);
 
-  & + .collapsible_heading {
-    border-top: 1px solid;
-  }
+  // & + .collapsible_heading {
+  //   border-top: 1px solid;
+  // }
 }

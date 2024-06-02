@@ -4,7 +4,7 @@
     <INCLURE{fond=inclure/sections/header-rubrique-mediatheque, icon='icon-rubrique47-64.svg', class_icon=icon-rubrique47, id_rubrique} />
     <div class="wrapper-content" data-size="narrow">
         <INCLURE{fond=inclure/compositions/rubrique-mediatheque, ajax=mediatheque, env}/>
-        <INCLURE{fond=inclure/dialog/filtres-mediatheque, id_rubrique, recherche=#ENV*{recherche}, env}/>
+        <INCLURE{fond=inclure/dialog/filtres-mediatheque, recherche=#ENV*{recherche}, env}/>
     </div>
     #SET{articles, #ARRAY}
     <B_articles_presentation_contact>

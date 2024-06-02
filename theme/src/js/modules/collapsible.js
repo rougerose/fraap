@@ -14,7 +14,6 @@ export default class extends module {
   };
 
   init() {
-    console.log("init collapsible");
     if (this.getData('extend') === "true") {
       this.extendMode = true;
     }
@@ -91,7 +90,7 @@ export default class extends module {
     }
   }
 
-  update() {
-    console.log("update collapsible");
+  open() {
+    //console.log("update collapsible");
   }
 }

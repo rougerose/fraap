@@ -1344,51 +1344,115 @@ class dialog extends _default {
   }
 }
 
-class collapsible extends _default {
+/**
+ * Serialize form fields into key / value pairs.
+ * @link https://gomakethings.com/how-to-serialize-form-data-with-vanilla-js
+ * @param {FormData} formData
+ * @returns {Object}
+ */
+function serializeFormData(formData) {
+  let obj = {};
+  for (const [key, value] of formData) {
+    const resetKey = ["formulaire_action_args", "formulaire_action_sign"];
+
+    // If the key contains brackets, it's an array.
+    if (key.indexOf("[]") !== -1) {
+      const k = key.replace(/[\[\]]+/g, "");
+      if (!obj.hasOwnProperty(k)) {
+        obj[k] = [];
+      }
+      if (value !== "") {
+        obj[k].push(value);
+      }
+    } else if (resetKey.includes(key)) {
+      // Delete values from the form
+      obj[key] = "";
+    } else {
+      obj[key] = value;
+    }
+  }
+  return obj;
+}
+
+// Ce module prend en charge les filtres disponibles
+// pour un contenu(recherche, médiathèque, etc.)
+// ET les accordéons(collapsible) qui regroupent
+// les filtres par thème.
+class filters extends _default {
   constructor(m) {
     super(m);
 
-    this.extendMode = false;
-    this.headers = this.$("header");
+    this.options = {
+      // Les accordéons sont contenus dans un formulaire
+      extendMode: true,
+      // Le nom du bloc ajax Spip est toujours le même, quelque soit la page source.
+      ajaxTarget: "filtres",
+    };
 
     this.events = {
-      click: { header: "toggleSection" }
+      change: {
+        filters: "queryFilters"
+      },
+      click: {
+        header: "toggleSectionCollapsible"
+      }
     };
-  };
+  }
 
-  init() {
-    console.log("init collapsible");
-    if (this.getData('extend') === "true") {
-      this.extendMode = true;
+  checkInitStateFilters() {
+    let needUpdate = false;
+    const formData = this.getFormData();
+    const ignoreKeys = [
+      "var_ajax",
+      "formulaire_action",
+      "formulaire_action_args",
+      "formulaire_action_sign"
+    ];
+    for (const key in formData) {
+
+      if (!ignoreKeys.includes(key) && formData[key]) {
+        needUpdate = true;
+      }
     }
+    if (needUpdate) {
+      this.queryFilters();
+    }
+  }
 
-    this.headers.forEach((header, index) => {
-      if (this.extendMode) {
-        let button = header.querySelector("button"),
-          content = header.nextElementSibling,
-          // Récupérer les boutons cochés au chargement
-          inputs = content.querySelectorAll("input:checked"),
-          // Bouton ouvert ou fermé
-          isExpanded = button.getAttribute("aria-expanded") === "true" || false;
+  update() {
+    this.form[0].addEventListener("submit", this.submitForm);
 
-        // Si l'élément est fermé, affiché en résumé
-        // les boutons cochés déjà cochés.
+    // update collapsibles
+    if (this.options.extendMode) {
+      this.sections = this.$("section");
+      this.sections.forEach((section) => {
+        const button = section.querySelector("button");
+        const content = this.$("content", section);
+        const inputs = content[0].querySelectorAll("input:checked");
+        let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
+
         if (isExpanded === false && inputs.length > 0) {
           this.displayUserChoice(button, inputs);
         }
-      }
-    });
+      });
+    }
   }
 
+  /**
+   * Afficher sous forme textuelle les choix de l'utilisateur.
+   * @param {Element} button
+   * @param {Array} inputs
+   */
   displayUserChoice(button, inputs) {
     let labels = [];
-    inputs.forEach((input) => {
+    for (const input of inputs) {
       labels.push(input.dataset.label);
-    });
+    }
 
     if (labels.length > 0) {
-      let span = doc.createElement("span"),
-        labelText = doc.createTextNode(labels.join(", "));
+      let span, labelText;
+      span = doc.createElement("span");
+      labelText = doc.createTextNode(labels.join(", "));
 
       span.appendChild(labelText);
       span.classList.add("collapsible_user-choice");
@@ -1396,74 +1460,84 @@ class collapsible extends _default {
     }
   }
 
-  toggleSection(event) {
-    const header = event.currentTarget;
-    const button = header.querySelector("button");
-    const content = header.nextElementSibling;
+  getFormData() {
+    let formData = new FormData(this.form[0]);
+    let formObj = serializeFormData(formData);
+    console.log(formObj);
+    return formObj;
+  }
 
-    // Afficher ou non le contenu
-    let isExpanded = button.getAttribute("aria-expanded") === "true" || false;
+  queryFilters() {
+    this.form[0].removeEventListener("submit", this.submitForm);
+    window.ajaxReload(this.options.ajaxTarget, {
+      callback: () => { this.update(); },
+      args: this.getFormData(),
+    });
+  }
+
+  submitForm(event) {
+    event.preventDefault();
+    console.log("submit");
+    this.queryFilters();
+  }
+
+  toggleSectionCollapsible(event) {
+    const target = event.currentTarget;
+    const section = this.parent("section", target);
+    const content = this.$("content", section);
+    const button = target.querySelector("button");
+    const hiddenInput = target.querySelector('input[name="btnOpen[]"]');
+
+    // Statut de l'accordéon avant le clic et non après
+    let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
+
+    // 1- Basculer l'état du bouton
     button.setAttribute("aria-expanded", !isExpanded);
-    content.hidden = isExpanded;
 
-    if (this.extendMode) {
-      // Récupérer le champ hidden
-      let inputHidden = button.nextElementSibling;
+    // 2- Basculer la visibilité du contenu
+    content[0].hidden = isExpanded;
 
-      // Récupérer le span qui affiche le choix de l'utilisateur,
-      // s'il existe.
+    // 3- Mémoriser le nouvel état du bouton
+    if (this.options.extendMode && !isExpanded) {
+      hiddenInput.setAttribute("value", button.id);
+    } else {
+      hiddenInput.setAttribute("value", "");
+    }
+
+    if (this.options.extendMode) {
+      // Récupérer le <span> qui affiche le choix de l'utilisateur.
       let userChoice = button.querySelector("span.collapsible_user-choice");
 
-      // Et s'il existe, le supprimer.
+      // S'il existe, le supprimer à l'ouverture de l'accordéon
       if (userChoice) {
         userChoice.parentNode.removeChild(userChoice);
       }
 
-      // Récupérer les cases cochées par l'utilisateur
-      let inputs = content.querySelectorAll("input:checked");
+      // Si le bouton est ouvert et si l'utilisateur le referme
+      if (isExpanded) {
+        // Récupérer les cases cochées
+        let inputs = content[0].querySelectorAll("input:checked");
 
-      if (isExpanded === true && inputs.length > 0) {
-        this.displayUserChoice(button, inputs);
-      }
-
-      if (!isExpanded) {
-        inputHidden.setAttribute("value", button.id);
-      } else {
-        inputHidden.setAttribute("value", "");
+        // Mettre à jour la liste des choix.
+        if (inputs.length > 0) {
+          this.displayUserChoice(button, inputs);
+        }
       }
     }
   }
 
-  update() {
-    console.log("update collapsible");
-  }
-}
-
-class formfilters extends _default {
-  constructor(m) {
-    super(m);
-    this.events = {
-      change: {
-        filters: "queryFilters"
-      }
-    };
-  }
-
   init() {
-    console.log("formfilters");
-  }
-
-  queryFilters() {
-    console.log("query");
-    this.call("destroy", "collapsible", "fraap");
+    this.form = this.el.getElementsByTagName("form");
+    this.submitForm = this.submitForm.bind(this);
+    this.checkInitStateFilters();
+    this.update();
   }
 }
 
 var modules = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  collapsible: collapsible,
   dialog: dialog,
-  formfilters: formfilters,
+  filters: filters,
   menu: menu,
   nav: nav
 });
@@ -1910,10 +1984,40 @@ var smoothscroll$1 = {exports: {}};
 var smoothscrollExports = smoothscroll$1.exports;
 var smoothscroll = /*@__PURE__*/getDefaultExportFromCjs(smoothscrollExports);
 
+// import { html } from "./util/environment";
+// import { getModuleNames, addActiveModule } from "./util/module";
+// import Dialog from "./dialog";
+
 const fraap = new _default$1({
-  modules: modules
+  modules: modules,
 });
 
 smoothscroll.polyfill();
 
 fraap.init(fraap);
+
+// let dialogs = html.querySelectorAll("[data-module-dialog]");
+// let i = 1;
+// let activeModules = "";
+
+// for (const dialog of dialogs) {
+//   let moduleNames = getModuleNames(dialog);
+//   // Récupérer le nom du module et éventuellement son type
+//   const options = {
+//     el: dialog,
+//     moduleName: moduleNames.moduleName,
+//     dataName: moduleNames.dataName,
+//     typeName: moduleNames.typeName,
+//   };
+
+//   // Attribuer un identifiant au module
+//   let moduleAttr = "data-module-" + options.moduleName;
+//   let id = dialog.getAttribute("data-module-" + options.moduleName);
+//   if (!id) {
+//     id = "module" + i;
+//     dialog.setAttribute(moduleAttr, id);
+//   }
+
+//   //
+//   // const module = new moduleNames.moduleName(options)
+// }

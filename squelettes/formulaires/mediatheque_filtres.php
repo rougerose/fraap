@@ -12,6 +12,7 @@ function formulaires_mediatheque_filtres_charger($recherche = '', $id_rubrique =
 		'mots' => _request('mots'),
 		'type_ref' => _request('type_ref'),
 		'resultats' => '',
+		'redirect' => $redirect
 	];
 
 	// récupérer les paramètres
@@ -49,7 +50,7 @@ function formulaires_mediatheque_filtres_traiter($recherche = '', $id_rubrique =
 	//$self = self();
 
 	if ($voir_resultats) {
-		$redirect = parametre_url($redirect, 'id_rubrique|mots|type_ref', '');
+		$redirect = parametre_url($redirect, 'page|id_rubrique|mots|type_ref|formulaire_action|formulaire_', '');
 
 		if ($mots) {
 			$mots = array_unique($mots);
