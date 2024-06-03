@@ -77,4 +77,8 @@ export default class extends module {
     this.$content[0].removeEventListener("transitionend", this.handleTransition);
     enableBodyScroll(this.el, this.bodyscrollOptions);
   }
+
+  close() {
+    this.dialog.hide();
+  }
 };

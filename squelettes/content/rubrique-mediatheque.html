@@ -3,8 +3,14 @@
     <INCLURE{fond=inclure/breadcrumb/rubrique, id_rubrique}/>
     <INCLURE{fond=inclure/sections/header-rubrique-mediatheque, icon='icon-rubrique47-64.svg', class_icon=icon-rubrique47, id_rubrique} />
     <div class="wrapper-content" data-size="narrow">
-        <INCLURE{fond=inclure/compositions/rubrique-mediatheque, ajax=mediatheque, env}/>
-        <INCLURE{fond=inclure/dialog/filtres-mediatheque, recherche=#ENV*{recherche}, env}/>
+      <INCLURE{fond=inclure/compositions/rubrique-mediatheque, ajax=mediatheque, env}/>
+
+      <div id="dialogFiltres" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true" data-module-dialog data-dialog-type="filtres">
+        <div class="dialog_overlay" data-a11y-dialog-hide></div>
+        <div class="dialog_content dialog-offcanvas_content dialog-filters" data-dialog="content" data-module-filters data-filters-content="mediatheque" role="document">
+          <INCLURE{fond=inclure/formulaires/filtres_mediatheque_fix, recherche=#ENV{recherche}, ajax=filtres, env}/>
+        </div>
+      </div>
     </div>
     #SET{articles, #ARRAY}
     <B_articles_presentation_contact>

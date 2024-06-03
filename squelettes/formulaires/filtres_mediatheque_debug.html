@@ -1,0 +1,36 @@
+#SET{references, #ARRAY}
+#SET{type_ref, #ARRAY}
+#SET{total_references, 0}
+<BOUCLE_references(FBIBLIOS){id_rubrique}>
+  [(#SET{references, #GET{references}|push{#ID_FBIBLIO}})]
+</BOUCLE_references>
+<BOUCLE_type_ref(FBIBLIOS){id_rubrique}{fusion type_ref}>[
+  (#SET{type_ref, #GET{type_ref}|plus{#ARRAY{#TYPE_REF, #TYPE_REF|zotspip_traduire_type}}})
+]</BOUCLE_type_ref>
+[(#SET{_ref, #GET{references}})]
+[(#SET{total_references, #GET{_ref}|count})]
+
+<div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
+  <form action="#ENV{action}" method="post" class="dialog-filters_form"
+    data-filters="form">
+    #ACTION_FORMULAIRE{#ENV{action}}
+    <div class="dialog-filters_body">
+      <div class="dialog-filters_inner-body">
+        <p>#ENV</p>
+        <BOUCLE_filtres_types(DATA){source tableau, #GET{type_ref}}{par valeur}>
+          <INCLURE{fond=inclure/formulaires/filtres-radio-type_ref-fbiblio,
+            label=#VALEUR,
+            value=#CLE,
+            index=#COMPTEUR_BOUCLE,
+            total_references=#GET{total_references},
+            env_type_ref=#ENV{type_ref},
+            references=#GET{_ref},
+            id_rubrique=#ENV{id_rubrique}
+          }/>
+        </BOUCLE_filtres_types>
+      </div>
+    </div>
+    <p class="boutons"><input type="submit" class="submit" name="valide"
+        value="Recherche" /></p>
+  </form>
+</div>

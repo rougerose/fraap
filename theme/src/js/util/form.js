@@ -7,7 +7,7 @@
 function serializeFormData(formData) {
   let obj = {};
   for (const [key, value] of formData) {
-    const resetKey = ["formulaire_action_args", "formulaire_action_sign"];
+    // const resetKeys = ["formulaire_action_args", "formulaire_action_sign"];
 
     // If the key contains brackets, it's an array.
     if (key.indexOf("[]") !== -1) {
@@ -18,9 +18,6 @@ function serializeFormData(formData) {
       if (value !== "") {
         obj[k].push(value);
       }
-    } else if (resetKey.includes(key)) {
-      // Delete values from the form
-      obj[key] = "";
     } else {
       obj[key] = value;
     }

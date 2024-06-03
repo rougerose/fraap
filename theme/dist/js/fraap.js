@@ -1342,6 +1342,10 @@ class dialog extends _default {
     this.$content[0].removeEventListener("transitionend", this.handleTransition);
     enableBodyScroll(this.el, this.bodyscrollOptions);
   }
+
+  close() {
+    this.dialog.hide();
+  }
 }
 
 /**
@@ -1353,7 +1357,7 @@ class dialog extends _default {
 function serializeFormData(formData) {
   let obj = {};
   for (const [key, value] of formData) {
-    const resetKey = ["formulaire_action_args", "formulaire_action_sign"];
+    // const resetKeys = ["formulaire_action_args", "formulaire_action_sign"];
 
     // If the key contains brackets, it's an array.
     if (key.indexOf("[]") !== -1) {
@@ -1364,9 +1368,6 @@ function serializeFormData(formData) {
       if (value !== "") {
         obj[k].push(value);
       }
-    } else if (resetKey.includes(key)) {
-      // Delete values from the form
-      obj[key] = "";
     } else {
       obj[key] = value;
     }
@@ -1386,12 +1387,15 @@ class filters extends _default {
       // Les accordéons sont contenus dans un formulaire
       extendMode: true,
       // Le nom du bloc ajax Spip est toujours le même, quelque soit la page source.
-      ajaxTarget: "filtres",
+      ajaxTarget: {
+        filters: "filtres",
+        content: ""
+      }
     };
 
     this.events = {
       change: {
-        filters: "queryFilters"
+        filters: "updateFilters"
       },
       click: {
         header: "toggleSectionCollapsible"
@@ -1408,34 +1412,21 @@ class filters extends _default {
       "formulaire_action_args",
       "formulaire_action_sign"
     ];
-    for (const key in formData) {
 
+    for (const key in formData) {
       if (!ignoreKeys.includes(key) && formData[key]) {
+        // console.log(key, !ignoreKeys.includes(key));
         needUpdate = true;
       }
     }
     if (needUpdate) {
-      this.queryFilters();
+      this.updateFilters();
     }
   }
 
-  update() {
-    this.form[0].addEventListener("submit", this.submitForm);
-
-    // update collapsibles
-    if (this.options.extendMode) {
-      this.sections = this.$("section");
-      this.sections.forEach((section) => {
-        const button = section.querySelector("button");
-        const content = this.$("content", section);
-        const inputs = content[0].querySelectorAll("input:checked");
-        let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
-
-        if (isExpanded === false && inputs.length > 0) {
-          this.displayUserChoice(button, inputs);
-        }
-      });
-    }
+  closeDialog() {
+    this.form[0].removeEventListener("submit", this.submitForm);
+    this.call("close", "", "dialog", this.dialogModuleId);
   }
 
   /**
@@ -1462,23 +1453,87 @@ class filters extends _default {
 
   getFormData() {
     let formData = new FormData(this.form[0]);
+
+    // l'API FormData n'envoie pas les champs vides tels
+    // que les checkbox mots[]. Ce comportement entraîne
+    // un problème au rechargement du formulaire via ajax :
+    // un checkbox coché puis décoché reste coché...
+    // Par conséquent, on ajoute tous les paramètres principaux,
+    // même s'ils sont vides.
+    for (const input of this.mainInputs) {
+      if (!formData.has(input)) {
+        formData.set(input, "");
+      }
+    }
+
     let formObj = serializeFormData(formData);
-    console.log(formObj);
+
     return formObj;
   }
 
-  queryFilters() {
+  /**
+   * Mettre à jour, via ajaxReload, le bloc du contenu principal
+   * de la page. L'url de la page est mise à jour (history: true).
+   * @param {Boolean} closeDialog Fermer ou non le dialog des filtres
+   */
+  updateContent(closeDialog) {
+    let formData = this.getFormData(),
+      acceptKeys = ["type_ref", "mots"],
+      argObj = {},
+      closeCB = closeDialog || false;
+
+    for (let key in formData) {
+      if (formData.hasOwnProperty(key) && acceptKeys.includes(key)) {
+        // Conserver uniquement les valeurs de type array et string non vide
+        if (formData[key] !== "") {
+          argObj[key] = formData[key];
+        }
+      }
+    }
+
+    window.ajaxReload(this.options.ajaxTarget.content, {
+      callback: () => {
+        if (closeCB) this.closeDialog();
+      },
+      args: argObj,
+      history: true,
+    });
+
+  }
+
+  updateFilters() {
     this.form[0].removeEventListener("submit", this.submitForm);
-    window.ajaxReload(this.options.ajaxTarget, {
-      callback: () => { this.update(); },
+
+    window.ajaxReload(this.options.ajaxTarget.filters, {
+      callback: () => { this.updateForm(); },
       args: this.getFormData(),
     });
+
+    this.updateContent(false);
+  }
+
+  updateForm() {
+    this.form[0].addEventListener("submit", this.submitForm);
+
+    // updateForm collapsibles
+    if (this.options.extendMode) {
+      this.sections = this.$("section");
+      this.sections.forEach((section) => {
+        const button = section.querySelector("button");
+        const content = this.$("content", section);
+        const inputs = content[0].querySelectorAll("input:checked");
+        let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
+
+        if (isExpanded === false && inputs.length > 0) {
+          this.displayUserChoice(button, inputs);
+        }
+      });
+    }
   }
 
   submitForm(event) {
     event.preventDefault();
-    console.log("submit");
-    this.queryFilters();
+    this.updateContent(true);
   }
 
   toggleSectionCollapsible(event) {
@@ -1529,8 +1584,25 @@ class filters extends _default {
   init() {
     this.form = this.el.getElementsByTagName("form");
     this.submitForm = this.submitForm.bind(this);
+
+    this.options.ajaxTarget.content = this.getData("content");
+
+    // Identifier et mémoriser les champs principaux
+    let names = ["btnOpen[]", "mots[]", "type_ref"];
+    this.mainInputs = [];
+    for (const item of this.form[0]) {
+      if (names.includes(item.name) && !this.mainInputs.includes(item.name)) {
+        this.mainInputs.push(item.name);
+      }
+    }
+
+    // Mémoriser l'id du dialog parent qui sera télécommandé par closeDialog()
+    let dialogModule = this.el.parentNode.closest("[data-module-dialog]");
+    this.dialogModuleId = dialogModule.getAttribute("data-module-dialog");
+
+
     this.checkInitStateFilters();
-    this.update();
+    this.updateForm();
   }
 }
 

@@ -5,7 +5,7 @@
       {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
       {filter #ENV{type_ref}, 'properties.type_ref = @valeur'}
       {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0'}
-      {par #GET{tri}}{inverse #GET{sens}}{pagination 999}
+      {pagination 999}
     >
       <BOUCLE_reference(FBIBLIOS){id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
         [(#SET{resultats, #GET{resultats}|push{#ID_FBIBLIO}})]

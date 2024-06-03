@@ -30,7 +30,7 @@
 ]</BOUCLE_type_ref>
 
 <div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
-  <form action="#ENV{action}" method="post" class="dialog-filters_form" data-filters="form">
+  <form action="#ENV{action}" method="post" class="dialog-filters_form">
       #ACTION_FORMULAIRE{#ENV{action}}
 
       [(#REM) <!-- Inclure un fichier header identique pour tous les dialogs --> ]
@@ -47,9 +47,11 @@
 
       <div class="dialog-filters_body">
         <div class="dialog-filters_inner-body">
+          <p>#ENV</p>
+          <p>btnOpen : [(#ENV{btnOpen}|print)]</p>
           [(#REM) <!-- Groupe 1 : filtres par type de référence --> ]
           <B_filtres_types>
-            [(#SET{btnOpen, #ENV{btnOpen}|find{type_ref}|?{1,0}})]
+            [(#SET{btnOpen, #ENV{btnOpen}|find{btn_type_ref}|?{1,0}})]
             <div class="collapsible">
               <section class="collapsible_section" data-filters="section">
                 <h3 class="collapsible_heading" data-filters="header">

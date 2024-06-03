@@ -12,9 +12,8 @@
     <div class="flow">
       <BOUCLE_ressources(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
         {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
-        {filter #ENV{id_fbiblio}, 'IN(properties.id_objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
-        {filtermultijson #ENV{type_ref}, properties.type_ref, #LISTE{#ENV{type_ref}}}
-        {filtermultijson #ENV*{mots}, properties.mots.ids, #ENV*{mots}}
+        {filter #ENV{type_ref}, 'properties.type_ref = @valeur'}
+        {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0'}
         {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 10}{option max_matches, 1000}
       >
         <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
@@ -26,9 +25,6 @@
   </div>
 </B_ressources>
   <INCLURE{fond=inclure/sections/box-filters-rubrique-mediatheque, recherche=#ENV{recherche}, total_resultats=#GET{total_resultats}, env}/>
-  [(#ENV{debug}|oui)
-    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
-  ]
   <div class="gap-top-3">
     <div class="flow">
       <div class="message variant-warn">
@@ -37,5 +33,3 @@
     </div>
   </div>
 <//B_ressources>
-
-[<script src="(#CHEMIN{XXdist/js/fraap-dialog-filtres-init.js})" defer></script>]

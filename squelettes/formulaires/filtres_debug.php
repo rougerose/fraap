@@ -4,9 +4,9 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-function formulaires_filtres_debug_charger($redirect = null) {
+function formulaires_filtres_debug_charger($redirect) {
 	$valeurs = [
-		'id_rubrique' => _request('id_rubrique'),
+		'id_rubrique' => 47,
 		'type_ref' => _request('type_ref'),
 		'mots' => _request('mots'),
 	];
@@ -17,7 +17,7 @@ function formulaires_filtres_debug_charger($redirect = null) {
 		$contexte['type_ref'] = $valeurs['type_ref'];
 	}
 
-	if ($valeurs['mots'] && count($valeurs['mots']) > 0) {
+	if ($valeurs['mots']) {
 		$contexte['mots'] = $valeurs['mots'];
 	}
 
@@ -27,12 +27,12 @@ function formulaires_filtres_debug_charger($redirect = null) {
 	return $valeurs;
 }
 
-function formulaires_filtres_debug_verifier($redirect = null) {
+function formulaires_filtres_debug_verifier($redirect) {
 	$erreurs = [];
 	return $erreurs;
 }
 
-function formulaires_filtres_debug_traiter($redirect = null) {
+function formulaires_filtres_debug_traiter($redirect) {
 	$retour = [];
 	$retour['redirect'] = $redirect;
 	return $retour;
