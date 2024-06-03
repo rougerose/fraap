@@ -47,8 +47,6 @@
 
       <div class="dialog-filters_body">
         <div class="dialog-filters_inner-body">
-          <p>#ENV</p>
-          <p>btnOpen : [(#ENV{btnOpen}|print)]</p>
           [(#REM) <!-- Groupe 1 : filtres par type de référence --> ]
           <B_filtres_types>
             [(#SET{btnOpen, #ENV{btnOpen}|find{btn_type_ref}|?{1,0}})]
