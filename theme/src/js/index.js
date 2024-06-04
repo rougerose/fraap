@@ -6,6 +6,9 @@ const fraap = new modular({
   modules: modules,
 });
 
-smoothscroll.polyfill();
+init();
 
-fraap.init(fraap);
+function init() {
+  smoothscroll.polyfill();
+  fraap.init(fraap);
+}
