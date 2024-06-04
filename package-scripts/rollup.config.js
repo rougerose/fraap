@@ -18,7 +18,7 @@ function build(
   dist,
   format = "es",
   name = "",
-  exports = "auto",
+  // exports = "auto",
   globals = undefined,
   external = undefined
 ) {
@@ -30,7 +30,7 @@ function build(
       file: dist,
       format: format,
       name: name,
-      exports: exports,
+      // exports: exports,
       globals: globals,
       plugins: outputPlugins(),
     },
@@ -39,7 +39,7 @@ function build(
 
 export default [
   // fraap.js : export variable globale "FraapDialog"
-  build("theme/src/js/index.js", "theme/dist/js/fraap.js"),
+  build("theme/src/js/index.js", "theme/dist/js/fraap.js", "iife"),
   // carousel
   build(
     "theme/src/js/fraap-carousel.js",
@@ -48,21 +48,31 @@ export default [
   ),
 
   // annuaire membres : carte GIS
+  // build(
+  //   "theme/src/js/fraap-members.js",
+  //   "theme/dist/js/fraap-members.js",
+  //   "iife",
+  //   "FraapMembers",
+  //   "default",
+  //   { jQuery: "$" },
+  //   ["jQuery"]
+  // ),
+
   build(
-    "theme/src/js/fraap-members.js",
-    "theme/dist/js/fraap-members.js",
+    "theme/src/js/members.js",
+    "theme/dist/js/fraapmembers.js",
     "iife",
-    "FraapMembers",
-    "default",
+    "",
+    // "auto",
     { jQuery: "$" },
     ["jQuery"]
   ),
 
   // Annuaire : init de la carte et de l'annuaire
-  build(
-    "theme/src/js/fraap-members-init.js",
-    "theme/dist/js/fraap-members-init.js"
-  ),
+  // build(
+  //   "theme/src/js/fraap-members-init.js",
+  //   "theme/dist/js/fraap-members-init.js"
+  // ),
 
   // Init Dialog Filtres
   build(
