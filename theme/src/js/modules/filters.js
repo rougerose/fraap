@@ -13,7 +13,6 @@ export default class extends module {
     this.options = {
       // Les accordéons sont contenus dans un formulaire
       extendMode: true,
-      // Le nom du bloc ajax Spip est toujours le même, quelque soit la page source.
       ajaxTarget: {
         filters: "filtres",
         content: ""
