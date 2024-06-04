@@ -1,45 +1,54 @@
 import $ from "jQuery";
 
-function FraapMembers(map) {
+function FraapMembers(map, id) {
   this.map = map;
-  this.container = map._container.parentElement.parentElement;
-  this.list = this.container.querySelector("[role='list']");
-  this.bar = this.container.previousElementSibling;
+  this.el = document.querySelector(id);
+  this.directoryContainer = this.el.parentElement.parentElement;
+  this.directoryList = this.directoryContainer.querySelector(
+    ".directory-members_list"
+  );
+  this.boxFilters = this.directoryContainer.previousElementSibling;
   this.flyToMember.bind(this);
   this.create();
 }
 
 FraapMembers.prototype.create = function () {
-  let self = this,
-    onready = function () {
-      self.onclickMarker();
-      self.sleep.disableMap();
-      $("#" + self.map._container.id).off("ready", onready);
-    };
+  let self = this;
 
   // Activer le plugin leaflet d'activation de la carte
   self.sleep = L.control.toggleSleepMap({}).addTo(this.map);
 
+  let onready = function () {
+    self.onclickMarker();
+    self.sleep.disableMap();
+    $("#" + self.map._container.id).off("ready", onready);
+  };
   // Attendre l'événement "ready" pour ajouter
   // un gestionnaire de clic sur les points et désactiver la carte
   $("#" + self.map._container.id).on("ready", onready);
 
-  // smoothscroll.polyfill();
-
-  self.openers = $$(".card-member", this.container);
-  self.openers.forEach((opener) => {
+  self.openers = this.directoryList.querySelectorAll(".card-member");
+  for (const opener of self.openers) {
     opener
       .querySelector("button")
       .addEventListener("click", self.flyToMember.bind(self));
-  });
+  }
+
+  // self.openers.forEach((opener) => {
+  //   opener
+  //     .querySelector("button")
+  //     .addEventListener("click", self.flyToMember.bind(self));
+  // });
   return this;
 };
 
 FraapMembers.prototype.flyToMember = function (event) {
   let coord = [],
     id = event.target.dataset.fraapmemberId;
+
   coord.push(parseFloat(event.target.dataset.fraapmemberLat));
   coord.push(parseFloat(event.target.dataset.fraapmemberLon));
+
   this._scrollUI();
   this.map.flyTo(coord, 15);
   this.openMemberPopup(id);
@@ -76,11 +85,11 @@ FraapMembers.prototype.onclickMarker = function () {
  * Remettre au centre de la fenêtre la carte et la liste des membres.
  */
 FraapMembers.prototype._scrollUI = function () {
-  if (this.bar.offsetTop == 0) {
-    this.bar.scrollIntoView({ behavior: "smooth" });
-  } else if (this.bar.offsetTop > 0) {
+  if (this.boxFilters.offsetTop == 0) {
+    this.boxFilters.scrollIntoView({ behavior: "smooth" });
+  } else if (this.boxFilters.offsetTop > 0) {
     window.scrollTo({
-      top: this.container.offsetParent.offsetTop,
+      top: this.directoryContainer.offsetParent.offsetTop,
       left: 0,
       behavior: "smooth",
     });
@@ -88,7 +97,7 @@ FraapMembers.prototype._scrollUI = function () {
 };
 
 FraapMembers.prototype._toggleMember = function (memberId) {
-  let member = this.container.querySelector("#member-" + memberId);
+  let member = this.directoryContainer.querySelector("#member-" + memberId);
 
   this.openers.forEach((opener) => {
     if (opener.classList.contains("is-active")) {
@@ -97,7 +106,7 @@ FraapMembers.prototype._toggleMember = function (memberId) {
   });
   // Afficher la carte du membre sélectionné
   member.classList.add("is-active");
-  this.list.scrollTo({
+  this.directoryList.scrollTo({
     top: member.offsetTop - 1,
     left: 0,
     behavior: "smooth",
@@ -107,8 +116,8 @@ FraapMembers.prototype._toggleMember = function (memberId) {
 /**
  * Centrer sur le GIS d'un membre et ouvrir son popup.
  *
- * Fonction reprise partielle de gis_focus_marker.
- * Cette fonction ne prend pas en compte les éventuels clusters.
+ * Fonction reprise de gis_focus_marker.
+ *
  *
  * @param {Integer} id #ID_GIS du membre
  */
@@ -116,40 +125,32 @@ FraapMembers.prototype.openMemberPopup = function (id) {
   let map = this.map,
     i,
     count = 0;
-
   for (i in map._layers) {
     if (
-      (map._layers[i].feature && map._layers[i].feature.id == id) ||
-      (map._layers[i].id && ma._layers[i].id == id)
+      L.MarkerClusterGroup &&
+      map._layers[i] instanceof L.MarkerClusterGroup
     ) {
-      map.centerAndZoom(map._layers[i].getLatLng(), false);
+      map._layers[i].eachLayer(function (layer) {
+        if (layer.id && layer.id == id) {
+          map._layers[i].zoomToShowLayer(layer, function () {
+            layer.openPopup();
+          });
+          count++;
+        }
+      });
+      if (count > 0) {
+        break;
+      }
+    } else if (
+      (map._layers[i].feature && map._layers[i].feature.id == id) ||
+      (map._layers[i].id && map._layers[i].id == id)
+    ) {
+      map.centerAndZoom(map._layers[i].getLatLng(), true);
       map._layers[i].openPopup();
       break;
     }
     count++;
   }
 };
-
-/**
- * Convert a NodeList into an array
- *
- * @param {NodeList} collection
- * @return {Array<Element>}
- */
-function toArray(collection) {
-  return Array.prototype.slice.call(collection);
-}
-
-/**
- * Query the DOM for nodes matching the given selector, scoped to context (or
- * the whole document)
- *
- * @param {String} selector
- * @param {Element} [context = document]
- * @return {Array<Element>}
- */
-function $$(selector, context) {
-  return toArray((context || document).querySelectorAll(selector));
-}
 
 export default FraapMembers;
