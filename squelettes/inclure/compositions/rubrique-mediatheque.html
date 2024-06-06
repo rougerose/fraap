@@ -11,14 +11,13 @@
   <div class="pad-top-5">
     <div class="flow">
       <BOUCLE_ressources(SPHINX){index #ENV{source}}{recherche #ENV*{recherche}}
-        {filter fbiblio, 'IN(properties.objet, @valeurs)', 'LENGTH(properties.objet) = 0'}
+        {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
+        {filtermono fbiblio, properties.objet, fbiblio}
         {filter #ENV{type_ref}, 'properties.type_ref = @valeur'}
         {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0'}
         {tri #GET{tri_defaut}, #GET{tris_defaut}}{pagination 10}{option max_matches, 1000}
       >
-        <BOUCLE_sphinx_reference(FBIBLIOS){id_rubrique}{id_fbiblio=#PROPERTIES|table_valeur{id_objet}}>
-          <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio, self=#SELF}/>
-        </BOUCLE_sphinx_reference>
+        <INCLURE{fond=inclure/resumes/fbiblio, id_fbiblio=#PROPERTIES|table_valeur{id_objet}, self=#SELF}/>
       </BOUCLE_ressources>
     </div>
     [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]

@@ -37,6 +37,7 @@
 
       <div class="dialog-filters_body">
         <div class="dialog-filters_inner-body">
+          <p>[(#ENV{resultats}|print)]</p>
           [(#REM) <!-- Groupe 1 : filtres par type de référence --> ]
           <B_filtres_types>
             [(#SET{btnOpen, #ENV{btnOpen}|find{btn_type_ref}|?{1,0}})]
@@ -108,7 +109,7 @@
                         id_rubrique=#ENV{id_rubrique},
                         id_mot,
                         mots,
-                        references=#GET{_ref}
+                        references=#GET{references}
                       }/>
                     </BOUCLE_filtre_mot>
                   </div>
