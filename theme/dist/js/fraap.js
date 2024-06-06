@@ -1275,6 +1275,7 @@
     constructor(m) {
       super(m);
       let self = this;
+      this.type = this.getData("type");
       this.bodyscrollOptions = { allowTouchMove: () => true };
       this.handleTransition = this.handleTransition.bind(this);
       this.state = new Proxy({ status: "open" }, {
@@ -1299,7 +1300,7 @@
       // à l'ouverture de la modale
       this.dialog.on("show", (event) => {
         // Pour le dialog relatif au menu principal du site
-        if (this.getData("type") == "menu") {
+        if (this.type == "menu") {
           // Récupérer l'identifiant de l'arborescence
           // à afficher sur le bouton d'ouverture.
           const opener = event.detail.target.closest('[data-a11y-dialog-show');
@@ -1379,16 +1380,12 @@
   }
 
   // Ce module prend en charge les filtres disponibles
-  // pour un contenu(recherche, médiathèque, etc.)
-  // ET les accordéons(collapsible) qui regroupent
-  // les filtres par thème.
+  // pour un contenu (recherche, médiathèque, etc.).
   class filters extends _default {
     constructor(m) {
       super(m);
 
       this.options = {
-        // Les accordéons sont contenus dans un formulaire
-        extendMode: true,
         ajaxTarget: {
           filters: "filtres",
           content: ""
@@ -1398,9 +1395,6 @@
       this.events = {
         change: {
           filters: "updateFilters"
-        },
-        click: {
-          header: "toggleSectionCollapsible"
         }
       };
     }
@@ -1417,7 +1411,6 @@
 
       for (const key in formData) {
         if (!ignoreKeys.includes(key) && formData[key]) {
-          // console.log(key, !ignoreKeys.includes(key));
           needUpdate = true;
         }
       }
@@ -1431,27 +1424,6 @@
       this.call("close", "", "dialog", this.dialogModuleId);
     }
 
-    /**
-     * Afficher sous forme textuelle les choix de l'utilisateur.
-     * @param {Element} button
-     * @param {Array} inputs
-     */
-    displayUserChoice(button, inputs) {
-      let labels = [];
-      for (const input of inputs) {
-        labels.push(input.dataset.label);
-      }
-
-      if (labels.length > 0) {
-        let span, labelText;
-        span = doc.createElement("span");
-        labelText = doc.createTextNode(labels.join(", "));
-
-        span.appendChild(labelText);
-        span.classList.add("collapsible_user-choice");
-        button.firstElementChild.appendChild(span);
-      }
-    }
 
     getFormData() {
       let formData = new FormData(this.form[0]);
@@ -1507,7 +1479,10 @@
       this.form[0].removeEventListener("submit", this.submitForm);
 
       window.ajaxReload(this.options.ajaxTarget.filters, {
-        callback: () => { this.updateForm(); },
+        callback: () => {
+          this.updateForm();
+          this.call("update", "", "collapsible", this.collapsibleModuleIdId);
+        },
         args: this.getFormData(),
       });
 
@@ -1516,71 +1491,11 @@
 
     updateForm() {
       this.form[0].addEventListener("submit", this.submitForm);
-
-      // updateForm collapsibles
-      if (this.options.extendMode) {
-        this.sections = this.$("section");
-        this.sections.forEach((section) => {
-          const button = section.querySelector("button");
-          const content = this.$("content", section);
-          const inputs = content[0].querySelectorAll("input:checked");
-          let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
-
-          if (isExpanded === false && inputs.length > 0) {
-            this.displayUserChoice(button, inputs);
-          }
-        });
-      }
     }
 
     submitForm(event) {
       event.preventDefault();
       this.updateContent(true);
-    }
-
-    toggleSectionCollapsible(event) {
-      const target = event.currentTarget;
-      const section = this.parent("section", target);
-      const content = this.$("content", section);
-      const button = target.querySelector("button");
-      const hiddenInput = target.querySelector('input[name="btnOpen[]"]');
-
-      // Statut de l'accordéon avant le clic et non après
-      let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
-
-      // 1- Basculer l'état du bouton
-      button.setAttribute("aria-expanded", !isExpanded);
-
-      // 2- Basculer la visibilité du contenu
-      content[0].hidden = isExpanded;
-
-      // 3- Mémoriser le nouvel état du bouton
-      if (this.options.extendMode && !isExpanded) {
-        hiddenInput.setAttribute("value", button.id);
-      } else {
-        hiddenInput.setAttribute("value", "");
-      }
-
-      if (this.options.extendMode) {
-        // Récupérer le <span> qui affiche le choix de l'utilisateur.
-        let userChoice = button.querySelector("span.collapsible_user-choice");
-
-        // S'il existe, le supprimer à l'ouverture de l'accordéon
-        if (userChoice) {
-          userChoice.parentNode.removeChild(userChoice);
-        }
-
-        // Si le bouton est ouvert et si l'utilisateur le referme
-        if (isExpanded) {
-          // Récupérer les cases cochées
-          let inputs = content[0].querySelectorAll("input:checked");
-
-          // Mettre à jour la liste des choix.
-          if (inputs.length > 0) {
-            this.displayUserChoice(button, inputs);
-          }
-        }
-      }
     }
 
     init() {
@@ -1602,14 +1517,125 @@
       let dialogModule = this.el.parentNode.closest("[data-module-dialog]");
       this.dialogModuleId = dialogModule.getAttribute("data-module-dialog");
 
+      // Mémoriser l'id du module collapsible lié aux filtres
+      this.collapsibleModuleId = this.el.getAttribute("data-module-collapsible");
 
-      this.checkInitStateFilters();
+      //this.checkInitStateFilters();
       this.updateForm();
     }
   }
 
+  // Menu principal (offcanvas)
+
+  class collapsible extends _default {
+    constructor(m) {
+      super(m);
+
+      this.options = {
+        extendMode: true
+      };
+
+      this.events = {
+        click: {
+          header: "toggleSectionCollapsible"
+        }
+      };
+    }
+
+      /**
+     * Afficher sous forme textuelle les choix de l'utilisateur.
+     * @param {Element} button
+     * @param {Array} inputs
+     */
+    displayUserChoice(button, inputs) {
+      let labels = [];
+      for (const input of inputs) {
+        labels.push(input.dataset.label);
+      }
+
+      if (labels.length > 0) {
+        let span, labelText;
+        span = doc.createElement("span");
+        labelText = doc.createTextNode(labels.join(", "));
+
+        span.appendChild(labelText);
+        span.classList.add("collapsible_user-choice");
+        button.firstElementChild.appendChild(span);
+      }
+    }
+
+    toggleSectionCollapsible(event) {
+      const target = event.currentTarget;
+      const section = this.parent("section", target);
+      const body = this.$("body", section);
+      const button = target.querySelector("button");
+      const hiddenInput = target.querySelector('input[name="btnOpen[]"]');
+
+      // Statut de l'accordéon avant le clic et non après
+      let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
+
+      // 1- Basculer l'état du bouton
+      button.setAttribute("aria-expanded", !isExpanded);
+
+      // 2- Basculer la visibilité du contenu
+      body[0].hidden = isExpanded;
+
+      // 3- Mémoriser le nouvel état du bouton
+      if (this.options.extendMode && !isExpanded) {
+        hiddenInput.setAttribute("value", button.id);
+      } else {
+        hiddenInput.setAttribute("value", "");
+      }
+
+      if (this.options.extendMode) {
+        // Récupérer le <span> qui affiche le choix de l'utilisateur.
+        let userChoice = button.querySelector("span.collapsible_user-choice");
+
+        // S'il existe, le supprimer à l'ouverture de l'accordéon
+        if (userChoice) {
+          userChoice.parentNode.removeChild(userChoice);
+        }
+
+        // Si le bouton est ouvert et si l'utilisateur le referme
+        if (isExpanded) {
+          // Récupérer les cases cochées
+          let inputs = body[0].querySelectorAll("input:checked");
+
+          // Mettre à jour la liste des choix.
+          if (inputs.length > 0) {
+            this.displayUserChoice(button, inputs);
+          }
+        }
+      }
+    }
+
+    update() {
+      if (this.options.extendMode) {
+        let sections = this.$("section");
+        sections.forEach((section) => {
+          const button = section.querySelector("button");
+          const body = this.$("body", section);
+          const inputs = body[0].querySelectorAll("input:checked");
+
+          let isExpanded = button.getAttribute("aria-expanded") == "true" || false;
+
+          if (isExpanded === false && inputs.length > 0) {
+            this.displayUserChoice(button, inputs);
+          }
+        });
+      }
+    }
+
+    init() {
+      this.update();
+
+    }
+
+  }
+
   var modules = /*#__PURE__*/Object.freeze({
     __proto__: null,
+    collapsible: collapsible,
     dialog: dialog,
     filters: filters,
     menu: menu,

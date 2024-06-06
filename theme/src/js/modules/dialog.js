@@ -7,6 +7,7 @@ export default class extends module {
   constructor(m) {
     super(m);
     let self = this;
+    this.type = this.getData("type");
     this.bodyscrollOptions = { allowTouchMove: () => true };
     this.handleTransition = this.handleTransition.bind(this);
     this.state = new Proxy({ status: "open" }, {
@@ -31,7 +32,7 @@ export default class extends module {
     // à l'ouverture de la modale
     this.dialog.on("show", (event) => {
       // Pour le dialog relatif au menu principal du site
-      if (this.getData("type") == "menu") {
+      if (this.type == "menu") {
         // Récupérer l'identifiant de l'arborescence
         // à afficher sur le bouton d'ouverture.
         const opener = event.detail.target.closest('[data-a11y-dialog-show');
