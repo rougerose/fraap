@@ -33,17 +33,7 @@
   <form action="#ENV{action}" method="post" class="dialog-filters_form">
       #ACTION_FORMULAIRE{#ENV{action}}
 
-      [(#REM) <!-- Inclure un fichier header identique pour tous les dialogs --> ]
-      <header class="dialog-filters_header">
-        <h2 id="dialogTitle">
-          <span class="text-underline"><:fraap_squelettes:filtrer:></span>
-        </h2>
-        [<button type="button" class="dialog_close button-icon circle-hover"
-          data-a11y-dialog-hide=""
-          aria-label="<:fraap_squelettes:nav_bouton_fermer:>">
-          (#INCLURE{fond=images/icon-close-100.svg, svg=icon-nav-close})
-        </button>]
-      </header>
+      <INCLURE{fond=inclure/dialog/header}/>
 
       <div class="dialog-filters_body">
         <div class="dialog-filters_inner-body">
