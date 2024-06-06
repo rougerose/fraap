@@ -79,19 +79,39 @@ function fraap_squelettes_formulaire_charger($flux) {
  * pour ajouter une dimension type document aux articles et fbiblios,
  * et type_ref pour les fbiblios
  */
+/**
+ * Pipeline indexer_document
+ * - pour l'objet FBILIO, ajout de type_ref et de l'année.
+ * - pour les articles, ajout de la dimension Typologie,
+ *   qui permet dans les filtres de Recherche de trier soit par articles,
+ *   soit par le titre de la rubrique parente (fiches pratiques, annuaire
+ *   membres, médiathèque).
+ */
 function fraap_squelettes_indexer_document($flux) {
 	if (preg_match('/article|fbiblio/', $flux['args']['objet']) === 1  && $flux['args']['champs']['statut'] == 'publie') {
 		$id_rubrique = $flux['args']['champs']['id_rubrique'];
-		$flux['data']->properties['typologie'] = ajouter_typologie_document($id_rubrique);
+		$flux['data']->properties['typologie'] = indexation_ajouter_typologie_document($id_rubrique);
 
 		if ($flux['args']['objet'] == 'fbiblio') {
 			$id_fbiblio = $flux['args']['id_objet'];
-			$fbiblio = completer_indexation_fbiblio($id_fbiblio);
+			$fbiblio = indexation_completer_fbiblio($id_fbiblio);
 			$flux['data']->properties['type_ref'] = $fbiblio['type_ref'];
 			$flux['data']->properties['annee'] = $fbiblio['annee'];
 		}
 	}
 	return $flux;
+}
+
+/**
+ * Ajouter aux objets fbiblio les données type_ref et année
+ */
+function indexation_completer_fbiblio($id_fbiblio) {
+	if ($id_fbiblio = intval($id_fbiblio)) {
+		$complement = sql_allfetsel('type_ref, annee', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
+		return $complement[0];
+	} else {
+		return [];
+	}
 }
 
 /**
@@ -101,7 +121,7 @@ function fraap_squelettes_indexer_document($flux) {
  *  - médiathèque (fbiblios)
  *  - article pour tous les autres articles.
  */
-function ajouter_typologie_document($id_rubrique) {
+function indexation_ajouter_typologie_document($id_rubrique) {
 	// fiches pratiques, id_rubrique = 38
 	// annuaire membres, id_rubrique = 3
 	// médiathèque, id_rubrique = 47
@@ -116,16 +136,4 @@ function ajouter_typologie_document($id_rubrique) {
 	}
 
 	return $typologie;
-}
-
-/**
- * Ajouter aux objets fbiblio les données type_ref et année
- */
-function completer_indexation_fbiblio($id_fbiblio) {
-	if ($id_fbiblio = intval($id_fbiblio)) {
-		$complement = sql_allfetsel('type_ref, annee', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
-		return $complement[0];
-	} else {
-		return [];
-	}
 }
