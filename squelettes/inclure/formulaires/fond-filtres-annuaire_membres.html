@@ -1,0 +1,16 @@
+#SET{resultats, #ARRAY}
+<B_ressources_fond>
+  <BOUCLE_ressources_fond(SPHINX){index #ENV{source}}
+    {recherche #ENV*{recherche}}
+    {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
+    {filtermono article, properties.objet, article}
+    {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.id) = 0' }
+    {par title}
+    {pagination 999}>
+    [(#SET{resultats, #GET{resultats}|push{#PROPERTIES|table_valeur{id_objet}}})]
+  </BOUCLE_ressources_fond>
+  [(#GET{resultats}|serialize)]
+</B_ressources_fond>
+  [(#GET{resultats}|serialize)]
+<//B_ressources_fond>
+#FILTRE{trim}

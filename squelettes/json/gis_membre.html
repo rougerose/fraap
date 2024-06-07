@@ -1,4 +1,4 @@
-<BOUCLE_art(ARTICLES){gis}{id_article IN #ENV{articles}}{0, #ENV{limit}}{","}>
+<BOUCLE_art(ARTICLES){gis}{id_article}{0, #ENV{limit}}{","}>
 		{"type": "Feature",
 		["geometry": (#GEOMETRY|appliquer_filtre{wkt_to_json}|sinon{{"type": "Point", "coordinates": \[#LON, #LAT\]}}),]
 		"id":"#ID_GIS",

@@ -1,13 +1,16 @@
 [(#SET{mots, #ENV{mots, #ARRAY}|array_filter})]
-<div id="annuaire" class="box-filters box-filters-sticky">
+
+<div id="annuaire" class="box-filters box-filters-sticky variant-search">
+  <div class="box-filters_inner">
+    [(#FORMULAIRE_RECHERCHE{#SELF, annuaire})]
+  </div>
   <div class="box-filters_inner">
     <div class="reel">
       <div>
-        [(#ENV{articles}|oui)
-          [<span>(#ENV{articles}|count|singulier_ou_pluriel{fraap_squelettes:membre, fraap_squelettes:membres})</span>]
-        ][(#ENV{articles}|non)
+        [(#ENV{total_resultats}|>{0}|?{
+          [<span>(#ENV{total_resultats}|singulier_ou_pluriel{fraap_squelettes:membre, fraap_squelettes:membres})</span>],
           <span><:fraap_squelettes:resultat_aucun:></span>
-        ]
+        })]
       </div>
       <div>
           <button type="button" class="button-cta variant-small variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogMembers">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>

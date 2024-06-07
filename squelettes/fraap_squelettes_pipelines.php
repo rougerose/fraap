@@ -75,6 +75,15 @@ function fraap_squelettes_formulaire_charger($flux) {
 }
 
 /**
+ * Pipeline gis_modele_parametres_autorises
+ * Autoriser l'ajout d'un tableau d'id_article
+ */
+function fraap_squelettes_gis_modele_parametres_autorises($flux) {
+	array_push($flux, 'articles');
+	return $flux;
+}
+
+/**
  * Utiliser le pipeline indexer_document
  * pour ajouter une dimension type document aux articles et fbiblios,
  * et type_ref pour les fbiblios

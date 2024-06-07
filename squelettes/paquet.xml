@@ -38,4 +38,5 @@
   <pipeline nom="formulaire_saisies" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="formulaire_charger" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="indexer_document" inclure="fraap_squelettes_pipelines.php" />
+  <pipeline nom="gis_modele_parametres_autorises" inclure="fraap_squelettes_pipelines.php" />
 </paquet>

@@ -1,9 +1,23 @@
+#SET{total_resultats, 0}
 #SET{articles, #ARRAY}
-<BOUCLE_articles(ARTICLES){gis}{id_rubrique}{mots?}>
-  [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
-</BOUCLE_articles>
 
-<INCLURE{fond=inclure/sections/box-filters-rubrique-annuaire-membres, env, articles=#GET{articles}}/>
+<B_ressources>
+  #SET{total_resultats, #TOTAL_BOUCLE}
+  [(#ENV{debug}|oui)
+    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
+  ]
+  <BOUCLE_ressources(SPHINX){index #ENV{source}}
+    {recherche #ENV*{recherche}}
+    {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
+    {filtermono article, properties.objet, article}
+    {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.id) = 0' }
+    {par title}
+    {pagination 999}>
+    [(#SET{articles, #GET{articles}|push{#PROPERTIES|table_valeur{id_objet}}})]
+  </BOUCLE_ressources>
+</B_ressources>
+
+<INCLURE{fond=inclure/sections/box-filters-rubrique-annuaire-membres, total_resultats=#GET{total_resultats}, env}/>
 
 <div class="directory-members_container">
   <div class="directory-members_container-list">
@@ -83,21 +97,29 @@
     <//B_membres>
   </div>
   <div class="directory-members_container-map">
-    #SET{mapId, _members} #SET{id_gis, #ENV{id_gis, false}}
+    [(#REM)
+      <!--
+        Via le pipeline gis_modele_parametres_autorises,
+        on autorise la possibilité d'ajouter le tableau d'articles défini plus haut.
+        Ce qui permet d'unifier depuis Sphinx le calcul des éléments à afficher.
+      -->
+    ]
+    #SET{mapId, _members}
+    #SET{id_gis, #ENV{id_gis, false}}
     [(#INCLURE{fond=modeles/carte_gis,
-      objets=membres,
-      id_rubrique=#ID_RUBRIQUE,
-      mots=#ENV{mots},
-      id_map=#GET{mapId},
-      id_a_ouvrir=#GET{id_gis},
-      style=non,
-      lon=2.890619,
-      lat=46.949328,
-      zoom=6,
-      cluster=oui,
-      clusterSpiderfyOnMaxZoom=oui})]
+    objets=membres,
+    id_rubrique=#ID_RUBRIQUE,
+    recherche=#ENV{recherche},
+    articles=#GET{articles},
+    mots=#ENV{mots},
+    id_map=#GET{mapId},
+    id_a_ouvrir=#GET{id_gis},
+    style=non,
+    lon=2.890619,
+    lat=46.949328,
+    zoom=6,
+    cluster=oui,
+    clusterSpiderfyOnMaxZoom=oui})]
   </div>
 </div>
-<INCLURE{fond=inclure/dialog/filtres-annuaire-membres, id_rubrique, env}/>
-[<script src="(#CHEMIN{dist/js/fraap-members-init.js})"></script>]
 #FILTRE{trim}

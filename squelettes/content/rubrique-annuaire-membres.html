@@ -5,6 +5,14 @@
 		<INCLURE{fond=inclure/sections/header-rubrique, icon='icon-rubrique3-64.svg', class_icon=icon-rubrique3, id_rubrique} />
     <div class="wrapper-structure directory-members">
       <INCLURE{fond=inclure/compositions/rubrique-annuaire-membres, env, ajax=annuaire}/>
+
+      <div id="dialogMembers" class="dialog dialog-offcanvas variant-right" aria-labelledby="dialogTitle" aria-hidden="true" data-module-dialog data-dialog-type="filtres">
+        <div class="dialog_overlay" data-a11y-dialog-hide></div>
+        <div class="dialog_content dialog-offcanvas_content dialog-filters" data-dialog="content" data-module-filters data-filters-content="annuaire" data-module-collapsible role="document">
+          <INCLURE{fond=inclure/dialog/formulaire_annuaire_membres_filtres, recherche=#ENV{recherche}, ajax=filtres, env}/>
+        </div>
+      </div>
+
     </div>
 	</div>
 </BOUCLE_rubrique_annuaire>

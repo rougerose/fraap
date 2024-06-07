@@ -82,8 +82,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'mediatheque_trier_annee' => 'Trier par année de publication',
 	'mediatheque_trier_titre' => 'Trier par titre',
 	'mediatheque_selection_titre' => 'Quelques exemples',
-	'membre' => '1 membre',
-	'membres' => '@nb@ membres',
+	'membre' => '1 membre affiché',
+	'membres' => '@nb@ membres affichés',
 	'menu_articles_rubrique_nom' => "Fraap : tous les articles d'une rubrique",
 	'menu_entree_enfants' => 'Cet objet possède-t-il des enfants ? (oui/non ; non est la valeur par défaut).',
 	'menu_entree_icone' => "Afficher l'icone \"-->\" après le titre ? (oui/non ; non est la valeur par défaut).",
@@ -142,6 +142,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 
 	// S
 	'search_label_mediatheque' => 'Rechercher dans la médiathèque',
+	'search_label_annuaire' => 'Rechercher dans l’annuaire',
 	'search_placeholder' => 'Écrivez ici…',
 	'search_submit' => 'Rechercher',
 
