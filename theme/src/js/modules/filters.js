@@ -82,7 +82,10 @@ export default class extends module {
     for (let key in formData) {
       if (formData.hasOwnProperty(key) && acceptKeys.includes(key)) {
         // Conserver uniquement les valeurs de type array et string non vide
-        if (formData[key] !== "") {
+        // Sinon elles ne sont pas supprimer de l'url.
+        if (formData[key] === "") {
+          argObj[key] = null;
+        } else {
           argObj[key] = formData[key];
         }
       }
