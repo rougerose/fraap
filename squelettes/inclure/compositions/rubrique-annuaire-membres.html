@@ -22,7 +22,7 @@
 <div class="directory-members_container">
   <div class="directory-members_container-list">
     <B_membres>
-      <ul class="directory-members_list flow" role="list">
+      <ul class="directory-members_list flow" role="list" data-module-collapsible data-collapsible-extendmode="0">
         <BOUCLE_membres(ARTICLES){id_article IN #GET{articles}}{par titre}>
           <BOUCLE_gis(GIS){id_article}>
             #SET{gis, #ARRAY{id, #ID_GIS, lat, #LAT, lon, #LON}}
@@ -69,23 +69,27 @@
 
               <BOUCLE_si_activites(CONDITION){si #GET{activites}|=={1}}>
                 <div class="collapsible">
-                  <BOUCLE_groupe_activites(GROUPES_MOTS){id_groupe=11}>
-                    <B_activites>
-                      <h4 class="collapsible_heading card-member_tags-label">
-                        <button type="button" id="ch_#ID_GROUPE" aria-expanded="false">
-                          <span><:fraap_squelettes:annuaire_activites_associatives:>[<span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
-                          [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
-                        </button>
-                      </h4>
-                      <div class="collapsible_content" role="region" aria-labelledby="ch_#ID_GROUPE" hidden>
-                        <p class="cluster">
-                          <BOUCLE_activites(MOTS){id_article}{id_groupe_racine=#ID_GROUPE}{par titre}>
-                            <span class="pill">#TITRE</span>
-                          </BOUCLE_activites>
-                        </p>
-                      </div>
-                    </B_activites>
-                  </BOUCLE_groupe_activites>
+                  <section class="collapsible_section" data-collapsible="section">
+                    <BOUCLE_groupe_activites(GROUPES_MOTS){id_groupe=11}>
+                      <B_activites>
+                        <h4 class="collapsible_heading card-member_tags-label" data-collapsible="header">
+                          <button type="button" id="ch_#ID_GROUPE" aria-expanded="false">
+                            <span><:fraap_squelettes:annuaire_activites_associatives:>[<span class="indicator">(#TOTAL_BOUCLE)</span>]</span>
+                            [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus, aria-hidden=true, focusable=false})]
+                          </button>
+                        </h4>
+                        <div class="collapsible_content" role="region"
+                        data-collapsible="body"
+                        aria-labelledby="ch_#ID_GROUPE" hidden>
+                          <p class="cluster">
+                            <BOUCLE_activites(MOTS){id_article}{id_groupe_racine=#ID_GROUPE}{par titre}>
+                              <span class="pill">#TITRE</span>
+                            </BOUCLE_activites>
+                          </p>
+                        </div>
+                      </B_activites>
+                    </BOUCLE_groupe_activites>
+                  </section>
                 </div>
               </BOUCLE_si_activites>
             </div>

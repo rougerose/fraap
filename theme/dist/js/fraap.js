@@ -1535,7 +1535,7 @@
       super(m);
 
       this.options = {
-        extendMode: true
+        extendMode: (this.getData("extendmode") === "1") || false,
       };
 
       this.events = {
@@ -1584,10 +1584,12 @@
       body[0].hidden = isExpanded;
 
       // 3- Mémoriser le nouvel état du bouton
-      if (this.options.extendMode && !isExpanded) {
-        hiddenInput.setAttribute("value", button.id);
-      } else {
-        hiddenInput.setAttribute("value", "");
+      if (this.options.extendMode) {
+        if (!isExpanded) {
+          hiddenInput.setAttribute("value", button.id);
+        } else {
+          hiddenInput.setAttribute("value", "");
+        }
       }
 
       if (this.options.extendMode) {
