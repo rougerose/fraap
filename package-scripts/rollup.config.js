@@ -47,17 +47,6 @@ export default [
     "iife"
   ),
 
-  // annuaire membres : carte GIS
-  // build(
-  //   "theme/src/js/fraap-members.js",
-  //   "theme/dist/js/fraap-members.js",
-  //   "iife",
-  //   "FraapMembers",
-  //   "default",
-  //   { jQuery: "$" },
-  //   ["jQuery"]
-  // ),
-
   build(
     "theme/src/js/members.js",
     "theme/dist/js/fraapmembers.js",
@@ -68,37 +57,12 @@ export default [
     ["jQuery"]
   ),
 
-  // Annuaire : init de la carte et de l'annuaire
-  // build(
-  //   "theme/src/js/fraap-members-init.js",
-  //   "theme/dist/js/fraap-members-init.js"
-  // ),
-
   // Init Dialog Filtres
-  build(
-    "theme/src/js/fraap-dialog-filtres-init.js",
-    "theme/dist/js/fraap-dialog-filtres-init.js",
-    "iife"
-  ),
-
-  // Accordéons
   // build(
-  //   "theme/src/js/fraap-collapsible.js",
-  //   "theme/dist/js/fraap-collapsible.js",
-  //   "iife",
-  //   "fraapCollapsible",
-  //   "default"
+  //   "theme/src/js/fraap-dialog-filtres-init.js",
+  //   "theme/dist/js/fraap-dialog-filtres-init.js",
+  //   "iife"
   // ),
-  // build(
-  //   "theme/src/js/fraap-collapsible.js",
-  //   "theme/dist/js/fraap-collapsible.js"
-  // ),
-
-  // Médiathèque
-  build(
-    "theme/src/js/fraap-mediatheque.js",
-    "theme/dist/js/fraap-mediatheque.js"
-  ),
 
   // Sommaire des articles : activer l'élément dans la vue
   build("theme/src/js/fraap-scrollspy.js", "theme/dist/js/fraap-scrollspy.js"),
