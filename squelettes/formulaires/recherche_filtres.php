@@ -69,28 +69,28 @@ function formulaires_recherche_filtres_verifier($recherche = '', $criteres = [],
 
 function formulaires_recherche_filtres_traiter($recherche = '', $criteres = [], $redirect = '') {
 	$retour = [];
-	$voir_resultats = _request('voir_resultats');
+	// $voir_resultats = _request('voir_resultats');
 
-	if ($voir_resultats) {
-		foreach ($criteres as $key => $valeurs) {
-			$cle = $valeurs['cle'];
-			$retour[$cle] = _request($cle);
-			$redirect = parametre_url($redirect, $cle, '');
+	// if ($voir_resultats) {
+	// 	foreach ($criteres as $key => $valeurs) {
+	// 		$cle = $valeurs['cle'];
+	// 		$retour[$cle] = _request($cle);
+	// 		$redirect = parametre_url($redirect, $cle, '');
 
-			if (is_array($retour[$cle])) {
-				$retour[$cle] = array_unique($retour[$cle]);
-				if (count($retour[$cle]) > 0) {
-					$redirect = parametre_url($redirect, $cle, $retour[$cle]);
-				}
-			} else {
-				if ($retour[$cle]) {
-					$redirect = parametre_url($redirect, $cle, $retour[$cle]);
-				}
-			}
-		}
-		$retour['redirect'] = $redirect;
-		$retour['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("recherche");</script>';
-	}
-	$retour['editable'] = true;
+	// 		if (is_array($retour[$cle])) {
+	// 			$retour[$cle] = array_unique($retour[$cle]);
+	// 			if (count($retour[$cle]) > 0) {
+	// 				$redirect = parametre_url($redirect, $cle, $retour[$cle]);
+	// 			}
+	// 		} else {
+	// 			if ($retour[$cle]) {
+	// 				$redirect = parametre_url($redirect, $cle, $retour[$cle]);
+	// 			}
+	// 		}
+	// 	}
+	// 	$retour['redirect'] = $redirect;
+	// 	$retour['message_ok'] = '<script type="text/javascript">if (window.jQuery) ajaxReload("recherche");</script>';
+	// }
+	// $retour['editable'] = true;
 	return $retour;
 }

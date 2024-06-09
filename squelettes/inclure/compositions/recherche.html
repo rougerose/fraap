@@ -79,7 +79,7 @@
         {facet mots, properties.mots.ids ORDER BY COUNT(*) DESC}
         {facet typologie, properties.typologie ORDER BY COUNT(*) DESC}
         {par #GET{tri}}{inverse #GET{ordre}}
-        {pagination 20}
+        {pagination 20}{option max_matches, 1000}
       >
         <article class="search-page_result abstract flow-small">
           <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
@@ -92,46 +92,6 @@
     </div>
     [<nav class="pagination gap-top-5" role="navigation">(#PAGINATION{fraap, afficher_lien_precedent=1, afficher_lien_suivant=1})</nav>]
   </div>
-  [(#REM)
-    <!-- Préparer les critères envoyés au formulaire de filtres -->
-  ][(#SET{criteres_tags, #ARRAY{
-    cle, mots,
-    type, multiple,
-    critere, properties.mots.ids,
-    titre, <:fraap_squelettes:filtre_categorie_theme:>,
-    tri, '',
-    sens_tri, '',
-    tags, #ENV{mots}
-  }})]
-  [(#SET{criteres_annee, #ARRAY{
-    cle, annee,
-    type, unique,
-    critere, 'YEAR(date)',
-    titre, <:fraap_squelettes:filtre_categorie_annee:>,
-    tri, date,
-    sens_tri, -1,
-    annee, #ENV{annee}
-  }})]
-  [(#SET{criteres_typologie, #ARRAY{
-    cle, typologie,
-    type, unique,
-    critere, properties.typologie,
-    titre, <:fraap_squelettes:filtre_categorie_typologie:>,
-    tri, '',
-    sens_tri, '',
-    type, #ENV{typologie}
-  }})]
-  [(#REM)
-    <!--
-      Tous les critères sont concaténés dans un seul tableau.
-      Les paramètres de recherche sont inclus explicitement et en format brut
-      pour éviter un échappement sur les apostrophes notamment.
-    -->
-  ][(#SET{criteres, #ARRAY})]
-  [(#SET{criteres, #GET{criteres}|push{#GET{criteres_tags}}|push{#GET{criteres_typologie}}|push{#GET{criteres_annee}}})]
-
-  <INCLURE{fond=inclure/dialog/filtres-recherche, recherche=#ENV*{recherche}, criteres=#GET{criteres}, env}/>
-  [<script src="(#CHEMIN{dist/js/fraap-dialog-filtres-init.js})" defer></script>]
 </B_recherche>
   [(#REM)
     <!-- Pas de résultats -->

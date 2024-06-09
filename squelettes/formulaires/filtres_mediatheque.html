@@ -37,7 +37,6 @@
 
       <div class="dialog-filters_body">
         <div class="dialog-filters_inner-body">
-          <p>[(#ENV{resultats}|print)]</p>
           [(#REM) <!-- Groupe 1 : filtres par type de référence --> ]
           <B_filtres_types>
             [(#SET{btnOpen, #ENV{btnOpen}|find{btn_type_ref}|?{1,0}})]
@@ -120,7 +119,7 @@
         </B_groupes>
         </div>
       </div>
-      <INCLURE{fond=inclure/formulaires/bouton-voir-resultats, total_references=#GET{total_references}, env}/>
+      <INCLURE{fond=inclure/formulaires/bouton-voir-resultats, total_references=#GET{total_references}}/>
   </form>
 </div>
 #FILTRE{trim}

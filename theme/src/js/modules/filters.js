@@ -75,7 +75,7 @@ export default class extends module {
    */
   updateContent(closeDialog) {
     let formData = this.getFormData(),
-      acceptKeys = ["type_ref", "mots"],
+      acceptKeys = ["type_ref", "mots", "typologie", "annee"],
       argObj = {},
       closeCB = closeDialog || false;
 
@@ -131,7 +131,7 @@ export default class extends module {
     this.options.ajaxTarget.content = this.getData("content");
 
     // Identifier et mémoriser les champs principaux
-    let names = ["btnOpen[]", "mots[]", "type_ref"];
+    let names = ["btnOpen[]", "mots[]", "type_ref", "typologie", "annee"];
     this.mainInputs = [];
     for (const item of this.form[0]) {
       if (names.includes(item.name) && !this.mainInputs.includes(item.name)) {

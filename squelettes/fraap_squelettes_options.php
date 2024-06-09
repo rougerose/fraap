@@ -23,7 +23,7 @@ $GLOBALS['fin_intertitre'] = '</h2>';
 define('_MAX_MOTS_LISTE', 300);
 
 // Sphinx suggestions
-define('_INDEXER_SUGGESTIONS', 5);
+// define('_INDEXER_SUGGESTIONS', 5);
 
 // Type de coordonnées par défaut
 if (!defined('_COORDONNEES_TYPE_DEFAUT')) {

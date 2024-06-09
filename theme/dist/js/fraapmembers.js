@@ -6,7 +6,7 @@
     this.el = document.querySelector(id);
     this.directoryContainer = this.el.parentElement.parentElement;
     this.directoryList = this.directoryContainer.querySelector(
-      ".directory-members_list"
+      ".directory-members_list",
     );
     this.boxFilters = this.directoryContainer.previousElementSibling;
     this.flyToMember.bind(this);
