@@ -150,6 +150,7 @@
   // Listes
   ul.spip,
   ol.spip {
+    list-style-type: disc;
     --flow-space: var(--space-xs);
     padding-left: 2rem;
     > li + li,

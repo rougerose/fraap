@@ -2717,6 +2717,7 @@ a:hover .icon-nav-link {
 }
 .prose-editor ul.spip,
 .prose-editor ol.spip {
+  list-style-type: disc;
   --flow-space: var(--space-xs);
   padding-left: 2rem;
 }
