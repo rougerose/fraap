@@ -8,5 +8,22 @@
     <INCLURE{fond=inclure/sections/header-rubrique, icon=#GET{icon-svg}, class_icon=#GET{icon}, id_rubrique}/>
 
     <INCLURE{fond=inclure/compositions/rubrique-colloques, ajax=articles, env}/>
+
+    [(#REM)
+      <!--
+          Options à préciser :
+            - afficher_types -> si oui, groupe 50
+            - afficher_themes -> si oui, groupe 37
+        -->
+    ][(#SET{options, #ARRAY{afficher_types, 1, afficher_themes, 1, groupe_types, 50,
+      groupe_themes, 37}})]
+    <div id="dialogFiltres" class="dialog dialog-offcanvas variant-right"
+      aria-labelledby="dialogTitle" aria-hidden="true" data-module-dialog
+      data-dialog-type="filtres">
+      <div class="dialog_overlay" data-a11y-dialog-hide></div>
+      <div class="dialog_content dialog-offcanvas_content dialog-filters" role="document" data-dialog="content" data-module-filters data-filters-content="articles" data-module-collapsible data-collapsible-extendmode="1">
+        <INCLURE{fond=inclure/dialog/formulaire_plaidoyer_filtres, ajax=filtres, options=#GET{options}, env}/>
+      </div>
+    </div>
   </div>
 </BOUCLE_rubrique_standard>
