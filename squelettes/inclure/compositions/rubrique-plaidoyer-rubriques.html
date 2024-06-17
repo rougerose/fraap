@@ -6,7 +6,7 @@
 
       <div class="gap-top-5">
         <div class="auto-grid">
-          <BOUCLE_articles(ARTICLES){id_rubrique}{mots?}{!par date}{pagination #ENV{pagination, 12}}>
+          <BOUCLE_articles(ARTICLES){id_rubrique}{mots_selon_id? 1 #ENV{mots}}{!par date}{pagination #ENV{pagination, 12}}>
             <article class="card abstract flow">
               <INCLURE{fond=inclure/resumes/article-card, id_objet=#ID_ARTICLE, variante=variant-underscore, afficher_date=1} />
             </article>

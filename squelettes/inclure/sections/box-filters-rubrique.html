@@ -1,4 +1,4 @@
-<BOUCLE_total_articles(ARTICLES){id_rubrique=#ENV{id_rubrique}}{mots?}> </BOUCLE_total_articles>
+<BOUCLE_total_articles(ARTICLES){id_rubrique=#ENV{id_rubrique}}{mots_selon_id? 1 #ENV{mots}}> </BOUCLE_total_articles>
   [(#SET{total_articles, #TOTAL_BOUCLE|singulier_ou_pluriel{fraap_squelettes:article, fraap_squelettes:articles}})]
 </B_total_articles>
   [(#SET{total_articles, <:fraap_squelettes:article_aucun:>})]

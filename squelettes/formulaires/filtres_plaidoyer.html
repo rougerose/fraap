@@ -77,7 +77,7 @@
     ]
     #SET{total_articles, 0}
     <B_articles_mots>
-      <BOUCLE_articles_mots(ARTICLES){mots?}{id_article IN #GET{articles}}> </BOUCLE_articles_mots>
+      <BOUCLE_articles_mots(ARTICLES){mots_selon_id? 1 #ENV{mots}}{id_article IN #GET{articles}}> </BOUCLE_articles_mots>
       #SET{total_articles, #TOTAL_BOUCLE}
     </B_articles_mots>
     <INCLURE{fond=inclure/formulaires/bouton-voir-resultats, total_references=#GET{total_articles}}/>
