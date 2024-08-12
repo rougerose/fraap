@@ -10,7 +10,10 @@
 .directory-members_container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  grid-template-rows: minmax(0, 1fr); // https://pustelto.com/blog/what_you_might_not_know_about_sizing_in_css/
+  grid-template-rows: minmax(
+    0,
+    1fr
+  ); // https://pustelto.com/blog/what_you_might_not_know_about_sizing_in_css/
   grid-gap: var(--space-xs-s);
   gap: var(--space-m);
   height: calc(100vh - var(--space-m-l) * 2);
@@ -19,7 +22,7 @@
 
 .directory-members_container-list {
   height: 100%;
-  margin: auto;
+  // margin: auto;
 }
 
 .directory-members_list {
@@ -44,7 +47,6 @@
     }
   }
 }
-
 
 @include mq.mq($from: 540px) {
   .directory-members_container {
