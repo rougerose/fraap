@@ -7,8 +7,8 @@
   [(#SET{class_label, search_label-rubrique})]
   [(#SET{text_label, [(#VAL{fraap_squelettes}|concat{:,search_label_#ENV{class}}|_T)]})]
 ]
-<div class="formulaire_spip formulaire_recherche[ (#ENV{class})]" id="formulaire_recherche">
-  <form action="[(#ENV{action})]" method="get" class="search_form">
+<div class="formulaire_spip formulaire_#FORM[ (#ENV{class})]" id="[formulaire_(#FORM|concat{_}|concat{#ENV{_id_champ}})]">
+  <form action="#ENV{action}" method="get" class="search_form">
     <div class="editer-groupe search_group">
       [(#ENV{action}|form_hidden)]
       [<input type="hidden" name="lang" value="(#ENV{lang})" />]
