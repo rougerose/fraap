@@ -1,9 +1,8 @@
 #SET{articles, #ARRAY}
 #SET{total_references, 0}
-
-[(#REM)
-<!-- Récupérer tous les articles disponibles -->
-]
+#SET{departements, #ARRAY}
+#SET{regions, #ARRAY}
+[(#REM) <!-- Récupérer tous les articles disponibles --> ]
 <BOUCLE_articles(ARTICLES){gis}{id_rubrique}>
   [(#SET{articles, #GET{articles}|push{#ID_ARTICLE}})]
 </BOUCLE_articles>
@@ -20,6 +19,26 @@
 [(#REM)
   <!-- Le nombre total de références -->
 ] [(#SET{total_references, #GET{res}|count})]
+
+[(#REM) <!-- Les territoires liés aux articles --> ]
+<BOUCLE_territoires(TERRITOIRES){id_article IN #GET{res}}{iso_pays=fr}{type=subdivision}>
+  [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
+  ][(#CATEGORIE|match{metropolitan_department}|oui)
+    [(#SET{departements, #GET{departements}|push{#ID_TERRITOIRE}})]
+
+  ][(#CATEGORIE|match{metropolitan_region}|oui)
+    [(#SET{regions, #GET{regions}|push{#ID_TERRITOIRE}})]
+  ][(#REM) <!-- Paris, Lyon, Corse -->
+  ][(#CATEGORIE|match{metropolitan_collectivity}|oui)
+    [(#LISTE{Paris, Lyon}|find{#ISO_TITRE}|?{
+      [(#SET{departements, #GET{departements}|push{#ID_TERRITOIRE}})],
+      [(#SET{regions, #GET{regions}|push{#ID_TERRITOIRE}})]
+    })]
+  ][(#REM) <!-- Outre-mer -->
+  ][(#CATEGORIE|match{overseas}|oui)
+    [(#SET{regions, #GET{regions}|push{#ID_TERRITOIRE}})]
+  ]
+</BOUCLE_territoires>
 
 
 <div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
@@ -58,7 +77,7 @@
                     <div class="choix">
                       <INCLURE{fond=inclure/formulaires/filtres-checkbox,
                         id_rubrique=#ENV{id_rubrique},
-                        articles=#GET{articles},
+                        articles=#GET{res},
                         id_mot,
                         mots}/>
                     </div>
@@ -73,34 +92,49 @@
           <:fraap_squelettes:annuaire_localisation:>
         </h2>
         <div class="collapsible">
-          <BOUCLE_groupes_localisation(GROUPES_MOTS){id_groupe_racine=30}{par num titre}>
-            <B_mots_localisation>
-              #SET{open_loc, 0}
-              [(#SET{open_loc, #ENV{btnOpen}|find{ch_#ID_GROUPE}|?{1,0}})]
-              <section class="collapsible_section" data-collapsible="section">
-                <h3 class="collapsible_heading" data-collapsible="header">
-                  <button type="button" id="ch_#ID_GROUPE"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
-                    <span class="collapsible_title"><span>#TITRE</span></span>
-                    [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus,
-                    aria-hidden=true, focusable=false})]
-                  </button>
-                  <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_#ID_GROUPE, ''})"]>
-                </h3>
-                <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_#ID_GROUPE"[ (#GET{open_act}|=={1}|?{'',hidden})]>
-                  <BOUCLE_mots_localisation(MOTS spip_mots_liens){id_objet IN
-                    #GET{articles}}{spip_mots.id_groupe}{doublons}{par titre}>
-                    <div class="choix">
-                      <INCLURE{fond=inclure/formulaires/filtres-checkbox,
-                        id_rubrique=#ENV{id_rubrique},
-                        articles=#GET{articles},
-                        id_mot,
-                        mots}/>
-                    </div>
-                    </BOUCLE_mots_localisation>
-                </div>
-              </section>
-            </B_mots_localisation>
-          </BOUCLE_groupes_localisation>
+          <B_departements>
+            #SET{open_loc, 0}
+            [(#SET{open_loc, #ENV{btnOpen}|find{ch_dep}|?{1,0}})]
+            <section class="collapsible_section" data-collapsible="section">
+              <h3 class="collapsible_heading" data-collapsible="header">
+                <button type="button" id="ch_departements"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title"><span><:fraap_squelettes:filtre_label_departements:></span></span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus,
+                  aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_departements, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_departements"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_departements(TERRITOIRES){id_territoire IN #GET{departements}}{par iso_titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{res}, id_territoire, type=departements, departements=#ENV{departements}}/>
+                  </div>
+                </BOUCLE_departements>
+              </div>
+            </section>
+          </B_departements>
+
+          <B_regions>
+            #SET{open_loc, 0}
+            [(#SET{open_loc, #ENV{btnOpen}|find{ch_dep}|?{1,0}})]
+            <section class="collapsible_section" data-collapsible="section">
+              <h3 class="collapsible_heading" data-collapsible="header">
+                <button type="button" id="ch_regions"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                  <span class="collapsible_title"><span><:fraap_squelettes:filtre_label_regions:></span></span>
+                  [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus,
+                  aria-hidden=true, focusable=false})]
+                </button>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_regions, ''})"]>
+              </h3>
+              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_regions"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+                <BOUCLE_regions(TERRITOIRES){id_territoire IN #GET{regions}}{par iso_titre}>
+                  <div class="choix">
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{articles}, id_territoire, type=regions, regions=#ENV{regions}}/>
+                  </div>
+                </BOUCLE_regions>
+              </div>
+            </section>
+          </B_regions>
         </div>
       </div>
     </div>
@@ -109,3 +143,4 @@
 
   </form>
 </div>
+#FILTRE{trim}

@@ -63,6 +63,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = [
 	'filtre_categorie_type_ressource' => 'Par type de ressource',
 	'filtre_label_autres' => 'Toutes les autres rubriques',
 	'filtre_label_type_tous' => 'Tous les types de ressource',
+	'filtre_label_departements' => 'Départements',
+	'filtre_label_regions' => 'Régions',
 	'filtrer' => 'Filtrer',
 
 	// H

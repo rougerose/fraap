@@ -1399,25 +1399,26 @@
       };
     }
 
-    checkInitStateFilters() {
-      let needUpdate = false;
-      const formData = this.getFormData();
-      const ignoreKeys = [
-        "var_ajax",
-        "formulaire_action",
-        "formulaire_action_args",
-        "formulaire_action_sign"
-      ];
+    // TODO A supprimer ?
+    // checkInitStateFilters() {
+    //   let needUpdate = false;
+    //   const formData = this.getFormData();
+    //   const ignoreKeys = [
+    //     "var_ajax",
+    //     "formulaire_action",
+    //     "formulaire_action_args",
+    //     "formulaire_action_sign"
+    //   ];
 
-      for (const key in formData) {
-        if (!ignoreKeys.includes(key) && formData[key]) {
-          needUpdate = true;
-        }
-      }
-      if (needUpdate) {
-        this.updateFilters();
-      }
-    }
+    //   for (const key in formData) {
+    //     if (!ignoreKeys.includes(key) && formData[key]) {
+    //       needUpdate = true;
+    //     }
+    //   }
+    //   if (needUpdate) {
+    //     this.updateFilters();
+    //   }
+    // }
 
     closeDialog() {
       this.form[0].removeEventListener("submit", this.submitForm);
@@ -1441,9 +1442,13 @@
       }
 
       let formObj = serializeFormData(formData);
-
+      // console.log(formObj);
       return formObj;
     }
+
+    // remoteUpdateFilters(checkedInputs) {
+
+    // }
 
     /**
      * Mettre à jour, via ajaxReload, le bloc du contenu principal
@@ -1452,14 +1457,14 @@
      */
     updateContent(closeDialog) {
       let formData = this.getFormData(),
-        acceptKeys = ["type_ref", "mots", "typologie", "annee"],
+        acceptKeys = ["type_ref", "mots", "typologie", "annee", "departements", "regions"],
         argObj = {},
         closeCB = closeDialog || false;
 
       for (let key in formData) {
         if (formData.hasOwnProperty(key) && acceptKeys.includes(key)) {
           // Conserver uniquement les valeurs de type array et string non vide
-          // Sinon elles ne sont pas supprimer de l'url.
+          // Sinon elles ne sont pas supprimées de l'url.
           if (formData[key] === "") {
             argObj[key] = null;
           } else {
@@ -1467,6 +1472,7 @@
           }
         }
       }
+      console.log(argObj);
 
       window.ajaxReload(this.options.ajaxTarget.content, {
         callback: () => {
@@ -1503,28 +1509,108 @@
 
     init() {
       this.form = this.el.getElementsByTagName("form");
+
       this.submitForm = this.submitForm.bind(this);
 
+      // Récupérer le nom du bloc ajax du contenu principal
       this.options.ajaxTarget.content = this.getData("content");
 
-      // Identifier et mémoriser les champs principaux
-      let names = ["btnOpen[]", "mots[]", "type_ref", "typologie", "annee"];
+      // Mémoriser l'id du dialog parent qui sera télécommandé par closeDialog()
+      this.dialogModuleId = this.el.parentNode.closest("[data-module-dialog]").getAttribute("data-module-dialog");
+
+      // Mémoriser l'id du module collapsible lié aux filtres
+      this.collapsibleModuleId = this.el.getAttribute("data-module-collapsible");
+
+      // Identifier et mémoriser les filtres utilisés
+      let names = ["btnOpen[]", "mots[]", "departements[]", "regions[]", "type_ref", "typologie", "annee"];
+
       this.mainInputs = [];
+
       for (const item of this.form[0]) {
         if (names.includes(item.name) && !this.mainInputs.includes(item.name)) {
           this.mainInputs.push(item.name);
         }
       }
 
-      // Mémoriser l'id du dialog parent qui sera télécommandé par closeDialog()
-      let dialogModule = this.el.parentNode.closest("[data-module-dialog]");
-      this.dialogModuleId = dialogModule.getAttribute("data-module-dialog");
-
-      // Mémoriser l'id du module collapsible lié aux filtres
-      this.collapsibleModuleId = this.el.getAttribute("data-module-collapsible");
-
-      //this.checkInitStateFilters();
+      // this.checkInitStateFilters();
       this.updateForm();
+    }
+  }
+
+  /**
+   * Ce module prend en charge les boutons de suppression des filtres éventuellement cochés par l'utilisateur pour les pages Annuaire des membres.
+   * A noter que ces boutons sont logés dans un conteneur ajax différent des filtres, raison pour laquelle, ils sont gérés à part.
+   */
+  class resetfilters extends _default {
+    constructor(m) {
+      super(m);
+
+      this.events = {
+        click: {
+          button: "doThing",
+        }
+      };
+    }
+
+    doThing() {
+      event.preventDefault(event);
+      const params = event.currentTarget.search;
+
+      if (params) {
+        const urlParams = new URLSearchParams(params);
+        console.log("params", urlParams);
+        const entries = urlParams.entries();
+        let argsObj = {};
+
+        for (const entry of entries) {
+          const key = entry[0],
+            value = entry[1];
+
+          // If the key contains brackets, it's an array.
+          if (key.indexOf("[]") !== -1) {
+            let k = key.replace(/[\[\]]+/g, "");
+
+            if (!argsObj.hasOwnProperty(k)) {
+              argsObj[k] = [];
+            }
+
+            if (value !== "") {
+              argsObj[k].push(value);
+            }
+          } else {
+            argsObj[key] = value;
+          }
+        }
+
+        window.ajaxReload("filtres", {
+          callback: () => {
+            this.call("updateFilters", "", "filters");
+          },
+          args: argsObj,
+          history: true,
+        });
+      } else {
+        const href = event.currentTarget.href;
+        const url = new URL(href);
+        console.log("url", url);
+        // window.ajaxReload("annuaire", {
+        //   href: url.origin + url.pathname,
+        //   history: true,
+        // });
+        window.ajaxReload("filtres", {
+          href: url.origin + url.pathname,
+          callback: () => {
+            this.call("updateFilters", "", "filters");
+          },
+          args: {},
+          history: true,
+        });
+      }
+
+      // window.ajaxReload(
+      //   "filtres",
+      //   { callback: function () { console.log("fini"); } },
+      // );
     }
   }
 
@@ -1644,7 +1730,8 @@
     dialog: dialog,
     filters: filters,
     menu: menu,
-    nav: nav
+    nav: nav,
+    resetfilters: resetfilters
   });
 
   function getDefaultExportFromCjs (x) {

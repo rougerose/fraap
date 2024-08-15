@@ -1,5 +1,7 @@
 [(#SET{mots, #ENV{mots, #ARRAY}|array_filter})]
-
+[(#SET{regions, #ENV{regions, #ARRAY}|array_filter})]
+[(#SET{departements, #ENV{departements, #ARRAY}|array_filter})]
+[(#SET{effacer, ''})]
 <div id="annuaire" class="box-filters box-filters-sticky variant-search">
   <div class="box-filters_inner">
     [(#FORMULAIRE_RECHERCHE{#SELF, annuaire})]
@@ -20,20 +22,40 @@
 </div>
 <div class="box-filters">
   <div class="box-filters_inner">
-    <div class="reel">
-      <B_selections>
-        <BOUCLE_selections(DATA){source table, #GET{mots}}{par cle}>
-          [(#SET{delete, [(#GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
-          <div>
-            [<a href="[(#SELF|parametre_url{mots, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
-          </div>
-        </BOUCLE_selections>
-        [(#GET{mots}|array_filter|oui)
-          <div>
-            [<a href="(#SELF|parametre_url{mots, ''})" class="button-cta variant-pill with-icon with-icon-left ajax">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
-          </div>
-        ]
-      </B_selections>
+    <div class="reel">#SELF
+      [(#ENV{recherche}|oui)
+        #SET{effacer, ' '}
+        <div>
+          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
+        </div>
+      ]
+      <BOUCLE_mots(DATA){source table, #GET{mots}}{par cle}>
+        [(#SET{delete, [(#GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
+        #SET{effacer, ' '}
+        <div>
+          [<a href="[(#SELF|parametre_url{mots, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_TITRE{mot, #VALEUR})</a>]
+        </div>
+      </BOUCLE_mots>
+      <BOUCLE_departements(DATA){source table, #GET{departements}}{par cle}>
+        [(#SET{delete, [(#GET{departements}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
+        #SET{effacer, ' '}
+        <div>
+          [<a href="[(#SELF|parametre_url{departements\[\], #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
+        </div>
+      </BOUCLE_departements>
+      <BOUCLE_regions(DATA){source table, #GET{regions}}{par cle}>
+        [(#SET{delete, [(#GET{regions}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
+        #SET{effacer, ' '}
+        <div>
+          [<a href="[(#SELF|parametre_url{regions\[\], #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
+        </div>
+      </BOUCLE_regions>
+      [(#GET{effacer}|oui)
+        <div>
+          [<a href="(#SELF|parametre_url{mots\[\]|regions\[\]|departements\[\]|recherche|page|id_rubrique, ''})" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ]<:fraap_squelettes:effacer_tout:></a>]
+        </div>
+      ]
     </div>
   </div>
 </div>
+#FILTRE{trim}

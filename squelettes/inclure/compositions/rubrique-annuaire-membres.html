@@ -4,13 +4,14 @@
 <B_ressources>
   #SET{total_resultats, #TOTAL_BOUCLE}
   [(#ENV{debug}|oui)
-    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   ]
+  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   <BOUCLE_ressources(SPHINX){index #ENV{source}}
     {recherche #ENV*{recherche}}
     {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
     {filtermono article, properties.objet, article}
-    {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.id) = 0' }
+    {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0' }
+    {filter #ENV{departements}, 'IN(properties.departements, @valeurs)', 'LENGTH(properties.departements) = 0' }
     {par title}
     {pagination 999}>
     [(#SET{articles, #GET{articles}|push{#PROPERTIES|table_valeur{id_objet}}})]
@@ -30,7 +31,7 @@
           <li id="member-#GET{gis/id}" class="card-member flow">
             <div class="card-member_id flow-small">
               <h3 class="card-member_heading">#TITRE</h3>
-              [<div class="card-member_desc">(#DESCRIPTIF)</div>]
+              [<div class="card-member_desc">(#DESCRIPTIF|sinon{#INTRODUCTION{150}})</div>]
             </div>
             <div class="card-member_action cluster">
               <button class="button-cta variant-small variant-button with-icon with-icon-left button-ripple" type="button" data-fraapMember-id="#GET{gis/id}" data-fraapMember-lat="#GET{gis/lat}" data-fraapMember-lon="#GET{gis/lon}">
@@ -43,24 +44,34 @@
               <a href="#GET{url}" class="button-cta variant-small variant-button with-icon with-icon-right button-ripple"><:fraap_squelettes:cta_en_savoir_plus:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a>
             </div>
 
-            #SET{territoires, #ARRAY}
-            <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
-              <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
-                [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
-              </BOUCLE_territoire>
-            </BOUCLE_set_territoires>
-
             <div class="card-member_tags gap-top-1 flow">
-              <B_get_territoires>
+              <B_territoires>
                 <div class="cluster">
                   <h4 class="card-member_tags-label"><:fraap_squelettes:annuaire_localisation:></h4>
                   <p class="cluster">
-                    <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
-                      [<span class="pill">(#TITRE)</span>]
-                    </BOUCLE_get_territoires>
+                    <BOUCLE_territoires(TERRITOIRES){id_article}{iso_pays=FR}{par type}>
+                      #SET{departement, ''} #SET{region, ''}
+                      [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
+                      ][(#CATEGORIE|match{metropolitan_department}|oui)
+                        #SET{departement, #ISO_TITRE}
+                      ][(#CATEGORIE|match{metropolitan_region}|oui)
+                        #SET{region, #ISO_TITRE}
+                      ][(#REM) <!-- Paris, Lyon, Corse -->
+                      ][(#CATEGORIE|match{metropolitan_collectivity}|oui)
+                        [(#LISTE{Paris, Lyon}|find{#ISO_TITRE}|?{
+                          [(#SET{departement, #ISO_TITRE})],
+                          [(#SET{region, #ISO_TITRE})]
+                        })]
+                      ][(#REM) <!-- Outre-mer -->
+                      ][(#CATEGORIE|match{overseas}|oui)
+                        #SET{region, #ISO_TITRE}
+                      ]
+                      [<span class="pill">(#GET{departement})</span>]
+                      [<span class="pill">(#GET{region})</span>]
+                    </BOUCLE_territoires>
                   </p>
                 </div>
-              </B_get_territoires>
+              </B_territoires>
 
               [(#SET{activites, 0})]
               <BOUCLE_nb_activites(MOTS){id_article}{id_groupe_racine=11}> </BOUCLE_nb_activites>
@@ -111,19 +122,20 @@
     #SET{mapId, _members}
     #SET{id_gis, #ENV{id_gis, false}}
     [(#INCLURE{fond=modeles/carte_gis,
-    objets=membres,
-    id_rubrique=#ID_RUBRIQUE,
-    recherche=#ENV{recherche},
-    articles=#GET{articles},
-    mots=#ENV{mots},
-    id_map=#GET{mapId},
-    id_a_ouvrir=#GET{id_gis},
-    style=non,
-    lon=2.890619,
-    lat=46.949328,
-    zoom=6,
-    cluster=oui,
-    clusterSpiderfyOnMaxZoom=oui})]
+      objets=membres,
+      id_rubrique=#ID_RUBRIQUE,
+      recherche=#ENV{recherche},
+      articles=#GET{articles},
+      mots=#ENV{mots},
+      id_map=#GET{mapId},
+      id_a_ouvrir=#GET{id_gis},
+      style=non,
+      lon=2.890619,
+      lat=46.949328,
+      zoom=6,
+      cluster=oui,
+      clusterSpiderfyOnMaxZoom=oui})
+    ]
   </div>
 </div>
 #FILTRE{trim}

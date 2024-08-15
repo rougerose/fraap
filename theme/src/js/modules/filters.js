@@ -22,25 +22,26 @@ export default class extends module {
     }
   }
 
-  checkInitStateFilters() {
-    let needUpdate = false;
-    const formData = this.getFormData();
-    const ignoreKeys = [
-      "var_ajax",
-      "formulaire_action",
-      "formulaire_action_args",
-      "formulaire_action_sign"
-    ];
+  // TODO A supprimer ?
+  // checkInitStateFilters() {
+  //   let needUpdate = false;
+  //   const formData = this.getFormData();
+  //   const ignoreKeys = [
+  //     "var_ajax",
+  //     "formulaire_action",
+  //     "formulaire_action_args",
+  //     "formulaire_action_sign"
+  //   ];
 
-    for (const key in formData) {
-      if (!ignoreKeys.includes(key) && formData[key]) {
-        needUpdate = true;
-      }
-    }
-    if (needUpdate) {
-      this.updateFilters();
-    }
-  }
+  //   for (const key in formData) {
+  //     if (!ignoreKeys.includes(key) && formData[key]) {
+  //       needUpdate = true;
+  //     }
+  //   }
+  //   if (needUpdate) {
+  //     this.updateFilters();
+  //   }
+  // }
 
   closeDialog() {
     this.form[0].removeEventListener("submit", this.submitForm);
@@ -64,9 +65,13 @@ export default class extends module {
     }
 
     let formObj = serializeFormData(formData);
-
+    // console.log(formObj);
     return formObj;
   }
+
+  // remoteUpdateFilters(checkedInputs) {
+
+  // }
 
   /**
    * Mettre à jour, via ajaxReload, le bloc du contenu principal
@@ -75,14 +80,14 @@ export default class extends module {
    */
   updateContent(closeDialog) {
     let formData = this.getFormData(),
-      acceptKeys = ["type_ref", "mots", "typologie", "annee"],
+      acceptKeys = ["type_ref", "mots", "typologie", "annee", "departements", "regions"],
       argObj = {},
       closeCB = closeDialog || false;
 
     for (let key in formData) {
       if (formData.hasOwnProperty(key) && acceptKeys.includes(key)) {
         // Conserver uniquement les valeurs de type array et string non vide
-        // Sinon elles ne sont pas supprimer de l'url.
+        // Sinon elles ne sont pas supprimées de l'url.
         if (formData[key] === "") {
           argObj[key] = null;
         } else {
@@ -90,6 +95,7 @@ export default class extends module {
         }
       }
     }
+    console.log(argObj);
 
     window.ajaxReload(this.options.ajaxTarget.content, {
       callback: () => {
@@ -126,27 +132,30 @@ export default class extends module {
 
   init() {
     this.form = this.el.getElementsByTagName("form");
+
     this.submitForm = this.submitForm.bind(this);
 
+    // Récupérer le nom du bloc ajax du contenu principal
     this.options.ajaxTarget.content = this.getData("content");
 
-    // Identifier et mémoriser les champs principaux
-    let names = ["btnOpen[]", "mots[]", "type_ref", "typologie", "annee"];
+    // Mémoriser l'id du dialog parent qui sera télécommandé par closeDialog()
+    this.dialogModuleId = this.el.parentNode.closest("[data-module-dialog]").getAttribute("data-module-dialog");
+
+    // Mémoriser l'id du module collapsible lié aux filtres
+    this.collapsibleModuleId = this.el.getAttribute("data-module-collapsible");
+
+    // Identifier et mémoriser les filtres utilisés
+    let names = ["btnOpen[]", "mots[]", "departements[]", "regions[]", "type_ref", "typologie", "annee"];
+
     this.mainInputs = [];
+
     for (const item of this.form[0]) {
       if (names.includes(item.name) && !this.mainInputs.includes(item.name)) {
         this.mainInputs.push(item.name);
       }
     }
 
-    // Mémoriser l'id du dialog parent qui sera télécommandé par closeDialog()
-    let dialogModule = this.el.parentNode.closest("[data-module-dialog]");
-    this.dialogModuleId = dialogModule.getAttribute("data-module-dialog");
-
-    // Mémoriser l'id du module collapsible lié aux filtres
-    this.collapsibleModuleId = this.el.getAttribute("data-module-collapsible");
-
-    //this.checkInitStateFilters();
+    // this.checkInitStateFilters();
     this.updateForm();
   }
 }

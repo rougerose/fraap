@@ -9,6 +9,5 @@
     <input type="checkbox" name="mots\[\]" class="checkbox" id="mot#ID_MOT" value="#ID_MOT"[(#ENV{mots}|find{#ID_MOT}|oui) checked="checked"][ (#GET{total}|=={0}|oui)disabled ] data-label="[(#TITRE|attribut_html)]" data-filters="filters"/>
     <label for="mot#ID_MOT">[(#TITRE)][<span class="indicator">(#GET{total})</span>]</label>
   </div>
-
 </BOUCLE_mot>
 #FILTRE{trim}

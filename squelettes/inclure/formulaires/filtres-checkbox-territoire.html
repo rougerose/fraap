@@ -1,0 +1,13 @@
+<BOUCLE_territoire(TERRITOIRES){id_territoire}>
+  #SET{total, 0}
+  <B_total_territoire>
+    <BOUCLE_total_territoire(spip_territoires_liens){objet=article}{id_territoire}{id_objet IN #ENV{articles}}> </BOUCLE_total_territoire>
+    #SET{total, #TOTAL_BOUCLE}
+  </B_total_territoire>
+
+  <div class="choix">
+    <input type="checkbox" name="#ENV{type}\[\]" class="checkbox" id="territoire#ID_TERRITOIRE" value="#ID_TERRITOIRE"[(#ENV{#ENV{type}}|find{#ID_TERRITOIRE}|oui) checked="checked"][ (#GET{total}|=={0}|oui)disabled ] data-label="[(#ISO_TITRE|attribut_html)]" data-filters="filters"/>
+    <label for="territoire#ID_TERRITOIRE">[(#ISO_TITRE)][<span class="indicator">(#GET{total})</span>]</label>
+  </div>
+</BOUCLE_territoire>
+#FILTRE{trim}

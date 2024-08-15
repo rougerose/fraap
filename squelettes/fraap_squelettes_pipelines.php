@@ -71,6 +71,12 @@ function fraap_squelettes_formulaire_charger($flux) {
 			$flux['data']['titre'] = $titre;
 		}
 	}
+
+	// if (strpos($form, 'recherche') !== 1 && isset($flux['data']['class']) && in_array($flux['data']['class'], ['annuaire', 'mediatheque'])) {
+	// 	$action = parametre_url($flux['data']['action'], 'page|id_rubrique', '');
+	// 	$flux['data']['action'] = $action;
+	// }
+
 	return $flux;
 }
 
@@ -83,29 +89,93 @@ function fraap_squelettes_gis_modele_parametres_autorises($flux) {
 	return $flux;
 }
 
-/**
- * Utiliser le pipeline indexer_document
- * pour ajouter une dimension type document aux articles et fbiblios,
- * et type_ref pour les fbiblios
- */
+
 /**
  * Pipeline indexer_document
- * - pour l'objet FBILIO, ajout de type_ref et de l'année.
- * - pour les articles, ajout de la dimension Typologie,
+ * - pour l'objet Fbiblio : ajout de type_ref et de l'année.
+ * - pour les articles : ajout de la dimension Typologie,
  *   qui permet dans les filtres de Recherche de trier soit par articles,
  *   soit par le titre de la rubrique parente (fiches pratiques, annuaire
  *   membres, médiathèque).
+ * - pour les articles de l'annuaire membres : ajouter les territoires (départements et régions).
  */
 function fraap_squelettes_indexer_document($flux) {
 	if (preg_match('/article|fbiblio/', $flux['args']['objet']) === 1  && $flux['args']['champs']['statut'] == 'publie') {
 		$id_rubrique = $flux['args']['champs']['id_rubrique'];
+
+		// Préciser la typologie de l'article
 		$flux['data']->properties['typologie'] = indexation_ajouter_typologie_document($id_rubrique);
 
+		// Compléter l'objet Fbiblio
 		if ($flux['args']['objet'] == 'fbiblio') {
 			$id_fbiblio = $flux['args']['id_objet'];
 			$fbiblio = indexation_completer_fbiblio($id_fbiblio);
 			$flux['data']->properties['type_ref'] = $fbiblio['type_ref'];
 			$flux['data']->properties['annee'] = $fbiblio['annee'];
+		}
+
+		// Départements et régions
+		if ($flux['args']['objet'] == 'article' && $id_rubrique == 3) {
+			$id_article = $flux['args']['id_objet'];
+			if (
+				$territoires = sql_allfetsel(
+					'*',
+					'spip_territoires as a join spip_territoires_liens as l on a.id_territoire=l.id_territoire',
+					['l.objet=' . sql_quote('article'), 'l.id_objet=' . intval($id_article)]
+				)
+			) {
+				foreach ($territoires as $territoire) {
+					$categorie = $territoire['categorie'];
+					$id_territoire = intval($territoire['id_territoire']);
+					$titre = extraire_multi($territoire['iso_titre'], 'fr');
+
+					// Créer les champs Départements et Régions si nécessaire
+					foreach (['departements', 'regions'] as $k) {
+						if (empty($flux['data']->properties[$k])) {
+							$flux['data']->properties[$k] = [];
+						}
+					}
+
+
+
+					// Départements
+					// Vérifier que le territoire n'est pas déjà enregistré
+					if (!in_array($id_territoire, $flux['data']->properties['departements'])) {
+						$departements = [];
+						if (preg_match('/metropolitan_department/', $categorie) === 1) {
+							// Cas général
+							$departements[] = $id_territoire;
+						} elseif (preg_match('/metropolitan_collectivity/', $categorie) === 1 && in_array($titre, ['Paris', 'Lyon'])) {
+							// Cas Paris, Lyon
+							$departements[] = $id_territoire;
+						}
+
+						if (in_array($id_territoire, $departements)) {
+							$flux['data']->properties['departements'] = array_merge($flux['data']->properties['departements'], $departements);
+						}
+					}
+
+					// Régions
+					// Vérifier que le territoire n'est pas déjà enregistré
+					if (!in_array($id_territoire, $flux['data']->properties['regions'])) {
+						$regions = [];
+						if (preg_match('/metropolitan_region/', $categorie) === 1) {
+							// Cas général
+							$regions[] = $id_territoire;
+						} elseif (preg_match('/metropolitan_collectivity/', $categorie) === 1 && strpos($titre, 'Corse') !== false) {
+							// Cas Corse
+							$regions[] = $id_territoire;
+						} elseif (preg_match('/overseas/', $categorie) === 1) {
+							// Cas outre-mer
+							$regions[] = $id_territoire;
+						}
+
+						if (in_array($id_territoire, $regions)) {
+							$flux['data']->properties['regions'] = array_merge($flux['data']->properties['regions'], $regions);
+						}
+					}
+				}
+			}
 		}
 	}
 	return $flux;
