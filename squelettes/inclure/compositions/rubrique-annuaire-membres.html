@@ -4,8 +4,8 @@
 <B_ressources>
   #SET{total_resultats, #TOTAL_BOUCLE}
   [(#ENV{debug}|oui)
+    [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   ]
-  [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   <BOUCLE_ressources(SPHINX){index #ENV{source}}
     {recherche #ENV*{recherche}}
     {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
