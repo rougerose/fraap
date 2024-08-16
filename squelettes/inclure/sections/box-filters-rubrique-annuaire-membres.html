@@ -4,7 +4,7 @@
 [(#SET{effacer, ''})]
 <div id="annuaire" class="box-filters box-filters-sticky variant-search">
   <div class="box-filters_inner">
-    [(#FORMULAIRE_RECHERCHE{#SELF, annuaire})]
+    [(#FORMULAIRE_RECHERCHE_RUBRIQUE{#SELF, annuaire})]
   </div>
   <div class="box-filters_inner">
     <div class="reel">
@@ -26,7 +26,7 @@
       [(#ENV{recherche}|oui)
         #SET{effacer, ' '}
         <div>
-          [<a href="(#SELF|parametre_url{id_rubrique|page, ''}|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
+          [<a href="(#SELF|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
         </div>
       ]
       <BOUCLE_mots(DATA){source table, #GET{mots}}{par cle}>
@@ -38,16 +38,17 @@
       </BOUCLE_mots>
       <BOUCLE_departements(DATA){source table, #GET{departements}}{par cle}>
         [(#SET{delete, [(#GET{departements}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
+        [(#GET{delete}|print)]
         #SET{effacer, ' '}
         <div>
-          [<a href="[(#SELF|parametre_url{departements\[\], #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
+          [<a href="[(#SELF|parametre_url{departements, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
         </div>
       </BOUCLE_departements>
       <BOUCLE_regions(DATA){source table, #GET{regions}}{par cle}>
         [(#SET{delete, [(#GET{regions}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
         #SET{effacer, ' '}
         <div>
-          [<a href="[(#SELF|parametre_url{regions\[\], #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
+          [<a href="[(#SELF|parametre_url{regions, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
         </div>
       </BOUCLE_regions>
       [(#GET{effacer}|oui)

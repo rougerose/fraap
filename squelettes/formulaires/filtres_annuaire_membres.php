@@ -4,6 +4,12 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
+/**
+ * Les données recherche et filtres sont envoyées à Sphinx via la fonction charger
+ * du formulaire de filtre. Si l'on utilise la méthode squelettes, les données contenant
+ * notamment une apostrophe sont systématiquement converties et fausse les résultats
+ * dans la fenêtre des filtres.
+ */
 function formulaires_filtres_annuaire_membres_charger($id_rubrique = '') {
 	$valeurs = [
 		'id_rubrique' => intval($id_rubrique),

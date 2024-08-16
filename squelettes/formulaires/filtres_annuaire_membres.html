@@ -21,7 +21,7 @@
 ] [(#SET{total_references, #GET{res}|count})]
 
 [(#REM) <!-- Les territoires liés aux articles --> ]
-<BOUCLE_territoires(TERRITOIRES){id_article IN #GET{res}}{iso_pays=fr}{type=subdivision}>
+<BOUCLE_territoires(TERRITOIRES){id_article IN #GET{articles}}{iso_pays=fr}{type=subdivision}>
   [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
   ][(#CATEGORIE|match{metropolitan_department}|oui)
     [(#SET{departements, #GET{departements}|push{#ID_TERRITOIRE}})]
@@ -129,7 +129,7 @@
               <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_regions"[ (#GET{open_act}|=={1}|?{'',hidden})]>
                 <BOUCLE_regions(TERRITOIRES){id_territoire IN #GET{regions}}{par iso_titre}>
                   <div class="choix">
-                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{articles}, id_territoire, type=regions, regions=#ENV{regions}}/>
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{res}, id_territoire, type=regions, regions=#ENV{regions}}/>
                   </div>
                 </BOUCLE_regions>
               </div>

@@ -1,0 +1,21 @@
+[(#SET{class_label, ''})]
+[(#SET{text_label, <:info_rechercher:>})]
+[(#ENV{class}|match{search-page_form}|oui)
+  [(#SET{class_label, visually-hidden})]
+]
+[(#ENV{class}|match{mediatheque|annuaire}|oui)
+  [(#SET{class_label, search_label-rubrique})]
+  [(#SET{text_label, [(#VAL{fraap_squelettes}|concat{:,search_label_#ENV{class}}|_T)]})]
+]
+<div class="formulaire_spip formulaire_#FORM[ (#ENV{class})]" id="[formulaire_(#FORM|concat{_}|concat{#ENV{_id_champ}})]">
+  <form action="#ENV{action}" method="get" class="search_form">
+    <div class="editer-groupe search_group">
+      [(#ACTION_FORMULAIRE{#ENV{action}})]
+      [<input type="hidden" name="lang" value="(#ENV{lang})" />]
+      <label class="search_label[ (#GET{class_label})]" for="#ENV{_id_champ}"><span id="search_label_text">#GET{text_label}</span></label>
+      <input type="search" class="search_input" size="10" name="recherche" id="#ENV{_id_champ}"[ value="(#ENV{recherche})"] accesskey="4" autocapitalize="off" autocorrect="off" placeholder="<:fraap_squelettes:search_placeholder:>"/>
+      <button type="submit" class="button button-ripple search_submit"><:fraap_squelettes:search_submit:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-arrow-right, path1='', path2='', aria-hidden=true})]</button>
+    </div>
+  </form>
+</div>
+#FILTRE{trim}

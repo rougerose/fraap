@@ -95,7 +95,6 @@ export default class extends module {
         }
       }
     }
-    console.log(argObj);
 
     window.ajaxReload(this.options.ajaxTarget.content, {
       callback: () => {

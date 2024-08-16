@@ -12,6 +12,7 @@
     {filtermono article, properties.objet, article}
     {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0' }
     {filter #ENV{departements}, 'IN(properties.departements, @valeurs)', 'LENGTH(properties.departements) = 0' }
+    {filter #ENV{regions}, 'IN(properties.regions, @valeurs)', 'LENGTH(properties.regions) = 0' }
     {par title}
     {pagination 999}>
     [(#SET{articles, #GET{articles}|push{#PROPERTIES|table_valeur{id_objet}}})]

@@ -20,7 +20,7 @@ function build(
   name = "",
   // exports = "auto",
   globals = undefined,
-  external = undefined
+  external = undefined,
 ) {
   return {
     input: src,
@@ -44,7 +44,7 @@ export default [
   build(
     "theme/src/js/fraap-carousel.js",
     "theme/dist/js/fraap-carousel.js",
-    "iife"
+    "iife",
   ),
 
   build(
@@ -54,7 +54,7 @@ export default [
     "",
     // "auto",
     { jQuery: "$" },
-    ["jQuery"]
+    ["jQuery"],
   ),
 
   // Init Dialog Filtres
@@ -71,13 +71,13 @@ export default [
   build(
     "theme/src/js/fraap-compteur-reseau.js",
     "theme/dist/js/fraap-compteur-reseau.js",
-    "iife"
+    "iife",
   ),
 
   // Animation des compteurs
   build(
     "theme/src/js/fraap-compteur-ressources.js",
     "theme/dist/js/fraap-compteur-ressources.js",
-    "iife"
+    "iife",
   ),
 ];
