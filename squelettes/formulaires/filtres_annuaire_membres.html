@@ -36,6 +36,9 @@
     })]
   ][(#REM) <!-- Outre-mer -->
   ][(#CATEGORIE|match{overseas}|oui)
+    [(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
+      [(#SET{departements, #GET{departements}|push{#ID_ARTICLE}})]
+    ]
     [(#SET{regions, #GET{regions}|push{#ID_TERRITOIRE}})]
   ]
 </BOUCLE_territoires>

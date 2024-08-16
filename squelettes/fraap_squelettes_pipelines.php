@@ -148,6 +148,12 @@ function fraap_squelettes_indexer_document($flux) {
 						} elseif (preg_match('/metropolitan_collectivity/', $categorie) === 1 && in_array($titre, ['Paris', 'Lyon'])) {
 							// Cas Paris, Lyon
 							$departements[] = $id_territoire;
+						} elseif (preg_match('/overseas_departmental_collectivity/', $categorie) === 1) {
+							// Cas Mayotte, Réunion et Guadeloupe
+							$departements[] = $id_territoire;
+						} elseif (preg_match('/overseas_unique_territorial_collectivity/', $categorie) === 1) {
+							// Cas Martinique et Guyane
+							$departements[] = $id_territoire;
 						}
 
 						if (in_array($id_territoire, $departements)) {

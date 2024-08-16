@@ -65,6 +65,12 @@
                         })]
                       ][(#REM) <!-- Outre-mer -->
                       ][(#CATEGORIE|match{overseas}|oui)
+                        [(#REM) <!--
+                          Cas Guyane, Mayotte, Guadeloupe, Réunion et Martinique
+                          qui sont à la fois des départements et des régions -->
+                        ][(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
+                          [(#SET{departements, #GET{departements}|push{#ID_ARTICLE}})]
+                        ]
                         #SET{region, #ISO_TITRE}
                       ]
                       [<span class="pill">(#GET{departement})</span>]
