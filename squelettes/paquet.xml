@@ -29,6 +29,7 @@
   <necessite nom="metasplus" />
   <necessite nom="formidable" />
   <necessite nom="cvtupload" />
+  <necessite nom="territoires" />
   <utilise nom="fraap_biblio" />
   <utilise nom="bellespuces" />
   <utilise nom="odt2spip" />
