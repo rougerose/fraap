@@ -1,8 +1,8 @@
 <BOUCLE_territoire(TERRITOIRES){id_territoire}>
   #SET{total, 0}
   <B_total_territoire>
-    <BOUCLE_total_territoire(spip_territoires_liens){objet=article}{id_territoire}{id_objet IN #ENV{articles}}> </BOUCLE_total_territoire>
     #SET{total, #TOTAL_BOUCLE}
+    <BOUCLE_total_territoire(spip_territoires_liens){objet=article}{id_territoire}{id_objet IN #ENV{articles}}> </BOUCLE_total_territoire>
   </B_total_territoire>
 
   <div class="choix">

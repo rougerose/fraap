@@ -21,7 +21,7 @@
 ] [(#SET{total_references, #GET{res}|count})]
 
 [(#REM) <!-- Les territoires liés aux articles --> ]
-<BOUCLE_territoires(TERRITOIRES){id_article IN #GET{articles}}{iso_pays=fr}{type=subdivision}>
+<BOUCLE_territoires(TERRITOIRES){id_article IN #GET{articles}}>
   [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
   ][(#CATEGORIE|match{metropolitan_department}|oui)
     [(#SET{departements, #GET{departements}|push{#ID_TERRITOIRE}})]
@@ -37,7 +37,7 @@
   ][(#REM) <!-- Outre-mer -->
   ][(#CATEGORIE|match{overseas}|oui)
     [(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
-      [(#SET{departements, #GET{departements}|push{#ID_ARTICLE}})]
+      [(#SET{departements, #GET{departements}|push{#ID_TERRITOIRE}})]
     ]
     [(#SET{regions, #GET{regions}|push{#ID_TERRITOIRE}})]
   ]
@@ -47,7 +47,6 @@
 <div class="formulaire_spip formulaire_#FORM dialog-filters_formulaire-spip">
   <form action="#ENV{action}" method="post" class="dialog-filters_form">
     #ACTION_FORMULAIRE{#ENV{action}}
-
     <INCLURE{fond=inclure/dialog/header}/>
 
     <div class="dialog-filters_body">
@@ -91,48 +90,54 @@
           </BOUCLE_groupes_activites>
         </div>
 
+        [(#SET{selection, #GET{articles}})]
+        [(#ENV{mots}|oui) #SET{selection, #GET{res}} ]
+        [(#ENV{regions}|oui) #SET{selection, #GET{res}} ]
         <h2 class="dialog-filters_category">
           <:fraap_squelettes:annuaire_localisation:>
         </h2>
         <div class="collapsible">
           <B_departements>
             #SET{open_loc, 0}
-            [(#SET{open_loc, #ENV{btnOpen}|find{ch_dep}|?{1,0}})]
+            [(#SET{open_loc, #ENV{btnOpen}|find{ch_departements}|?{1,0}})]
             <section class="collapsible_section" data-collapsible="section">
               <h3 class="collapsible_heading" data-collapsible="header">
-                <button type="button" id="ch_departements"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                <button type="button" id="ch_departements"[ aria-expanded="(#GET{open_loc}|=={1}|?{true,false})"]>
                   <span class="collapsible_title"><span><:fraap_squelettes:filtre_label_departements:></span></span>
                   [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus,
                   aria-hidden=true, focusable=false})]
                 </button>
-                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_departements, ''})"]>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_loc}|=={1}|?{ch_departements, ''})"]>
               </h3>
-              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_departements"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_departements"[ (#GET{open_loc}|=={1}|?{'',hidden})]>
                 <BOUCLE_departements(TERRITOIRES){id_territoire IN #GET{departements}}{par iso_titre}>
                   <div class="choix">
-                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{res}, id_territoire, type=departements, departements=#ENV{departements}}/>
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{selection}, id_territoire, type=departements, departements=#ENV{departements}}/>
                   </div>
                 </BOUCLE_departements>
               </div>
             </section>
           </B_departements>
 
+          [(#SET{selection, #GET{articles}})]
+          [(#ENV{mots}|oui) #SET{selection, #GET{res}} ]
+          [(#ENV{departements}|oui) #SET{selection, #GET{res}} ]
           <B_regions>
             #SET{open_loc, 0}
-            [(#SET{open_loc, #ENV{btnOpen}|find{ch_dep}|?{1,0}})]
+            [(#SET{open_loc, #ENV{btnOpen}|find{ch_regions}|?{1,0}})]
             <section class="collapsible_section" data-collapsible="section">
               <h3 class="collapsible_heading" data-collapsible="header">
-                <button type="button" id="ch_regions"[ aria-expanded="(#GET{open_act}|=={1}|?{true,false})"]>
+                <button type="button" id="ch_regions"[ aria-expanded="(#GET{open_loc}|=={1}|?{true,false})"]>
                   <span class="collapsible_title"><span><:fraap_squelettes:filtre_label_regions:></span></span>
                   [ (#INCLURE{fond=images/icon-plus-10.svg, svg=icon icon-plus,
                   aria-hidden=true, focusable=false})]
                 </button>
-                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_act}|=={1}|?{ch_regions, ''})"]>
+                <input type="hidden" name="btnOpen[]"[ value="(#GET{open_loc}|=={1}|?{ch_regions, ''})"]>
               </h3>
-              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_regions"[ (#GET{open_act}|=={1}|?{'',hidden})]>
+              <div class="collapsible_content" role="region" data-collapsible="body" aria-labelledby="ch_regions"[ (#GET{open_loc}|=={1}|?{'',hidden})]>
                 <BOUCLE_regions(TERRITOIRES){id_territoire IN #GET{regions}}{par iso_titre}>
                   <div class="choix">
-                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{res}, id_territoire, type=regions, regions=#ENV{regions}}/>
+                    <INCLURE{fond=inclure/formulaires/filtres-checkbox-territoire, articles=#GET{selection}, id_territoire, type=regions, regions=#ENV{regions}}/>
                   </div>
                 </BOUCLE_regions>
               </div>

@@ -38,7 +38,6 @@
       </BOUCLE_mots>
       <BOUCLE_departements(DATA){source table, #GET{departements}}{par cle}>
         [(#SET{delete, [(#GET{departements}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
-        [(#GET{delete}|print)]
         #SET{effacer, ' '}
         <div>
           [<a href="[(#SELF|parametre_url{departements, #GET{delete}})]" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ](#INFO_ISO_TITRE{territoire, #VALEUR})</a>]
