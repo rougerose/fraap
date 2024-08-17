@@ -1,0 +1,67 @@
+[(#AUTORISER{configurer,_fraap_squelettes}|sinon_interdire_acces)]
+
+#SET{art_departements, #ARRAY}
+#SET{art_regions, #ARRAY}
+#SET{art_mots_departements, #ARRAY}
+#SET{art_mots_regions, #ARRAY}
+
+<B_articles_annuaire>
+  #SET{articles_total, #TOTAL_BOUCLE}
+  <BOUCLE_articles_annuaire(ARTICLES){id_rubrique=3}>
+    <BOUCLE_mots_departements(MOTS){id_article}{id_groupe=10}>
+      [(#SET{art_mots_departements, #GET{art_mots_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+    </BOUCLE_mots_departements>
+    <BOUCLE_mots_regions(MOTS){id_article}{id_groupe=1}>
+      [(#SET{art_mots_regions, #GET{art_mots_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+    </BOUCLE_mots_regions>
+    <BOUCLE_territoires(TERRITOIRES){id_article}{iso_pays=fr}{type=subdivision}>
+      [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
+      ][(#CATEGORIE|match{metropolitan_department}|oui)
+        [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+
+      ][(#CATEGORIE|match{metropolitan_region}|oui)
+        [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+      ][(#REM) <!-- Paris, Lyon, Corse -->
+      ][(#CATEGORIE|match{metropolitan_collectivity}|oui)
+        [(#LISTE{Paris, Lyon}|find{#ISO_TITRE}|?{
+          [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})],
+          [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+        })]
+      ][(#REM) <!-- Outre-mer -->
+      ][(#CATEGORIE|match{overseas}|oui)
+        [(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
+          [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+        ]
+        [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+      ]
+    </BOUCLE_territoires>
+  </BOUCLE_articles_annuaire>
+</B_articles_annuaire>
+
+#SET{data, #ARRAY}
+
+[(#GET{articles_total}|>{0}|oui)
+  [(#GET{art_departements}|count|plus{
+    #GET{art_regions}|count|plus{
+      #GET{art_mots_departements}|count|plus{
+        #GET{art_mots_regions}|count
+      }
+    }
+  }|>{0}|oui)
+    [(#SET{data, #ARRAY{
+      art_departements, #GET{art_departements},
+      art_regions, #GET{art_regions},
+      art_mots_departements, #GET{art_mots_departements},
+      art_mots_regions, #GET{art_mots_regions},
+    }})]
+  ]
+]
+
+<h1 class="grostitre">Configuration du plugin Fraap - Squelettes</h1>
+
+<h2>Migrer les territoires</h2>
+
+<div class="ajax">
+  [(#FORMULAIRE_MIGRER_TERRITOIRES{#GET{data}})]
+</div>
+#FILTRE{trim}

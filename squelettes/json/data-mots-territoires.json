@@ -1,0 +1,986 @@
+[
+  {
+    "id_territoire": 404,
+    "id_mot": 121,
+    "iso_titre": "<multi>[fr]Ain</multi>",
+    "nom_usage": "<multi>[fr]Ain</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 405,
+    "id_mot": 122,
+    "iso_titre": "<multi>[fr]Aisne</multi>",
+    "nom_usage": "<multi>[fr]Aisne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 403,
+    "id_mot": 123,
+    "iso_titre": "<multi>[fr]Allier</multi>",
+    "nom_usage": "<multi>[fr]Allier</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 401,
+    "id_mot": 124,
+    "iso_titre": "<multi>[fr]Alpes-de-Haute-Provence</multi>",
+    "nom_usage": "<multi>[fr]Alpes-de-Haute-Provence</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 402,
+    "id_mot": 126,
+    "iso_titre": "<multi>[fr]Alpes-Maritimes</multi>",
+    "nom_usage": "<multi>[fr]Alpes-Maritimes</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 400,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Alsace</multi>",
+    "nom_usage": "<multi>[fr]Alsace</multi>",
+    "type": "subdivision",
+    "categorie": "european_collectivity"
+  },
+  {
+    "id_territoire": 398,
+    "id_mot": 127,
+    "iso_titre": "<multi>[fr]Ardèche</multi>",
+    "nom_usage": "<multi>[fr]Ardèche</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 399,
+    "id_mot": 128,
+    "iso_titre": "<multi>[fr]Ardennes</multi>",
+    "nom_usage": "<multi>[fr]Ardennes</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 396,
+    "id_mot": 129,
+    "iso_titre": "<multi>[fr]Ariège</multi>",
+    "nom_usage": "<multi>[fr]Ariège</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 397,
+    "id_mot": 130,
+    "iso_titre": "<multi>[fr]Aube</multi>",
+    "nom_usage": "<multi>[fr]Aube</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 394,
+    "id_mot": 131,
+    "iso_titre": "<multi>[fr]Aude</multi>",
+    "nom_usage": "<multi>[fr]Aude</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 395,
+    "id_mot": 74,
+    "iso_titre": "<multi>[fr]Auvergne-Rhône-Alpes</multi>",
+    "nom_usage": "<multi>[fr]Auvergne-Rhône-Alpes</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 392,
+    "id_mot": 132,
+    "iso_titre": "<multi>[fr]Aveyron</multi>",
+    "nom_usage": "<multi>[fr]Aveyron</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 393,
+    "id_mot": 188,
+    "iso_titre": "<multi>[fr]Bas-Rhin</multi>",
+    "nom_usage": "<multi>[fr]Bas-Rhin</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 391,
+    "id_mot": 133,
+    "iso_titre": "<multi>[fr]Bouches-du-Rhône</multi>",
+    "nom_usage": "<multi>[fr]Bouches-du-Rhône</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 390,
+    "id_mot": 75,
+    "iso_titre": "<multi>[fr]Bourgogne-Franche-Comté</multi>",
+    "nom_usage": "<multi>[fr]Bourgogne-Franche-Comté</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 389,
+    "id_mot": 5,
+    "iso_titre": "<multi>[fr]Bretagne</multi>",
+    "nom_usage": "<multi>[fr]Bretagne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 388,
+    "id_mot": 134,
+    "iso_titre": "<multi>[fr]Calvados</multi>",
+    "nom_usage": "<multi>[fr]Calvados</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 387,
+    "id_mot": 135,
+    "iso_titre": "<multi>[fr]Cantal</multi>",
+    "nom_usage": "<multi>[fr]Cantal</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 386,
+    "id_mot": 6,
+    "iso_titre": "<multi>[fr]Centre-Val de Loire</multi>",
+    "nom_usage": "<multi>[fr]Centre-Val de Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 384,
+    "id_mot": 137,
+    "iso_titre": "<multi>[fr]Charente-Maritime</multi>",
+    "nom_usage": "<multi>[fr]Charente-Maritime</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 385,
+    "id_mot": 136,
+    "iso_titre": "<multi>[fr]Charente</multi>",
+    "nom_usage": "<multi>[fr]Charente</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 383,
+    "id_mot": 138,
+    "iso_titre": "<multi>[fr]Cher</multi>",
+    "nom_usage": "<multi>[fr]Cher</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 381,
+    "id_mot": 139,
+    "iso_titre": "<multi>[fr]Corrèze</multi>",
+    "nom_usage": "<multi>[fr]Corrèze</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 379,
+    "id_mot": 140,
+    "iso_titre": "<multi>[fr]Corse-du-Sud</multi>",
+    "nom_usage": "<multi>[fr]Corse-du-Sud</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 380,
+    "id_mot": 8,
+    "iso_titre": "<multi>[fr]Corse</multi>",
+    "nom_usage": "<multi>[fr]Corse</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_collectivity_with_special_status"
+  },
+  {
+    "id_territoire": 377,
+    "id_mot": 142,
+    "iso_titre": "<multi>[fr]Côte-d'Or</multi>",
+    "nom_usage": "<multi>[fr]Côte-d'Or</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 376,
+    "id_mot": 143,
+    "iso_titre": "<multi>[fr]Côtes-d'Armor</multi>",
+    "nom_usage": "<multi>[fr]Côtes-d'Armor</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 378,
+    "id_mot": 144,
+    "iso_titre": "<multi>[fr]Creuse</multi>",
+    "nom_usage": "<multi>[fr]Creuse</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 374,
+    "id_mot": 200,
+    "iso_titre": "<multi>[fr]Deux-Sèvres</multi>",
+    "nom_usage": "<multi>[fr]Deux-Sèvres</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 375,
+    "id_mot": 145,
+    "iso_titre": "<multi>[fr]Dordogne</multi>",
+    "nom_usage": "<multi>[fr]Dordogne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 372,
+    "id_mot": 146,
+    "iso_titre": "<multi>[fr]Doubs</multi>",
+    "nom_usage": "<multi>[fr]Doubs</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 373,
+    "id_mot": 147,
+    "iso_titre": "<multi>[fr]Drôme</multi>",
+    "nom_usage": "<multi>[fr]Drôme</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 370,
+    "id_mot": 212,
+    "iso_titre": "<multi>[fr]Essonne</multi>",
+    "nom_usage": "<multi>[fr]Essonne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 369,
+    "id_mot": 149,
+    "iso_titre": "<multi>[fr]Eure-et-Loir</multi>",
+    "nom_usage": "<multi>[fr]Eure-et-Loir</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 371,
+    "id_mot": 148,
+    "iso_titre": "<multi>[fr]Eure</multi>",
+    "nom_usage": "<multi>[fr]Eure</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 368,
+    "id_mot": 150,
+    "iso_titre": "<multi>[fr]Finistère</multi>",
+    "nom_usage": "<multi>[fr]Finistère</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 367,
+    "id_mot": 151,
+    "iso_titre": "<multi>[fr]Gard</multi>",
+    "nom_usage": "<multi>[fr]Gard</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 366,
+    "id_mot": 153,
+    "iso_titre": "<multi>[fr]Gers</multi>",
+    "nom_usage": "<multi>[fr]Gers</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 365,
+    "id_mot": 154,
+    "iso_titre": "<multi>[fr]Gironde</multi>",
+    "nom_usage": "<multi>[fr]Gironde</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 363,
+    "id_mot": 72,
+    "iso_titre": "<multi>[fr]Grand-Est</multi>",
+    "nom_usage": "<multi>[fr]Grand-Est</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 364,
+    "id_mot": 217,
+    "iso_titre": "<multi>[fr]Guadeloupe</multi>",
+    "nom_usage": "<multi>[fr]Guadeloupe</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_departmental_collectivity"
+  },
+  {
+    "id_territoire": 362,
+    "id_mot": 219,
+    "iso_titre": "<multi>[fr]Guyane</multi>",
+    "nom_usage": "<multi>[fr]Guyane</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_unique_territorial_collectivity"
+  },
+  {
+    "id_territoire": 360,
+    "id_mot": 189,
+    "iso_titre": "<multi>[fr]Haut-Rhin</multi>",
+    "nom_usage": "<multi>[fr]Haut-Rhin</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 361,
+    "id_mot": 141,
+    "iso_titre": "<multi>[fr]Haute-Corse</multi>",
+    "nom_usage": "<multi>[fr]Haute-Corse</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 359,
+    "id_mot": 152,
+    "iso_titre": "<multi>[fr]Haute-Garonne</multi>",
+    "nom_usage": "<multi>[fr]Haute-Garonne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 358,
+    "id_mot": 164,
+    "iso_titre": "<multi>[fr]Haute-Loire</multi>",
+    "nom_usage": "<multi>[fr]Haute-Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 357,
+    "id_mot": 173,
+    "iso_titre": "<multi>[fr]Haute-Marne</multi>",
+    "nom_usage": "<multi>[fr]Haute-Marne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 356,
+    "id_mot": 191,
+    "iso_titre": "<multi>[fr]Haute-Saône</multi>",
+    "nom_usage": "<multi>[fr]Haute-Saône</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 355,
+    "id_mot": 195,
+    "iso_titre": "<multi>[fr]Haute-Savoie</multi>",
+    "nom_usage": "<multi>[fr]Haute-Savoie</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 354,
+    "id_mot": 208,
+    "iso_titre": "<multi>[fr]Haute-Vienne</multi>",
+    "nom_usage": "<multi>[fr]Haute-Vienne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 353,
+    "id_mot": 125,
+    "iso_titre": "<multi>[fr]Hautes-Alpes</multi>",
+    "nom_usage": "<multi>[fr]Hautes-Alpes</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 352,
+    "id_mot": 186,
+    "iso_titre": "<multi>[fr]Hautes-Pyrénées</multi>",
+    "nom_usage": "<multi>[fr]Hautes-Pyrénées</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 351,
+    "id_mot": 118,
+    "iso_titre": "<multi>[fr]Hauts-de-France</multi>",
+    "nom_usage": "<multi>[fr]Hauts-de-France</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 350,
+    "id_mot": 213,
+    "iso_titre": "<multi>[fr]Hauts-de-Seine</multi>",
+    "nom_usage": "<multi>[fr]Hauts-de-Seine</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 349,
+    "id_mot": 155,
+    "iso_titre": "<multi>[fr]Hérault</multi>",
+    "nom_usage": "<multi>[fr]Hérault</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 282,
+    "id_mot": 1,
+    "iso_titre": "<multi>[fr]Île-de-France</multi>",
+    "nom_usage": "<multi>[fr]Île-de-France</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 348,
+    "id_mot": 156,
+    "iso_titre": "<multi>[fr]Ille-et-Vilaine</multi>",
+    "nom_usage": "<multi>[fr]Ille-et-Vilaine</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 346,
+    "id_mot": 158,
+    "iso_titre": "<multi>[fr]Indre-et-Loire</multi>",
+    "nom_usage": "<multi>[fr]Indre-et-Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 347,
+    "id_mot": 157,
+    "iso_titre": "<multi>[fr]Indre</multi>",
+    "nom_usage": "<multi>[fr]Indre</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 345,
+    "id_mot": 159,
+    "iso_titre": "<multi>[fr]Isère</multi>",
+    "nom_usage": "<multi>[fr]Isère</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 344,
+    "id_mot": 160,
+    "iso_titre": "<multi>[fr]Jura</multi>",
+    "nom_usage": "<multi>[fr]Jura</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 343,
+    "id_mot": 23,
+    "iso_titre": "<multi>[fr]La Réunion</multi>",
+    "nom_usage": "<multi>[fr]La Réunion</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_departmental_collectivity"
+  },
+  {
+    "id_territoire": 342,
+    "id_mot": 161,
+    "iso_titre": "<multi>[fr]Landes</multi>",
+    "nom_usage": "<multi>[fr]Landes</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 341,
+    "id_mot": 162,
+    "iso_titre": "<multi>[fr]Loir-et-Cher</multi>",
+    "nom_usage": "<multi>[fr]Loir-et-Cher</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 339,
+    "id_mot": 165,
+    "iso_titre": "<multi>[fr]Loire-Atlantique</multi>",
+    "nom_usage": "<multi>[fr]Loire-Atlantique</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 340,
+    "id_mot": 163,
+    "iso_titre": "<multi>[fr]Loire</multi>",
+    "nom_usage": "<multi>[fr]Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 338,
+    "id_mot": 166,
+    "iso_titre": "<multi>[fr]Loiret</multi>",
+    "nom_usage": "<multi>[fr]Loiret</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 336,
+    "id_mot": 168,
+    "iso_titre": "<multi>[fr]Lot-et-Garonne</multi>",
+    "nom_usage": "<multi>[fr]Lot-et-Garonne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 337,
+    "id_mot": 167,
+    "iso_titre": "<multi>[fr]Lot</multi>",
+    "nom_usage": "<multi>[fr]Lot</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 335,
+    "id_mot": 169,
+    "iso_titre": "<multi>[fr]Lozère</multi>",
+    "nom_usage": "<multi>[fr]Lozère</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 334,
+    "id_mot": 170,
+    "iso_titre": "<multi>[fr]Maine-et-Loire</multi>",
+    "nom_usage": "<multi>[fr]Maine-et-Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 333,
+    "id_mot": 171,
+    "iso_titre": "<multi>[fr]Manche</multi>",
+    "nom_usage": "<multi>[fr]Manche</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 332,
+    "id_mot": 172,
+    "iso_titre": "<multi>[fr]Marne</multi>",
+    "nom_usage": "<multi>[fr]Marne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 331,
+    "id_mot": 218,
+    "iso_titre": "<multi>[fr]Martinique</multi>",
+    "nom_usage": "<multi>[fr]Martinique</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_unique_territorial_collectivity"
+  },
+  {
+    "id_territoire": 330,
+    "id_mot": 174,
+    "iso_titre": "<multi>[fr]Mayenne</multi>",
+    "nom_usage": "<multi>[fr]Mayenne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 329,
+    "id_mot": 221,
+    "iso_titre": "<multi>[fr]Mayotte</multi>",
+    "nom_usage": "<multi>[fr]Mayotte</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_departmental_collectivity"
+  },
+  {
+    "id_territoire": 324,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Métropole de Lyon</multi>",
+    "nom_usage": "<multi>[fr]Métropole de Lyon</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_collectivity_with_special_status"
+  },
+  {
+    "id_territoire": 328,
+    "id_mot": 175,
+    "iso_titre": "<multi>[fr]Meurthe-et-Moselle</multi>",
+    "nom_usage": "<multi>[fr]Meurthe-et-Moselle</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 327,
+    "id_mot": 176,
+    "iso_titre": "<multi>[fr]Meuse</multi>",
+    "nom_usage": "<multi>[fr]Meuse</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 326,
+    "id_mot": 177,
+    "iso_titre": "<multi>[fr]Morbihan</multi>",
+    "nom_usage": "<multi>[fr]Morbihan</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 325,
+    "id_mot": 178,
+    "iso_titre": "<multi>[fr]Moselle</multi>",
+    "nom_usage": "<multi>[fr]Moselle</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 323,
+    "id_mot": 179,
+    "iso_titre": "<multi>[fr]Nièvre</multi>",
+    "nom_usage": "<multi>[fr]Nièvre</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 322,
+    "id_mot": 180,
+    "iso_titre": "<multi>[fr]Nord</multi>",
+    "nom_usage": "<multi>[fr]Nord</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 321,
+    "id_mot": 119,
+    "iso_titre": "<multi>[fr]Normandie</multi>",
+    "nom_usage": "<multi>[fr]Normandie</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 320,
+    "id_mot": 73,
+    "iso_titre": "<multi>[fr]Nouvelle-Aquitaine</multi>",
+    "nom_usage": "<multi>[fr]Nouvelle-Aquitaine</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 319,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Nouvelle-Calédonie</multi>",
+    "nom_usage": "<multi>[fr]Nouvelle-Calédonie</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity_with_special_status"
+  },
+  {
+    "id_territoire": 318,
+    "id_mot": 76,
+    "iso_titre": "<multi>[fr]Occitanie</multi>",
+    "nom_usage": "<multi>[fr]Occitanie</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 317,
+    "id_mot": 181,
+    "iso_titre": "<multi>[fr]Oise</multi>",
+    "nom_usage": "<multi>[fr]Oise</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 316,
+    "id_mot": 182,
+    "iso_titre": "<multi>[fr]Orne</multi>",
+    "nom_usage": "<multi>[fr]Orne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 315,
+    "id_mot": 196,
+    "iso_titre": "<multi>[fr]Paris</multi>",
+    "nom_usage": "<multi>[fr]Paris</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_collectivity_with_special_status"
+  },
+  {
+    "id_territoire": 313,
+    "id_mot": 183,
+    "iso_titre": "<multi>[fr]Pas-de-Calais</multi>",
+    "nom_usage": "<multi>[fr]Pas-de-Calais</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 314,
+    "id_mot": 19,
+    "iso_titre": "<multi>[fr]Pays-de-la-Loire</multi>",
+    "nom_usage": "<multi>[fr]Pays-de-la-Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 312,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Polynésie française</multi>",
+    "nom_usage": "<multi>[fr]Polynésie française</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity"
+  },
+  {
+    "id_territoire": 311,
+    "id_mot": 22,
+    "iso_titre": "<multi>[fr]Provence-Alpes-Côte-d’Azur</multi>",
+    "nom_usage": "<multi>[fr]Provence-Alpes-Côte-d’Azur</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_region"
+  },
+  {
+    "id_territoire": 310,
+    "id_mot": 184,
+    "iso_titre": "<multi>[fr]Puy-de-Dôme</multi>",
+    "nom_usage": "<multi>[fr]Puy-de-Dôme</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 309,
+    "id_mot": 185,
+    "iso_titre": "<multi>[fr]Pyrénées-Atlantiques</multi>",
+    "nom_usage": "<multi>[fr]Pyrénées-Atlantiques</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 308,
+    "id_mot": 187,
+    "iso_titre": "<multi>[fr]Pyrénées-Orientales</multi>",
+    "nom_usage": "<multi>[fr]Pyrénées-Orientales</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 306,
+    "id_mot": 190,
+    "iso_titre": "<multi>[fr]Rhône</multi>",
+    "nom_usage": "<multi>[fr]Rhône</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 307,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Saint-Barthélemy</multi>",
+    "nom_usage": "<multi>[fr]Saint-Barthélemy</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity"
+  },
+  {
+    "id_territoire": 305,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Saint-Martin</multi>",
+    "nom_usage": "<multi>[fr]Saint-Martin</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity"
+  },
+  {
+    "id_territoire": 304,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Saint-Pierre-et-Miquelon</multi>",
+    "nom_usage": "<multi>[fr]Saint-Pierre-et-Miquelon</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity"
+  },
+  {
+    "id_territoire": 301,
+    "id_mot": 192,
+    "iso_titre": "<multi>[fr]Saône-et-Loire</multi>",
+    "nom_usage": "<multi>[fr]Saône-et-Loire</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 303,
+    "id_mot": 193,
+    "iso_titre": "<multi>[fr]Sarthe</multi>",
+    "nom_usage": "<multi>[fr]Sarthe</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 302,
+    "id_mot": 194,
+    "iso_titre": "<multi>[fr]Savoie</multi>",
+    "nom_usage": "<multi>[fr]Savoie</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 298,
+    "id_mot": 198,
+    "iso_titre": "<multi>[fr]Seine-et-Marne</multi>",
+    "nom_usage": "<multi>[fr]Seine-et-Marne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 300,
+    "id_mot": 197,
+    "iso_titre": "<multi>[fr]Seine-Maritime</multi>",
+    "nom_usage": "<multi>[fr]Seine-Maritime</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 299,
+    "id_mot": 214,
+    "iso_titre": "<multi>[fr]Seine-Saint-Denis</multi>",
+    "nom_usage": "<multi>[fr]Seine-Saint-Denis</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 297,
+    "id_mot": 201,
+    "iso_titre": "<multi>[fr]Somme</multi>",
+    "nom_usage": "<multi>[fr]Somme</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 295,
+    "id_mot": 203,
+    "iso_titre": "<multi>[fr]Tarn-et-Garonne</multi>",
+    "nom_usage": "<multi>[fr]Tarn-et-Garonne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 296,
+    "id_mot": 202,
+    "iso_titre": "<multi>[fr]Tarn</multi>",
+    "nom_usage": "<multi>[fr]Tarn</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 294,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Terres australes françaises</multi>",
+    "nom_usage": "<multi>[fr]Terres australes françaises</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_territory"
+  },
+  {
+    "id_territoire": 293,
+    "id_mot": 211,
+    "iso_titre": "<multi>[fr]Territoire de Belfort</multi>",
+    "nom_usage": "<multi>[fr]Territoire de Belfort</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 292,
+    "id_mot": 216,
+    "iso_titre": "<multi>[fr]Val-d'Oise</multi>",
+    "nom_usage": "<multi>[fr]Val-d'Oise</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 291,
+    "id_mot": 215,
+    "iso_titre": "<multi>[fr]Val-de-Marne</multi>",
+    "nom_usage": "<multi>[fr]Val-de-Marne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 290,
+    "id_mot": 204,
+    "iso_titre": "<multi>[fr]Var</multi>",
+    "nom_usage": "<multi>[fr]Var</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 289,
+    "id_mot": 205,
+    "iso_titre": "<multi>[fr]Vaucluse</multi>",
+    "nom_usage": "<multi>[fr]Vaucluse</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 288,
+    "id_mot": 206,
+    "iso_titre": "<multi>[fr]Vendée</multi>",
+    "nom_usage": "<multi>[fr]Vendée</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 286,
+    "id_mot": 207,
+    "iso_titre": "<multi>[fr]Vienne</multi>",
+    "nom_usage": "<multi>[fr]Vienne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 287,
+    "id_mot": 209,
+    "iso_titre": "<multi>[fr]Vosges</multi>",
+    "nom_usage": "<multi>[fr]Vosges</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 285,
+    "id_mot": "",
+    "iso_titre": "<multi>[fr]Wallis-et-Futuna</multi>",
+    "nom_usage": "<multi>[fr]Wallis-et-Futuna</multi>",
+    "type": "subdivision",
+    "categorie": "overseas_collectivity"
+  },
+  {
+    "id_territoire": 284,
+    "id_mot": 210,
+    "iso_titre": "<multi>[fr]Yonne</multi>",
+    "nom_usage": "<multi>[fr]Yonne</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  },
+  {
+    "id_territoire": 283,
+    "id_mot": 199,
+    "iso_titre": "<multi>[fr]Yvelines</multi>",
+    "nom_usage": "<multi>[fr]Yvelines</multi>",
+    "type": "subdivision",
+    "categorie": "metropolitan_department"
+  }
+]
