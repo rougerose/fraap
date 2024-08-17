@@ -9,30 +9,30 @@
   #SET{articles_total, #TOTAL_BOUCLE}
   <BOUCLE_articles_annuaire(ARTICLES){id_rubrique=3}>
     <BOUCLE_mots_departements(MOTS){id_article}{id_groupe=10}>
-      [(#SET{art_mots_departements, #GET{art_mots_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+      [(#SET{art_mots_departements, #GET{art_mots_departements}|push{#ID_ARTICLE}})]
     </BOUCLE_mots_departements>
     <BOUCLE_mots_regions(MOTS){id_article}{id_groupe=1}>
-      [(#SET{art_mots_regions, #GET{art_mots_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+      [(#SET{art_mots_regions, #GET{art_mots_regions}|push{#ID_ARTICLE}})]
     </BOUCLE_mots_regions>
     <BOUCLE_territoires(TERRITOIRES){id_article}{iso_pays=fr}{type=subdivision}>
       [(#REM) <!-- Cas généraux d'abord, les exceptions ensuite -->
       ][(#CATEGORIE|match{metropolitan_department}|oui)
-        [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+        [(#SET{art_departements, #GET{art_departements}|push{#ID_ARTICLE}})]
 
       ][(#CATEGORIE|match{metropolitan_region}|oui)
-        [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+        [(#SET{art_regions, #GET{art_regions}|push{#ID_ARTICLE}})]
       ][(#REM) <!-- Paris, Lyon, Corse -->
       ][(#CATEGORIE|match{metropolitan_collectivity}|oui)
         [(#LISTE{Paris, Lyon}|find{#ISO_TITRE}|?{
-          [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})],
-          [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+          [(#SET{art_departements, #GET{art_departements}|push{#ID_ARTICLE}})],
+          [(#SET{art_regions, #GET{art_regions}|push{#ID_ARTICLE}})]
         })]
       ][(#REM) <!-- Outre-mer -->
       ][(#CATEGORIE|match{overseas}|oui)
         [(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
-          [(#SET{art_departements, #GET{art_departements}|push{#articles_annuaire:ID_ARTICLE}})]
+          [(#SET{art_departements, #GET{art_departements}|push{#ID_ARTICLE}})]
         ]
-        [(#SET{art_regions, #GET{art_regions}|push{#articles_annuaire:ID_ARTICLE}})]
+        [(#SET{art_regions, #GET{art_regions}|push{#ID_ARTICLE}})]
       ]
     </BOUCLE_territoires>
   </BOUCLE_articles_annuaire>

@@ -20,19 +20,14 @@ function formulaires_migrer_territoires_verifier($data = []) {
 		$erreurs['message_erreur'] = 'Aucun mot-clé Départements et Régions à migrer';
 	}
 
-	$where_solde_departements = ['statut = ' . sql_quote('publie'), 'id_rubrique = ' . sql_quote('3'), sql_in('id_article', $data['art_mots_departements']), sql_in('id_article', $data['art_departements'], 'NOT')];
-
-	$solde_departements = get_solde($where_solde_departements);
-
-	$where_solde_regions = ['statut = ' . sql_quote('publie'), 'id_rubrique = ' . sql_quote('3'), sql_in('id_article', $data['art_mots_regions']), sql_in('id_article', $data['art_regions'], 'NOT')];
-
-	$solde_regions = get_solde($where_solde_regions);
+	$solde_art_departements = array_diff($data['art_mots_departements'], $data['art_departements']);
+	$solde_art_regions = array_diff($data['art_mots_regions'], $data['art_regions']);
 
 	if (!count($erreurs) and !_request('confirm')) {
 		$message = '<strong>Résultats de la prévisualisation</strong><br>';
 		$message .= sinon(
 			singulier_ou_pluriel(
-				count($solde_departements),
+				count($solde_art_departements),
 				'fraap_squelettes:migration_info_preview_departements_singulier',
 				'fraap_squelettes:migration_info_preview_departements_pluriel'
 			),
@@ -40,7 +35,7 @@ function formulaires_migrer_territoires_verifier($data = []) {
 		) . '<br>';
 		$message .= sinon(
 			singulier_ou_pluriel(
-				count($solde_regions),
+				count($solde_art_regions),
 				'fraap_squelettes:migration_info_preview_regions_singulier',
 				'fraap_squelettes:migration_info_preview_regions_pluriel'
 			),
@@ -69,15 +64,9 @@ function formulaires_migrer_territoires_traiter($data = []) {
 			}
 		}
 	}
-
 	// Récupérer les articles restants à migrer.
-	$where_solde_departements = ['statut = ' . sql_quote('publie'), 'id_rubrique = ' . sql_quote('3'), sql_in('id_article', $data['art_mots_departements']), sql_in('id_article', $data['art_departements'], 'NOT')];
-
-	$solde_departements = get_solde($where_solde_departements);
-
-	$where_solde_regions = ['statut = ' . sql_quote('publie'), 'id_rubrique = ' . sql_quote('3'), sql_in('id_article', $data['art_mots_regions']), sql_in('id_article', $data['art_regions'], 'NOT')];
-
-	$solde_regions = get_solde($where_solde_regions);
+	$solde_art_departements = array_diff($data['art_mots_departements'], $data['art_departements']);
+	$solde_art_regions = array_diff($data['art_mots_regions'], $data['art_regions']);
 
 	// Récupérer Départements (id_article et id_mot) et associer avec le territoire équivalent
 	$from = 'spip_articles AS articles INNER JOIN spip_mots_liens AS L1 ON L1.id_objet = articles.id_article AND L1.objet=' . sql_quote('article') . ' INNER JOIN spip_mots AS L2 ON L2.id_mot = L1.id_mot';
@@ -85,7 +74,7 @@ function formulaires_migrer_territoires_traiter($data = []) {
 	$where = [
 		'articles.statut = ' . sql_quote('publie'),
 		'articles.id_rubrique = ' . intval('3'),
-		sql_in('articles.id_article', $solde_departements),
+		sql_in('articles.id_article', $solde_art_departements),
 		'L1.objet = ' . sql_quote('article'),
 		'L2.id_groupe = ' . intval('10'),
 	];
@@ -97,10 +86,9 @@ function formulaires_migrer_territoires_traiter($data = []) {
 	if (count($article_departements)) {
 		foreach ($article_departements as $article) {
 			$id_mot = $article['id_mot'];
-			$id_territoire = $correspondances[$id_mot];
-			if ($id_territoire) {
+			if (isset($correspondances[$id_mot])) {
 				objet_associer(
-					['territoire' => $id_territoire],
+					['territoire' => $correspondances[$id_mot]],
 					['article' => $article['id_article']]
 				);
 				$nb_departements++;
@@ -112,7 +100,7 @@ function formulaires_migrer_territoires_traiter($data = []) {
 	$where = [
 		'articles.statut = ' . sql_quote('publie'),
 		'articles.id_rubrique = ' . intval('3'),
-		sql_in('articles.id_article', $solde_regions),
+		sql_in('articles.id_article', $solde_art_regions),
 		'L1.objet = ' . sql_quote('article'),
 		'L2.id_groupe = ' . intval('1'),
 	];
@@ -123,10 +111,9 @@ function formulaires_migrer_territoires_traiter($data = []) {
 	if (count($article_regions)) {
 		foreach ($article_regions as $article) {
 			$id_mot = $article['id_mot'];
-			$id_territoire = $correspondances[$id_mot];
-			if ($id_territoire) {
+			if (isset($correspondances[$id_mot])) {
 				objet_associer(
-					['territoire' => $id_territoire],
+					['territoire' => $correspondances[$id_mot]],
 					['article' => $article['id_article']]
 				);
 				$nb_regions++;
@@ -145,7 +132,7 @@ function formulaires_migrer_territoires_traiter($data = []) {
 	) . '<br>';
 	$message .= sinon(
 		singulier_ou_pluriel(
-			count($solde_regions),
+			$nb_regions,
 			'fraap_squelettes:migration_info_regions_singulier',
 			'fraap_squelettes:migration_info_regions_pluriel'
 		),
@@ -158,14 +145,14 @@ function formulaires_migrer_territoires_traiter($data = []) {
 }
 
 
-function get_solde($where) {
-	$solde = [];
+// function get_solde($where) {
+// 	$solde = [];
 
-	if ($ids = sql_allfetsel('id_article', 'spip_articles', $where)) {
-		foreach ($ids as $id) {
-			$solde[] = $id['id_article'];
-		}
-	}
+// 	if ($ids = sql_allfetsel('id_article', 'spip_articles', $where)) {
+// 		foreach ($ids as $id) {
+// 			$solde[] = $id['id_article'];
+// 		}
+// 	}
 
-	return $solde;
-}
+// 	return $solde;
+// }
