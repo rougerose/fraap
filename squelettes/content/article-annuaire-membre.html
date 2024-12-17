@@ -5,7 +5,8 @@
   #SET{activites, ''}
   #SET{localisation, ''}
   #SET{adresses, #ARRAY}
-  #SET{territoires, #ARRAY}
+  #SET{departement, ''}
+  #SET{region, ''}
   #SET{facebook, ''}
   #SET{twitter, ''}
   #SET{instagram, ''}
@@ -24,13 +25,30 @@
     [(#SET{localisation, #VAL{<:fraap_squelettes:annuaire_adresse:>}|wrap{<h2>}})]
     [(#SET{adresses, #GET{adresses}|push{#ID_ADRESSE}})]
   </BOUCLE_set_adresses>
-  <BOUCLE_set_territoires(GROUPES_MOTS){id_groupe_racine=30}{id_parent!=0}{par num titre}>
-    <BOUCLE_territoire(MOTS){id_article}{id_groupe=#ID_GROUPE}{par titre}>
-      [(#SET{localisation, #VAL{<:fraap_squelettes:annuaire_adresse:>}|wrap{<h2>}})]
-      [(#SET{territoires, #GET{territoires}|push{#ID_MOT}})]
-    </BOUCLE_territoire>
+  <BOUCLE_set_territoires(TERRITOIRES){id_article}>
+    [(#REM)
+      <!-- Cas généraux d'abord, les exceptions ensuite -->
+    ][(#CATEGORIE|match{metropolitan_department}|oui)
+      [(#SET{departement, #ID_TERRITOIRE})]
+    ][(#CATEGORIE|match{metropolitan_region}|oui)
+      [(#SET{region, #ID_TERRITOIRE})]
+    ][(#REM)
+      <!-- Paris, Lyon, Corse -->
+    ][(#CATEGORIE|match{metropolitan_collectivity}|oui)
+      [(#LISTE{Paris, Lyon}|find{#ISO_TITRE}|?{
+        [(#SET{departement, #ID_TERRITOIRE})],
+        [(#SET{region, #ID_TERRITOIRE})]
+      })]
+    ][(#REM)
+      <!-- Outre-mer -->
+    ][(#CATEGORIE|match{overseas}|oui)
+      [(#LISTE{overseas_departmental_collectivity, overseas_unique_territorial_collectivity}|find{#CATEGORIE}|oui)
+        [(#SET{departement, #ID_TERRITOIRE})]
+      ]
+      [(#SET{region, #ID_TERRITOIRE})]
+    ]
+    [(#SET{localisation, #VAL{<:fraap_squelettes:annuaire_adresse:>}|wrap{<h2>}})]
   </BOUCLE_set_territoires>
-
   <BOUCLE_fb(REZOSOCIOS){type_rezo=facebook}{id_article}>
     [(#SET{facebook, #LISTE{
       #TYPE_REZO*|rezosocios_url{#NOM_COMPTE},
@@ -156,9 +174,14 @@
                       </span>
                     </BOUCLE_get_adresse>
                     <span class="cluster">
-                      <BOUCLE_get_territoires(MOTS){id_mot IN #GET{territoires}}>
-                        [<a class="pill" href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{mots\[\], #ID_MOT})]">(#TITRE)</a>]
-                      </BOUCLE_get_territoires>
+                        [(#GET{departement}|oui)
+                          [<a class="pill"
+                            href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{departements\[\], #GET{departement}})]">(#INFO_ISO_TITRE{territoire, #GET{departement}})
+                          </a>]][(#GET{region}|oui)
+                          [<a class="pill"
+                            href="[(#URL_RUBRIQUE{#GET{idrubrique}}|parametre_url{regions\[\], #GET{region}})]">(#INFO_ISO_TITRE{territoire,
+                            #GET{region}})
+                          </a>]]
                     </span>
                   </p>
                 </BOUCLE_si_localisation>
