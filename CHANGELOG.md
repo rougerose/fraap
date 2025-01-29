@@ -1,5 +1,11 @@
 # Changelog
 
+# [4.0.6] - 2025-01-29
+
+### Changed
+
+- mise à jour des réseaux sociaux
+
 # [4.0.5] - 2024-12-17
 
 ### Fixed
