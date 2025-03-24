@@ -82,10 +82,10 @@
         {pagination 20}{option max_matches, 1000}
       >
         <article class="search-page_result abstract flow-small">
-          <h2 class="abstract_heading"><a href="#URI">#TITLE</a></h2>
+          <h2 class="abstract_heading"><a href="[(#PROPERTIES|table_valeur{id_objet}|generer_objet_url_absolue{#PROPERTIES|table_valeur{objet},'', '',true})]">#TITLE</a></h2>
           <div class="abstract_desc flow-small">
             [(#SNIPPET|sinon{#SUMMARY}|replace{b>,mark>}|propre)]
-            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="#URI" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
+            <p>[<time[ datetime="(#PROPERTIES|table_valeur{ymd/datetime}|date_iso)"]>(#PROPERTIES|table_valeur{ymd/datetime}|affdate)</time>]<a href="[(#PROPERTIES|table_valeur{id_objet}|generer_objet_url_absolue{#PROPERTIES|table_valeur{objet},'', '',true})]" class="button-cta variant-link with-icon with-icon-right"><:fraap_squelettes:cta_suite:>[ (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon icon-nav-link, path1=icon-nav-link_path1, path2=icon-nav-link_path2, aria-hidden=true})]</a></p>
           </div>
         </article>
       </BOUCLE_recherche>
