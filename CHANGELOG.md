@@ -1,5 +1,12 @@
 # Changelog
 
+# [4.0.7] - 2025-03-24
+
+### fixed
+
+- Recherche : url publique des documents
+- modele/file : url des doc
+
 # [4.0.6] - 2025-01-29
 
 ### Changed
