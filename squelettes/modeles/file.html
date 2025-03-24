@@ -66,7 +66,7 @@
         #GET{legende}
       </figure>
       [<div class="spip_doc_action">
-        <a href="(#GET{url})" class="button-cta variant-button with-icon with-icon-left button-ripple"[ (#ENV{lien}|?{'',type="#MIME_TYPE"})]>[(#INCLURE{fond=images/icon-download-100.svg, svg=icon icon-download, aria-hidden=true}) ]<span class="button-cta_label"><:fraap_squelettes:cta_telecharger:> <span>[(#TYPE_DOCUMENT)][ - (#TAILLE|taille_en_octets)]</span></span></a>
+        <a href="(#GET{url}|attribut_url)" class="button-cta variant-button with-icon with-icon-left button-ripple"[ (#ENV{lien}|?{'',type="#MIME_TYPE"})]>[(#INCLURE{fond=images/icon-download-100.svg, svg=icon icon-download, aria-hidden=true}) ]<span class="button-cta_label"><:fraap_squelettes:cta_telecharger:> <span>[(#TYPE_DOCUMENT)][ - (#TAILLE|taille_en_octets)]</span></span></a>
       </div>]
     </div>
   ]
