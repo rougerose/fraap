@@ -51,18 +51,18 @@
   [(#REM|test_espace_prive|oui)
     <div class="[(#ID_DOCUMENT|medias_modele_document_standard_classes{file}) ]spip_lien_ok"[ (#ID_DOCUMENT|medias_modele_document_standard_attributs{file})]>
       <figure class="spip_doc_inner file">
-        [<a href="(#GET{url})"[
-          class="(#ENV{lien_class}|concat{' spip_doc_lien'})"] title="[(#GET{title}|attribut_html)]"[
-          (#ENV{lien}|?{'',type="#MIME_TYPE"})]>]<img src="#GET{fichier}" width="#GET{width}" height="#GET{height}" alt="#ALT" />[(#GET{url}|?{</a>})]
+        [<a href="(#GET{url}|attribut_url)"[
+          class="(#ENV{lien_class}|concat{' spip_doc_lien'}|attribut_html)"] title="[(#GET{title}|attribut_html)]"[
+          (#ENV{lien}|?{'',type="#MIME_TYPE"})]>]<img src="[(#GET{fichier}|attribut_url)]" width="[(#GET{width}|attribut_html)]" height="[(#GET{height}|attribut_html)]" />[(#GET{url}|?{</a>})]
         #GET{legende}
       </figure>
     </div>
   ][(#REM|test_espace_prive|non)
     <div class="[(#ID_DOCUMENT|medias_modele_document_standard_classes{file}) ]spip_lien_ok"[ (#ID_DOCUMENT|medias_modele_document_standard_attributs{file})]>
       <figure class="spip_doc_inner file">
-        [<a href="(#GET{url})"[
+        [<a href="(#GET{url}|attribut_url)"[
           class="(#ENV{lien_class}|concat{' spip_doc_lien'})"] title="[(#GET{title}|attribut_html)]"[
-          (#ENV{lien}|?{'',type="#MIME_TYPE"})]>]<img src="#GET{fichier}" width="#GET{width}" height="#GET{height}" alt="#ALT" />[(#GET{url}|?{</a>})]
+          (#ENV{lien}|?{'',type="#MIME_TYPE"})]>]<img src="[(#GET{fichier}|attribut_url)]" width="[(#GET{width}|attribut_html)]" height="[(#GET{height}|attribut_html)]" />[(#GET{url}|?{</a>})]
         #GET{legende}
       </figure>
       [<div class="spip_doc_action">
