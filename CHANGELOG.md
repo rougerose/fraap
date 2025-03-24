@@ -6,6 +6,7 @@
 
 - Recherche : url publique des documents
 - modele/file : url des doc
+- rétablir l'icone twitter/x
 
 # [4.0.6] - 2025-01-29
 
