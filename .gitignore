@@ -12,3 +12,4 @@ theme/src/css/*
 
 # yarn/npm
 node_modules/
+vendor/

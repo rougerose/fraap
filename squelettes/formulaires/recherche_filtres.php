@@ -4,7 +4,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-
 /**
  * Les données recherche et filtres sont envoyées à Sphinx via la fonction charger
  * du formulaire de filtre. Si l'on utilise la méthode squelettes, les données contenant
@@ -46,7 +45,9 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 
 				$datas[$key]['cle'] = $cle;
 				// Récupérer les facettes depuis un squelette
-				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres));
+				$datas[$key]['data'] = unserialize(
+					recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres)
+				);
 				$datas[$key]['titre'] = $valeurs['titre'];
 				$datas[$key]['type'] = $valeurs['type'];
 			}

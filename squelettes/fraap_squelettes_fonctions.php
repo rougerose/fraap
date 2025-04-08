@@ -32,9 +32,9 @@ function supprimer_soulignement($texte) {
 function callback_supprimer_span($matches) {
 	if (strpos($matches[2], '<span') !== false) {
 		return $matches[1] . strip_tags($matches[2]) . $matches[3];
-	} else {
-		return $matches[0];
 	}
+	return $matches[0];
+
 }
 
 /**

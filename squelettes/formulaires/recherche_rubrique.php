@@ -11,7 +11,7 @@ function formulaires_recherche_rubrique_charger($redirection = '', $class = '') 
 		'recherche' => _request('recherche'),
 		'action' => $action,
 		'class' => $class,
-		'_id_champ' => $class ? substr(md5($action . $class), 0, 4) : 'recherche'
+		'_id_champ' => $class ? substr(md5($action . $class), 0, 4) : 'recherche',
 	];
 
 	return $valeurs;
