@@ -39,9 +39,9 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 
 				// ajouter tous les paramètres possibles de recherche
 				$contexte_filtres['recherche'] = $recherche;
-				$contexte_filtres['mots'] = ($retour['mots']) ? $retour['mots'] : '';
-				$contexte_filtres['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
-				$contexte_filtres['annee'] = ($retour['annee']) ? $retour['annee'] : '';
+				$contexte_filtres['mots'] = $retour['mots'] ?: '';
+				$contexte_filtres['typologie'] = $retour['typologie'] ?: '';
+				$contexte_filtres['annee'] = $retour['annee'] ?: '';
 
 				$datas[$key]['cle'] = $cle;
 				// Récupérer les facettes depuis un squelette
@@ -54,9 +54,9 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 		}
 		// ajouter tous les paramètres possibles de recherche
 		$contexte_total['recherche'] = $recherche;
-		$contexte_total['mots'] = ($retour['mots']) ? $retour['mots'] : '';
-		$contexte_total['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
-		$contexte_total['annee'] = ($retour['annee']) ? $retour['annee'] : '';
+		$contexte_total['mots'] = $retour['mots'] ?: '';
+		$contexte_total['typologie'] = $retour['typologie'] ?: '';
+		$contexte_total['annee'] = $retour['annee'] ?: '';
 		$retour['total'] = recuperer_fond('inclure/formulaires/fond-filtres-total-recherche', $contexte_total);
 	}
 	$retour['datas'] = $datas;
