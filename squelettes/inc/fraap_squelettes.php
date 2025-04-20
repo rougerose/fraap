@@ -14,7 +14,7 @@ function calculer_contexte_recherche_filtres($valeurs = []) {
 			}
 		}
 		return $contexte;
-	} else {
-		return null;
 	}
+	return null;
+
 }

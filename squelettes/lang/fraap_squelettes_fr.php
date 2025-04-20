@@ -4,8 +4,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-$GLOBALS[$GLOBALS['idx_lang']] = [
-
+return [
 	// A
 	'actualites_headline' => 'À la une',
 	'actualites_federation_headline' => 'À la une de la fédération',

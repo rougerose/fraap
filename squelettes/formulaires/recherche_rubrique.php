@@ -5,13 +5,13 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 }
 
 function formulaires_recherche_rubrique_charger($redirection = '', $class = '') {
-	$action = ($redirection ? $redirection : generer_url_public('recherche'));
+	$action = ($redirection ?: generer_url_public('recherche'));
 
 	$valeurs = [
 		'recherche' => _request('recherche'),
 		'action' => $action,
 		'class' => $class,
-		'_id_champ' => $class ? substr(md5($action . $class), 0, 4) : 'recherche'
+		'_id_champ' => $class ? substr(md5($action . $class), 0, 4) : 'recherche',
 	];
 
 	return $valeurs;

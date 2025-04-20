@@ -56,20 +56,22 @@ function formulaires_migrer_territoires_traiter($data = []) {
 
 	if ($json === false) {
 		return $res['message_erreur'] = 'Le tableau de correspondances mots-clé/territoires est manquant.';
-	} else {
-		$correspondances = [];
-		foreach ($json as $key => $value) {
-			if ($value['id_mot']) {
-				$correspondances[$value['id_mot']] = $value['id_territoire'];
-			}
+	}
+	$correspondances = [];
+	foreach ($json as $key => $value) {
+		if ($value['id_mot']) {
+			$correspondances[$value['id_mot']] = $value['id_territoire'];
 		}
 	}
+
 	// Récupérer les articles restants à migrer.
 	$solde_art_departements = array_diff($data['art_mots_departements'], $data['art_departements']);
 	$solde_art_regions = array_diff($data['art_mots_regions'], $data['art_regions']);
 
 	// Récupérer Départements (id_article et id_mot) et associer avec le territoire équivalent
-	$from = 'spip_articles AS articles INNER JOIN spip_mots_liens AS L1 ON L1.id_objet = articles.id_article AND L1.objet=' . sql_quote('article') . ' INNER JOIN spip_mots AS L2 ON L2.id_mot = L1.id_mot';
+	$from = 'spip_articles AS articles INNER JOIN spip_mots_liens AS L1 ON L1.id_objet = articles.id_article AND L1.objet=' . sql_quote(
+		'article'
+	) . ' INNER JOIN spip_mots AS L2 ON L2.id_mot = L1.id_mot';
 
 	$where = [
 		'articles.statut = ' . sql_quote('publie'),
@@ -87,10 +89,7 @@ function formulaires_migrer_territoires_traiter($data = []) {
 		foreach ($article_departements as $article) {
 			$id_mot = $article['id_mot'];
 			if (isset($correspondances[$id_mot])) {
-				objet_associer(
-					['territoire' => $correspondances[$id_mot]],
-					['article' => $article['id_article']]
-				);
+				objet_associer(['territoire' => $correspondances[$id_mot]], ['article' => $article['id_article']]);
 				$nb_departements++;
 			}
 		}
@@ -112,10 +111,7 @@ function formulaires_migrer_territoires_traiter($data = []) {
 		foreach ($article_regions as $article) {
 			$id_mot = $article['id_mot'];
 			if (isset($correspondances[$id_mot])) {
-				objet_associer(
-					['territoire' => $correspondances[$id_mot]],
-					['article' => $article['id_article']]
-				);
+				objet_associer(['territoire' => $correspondances[$id_mot]], ['article' => $article['id_article']]);
 				$nb_regions++;
 			}
 		}
@@ -143,7 +139,6 @@ function formulaires_migrer_territoires_traiter($data = []) {
 
 	return $res;
 }
-
 
 // function get_solde($where) {
 // 	$solde = [];

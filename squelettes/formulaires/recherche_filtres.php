@@ -4,7 +4,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
 
-
 /**
  * Les données recherche et filtres sont envoyées à Sphinx via la fonction charger
  * du formulaire de filtre. Si l'on utilise la méthode squelettes, les données contenant
@@ -40,22 +39,24 @@ function formulaires_recherche_filtres_charger($recherche = '', $criteres = [], 
 
 				// ajouter tous les paramètres possibles de recherche
 				$contexte_filtres['recherche'] = $recherche;
-				$contexte_filtres['mots'] = ($retour['mots']) ? $retour['mots'] : '';
-				$contexte_filtres['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
-				$contexte_filtres['annee'] = ($retour['annee']) ? $retour['annee'] : '';
+				$contexte_filtres['mots'] = $retour['mots'] ?: '';
+				$contexte_filtres['typologie'] = $retour['typologie'] ?: '';
+				$contexte_filtres['annee'] = $retour['annee'] ?: '';
 
 				$datas[$key]['cle'] = $cle;
 				// Récupérer les facettes depuis un squelette
-				$datas[$key]['data'] = unserialize(recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres));
+				$datas[$key]['data'] = unserialize(
+					recuperer_fond('inclure/formulaires/fond-filtres-facette-recherche', $contexte_filtres)
+				);
 				$datas[$key]['titre'] = $valeurs['titre'];
 				$datas[$key]['type'] = $valeurs['type'];
 			}
 		}
 		// ajouter tous les paramètres possibles de recherche
 		$contexte_total['recherche'] = $recherche;
-		$contexte_total['mots'] = ($retour['mots']) ? $retour['mots'] : '';
-		$contexte_total['typologie'] = ($retour['typologie']) ? $retour['typologie'] : '';
-		$contexte_total['annee'] = ($retour['annee']) ? $retour['annee'] : '';
+		$contexte_total['mots'] = $retour['mots'] ?: '';
+		$contexte_total['typologie'] = $retour['typologie'] ?: '';
+		$contexte_total['annee'] = $retour['annee'] ?: '';
 		$retour['total'] = recuperer_fond('inclure/formulaires/fond-filtres-total-recherche', $contexte_total);
 	}
 	$retour['datas'] = $datas;

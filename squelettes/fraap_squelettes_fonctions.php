@@ -32,9 +32,9 @@ function supprimer_soulignement($texte) {
 function callback_supprimer_span($matches) {
 	if (strpos($matches[2], '<span') !== false) {
 		return $matches[1] . strip_tags($matches[2]) . $matches[3];
-	} else {
-		return $matches[0];
 	}
+	return $matches[0];
+
 }
 
 /**
@@ -62,4 +62,35 @@ function filtre_trier_selon_cle($tableau, $cle, $sens) {
 	}
 
 	return $tableau;
+}
+
+/**
+ * Adapter les ancres ajoutées par le plugin Sommaire.
+ */
+function adapter_ancres($texte) {
+	$t = $texte;
+	preg_match_all(',(<h([123456])[^>]*>)(.*)(</h\\2>),Uims', $texte, $matches, PREG_SET_ORDER);
+
+	if (!count($matches)) {
+		return $texte;
+	}
+
+	$currentpos = 0;
+
+	foreach ($matches as $m) {
+		if (($pos = strpos($texte, $m[0], $currentpos)) !== false) {
+			// Supprimer l'ancre ajoutée par défaut
+			// et rétablir le span ajouté par wheels/fraap_squelettes_intertitres
+			$titre = wrap(supprimer_tags($m[3]), '<span class="text-underline">');
+			// Récupérer l'identifiant
+			$ancre = extraire_attribut($m[1], 'id');
+			// Modifier l'ancre de l'intertitre
+			$h = ajouter_class($m[1], 'intertitre') . $titre . " <a href='#$ancre' class='intertitre_ancre'>#</a>" . $m[4];
+			// Insérer l'intertitre modifié
+			$texte = substr_replace($texte, $h, $pos, strlen($m[0]));
+			$currentpos = $pos + strlen($h);
+		}
+	}
+
+	return $texte;
 }

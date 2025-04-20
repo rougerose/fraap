@@ -12,7 +12,6 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  * L'ajout d'un site permet de mutualiser
  * dans un unique formulaire tous les sites/rézos
  * d'un même tiers.
- *
  */
 function fraap_squelettes_rezosocios_liste($flux) {
 	if (is_array($flux)) {
@@ -20,7 +19,10 @@ function fraap_squelettes_rezosocios_liste($flux) {
 			'facebook' => $flux['facebook'],
 			'twitter' => $flux['twitter'],
 			'instagram' => $flux['instagram'],
-			'site' => ['nom' => 'Site web', 'url' => ''],
+			'site' => [
+				'nom' => 'Site web',
+				'url' => '',
+			],
 		];
 
 		$flux = $rezos;
@@ -42,15 +44,10 @@ function fraap_squelettes_formulaire_saisies($flux) {
 	if (in_array($flux['args']['form'], $forms)) {
 		include_spip('inc/saisies');
 		// $flux['data'] = saisies_supprimer($flux['data'], 'titre');
-		$flux['data'] = saisies_modifier(
-			$flux['data'],
-			'type',
-			['options' => ['defaut' => _COORDONNEES_TYPE_DEFAUT]]
-		);
+		$flux['data'] = saisies_modifier($flux['data'], 'type', ['options' => ['defaut' => _COORDONNEES_TYPE_DEFAUT]]);
 	}
 	return $flux;
 }
-
 
 /**
  * Ajouter automatiquement le titre de l'article
@@ -89,7 +86,6 @@ function fraap_squelettes_gis_modele_parametres_autorises($flux) {
 	return $flux;
 }
 
-
 /**
  * Pipeline indexer_document
  * - pour l'objet Fbiblio : ajout de type_ref et de l'année.
@@ -100,7 +96,7 @@ function fraap_squelettes_gis_modele_parametres_autorises($flux) {
  * - pour les articles de l'annuaire membres : ajouter les territoires (départements et régions).
  */
 function fraap_squelettes_indexer_document($flux) {
-	if (preg_match('/article|fbiblio/', $flux['args']['objet']) === 1  && $flux['args']['champs']['statut'] == 'publie') {
+	if (preg_match('/article|fbiblio/', $flux['args']['objet']) === 1 && $flux['args']['champs']['statut'] == 'publie') {
 		$id_rubrique = $flux['args']['champs']['id_rubrique'];
 
 		// Préciser la typologie de l'article
@@ -136,8 +132,6 @@ function fraap_squelettes_indexer_document($flux) {
 						}
 					}
 
-
-
 					// Départements
 					// Vérifier que le territoire n'est pas déjà enregistré
 					if (!in_array($id_territoire, $flux['data']->properties['departements'])) {
@@ -157,7 +151,10 @@ function fraap_squelettes_indexer_document($flux) {
 						}
 
 						if (in_array($id_territoire, $departements)) {
-							$flux['data']->properties['departements'] = array_merge($flux['data']->properties['departements'], $departements);
+							$flux['data']->properties['departements'] = array_merge(
+								$flux['data']->properties['departements'],
+								$departements
+							);
 						}
 					}
 
@@ -194,9 +191,9 @@ function indexation_completer_fbiblio($id_fbiblio) {
 	if ($id_fbiblio = intval($id_fbiblio)) {
 		$complement = sql_allfetsel('type_ref, annee', 'spip_fbiblios', 'id_fbiblio=' . $id_fbiblio);
 		return $complement[0];
-	} else {
-		return [];
 	}
+	return [];
+
 }
 
 /**
