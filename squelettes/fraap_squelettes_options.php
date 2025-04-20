@@ -45,3 +45,8 @@ define('_CVTUPLOAD_AGE_MAX', 24 * 3600 * 5);
 if (!defined('_METASPLUS_PAGES_EXCLUES')) {
 	define('_METASPLUS_PAGES_EXCLUES', '404');
 }
+
+// Sommaire : ne pas ajouter les sections
+if (!defined('SOMMAIRE_GENERER_SECTIONS')) {
+	define('SOMMAIRE_GENERER_SECTIONS', false);
+}
