@@ -1,5 +1,11 @@
 # Changelog
 
+# [4.0.8] - 2025-04-20
+
+### fixed
+
+- Squelettes : sommaire des articles : utiliser la version standard du plugin
+
 # [4.0.7] - 2025-03-24
 
 ### fixed
