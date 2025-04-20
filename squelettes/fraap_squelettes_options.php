@@ -50,3 +50,15 @@ if (!defined('_METASPLUS_PAGES_EXCLUES')) {
 if (!defined('SOMMAIRE_GENERER_SECTIONS')) {
 	define('SOMMAIRE_GENERER_SECTIONS', false);
 }
+
+/**
+ * Debug
+ */
+// define('_INTERDIRE_COMPACTE_HEAD_ECRIRE', true);
+// error_reporting(E_ALL ^ E_NOTICE);
+// ini_set('display_errors', 'On');
+// define('SPIP_ERREUR_REPORT', E_ALL);
+// define('_LOG_FILELINE', true);
+// define('_LOG_FILTRE_GRAVITE', 8);
+// define('_DEBUG_SLOW_QUERIES', true);
+// define('_BOUCLE_PROFILER', 5000);
