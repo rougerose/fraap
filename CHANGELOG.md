@@ -1,12 +1,20 @@
 # Changelog
 
-# [4.0.8] - 2025-04-20
+## [4.0.10] - 2025-05-01
+
+- Compilation js et css : réécrire les scripts et mise à jour des modules
+
+## [4.0.9] - 2025-04-20
+
+- Compatibilité spip 4.4.X
+
+## [4.0.8] - 2025-04-20
 
 ### fixed
 
 - Squelettes : sommaire des articles : utiliser la version standard du plugin
 
-# [4.0.7] - 2025-03-24
+## [4.0.7] - 2025-03-24
 
 ### fixed
 
@@ -14,13 +22,13 @@
 - modele/file : url des doc
 - rétablir l'icone twitter/x
 
-# [4.0.6] - 2025-01-29
+## [4.0.6] - 2025-01-29
 
 ### Changed
 
 - mise à jour des réseaux sociaux
 
-# [4.0.5] - 2024-12-17
+## [4.0.5] - 2024-12-17
 
 ### Fixed
 
