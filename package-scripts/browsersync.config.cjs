@@ -3,7 +3,7 @@ let url = process.env.DDEV_HOSTNAME;
 module.exports = {
   open: false,
   ui: false,
-  proxy: url,
+  proxy: { target: "localhost" },
   host: url,
   // logLevel: "debug",
   files: [
@@ -12,4 +12,5 @@ module.exports = {
     "./theme/dist/css/*.css",
   ],
   ignore: ["./node_modules", "./vendor"],
+  server: false,
 };
