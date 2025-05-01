@@ -7,9 +7,6 @@
 # phpcs
 php_cs.*
 
-#
-theme/src/css/*
-
 # yarn/npm
 node_modules/
 vendor/

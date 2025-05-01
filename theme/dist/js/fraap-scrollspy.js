@@ -1,2 +1,223 @@
-function t(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self&&self;var e={exports:{}};
-/*! MenuSpy v1.3.0 (Jan 31 2018) - http://leocs.me/menuspy/ - Copyright (c) 2018 Leonardo Santos; MIT License */e.exports=function(){var t=function(){return window.pageYOffset||document.documentElement.scrollTop},e=function(t,e){t.classList?t.classList.remove(e):t.className=t.className.replace(new RegExp("(^|\\b)"+e.split(" ").join("|")+"(\\b|$)","gi")," ")},s=function(t,e){var s=null;return function(){var n=arguments,o=this;s||(s=setTimeout((function(){return s=0,t.apply(o,n)}),e))}},n=function(e,n){var o=this;e&&(this.element="string"==typeof e?document.querySelector(e):e,this.options=function(t,e){for(var s in e)e.hasOwnProperty(s)&&(t[s]=e[s]);return t}({menuItemSelector:'a[href^="#"]',activeClass:"active",threshold:15,enableLocationHash:!0,hashTimeout:600,callback:null},n),this.assignValues(),this.debouncedAssignValuesFn=s((function(){return o.assignValues()})),window.addEventListener("resize",this.debouncedAssignValuesFn),this.debouncedHashFn=s((function(){var e=o.lastInViewElm?"#"+o.lastInViewElm.id:"#";if(history.replaceState)history.replaceState(null,null,e);else{var s=t();window.location.hash=e,window.scrollTo(0,s)}}),this.options.hashTimeout),this.cacheItems(),this.scrollFn())};return n.prototype.assignValues=function(){this.currScrollTop=0,this.lastInViewElm=null,this.menuHeight=this.element.offsetHeight+this.options.threshold,this.menuItems=[].slice.call(this.element.querySelectorAll(this.options.menuItemSelector)),this.raf=null},n.prototype.cacheItems=function(){this.scrollItems=this.menuItems.map((function(t){var e,s,n=t.dataset.target?document.querySelector(t.dataset.target):document.getElementById(t.hash.slice(1));return!!n&&{elm:t,target:n,offset:Math.floor((e=n,s=e.getBoundingClientRect(),{top:s.top+window.pageYOffset,left:s.left+window.pageXOffset}).top)}})),this.scrollItems=this.scrollItems.filter(Boolean).sort((function(t,e){return t.offset-e.offset}))},n.prototype.tick=function(){var t=this.currScrollTop+this.menuHeight,e=this.scrollItems.filter((function(e){return e.offset<t}));this.activateItem(e.pop())},n.prototype.activateItem=function(t){var s=this,n=this.options,o=n.activeClass,i=n.callback;if(!t)return this.scrollItems.forEach((function(t){return e(t.elm.parentNode,o)})),this.lastInViewElm=null,void(this.options.enableLocationHash&&this.debouncedHashFn());this.lastInViewElm!==t.target&&(this.lastInViewElm=t.target,this.scrollItems.forEach((function(n){e(n.elm.parentNode,o),n.target===t.target&&(function(t,e){if(t.classList)t.classList.add(e);else{var s=t.className.split(" ");-1===s.indexOf(e)&&s.push(e),t.className=s.join(" ")}}(n.elm.parentNode,o),"function"==typeof i&&i.call(s,n),s.options.enableLocationHash&&s.debouncedHashFn())})))},n.prototype.scrollFn=function(){var e=t();this.currScrollTop!==e&&(this.currScrollTop=e,this.tick()),this.raf=window.requestAnimationFrame(this.scrollFn.bind(this))},n.prototype.destroy=function(){this.raf&&window.cancelAnimationFrame(this.raf),window.removeEventListener("resize",this.debouncedAssignValuesFn)},n}();var s=t(e.exports);let n=document.querySelectorAll('.toc[data-type="side"]');n.length>0&&n.forEach((t=>{new s(t,{threshold:16,activeClass:"is-active",enableLocationHash:!1})}));
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
+var menuspy$1 = {exports: {}};
+
+/*! MenuSpy v1.3.0 (Jan 31 2018) - http://leocs.me/menuspy/ - Copyright (c) 2018 Leonardo Santos; MIT License */
+var menuspy = menuspy$1.exports;
+
+var hasRequiredMenuspy;
+
+function requireMenuspy () {
+	if (hasRequiredMenuspy) return menuspy$1.exports;
+	hasRequiredMenuspy = 1;
+	(function (module, exports) {
+		(function (global, factory) {
+			module.exports = factory() ;
+		}(menuspy, (function () {
+		var utils = {
+		  extend: function extend(a, b) {
+		    for (var key in b) {
+		      if (b.hasOwnProperty(key)) {
+		        a[key] = b[key];
+		      }
+		    }
+
+		    return a;
+		  },
+
+		  offset: function offset(el) {
+		    var rect = el.getBoundingClientRect();
+
+		    return {
+		      top: rect.top + window.pageYOffset,
+		      left: rect.left + window.pageXOffset
+		    };
+		  },
+
+		  scrollTop: function scrollTop() {
+		    return window.pageYOffset || document.documentElement.scrollTop;
+		  },
+
+		  addClass: function addClass(el, className) {
+		    if (el.classList) {
+		      el.classList.add(className);
+		    } else {
+		      var classes = el.className.split(' ');
+		      var existingIndex = classes.indexOf(className);
+
+		      if (existingIndex === -1) {
+		        classes.push(className);
+		      }
+
+		      el.className = classes.join(' ');
+		    }
+		  },
+
+		  removeClass: function removeClass(el, className) {
+		    if (el.classList) {
+		      el.classList.remove(className);
+		    } else {
+		      el.className = el.className.replace(new RegExp(("(^|\\b)" + (className.split(' ').join('|')) + "(\\b|$)"), 'gi'), ' ');
+		    }
+		  },
+
+		  debounce: function debounce(fn, delay) {
+		    var timeout = null;
+		    return function() {
+		      var args = arguments;
+		      var context = this;
+		      if (!timeout) {
+		        timeout = setTimeout(function () {
+		          timeout = 0;
+		          return fn.apply(context, args);
+		        }, delay);
+		      }
+		    };
+		  }
+		};
+
+		var MenuSpy = function MenuSpy(element, options) {
+		  var this$1$1 = this;
+
+		  if (!element) {
+		    return;
+		  }
+
+		  var defaults = {
+		    menuItemSelector : 'a[href^="#"]',
+		    activeClass      : 'active',
+		    threshold        : 15,
+		    enableLocationHash : true,
+		    hashTimeout      : 600,
+		    callback         : null
+		  };
+
+		  this.element = typeof element === 'string' ? document.querySelector(element) : element;
+		  this.options = utils.extend(defaults, options);
+
+		  this.assignValues();
+		  this.debouncedAssignValuesFn = utils.debounce(function () { return this$1$1.assignValues(); });
+		  window.addEventListener('resize', this.debouncedAssignValuesFn);
+
+		  this.debouncedHashFn = utils.debounce(function () {
+		    var hash = this$1$1.lastInViewElm ? ("#" + (this$1$1.lastInViewElm.id)) : '#';
+		    if (history.replaceState) {
+		      history.replaceState(null, null, hash);
+		    } else {
+		      var st = utils.scrollTop();
+		      window.location.hash = hash;
+		      window.scrollTo(0, st);
+		    }
+		  }, this.options.hashTimeout);
+
+		  this.cacheItems();
+		  this.scrollFn();
+		};
+
+		MenuSpy.prototype.assignValues = function assignValues () {
+		  this.currScrollTop = 0;
+		  this.lastInViewElm = null;
+		  this.menuHeight = this.element.offsetHeight + this.options.threshold;
+		  this.menuItems = [].slice.call(this.element.querySelectorAll(this.options.menuItemSelector));
+		  this.raf = null;
+		};
+
+		MenuSpy.prototype.cacheItems = function cacheItems () {
+		  this.scrollItems = this.menuItems.map(function (elm) {
+		    var target = elm.dataset.target ? document.querySelector(elm.dataset.target) : document.getElementById(elm.hash.slice(1));
+		    if (target) {
+		      var offset = Math.floor(utils.offset(target).top);
+		      return { elm: elm, target: target, offset: offset };
+		    }
+		    return false;
+		  });
+		  this.scrollItems = this.scrollItems.filter(Boolean).sort(function (a, b) { return a.offset - b.offset; });
+		};
+
+		MenuSpy.prototype.tick = function tick () {
+		  var fromTop = this.currScrollTop + this.menuHeight;
+		  var inViewElms = this.scrollItems.filter(function (item) { return item.offset < fromTop; });
+		  this.activateItem(inViewElms.pop());
+		};
+
+		MenuSpy.prototype.activateItem = function activateItem (inViewElm) {
+		    var this$1$1 = this;
+
+		  var ref = this.options;
+		    var activeClass = ref.activeClass;
+		    var callback = ref.callback;
+
+		  if (!inViewElm) {
+		    this.scrollItems.forEach(function (item) { return utils.removeClass(item.elm.parentNode, activeClass); });
+		    this.lastInViewElm = null;
+
+		    if (this.options.enableLocationHash) {
+		      this.debouncedHashFn();
+		    }
+
+		    return;
+		  }
+
+		  if (this.lastInViewElm !== inViewElm.target) {
+		    this.lastInViewElm = inViewElm.target;
+
+		    this.scrollItems.forEach(function (item) {
+		      utils.removeClass(item.elm.parentNode, activeClass);
+
+		      if (item.target === inViewElm.target) {
+		        utils.addClass(item.elm.parentNode, activeClass);
+
+		        if (typeof callback === 'function') {
+		          callback.call(this$1$1, item);
+		        }
+
+		        if (this$1$1.options.enableLocationHash) {
+		          this$1$1.debouncedHashFn();
+		        }
+		      }
+		    });
+		  }
+		};
+
+		MenuSpy.prototype.scrollFn = function scrollFn () {
+		  var st = utils.scrollTop();
+
+		  if (this.currScrollTop !== st) {
+		    this.currScrollTop = st;
+		    this.tick();
+		  }
+
+		  this.raf = window.requestAnimationFrame(this.scrollFn.bind(this));
+		};
+
+		MenuSpy.prototype.destroy = function destroy () {
+		  if (this.raf) {
+		    window.cancelAnimationFrame(this.raf);
+		  }
+
+		  window.removeEventListener('resize', this.debouncedAssignValuesFn);
+		};
+
+		return MenuSpy;
+
+		}))); 
+	} (menuspy$1));
+	return menuspy$1.exports;
+}
+
+var menuspyExports = requireMenuspy();
+var MenuSpy = /*@__PURE__*/getDefaultExportFromCjs(menuspyExports);
+
+let tocNode = document.querySelectorAll('.toc[data-type="side"]');
+
+if (tocNode.length > 0) {
+  tocNode.forEach((toc) => {
+    new MenuSpy(toc, {
+      threshold: 16,
+      activeClass: "is-active",
+      enableLocationHash: false,
+    });
+  });
+}
