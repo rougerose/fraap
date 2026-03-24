@@ -9,7 +9,7 @@
 >
 	<nom>Fraap.org - Thème</nom>
 	<auteur lien="http://rouge-rose.net">christophe le drean</auteur>
-	<licence>GPLv3</licence>
+	<licence>Tous droits réservés</licence>
 	<necessite nom="fraap_squelettes" />
   <genie nom="renouveler_nuance" periode="86400" />
   <pipeline nom="recuperer_fond" inclure="fraap_theme_pipelines.php" />
