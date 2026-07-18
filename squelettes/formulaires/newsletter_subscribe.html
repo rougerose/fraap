@@ -1,0 +1,42 @@
+[(#REM)
+  <!--
+    Formulaire d'abonnement newsletter personnalisé :
+      - ajout de classes propres aux formulaires du site
+      - utiliser un <button> avec classes spécifiques et dans le même bloc que l'input.
+      - les boutons d'options, inclus si plusieurs listes, sont déplacés à l'intérieur
+      du bloc de l'input. Attention, en l'état, il n'est pas prévu que cette fonctionnalité
+      soit mise en œuvre.
+      - le bouton standard des formulaires spip est supprimé.
+  -->
+]
+<div class='formulaire_spip formulaire_newsletter formulaire_[(#FORM)] search-page_form gap-top-3 ajax'>
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	[(#ENV{editable})
+    <form method='post' action='#ENV{action}'>
+      <div>
+        #ACTION_FORMULAIRE{#ENV{action}}
+        <div class="editer-groupe">
+          #SET{name,session_email}#SET{obli,'obligatoire'}#SET{defaut,''}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          <div class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur] search_group">
+            <label class="search_label search_label-rubrique" for="#GET{name}">
+              <span class="search_label_text"><:fraap_squelettes:label_email_subscribe:></span></label>[
+            <span class='erreur_message'>(#GET{erreurs})</span>
+            ]<input type="email" name="#GET{name}" class="email text search_input" value="#ENV*{#GET{name}}" id="#GET{name}" [(#HTML5|et{#GET{obli}})required='required']/>
+            [(#ENV{_listes_choix}|oui)
+              <INCLURE{fond=formulaires/inc-subscribing-options,env,label=<:newsletter:label_subscribe_lists:>} />
+            ]
+            <button type="submit" class="button button-ripple search_submit">
+              <:fraap_squelettes:newsletter_submit:>[
+                (#INCLURE{fond=images/icon-arrow-right-hover-32.svg, svg=icon-arrow-right,
+                path1='', path2='', aria-hidden=true})]
+            </button>
+          </div>
+        </div>
+        [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+        <!--extra-->
+      </div>
+    </form>
+	]
+</div>

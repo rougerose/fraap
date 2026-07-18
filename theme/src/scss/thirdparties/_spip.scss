@@ -7,10 +7,8 @@
 // 2- Images et vidéo oembed
 // 3- Fichiers
 // 4- Notes
-// 5- Formulaires Formidable
+// 5- Formulaires
 // 6- Exposants et indices
-
-
 
 // 1- Documents
 // ========================================
@@ -27,12 +25,10 @@
   }
 }
 
-
 // 2- Images et video oembed
 // ========================================
 
 .spip_document_image {
-
   > figure {
     margin: 0 auto;
     max-width: 100%;
@@ -108,7 +104,6 @@
   }
 }
 
-
 // 4- Notes
 // ========================================
 
@@ -119,10 +114,33 @@
   }
 }
 
-
-// 5- Formulaires Formidable
+// 5- Formulaires
 // ========================================
 
+// Spip
+.reponse_formulaire {
+  padding: 0.75rem 1rem;
+  margin-bottom: var(--space-m);
+  background-color: var(--color-message-bg);
+  border-left: 8px solid var(--color-message-border);
+
+  &.reponse_formulaire_ok {
+    --color-message-bg: var(--color-message-bg-success);
+    --color-message-border: var(--color-message-border-success);
+  }
+
+  &.reponse_formulaire_erreur {
+    --color-message-bg: var(--color-message-bg-alert);
+    --color-message-border: var(--color-message-border-alert);
+  }
+
+  // Le message de confirmation d'inscription + nospam ajoute une coche à la fin du message.
+  & .nospam-checkbox {
+    display: none;
+  }
+}
+
+// Formidable
 .formulaire_formidable {
   --form-fields-border-color: #{rgba(map.get(var.$gray, "blue", "200"), 0.8)};
   padding-top: var(--space-l);
@@ -160,7 +178,6 @@
   }
 
   legend {
-
     &.legend,
     &.fieldset_legend {
       color: var(--color-contrast);
@@ -207,23 +224,22 @@
     color: var(--color-message-border-warn);
   }
 
-  .reponse_formulaire {
-    padding: 0.75rem 1rem;
-    margin-bottom: var(--space-m);
-    background-color: var(--color-message-bg);
-    border-left: 8px solid var(--color-message-border);
+  // .reponse_formulaire {
+  //   padding: 0.75rem 1rem;
+  //   margin-bottom: var(--space-m);
+  //   background-color: var(--color-message-bg);
+  //   border-left: 8px solid var(--color-message-border);
 
-    &.reponse_formulaire_ok {
-      --color-message-bg: var(--color-message-bg-success);
-      --color-message-border: var(--color-message-border-success);
-    }
+  //   &.reponse_formulaire_ok {
+  //     --color-message-bg: var(--color-message-bg-success);
+  //     --color-message-border: var(--color-message-border-success);
+  //   }
 
-    &.reponse_formulaire_erreur {
-      --color-message-bg: var(--color-message-bg-alert);
-      --color-message-border: var(--color-message-border-alert);
-    }
-  }
-
+  //   &.reponse_formulaire_erreur {
+  //     --color-message-bg: var(--color-message-bg-alert);
+  //     --color-message-border: var(--color-message-border-alert);
+  //   }
+  // }
 
   // TODO: mutualiser plutôt que répéter les styles déjà existants dans _button-cta.
   button.submit,
@@ -238,7 +254,9 @@
     background-color: var(--color-paper);
     // border-radius: 2em;
     border: 1px solid var(--color-contrast);
-    transition: background 0.3s, color 0.3s;
+    transition:
+      background 0.3s,
+      color 0.3s;
     background-color: var(--buttonCta-background, var(--color-contrast));
     border-radius: 4px;
     color: var(--buttonCta-color, var(--color-link-invert));

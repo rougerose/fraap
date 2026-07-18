@@ -3729,6 +3729,24 @@ h6 > span.text-underline {
   line-height: inherit;
 }
 
+.reponse_formulaire {
+  padding: 0.75rem 1rem;
+  margin-bottom: var(--space-m);
+  background-color: var(--color-message-bg);
+  border-left: 8px solid var(--color-message-border);
+}
+.reponse_formulaire.reponse_formulaire_ok {
+  --color-message-bg: var(--color-message-bg-success);
+  --color-message-border: var(--color-message-border-success);
+}
+.reponse_formulaire.reponse_formulaire_erreur {
+  --color-message-bg: var(--color-message-bg-alert);
+  --color-message-border: var(--color-message-border-alert);
+}
+.reponse_formulaire .nospam-checkbox {
+  display: none;
+}
+
 .formulaire_formidable {
   --form-fields-border-color: rgba(207.264, 207.264, 210.936, 0.8);
   padding-top: var(--space-l);
@@ -3786,20 +3804,6 @@ h6 > span.text-underline {
 .formulaire_formidable span.obligatoire {
   font-style: italic;
   color: var(--color-message-border-warn);
-}
-.formulaire_formidable .reponse_formulaire {
-  padding: 0.75rem 1rem;
-  margin-bottom: var(--space-m);
-  background-color: var(--color-message-bg);
-  border-left: 8px solid var(--color-message-border);
-}
-.formulaire_formidable .reponse_formulaire.reponse_formulaire_ok {
-  --color-message-bg: var(--color-message-bg-success);
-  --color-message-border: var(--color-message-border-success);
-}
-.formulaire_formidable .reponse_formulaire.reponse_formulaire_erreur {
-  --color-message-bg: var(--color-message-bg-alert);
-  --color-message-border: var(--color-message-border-alert);
 }
 .formulaire_formidable button.submit,
 .formulaire_formidable input.submit {
