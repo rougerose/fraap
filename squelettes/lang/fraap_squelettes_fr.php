@@ -76,6 +76,7 @@ return [
 	// 'images_associees' => 'Images associées',
 
 	// L
+	'label_email_subscribe' => 'Votre adresse email',
 	'lien_aller_au_contenu' => 'Aller au contenu',
 
 	// M
@@ -115,6 +116,7 @@ return [
 	'nav_bouton_retour' => 'Retour',
 	'nav_bouton_search' => 'Recherche',
 	'nav_offcanvas_titre' => 'Menu',
+	'newsletter_submit' => 'Envoyer',
 
 	// O
 	'outils_headline' => 'Les outils de la Fraap',

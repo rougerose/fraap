@@ -30,11 +30,13 @@
   <necessite nom="formidable" />
   <necessite nom="cvtupload" />
   <necessite nom="territoires" />
+  <necessite nom="mailsubscribers" />
   <utilise nom="fraap_biblio" />
   <utilise nom="bellespuces" />
   <utilise nom="odt2spip" />
   <utilise nom="oembed" />
   <utilise nom="zotspip" />
+  <utilise nom="etarget_sync" />
   <pipeline nom="rezosocios_liste" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="formulaire_saisies" inclure="fraap_squelettes_pipelines.php" />
   <pipeline nom="formulaire_charger" inclure="fraap_squelettes_pipelines.php" />
