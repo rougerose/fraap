@@ -33,9 +33,11 @@ export default class extends module {
     this.dialog.on("show", (event) => {
       // Pour le dialog relatif au menu principal du site
       if (this.type == "menu") {
+        // Identifier le parent du menu, pour permettre d'envoyer l'objet à la fonction resetMenu
+        this.$menuDialog = this.$content[0].querySelector(".site-nav_body");
         // Récupérer l'identifiant de l'arborescence
         // à afficher sur le bouton d'ouverture.
-        const opener = event.detail.target.closest('[data-a11y-dialog-show');
+        const opener = event.detail.target.closest('[data-a11y-dialog-show]');
         let menuId = opener.getAttribute("data-menu-controls"),
           shortcut = this.$content[0].querySelector("a[data-menu-controls=" + menuId + "]"),
           submenuPath = subMenuFromTo(shortcut, this.el);
@@ -77,6 +79,11 @@ export default class extends module {
     this.toggleState(this.state, "closed");
     this.$content[0].removeEventListener("transitionend", this.handleTransition);
     enableBodyScroll(this.el, this.bodyscrollOptions);
+
+    if (this.type === "menu") {
+      // Remettre le menu à l'état initial
+      resetMenu(this.$menuDialog);
+    }
   }
 
   close() {

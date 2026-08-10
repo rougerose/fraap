@@ -30,18 +30,24 @@ function onScroll(event) {
   clearTimeout(onScrollTimeout);
   onScrollTimeout = setTimeout(() => {
     event.target.removeEventListener("scroll", onScroll, { passive: true });
-    onScrollEnd.map((fn) => {
-      fn();
-    });
+    // Bug : 2026-10-08 :
+    // si on sélectionne le premier élément du menu (Fédération),
+    // le sous-menu disparait juste après.
+    // On garde uniquement le retrait de l'écouteur.
+    // onScrollEnd.map((fn) => {
+    //   fn();
+    // });
     onScrollEnd = [];
     isScroll = false;
   }, 50);
 }
 
 function resetMenu(menu) {
-  menu.querySelectorAll("ul.site-nav_list.-variant-offcanvas").forEach((list, index) => {
-    list.setAttribute("aria-hidden", String(index !== 0));
-  });
+  menu
+    .querySelectorAll("ul.site-nav_list.-variant-offcanvas")
+    .forEach((list, index) => {
+      list.setAttribute("aria-hidden", String(index + 1 !== 0));
+    });
   menu.scrollLeft = 0;
   onScrollEnd = [];
   isScroll = false;
