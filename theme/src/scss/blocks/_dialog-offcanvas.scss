@@ -46,6 +46,10 @@
 
 @include mq.mq($from: navOffcanvas) {
   .dialog-offcanvas_content {
-    max-width: math.div(map.get(settings.$FRAAP-TWEAKPOINTS, "navOffcanvas"), 16) * 1rem;
+    max-width: math.div(
+        map.get(settings.$FRAAP-TWEAKPOINTS, "navOffcanvas"),
+        16
+      ) *
+      1rem;
   }
 }

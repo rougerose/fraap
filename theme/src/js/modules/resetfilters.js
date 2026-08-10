@@ -30,7 +30,7 @@ export default class extends module {
         history: true,
         href: "",
     };
-    console.log("options", optionsAjax);
+    // console.log("options", optionsAjax);
 
     if (params) {
       // Le bouton de suppression sélectionné contient encore
@@ -56,7 +56,7 @@ export default class extends module {
           }
         } else {
           if (key == "recherche" && value == "") {
-            console.log(key, value);
+            // console.log(key, value);
             optionsAjax.history = false;
           } else {
             argsObj[key] = value;
@@ -109,7 +109,7 @@ export default class extends module {
       // });
     }
     // TODO : vérifier si optionsAjax contient des données ?
-    console.log(optionsAjax);
+    // console.log(optionsAjax);
     // On relance le bloc ajax "filtres" qui contient le formulaire.
     // Le callback met à jour le contenu du formulaire lui-même.
       window.ajaxReload("filtres", optionsAjax);

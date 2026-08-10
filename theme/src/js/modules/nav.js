@@ -8,7 +8,7 @@ export default class extends module {
   constructor(m) {
     super(m);
     // Récupérer les raccourcis data-nav="shortcut"
-    this.shortcuts = this.el.querySelectorAll('li[data-type-link="shortcut"');
+    this.shortcuts = this.el.querySelectorAll('li[data-type-link="shortcut"]');
   }
   init() {
     // Transformer chaque lien en bouton

@@ -196,10 +196,10 @@
   --card-maxWidth: 31rem;
   --column-padding: var(--space-m-l);
   --dialog-zindex: 40;
-  --font-family-headings: Glypha, Frutiger, Open Sans, Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, sans-serif;
-  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --font-family-sans: Frutiger, Open Sans, Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji, sans-serif;
-  --font-family-baseline: FrutigerBC, Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  --font-family-headings: Glypha, sans-serif;
+  --font-family-mono: monospace;
+  --font-family-sans: Frutiger, sans-serif;
+  --font-family-baseline: FrutigerBC, Frutiger, sans-serif;
   --form-fields-width: 100%;
   --form-fields-input-padding: 0.5em 0.5em 0.375em;
   --icon-border-radius: 100%;
@@ -585,7 +585,7 @@ body {
   overflow-x: hidden;
   background-color: var(--color-paper);
   color: var(--color-ink);
-  font-family: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  font-family: Frutiger, sans-serif;
   font-size: var(--step-0);
   line-height: 1.4;
   width: 100%;
@@ -4395,7 +4395,7 @@ sub,
     -webkit-font-smoothing: antialiased;
     background: #fff !important;
     color: #000 !important;
-    font-family: Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    font-family: Frutiger, sans-serif;
     font-size: 1rem;
     line-height: 1.5;
     margin: 0 auto;
@@ -4423,7 +4423,7 @@ sub,
   h5,
   h6 {
     color: #000;
-    font-family: Glypha, Frutiger, "Open Sans", Helvetica, Roboto, Arial, ui-sans-serif, system-ui, -apple-system, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    font-family: Glypha, sans-serif;
     line-height: 1.2;
     margin-bottom: 0.75rem;
     margin-top: 0;
@@ -4472,7 +4472,7 @@ sub,
   pre,
   kbd {
     border: 1px solid #bbb;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: monospace;
     font-size: 85%;
   }
   code,

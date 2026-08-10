@@ -1,5 +1,10 @@
 # Changelog
 
+## [4.0.12] - 2026-08-10
+
+- Tests pour l'inscription à la NL.
+- Corriger les dysfonctionnements sur le menu principal (probablement des erreurs liées aux modifications en 4.0.10).
+
 ## [4.0.10] - 2025-05-01
 
 - Compilation js et css : réécrire les scripts et mise à jour des modules

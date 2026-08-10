@@ -1,8 +1,17 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { minify } from "rollup-plugin-esbuild";
+import terser from "@rollup/plugin-terser";
 
-const outputPlugins = () => [process.env.NODE_ENV === "production" && minify()];
+const terserOpts = {
+  compress: { passes: 3 },
+  module: true,
+  mangle: true,
+  nameCache: {},
+};
+
+const outputPlugins = () => [
+  process.env.NODE_ENV === "production" && terser(terserOpts),
+];
 
 export default [
   {
