@@ -9,7 +9,6 @@ export default class extends module {
 
   init() {
     this.shortcuts = this.el.querySelectorAll('li[data-type-link="shortcut"] > [href][data-menu-controls]');
-
     this.shortcuts.forEach(shortcut => {
       let submenuPath = subMenuFromTo(shortcut, this.el);
 
