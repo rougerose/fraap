@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- 2026-08-11 : carte de l'annuaire, supprimer le plugin ToggleSleepMap pour utiliser GestureHandling fourni par défaut avec GIS.
+
 ## [4.0.12] - 2026-08-10
 
 - Tests pour l'inscription à la NL.

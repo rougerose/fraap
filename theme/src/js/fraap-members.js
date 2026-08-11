@@ -14,13 +14,8 @@ function FraapMembers(map, id) {
 
 FraapMembers.prototype.create = function () {
   let self = this;
-
-  // Activer le plugin leaflet d'activation de la carte
-  self.sleep = L.control.toggleSleepMap({}).addTo(this.map);
-
   let onready = function () {
     self.onclickMarker();
-    self.sleep.disableMap();
     $("#" + self.map._container.id).off("ready", onready);
   };
   // Attendre l'événement "ready" pour ajouter
@@ -33,12 +28,6 @@ FraapMembers.prototype.create = function () {
       .querySelector("button")
       .addEventListener("click", self.flyToMember.bind(self));
   }
-
-  // self.openers.forEach((opener) => {
-  //   opener
-  //     .querySelector("button")
-  //     .addEventListener("click", self.flyToMember.bind(self));
-  // });
   return this;
 };
 

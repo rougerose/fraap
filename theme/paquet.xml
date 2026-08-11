@@ -12,6 +12,5 @@
 	<licence>Tous droits réservés</licence>
 	<necessite nom="fraap_squelettes" />
   <genie nom="renouveler_nuance" periode="86400" />
-  <pipeline nom="recuperer_fond" inclure="fraap_theme_pipelines.php" />
 	<chemin path="" />
 </paquet>
