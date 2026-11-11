@@ -2,7 +2,8 @@
 
 ## [Unreleased]
 
-- 2026-08-11 : carte de l'annuaire, supprimer le plugin ToggleSleepMap pour utiliser GestureHandling fourni par défaut avec GIS.
+- carte de l'annuaire, supprimer le plugin ToggleSleepMap pour utiliser GestureHandling fourni par défaut avec GIS.
+- ajout pipeline insert_head_css dans fraap_theme, ce qui permet de prendre en compte le contexte dev/prod pour le fichier css.
 
 ## [4.0.12] - 2026-08-10
 
