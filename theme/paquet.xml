@@ -1,7 +1,7 @@
 <paquet
 	prefix="fraap_theme"
 	categorie="theme"
-	version="4.0.12"
+	version="4.0.13"
 	etat="stable"
 	compatibilite="[4.0.0;4.4.*]"
 	logo="prive/themes/spip/images/fraap_theme-128.png"
@@ -12,5 +12,6 @@
 	<licence>Tous droits réservés</licence>
 	<necessite nom="fraap_squelettes" />
   <genie nom="renouveler_nuance" periode="86400" />
+  <pipeline nom="insert_head_css" inclure="fraap_theme_pipelines.php" />
 	<chemin path="" />
 </paquet>

@@ -9,15 +9,15 @@
   "type": "module",
   "scripts": {
     "bs": "browser-sync start -c package-scripts/browsersync.config.cjs",
-    "build": "run-s clean && run-p build:* && run-s css",
+    "build": "run-s clean && run-p build:*",
     "build:js": "rollup -c package-scripts/rollup.config.js",
-    "build:scss": "sass --no-source-map --load-path=node_modules theme/src/scss/index.scss theme/dist/css/fraap.tmp.css",
+    "build:scss": "sass --no-source-map --load-path=node_modules theme/src/scss/index.scss theme/dist/css/fraap.css",
+    "postbuild": "lightningcss --minify --bundle --browserslist theme/dist/css/fraap.css -o theme/dist/css/fraap.min.css",
     "clean": "rm -rf theme/dist/css/fraap*.css && rm -rf theme/dist/js/fraap*.js",
     "copy": "node package-scripts/copy.mjs",
-    "css": "lightningcss --minify --bundle --browserslist theme/dist/css/fraap.tmp.css -o theme/dist/css/fraap.css",
     "publish": "NODE_ENV=production run-s build",
     "watch": "run-p build bs watch:*",
-    "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'pnpm run build:scss && pnpm run css'",
+    "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'pnpm run build:scss'",
     "watch:js": "chokidar 'theme/src/js/**/*.js' -c 'pnpm run build:js'"
   },
   "browserslist": [
