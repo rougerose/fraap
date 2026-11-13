@@ -7,7 +7,6 @@
     [<div><tt>(#SPHINX_QUERY|htmlspecialchars)</tt></div>]
   ]
   <BOUCLE_ressources(SPHINX){index #ENV{source}}
-    {recherche #ENV*{recherche}}
     {filtermono #ENV{id_rubrique}, properties.id_rubrique, #ENV{id_rubrique}}
     {filtermono article, properties.objet, article}
     {filter #ENV{mots}, 'IN(properties.mots.ids, @valeurs)', 'LENGTH(properties.mots.ids) = 0' }
@@ -131,7 +130,6 @@
     [(#INCLURE{fond=modeles/carte_gis,
       objets=membres,
       id_rubrique=#ID_RUBRIQUE,
-      recherche=#ENV{recherche},
       articles=#GET{articles},
       mots=#ENV{mots},
       id_map=#GET{mapId},

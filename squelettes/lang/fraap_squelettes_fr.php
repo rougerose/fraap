@@ -65,6 +65,7 @@ return [
 	'filtre_label_departements' => 'Départements',
 	'filtre_label_regions' => 'Régions',
 	'filtrer' => 'Filtrer',
+	'filtrer_annuaire' => 'Filtrer par activité et localisation',
 
 	// H
 	'headline_dernieres_publications' => 'Dernières publications',

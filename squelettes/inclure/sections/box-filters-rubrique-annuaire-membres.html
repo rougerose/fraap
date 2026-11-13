@@ -4,9 +4,6 @@
 [(#SET{effacer, ''})]
 <div id="annuaire" class="box-filters box-filters-sticky variant-search">
   <div class="box-filters_inner">
-    [(#FORMULAIRE_RECHERCHE_RUBRIQUE{#SELF, annuaire})]
-  </div>
-  <div class="box-filters_inner">
     <div class="reel">
       <div>
         [(#ENV{total_resultats}|>{0}|?{
@@ -15,7 +12,7 @@
         })]
       </div>
       <div>
-          <button type="button" class="button-cta variant-small variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogMembers">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ]<:fraap_squelettes:filtrer:></button>
+          <button type="button" class="button-cta variant-small variant-button with-icon with-icon-left button-ripple" data-a11y-dialog-show="dialogMembers">[(#INCLURE{fond=images/icon-filter-32.svg, svg=icon icon-filter, aria-hidden=true, focusable=false}) ] <:fraap_squelettes:filtrer_annuaire:></button>
       </div>
     </div>
   </div>
@@ -23,12 +20,6 @@
 <div class="box-filters">
   <div class="box-filters_inner">
     <div class="reel">
-      [(#ENV{recherche}|oui)
-        #SET{effacer, ' '}
-        <div>
-          [<a href="(#SELF|parametre_url{recherche, ''})" class="button-cta variant-pill with-icon with-icon-left" data-resetfilters="button">[(#INCLURE{fond=images/icon-close-100.svg, svg=icon icon-close, aria-hidden=true}) ][(#ENV{recherche})]</a>]
-        </div>
-      ]
       <BOUCLE_mots(DATA){source table, #GET{mots}}{par cle}>
         [(#SET{delete, [(#GET{mots}|critere_mots_enleve_mot_de_liste{#VALEUR})]})]
         #SET{effacer, ' '}
