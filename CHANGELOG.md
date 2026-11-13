@@ -1,8 +1,9 @@
 # Changelog
 
-## [Unreleased]
+## [4.0.13] - 2026-11-13
 
 - carte de l'annuaire, supprimer le plugin ToggleSleepMap pour utiliser GestureHandling fourni par défaut avec GIS.
+- supprimer le formulaire de recherche dans l'annuaire des membres
 - ajout pipeline insert_head_css dans fraap_theme, ce qui permet de prendre en compte le contexte dev/prod pour le fichier css.
 
 ## [4.0.12] - 2026-08-10
