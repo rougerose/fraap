@@ -42,7 +42,7 @@
     "menuspy": "^1.3.0",
     "modujs": "^1.4.2",
     "npm-run-all2": "^9.0.4",
-    "prettier": "^3.9.10",
+    "prettier": "^3.10.1",
     "rollup": "^4.68.2",
     "sass": "1.79.6",
     "sass-mq": "^7.0.1",
