@@ -16,7 +16,7 @@
     "clean": "rm -rf theme/dist/css/fraap*.css && rm -rf theme/dist/js/fraap*.js",
     "copy": "node package-scripts/copy.mjs",
     "publish": "NODE_ENV=production run-s build",
-    "watch": "run-p build bs watch:*",
+    "watch": "run-s clean && run-p build:* bs watch:*",
     "watch:scss": "chokidar 'theme/src/scss/**/*.scss' -c 'pnpm run build:scss'",
     "watch:js": "chokidar 'theme/src/js/**/*.js' -c 'pnpm run build:js'"
   },
