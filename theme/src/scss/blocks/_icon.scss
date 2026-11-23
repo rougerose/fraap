@@ -46,7 +46,9 @@
   padding: var(--icon-padding);
   stroke: currentColor;
   stroke-width: var(--icon-stroke-width);
-  transition: transform 0.3s ease-out, stroke 0.1s;
+  transition:
+    transform 0.3s ease-out,
+    stroke 0.1s;
   width: var(--icon-size);
 }
 
@@ -356,7 +358,6 @@
     .path3 {
       fill: var(--color-primary-700);
     }
-
   }
 }
 
@@ -408,7 +409,6 @@
   }
 }
 
-
 // 05 - icon-locate
 // ========================================
 .icon-locate {
@@ -416,18 +416,15 @@
   fill: currentColor;
 }
 
-
 // 06 - icon-plus
 // ========================================
 .icon-plus {
   stroke-width: 2;
 }
 
-
 // 07 - icon-filter
 // ========================================
 // .icon-filter {}
-
 
 // 08 - icon-close
 // ========================================
@@ -452,5 +449,32 @@
   path {
     fill: var(--color-primary);
     fill-opacity: 0.8;
+  }
+}
+
+// 11 - icon-mailsubscribinglist1
+// ========================================
+.icon-mailsubscribinglist1 {
+  fill: var(--color-contrast);
+  fill-opacity: 0.8;
+  & circle {
+    fill: var(--local-color, var(--color-primary));
+  }
+
+  &.with-bg {
+    --local-color: var(--color-primary-700);
+  }
+}
+
+.icon-mailsubscribinglist2 {
+  fill: var(--color-contrast);
+  fill-opacity: 0.8;
+
+  & path:nth-child(odd) {
+    fill: var(--local-color, var(--color-primary));
+  }
+
+  &.with-bg {
+    --local-color: var(--color-primary-700);
   }
 }

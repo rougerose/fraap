@@ -1,0 +1,32 @@
+<BOUCLE_newsletter_unsubscribe(MAILSUBSCRIBINGLISTS){identifiant=fraapactu}>
+  <div class="page" data-page="article">
+    <div class="wrapper-structure">
+      <INCLURE{fond=inclure/breadcrumb/newsletter-unsubscribe, titre_public=#TITRE_PUBLIC}/>
+    </div>
+    <div class="wrapper-content" data-flush>
+      <div class="region">
+        <article class="article">
+          <div class="prose">
+            <header class="headline">
+              <h1 class="headline_title variant-offset-icon">
+                <INCLURE{fond=images/icon-mailsubscribinglist2-64.svg,
+                  svg='icon icon-mailsubscribinglist2', aria-hidden=true}/>
+                <span>Se désinscrire de #TITRE</span>
+              </h1>
+              <div class="headline_desc variant-article prose-editor flow measure">
+                <p>Vous pouvez vous désinscrire de #TITRE grâce au formulaire ci-dessous.</p>
+              </div>
+            </header>
+          </div>
+          <div>
+            <div class="prose">
+              <div class="flow prose-editor gap-top-5">
+                #FORMULAIRE_NEWSLETTER_UNSUBSCRIBE{#IDENTIFIANT}
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</BOUCLE_newsletter_unsubscribe>

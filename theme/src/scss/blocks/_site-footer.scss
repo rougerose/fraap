@@ -1,16 +1,26 @@
 /// SITE-FOOTER
 
 @use "../tools/mq" as mq;
+@use "sass:color";
 
 .site-footer {
-  background-color: var(--color-contrast);
   color: var(--color-primary);
   margin-top: auto;
-  padding-top: var(--space-5xl);
-  padding-bottom: var(--space-l);
 }
 
-// .site-footer_nav {}
+.site-footer_newsletter {
+  margin-top: var(--space-5xl);
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+  background-color: var(--color-background-site-footer-nl);
+  color: var(--color-ink);
+}
+
+.site-footer_nav {
+  padding-top: var(--space-5xl);
+  padding-bottom: var(--space-l);
+  background-color: var(--color-contrast);
+}
 
 .site-footer_layout {
   --auto-grid-placement: auto-fit;

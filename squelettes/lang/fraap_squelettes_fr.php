@@ -117,7 +117,8 @@ return [
 	'nav_bouton_retour' => 'Retour',
 	'nav_bouton_search' => 'Recherche',
 	'nav_offcanvas_titre' => 'Menu',
-	'newsletter_submit' => 'Envoyer',
+	'newsletter_subscribe' => 'Je m’inscris',
+	'newsletter_unsubscribe' => 'Je me désinscris',
 
 	// O
 	'outils_headline' => 'Les outils de la Fraap',

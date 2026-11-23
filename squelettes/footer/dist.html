@@ -1,3 +1,19 @@
+<BOUCLE_newsletter(MAILSUBSCRIBINGLISTS){identifiant=fraapactu}{statut=ouverte}>
+  <div id="#IDENTIFIANT" class="site-footer_newsletter newsletter">
+      <div class="wrapper-content">
+        <h2 class="newsletter_title">
+          <INCLURE{fond=images/icon-mailsubscribinglist2-64.svg, svg='icon icon-mailsubscribinglist2', aria-hidden=true} />
+          #TITRE_PUBLIC
+        </h2>
+        <div class="with-sidebar">
+          [<div class="newsletter_desc flow-small">
+            (#DESCRIPTIF)
+        </div>]
+          #FORMULAIRE_NEWSLETTER_SUBSCRIBE{#IDENTIFIANT}
+        </div>
+      </div>
+  </div>
+</BOUCLE_newsletter>
 <nav class="site-footer_nav">
   <div class="wrapper-structure">
     <div class="cluster site-footer_layout">
