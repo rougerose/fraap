@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+- newsletter : ajout du formulaire d'abonnement dans le pied de page (pour le html et visuellement il est au-dessus) ; deux pages spécifiques newsletter-suscribe et newslette-unsuscribe permettent de gérer inscription et désincription (à valider) ; deux variantes pour illustrer la newsletter en attente d'un choix.
+- changement de couleur du thème : utiliser la balise #CONFIG plutôt qu'un bout de code php.
+
 ## [4.0.13] - 2026-11-13
 
 - carte de l'annuaire, supprimer le plugin ToggleSleepMap pour utiliser GestureHandling fourni par défaut avec GIS.
